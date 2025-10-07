@@ -54,15 +54,15 @@ def parse_json_input(input_path, faa_path):
         sequence_features = features_by_sequence.get(seq_id)
         sequence_features.append(feature)
 
+    hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
+
     # write hypothetical proteins to file
     with faa_path.open('wt') as fh:
-        for feat in features:
-            print(feat)
-            if(feat['type'] == bc.FEATURE_CDS and feat['product'] == "hypothetical protein"):
-                fh.write(f">{feat['id']}\n{feat['aa']}\n")
+        for feat in hypotheticals:
+            fh.write(f">{feat['locus']}\n{feat['aa']}\n")
 
 
-    return features
+    return data, features
 
 
     

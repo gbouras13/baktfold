@@ -22,7 +22,7 @@ def mask_low_confidence_aa(sequence, scores, threshold=0.5):
                    for aa, score in zip(sequence, *scores))
 
 def subcommand_predict(
-    seq_dict: dict,
+    cds_dict: dict,
     output: Path,
     prefix: str,
     cpu: bool,
@@ -41,7 +41,7 @@ def subcommand_predict(
     Wrapper command for baktfold predict. Predicts embeddings using ProstT5 encoder + CNN prediction head.
 
     Args:
-        seq_dict (Dict[str, any]): id:aa dictionary
+        cds_dict (Dict[str, any]): id:aa dictionary
         output (str): Output directory path.
         prefix (str): Prefix for output file names.
         cpu (bool): Flag indicating whether to use CPU for prediction.
@@ -80,7 +80,7 @@ def subcommand_predict(
         output_probs = True
 
     predictions = get_embeddings(
-        seq_dict,
+        cds_dict,
         output,
         prefix,
         model_dir,

@@ -23,6 +23,7 @@ from baktfold.utils.util import (begin_baktfold, clean_up_temporary_files, end_b
                               get_version, print_citation)
 from baktfold.utils.validation import (check_dependencies, instantiate_dirs,
                                     validate_input)
+import baktfold.io.gff as gff
 
 log_fmt = (
     "[<green>{time:YYYY-MM-DD HH:mm:ss}</green>] <level>{level: <8}</level> | "
@@ -292,22 +293,25 @@ def run(
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
 
-    features = parse_json_input(input, fasta_aa)
+    data, features = parse_json_input(input, fasta_aa)
+
+    hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
+    non_hypothetical_features = [
+    feat for feat in features
+    if (feat['type'] != bc.FEATURE_CDS) or 
+       (feat['type'] == bc.FEATURE_CDS and 'hypothetical' not in (feat.get('product') or '').lower())
+]
     
-    seq_dict = {}
-
-    for feat in features:
-        if(feat['type'] == bc.FEATURE_CDS and feat['product'] == "hypothetical protein"):
-            seq_dict[feat['id']] = feat['aa']
-
-    print(seq_dict)
+    # for prostT5 code
+    cds_dict = {}
+    for feat in hypotheticals:
+        cds_dict[feat['locus']] = feat['aa']
 
 
-
-
+    # add a function to add 3Di to cds_dict
 
     subcommand_predict(
-        seq_dict,
+        cds_dict,
         output,
         prefix,
         cpu,
@@ -327,7 +331,8 @@ def run(
 
     # predictions_dir is output as this will be where it lives
 
-    subcommand_compare(
+    hypotheticals = subcommand_compare(
+        hypotheticals,
         output,
         threads,
         evalue,
@@ -346,9 +351,43 @@ def run(
         foldseek_gpu=foldseek_gpu,
     )
 
-    # # cleanup the temp files
-    # if keep_tmp_files is False:
-    #     clean_up_temporary_files(output)
+    combined_features = non_hypothetical_features + hypotheticals  # recombine
+
+    # Sort by ascending 'id'
+    combined_features_sorted = sorted(combined_features, key=lambda x: x.get('id', ''))
+
+    data['features'] = combined_features_sorted
+
+    print('select features and preserve existing IDs...')
+    logger.info('start feature selection and preserving existing feature IDs')
+
+    # map features by sequence
+    features_by_sequence = {seq['id']: [] for seq in data['sequences']}
+
+    for feature in data['features']:
+        if 'discarded' not in feature:
+            seq_features = features_by_sequence.get(feature['sequence'])
+            if seq_features is not None:
+                seq_features.append(feature)
+
+    # flatten sorted features
+    features = []
+    for seq in data['sequences']:
+        seq_features = features_by_sequence[seq['id']]
+        seq_features.sort(key=lambda k: k['start'])  # sort features by start position
+        features.extend(seq_features)
+
+    # overwrite feature list with sorted features
+    data['features'] = features
+
+    logger.info('selected features=%i', len(features))
+    print(f'\tselected: {len(features)}')
+
+
+    print('\tGFF3...')
+    gff3_path: Path = Path(output) / f"{prefix}.gff3"
+    gff.write_features(data, features_by_sequence, gff3_path)
+
 
     # end baktfold
     end_baktfold(start_time, "run")

@@ -14,12 +14,11 @@ from baktfold.features.create_foldseek_db import (
     generate_foldseek_db_from_aa_3di, generate_foldseek_db_from_structures)
 from baktfold.features.run_foldseek import create_result_tsv, run_foldseek_search
 from baktfold.io.handle_genbank import write_genbank
-from baktfold.results.topfunction import (calculate_topfunctions_results,
-                                       get_topcustom_hits,
-                                       calculate_qcov_tcov,
-                                       get_topfunctions)
+from baktfold.results.tophit import get_tophit
+import baktfold.bakta.pstc as pstc
 
 def subcommand_compare(
+    hypotheticals: Dict,
     output: Path,
     threads: int,
     evalue: float,
@@ -41,6 +40,7 @@ def subcommand_compare(
     Compare 3Di or PDB structures to the baktfold DB
 
     Parameters:
+        hypotheticals (Dict):  hypothetical features dictionary
         output (Path): Path to the output directory.
         threads (int): Number of threads to use.
         evalue (float): E-value threshold.
@@ -182,6 +182,82 @@ def subcommand_compare(
        
     create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads)
 
+    swissprot_df = get_tophit(result_tsv, structures)
+
+
+
+
+
+
+
+
+
+
+
+    #####
+    # foldseek search AFDB Clusters
+    #####
+
+
+
+
+    database_name = "AFDBClusters"
+
+    if short_db_name == database_name:
+        logger.error(
+            f"Please choose a different -p {prefix} as this conflicts with the {database_name}"
+        )
+
+    query_db: Path = Path(foldseek_query_db_path) / short_db_name
+    target_db: Path = Path(database) / database_name
+
+    # make result and temp dirs
+    result_db_base: Path = Path(output) / "result_db"
+    result_db_base.mkdir(parents=True, exist_ok=True)
+    result_db: Path = Path(result_db_base) / "result_afdb_db"
+
+    temp_db: Path = Path(output) / "temp_db"
+    temp_db.mkdir(parents=True, exist_ok=True)
+
+    # make result tsv
+    result_tsv: Path = Path(output) / "foldseek_results_afdb_clusters.tsv"
+
+    # run foldseek search
+    run_foldseek_search(
+        query_db,
+        target_db,
+        result_db,
+        temp_db,
+        threads,
+        logdir,
+        evalue,
+        sensitivity,
+        max_seqs,
+        ultra_sensitive,
+        extra_foldseek_params,
+        foldseek_gpu,
+        structures
+    )
+
+       
+    create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads)
+
+    afdbclusters_df = get_tophit(result_tsv,structures)
+
+
+    ####
+    # looup
+    ####
+    # add the Swissprot and AFDB tophits to the json
+    hypotheticals = pstc.parse(hypotheticals, swissprot_df, 'swissprot')
+    hypotheticals = pstc.parse(hypotheticals, afdbclusters_df, 'afdb')
+
+    # get the lookup descriptions for each of them
+    hypotheticals = pstc.lookup(hypotheticals, Path(database))
+
+
+    return hypotheticals
+
 
     
 
@@ -223,6 +299,8 @@ def subcommand_compare(
 
     #     tophit_custom_df = get_topcustom_hits(
     #     result_tsv_custom, structures, proteins_flag)
+
+
 
     #     #### merge 
     #     # left merge on the cds_id to get every cds/contig id (make it easier for downstream processing)

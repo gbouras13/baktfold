@@ -392,7 +392,7 @@ def load_predictor(checkpoint_path: Union[str, Path]) -> CNN:
 
 
 def get_embeddings(
-    seq_dict: Dict[str, Dict[str, Tuple[str, ...]]],
+    cds_dict: Dict[str, Dict[str, Tuple[str, ...]]],
     out_path: Path,
     prefix: str,
     model_dir: Path,
@@ -417,7 +417,7 @@ def get_embeddings(
     Generate embeddings and predictions for protein sequences using ProstT5 encoder & CNN prediction head.
 
     Args:
-        seq_dict (Dict[str, Dict[str, Tuple[str, ...]]]): nested dictionary containing contig IDs, CDS IDs and corresponding protein sequences.
+        cds_dict (Dict[str, Dict[str, Tuple[str, ...]]]): nested dictionary containing contig IDs, CDS IDs and corresponding protein sequences.
         out_path (Path): Path to the output directory.
         prefix (str): Prefix for the output files.
         model_dir (Path): Directory containing the pre-trained model.
@@ -469,13 +469,13 @@ def get_embeddings(
     fail_ids = []
 
     # sort sequences by length to trigger OOM at the beginning
-    seq_dict = dict(
-        sorted(seq_dict.items(), key=lambda kv: len(kv[1][0]), reverse=True)
+    cds_dict = dict(
+        sorted(cds_dict.items(), key=lambda kv: len(kv[1][0]), reverse=True)
     )
 
     batch = list()
-    for seq_idx, (pdb_id, seq) in tqdm(enumerate(seq_dict.items(), 1), total=len(seq_dict), desc=f"Predicting 3Di"):
-    # for seq_idx, (pdb_id, seq) in enumerate(seq_dict.items(), 1):
+    for seq_idx, (pdb_id, seq) in tqdm(enumerate(cds_dict.items(), 1), total=len(cds_dict), desc=f"Predicting 3Di"):
+    # for seq_idx, (pdb_id, seq) in enumerate(cds_dict.items(), 1):
         # replace non-standard AAs
         seq = seq.replace("U", "X").replace("Z", "X").replace("O", "X")
         seq_len = len(seq)
@@ -488,7 +488,7 @@ def get_embeddings(
         if (
             len(batch) >= max_batch
             or n_res_batch >= max_residues
-            or seq_idx == len(seq_dict)
+            or seq_idx == len(cds_dict)
             or seq_len > max_seq_len
         ):
             pdb_ids, seqs, seq_lens = zip(*batch)

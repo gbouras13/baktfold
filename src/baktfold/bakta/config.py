@@ -9,15 +9,15 @@ from argparse import Namespace
 from datetime import datetime
 from pathlib import Path
 
-import bakta
-import bakta.constants as bc
 
+import baktfold.bakta.constants as bc
+from baktfold import __version__
 
 PLASMID_NAME_PATTERN = re.compile(r'p[a-zA-Z0-9\._]{1,19}')
 PLASMID_UNNAMED_PATTERN = re.compile(r'unnamed[0-9]{0,3}')
 
 
-log = logging.getLogger('CONFIG')
+#log = logging.getLogger('CONFIG')
 
 
 # runtime configurations
@@ -27,7 +27,7 @@ verbose = None
 debug = None
 
 # input / output configuration
-version = baktfold.__version__
+version = __version__
 db_path = None
 db_info = None
 tmp_path = None

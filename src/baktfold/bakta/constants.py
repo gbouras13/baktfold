@@ -19,8 +19,24 @@ MAX_SORF_LENGTH = 30  # smallest ORF length detected by Prodigal
 
 
 ############################################################################
+# PSTC settings
+############################################################################
+
+
+MIN_PSTC_IDENTITY = 0.0  # min protein identity for PSTC detection
+MIN_PSTC_QCOVERAGE = 0.0  # min protein query coverage for PSC detection
+MIN_PSTC_TCOVERAGE = 0.0  # min protein target coverage for PSC detection
+MIN_FS_EVALUE = 1e-3  # min evalue for CDS Foldseek searches
+HYPOTHETICAL_PROTEIN = 'hypothetical protein'  # hypothetical protein product description
+
+
+############################################################################
 # CDS settings
 ############################################################################
+
+
+CDS_SOURCE_USER = 'user-provided'
+
 MIN_PSCC_IDENTITY = 0.5  # min protein identity for PSC detection
 MIN_PSC_COVERAGE = 0.8  # min protein coverage for PSC detection
 MIN_PSC_IDENTITY = 0.9  # min protein identity for PSC detection
