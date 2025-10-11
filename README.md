@@ -18,6 +18,7 @@ foldseek makepaddedseqdb pdb pdb_gpu
 foldseek makepaddedseqdb swissprot swissprot_gpu
 foldseek makepaddedseqdb AFDBClusters AFDBClusters_gpu 
 
+
     foldseek_makepaddedseqdb = ExternalTool(
         tool="foldseek",
         input=f"",
@@ -126,16 +127,106 @@ cut -f1,3 AFDBClusters_uniprot_accessions_protein_names.tsv > ../baktfold_db/AFD
 * Cluster at 90% coverage E=0.01 as per nature paper https://www.nature.com/articles/s41586-023-06510-w
 
 ```bash
-./foldseek/bin/foldseek databases Alphafold/UniProt50-minimal afdb50_minimal tmp --threads 8
+./foldseek/bin/foldseek databases Alphafold/UniProt50-minimal afdb50 tmp --threads 8
 
-wc -l afdb50_minimal_h # 66725340
+wc -l afdb50_h # 66725340
 
 
 # foldseek cluster at the same thresholds as nature paper
-./foldseek/bin/foldseek cluster afdb50_minimal  afdb50_clusterDB tmp -c 0.9 -e 0.01
+./foldseek/bin/foldseek cluster afdb50  afdb50_clusterDB tmp -c 0.9 -e 0.01
 
 # gets the tsv
-./foldseek/bin/foldseek createtsv afdb50_minimal  afdb50_minimal  $OUTDIR/clusterDB cluster.tsv
+./foldseek/bin/foldseek createtsv afdb50  afdb50  afdb50_cluster_2itsDB cluster_2its.tsv
+
+
+cut -f1 cluster_2its.tsv | uniq  | wc -l     
+32967214
+# total number of singletons
+cut -f1 cluster_2its.tsv | uniq -u | wc -l
+28909850
+
+# fine to just take the non singletons I guess
+cut -f1 cluster_2its.tsv | uniq -u > singletons.txt
+
+# 
+awk '!a[$1]++ {print $2}' cluster_2its.tsv > representatives.txt
+
+
+grep -v -F -f singletons.txt representatives.txt > cluster_reps_2plus.txt
+wc -l cluster_reps_2plus.txt
+# 4057364
+
+
+# 
+
+awk 'NR==FNR { ids[$1]=1; next }
+     {
+       acc=$2
+       if (acc in ids) print $1
+     }' cluster_reps_2plus.txt afdb50.lookup > subset.lookup
+
+
+
+
+# does seq, ss and ca
+foldseek createsubdb subset.lookup afdb50 AFDBClustersv6
+foldseek createsubdb subset.lookup afdb50_h AFDBClustersv6_h
+
+awk '{match($1, /AF-([A-Z0-9]+)-F1-model_v6/, m); if (m[1] != "") print m[1] "\t" substr($0, index($0,$2))}' AFDBClustersv6_h > AFDBClustersv6.tsv
+
+
+# then to get the Fragment
+
+grep  "Fragment" AFDBClustersv6.tsv | wc -l 
+# 971006
+
+grep -v "Fragment" AFDBClustersv6.tsv | cut -f1 > cluster_reps_2plus_no_Fragment.txt
+
+wc -l cluster_reps_2plus_no_Fragment.txt
+# 3085778
+
+# need to account for the full AF string
+
+awk 'NR==FNR { ids[$1]=1; next }
+     {
+       acc=$2
+       sub(/^AF-/, "", acc)
+       sub(/-F[0-9]+-model_v[0-9]+$/, "", acc)
+       if (acc in ids) print $1
+     }' cluster_reps_2plus_no_Fragment.txt afdb50.lookup > subset.lookup
+
+# does seq, ss and ca
+foldseek createsubdb subset.lookup afdb50 AFDBClustersv6
+foldseek createsubdb subset.lookup afdb50_h AFDBClustersv6_h
+
+awk '{match($1, /AF-([A-Z0-9]+)-F1-model_v6/, m); if (m[1] != "") print m[1] "\t" substr($0, index($0,$2))}' AFDBClustersv6_h > AFDBClustersv6.tsv
+
+# in the database directory
+for f in AFDBClustersv6*; do
+    mv "$f" "${f/v6/}"
+done
+
+
+
+
+# 32967214 reps -> try cluster some more with 2+2 its
+
+# for the extra clustering
+awk 'NR==FNR { ids[$1]=1; next }
+     {
+       acc=$2
+       if (acc in ids) print $1
+     }' representatives.txt afdb50.lookup > subset.lookup
+
+# does seq, ss and ca
+foldseek createsubdb subset.lookup afdb50 afdb50_2its
+foldseek createsubdb subset.lookup afdb50_h afdb50_2its_h
+
+# then cluster this some more
+
+
+
+
 ```
 
 * Swissprot

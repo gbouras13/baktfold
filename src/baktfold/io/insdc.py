@@ -289,15 +289,15 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict]):
 
 
 def write_features(data: dict, features: Sequence[dict], genbank_output_path: Path, embl_output_path: Path):
-    logger.info('prepare: genbank=%s, embl=%s', genbank_output_path, embl_output_path)
+    logger.info(f'prepare: genbank={genbank_output_path}, embl={embl_output_path}')
 
     sequence_list = build_biopython_sequence_list(data, features)
     with genbank_output_path.open('wt', encoding='utf-8') as fh:
-        logger.info('write GenBank: path=%s', genbank_output_path)
+        logger.info(f'write GenBank: path={genbank_output_path}')
         SeqIO.write(sequence_list, fh, format='genbank')
 
     with embl_output_path.open('wt', encoding='utf-8') as fh:
-        logger.info('write EMBL: path=%s', embl_output_path)
+        logger.info(f'write EMBL: path={embl_output_path}')
         SeqIO.write(sequence_list, fh, format='embl')
 
 

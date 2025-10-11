@@ -38,34 +38,52 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
 
     # add 3Di sequence here I think or debate how to handle this
 
-    print('writing genome sequences...')
+    logger.info('writing genome sequences...')
     fna_path: Path = Path(output) / f"{prefix}.fna"
     fasta.export_sequences(data['sequences'], fna_path, description=True, wrap=True)
 
-    print('writing feature nucleotide sequences...')
+    logger.info('writing feature nucleotide sequences...')
     ffn_path: Path = Path(output) / f"{prefix}.ffn"
     fasta.write_ffn(features, ffn_path)
 
-    print('writing translated CDS sequences...')
+    logger.info('writing translated CDS sequences...')
     faa_path: Path = Path(output) / f"{prefix}.faa"
     fasta.write_faa(features, faa_path)
 
-    # maybe update this one - Oli?
-    print('writing feature inferences...')
-    tsv_path: Path = Path(output) / f"{prefix}.inference.tsv"
-    tsv.write_feature_inferences(data['sequences'], features_by_sequence, tsv_path)
+    # inference here is the different databases?
+    annotations_path: Path = Path(output) / f"{prefix}.inference.tsv"
+    header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB']
+    logger.info(f'Exporting annotations (TSV) to: {annotations_path}')
+
+    selected_features = []
+
+    for seq_id, features in features_by_sequence.items():
+        for feat in features:
+            # get() ensures we don't crash if the key doesn't exist
+            if 'hypothetical' in feat or 'baktfold' in feat:
+                selected_features.append(feat)
+
+
+    tsv.write_protein_features(selected_features, header_columns, annotations_path)
+    
+    
 
     cfg.skip_cds = False
     if(cfg.skip_cds is False):
-        hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
-        print('writing hypothetical TSV...')
-        tsv_path: Path = Path(output) / f"{prefix}.hypotheticals.tsv"
-        tsv.write_hypotheticals(hypotheticals, tsv_path)
 
-        print('writing translated hypothetical CDS sequences...')
-        print('writing translated CDS sequences...')
-        faa_path: Path = Path(output) / f"{prefix}.hypotheticals.faa"
-        fasta.write_faa(hypotheticals, faa_path)
+        # no need to write the hypotheticals I think
+
+        # hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
+
+
+        # print('writing hypothetical TSV...')
+        # tsv_path: Path = Path(output) / f"{prefix}.hypotheticals.tsv"
+        # tsv.write_hypotheticals(hypotheticals, tsv_path)
+
+        # print('writing translated hypothetical CDS sequences...')
+        # print('writing translated CDS sequences...')
+        # faa_path: Path = Path(output) / f"{prefix}.hypotheticals.faa"
+        # fasta.write_faa(hypotheticals, faa_path)
 
         # calc & store runtime
 
@@ -76,6 +94,6 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
         #     'duration': f'{(run_duration / 60):.2f} min'
         # }
 
-        print('\tmachine readable JSON...')
+        logger.info('write machine readable JSON...')
         json_path: Path = Path(output) / f"{prefix}.json"
         json.write_json(data, features, json_path)

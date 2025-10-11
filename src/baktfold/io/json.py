@@ -14,7 +14,7 @@ import baktfold.bakta.config as cfg
 
 
 def write_json(data: dict, features: Sequence[dict], json_path: Path):
-    logger.info('write JSON: path=%s', json_path)
+    logger.info(f'write JSON: path={json_path}' )
 
     # clean feature attributes
     for feat in features:

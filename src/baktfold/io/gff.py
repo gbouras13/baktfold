@@ -17,7 +17,7 @@ from loguru import logger
 
 def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path: Path):
     """Export features in GFF3 format."""
-    logger.info('write features: path=%s', gff3_path)
+    logger.info(f'write features: path={gff3_path}')
 
     with gff3_path.open('wt') as fh:
         fh.write('##gff-version 3\n')  # GFF version

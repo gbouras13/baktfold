@@ -339,15 +339,15 @@ def mark_as_hypothetical(feature: dict):
     feature['product'] = bc.HYPOTHETICAL_PROTEIN
 
 def unmark_as_hypothetical(feature: dict):
-    logger.info(
-        f'unmarked as hypothetical: seq={feature['sequence']}, start={feature['start']}, stop={feature['stop']}, strand={feature['strand']}'
-    )
+    # logger.info(
+    #     f'unmarked as hypothetical: seq={feature['sequence']}, start={feature['start']}, stop={feature['stop']}, strand={feature['strand']}'
+    # )
     feature.pop('hypothetical', None)  # remove completely
 
 def mark_as_baktfold(feature: dict):
-    logger.info(
-        f'baktfold found hit(s) for: seq={feature['sequence']}, start={feature['start']}, stop={feature['stop']}, strand={feature['strand']}'
-    )
+    # logger.info(
+    #     f'baktfold found hit(s) for: seq={feature['sequence']}, start={feature['start']}, stop={feature['stop']}, strand={feature['strand']}'
+    # )
     feature['baktfold'] = True
 
 

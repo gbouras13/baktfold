@@ -603,10 +603,8 @@ def proteins(
         aa['stop'] = -1
 
     
-    
     annotations_path: Path = Path(output) / f"{prefix}.tsv"
     header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB']
-
     logger.info(f'Exporting annotations (TSV) to: {annotations_path}')
     tsv.write_protein_features(aas, header_columns, annotations_path)
 
@@ -644,107 +642,124 @@ Uses ProstT5 to predict 3Di sequences
 """
 
 
-# @main_cli.command()
-# @click.help_option("--help", "-h")
-# @click.version_option(get_version(), "--version", "-V")
-# @click.pass_context
-# @click.option(
-#     "-i",
-#     "--input",
-#     help="Path to input file in Genbank format or nucleotide FASTA format",
-#     type=click.Path(),
-#     required=True,
-# )
-# @common_options
-# @predict_options
-# def predict(
-#     ctx,
-#     input,
-#     output,
-#     threads,
-#     prefix,
-#     force,
-#     database,
-#     batch_size,
-#     cpu,
-#     omit_probs,
-#     save_per_residue_embeddings,
-#     save_per_protein_embeddings,
-#     mask_threshold,
-#     finetune,
-#     vanilla,
-#     hyps,
-#     **kwargs,
-# ):
-#     """Uses ProstT5 to predict 3Di tokens - GPU recommended"""
-
-#     # validates the directory  (need to before I start baktfold or else no log file is written)
-#     instantiate_dirs(output, force)
-
-#     output: Path = Path(output)
-#     logdir: Path = Path(output) / "logs"
-
-#     params = {
-#         "--input": input,
-#         "--output": output,
-#         "--threads": threads,
-#         "--force": force,
-#         "--prefix": prefix,
-#         "--database": database,
-#         "--batch_size": batch_size,
-#         "--cpu": cpu,
-#         "--omit_probs": omit_probs,
-#         "--save_per_residue_embeddings": save_per_residue_embeddings,
-#         "--save_per_protein_embeddings": save_per_protein_embeddings,
-#         "--mask_threshold": mask_threshold,
-#         "--finetune": finetune,
-#         "--vanilla": vanilla,
-#         "--hyps": hyps
-#     }
-
-#     # initial logging etc
-#     start_time = begin_baktfold(params, "predict")
-
-#     # check the database is installed
-#     database = validate_db(database, DB_DIR, foldseek_gpu=False)
-
-#     # validate input
-#     fasta_flag, gb_dict, method = validate_input(input, threads)
-
-#     # runs baktfold predict subcommand
-#     model_dir = database
-#     model_name = "Rostlab/ProstT5_fp16"
-#     checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt" / "model.pt"
-
-#     if finetune:
-#         model_name = "gbouras13/ProstT5baktfold"
-#         checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt_finetune" / "baktfold_db_model.pth"
-#         if vanilla:
-#             checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt_finetune" / "vanilla_model.pth"
+@main_cli.command()
+@click.help_option("--help", "-h")
+@click.version_option(get_version(), "--version", "-V")
+@click.pass_context
+@click.option(
+    "-i",
+    "--input",
+    help="Path to input file in Genbank format or nucleotide FASTA format",
+    type=click.Path(),
+    required=True,
+)
+@common_options
+@predict_options
 
 
-#     subcommand_predict(
-#         gb_dict,
-#         method,
-#         output,
-#         prefix,
-#         cpu,
-#         omit_probs,
-#         model_dir,
-#         model_name,
-#         checkpoint_path,
-#         batch_size,
-#         proteins_flag=False,
-#         fasta_flag=fasta_flag,
-#         save_per_residue_embeddings=save_per_residue_embeddings,
-#         save_per_protein_embeddings=save_per_protein_embeddings,
-#         threads=threads,
-#         mask_threshold=mask_threshold,
-#         hyps=hyps
-#     )
 
-#     # end baktfold
-#     end_baktfold(start_time, "predict")
+def predict(
+    ctx,
+    input,
+    output,
+    threads,
+    prefix,
+    force,
+    database,
+    batch_size,
+    cpu,
+    omit_probs,
+    save_per_residue_embeddings,
+    save_per_protein_embeddings,
+    mask_threshold,
+    **kwargs,
+):
+
+    """Uses ProstT5 to predict 3Di tokens - GPU recommended"""
+
+
+    # validates the directory  (need to before I start baktfold or else no log file is written)
+    instantiate_dirs(output, force)
+
+    output: Path = Path(output)
+    logdir: Path = Path(output) / "logs"
+
+    params = {
+        "--input": input,
+        "--output": output,
+        "--threads": threads,
+        "--force": force,
+        "--prefix": prefix,
+        "--database": database,
+        "--batch_size": batch_size,
+        "--cpu": cpu,
+        "--omit_probs": omit_probs,
+        "--save_per_residue_embeddings": save_per_residue_embeddings,
+        "--save_per_protein_embeddings": save_per_protein_embeddings,
+        "--mask_threshold": mask_threshold,
+
+    }
+
+    # initial logging etc
+    start_time = begin_baktfold(params, "run")
+
+    # check foldseek is installed
+    check_dependencies()
+
+    # check the database is installed and return it
+    #database = validate_db(database, DB_DIR, foldseek_gpu)
+
+
+    ###
+    # parse the json output and save hypotheticals as AA FASTA
+    ###
+
+    fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
+    data, features = parse_json_input(input, fasta_aa)
+
+    ###
+    # split features in hypotheticals and non hypotheticals
+    ###
+
+    hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
+    non_hypothetical_features = [
+    feat for feat in features
+    if (feat['type'] != bc.FEATURE_CDS) or 
+       (feat['type'] == bc.FEATURE_CDS and 'hypothetical' not in (feat.get('product') or '').lower())
+]
+
+    # put the CDS AA in a simple dictionary for ProstT5 code
+    cds_dict = {}
+    for feat in hypotheticals:
+        cds_dict[feat['locus']] = feat['aa']
+
+
+    # add a function to add 3Di to cds_dict
+
+    # baktfold predict
+    model_dir = database
+    model_name = "Rostlab/ProstT5_fp16"
+    checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt" / "model.pt"
+
+    subcommand_predict(
+        cds_dict,
+        output,
+        prefix,
+        cpu,
+        omit_probs,
+        model_dir,
+        model_name,
+        checkpoint_path,
+        batch_size,
+        proteins_flag=False,
+        save_per_residue_embeddings=save_per_residue_embeddings,
+        save_per_protein_embeddings=save_per_protein_embeddings,
+        threads=threads,
+        mask_threshold=mask_threshold,
+    )
+
+    # end baktfold
+    end_baktfold(start_time, "predict")
 
 
 """

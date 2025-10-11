@@ -159,7 +159,13 @@ def map_aa_columns(feat: dict) -> Sequence[str]:
     #     gene = ''
 
     # header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB']
-    print(feat)
+
+
+    # for the GenBank
+    if 'length' not in feat:
+
+        feat['length'] = int(len(feat['nt'])/3)
+
     return [
         feat['id'],
         str(feat['length']),
@@ -181,7 +187,6 @@ def write_protein_features(features: Sequence[dict], header_columns: Sequence[st
         fh.write('\n')
         for feat in features:
             columns = map_aa_columns(feat)
-            print(columns)
             fh.write('\t'.join(columns))
             fh.write('\n')
     return

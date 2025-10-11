@@ -111,15 +111,11 @@ def subcommand_predict(
     ## write the AA CDS to file
     ######
 
-    print(cds_dict)
-
 
     # check all the lengths of the predictions are >0 in case of OOMs and filter out those that arent
     prediction_dict = {
                 k: v for k, v in prediction_dict.items() if len(v[0]) > 0
             }
-
-
 
 
     with open(fasta_aa, "w+") as out_f:
