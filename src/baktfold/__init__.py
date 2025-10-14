@@ -357,8 +357,6 @@ def run(
 
     # baktfold compare
 
-
-
     # predictions_dir is output as this will be where it lives for 'run'
 
     hypotheticals = subcommand_compare(
@@ -430,8 +428,15 @@ def run(
     ####
     # bakta output module
     ####
+
+
+
     logger.info('writing bakta outputs')
-    io.write_bakta_outputs(data,features, features_by_sequence, output, prefix)
+    io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db)
+
+    # cleanup the temp files
+    if not keep_tmp_files:
+        clean_up_temporary_files(output)
 
    
     # end baktfold
@@ -519,8 +524,6 @@ def proteins(
     # initial logging etc
     start_time = begin_baktfold(params, "proteins")
 
-    cfg.run_start = datetime.now()
-
     # check foldseek is installed
     check_dependencies()
 
@@ -529,7 +532,7 @@ def proteins(
 
 
     ###
-    # parse the json output and save hypotheticals as AA FASTA
+    # parse the input and save hypotheticals as AA FASTA
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
@@ -546,7 +549,8 @@ def proteins(
     model_name = "Rostlab/ProstT5_fp16"
     checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt" / "model.pt"
 
-    subcommand_predict(
+    aas = subcommand_predict(
+        aas,
         cds_dict,
         output,
         prefix,
@@ -602,10 +606,13 @@ def proteins(
     # bakta output module
     ####
     logger.info('writing bakta outputs')
-    #io.write_bakta_outputs(data,features, features_by_sequence, output, prefix)
 
     cfg.run_end = datetime.now()
     run_duration = (cfg.run_end - cfg.run_start).total_seconds()
+
+    for aa in aas:  # reset mock attributes
+        aa['start'] = -1
+        aa['stop'] = -1
 
     ############################################################################
     # Write output files
@@ -614,39 +621,14 @@ def proteins(
     # - remove temp directory
     ############################################################################
     
-    for aa in aas:  # reset mock attributes
-        aa['start'] = -1
-        aa['stop'] = -1
+    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db)
 
-    
-    annotations_path: Path = Path(output) / f"{prefix}.tsv"
-    header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB']
-    logger.info(f'Exporting annotations (TSV) to: {annotations_path}')
-    tsv.write_protein_features(aas, header_columns, annotations_path)
+    # cleanup the temp files
+    if not keep_tmp_files:
+        clean_up_temporary_files(output)
 
-
-    # do i combine the tophits tsvs, sort by column, add a column for db and put out as one tsv
-
-    full_annotations_path: Path = Path(output) / f"{prefix}.json"
-    logger.info(f'Full annotations (JSON): {full_annotations_path}')
-    json.write_json({'features': aas}, aas, full_annotations_path)
-
-
-    # hypotheticals_path = output_path.joinpath(f'{cfg.prefix}.hypotheticals.tsv')
-    # header_columns = ['ID', 'Length', 'Mol Weight [kDa]', 'Iso El. Point', 'Pfam hits']
-    # hypotheticals = hypotheticals = [aa for aa in aas if 'hypothetical' in aa]
-    # print(f'\tinformation on hypotheticals (TSV): {hypotheticals_path}')
-    # tsv.write_protein_features(hypotheticals, header_columns, map_hypothetical_columns, hypotheticals_path)
-
-    aa_output_path: Path = Path(output) / f"{prefix}.faa"
-    logger.info(f'Annotated sequences (Fasta): {aa_output_path}')
-    fasta.write_faa(aas, aa_output_path)
-
-    logger.info(f'If you use these results please cite Bakta: https://doi.org/{bc.BAKTA_DOI}')
-    logger.info(f'Annotation successfully finished in {int(run_duration / 60):01}:{int(run_duration % 60):02} [mm:ss].')
-   
     # end baktfold
-    end_baktfold(start_time, "run")
+    end_baktfold(start_time, "proteins")
 
 
 
@@ -654,7 +636,7 @@ def proteins(
 
 """
 predict command
-Uses ProstT5 to predict 3Di sequences 
+Uses ProstT5 to predict 3Di sequences from bakta json input 
 """
 
 
@@ -717,7 +699,7 @@ def predict(
     }
 
     # initial logging etc
-    start_time = begin_baktfold(params, "run")
+    start_time = begin_baktfold(params, "predict")
 
     # check foldseek is installed
     check_dependencies()
@@ -757,7 +739,8 @@ def predict(
     model_name = "Rostlab/ProstT5_fp16"
     checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt" / "model.pt"
 
-    subcommand_predict(
+    hypotheticals = subcommand_predict(
+        hypotheticals,
         cds_dict,
         output,
         prefix,
@@ -780,6 +763,9 @@ def predict(
 
 """
 compare command
+
+runs Foldseek using either 1) output of baktfold predict or 2) user defined protein structures and generates compliant outputs
+
 """
 
 
@@ -867,8 +853,17 @@ def compare(
     # check the database is installed and return it
     #database = validate_db(database, DB_DIR, foldseek_gpu)
 
-    # validate input
-    #fasta_flag, gb_dict, method = validate_input(input, threads)
+    # bool for the subcommand
+    if (structure_dir):
+        structures = True
+        if predictions_dir:
+            logger.warning(f"Both --predictions_dir {predictions_dir} and --structure_dir {structure_dir} detected")
+            logger.warning(f"Proceeding with --predictions_dir {predictions_dir}")
+            structures = False
+    else:
+        structures = False
+        if not predictions_dir:
+            logger.error(f"neither --predictions_dir or --structure_dir was specified. Please specify one.")
 
 
     ###
@@ -888,15 +883,19 @@ def compare(
     if (feat['type'] != bc.FEATURE_CDS) or 
        (feat['type'] == bc.FEATURE_CDS and 'hypothetical' not in (feat.get('product') or '').lower())
 ]
-    if (structure_dir):
-        structures = True
-    else:
-        structures = False
 
-    # put the CDS AA in a simple dictionary for ProstT5 code
-    cds_dict = {}
-    for feat in hypotheticals:
-        cds_dict[feat['locus']] = feat['aa']
+
+
+    # code to read in and append 3Di from ProstT5 in the dictionary for the json output
+
+    if not structures:
+        threedi_aa : Path = Path(output) / f"{prefix}_3di.fasta"
+        predictions = {record.id: str(record.seq) for record in SeqIO.parse(threedi_aa, "fasta")}
+        for feat in hypotheticals:
+            threedi_seq = predictions.get(seq_id)
+            feat["3di"] = threedi_seq
+
+
 
     hypotheticals = subcommand_compare(
         hypotheticals,
@@ -965,13 +964,11 @@ def compare(
     # bakta output module
     ####
     logger.info('writing bakta outputs')
-    io.write_bakta_outputs(data,features, features_by_sequence, output, prefix)
-
-
+    io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db)
 
     # cleanup the temp files
-    # if keep_tmp_files is False:
-    #     clean_up_temporary_files(output)
+    if not keep_tmp_files:
+        clean_up_temporary_files(output)
 
     # end baktfold
     end_baktfold(start_time, "compare")
@@ -979,392 +976,362 @@ def compare(
 
 
 
+""" 
+proteins-predict command
+Uses ProstT5 to predict 3Di from a multiFASTA of proteins as input
+"""
 
 
-# """ 
-# proteins-predict command
-# Uses ProstT5 to predict 3Di from a multiFASTA of proteins as input
-# """
+@main_cli.command()
+@click.help_option("--help", "-h")
+@click.version_option(get_version(), "--version", "-V")
+@click.pass_context
+@click.option(
+    "-i",
+    "--input",
+    help="Path to input multiFASTA file",
+    type=click.Path(),
+    required=True,
+)
+@common_options
+@predict_options
+def proteins_predict(
+    ctx,
+    input,
+    output,
+    threads,
+    prefix,
+    force,
+    database,
+    batch_size,
+    cpu,
+    omit_probs,
+    save_per_residue_embeddings,
+    save_per_protein_embeddings,
+    mask_threshold,
+    **kwargs,
+):
+
+    """Runs ProstT5 on a multiFASTA input - GPU recommended"""
+
+    # validates the directory  (need to before I start baktfold or else no log file is written)
+    instantiate_dirs(output, force)
+
+    output: Path = Path(output)
+    logdir: Path = Path(output) / "logs"
+
+    params = {
+        "--input": input,
+        "--output": output,
+        "--threads": threads,
+        "--force": force,
+        "--prefix": prefix,
+        "--database": database,
+        "--batch_size": batch_size,
+        "--cpu": cpu,
+        "--omit_probs": omit_probs,
+        "--save_per_residue_embeddings": save_per_residue_embeddings,
+        "--save_per_protein_embeddings": save_per_protein_embeddings,
+        "--mask_threshold": mask_threshold,
+
+    }
+
+    # initial logging etc
+    start_time = begin_baktfold(params, "proteins-predict")
+
+    # check foldseek is installed
+    check_dependencies()
+
+    # check the database is installed and return it
+    #database = validate_db(database, DB_DIR, foldseek_gpu)
 
 
-# @main_cli.command()
-# @click.help_option("--help", "-h")
-# @click.version_option(get_version(), "--version", "-V")
-# @click.pass_context
-# @click.option(
-#     "-i",
-#     "--input",
-#     help="Path to input multiFASTA file",
-#     type=click.Path(),
-#     required=True,
-# )
-# @common_options
-# @predict_options
-# def proteins_predict(
-#     ctx,
-#     input,
-#     output,
-#     threads,
-#     prefix,
-#     force,
-#     database,
-#     batch_size,
-#     cpu,
-#     omit_probs,
-#     save_per_residue_embeddings,
-#     save_per_protein_embeddings,
-#     mask_threshold,
-#     finetune,
-#     vanilla,
-#     **kwargs,
-# ):
-#     """Runs ProstT5 on a multiFASTA input - GPU recommended"""
+    ###
+    # parse the json output and save hypotheticals as AA FASTA
+    ###
 
-#     # validates the directory  (need to before baktfold starts or else no log file is written)
-#     instantiate_dirs(output, force)
+    fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
+    # puts the CDS AA in a simple dictionary for ProstT5 code
+    aas = parse_protein_input(input, fasta_aa)
 
-#     output: Path = Path(output)
-#     logdir: Path = Path(output) / "logs"
+    # put the CDS AA in a simple dictionary for ProstT5 code
+    cds_dict = {}
+    for feat in aas:
+        cds_dict[feat['locus']] = feat['aa']
 
-#     params = {
-#         "--input": input,
-#         "--output": output,
-#         "--threads": threads,
-#         "--force": force,
-#         "--prefix": prefix,
-#         "--database": database,
-#         "--batch_size": batch_size,
-#         "--cpu": cpu,
-#         "--omit_probs": omit_probs,
-#         "--save_per_residue_embeddings": save_per_residue_embeddings,
-#         "--save_per_protein_embeddings": save_per_protein_embeddings,
-#         "--mask_threshold": mask_threshold,
-#         "--finetune": finetune,
-#         "--vanilla": vanilla
-#     }
+    # baktfold predict
+    model_dir = database
+    model_name = "Rostlab/ProstT5_fp16"
+    checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt" / "model.pt"
 
-#     # initial logging etc
-#     start_time = begin_baktfold(params, "proteins-predict")
+    aas = subcommand_predict(
+        aas,
+        cds_dict,
+        output,
+        prefix,
+        cpu,
+        omit_probs,
+        model_dir,
+        model_name,
+        checkpoint_path,
+        batch_size,
+        proteins_flag=False,
+        save_per_residue_embeddings=save_per_residue_embeddings,
+        save_per_protein_embeddings=save_per_protein_embeddings,
+        threads=threads,
+        mask_threshold=mask_threshold,
+    )
 
-#     # check the database is installed
-#     database = validate_db(database, DB_DIR, foldseek_gpu=False)
-
-#     # Dictionary to store the records
-#     cds_dict = {}
-#     # need a dummmy nested dict
-#     cds_dict["proteins"] = {}
-
-#     # Iterate through the multifasta file and save each Seqfeature to the dictionary
-#     # 1 dummy record = proteins
-
-#     with open_protein_fasta_file(input) as handle:  # handles gzip too
-#         records = list(SeqIO.parse(handle, "fasta"))
-#         if not records:
-#             logger.warning(f"No proteins were found in your input file {input}.")
-#             logger.error(
-#                 f"Your input file {input} is likely not a amino acid FASTA file. Please check this."
-#             )
-#         for record in records:
-#             prot_id = record.id
-#             feature_location = FeatureLocation(0, len(record.seq))
-#             # Seq needs to be saved as the first element in list hence the closed brackets [str(record.seq)]
-#             seq_feature = SeqFeature(
-#                 feature_location,
-#                 type="CDS",
-#                 qualifiers={
-#                     "ID": record.id,
-#                     "description": record.description,
-#                     "translation": str(record.seq),
-#                 },
-#             )
-
-#             cds_dict["proteins"][prot_id] = seq_feature
-
-#     if not cds_dict:
-#         logger.error(f"Error: no AA protein sequences found in {input} file")
-
-#     # runs baktfold predict subcommand
-#     model_dir = database
-#     model_name = "Rostlab/ProstT5_fp16"
-#     checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt" / "model.pt"
-
-#     if finetune:
-#         model_name = "gbouras13/ProstT5baktfold"
-#         checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt_finetune" / "baktfold_db_model.pth"
-#         if vanilla:
-#             checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt_finetune" / "vanilla_model.pth"
-
-#     method = "pharokka" # this can be whatever for proteins, it wont matter - it is for genbank input
-
-#     subcommand_predict(
-#         cds_dict,
-#         method,
-#         output,
-#         prefix,
-#         cpu,
-#         omit_probs,
-#         model_dir,
-#         model_name,
-#         checkpoint_path,
-#         batch_size,
-#         proteins_flag=True,
-#         fasta_flag=False,
-#         save_per_residue_embeddings=save_per_residue_embeddings,
-#         save_per_protein_embeddings=save_per_protein_embeddings,
-#         threads=threads,
-#         mask_threshold=mask_threshold,
-#         hyps=False # always False for this as no Pharokka genbank to parse on input
-#     )
-
-#     # end baktfold
-#     end_baktfold(start_time, "proteins-predict")
+    # end baktfold
+    end_baktfold(start_time, "proteins-predict")
 
 
-# """ 
-# proteins compare command
-# Runs Foldseek vs baktfold DB for multiFASTA 3Di sequences (predicted with proteins-predict)
-# """
+""" 
+proteins compare command
+Runs Foldseek vs baktfold DBs for multiFASTA 3Di sequences (predicted with proteins-predict)
+"""
 
 
-# @main_cli.command()
-# @click.help_option("--help", "-h")
-# @click.version_option(get_version(), "--version", "-V")
-# @click.pass_context
-# @click.option(
-#     "-i",
-#     "--input",
-#     help="Path to input file in multiFASTA format",
-#     type=click.Path(),
-#     required=True,
-# )
-# @click.option(
-#     "--predictions_dir",
-#     help="Path to output directory from baktfold proteins-predict",
-#     type=click.Path(),
-# )
-# @click.option(
-#     "--structures",
-#     is_flag=True,
-#     help="Use if you have .pdb or .cif file structures for the input proteins (e.g. with AF2/Colabfold) in a directory that you specify with --structure_dir",
-# )
-# @click.option(
-#     "--structure_dir",
-#     help="Path to directory with .pdb or .cif file structures. The CDS IDs need to be in the name of the file",
-#     type=click.Path(),
-# )
-# @click.option(
-#     "--filter_structures",
-#     is_flag=True,
-#     help="Flag that creates a copy of the .pdb or .cif files structures with matching record IDs found in the input GenBank file. Helpful if you have a directory with lots of .pdb files and want to annotate only e.g. 1 phage.",
-# )
-# @common_options
-# @compare_options
-# def proteins_compare(
-#     ctx,
-#     input,
-#     output,
-#     threads,
-#     prefix,
-#     evalue,
-#     force,
-#     database,
-#     sensitivity,
-#     predictions_dir,
-#     structures,
-#     structure_dir,
-#     filter_structures,
-#     keep_tmp_files,
-#     card_vfdb_evalue,
-#     max_seqs,
-#     ultra_sensitive,
-#     extra_foldseek_params,
-#     custom_db,
-#     foldseek_gpu,
-#     **kwargs
-# ):
-#     """Runs Foldseek vs baktfold db on proteins input"""
+@main_cli.command()
+@click.help_option("--help", "-h")
+@click.version_option(get_version(), "--version", "-V")
+@click.pass_context
+@click.option(
+    "-i",
+    "--input",
+    help="Path to input file in multiFASTA format",
+    type=click.Path(),
+    required=True,
+)
+@click.option(
+    "--predictions_dir",
+    help="Path to output directory from baktfold proteins-predict",
+    type=click.Path(),
+)
+@click.option(
+    "--structure_dir",
+    help="Path to directory with .pdb or .cif file structures. The CDS IDs need to be in the name of the file",
+    type=click.Path(),
+)
+@common_options
+@compare_options
+def proteins_compare(
+    ctx,
+    input,
+    output,
+    threads,
+    prefix,
+    evalue,
+    force,
+    database,
+    sensitivity,
+    keep_tmp_files,
+    predictions_dir,
+    structure_dir,
+    max_seqs,
+    ultra_sensitive,
+    extra_foldseek_params,
+    custom_db,
+    custom_annotations,
+    foldseek_gpu,
+    **kwargs,
+):
+    """Runs Foldseek vs baktfold db on proteins input"""
 
-#     # validates the directory  (need to before I start baktfold or else no log file is written)
+    # validates the directory  (need to before I start baktfold or else no log file is written)
 
-#     instantiate_dirs(output, force)
+    instantiate_dirs(output, force)
 
-#     output: Path = Path(output)
-#     logdir: Path = Path(output) / "logs"
+    output: Path = Path(output)
+    logdir: Path = Path(output) / "logs"
 
-#     params = {
-#         "--input": input,
-#         "--output": output,
-#         "--threads": threads,
-#         "--force": force,
-#         "--prefix": prefix,
-#         "--evalue": evalue,
-#         "--database": database,
-#         "--sensitivity": sensitivity,
-#         "--predictions_dir": predictions_dir,
-#         "--structures": structures,
-#         "--structure_dir": structure_dir,
-#         "--filter_structures": filter_structures,
-#         "--keep_tmp_files": keep_tmp_files,
-#         "--card_vfdb_evalue": card_vfdb_evalue,
-#         "--max_seqs": max_seqs,
-#         "--ultra_sensitive": ultra_sensitive,
-#         "--extra_foldseek_params": extra_foldseek_params,
-#         "--custom_db": custom_db,
-#         "--foldseek_gpu": foldseek_gpu,
-#     }
+    params = {
+        "--input": input,
+        "--output": output,
+        "--threads": threads,
+        "--force": force,
+        "--prefix": prefix,
+        "--evalue": evalue,
+        "--database": database,
+        "--sensitivity": sensitivity,
+        "--predictions_dir": predictions_dir,
+        "--structure_dir": structure_dir,
+        "--keep_tmp_files": keep_tmp_files,
+        "--max_seqs": max_seqs,
+        "--ultra_sensitive": ultra_sensitive,
+        "--extra_foldseek_params": extra_foldseek_params,
+        "--custom_db": custom_db,
+        "--custom_annotations": custom_annotations,
+        "--foldseek_gpu": foldseek_gpu,
+    }
 
-#     # initial logging etc
-#     start_time = begin_baktfold(params, "proteins-compare")
 
-#     # check foldseek is installed
-#     check_dependencies()
+    # initial logging etc
+    start_time = begin_baktfold(params, "proteins-compare")
 
-#     # check the database is installed
-#     database = validate_db(database, DB_DIR, foldseek_gpu)
+    # check foldseek is installed
+    check_dependencies()
 
-#     # Dictionary to store the records
-#     cds_dict = {}
-#     # need a dummmy nested dict
-#     cds_dict["proteins"] = {}
+    # bool for the subcommand
+    if (structure_dir):
+        structures = True
+        if predictions_dir:
+            logger.warning(f"Both --predictions_dir {predictions_dir} and --structure_dir {structure_dir} detected")
+            logger.warning(f"Proceeding with --predictions_dir {predictions_dir}")
+            structures = False
+    else:
+        structures = False
+        if not predictions_dir:
+            logger.error(f"neither --predictions_dir or --structure_dir was specified. Please specify one.")
 
-#     # Iterate through the multifasta file and save each Seqfeature to the dictionary
-#     # 1 dummy record = proteins
-#     with open_protein_fasta_file(input) as handle:  # handles gzip too
-#         records = list(SeqIO.parse(handle, "fasta"))
-#         if not records:
-#             logger.warning(f"No proteins were found in your input file {input}.")
-#             logger.error(
-#                 f"Your input file {input} is likely not a amino acid FASTA file. Please check this."
-#             )
-#         for record in records:
-#             prot_id = record.id
-#             feature_location = FeatureLocation(0, len(record.seq))
-#             # Seq needs to be saved as the first element in list hence the closed brackets [str(record.seq)]
-#             seq_feature = SeqFeature(
-#                 feature_location,
-#                 type="CDS",
-#                 qualifiers={
-#                     "ID": record.id,
-#                     "description": record.description,
-#                     "translation": str(record.seq),
-#                 },
-#             )
+    # check if predictions_dir and structures
 
-#             cds_dict["proteins"][prot_id] = seq_feature
 
-#     if not cds_dict:
-#         logger.error(f"Error: no AA protein sequences found in {input} file")
+    ###
+    # parse the json output and save hypotheticals as AA FASTA
+    ###
 
-#     success = subcommand_compare(
-#         cds_dict,
-#         output,
-#         threads,
-#         evalue,
-#         card_vfdb_evalue,
-#         sensitivity,
-#         database,
-#         prefix,
-#         predictions_dir,
-#         structures,
-#         structure_dir,
-#         logdir,
-#         filter_structures,
-#         remote_flag=False,
-#         proteins_flag=True,
-#         fasta_flag=False,
-#         separate=False,
-#         max_seqs=max_seqs,
-#         ultra_sensitive=ultra_sensitive,
-#         extra_foldseek_params=extra_foldseek_params,
-#         custom_db=custom_db,
-#         foldseek_gpu=foldseek_gpu,
-#     )
+    fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
+    # puts the CDS AA in a simple dictionary for ProstT5 code
+    aas = parse_protein_input(input, fasta_aa)
 
-#     # cleanup the temp files
-#     if keep_tmp_files is False:
-#         clean_up_temporary_files(output)
+    # for adding the 3Di to the dictionary
+    if predictions_dir:
+        threedi_aa : Path = Path(predictions_dir) / f"{prefix}_3di.fasta"
+        predictions = {record.id: str(record.seq) for record in SeqIO.parse(threedi_aa, "fasta")}
+        for aa in aas:
+            seq_id = aa["locus"]
+            threedi_seq = predictions.get(seq_id)
+            aa["3di"] = threedi_seq
 
-#     # end baktfold
-#     end_baktfold(start_time, "proteins-compare")
+
+    aas = subcommand_compare(
+        aas, 
+        output,
+        threads,
+        evalue,
+        sensitivity,
+        database,
+        prefix,
+        predictions_dir,
+        structures,
+        structure_dir=None,
+        logdir=logdir,
+        proteins_flag=True,
+        max_seqs=max_seqs,
+        ultra_sensitive=ultra_sensitive,
+        extra_foldseek_params=extra_foldseek_params,
+        custom_db=custom_db,
+        foldseek_gpu=foldseek_gpu,
+        custom_annotations=custom_annotations
+    )
+
+    #####
+    # update the hypotheticals 
+    #####
+
+    for aa in aas:
+        anno.combine_annotation(aa)  # add on PSTC annotations and mark hypotheticals
+
+    print(aas)
+
+    ####
+    # bakta output module
+    ####
+    logger.info('writing bakta outputs')
+
+    cfg.run_end = datetime.now()
+    run_duration = (cfg.run_end - cfg.run_start).total_seconds()
+
+    for aa in aas:  # reset mock attributes
+        aa['start'] = -1
+        aa['stop'] = -1
+
+    ############################################################################
+    # Write output files
+    # - write comprehensive annotation results as JSON
+    # - write optional output files in TSV, FAA formats
+    # - remove temp directory
+    ############################################################################
+    
+    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db)
+
+
+    # cleanup the temp files
+    if not keep_tmp_files:
+        clean_up_temporary_files(output)
+
+    # end baktfold
+    end_baktfold(start_time, "protein-compare")
+
 
 """
 install command
 """
 
 
-# @main_cli.command()
-# @click.help_option("--help", "-h")
-# @click.version_option(get_version(), "--version", "-V")
-# @click.pass_context
-# @click.option(
-#     "-d",
-#     "--database",
-#     type=str,
-#     default=None,
-#     help="Specific path to install the baktfold database",
-# )
-# @click.option(
-#     "--foldseek_gpu",
-#     is_flag=True,
-#     help="Use this to enable compatibility with Foldseek-GPU acceleration",
-# )
-# @click.option(
-#     "--extended_db",
-#     is_flag=True,
-#     help=(
-#         "Download the extended baktfold DB 3.16M including 1.8M efam and enVhog proteins without functional labels\n"
-#         "instead of the default baktfold Search 1.36M. Using the extended database will likely marginally reduce\n"
-#         "functional annotation sensitivity and increase runtime, but may find more hits overall\n"
-#         "i.e. including to efam and enVhog proteins that have no functional labels."
-#     )
-# )
-# @click.option(
-#             "-t",
-#             "--threads",
-#             help="Number of threads",
-#             default=1,
-#             type=int,
-#             show_default=True,
-# )
+@main_cli.command()
+@click.help_option("--help", "-h")
+@click.version_option(get_version(), "--version", "-V")
+@click.pass_context
+@click.option(
+    "-d",
+    "--database",
+    type=str,
+    default=None,
+    help="Specific path to install the baktfold database",
+)
+@click.option(
+    "--foldseek_gpu",
+    is_flag=True,
+    help="Use this to enable compatibility with Foldseek-GPU acceleration",
+)
+@click.option(
+            "-t",
+            "--threads",
+            help="Number of threads",
+            default=1,
+            type=int,
+            show_default=True,
+)
+def install(
+    ctx,
+    database,
+    foldseek_gpu,
+    extended_db,
+    threads,
+    **kwargs,
+):
+    """Installs ProstT5 model and baktfold database"""
 
-# def install(
-#     ctx,
-#     database,
-#     foldseek_gpu,
-#     extended_db,
-#     threads,
-#     **kwargs,
-# ):
-#     """Installs ProstT5 model and baktfold database"""
+    if database:
+        logger.info(
+            f"You have specified the {database} directory to store the baktfold database and ProstT5 model"
+        )
+        database: Path = Path(database)
+    else:
+        logger.info(
+            f"Downloading the baktfold database into the default directory {DB_DIR}"
+        )
+        database = Path(DB_DIR)
 
-#     if database is not None:
-#         logger.info(
-#             f"You have specified the {database} directory to store the baktfold database and ProstT5 model"
-#         )
-#         database: Path = Path(database)
-#     else:
-#         logger.info(
-#             f"Downloading the baktfold database into the default directory {DB_DIR}"
-#         )
-#         database = Path(DB_DIR)
+    model_name = "Rostlab/ProstT5_fp16"
 
-#     model_name = "Rostlab/ProstT5_fp16"
+    logger.info(
+        f"Checking that the {model_name} ProstT5 model is available in {database}"
+    )
 
-#     logger.info(
-#         f"Checking that the {model_name} ProstT5 model is available in {database}"
-#     )
+    # always install with cpu mode as guaranteed to be present
+    cpu = True
 
-#     # always install with cpu mode as guarantee to be present
-#     cpu = True
+    # load model (will be downloaded if not present)
+    model, vocab = get_T5_model(database, model_name, cpu, threads=1)
+    del model
+    del vocab
+    logger.info(f"ProstT5 model downloaded")
 
-#     # load model (will be downloaded if not present)
-#     model, vocab = get_T5_model(database, model_name, cpu, threads=1)
-#     del model
-#     del vocab
-#     logger.info(f"ProstT5 model downloaded")
-
-#     # will check if db is present, and if not, download it
-#     install_database(database, foldseek_gpu, extended_db, threads)
+    # will check if db is present, and if not, download it
+    install_database(database, foldseek_gpu, threads)
 
 
 @click.command()

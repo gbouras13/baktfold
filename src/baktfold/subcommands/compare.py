@@ -160,7 +160,7 @@ def subcommand_compare(
     temp_db.mkdir(parents=True, exist_ok=True)
 
     # make result tsv
-    result_tsv: Path = Path(output) / "foldseek_results.tsv"
+    result_tsv: Path = Path(output) / "foldseek_results_swissprot.tsv"
 
     # run foldseek search
     run_foldseek_search(
@@ -183,13 +183,6 @@ def subcommand_compare(
     create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads)
 
     swissprot_df = get_tophit(result_tsv, structures)
-
-
-
-
-
-
-
 
 
 

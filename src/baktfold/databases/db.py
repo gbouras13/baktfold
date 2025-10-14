@@ -12,89 +12,65 @@ from baktfold.utils.util import remove_directory
 from baktfold.utils.external_tools import ExternalTool
 
 # set this if changes
-CURRENT_DB_VERSION: str = "1.0.0"
+CURRENT_DB_VERSION: str = "0.0.1"
 
 # to hold information about the different DBs
 VERSION_DICTIONARY = {
-    "0.1.0": {
+    "0.0.1": {
         "md5": "353a1a6763e1261c5c44e1e2da9d8736",
         "major": 0,
-        "minor": 1,
-        "minorest": 0,
-        "db_url": "https://zenodo.org/records/10675285/files/baktfold_structure_foldseek_db.tar.gz",
-        "dir_name": "baktfold_structure_foldseek_db",
-        "tarball": "baktfold_structure_foldseek_db.tar.gz",
+        "minor": 0,
+        "minorest": 1,
+        "db_url": "https://zenodo.org/records/10675285/files/baktfold_foldseek_db.tar.gz",
+        "dir_name": "baktfold_foldseek_db",
+        "tarball": "baktfold_foldseek_db.tar.gz",
         "prostt5_backup_url": "https://zenodo.org/records/11234657/files/models--Rostlab--ProstT5_fp16.tar.gz",
         "prostt5_backup_tarball": "models--Rostlab--ProstT5_fp16.tar.gz",
         "prostt5_backup_md5": "118c1997e6d2cb5025abda95d36681e0",
     },
-
-    "0.2.0": {
-        "md5": "99ed8b4bcc41ca6e05e8690ba7e85197",
-        "major": 0,
-        "minor": 2,
-        "minorest": 0,
-        "db_url": "https://zenodo.org/records/12735568/files/baktfold_db_v_0_2_0.tar.gz",
-        "dir_name": "baktfold_db_v_0_2_0",
-        "tarball": "baktfold_db_v_0_2_0.tar.gz",
-        "prostt5_backup_url": "https://zenodo.org/records/11234657/files/models--Rostlab--ProstT5_fp16.tar.gz",
-        "prostt5_backup_tarball": "models--Rostlab--ProstT5_fp16.tar.gz",
-        "prostt5_backup_md5": "118c1997e6d2cb5025abda95d36681e0",
-    },
-    "1.0.0": {
-        "md5": "ddbe0d94b1d94a392cfeb4ec113f4362",
-        "major": 1,
-        "minor": 0,
-        "minorest": 0, 
-        "db_url": "https://zenodo.org/records/16741548/files/baktfold_search_db_v_1_0_0.tar.gz",
-        "dir_name": "baktfold_search_db_v_1_0_0",
-        "tarball": "baktfold_search_db_v_1_0_0.tar.gz",
-        "prostt5_backup_url": "https://zenodo.org/records/11234657/files/models--Rostlab--ProstT5_fp16.tar.gz",
-        "prostt5_backup_tarball": "models--Rostlab--ProstT5_fp16.tar.gz",
-        "prostt5_backup_md5": "118c1997e6d2cb5025abda95d36681e0",
-    }
-}
-
-# for the extended DB
-
-VERSION_DICTIONARY_3M16 = {
-    "1.0.0": {
-        "md5": "10aaafa55b5a28c04c08833f3c787097",
-        "major": 1,
-        "minor": 0,
-        "minorest": 0,
-        "db_url": "https://zenodo.org/records/16741548/files/baktfold_db_3M16_v_1_0_0.tar.gz",
-        "dir_name": "baktfold_db_3M16_v_1_0_0",
-        "tarball": "baktfold_db_3M16_v_1_0_0.tar.gz",
-        "prostt5_backup_url": "https://zenodo.org/records/11234657/files/models--Rostlab--ProstT5_fp16.tar.gz",
-        "prostt5_backup_tarball": "models--Rostlab--ProstT5_fp16.tar.gz",
-        "prostt5_backup_md5": "118c1997e6d2cb5025abda95d36681e0",
-    }
 }
 
 
-
-baktfold_DB_NAMES = [
-    "acrs_plddt_over_70_metadata.tsv",
-    "all_baktfold_structures",
-    "all_baktfold_structures_ca",
-    "all_baktfold_structures_ca.dbtype",
-    "all_baktfold_structures_ca.index",
-    "all_baktfold_structures.dbtype",
-    "all_baktfold_structures_h",
-    "all_baktfold_structures_h.index",
-    "all_baktfold_structures_h.dbtype",
-    "all_baktfold_structures.index",
-    "all_baktfold_structures.lookup",
-    "all_baktfold_structures.source",
-    "all_baktfold_structures_ss",
-    "all_baktfold_structures_ss.dbtype",
-    "all_baktfold_structures_ss.index",
-    "card_plddt_over_70_metadata.tsv",
-    "defensefinder_plddt_over_70_metadata.tsv",
-    "netflax_annotation_table.tsv",
-    "vfdb_description_output.csv",
-    "baktfold_annots.tsv"
+BAKTFOLD_DB_NAMES = [
+    "AFDBClusters",
+    "AFDBClusters_ca",
+    "AFDBClusters_ca.dbtype",
+    "AFDBClusters_ca.index",
+    "AFDBClusters.dbtype",
+    "AFDBClusters_h",
+    "AFDBClusters_h.index",
+    "AFDBClusters_h.dbtype",
+    "AFDBClusters.index",
+    "AFDBClusters_ss",
+    "AFDBClusters_ss.dbtype",
+    "AFDBClusters_ss.index",
+    "AFDBClusters.tsv",
+    "pdb",
+    "pdb_ca",
+    "pdb_ca.dbtype",
+    "pdb_ca.index",
+    "pdb.dbtype",
+    "pdb_h",
+    "pdb_h.index",
+    "pdb_h.dbtype",
+    "pdb.index",
+    "pdb_ss",
+    "pdb_ss.dbtype",
+    "pdb_ss.index",
+    "pdb.tsv",
+    "swissprot",
+    "swissprot_ca",
+    "swissprot_ca.dbtype",
+    "swissprot_ca.index",
+    "swissprot.dbtype",
+    "swissprot_h",
+    "swissprot_h.index",
+    "swissprot_h.dbtype",
+    "swissprot.index",
+    "swissprot_ss",
+    "swissprot_ss.dbtype",
+    "swissprot_ss.index",
+    "swissprot.tsv",
 ]
 
 
@@ -130,14 +106,13 @@ baktfold_DB_FOLDSEEK_GPU_NAMES = [
 ]
 
 
-def install_database(db_dir: Path, foldseek_gpu: bool, extended_db: bool, threads: int) -> None:
+def install_database(db_dir: Path, foldseek_gpu: bool, threads: int) -> None:
     """
     Install the baktfold database.
 
     Args:
         db_dir Path: The directory where the database should be installed.
         foldseek_gpu bool: Whether to install foldseek-gpu compatible baktfold db
-        extended_db bool: Whether to download the extended baktfold DB 3.16M with 1.8M unknown function efam and enVhog proteins
         threads int: Number of threads available (makes downloading faster)
     """
 
@@ -149,19 +124,12 @@ def install_database(db_dir: Path, foldseek_gpu: bool, extended_db: bool, thread
     else:
         logger.info("Some baktfold databases files are missing")
 
-        if extended_db:
-            DICT = VERSION_DICTIONARY_3M16
-            db_url = DICT[CURRENT_DB_VERSION]["db_url"]
-            logger.info(f"Downloading baktfold DB 3.16M from {db_url}")
-
-        else:
-            DICT = VERSION_DICTIONARY
-            db_url = DICT[CURRENT_DB_VERSION]["db_url"]
-            logger.info(f"Downloading baktfold Search DB 1.36M from {db_url}")
+        DICT = VERSION_DICTIONARY
+        db_url = DICT[CURRENT_DB_VERSION]["db_url"]
+        logger.info(f"Downloading baktfold DB from {db_url}")
 
         requiredmd5 = DICT[CURRENT_DB_VERSION]["md5"]
         tarball = DICT[CURRENT_DB_VERSION]["tarball"]
-
         
         tarball_path = Path(f"{db_dir}/{tarball}")
         logdir = Path(db_dir) / "logdir"
@@ -223,7 +191,8 @@ lots of this code from the marvellous bakta https://github.com/oschwengers/bakta
 #         )
 
 """
-aria2c bottlenecked by Zenodo but still faster
+aria2c bottlenecked by Zenodo but still faster than wget
+dependency of Foldseek so it is always present
 """
 
 def download(db_url: str, tarball_path: Path, logdir: Path, threads: int) -> None:
@@ -405,7 +374,7 @@ def check_db_installation(db_dir: Path, foldseek_gpu: bool) -> bool:
         bool: True if all required files are present, False otherwise.
     """
     downloaded_flag = True
-    for file_name in baktfold_DB_NAMES:
+    for file_name in BAKTFOLD_DB_NAMES:
         path = Path(db_dir) / file_name
         if not path.is_file():
             logger.warning(f"baktfold Database file {path} is missing")
@@ -467,39 +436,24 @@ def validate_db(database: str, default_dir: str, foldseek_gpu: bool) -> Path:
 
     return database
 
-# for now, until we have a better confidence metric, use PyTorch
-# def foldseek_gpu_prostt5_download(db_dir: Path) -> None:
-
-#     prostt5_db_path = Path(db_dir) / "prostt5_weights"
-#     tmp_dir = Path(db_dir) / "tmp"
-#     logdir = Path(db_dir) / "logdir"
-
-#     foldseek_createdb_gpu = ExternalTool(
-#         tool="foldseek",
-#         input=f"",
-#         output=f"",
-#         params=f"databases ProstT5 {prostt5_db_path} {tmp_dir}  ",
-#         logdir=logdir,
-#     )
-
-#     ExternalTool.run_tool(foldseek_createdb_gpu)
-#     remove_directory(tmp_dir)
-
 def foldseek_makepaddedseqdb(db_dir: Path) -> None:
 
-    baktfold_db_search = Path(db_dir) / "all_baktfold_structures"
-    baktfold_db_search_gpu = Path(db_dir) / "all_baktfold_structures_gpu"
+    dbs = ["AFDBClusters", "pdb", "swissprot"]
     logdir = Path(db_dir) / "logdir"
 
-    foldseek_makepaddedseqdb = ExternalTool(
-        tool="foldseek",
-        input=f"",
-        output=f"",
-        params=f"makepaddedseqdb {baktfold_db_search} {baktfold_db_search_gpu}",
-        logdir=logdir,
-    )
+    for db_name in dbs:
+        db_path = Path(db_dir) / db_name
+        db_path_gpu = Path(db_dir) / f"{db_name}_gpu"
 
-    ExternalTool.run_tool(foldseek_makepaddedseqdb)
+        foldseek_makepaddedseqdb = ExternalTool(
+            tool="foldseek",
+            input="",
+            output="",
+            params=f"makepaddedseqdb {db_path} {db_path_gpu}",
+            logdir=logdir,
+        )
+
+        ExternalTool.run_tool(foldseek_makepaddedseqdb)
 
 
 

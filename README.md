@@ -13,8 +13,10 @@ baktfold --help
 ## Test
 
 ```bash
-baktfold run -i tests/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d ../baktfold_db/  
-
+# with nvidia gpu
+baktfold run -i tests/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d ../baktfold_db/   --foldseek_gpu
+# without
+baktfold run -i tests/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d ../baktfold_db/   
 ```
 
 
@@ -62,6 +64,9 @@ bakta -d ../../bakta_db/db -o ek_isolate6_bakta_output -t 4 --force ek_isolate6.
 bakta_proteins -d ../../bakta_db/db -o assembly_bakta_proteins_output -t 8 --force assembly.hypotheticals.faa
 
 baktfold proteins -i tests/assembly.hypotheticals.faa  -o baktfold_proteins_output -f -t 8 -d ../baktfold_db/ 
+baktfold proteins-predict -i tests/assembly.hypotheticals.faa  -o baktfold_proteins_predict_output -f -t 8 -d ../baktfold_db/ 
+baktfold proteins-compare -i tests/assembly.hypotheticals.faa  --predictions_dir baktfold_proteins_predict_output -o baktfold_proteins_compare_output -f -t 8 -d ../baktfold_db/ 
+
 
 # compare
 

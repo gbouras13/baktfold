@@ -4,9 +4,11 @@ import sys
 import time
 from pathlib import Path
 from typing import Any, Dict
-
+import baktfold.bakta.config as cfg
+import baktfold.bakta.constants as bc
 import click
 from loguru import logger
+from datetime import datetime
 
 
 class OrderedCommands(click.Group):
@@ -62,6 +64,9 @@ def begin_baktfold(params: Dict[str, Any], subcommand: str) -> int:
     """
     # get start time
     start_time = time.time()
+
+    cfg.run_start = datetime.now()
+
     # initial logging stuff
     log_file = os.path.join(params["--output"], f"baktfold_{subcommand}_{start_time}.log")
     # adds log file
@@ -96,6 +101,12 @@ def end_baktfold(start_time: float, subcommand: str) -> None:
     # Determine elapsed time
     elapsed_time = time.time() - start_time
     elapsed_time = round(elapsed_time, 2)
+
+    cfg.run_end = datetime.now()
+    run_duration = (cfg.run_end - cfg.run_start).total_seconds()
+    logger.info(f'If you use these results please cite Bakta: https://doi.org/{bc.BAKTA_DOI}')
+    logger.info(f'baktfold {subcommand} successfully finished in {int(run_duration / 60):02}:{int(run_duration % 60):02} [mm:ss].')
+   
 
     # Show elapsed time for the process
     logger.info(f"baktfold {subcommand} has finished")
@@ -167,23 +178,26 @@ def clean_up_temporary_files(output: Path) -> None:
 
     Parameters:
         output (Path): Path to the output directory.
+        full_foldseek (Path): Keep full foldseek hits
 
     Returns:
         None
     """
-    result_high_tsv: Path = Path(output) / "foldseek_results_high.tsv"
-    result_low_tsv: Path = Path(output) / "foldseek_results_low.tsv"
-    result_tsv: Path = Path(output) / "foldseek_results.tsv"
+    
+    result_tsv_swissprot: Path = Path(output) / "foldseek_results_swissprot.tsv"
+    result_tsv_afdb: Path = Path(output) / "foldseek_results_afdb_clusters.tsv"
+    result_tsv_pdb: Path = Path(output) / "foldseek_results_pdb.tsv"
     result_tsv_custom: Path = Path(output) / "foldseek_results_custom.tsv"
     foldseek_db: Path = Path(output) / "foldseek_db"
     result_db_base: Path = Path(output) / "result_db"
     temp_db: Path = Path(output) / "temp_db"
-    aln_db: Path = Path(output) / "aln_db"
     remove_directory(result_db_base)
     remove_directory(temp_db)
     remove_directory(foldseek_db)
-    remove_directory(aln_db)
-    remove_file(result_tsv)
+
+
+    remove_file(result_tsv_swissprot)
+    remove_file(result_tsv_afdb)
+    remove_file(result_tsv_pdb)
     remove_file(result_tsv_custom)
-    remove_file(result_high_tsv)
-    remove_file(result_low_tsv)
+

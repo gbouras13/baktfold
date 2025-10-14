@@ -19,7 +19,7 @@ def write_foldseek_tophit(tophit_df: pd.DataFrame, pdb_tophit_path: Path):
     tophit_df.to_csv(pdb_tophit_path, sep="\t", index=False)
 
 
-def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequence: Sequence[dict] , output: Path, prefix: str):
+def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequence: Sequence[dict] , output: Path, prefix: str, custom_db: bool):
 
     #logger.info(f'selected features={len(features)}')
 
@@ -52,7 +52,10 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
 
     # inference here is the different databases?
     annotations_path: Path = Path(output) / f"{prefix}.inference.tsv"
-    header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB']
+    if custom_db:
+        header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB', 'Custom_DB']
+    else:
+        header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB']
     logger.info(f'Exporting annotations (TSV) to: {annotations_path}')
 
     selected_features = []
@@ -64,7 +67,7 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
                 selected_features.append(feat)
 
 
-    tsv.write_protein_features(selected_features, header_columns, annotations_path)
+    tsv.write_protein_features(selected_features, header_columns, annotations_path, custom_db)
     
     
 
@@ -97,3 +100,36 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
         logger.info('write machine readable JSON...')
         json_path: Path = Path(output) / f"{prefix}.json"
         json.write_json(data, features, json_path)
+
+
+
+def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str, custom_db: bool):
+
+    
+    annotations_path: Path = Path(output) / f"{prefix}.tsv"
+    if custom_db:
+        header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB', 'Custom_DB']
+    else:
+        header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB']
+    logger.info(f'Exporting annotations (TSV) to: {annotations_path}')
+    tsv.write_protein_features(aas, header_columns, annotations_path, custom_db)
+
+
+    # do i combine the tophits tsvs, sort by column, add a column for db and put out as one tsv
+
+    full_annotations_path: Path = Path(output) / f"{prefix}.json"
+    logger.info(f'Full annotations (JSON): {full_annotations_path}')
+    json.write_json({'features': aas}, aas, full_annotations_path)
+
+
+    #### don't write hyps I think
+
+    # hypotheticals_path = output_path.joinpath(f'{cfg.prefix}.hypotheticals.tsv')
+    # header_columns = ['ID', 'Length', 'Mol Weight [kDa]', 'Iso El. Point', 'Pfam hits']
+    # hypotheticals = hypotheticals = [aa for aa in aas if 'hypothetical' in aa]
+    # print(f'\tinformation on hypotheticals (TSV): {hypotheticals_path}')
+    # tsv.write_protein_features(hypotheticals, header_columns, map_hypothetical_columns, hypotheticals_path)
+
+    aa_output_path: Path = Path(output) / f"{prefix}.faa"
+    logger.info(f'Annotated sequences (Fasta): {aa_output_path}')
+    fasta.write_faa(aas, aa_output_path)

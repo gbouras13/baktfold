@@ -152,7 +152,7 @@ def write_feature_inferences(sequences: Sequence[dict], features_by_sequence: Di
                     fh.write('\n')
     return
 
-def map_aa_columns(feat: dict) -> Sequence[str]:
+def map_aa_columns(feat: dict, custom_db: bool) -> Sequence[str]:
     # no gene here for now
     # gene = feat.get('gene', None)
     # if(gene is None):
@@ -160,23 +160,34 @@ def map_aa_columns(feat: dict) -> Sequence[str]:
 
     # header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB']
 
-
     # for the GenBank
     if 'length' not in feat:
-
         feat['length'] = int(len(feat['nt'])/3)
 
-    return [
-        feat['id'],
-        str(feat['length']),
-        #gene,
-        feat['product'],
-        ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'swissprot' in dbxref]),
-        ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'afdbclusters_' in dbxref]),
-        ','.join([dbxref.replace('pdb:', '') for dbxref in feat['db_xrefs'] if 'pdb:' in dbxref]),
-    ]
+    if custom_db:
 
-def write_protein_features(features: Sequence[dict], header_columns: Sequence[str], tsv_path: Path):
+        return [
+            feat['id'],
+            str(feat['length']),
+            #gene,
+            feat['product'],
+            ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'swissprot' in dbxref]),
+            ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'afdbclusters_' in dbxref]),
+            ','.join([dbxref.replace('pdb:', '') for dbxref in feat['db_xrefs'] if 'pdb:' in dbxref]),
+            ','.join([dbxref.replace('custom:custom_', '') for dbxref in feat['db_xrefs'] if 'custom:' in dbxref]),
+        ]
+    else:
+        return [
+            feat['id'],
+            str(feat['length']),
+            #gene,
+            feat['product'],
+            ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'swissprot' in dbxref]),
+            ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'afdbclusters_' in dbxref]),
+            ','.join([dbxref.replace('pdb:', '') for dbxref in feat['db_xrefs'] if 'pdb:' in dbxref]),
+        ]
+
+def write_protein_features(features: Sequence[dict], header_columns: Sequence[str], tsv_path: Path, custom_db: bool):
     """Export protein features in TSV format."""
     logger.info('write protein feature tsv: path=%s', tsv_path)
 
@@ -186,7 +197,7 @@ def write_protein_features(features: Sequence[dict], header_columns: Sequence[st
         fh.write('\t'.join(header_columns))
         fh.write('\n')
         for feat in features:
-            columns = map_aa_columns(feat)
+            columns = map_aa_columns(feat, custom_db)
             fh.write('\t'.join(columns))
             fh.write('\n')
     return

@@ -235,7 +235,19 @@ def revise_cds_gene_symbols(raw_genes: Sequence[str]):
 
 def revise_cds_product(product: str):
     """Revise product name for INSDC compliant submissions"""
-    
+
+    # from gb 
+    # grep "Uncharacterized protein" AFDBClusters.tsv | wc -l
+    #     805448
+
+    if "Uncharacterized protein" in product:
+        old_product = product
+        product = "hypothetical protein"
+        if product != old_product:
+            logger.info(f'fix product: renamed uncharacterized protein as hypothetical. new={product}, old={old_product}')
+
+    # from bakta
+
     old_product = product
     product = RE_PROTEIN_WEIGHT.sub(' ', product)  # remove protein weight in (k)Da
     if(product != old_product):
