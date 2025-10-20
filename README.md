@@ -59,6 +59,11 @@ baktfold run -i tests/ek_isolate6_bakta_output/ek_isolate6.json  -o baktfold_out
 
 
 bakta -d ../../bakta_db/db -o ek_isolate6_bakta_output -t 4 --force ek_isolate6.fasta
+bakta -d ../../bakta_db/db -o bas_sterne_bakta_output -t 4 --force GCA_019351845.1_ASM1935184v1_genomic.fna
+
+baktfold run -i tests/bas_sterne_bakta_output/GCA_019351845.1_ASM1935184v1_genomic.json  -o baktfold_output_bas_sterne -f -t 8 -d ../baktfold_db/ --foldseek_gpu 
+
+
 
 # proteins
 bakta_proteins -d ../../bakta_db/db -o assembly_bakta_proteins_output -t 8 --force assembly.hypotheticals.faa
@@ -309,3 +314,23 @@ head dummy_custom_db_h
 ```
 
 * Then create a dummy custom annotations csv
+
+
+## 20 Oct
+
+* Get a list of the AFDB Cluster accessions
+* Next filter the enormous Uniref100 xml to keep only the AFDB Cluster accessions for parsing later
+
+```bash
+ cut -f1 AFDBClusters.tsv > AFDBClusters_accessions.tsv
+ cut -f1 swissprot.tsv > swissprot_accessions.tsv
+
+python ../baktfold/filter_xml.py --accessions swissprot_accessions.tsv --xml uniprot_2025_03/uniprot_sprot.xml.gz --output uniprot_2025_03/uniprot_sprot_test.xml
+python ../baktfold/filter_xml.py --accessions AFDBClusters_accessions.tsv --xml uniprot_2025_03/uniprot_trembl.xml.gz --output uniprot_2025_03/uniprot_trembl_AFDBClusters.xml
+```
+
+srun -N 1 -n 2 -p dm --time=1-00:00:00 --pty bash
+python ../baktfold/filter_xml.py --accessions swissprot_accessions.tsv --xml uniprot_2025_03/uniprot_sprot.xml.gz --output uniprot_2025_03/uniprot_sprot_test.xml --output_tsv found_sprot_accessions.tsv
+
+srun -N 1 -n 2 -p dm --time=7-00:00:00 --pty bash
+python ../baktfold/filter_xml.py --accessions AFDBClusters_accessions.tsv --xml uniprot_2025_03/uniprot_trembl.xml.gz --output uniprot_2025_03/uniprot_trembl_AFDBClusters.xml --output_tsv uniprot_2025_03/found_AFDBClusters_accessions.tsv
