@@ -174,6 +174,7 @@ def map_aa_columns(feat: dict, custom_db: bool) -> Sequence[str]:
             ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'swissprot' in dbxref]),
             ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'afdbclusters_' in dbxref]),
             ','.join([dbxref.replace('pdb:', '') for dbxref in feat['db_xrefs'] if 'pdb:' in dbxref]),
+            ','.join([dbxref.replace('cath:', '') for dbxref in feat['db_xrefs'] if 'cath:' in dbxref]),
             ','.join([dbxref.replace('custom:custom_', '') for dbxref in feat['db_xrefs'] if 'custom:' in dbxref]),
         ]
     else:
@@ -184,6 +185,7 @@ def map_aa_columns(feat: dict, custom_db: bool) -> Sequence[str]:
             feat['product'],
             ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'swissprot' in dbxref]),
             ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'afdbclusters_' in dbxref]),
+            ','.join([dbxref.replace('cath:', '') for dbxref in feat['db_xrefs'] if 'cath:' in dbxref]),
             ','.join([dbxref.replace('pdb:', '') for dbxref in feat['db_xrefs'] if 'pdb:' in dbxref]),
         ]
 

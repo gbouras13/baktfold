@@ -101,7 +101,7 @@ def get_tophit(
     # get only the tophit - will always be the first hit for each query (top bitscore)
     foldseek_df = foldseek_df.drop_duplicates(subset="query", keep="first")
 
-    print(foldseek_df.head())
+    # print(foldseek_df.head())
 
 
     return foldseek_df

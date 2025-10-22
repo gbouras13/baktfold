@@ -19,6 +19,7 @@ def parse(features: Sequence[dict], foldseek_df: pd.DataFrame, db_name: str = 's
     # Convert foldseek_df to a lookup table keyed by query ID
     foldseek_hits = {row['query']: row for _, row in foldseek_df.iterrows()}
 
+    updated_count = 0
     for cds in features:
         aa_identifier = cds.get('locus')
         if aa_identifier not in foldseek_hits:
@@ -38,7 +39,7 @@ def parse(features: Sequence[dict], foldseek_df: pd.DataFrame, db_name: str = 's
             accession = target_id.split('-')[1]
         elif db_name == "pdb":
             accession = target_id.split('-')[0]
-        else:
+        else: # cath here as well as custom
             accession = target_id
 
         if (
@@ -68,8 +69,11 @@ def parse(features: Sequence[dict], foldseek_df: pd.DataFrame, db_name: str = 's
                     cds['pstc'] = [new_pstc]
             else:
                 cds['pstc'] = new_pstc
+        updated_count += 1
 
-    logger.info(f"PSTC for {db_name} updated in place for {sum('pstc' in cds for cds in features)} CDSs")
+    # this gets the running tally for any DB
+    # logger.info(f"PSTC for {db_name} updated in place for {sum('pstc' in cds for cds in features)} CDSs")
+    logger.info(f"PSTC for {db_name} updated in place for {updated_count} CDSs")
 
     return features
 
@@ -101,6 +105,13 @@ def lookup(features: Sequence[dict], baktfold_db: Path, custom_annotations: Path
             if len(row) >= 2:
                 pdb_dict[row[0]] = row[1]
 
+    cath_dict = {}
+    with open(f"{baktfold_db}/cath.tsv", "r") as f:
+        reader = csv.reader(f, delimiter="\t")
+        for row in reader:
+            if len(row) >= 3:
+                pdb_dict[row[0]] = row[2] # 3 columns - the second is the CATH code
+
     # custom
     if custom_annotations:
         custom_dict = {}
@@ -127,6 +138,8 @@ def lookup(features: Sequence[dict], baktfold_db: Path, custom_annotations: Path
                 entry['description'] = afdb_dict[accession]
             elif source == 'pdb' and accession in pdb_dict:
                 entry['description'] = pdb_dict[accession]
+            elif source == 'cath' and accession in cath_dict:
+                entry['description'] = cath_dict[accession]
             elif source == 'custom_db':
                 if accession in custom_dict:
                     entry['description'] = custom_dict[accession]

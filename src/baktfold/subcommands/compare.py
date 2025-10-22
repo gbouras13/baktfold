@@ -285,6 +285,56 @@ def subcommand_compare(
 
     pdb_df = get_tophit(result_tsv,structures)
 
+
+    #####
+    # foldseek search cath
+    #####
+
+
+    database_name = "cath"
+
+    if short_db_name == database_name:
+        logger.error(
+            f"Please choose a different -p {prefix} as this conflicts with the {database_name}"
+        )
+
+    query_db: Path = Path(foldseek_query_db_path) / short_db_name
+    target_db: Path = Path(database) / database_name
+
+    # make result and temp dirs
+    result_db_base: Path = Path(output) / "result_db"
+    result_db_base.mkdir(parents=True, exist_ok=True)
+    result_db: Path = Path(result_db_base) / "result_cath_db"
+
+    temp_db: Path = Path(output) / "temp_db"
+    temp_db.mkdir(parents=True, exist_ok=True)
+
+    # make result tsv
+    result_tsv: Path = Path(output) / "foldseek_results_cath.tsv"
+
+    # run foldseek search
+    run_foldseek_search(
+        query_db,
+        target_db,
+        result_db,
+        temp_db,
+        threads,
+        logdir,
+        evalue,
+        sensitivity,
+        max_seqs,
+        ultra_sensitive,
+        extra_foldseek_params,
+        foldseek_gpu,
+        structures
+    )
+
+       
+    create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads)
+
+    cath_df = get_tophit(result_tsv,structures)
+
+
     # write tophits
     swissprot_tophit_path: Path = Path(output) / "baktfold_swissprot_tophit.tsv"
     io.write_foldseek_tophit(swissprot_df, swissprot_tophit_path)
@@ -295,6 +345,8 @@ def subcommand_compare(
     pdb_tophit_path: Path = Path(output) / "baktfold_pdb_tophit.tsv"
     io.write_foldseek_tophit(pdb_df, pdb_tophit_path)
 
+    cath_tophit_path: Path = Path(output) / "baktfold_cath_tophit.tsv"
+    io.write_foldseek_tophit(cath_df, cath_tophit_path)
 
     # custom db output 
 
@@ -336,11 +388,7 @@ def subcommand_compare(
 
             custom_db_tophit_path: Path = Path(output) / "baktfold_custom_db_tophit.tsv"
             io.write_foldseek_tophit(custom_df, custom_db_tophit_path)
-
-            print(custom_df)
-
-      
-    
+        
         except:
             logger.error(f"Foldseek failed to run against your custom database {custom_db}. Please check that it is formatted correctly as a Foldseek database")
 
@@ -356,6 +404,7 @@ def subcommand_compare(
         aas = pstc.parse(hypotheticals, swissprot_df, 'swissprot')
         aas = pstc.parse(aas, afdbclusters_df, 'afdb')
         aas = pstc.parse(aas, pdb_df, 'pdb')
+        aas = pstc.parse(aas, cath_df, 'cath')
         if custom_db:
             aas = pstc.parse(aas, custom_df, 'custom_db')
 
@@ -370,6 +419,7 @@ def subcommand_compare(
         hypotheticals = pstc.parse(hypotheticals, swissprot_df, 'swissprot')
         hypotheticals = pstc.parse(hypotheticals, afdbclusters_df, 'afdb')
         hypotheticals = pstc.parse(hypotheticals, pdb_df, 'pdb')
+        hypotheticals = pstc.parse(hypotheticals, cath_df, 'cath')
         if custom_db:
             hypotheticals = pstc.parse(hypotheticals, custom_df, 'custom_db')
 
