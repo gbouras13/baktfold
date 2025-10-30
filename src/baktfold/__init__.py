@@ -206,6 +206,27 @@ def compare_options(func):
         func = option(func)
     return func
 
+"""
+bakta input options
+
+Only for baktfold run predict and compate
+"""
+
+def bakta_options(func):
+    """compare command line args"""
+    options = [
+        click.option(
+            "-a",
+            "--all-proteins",
+            is_flag=True,
+            help="annotate all proteins (not just hypotheticals)",
+        ),
+    ]
+    for option in reversed(options):
+        func = option(func)
+    return func
+
+        
 
 
 @click.group()
@@ -234,6 +255,7 @@ run command
 @common_options
 @predict_options
 @compare_options
+@bakta_options
 def run(
     ctx,
     input,
@@ -257,6 +279,7 @@ def run(
     custom_db,
     custom_annotations,
     foldseek_gpu,
+    all_proteins,
     **kwargs,
 ):
     """baktfold predict then comapare all in one - GPU recommended"""
@@ -289,6 +312,7 @@ def run(
         "--custom-db": custom_db,
         "--custom-annotations": custom_annotations,
         "--foldseek-gpu": foldseek_gpu,
+        "--all-proteins": all_proteins
     }
 
     # initial logging etc
@@ -315,12 +339,22 @@ def run(
     # split features in hypotheticals and non hypotheticals
     ###
 
-    hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
-    non_hypothetical_features = [
-    feat for feat in features
-    if (feat['type'] != bc.FEATURE_CDS) or 
-       (feat['type'] == bc.FEATURE_CDS and 'hypothetical' not in (feat.get('product') or '').lower())
-]
+
+    if all_proteins:
+        hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS ]
+        
+        non_hypothetical_features = [
+        feat for feat in features
+        if (feat['type'] != bc.FEATURE_CDS) 
+    ]
+    else:
+
+        hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
+        non_hypothetical_features = [
+        feat for feat in features
+        if (feat['type'] != bc.FEATURE_CDS) or 
+        (feat['type'] == bc.FEATURE_CDS and 'hypothetical' not in (feat.get('product') or '').lower())
+    ]
 
     # put the CDS AA in a simple dictionary for ProstT5 code
     cds_dict = {}
@@ -651,6 +685,7 @@ Uses ProstT5 to predict 3Di sequences from bakta json input
 )
 @common_options
 @predict_options
+@bakta_options
 
 
 
@@ -668,6 +703,7 @@ def predict(
     save_per_residue_embeddings,
     save_per_protein_embeddings,
     mask_threshold,
+    all_proteins,
     **kwargs,
 ):
 
@@ -693,6 +729,7 @@ def predict(
         "--save-per-residue_embeddings": save_per_residue_embeddings,
         "--save-per-protein-embeddings": save_per_protein_embeddings,
         "--mask-threshold": mask_threshold,
+        "--all-proteins": all_proteins
 
     }
 
@@ -717,12 +754,22 @@ def predict(
     # split features in hypotheticals and non hypotheticals
     ###
 
-    hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
-    non_hypothetical_features = [
-    feat for feat in features
-    if (feat['type'] != bc.FEATURE_CDS) or 
-       (feat['type'] == bc.FEATURE_CDS and 'hypothetical' not in (feat.get('product') or '').lower())
-]
+    if all_proteins:
+        hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS ]
+        
+        non_hypothetical_features = [
+        feat for feat in features
+        if (feat['type'] != bc.FEATURE_CDS) 
+    ]
+    else:
+        hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
+        non_hypothetical_features = [
+        feat for feat in features
+        if (feat['type'] != bc.FEATURE_CDS) or 
+        (feat['type'] == bc.FEATURE_CDS and 'hypothetical' not in (feat.get('product') or '').lower())
+    ]
+
+
 
     # put the CDS AA in a simple dictionary for ProstT5 code
     cds_dict = {}
@@ -792,6 +839,7 @@ runs Foldseek using either 1) output of baktfold predict or 2) user defined prot
 )
 @common_options
 @compare_options
+@bakta_options
 def compare(
     ctx,
     input,
@@ -811,6 +859,7 @@ def compare(
     custom_db,
     custom_annotations,
     foldseek_gpu,
+    all_proteins,
     **kwargs,
 ):
     """Runs Foldseek vs baktfold db"""
@@ -840,6 +889,7 @@ def compare(
         "--custom-db": custom_db,
         "--custom-annotations": custom_annotations,
         "--foldseek-gpu": foldseek_gpu,
+        "--all-proteins": all_proteins
     }
 
     # initial logging etc
@@ -875,12 +925,21 @@ def compare(
     # split features in hypotheticals and non hypotheticals
     ###
 
-    hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
-    non_hypothetical_features = [
-    feat for feat in features
-    if (feat['type'] != bc.FEATURE_CDS) or 
-       (feat['type'] == bc.FEATURE_CDS and 'hypothetical' not in (feat.get('product') or '').lower())
-]
+    if all_proteins:
+        hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS ]
+        
+        non_hypothetical_features = [
+        feat for feat in features
+        if (feat['type'] != bc.FEATURE_CDS) 
+    ]
+    else:
+
+        hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
+        non_hypothetical_features = [
+        feat for feat in features
+        if (feat['type'] != bc.FEATURE_CDS) or 
+        (feat['type'] == bc.FEATURE_CDS and 'hypothetical' not in (feat.get('product') or '').lower())
+    ]
 
 
 

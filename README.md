@@ -3,7 +3,7 @@ Rapid &amp; standardized annotation of bacterial genomes, MAGs &amp; plasmids us
 
 `baktfold` is a sensitive annotation tool for bacterial genomes, MAGs &amp; plasmids genomes using protein structural homology. 
 
-`baktfold` is very similar to [phold](https://github.com/gbouras13/phold) but goes beyond phages to bacterial annotation. `baktfold` takes all "hypothetical proteins" from Bakta's output and uses the [ProstT5](https://github.com/mheinzinger/ProstT5) protein language model to rapidly translate protein amino acid sequences to the 3Di token alphabet used by [Foldseek](https://github.com/steineggerlab/foldseek). Foldseek is then used to search these against a series of databases (SwissProt, AlphaFold Database non-singleton clusters, PDB and CATH).
+`baktfold` is very similar to [phold](https://github.com/gbouras13/phold) but goes beyond phages to bacterial annotation. `baktfold` takes all "hypothetical proteins" from [Bakta's](https://github.com/oschwengers/bakta) output and uses the [ProstT5](https://github.com/mheinzinger/ProstT5) protein language model to rapidly translate protein amino acid sequences to the 3Di token alphabet used by [Foldseek](https://github.com/steineggerlab/foldseek). Foldseek is then used to search these against a series of databases (SwissProt, AlphaFold Database non-singleton clusters, PDB and CATH).
 
 Additionally, instead of using ProstT5, you can specify protein structures that you have pre-computed for your hypothetical proteins.
 
@@ -44,11 +44,25 @@ baktfold install -d baktfold_db --foldseek-gpu
 
 ## Example
 
+* You will first need to run [bakta](https://github.com/oschwengers/bakta) and use the resulting `.json` file as input for `baktfold`
+    * We will add other input formats eventually, put we would always recommend running Bakta first, as it is awesome and comprehensive
+* To use `baktfold run` using a dummy test example
+
 ```bash
 # with nvidia gpu 
-baktfold run -i tests/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d baktfold_db   --foldseek-gpu
+baktfold run -i tests/tests_data/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d baktfold_db   --foldseek-gpu
 # without nvidia gpu available
-baktfold run -i tests/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d baktfold_db   
+baktfold run -i tests/tests_data/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d baktfold_db   
+```
+
+* To use `baktfold proteins` using a dummy test example protein `.faa` file
+* Note that this can be any `.faa` (It does not have to be the output of Bakta)
+
+```bash
+# with nvidia gpu 
+baktfold proteins -i tests/tests_data/assembly.hypotheticals.faa  -o baktfold_proteins_output -f -t 8 -d baktfold_db   --foldseek-gpu
+# without nvidia gpu available
+baktfold proteins -i tests/tests_data/assembly.hypotheticals.faa  -o baktfold_proteins_output -f -t 8 -d baktfold_db   
 ```
 
 ## Usage
