@@ -52,8 +52,8 @@ def import_sequences(sequences_path: Path, is_genomic: bool=True, is_dna: bool=T
                 sequence['type'] = bc.REPLICON_CONTIG
                 sequence['topology'] = bc.TOPOLOGY_LINEAR
             logger.info(
-                f'imported: id={sequence['id']}, length={sequence['length']}, description={sequence['description']}, genomic={is_genomic}, dna={is_dna}'
-            )
+                f"imported: id={sequence['id']}, length={sequence['length']}, description={sequence['description']}, genomic={is_genomic}, dna={is_dna}"
+            )   
             sequences.append(sequence)
     return sequences
 
