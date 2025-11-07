@@ -173,18 +173,20 @@ def touch_file(path: Path) -> None:
         os.utime(path, None)
 
 
-def clean_up_temporary_files(output: Path) -> None:
+def clean_up_temporary_files(output: Path, prefix: str) -> None:
     """
     Clean up temporary files generated during the baktfold process.
 
     Parameters:
         output (Path): Path to the output directory.
-        full_foldseek (Path): Keep full foldseek hits
+        prefix (str): prefix str
+
 
     Returns:
         None
     """
     
+    baktfold_aa: Path = Path(output) / f"{prefix}_aa.fasta"
     result_tsv_swissprot: Path = Path(output) / "foldseek_results_swissprot.tsv"
     result_tsv_afdb: Path = Path(output) / "foldseek_results_afdb_clusters.tsv"
     result_tsv_pdb: Path = Path(output) / "foldseek_results_pdb.tsv"
@@ -192,11 +194,12 @@ def clean_up_temporary_files(output: Path) -> None:
     foldseek_db: Path = Path(output) / "foldseek_db"
     result_db_base: Path = Path(output) / "result_db"
     temp_db: Path = Path(output) / "temp_db"
+    
     remove_directory(result_db_base)
     remove_directory(temp_db)
     remove_directory(foldseek_db)
 
-
+    remove_file(baktfold_aa)
     remove_file(result_tsv_swissprot)
     remove_file(result_tsv_afdb)
     remove_file(result_tsv_pdb)

@@ -17,7 +17,7 @@ You can also specify custom databases to search against using `--custom-db`
   - [Example](#example)
   - [Usage](#usage)
   - [Output](#output)
-  - [Conceptual terms:](#conceptual-terms)
+    - [Conceptual terms](#conceptual-terms)
   - [Citations](#citations)
 
 ## Install
@@ -181,11 +181,13 @@ MEGJMNBEGN_70	94	hypothetical protein		afdbclusters_A0A1I3V7E0
 query	target	bitscore	fident	evalue	qStart	qEnd	qLen	qCov	tStart	tEnd	tLen	tCov
 MEGJMN_070	AF-A0A1I3V7E0-F1-model_v6	292	0.41	2.619e-06	1	91	93	0.97	1	95	99	0.95
 ```
+
+    * The full Foldseek search outputs are not kept by default (only tophits) - you can keep the full Foldseek search tsvs using `--keep-tmp-files`. They will be called `foldseek_results_<database>.tsv`
     * `baktfold_3di.fasta` which gives the 3Di tokens for each input CDS
     * `baktfold_prostT5_3di_mean_probabilities.csv` and `baktfold_prostT5_3di_all_probabilities.json`, which give some score of the confidence ProstT5 has in its predictions. You can disable this output with `--omit-probs`
-    * Baktfold does not have plotting functionality (yet)
+    * Baktfold does not have plotting functionality like Bakta (yet)
 
-## Conceptual terms:
+### Conceptual terms
 
 * As Baktfold inherits annotations from Bakta, please see the explanation in bakta for all other concepts [here](https://github.com/oschwengers/bakta?tab=readme-ov-file#annotation-workflow)
 * Baktfold adds one conceptual term in addition to Bakta's:

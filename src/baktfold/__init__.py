@@ -469,7 +469,7 @@ def run(
 
     # cleanup the temp files
     if not keep_tmp_files:
-        clean_up_temporary_files(output)
+        clean_up_temporary_files(output, prefix)
 
    
     # end baktfold
@@ -657,7 +657,7 @@ def proteins(
 
     # cleanup the temp files
     if not keep_tmp_files:
-        clean_up_temporary_files(output)
+        clean_up_temporary_files(output, prefix)
 
     # end baktfold
     end_baktfold(start_time, "proteins")
@@ -1025,7 +1025,7 @@ def compare(
 
     # cleanup the temp files
     if not keep_tmp_files:
-        clean_up_temporary_files(output)
+        clean_up_temporary_files(output, prefix)
 
     # end baktfold
     end_baktfold(start_time, "compare")
@@ -1316,7 +1316,7 @@ def proteins_compare(
 
     # cleanup the temp files
     if not keep_tmp_files:
-        clean_up_temporary_files(output)
+        clean_up_temporary_files(output, prefix)
 
     # end baktfold
     end_baktfold(start_time, "protein-compare")
