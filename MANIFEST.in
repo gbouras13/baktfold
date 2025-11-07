@@ -1,0 +1,3 @@
+include src/baktfold/utils/CITATION
+include src/baktfold/utils/VERSION
+include src/baktfold/cnn/cnn_chkpnt/*pt
