@@ -16,6 +16,10 @@ You can also specify custom databases to search against using `--custom-db`
 - [baktfold](#baktfold)
 - [Table of Contents](#table-of-contents)
   - [Install](#install)
+    - [Conda (recommended)](#conda-recommended)
+    - [Pip](#pip)
+    - [Source](#source)
+    - [Database Installation](#database-installation)
   - [Example](#example)
   - [Usage](#usage)
   - [Output](#output)
@@ -24,24 +28,53 @@ You can also specify custom databases to search against using `--custom-db`
 
 ## Install
 
-* We will be making baktfold available via pypi and bioconda shortly
-* For now, please install from source
-* The only non-python dependency is Foldseek
+### Conda (recommended)
+
+* The best way to install `baktfold` is using conda, as this will install Foldseek (the only non-Python dependency) along with the Python dependencies
+* We would highly recommend installing conda via [miniforge](https://github.com/conda-forge/miniforge).
+* To install baktfold:
 
 ```bash
-conda create -n baktfold foldseek
-conda activate baktfold
-git clone https://github.com/gbouras13/baktfold.git
-cd baktfold
-pip install .
-baktfold --help
+conda create -n baktfoldENV -c conda-forge -c bioconda baktfold 
+```
+
+* To utilise phold with GPU, a GPU compatible version of pytorch must be installed. By default conda will usually install a CPU-only version.
+* If you have an NVIDIA GPU, please try:
+
+```bash
+conda create -n baktfoldENV -c conda-forge -c bioconda baktfold pytorch=*=cuda*
 ```
 
 * If you have a Mac with M-series Apple Silicon, you may need to install a particular version of Pytorch to utilise GPU-acceleration
 * The same is true if you use other non-NVIDIA e.g. AMD GPUs
 * See [this link](https://phold.readthedocs.io/en/latest/install/) for some more detail and further links
 
-* Database installation (use as many threads with `-t` as you can to speed up downloading)
+### Pip 
+
+* You can also install baktfold using pip.
+
+```bash
+pip install baktfold
+```
+
+* You will need to have Foldseek (ideally v10.941cd33) installed and available in the $PATH.
+
+### Source
+
+* You can install the latest version of baktfold with potentially untested and unreleased changes into a conda environment using conda as follows:
+
+```bash
+conda create -n baktfoldENV foldseek
+conda activate baktfoldENV
+git clone https://github.com/gbouras13/baktfold.git
+cd baktfold
+pip install .
+baktfold --help
+```
+
+### Database Installation 
+
+* To download and install baktfold's databases (use as many threads with `-t` as you can to speed up downloading)
 
 ```bash
 baktfold install -d baktfold_db -t 8
@@ -54,7 +87,6 @@ baktfold install -d baktfold_db -t 8
 baktfold install -d baktfold_db --foldseek-gpu
 ```
 
-
 ## Example
 
 * You will first need to run [bakta](https://github.com/oschwengers/bakta) and use the resulting `.json` file as input for `baktfold`
@@ -63,9 +95,9 @@ baktfold install -d baktfold_db --foldseek-gpu
 
 ```bash
 # with nvidia gpu 
-baktfold run -i tests/tests_data/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d baktfold_db   --foldseek-gpu
+baktfold run -i tests/test_data/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d baktfold_db   --foldseek-gpu
 # without nvidia gpu available
-baktfold run -i tests/tests_data/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d baktfold_db   
+baktfold run -i tests/test_data/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d baktfold_db   
 ```
 
 * To use `baktfold proteins` using a dummy test example protein `.faa` file
@@ -73,9 +105,9 @@ baktfold run -i tests/tests_data/assembly_bakta_output/assembly.json  -o baktfol
 
 ```bash
 # with nvidia gpu 
-baktfold proteins -i tests/tests_data/assembly.hypotheticals.faa  -o baktfold_proteins_output -f -t 8 -d baktfold_db   --foldseek-gpu
+baktfold proteins -i tests/test_data/assembly.hypotheticals.faa  -o baktfold_proteins_output -f -t 8 -d baktfold_db   --foldseek-gpu
 # without nvidia gpu available
-baktfold proteins -i tests/tests_data/assembly.hypotheticals.faa  -o baktfold_proteins_output -f -t 8 -d baktfold_db   
+baktfold proteins -i tests/test_data/assembly.hypotheticals.faa  -o baktfold_proteins_output -f -t 8 -d baktfold_db   
 ```
 
 ## Usage
