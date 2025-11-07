@@ -9,6 +9,8 @@ Additionally, instead of using ProstT5, you can specify protein structures that 
 
 You can also specify custom databases to search against using `--custom-db`
 
+**Baktfold is currently under active development. We would welcome any and all feedback (especially bugs) via Issues**
+
 # Table of Contents
 
 - [baktfold](#baktfold)
