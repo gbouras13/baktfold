@@ -208,7 +208,7 @@ Options:
 
 ## Output
 
-* The majority out outputs match [bakta](https://github.com/oschwengers/bakta?tab=readme-ov-file#input-and-output).
+* The majority of outputs match [bakta](https://github.com/oschwengers/bakta?tab=readme-ov-file#input-and-output).
 * Specifically, all the format compliant outputs match bakta's.
 * The differences are:
     * `<prefix>.inference.tsv` is changed compared to bakta. In `baktfold`, this file gives a quick overview of the different `baktfold` databases the query protein has hit (if any)
