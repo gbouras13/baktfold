@@ -1,3 +1,11 @@
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gbouras13/baktfold/blob/main/run_baktfold.ipynb)
+
+[![Anaconda-Server Badge](https://anaconda.org/bioconda/baktfold/badges/version.svg)](https://anaconda.org/bioconda/baktfold)
+[![Bioconda Downloads](https://img.shields.io/conda/dn/bioconda/baktfold)](https://img.shields.io/conda/dn/bioconda/baktfold)
+[![PyPI version](https://badge.fury.io/py/baktfold.svg)](https://badge.fury.io/py/baktfold)
+[![Downloads](https://static.pepy.tech/badge/baktfold)](https://pepy.tech/project/baktfold)
+
+
 # baktfold
 Rapid &amp; standardized annotation of bacterial genomes, MAGs &amp; plasmids using protein structural information
 
@@ -11,9 +19,14 @@ You can also specify custom databases to search against using `--custom-db`
 
 **Baktfold is currently under active development. We would welcome any and all feedback (especially bugs) via Issues**
 
+# Google Colab Notebook
+
+If you don't want to install `baktfold` locally, you can run it without any code using one of the [Google Colab notebook](https://colab.research.google.com/github/gbouras13/baktfold/blob/main/run_baktfold.ipynb)
+
 # Table of Contents
 
 - [baktfold](#baktfold)
+- [Google Colab Notebook](#google-colab-notebook)
 - [Table of Contents](#table-of-contents)
   - [Install](#install)
     - [Conda (recommended)](#conda-recommended)
