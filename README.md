@@ -21,7 +21,7 @@ You can also specify custom databases to search against using `--custom-db`
 
 # Google Colab Notebook
 
-If you don't want to install `baktfold` locally, you can run it without any code using one of the [Google Colab notebook](https://colab.research.google.com/github/gbouras13/baktfold/blob/main/run_baktfold.ipynb)
+If you don't want to install `baktfold` locally, you can run it without any code using the [Google Colab notebook](https://colab.research.google.com/github/gbouras13/baktfold/blob/main/run_baktfold.ipynb)
 
 # Table of Contents
 
