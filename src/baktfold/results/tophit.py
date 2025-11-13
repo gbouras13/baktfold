@@ -10,6 +10,7 @@ from loguru import logger
 def get_tophit(
     result_tsv: Path,
     structures: bool,
+    cath: bool = False
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Process Foldseek output to extract top hit and weighted bitscores.
@@ -17,6 +18,7 @@ def get_tophit(
     Args:
         result_tsv (Path): Path to the Foldseek result TSV file.
         structures (bool): Flag indicating whether structures have been added.
+        cath (bool): Flag indicating whether this is for CATH database (all greedy besthits kept not just top)
 
     Returns:
         Tuple[pd.DataFrame, pd.DataFrame]: A tuple containing two DataFrames:
@@ -98,10 +100,11 @@ def get_tophit(
     )
     foldseek_df = foldseek_df.reindex(columns=new_column_order)
 
-    # get only the tophit - will always be the first hit for each query (top bitscore)
-    foldseek_df = foldseek_df.drop_duplicates(subset="query", keep="first")
 
-    # print(foldseek_df.head())
+    if not cath:
+        # get only the tophit - will always be the first hit for each query (top bitscore)
+        foldseek_df = foldseek_df.drop_duplicates(subset="query", keep="first")
+    # otherwise, the df will contain all greedy tophits from CATH
 
 
     return foldseek_df
