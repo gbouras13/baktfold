@@ -12,11 +12,12 @@ from loguru import logger
 
 from baktfold.features.create_foldseek_db import (
     generate_foldseek_db_from_aa_3di, generate_foldseek_db_from_structures)
-from baktfold.features.run_foldseek import create_result_tsv, run_foldseek_search
+from baktfold.features.run_foldseek import create_result_tsv, run_foldseek_search, summarise_hits
 from baktfold.io.handle_genbank import write_genbank
 import baktfold.io.io as io
 from baktfold.results.tophit import get_tophit
 import baktfold.bakta.pstc as pstc
+from baktfold.utils.util import remove_file
 
 def subcommand_compare(
     hypotheticals: Dict,
@@ -188,7 +189,7 @@ def subcommand_compare(
        
     create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads)
 
-    swissprot_df = get_tophit(result_tsv, structures)
+    swissprot_df = get_tophit(result_tsv, structures, cath=False)
 
 
 
@@ -241,7 +242,7 @@ def subcommand_compare(
        
     create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads)
 
-    afdbclusters_df = get_tophit(result_tsv,structures)
+    afdbclusters_df = get_tophit(result_tsv,structures, cath=False)
 
     #####
     # foldseek search pdb
@@ -289,7 +290,7 @@ def subcommand_compare(
        
     create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads)
 
-    pdb_df = get_tophit(result_tsv,structures)
+    pdb_df = get_tophit(result_tsv,structures, cath=False)
 
 
     #####
@@ -311,12 +312,14 @@ def subcommand_compare(
     result_db_base: Path = Path(output) / "result_db"
     result_db_base.mkdir(parents=True, exist_ok=True)
     result_db: Path = Path(result_db_base) / "result_cath_db"
+    result_db_greedy_best_hits: Path = Path(result_db_base) / "result_cath_db_greedy_best_hits"
 
     temp_db: Path = Path(output) / "temp_db"
     temp_db.mkdir(parents=True, exist_ok=True)
 
     # make result tsv
     result_tsv: Path = Path(output) / "foldseek_results_cath.tsv"
+    result_greedy_tsv: Path = Path(output) /  "foldseek_results_cath_greedy_tophit"
 
     # run foldseek search
     run_foldseek_search(
@@ -335,11 +338,18 @@ def subcommand_compare(
         structures
     )
 
-       
+    # this keeps the greedy best hits for cath
+    # we actually don't keep the single tophit - multidomain/fold proteins should have multiple non-overlapping CATH hits
+    # this is equivalent to using --greedy-best-hits with foldseek easy-search
+    summarise_hits(result_db, result_db_greedy_best_hits, logdir, threads)
+
+    # saves all CATH hits first
     create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads)
+    # save greedy CATH tophits
+    create_result_tsv(query_db, target_db, result_db_greedy_best_hits, result_greedy_tsv, logdir, foldseek_gpu, structures, threads)
 
-    cath_df = get_tophit(result_tsv,structures)
-
+    # this just reads it in with appropriate headers
+    cath_df = get_tophit(result_greedy_tsv, structures, cath=True)
 
     # write tophits
     swissprot_tophit_path: Path = Path(output) / "baktfold_swissprot_tophit.tsv"
@@ -353,6 +363,9 @@ def subcommand_compare(
 
     cath_tophit_path: Path = Path(output) / "baktfold_cath_tophit.tsv"
     io.write_foldseek_tophit(cath_df, cath_tophit_path)
+    # remove result_greedy_tsv (identical to tophit, will make it confusing)
+    remove_file(result_greedy_tsv) 
+
 
     # custom db output 
 
@@ -390,7 +403,7 @@ def subcommand_compare(
                 result_db_custom,
                 result_tsv_custom, logdir, foldseek_gpu, structures, threads)
 
-            custom_df = get_tophit(result_tsv_custom,structures)
+            custom_df = get_tophit(result_tsv_custom,structures, cath=False)
 
             custom_db_tophit_path: Path = Path(output) / "baktfold_custom_db_tophit.tsv"
             io.write_foldseek_tophit(custom_df, custom_db_tophit_path)
