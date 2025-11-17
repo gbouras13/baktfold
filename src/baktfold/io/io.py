@@ -53,9 +53,9 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
     # inference here is the different databases?
     annotations_path: Path = Path(output) / f"{prefix}.inference.tsv"
     if custom_db:
-        header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB', 'CATH', 'Custom_DB']
+        header_columns = ['Locus', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB', 'CATH', 'Custom_DB']
     else:
-        header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB', 'CATH']
+        header_columns = ['Locus', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB', 'CATH']
     logger.info(f'Exporting annotations (TSV) to: {annotations_path}')
 
     selected_features = []

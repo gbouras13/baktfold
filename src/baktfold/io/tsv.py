@@ -158,7 +158,7 @@ def map_aa_columns(feat: dict, custom_db: bool) -> Sequence[str]:
     # if(gene is None):
     #     gene = ''
 
-    # header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB']
+    # header_columns = ['Locus', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB']
 
     # for the GenBank
     if 'length' not in feat:
@@ -167,7 +167,7 @@ def map_aa_columns(feat: dict, custom_db: bool) -> Sequence[str]:
     if custom_db:
 
         return [
-            feat['id'],
+            feat['locus'],
             str(feat['length']),
             #gene,
             feat['product'],
@@ -179,7 +179,7 @@ def map_aa_columns(feat: dict, custom_db: bool) -> Sequence[str]:
         ]
     else:
         return [
-            feat['id'],
+            feat['locus'],
             str(feat['length']),
             #gene,
             feat['product'],
