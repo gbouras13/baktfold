@@ -1,4 +1,4 @@
-{
+{ 
     "genome": {
         "genus": null,
         "species": null,
@@ -5226,7 +5226,7 @@
             "locus": "MEGJMN_093"
         }
     ],
-    "sequences": [
+    "sequences": [ 
         {
             "id": "contig_1",
             "description": "[gcode=11] [completeness=complete] [topology=circular] [plasmid-name=unnamed1]",
