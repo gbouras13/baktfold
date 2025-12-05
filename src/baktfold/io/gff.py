@@ -214,28 +214,32 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                     fh.write(f"{seq_id}\tPILER-CR\t{feat_type}\t{start}\t{stop}\t.\t{feat['strand']}\t.\t{annotations}\n")
                     if(not cfg.compliant):
                         i = 0
-                        while i < len(feat['spacers']):
-                            repeat = feat['repeats'][i]
-                            annotations = {
-                                'ID': f"{feat['id']}_repeat_{i+1}",
-                                'Parent': feat['id']
-                            }
-                            annotations = encode_annotations(annotations)
-                            fh.write(f"{seq_id}\tPILER-CR\t{bc.FEATURE_CRISPR_REPEAT}\t{repeat['start']}\t{repeat['stop']}\t.\t{repeat['strand']}\t.\t{annotations}\n")
-                            spacer = feat['spacers'][i]
-                            annotations = {
-                                'ID': f"{feat['id']}_spacer_{i+1}",
-                                'Parent': feat['id'],
-                                'sequence': spacer['sequence']
-                            }
-                            annotations = encode_annotations(annotations)
-                            fh.write(f"{seq_id}\tPILER-CR\t{bc.FEATURE_CRISPR_SPACER}\t{spacer['start']}\t{spacer['stop']}\t.\t{spacer['strand']}\t.\t{annotations}\n")
-                            i += 1
-                        if(len(feat['repeats']) - 1 == i):
-                            repeat = feat['repeats'][i]
-                            annotations = { 'ID': f"{feat['id']}_repeat_{i+1}" }
-                            annotations = encode_annotations(annotations)
-                            fh.write(f"{seq_id}\tPILER-CR\t{bc.FEATURE_CRISPR_REPEAT}\t{repeat['start']}\t{repeat['stop']}\t.\t{repeat['strand']}\t.\t{annotations}\n")
+                        # spacers and repeats wont exist if Prokka input
+                        spacers = feat.get('spacers', [])
+                        repeat = feat.get('repeat', [])
+                        if len(spacers) > 0 and len(repeat) > 0: 
+                            while i < len(feat['spacers']):
+                                repeat = feat['repeats'][i]
+                                annotations = {
+                                    'ID': f"{feat['id']}_repeat_{i+1}",
+                                    'Parent': feat['id']
+                                }
+                                annotations = encode_annotations(annotations)
+                                fh.write(f"{seq_id}\tPILER-CR\t{bc.FEATURE_CRISPR_REPEAT}\t{repeat['start']}\t{repeat['stop']}\t.\t{repeat['strand']}\t.\t{annotations}\n")
+                                spacer = feat['spacers'][i]
+                                annotations = {
+                                    'ID': f"{feat['id']}_spacer_{i+1}",
+                                    'Parent': feat['id'],
+                                    'sequence': spacer['sequence']
+                                }
+                                annotations = encode_annotations(annotations)
+                                fh.write(f"{seq_id}\tPILER-CR\t{bc.FEATURE_CRISPR_SPACER}\t{spacer['start']}\t{spacer['stop']}\t.\t{spacer['strand']}\t.\t{annotations}\n")
+                                i += 1
+                            if(len(feat['repeats']) - 1 == i):
+                                repeat = feat['repeats'][i]
+                                annotations = { 'ID': f"{feat['id']}_repeat_{i+1}" }
+                                annotations = encode_annotations(annotations)
+                                fh.write(f"{seq_id}\tPILER-CR\t{bc.FEATURE_CRISPR_REPEAT}\t{repeat['start']}\t{repeat['stop']}\t.\t{repeat['strand']}\t.\t{annotations}\n")
                 elif(feat['type'] == bc.FEATURE_CDS):
                     annotations = {
                         'ID': feat['locus'],
