@@ -17,14 +17,14 @@ import baktfold.bakta.so as so
 # log = logging.getLogger('INSDC')
 
 
-def build_biopython_sequence_list(data: dict, features: Sequence[dict]):
+def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka: bool = False):
     sequence_list = []
     for seq in data['sequences']:
         sequence_features = []
         if len(features) > 0:
             sequence_features = [feat for feat in features if feat['sequence'] == seq['id']] if 'sequence' in features[0] else [feat for feat in features if feat['contig'] == seq['id']]  # <1.10.0 compatibility
         comment = (
-            'Annotated with Bakta',
+            'Annotated with Baktfold',
             f"Software: v{cfg.version}\n",
             f"Database: v{cfg.version}\n", # fix later
             #f"Database: v{cfg.db_info['major']}.{cfg.db_info['minor']}, {cfg.db_info['type']}\n",
@@ -134,6 +134,8 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict]):
                 insdc_feature_type = bc.INSDC_FEATURE_CDS
                 inference = []
                 if(feature['type'] == bc.FEATURE_CDS):
+                    if prokka:
+                        inference.append('ab initio prediction:Prodigal:2.6')
                     if(feature.get('source', None) == bc.CDS_SOURCE_USER):
                         inference.append('EXISTENCE:non-experimental evidence, no additional details recorded')
                     else:
@@ -183,7 +185,10 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict]):
                         qualifiers['anticodon'] = f"(pos:{anti_codon_pos[0]}..{anti_codon_pos[1]},aa:{feature['amino_acid']},seq:{feature['anti_codon']})"
                     else:
                         qualifiers['note'].append(f"tRNA-{feature['amino_acid']} ({feature['anti_codon']})")
-                qualifiers['inference'] = 'profile:tRNAscan:2.0'
+                if prokka:
+                    qualifiers['inference'] = 'profile:tRNAscan:2.0'
+                else:
+                    qualifiers['inference'] = 'profile:aragorn:1.2'
                 insdc_feature_type = bc.INSDC_FEATURE_T_RNA
                 if(bc.PSEUDOGENE in feature):
                     qualifiers[bc.INSDC_FEATURE_PSEUDOGENE] = bc.INSDC_FEATURE_PSEUDOGENE_TYPE_UNKNOWN
@@ -195,10 +200,14 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict]):
                         qualifiers['tag_peptide'] = f"complement({qualifiers['tag_peptide']})"
                 insdc_feature_type = bc.INSDC_FEATURE_TM_RNA
             elif(feature['type'] == bc.FEATURE_R_RNA):
+                if prokka:
+                    qualifiers['inference'] = 'profile:barrnap:0.9'
                 for rfam_id in [dbxref.split(':')[1] for dbxref in feature['db_xrefs'] if dbxref.split(':')[0] == bc.DB_XREF_RFAM]:
                     qualifiers['inference'] = f'profile:Rfam:{rfam_id}'
                 insdc_feature_type = bc.INSDC_FEATURE_R_RNA
             elif(feature['type'] == bc.FEATURE_NC_RNA):
+                if prokka:
+                    qualifiers['inference'] = 'profile:aragorn:1.2'
                 for rfam_id in [dbxref.split(':')[1] for dbxref in feature['db_xrefs'] if dbxref.split(':')[0] == bc.DB_XREF_RFAM]:
                     qualifiers['inference'] = f'profile:Rfam:{rfam_id}'
                 qualifiers[bc.INSDC_FEATURE_NC_RNA_CLASS] = select_ncrna_class(feature)
