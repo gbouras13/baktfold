@@ -64,18 +64,24 @@ def write_features(sequences: Sequence[dict], features_by_sequence: Dict[str, di
                 fh.write('\n')
                 if(feat_type == bc.FEATURE_CRISPR):
                     i = 0
-                    while i < len(feat['spacers']):
-                        repeat = feat['repeats'][i]
-                        fh.write('\t'.join([seq_id, bc.FEATURE_CRISPR_REPEAT, str(repeat['start']), str(repeat['stop']), repeat['strand'], '', '', f"CRISPR repeat", '']))
-                        fh.write('\n')
-                        spacer = feat['spacers'][i]
-                        fh.write('\t'.join([seq_id, bc.FEATURE_CRISPR_SPACER, str(spacer['start']), str(spacer['stop']), spacer['strand'], '', '', f"CRISPR spacer, sequence {spacer['sequence']}", '']))
-                        fh.write('\n')
-                        i += 1
-                    if(len(feat['repeats']) - 1 == i):
-                        repeat = feat['repeats'][i]
-                        fh.write('\t'.join([seq_id, bc.FEATURE_CRISPR_REPEAT, str(repeat['start']), str(repeat['stop']), repeat['strand'], '', '', f"CRISPR repeat", '']))
-                        fh.write('\n')
+                    # spacers and repeats wont exist if Prokka input
+                    spacers = feat.get('spacers', [])
+                    repeat = feat.get('repeat', [])
+
+                    if len(spacers) > 0 and len(repeat) > 0:
+
+                        while i < len(feat['spacers']):
+                            repeat = feat['repeats'][i]
+                            fh.write('\t'.join([seq_id, bc.FEATURE_CRISPR_REPEAT, str(repeat['start']), str(repeat['stop']), repeat['strand'], '', '', f"CRISPR repeat", '']))
+                            fh.write('\n')
+                            spacer = feat['spacers'][i]
+                            fh.write('\t'.join([seq_id, bc.FEATURE_CRISPR_SPACER, str(spacer['start']), str(spacer['stop']), spacer['strand'], '', '', f"CRISPR spacer, sequence {spacer['sequence']}", '']))
+                            fh.write('\n')
+                            i += 1
+                        if(len(feat['repeats']) - 1 == i):
+                            repeat = feat['repeats'][i]
+                            fh.write('\t'.join([seq_id, bc.FEATURE_CRISPR_REPEAT, str(repeat['start']), str(repeat['stop']), repeat['strand'], '', '', f"CRISPR repeat", '']))
+                            fh.write('\n')
     return
 
 DB_IPS_COL_UNIREF100 = 'uniref100_id'
