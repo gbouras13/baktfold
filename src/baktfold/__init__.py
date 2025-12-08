@@ -333,7 +333,7 @@ def run(
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
-    data, features = parse_json_input(input, fasta_aa)
+    data, features = parse_json_input(input, fasta_aa, all_proteins)
 
     ###
     # split features in hypotheticals and non hypotheticals
@@ -748,7 +748,7 @@ def predict(
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
-    data, features = parse_json_input(input, fasta_aa)
+    data, features = parse_json_input(input, fasta_aa, all_proteins)
 
     ###
     # split features in hypotheticals and non hypotheticals
@@ -919,7 +919,7 @@ def compare(
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
-    data, features = parse_json_input(input, fasta_aa)
+    data, features = parse_json_input(input, fasta_aa, all_proteins)
 
     ###
     # split features in hypotheticals and non hypotheticals

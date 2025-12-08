@@ -20,7 +20,7 @@ import baktfold.bakta.config as cfg
 # import baktfold.io.insdc as insdc
 # import baktfold.plot as plot
 
-def parse_json_input(input_path, faa_path):
+def parse_json_input(input_path, faa_path, all_proteins):
 
     ############################################################################
     # Checks and configurations
@@ -50,7 +50,13 @@ def parse_json_input(input_path, faa_path):
         sequence_features = features_by_sequence.get(seq_id)
         sequence_features.append(feature)
 
-    hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
+    # keep all proteins
+    if all_proteins:
+        hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS ]
+    else:
+
+        hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
+
 
     # write hypothetical proteins to file
     with faa_path.open('wt') as fh:
