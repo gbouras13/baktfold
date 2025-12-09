@@ -17,12 +17,14 @@ import baktfold.bakta.so as so
 # log = logging.getLogger('INSDC')
 
 
-def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka: bool = False):
+def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka: bool = False, euk: bool = False):
 
     # need to pass the transl table from bakta or prokka not the config
     # best to just detect it from the input json
     # if prokka:
     #     translation_table
+
+    # need to give euk to not give trnas as trnascan - do later
 
     sequence_list = []
     for seq in data['sequences']:
@@ -128,6 +130,12 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka: 
                 qualifiers['note'].append(feature['product'])
                 if('product' in qualifiers):
                     del qualifiers['product']
+
+            elif(feature['type'] == bc.FEATURE_GENE):
+                insdc_feature_type = bc.FEATURE_GENE
+            elif(feature['type'] == bc.FEATURE_MRNA):
+                insdc_feature_type = bc.FEATURE_MRNA
+
             elif(feature['type'] == bc.FEATURE_CDS) or (feature['type'] == bc.FEATURE_SORF):
                 if(bc.PSEUDOGENE in feature):
                     qualifiers[bc.INSDC_FEATURE_PSEUDOGENE] = bc.INSDC_FEATURE_PSEUDOGENE_TYPE_UNPROCESSED if feature[bc.PSEUDOGENE]['paralog'] else bc.INSDC_FEATURE_PSEUDOGENE_TYPE_UNITARY
@@ -193,6 +201,8 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka: 
                         qualifiers['note'].append(f"tRNA-{feature['amino_acid']} ({feature['anti_codon']})")
                 if prokka:
                     qualifiers['inference'] = 'profile:tRNAscan:2.0'
+                elif euk:
+                    qualifiers['inference'] = 'profile:other:unknown'
                 else:
                     qualifiers['inference'] = 'profile:aragorn:1.2'
                 insdc_feature_type = bc.INSDC_FEATURE_T_RNA
@@ -245,36 +255,72 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka: 
             elif(feature['strand'] == bc.STRAND_UNKNOWN):
                 strand = 0
 
-            start = feature['start'] - 1
-            stop = feature['stop']
-            if('edge' in feature):
-                fl_1 = FeatureLocation(start, seq['length'], strand=strand)
-                fl_2 = FeatureLocation(0, stop, strand=strand)
-                if(feature['strand'] == bc.STRAND_REVERSE):
-                    feature_location = CompoundLocation([fl_2, fl_1])
-                else:
-                    feature_location = CompoundLocation([fl_1, fl_2])
+            # euk
+            if (
+                feature.get("starts") 
+                and feature.get("stops") 
+                and isinstance(feature["starts"], list) 
+                and isinstance(feature["stops"], list)
+                and len(feature["starts"]) == len(feature["stops"])
+            ):
+                # Multi-exon CDS/mRNA – use the FIRST and LAST coords as overall range
+                start = feature["starts"][0] - 1       # 0-based for Biopython
+                stop = feature["stops"][-1]            # inclusive
+
+                # also build in here the parts
+
+                coords = list(zip(feature.get("starts"), feature.get("stops")))  # multi-part
+
+                # Build Biopython FeatureLocation or CompoundLocation
+                strand = 1 if feature['strand'] == bc.STRAND_FORWARD else -1
+                parts = []
+
+                for s, e in coords:
+                    parts.append(
+                        FeatureLocation(s - 1, e, strand=strand)
+                    )
+
+                feature_location = (
+                    CompoundLocation(parts)
+                    if len(parts) > 1
+                    else parts[0]
+                )
+
+
             else:
-                if('truncated' in feature):
-                    if(bc.PSEUDOGENE not in feature):  # only add /pseudo qualifier if /pseudogene is not already set
-                        qualifiers[bc.INSDC_FEATURE_PSEUDO] = None
-                    if(feature['truncated'] == bc.FEATURE_END_5_PRIME):
-                        qualifiers['note'].append("(5' truncated)")
-                        if(feature['strand'] == bc.STRAND_FORWARD):
+
+                start = feature['start'] - 1
+                stop = feature['stop']
+                
+                # will be for all non euk ones here
+                if('edge' in feature):
+                    fl_1 = FeatureLocation(start, seq['length'], strand=strand)
+                    fl_2 = FeatureLocation(0, stop, strand=strand)
+                    if(feature['strand'] == bc.STRAND_REVERSE):
+                        feature_location = CompoundLocation([fl_2, fl_1])
+                    else:
+                        feature_location = CompoundLocation([fl_1, fl_2])
+                else:
+                    if('truncated' in feature):
+                        if(bc.PSEUDOGENE not in feature):  # only add /pseudo qualifier if /pseudogene is not already set
+                            qualifiers[bc.INSDC_FEATURE_PSEUDO] = None
+                        if(feature['truncated'] == bc.FEATURE_END_5_PRIME):
+                            qualifiers['note'].append("(5' truncated)")
+                            if(feature['strand'] == bc.STRAND_FORWARD):
+                                start = BeforePosition(start)
+                            else:
+                                stop = AfterPosition(stop)
+                        elif(feature['truncated'] == bc.FEATURE_END_3_PRIME):
+                            qualifiers['note'].append("(3' truncated)")
+                            if(feature['strand'] == bc.STRAND_FORWARD):
+                                stop = AfterPosition(stop)
+                            else:
+                                start = BeforePosition(start)
+                        elif(feature['truncated'] == bc.FEATURE_END_BOTH):
+                            qualifiers['note'].append('(partial)')
                             start = BeforePosition(start)
-                        else:
                             stop = AfterPosition(stop)
-                    elif(feature['truncated'] == bc.FEATURE_END_3_PRIME):
-                        qualifiers['note'].append("(3' truncated)")
-                        if(feature['strand'] == bc.STRAND_FORWARD):
-                            stop = AfterPosition(stop)
-                        else:
-                            start = BeforePosition(start)
-                    elif(feature['truncated'] == bc.FEATURE_END_BOTH):
-                        qualifiers['note'].append('(partial)')
-                        start = BeforePosition(start)
-                        stop = AfterPosition(stop)
-                feature_location = FeatureLocation(start, stop, strand=strand)
+                    feature_location = FeatureLocation(start, stop, strand=strand)
             if(feature.get('locus', None)):
                 gene_qualifier = {
                     'locus_tag': feature['locus']

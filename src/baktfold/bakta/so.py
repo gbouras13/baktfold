@@ -27,6 +27,11 @@ SO_TERMINATOR = SO('terminator', 'SO:0000141')
 SO_TERMINATOR_RHO_DEPENDENT = SO('rho_dependent_bacterial_terminator', 'SO:0000981')
 SO_TERMINATOR_RHO_INDEPENDENT = SO('rho_independent_bacterial_terminator', 'SO:0000982')
 
+
+
+# euks
+SO_MRNA = SO('mrna', 'SO:0000234')
+
 SO_GENE = SO('gene', 'SO:0000704')
 SO_PSEUDO_GENE = SO('pseudogene', 'SO:0000336')
 SO_CDS = SO('CDS', 'SO:0000316')

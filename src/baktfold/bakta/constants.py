@@ -130,6 +130,11 @@ FEATURE_ORIT = 'oriT'
 FEATURE_IS = 'is'
 FEATURE_MITE = 'mite'
 
+# for eukaryotic organisms
+FEATURE_MRNA = 'mRNA'
+FEATURE_SOURCE = 'source'
+FEATURE_GENE = 'gene'
+
 
 ############################################################################
 # INSDC feature tags
@@ -175,6 +180,11 @@ INSDC_FEATURE_MOBILE_ELEMENT_TYPE_ = 'insertion sequence'
 INSDC_FEATURE_MOBILE_ELEMENT_TYPE_TRANSPOSON = 'transposon'
 INSDC_FEATURE_MOBILE_ELEMENT_TYPE_ = 'integron'
 INSDC_FEATURE_MOBILE_ELEMENT_TYPE_ = 'other'
+
+# for eukaryotic organisms
+INSDC_FEATURE_MRNA = 'mRNA'
+INSDC_FEATURE_SOURCE = 'source'
+INSDC_FEATURE_GENE = 'gene'
 
 
 ############################################################################

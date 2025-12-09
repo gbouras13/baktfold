@@ -15,7 +15,264 @@ from loguru import logger
 # log = logging.getLogger('GFF')
 
 
-def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path: Path, prokka: bool = False):
+def write_gene_feature(fh, seq_id, feat):
+    """Write a 'gene' feature including fuzzy boundaries."""
+    start = int(feat['start'])
+    stop  = int(feat['stop'])
+    strand = feat['strand']
+
+    locus = feat['locus']
+
+    attrs = {
+        "ID": f"{locus}"
+    }
+
+    if feat.get('gene') is not None:
+        attrs["Name"] = feat.get('gene')
+
+    attr_str = ";".join(f"{k}={v}" for k, v in attrs.items())
+
+    fh.write(f"{seq_id}\tfunannotate\tgene\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
+
+
+def write_mrna_feature(fh, seq_id, feat):
+    """Write mRNA + implied exons based on join() structure."""
+
+    start = int(feat['start'])
+    stop  = int(feat['stop'])
+    strand = feat['strand']
+
+    locus = feat.get("locus")
+
+    mrna_id = f"{locus}-T1"
+
+    # Top-level mRNA line
+    attrs = {
+        "ID": mrna_id,
+        "Parent": f"{locus}",
+    }
+
+
+    attrs = {}
+
+    product = feat.get("product", [])
+
+    if product:
+
+        key = "product"         
+        if isinstance(product, list):
+            if len(product) == 1:
+                attrs[key] = str(product[0])
+            else:
+                attrs[key] = ",".join(str(v) for v in product)
+        else:
+            attrs[key] = str(product)
+
+
+    # Ensure db_xrefs exists and is a list
+    db_xrefs = feat.get("db_xrefs", [])
+
+    # Access note safely
+    note = feat.get("note", None)
+
+
+    if db_xrefs:
+
+        key = "Dbxref"         
+        if isinstance(db_xrefs, list):
+            if len(db_xrefs) == 1:
+                attrs[key] = str(db_xrefs[0])
+            else:
+                attrs[key] = ",".join(str(v) for v in db_xrefs)
+        else:
+            # if somehow not a list, just convert to string
+            attrs[key] = str(db_xrefs)
+
+    if note:
+
+        key = "note"         # <-- you must define this
+        if isinstance(db_xrefs, list):
+            if len(db_xrefs) == 1:
+                attrs[key] = str(db_xrefs[0])
+            else:
+                attrs[key] = ",".join(str(v) for v in db_xrefs)
+        else:
+            # if somehow not a list, just convert to string
+            attrs[key] = str(db_xrefs)
+
+    
+    attr_str = ";".join(f"{k}={v}" for k, v in attrs.items())
+
+    fh.write(f"{seq_id}\tfunannotate\tmRNA\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
+
+    starts = feat.get("starts")
+    stops  = feat.get("stops")
+    strand = feat.get("strand")
+    seq_id = feat.get("sequence")
+
+    if starts and stops:
+        # For minus strand, exons must be written in reverse order (5'→3')
+        if strand == "-":
+            exon_parts = list(zip(starts, stops))
+        else:
+            exon_parts = list(zip(starts, stops))
+
+        # Exons must be numbered in biological order (5' to 3')
+        if strand == "-":
+            exon_parts = exon_parts[::-1]   # reverse order
+
+        # Write each exon to GFF
+        for idx, (ex_start, ex_stop) in enumerate(exon_parts, start=1):
+            exon_id = f"{mrna_id}.exon{idx}"
+            exon_attrs = f"ID={exon_id};Parent={mrna_id}"
+            fh.write(
+                f"{seq_id}\tfunannotate\texon\t{ex_start}\t{ex_stop}\t.\t{strand}\t.\t{exon_attrs}\n"
+            )
+    else:
+        # Single exon (no starts/stops provided)
+        exon_start = feat["start"]
+        exon_stop = feat["stop"]
+        exon_id = f"{mrna_id}.exon1"
+        exon_attrs = f"ID={exon_id};Parent={mrna_id}"
+
+        fh.write(
+            f"{seq_id}\tfunannotate\texon\t{exon_start}\t{exon_stop}"
+            f"\t.\t{feat['strand']}\t.\t{exon_attrs}\n"
+        )
+
+
+
+def write_euk_cds_feature(fh, seq_id, feat):
+    """
+    Write a eukaryotic CDS feature to GFF3 with multiple parts matching mRNA exons.
+    
+    Parameters
+    ----------
+    fh : file-like
+        Open file handle to write GFF lines.
+    seq_id : str
+        Sequence/contig ID.
+    feat : SeqFeature
+        Biopython SeqFeature object of type 'CDS'.
+
+    Notes
+    -----
+    - Splits multi-part CDS into individual lines matching exon positions.
+    - Calculates the correct phase for each CDS part.
+    - Includes selected qualifiers: product, Ontology_term, Dbxref, note.
+    - IDs: CDS ID = transcript-T1.cds; exon IDs match transcript-T1.exonN
+    """
+
+    
+    strand = feat['strand']
+    
+    locus = feat['locus']
+
+    transcript_id = f"{locus}-T1"
+    cds_id = f"{transcript_id}.cds"
+
+
+
+    starts = feat.get("starts")
+    stops = feat.get("stops")
+
+    cds_coords = []
+
+    # Determine CDS coordinate blocks
+    if (
+        starts
+        and stops
+        and isinstance(starts, list)
+        and isinstance(stops, list)
+        and len(starts) == len(stops)
+    ):
+        cds_coords = list(zip(starts, stops))
+    else:
+        # Fallback: single CDS feature
+        cds_coords = [(feat["start"], feat["stop"])]
+
+    # Reverse block order for negative strand (5' → 3')
+    strand = feat["strand"]
+    if strand == "-":
+        cds_coords.reverse()
+
+    offset = 0  # used for phase calculation
+
+    for i, (cds_start, cds_stop) in enumerate(cds_coords, start=1):
+
+        length = cds_stop - cds_start + 1
+        phase = offset % 3
+        offset += length
+
+        attr_str = f"ID={cds_id};Parent={transcript_id};"
+
+        fh.write(
+            f"{seq_id}\tfunannotate\tCDS\t{cds_start}\t{cds_stop}"
+            f"\t.\t{strand}\t{phase}\t{attr_str}\n"
+        )
+
+
+def write_euk_trna_feature(fh, seq_id, feat):
+    """
+    Write a tRNA feature to GFF3 with a top-level line and single exon.
+    
+    Parameters
+    ----------
+    fh : file-like
+        Open file handle to write GFF lines.
+    seq_id : str
+        Sequence/contig ID.
+    feat : SeqFeature
+        Biopython SeqFeature object of type 'tRNA'.
+
+    Notes
+    -----
+    - Generates one tRNA line and one exon line.
+    - Includes optional 'product' qualifier.
+    """
+    start = int(feat['start'])
+    stop  = int(feat['stop'])
+    
+    strand = feat['strand']
+    
+    locus = feat['locus']
+
+    trna_id = f"{locus}-T1"
+
+    # Top-level tRNA attributes
+    attrs = {
+        "ID": trna_id,
+        "Parent": locus
+    }
+
+    attrs = {}
+
+    product = feat.get("product", [])
+
+    if product:
+
+        key = "product"         
+        if isinstance(product, list):
+            if len(product) == 1:
+                attrs[key] = str(product[0])
+            else:
+                attrs[key] = ",".join(str(v) for v in product)
+        else:
+            attrs[key] = str(product)
+
+
+    attr_str = ";".join(f"{k}={v}" for k, v in attrs.items())
+
+    # Write top-level tRNA line
+    fh.write(f"{seq_id}\tfunannotate\ttRNA\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
+
+    # Write exon line (tRNA single-exon)
+    exon_id = f"{trna_id}.exßon1"
+    exon_attrs = f"ID={exon_id};Parent={trna_id}"
+    fh.write(f"{seq_id}\tfunannotate\texon\t{start}\t{stop}\t.\t{strand}\t.\t{exon_attrs}\n")
+
+
+def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path: Path, prokka: bool = False, euk: bool = False):
     """Export features in GFF3 format."""
     logger.info(f'write features: path={gff3_path}')
 
@@ -53,7 +310,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                 if('edge' in feat):
                     stop += seq['length']
 
-                if(feat['type'] == bc.FEATURE_T_RNA):
+                if(feat['type'] == bc.FEATURE_T_RNA and euk is not True):
 
                     trna_tool = "tRNAscan-SE"
                     if prokka:
@@ -253,7 +510,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                                 annotations = { 'ID': f"{feat['id']}_repeat_{i+1}" }
                                 annotations = encode_annotations(annotations)
                                 fh.write(f"{seq_id}\tPILER-CR\t{bc.FEATURE_CRISPR_REPEAT}\t{repeat['start']}\t{repeat['stop']}\t.\t{repeat['strand']}\t.\t{annotations}\n")
-                elif(feat['type'] == bc.FEATURE_CDS):
+                elif(feat['type'] == bc.FEATURE_CDS and euk is not True):
                     annotations = {
                         'ID': feat['locus'],
                         'Name': feat['product'],
@@ -382,6 +639,14 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                     annotations = encode_annotations(annotations)
                     feat_type = bc.INSDC_FEATURE_ORIGIN_TRANSFER if cfg.compliant else so.SO_ORIT.name
                     fh.write(f"{seq_id}\tBLAST+\t{feat_type}\t{start}\t{stop}\t.\t{feat['strand']}\t.\t{annotations}\n")
+                elif(feat['type'] == bc.FEATURE_GENE):
+                    write_gene_feature(fh, seq_id, feat)
+                elif(feat['type'] == bc.FEATURE_MRNA):
+                    write_mrna_feature(fh, seq_id, feat)
+                elif(feat['type'] == bc.FEATURE_CDS and euk is True):
+                    write_euk_cds_feature(fh, seq_id, feat)
+                elif(feat['type'] == bc.FEATURE_T_RNA and euk is True):
+                    write_euk_trna_feature(fh, seq_id, feat)
 
         if(not cfg.compliant):
             fh.write('##FASTA\n')
