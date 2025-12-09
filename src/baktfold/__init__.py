@@ -450,7 +450,7 @@ def run(
             type_order = {'source': 0,'gene': 1, 'mRNA': 2, 'CDS': 3, 'tRNA': 4 }
             seq_features.sort(
                 key=lambda f: (
-                    f.get('locus_tag', ''),                  #  locus (assumes they are ascending)
+                    f.get('locus', ''),                  #  locus (assumes they are ascending)
                     type_order.get(f['type'], 99),           #  feature type
                     f.get('start', float('inf'))             #  start
                 )
@@ -1021,7 +1021,7 @@ def compare(
             type_order = {'source': 0,'gene': 1, 'mRNA': 2, 'CDS': 3, 'tRNA': 4 }
             seq_features.sort(
                 key=lambda f: (
-                    f.get('locus_tag', ''),                  #  locus (assumes they are ascending)
+                    f.get('locus', ''),                  #  locus (assumes they are ascending)
                     type_order.get(f['type'], 99),           #  feature type
                     f.get('start', float('inf'))             #  start
                 )

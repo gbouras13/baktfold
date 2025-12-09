@@ -38,8 +38,6 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
     embl_path: Path = Path(output) / f"{prefix}.embl"
     insdc.write_features(data, features, genbank_path, embl_path, euk)
 
-    # add 3Di sequence here I think or debate how to handle this
-
     logger.info('writing genome sequences...')
     fna_path: Path = Path(output) / f"{prefix}.fna"
     fasta.export_sequences(data['sequences'], fna_path, description=True, wrap=True)
