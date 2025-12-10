@@ -171,7 +171,7 @@ def check_dependencies() -> None:
 
     logger.info("Foldseek version is ok")
 
-def check_genbank_and_prokka(filepath):
+def check_genbank_and_prokka(filepath, euk):
     """
     Validate that an input file is a readable GenBank file and check whether it was
     annotated using Prokka. The function transparently supports compressed files
@@ -188,6 +188,8 @@ def check_genbank_and_prokka(filepath):
     ----------
     filepath : str
         Path to the GenBank or compressed GenBank file.
+    euk: flag
+        whether or not the input is eukaryotic (skips prokka)
 
     Returns
     -------
@@ -219,15 +221,17 @@ def check_genbank_and_prokka(filepath):
 
 
         # Scan comments for Prokka signature
-        for rec in records:
-            comment = rec.annotations.get("comment", "") or ""
-            if "annotated using prokka" in comment.lower():
-                is_prokka = True
-                break
-        
-        if is_prokka is False:
-            logger.warning(f"Input file {filepath} does not appear to come from Prokka.")
-            logger.warning(f"Conversion will proceed but no guarantee of success.")
+        if not euk:
+            for rec in records:
+                comment = rec.annotations.get("comment", "") or ""
+                if "annotated using prokka" in comment.lower():
+                    is_prokka = True
+                    break
+                    
+            
+            if is_prokka is False:
+                logger.warning(f"Input file {filepath} does not appear to come from Prokka.")
+                logger.warning(f"Conversion will proceed but no guarantee of success.")
 
     except Exception:
         logger.error(f"There was an error parsing {filepath}. Please check your input")

@@ -28,6 +28,7 @@ from baktfold.utils.validation import (check_dependencies, instantiate_dirs,vali
                                     check_genbank_and_prokka)
 
 from baktfold.io.prokka_gbk_to_json import prokka_gbk_to_json
+from baktfold.io.eukaryotic_to_json import eukaryotic_gbk_to_json
 import baktfold.bakta.config as cfg
 import baktfold.io.io as io
 
@@ -1450,6 +1451,43 @@ def createdb(
     # end
     end_baktfold(start_time, "createdb")
 
+
+
+"""
+convert  options
+"""
+
+def convert_options(func):
+    """compare command line args"""
+    options = [
+        click.option(
+            "-i",
+            "--input",
+            help="Path to input Prokka GenBank (.gbk) output",
+            type=click.Path(),
+            required=True,
+        ),
+        click.option(
+            "-o",
+            "--outfile",
+            default="converted_bakta_formatted.json",
+            show_default=True,
+            type=click.Path(),
+            help="Output bakta format .json output",
+        ),
+        click.option(
+            "-f",
+            "--force",
+            is_flag=True,
+            help="Force overwrites the output file",
+        )
+    ]
+    for option in reversed(options):
+        func = option(func)
+    return func
+    
+
+
 """
 convert prokka GenBank to Bakta formatted json
 """
@@ -1458,27 +1496,7 @@ convert prokka GenBank to Bakta formatted json
 @click.help_option("--help", "-h")
 @click.version_option(get_version(), "--version", "-V")
 @click.pass_context
-@click.option(
-    "-i",
-    "--input",
-    help="Path to input Prokka GenBank (.gbk) output",
-    type=click.Path(),
-    required=True,
-)
-@click.option(
-    "-o",
-    "--outfile",
-    default="prokka_bakta_formatted.json",
-    show_default=True,
-    type=click.Path(),
-    help="Output bakta format .json output",
-)
-@click.option(
-    "-f",
-    "--force",
-    is_flag=True,
-    help="Force overwrites the output file",
-)
+@convert_options
 def convert_prokka(
     ctx,
     input,
@@ -1486,13 +1504,13 @@ def convert_prokka(
     force,
     **kwargs,
 ):
-    """Converts Prokka GenBank output to Bakta format json"""
+    """Converts Prokka GenBank to Bakta format json"""
 
     # validates the output file - check it doesnt exist, if it does overwrite it
     validate_outfile(outfile, force)
 
     # validates input genbank and returns records
-    records = check_genbank_and_prokka(input)
+    records = check_genbank_and_prokka(input, euk=False)
 
 
     params = {
@@ -1519,6 +1537,60 @@ def convert_prokka(
  
     # end
     end_baktfold(start_time, "convert-prokka")
+
+
+"""
+convert eukaryotic GenBank to Bakta formatted json
+"""
+
+@main_cli.command()
+@click.help_option("--help", "-h")
+@click.version_option(get_version(), "--version", "-V")
+@click.pass_context
+@convert_options
+def convert_euk(
+    ctx,
+    input,
+    outfile,
+    force,
+    **kwargs,
+):
+    """(Experimental) Converts eukaryotic GenBank to Bakta format json"""
+
+    # validates the output file - check it doesnt exist, if it does overwrite it
+    validate_outfile(outfile, force)
+
+    # validates input genbank and returns records
+    records = check_genbank_and_prokka(input, euk=True)
+
+
+    params = {
+        "--input": input,
+        "--outfile": outfile,
+        "--force": force,
+    }
+
+    # initial logging etc
+    start_time = begin_baktfold(params, "convert-euk", no_log=True)
+
+    # check foldseek is installed
+    # check_dependencies()
+
+    logger.info(f"Converting eukaryotic input GenBank file {input} to Bakta formatted .json file.")
+    logger.info(
+        f"This will be saved as {outfile}."
+    )
+
+    eukaryotic_gbk_to_json(records, outfile)
+
+    logger.info(f"Conversion successful.")
+    logger.info(f"Bakta format JSON → {outfile}")
+ 
+    # end
+    end_baktfold(start_time, "convert-euk")
+
+
+
 
 
 """
