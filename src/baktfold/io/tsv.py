@@ -158,44 +158,53 @@ def write_feature_inferences(sequences: Sequence[dict], features_by_sequence: Di
                     fh.write('\n')
     return
 
-def map_aa_columns(feat: dict, custom_db: bool) -> Sequence[str]:
-    # no gene here for now
-    # gene = feat.get('gene', None)
-    # if(gene is None):
-    #     gene = ''
-
-    # header_columns = ['Locus', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB']
-
-    # for the GenBank
+def map_aa_columns(feat: dict, custom_db: bool, has_duplicate_locus: bool) -> Sequence[str]:
+    # Ensure length exists
     if 'length' not in feat:
-        feat['length'] = int(len(feat['nt'])/3)
+        feat['length'] = int(len(feat['nt']) / 3)
+
+    xrefs = feat.get('db_xrefs', [])
+
+    # Extract dbxref groups once
+    def join_filtered(prefix: str, replacement: str = None):
+        if replacement is None:
+            replacement = prefix
+        return ','.join(
+            db.replace(replacement, '') for db in xrefs
+            if prefix in db
+        )
+
+    swissprot   = join_filtered('swissprot', 'afdb_v6:')
+    afdbclust   = join_filtered('afdbclusters_', 'afdb_v6:')
+    pdb         = join_filtered('pdb:')
+    cath        = join_filtered('cath:')
+    custom_refs = join_filtered('custom:', 'custom:custom_')
+
+    # Build the output row
+    row = [feat['locus']]
+
+    # add id if multiple CDS per Locus in that record (euks)
+    if has_duplicate_locus:
+        row.append(feat['id'])
+
+    row.extend([
+        str(feat['length']),
+        feat['product'],
+        swissprot,
+        afdbclust,
+        pdb,
+        cath,
+    ])
 
     if custom_db:
+        row.append(custom_refs)
 
-        return [
-            feat['locus'],
-            str(feat['length']),
-            #gene,
-            feat['product'],
-            ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'swissprot' in dbxref]),
-            ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'afdbclusters_' in dbxref]),
-            ','.join([dbxref.replace('pdb:', '') for dbxref in feat['db_xrefs'] if 'pdb:' in dbxref]),
-            ','.join([dbxref.replace('cath:', '') for dbxref in feat['db_xrefs'] if 'cath:' in dbxref]),
-            ','.join([dbxref.replace('custom:custom_', '') for dbxref in feat['db_xrefs'] if 'custom:' in dbxref]),
-        ]
-    else:
-        return [
-            feat['locus'],
-            str(feat['length']),
-            #gene,
-            feat['product'],
-            ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'swissprot' in dbxref]),
-            ','.join([dbxref.replace('afdb_v6:', '') for dbxref in feat['db_xrefs'] if 'afdbclusters_' in dbxref]),
-            ','.join([dbxref.replace('pdb:', '') for dbxref in feat['db_xrefs'] if 'pdb:' in dbxref]),
-            ','.join([dbxref.replace('cath:', '') for dbxref in feat['db_xrefs'] if 'cath:' in dbxref]),
-        ]
+    return row
 
-def write_protein_features(features: Sequence[dict], header_columns: Sequence[str], tsv_path: Path, custom_db: bool):
+
+
+
+def write_protein_features(features: Sequence[dict], header_columns: Sequence[str], tsv_path: Path, custom_db: bool, has_duplicate_locus: bool):
     """Export protein features in TSV format."""
     logger.info(f'write protein feature tsv: path={tsv_path}')
 
@@ -205,7 +214,7 @@ def write_protein_features(features: Sequence[dict], header_columns: Sequence[st
         fh.write('\t'.join(header_columns))
         fh.write('\n')
         for feat in features:
-            columns = map_aa_columns(feat, custom_db)
+            columns = map_aa_columns(feat, custom_db, has_duplicate_locus)
             fh.write('\t'.join(columns))
             fh.write('\n')
     return

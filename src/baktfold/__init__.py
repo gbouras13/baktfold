@@ -471,7 +471,7 @@ def run(
 
 
     logger.info('writing baktfold outputs')
-    io.write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk)
+    io.write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus)
 
     # cleanup the temp files
     if not keep_tmp_files:
@@ -1044,7 +1044,7 @@ def compare(
     # bakta output module
     ####
     logger.info('writing baktfold outputs')
-    io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db, euk)
+    io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus)
 
     # cleanup the temp files
     if not keep_tmp_files:
