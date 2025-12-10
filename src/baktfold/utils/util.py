@@ -209,3 +209,39 @@ def clean_up_temporary_files(output: Path, prefix: str) -> None:
     remove_file(result_tsv_custom)
     remove_file(result_tsv_cath)
 
+def get_type_rank(f):
+    """
+    ranks eukaryotic features 1) in order of gene -> mRNA -> CDS and gene -> tRNA
+    dynamically adjusts if 5'UTR and 3'UTR is present
+    """
+    t = f['type']
+    strand = f.get('strand', '+')  # default to + if missing
+
+    # fixed ranks
+    base_order = {
+        'gene': 0,
+        'mRNA': 1,
+        'CDS': 3,
+        'tRNA': 6
+    }
+
+    # dynamic UTR ordering
+    if t == bc.FEATURE_5UTR:
+        return 2 if strand == '+' else 4
+    if t == bc.FEATURE_3UTR:
+        return 4 if strand == '+' else 2
+
+    return base_order.get(t, 99)   # non-protein features become 99
+
+def sort_euk_feature_key(f):
+    """Key function for sorting eukaryotic features."""
+    start = f.get('start', float('inf'))
+    locus = f.get('locus', '')
+    type_rank = get_type_rank(f)
+
+    # If feature is gene-related, sort by locus + type rank within locus
+    if type_rank != 99 and locus:
+        return (locus, type_rank, start)
+    else:
+        # For everything else, sort globally by start
+        return ('', 99, start)

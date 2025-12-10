@@ -23,7 +23,7 @@ from baktfold.subcommands.compare import subcommand_compare
 from baktfold.subcommands.predict import subcommand_predict
 from baktfold.utils.constants import DB_DIR, CNN_DIR
 from baktfold.utils.util import (begin_baktfold, clean_up_temporary_files, end_baktfold,
-                              get_version, print_citation)
+                              get_version, print_citation, sort_euk_feature_key)
 from baktfold.utils.validation import (check_dependencies, instantiate_dirs,validate_outfile,
                                     check_genbank_and_prokka)
 
@@ -451,14 +451,7 @@ def run(
     for seq in data['sequences']:
         seq_features = features_by_sequence[seq['id']]
         if euk: # ensure gene -> mRNA -> CDS ordering for each locus tag
-            type_order = {'source': 0,'gene': 1, 'mRNA': 2, 'CDS': 3, 'tRNA': 4 }
-            seq_features.sort(
-                key=lambda f: (
-                    f.get('locus', ''),                  #  locus (assumes they are ascending)
-                    type_order.get(f['type'], 99),           #  feature type
-                    f.get('start', float('inf'))             #  start
-                )
-            )
+            seq_features.sort(key=sort_euk_feature_key)
         else:
             seq_features.sort(key=lambda k: k['start'])  # sort features by start position
         features.extend(seq_features)
@@ -1029,15 +1022,10 @@ def compare(
 
     for seq in data['sequences']:
         seq_features = features_by_sequence[seq['id']]
-        if euk: # ensure gene -> mRNA -> CDS ordering for each locus tag
-            type_order = {'source': 0,'gene': 1, 'mRNA': 2, 'CDS': 3, 'tRNA': 4 }
-            seq_features.sort(
-                key=lambda f: (
-                    f.get('locus', ''),                  #  locus (assumes they are ascending)
-                    type_order.get(f['type'], 99),           #  feature type
-                    f.get('start', float('inf'))             #  start
-                )
-            )
+        if euk: # ensure gene -> mRNA -> CDS ordering for each locus tag but overall keep the start as the prinary sort
+
+            seq_features.sort(key=sort_euk_feature_key)
+
         else:
             seq_features.sort(key=lambda k: k['start'])  # sort features by start position
         features.extend(seq_features)
