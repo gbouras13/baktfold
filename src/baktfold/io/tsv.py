@@ -56,8 +56,8 @@ def write_features(sequences: Sequence[dict], features_by_sequence: Dict[str, di
                         str(feat['stop']),
                         feat['strand'],
                         feat.get('locus', ''),
-                        str(gene),
-                        str(product),
+                        str(gene or ''),        # handles None → ''
+                        str(product or ''),     # handles None → ''
                         ', '.join(sorted(feat.get('db_xrefs', [])))
                     ])
                 )
