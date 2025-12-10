@@ -32,7 +32,7 @@ def write_gene_feature(fh, seq_id, feat):
 
     attr_str = ";".join(f"{k}={v}" for k, v in attrs.items())
 
-    fh.write(f"{seq_id}\tfunannotate\tgene\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
+    fh.write(f"{seq_id}\tbaktfold\tgene\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
 
 
 def write_mrna_feature(fh, seq_id, feat):
@@ -100,7 +100,7 @@ def write_mrna_feature(fh, seq_id, feat):
     
     attr_str = ";".join(f"{k}={v}" for k, v in attrs.items())
 
-    fh.write(f"{seq_id}\tfunannotate\tmRNA\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
+    fh.write(f"{seq_id}\tbaktfold\tmRNA\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
 
     starts = feat.get("starts")
     stops  = feat.get("stops")
@@ -128,7 +128,7 @@ def write_mrna_feature(fh, seq_id, feat):
             exon_id = f"{mrna_id}.exon{idx}"
             exon_attrs = f"ID={exon_id};Parent={mrna_id}"
             fh.write(
-                f"{seq_id}\tfunannotate\texon\t{ex_start}\t{ex_stop}\t.\t{strand}\t.\t{exon_attrs}\n"
+                f"{seq_id}\tbaktfold\texon\t{ex_start}\t{ex_stop}\t.\t{strand}\t.\t{exon_attrs}\n"
             )
     else:
         # Single exon (no starts/stops provided)
@@ -138,7 +138,7 @@ def write_mrna_feature(fh, seq_id, feat):
         exon_attrs = f"ID={exon_id};Parent={mrna_id}"
 
         fh.write(
-            f"{seq_id}\tfunannotate\texon\t{exon_start}\t{exon_stop}"
+            f"{seq_id}\tbaktfold\texon\t{exon_start}\t{exon_stop}"
             f"\t.\t{feat['strand']}\t.\t{exon_attrs}\n"
         )
 
@@ -198,9 +198,55 @@ def write_euk_cds_feature(fh, seq_id, feat):
         attr = f"ID={cds_id}-{i};Parent={transcript_id}"
 
         fh.write(
-            f"{seq_id}\tfunannotate\tCDS\t{cds_start}\t{cds_stop}"
+            f"{seq_id}\tbaktfold\tCDS\t{cds_start}\t{cds_stop}"
             f"\t.\t{strand}\t{phase}\t{attr}\n"
         )
+
+def write_euk_utr_feature(fh, seq_id, feat, locus_counter, three=False):
+    """Write a 'utr' feature."""
+    start = int(feat['start'])
+    stop  = int(feat['stop'])
+    strand = feat['strand']
+
+    locus = feat['locus']
+
+    # Count occurrences for this locus
+    count = locus_counter.get(locus, 0) + 1
+    locus_counter[locus] = count
+
+    # Construct ID with suffix -2, -3, etc.
+    # For first entry we keep ID=locus (no -1)
+    if count == 1:
+        utr_id = locus
+    else:
+        utr_id = f"{locus}-{count}"
+
+    # Top-level mRNA line
+    attrs = {
+        "ID": f"{utr_id}",
+        "Parent": f"{locus}",
+    }
+
+# CAMXCT020000566.1	EMBL	three_prime_UTR	84568	84617	.	-	.	ID=id-C1SCF055_LOCUS8420;Parent=gene-C1SCF055_LOCUS8420;Note=ID:SCF055_s1507_g28601.utr3p1%3B~source:feature;gbkey=3'UTR;locus_tag=C1SCF055_LOCUS8420
+# CAMXCT020000566.1	EMBL	five_prime_UTR	136251	136259	.	-	.	ID=id-C1SCF055_LOCUS8420-2;Parent=gene-C1SCF055_LOCUS8420;Note=ID:SCF055_s1507_g28601.utr5p1%3B~source:feature;gbkey=5'UTR;locus_tag=C1SCF055_LOCUS8420
+
+    if feat.get('Note') is not None:
+        attrs["Note"] = feat.get('note')
+
+
+    attrs["gbkey"] = "3'UTR" if three else "5'UTR"
+        
+    if feat.get('Note') is not None:
+        attrs["locus_tag"] = feat.get('locus')
+
+    attr_str = ";".join(f"{k}={v}" for k, v in attrs.items())
+
+    if three:
+        gene_tag = 'three_prime_UTR'
+    else:
+        gene_tag = 'five_prime_UTR'
+
+    fh.write(f"{seq_id}\tbaktfold\t{gene_tag}\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
 
 
 def write_euk_trna_feature(fh, seq_id, feat):
@@ -255,12 +301,12 @@ def write_euk_trna_feature(fh, seq_id, feat):
     attr_str = ";".join(f"{k}={v}" for k, v in attrs.items())
 
     # Write top-level tRNA line
-    fh.write(f"{seq_id}\tfunannotate\ttRNA\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
+    fh.write(f"{seq_id}\tbaktfold\ttRNA\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
 
     # Write exon line (tRNA single-exon)
     exon_id = f"{trna_id}.exßon1"
     exon_attrs = f"ID={exon_id};Parent={trna_id}"
-    fh.write(f"{seq_id}\tfunannotate\texon\t{start}\t{stop}\t.\t{strand}\t.\t{exon_attrs}\n")
+    fh.write(f"{seq_id}\tbaktfold\texon\t{start}\t{stop}\t.\t{strand}\t.\t{exon_attrs}\n")
 
 
 def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path: Path, prokka: bool = False, euk: bool = False):
@@ -282,6 +328,9 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
         fh.write(f'# URL: {bc.BAKTFOLD_URL}\n')
 
         for seq in data['sequences']:  # write features
+            if euk:
+                locus_counter = {} # for UTRs
+                
             fh.write(f"##sequence-region {seq['id']} 1 {seq['length']}\n")  # sequence region
 
             # write landmark region
@@ -300,6 +349,12 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                 stop = feat['stop']
                 if('edge' in feat):
                     stop += seq['length']
+
+                if(feat['type'] == bc.FEATURE_5UTR or feat['type'] == bc.FEATURE_3UTR):
+                    if feat['type'] == bc.FEATURE_3UTR:
+                        write_euk_utr_feature(fh, seq_id, feat, locus_counter, three=True)
+                    elif feat['type'] == bc.FEATURE_5UTR:
+                        write_euk_utr_feature(fh, seq_id, feat, locus_counter, three=False)
 
                 if(feat['type'] == bc.FEATURE_T_RNA):
 

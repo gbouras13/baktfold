@@ -139,6 +139,8 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                 qualifiers['product'] = feature['product']
             if('locus' in feature):
                 qualifiers['locus_tag'] = feature['locus']
+            if('standard_name' in feature): # euk mrnas
+                qualifiers['standard_name'] = feature['standard_name']            
 
             accompanying_features=[]
             if(feature['type'] == bc.FEATURE_GAP):
@@ -164,6 +166,7 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                 insdc_feature_type = bc.FEATURE_GENE
             elif(feature['type'] == bc.FEATURE_MRNA):
                 insdc_feature_type = bc.FEATURE_MRNA
+                
 
             elif(feature['type'] == bc.FEATURE_CDS) or (feature['type'] == bc.FEATURE_SORF):
                 if(bc.PSEUDOGENE in feature):
@@ -285,7 +288,19 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                 insdc_feature_type = bc.INSDC_FEATURE_REPEAT_REGION
                 qualifiers['note'].append(feature['product'])
                 qualifiers.pop('product', None)
-
+            elif(feature['type'] == bc.FEATURE_REPEAT): # for euks
+                insdc_feature_type = bc.INSDC_FEATURE_REPEAT_REGION
+                qualifiers['rpt_family'] = feature['family']
+                qualifiers['note'].append(feature['product'])
+                qualifiers.pop('product', None)
+            elif(feature['type'] == bc.FEATURE_5UTR): # for euks
+                insdc_feature_type = bc.INSDC_FEATURE_5UTR
+                qualifiers['note'].append(feature['product']) 
+                qualifiers.pop('product', None)
+            elif(feature['type'] == bc.FEATURE_3UTR): # for euks
+                insdc_feature_type = bc.INSDC_FEATURE_3UTR
+                qualifiers['note'].append(feature['product']) 
+                qualifiers.pop('product', None)
             strand = None
             if(feature['strand'] == bc.STRAND_FORWARD):
                 strand = 1

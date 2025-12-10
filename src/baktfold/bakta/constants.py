@@ -134,6 +134,9 @@ FEATURE_MITE = 'mite'
 FEATURE_MRNA = 'mRNA'
 FEATURE_SOURCE = 'source'
 FEATURE_GENE = 'gene'
+FEATURE_REPEAT = 'repeat_region'
+FEATURE_5UTR =  "5'UTR" 
+FEATURE_3UTR = "3'UTR"
 
 
 ############################################################################
@@ -185,6 +188,8 @@ INSDC_FEATURE_MOBILE_ELEMENT_TYPE_ = 'other'
 INSDC_FEATURE_MRNA = 'mRNA'
 INSDC_FEATURE_SOURCE = 'source'
 INSDC_FEATURE_GENE = 'gene'
+INSDC_FEATURE_5UTR = "5'UTR"
+INSDC_FEATURE_3UTR = "3'UTR"
 
 
 ############################################################################
