@@ -202,6 +202,44 @@ def write_euk_cds_feature(fh, seq_id, feat):
             f"\t.\t{strand}\t{phase}\t{attr}\n"
         )
 
+def write_euk_repeat_region_feature(fh, seq_id, feat):
+
+    start = int(feat['start'])
+    stop  = int(feat['stop'])
+    strand = feat['strand']
+
+    id = feat['sequence']
+
+    attrs = {
+        "ID": f"{id}:{start}..{stop}",
+        "gbkey": "repeat_region"
+    }
+
+    if feat.get('family') is not None:
+        attrs["rpt_family"] = feat.get('family')
+
+    attr_str = ";".join(f"{k}={v}" for k, v in attrs.items())
+
+    fh.write(f"{seq_id}\tbaktfold\trepeat_region\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
+
+    # DS572673.1	Genbank	repeat_region	1	364	.	-	.	ID=id-DS572673.1:1..364;gbkey=repeat_region;rpt_family=LINE1
+
+        #     "type": "repeat_region",
+        #     "sequence": "DS571531.1",
+        #     "start": 1470,
+        #     "stop": 1716,
+        #     "strand": "?",
+        #     "family": "LINE2",
+        #     "rpt_type": null,
+        #     "repeat_unit": null,
+        #     "product": null,
+        #     "nt": "AATAAAATCATATCAGAAATAAAAAGAATGAAAATAAACAAATTAAAGAAAATAATTATAAAATTAATAAACGATATTTAAATGAAAGAAAATAGAGAATATGTAATAAGTACAAATGGTTCATTCATTAATAAGAAATTAACAATAATAAAATAGAGAATATTGATTATAAAAAGAAATATATTTCTCAAAACAGTAGAGATACAAAAAGAATAGATATGAAATAAATATTAATTCTAAAATACTC",
+        #     "id": "EHICP_3230",
+        #     "db_xrefs": [
+        #         "SO:0000657"
+        #     ]
+        # },
+
 def write_euk_utr_feature(fh, seq_id, feat, locus_counter, three=False):
     """Write a 'utr' feature."""
     start = int(feat['start'])
@@ -350,11 +388,16 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                 if('edge' in feat):
                     stop += seq['length']
 
-                if(feat['type'] == bc.FEATURE_5UTR or feat['type'] == bc.FEATURE_3UTR):
-                    if feat['type'] == bc.FEATURE_3UTR:
-                        write_euk_utr_feature(fh, seq_id, feat, locus_counter, three=True)
-                    elif feat['type'] == bc.FEATURE_5UTR:
-                        write_euk_utr_feature(fh, seq_id, feat, locus_counter, three=False)
+                # euks
+                if euk:
+                    if(feat['type'] == bc.FEATURE_REPEAT):
+                        write_euk_repeat_region_feature(fh, seq_id, feat)
+
+                    if(feat['type'] == bc.FEATURE_5UTR or feat['type'] == bc.FEATURE_3UTR):
+                        if feat['type'] == bc.FEATURE_3UTR:
+                            write_euk_utr_feature(fh, seq_id, feat, locus_counter, three=True)
+                        elif feat['type'] == bc.FEATURE_5UTR:
+                            write_euk_utr_feature(fh, seq_id, feat, locus_counter, three=False)
 
                 if(feat['type'] == bc.FEATURE_T_RNA):
 
