@@ -252,7 +252,14 @@ def download(db_url: str, tarball_path: Path, logdir: Path, threads: int) -> Non
 
     header= f"baktfold/{CURRENT_DB_VERSION} (contact: george.bouras@adelaide.edu.au)"
 
-    cmd = f"  --header={header} --dir {str(tarball_path.parent)} --out {tarball_path.name} --max-connection-per-server={str(threads)} --allow-overwrite=true  {db_url}"
+    cmd = (
+        f'--header="{header}" '
+        f'--dir {tarball_path.parent} '
+        f'--out {tarball_path.name} '
+        f'--max-connection-per-server={threads} '
+        f'--allow-overwrite=true '
+        f'{db_url}'
+    )
 
     download_db = ExternalTool(
         tool="aria2c",
