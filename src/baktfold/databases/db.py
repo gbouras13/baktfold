@@ -250,7 +250,9 @@ def download(db_url: str, tarball_path: Path, logdir: Path, threads: int) -> Non
         threads (int): Number of threads for aria2c
     """
 
-    cmd = f"--dir {str(tarball_path.parent)} --out {tarball_path.name} --max-connection-per-server={str(threads)} --allow-overwrite=true  {db_url}"
+    header= f"baktfold/{CURRENT_DB_VERSION} (contact: george.bouras@adelaide.edu.au)"
+
+    cmd = f"  --header={header} --dir {str(tarball_path.parent)} --out {tarball_path.name} --max-connection-per-server={str(threads)} --allow-overwrite=true  {db_url}"
 
     download_db = ExternalTool(
         tool="aria2c",
