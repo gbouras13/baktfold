@@ -1409,7 +1409,7 @@ def createdb(
     """Creates foldseek DB from AA FASTA and 3Di FASTA input files"""
 
     # validates the directory  (need to before I start phold or else no log file is written)
-    instantiate_dirs(output, force, restart=False)
+    instantiate_dirs(output, force)
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
