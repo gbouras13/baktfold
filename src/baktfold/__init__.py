@@ -31,6 +31,8 @@ from baktfold.io.prokka_gbk_to_json import prokka_gbk_to_json
 from baktfold.io.eukaryotic_to_json import eukaryotic_gbk_to_json
 import baktfold.bakta.config as cfg
 import baktfold.io.io as io
+from baktfold.features.autotune import run_autotune
+from importlib.resources import files
 
 log_fmt = (
     "[<green>{time:YYYY-MM-DD HH:mm:ss}</green>] <level>{level: <8}</level> | "
@@ -98,6 +100,11 @@ predict only options
 def predict_options(func):
     """predict command line args"""
     options = [
+        click.option(
+            "--autotune",
+            is_flag=True,
+            help="Run autotuning to detect and automatically use best batch size for your hardware. Recommended only if you have a large dataset (e.g. thousands of proteins), or else autotuning will add rather than save runtime.",
+        ),
         click.option(
             "--batch-size",
             default=1,
@@ -267,6 +274,7 @@ def run(
     evalue,
     force,
     database,
+    autotune,
     batch_size,
     sensitivity,
     cpu,
@@ -301,6 +309,7 @@ def run(
         "--prefix": prefix,
         "--evalue": evalue,
         "--database": database,
+        "--autotune": autotune,
         "--batch-size": batch_size,
         "--sensitivity": sensitivity,
         "--keep-tmp-files": keep_tmp_files,
@@ -371,6 +380,28 @@ def run(
     model_dir = database
     model_name = "Rostlab/ProstT5_fp16"
     checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt" / "model.pt"
+
+
+    if autotune:
+
+        input_path = files("baktfold.features.autotune_data").joinpath("swissprot_5000.fasta.gz")
+
+        step = 20
+        min_batch = 1
+        max_batch = 301
+        sample_seqs = 602
+
+        batch_size = run_autotune(
+            input_path,
+            model_dir,
+            model_name,
+            cpu,
+            threads,
+            step, 
+            min_batch,
+            max_batch, 
+            sample_seqs)
+
 
     # hypotheticals is input to the function as it updates the 3Di feature
 
@@ -512,6 +543,7 @@ def proteins(
     evalue,
     force,
     database,
+    autotune,
     batch_size,
     sensitivity,
     cpu,
@@ -544,6 +576,7 @@ def proteins(
         "--prefix": prefix,
         "--evalue": evalue,
         "--database": database,
+        "--autotune": autotune,
         "--batch_size": batch_size,
         "--sensitivity": sensitivity,
         "--keep-tmp-files": keep_tmp_files,
@@ -587,6 +620,27 @@ def proteins(
     model_dir = database
     model_name = "Rostlab/ProstT5_fp16"
     checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt" / "model.pt"
+
+
+    if autotune:
+
+        input_path = files("baktfold.features.autotune_data").joinpath("swissprot_5000.fasta.gz")
+
+        step = 20
+        min_batch = 1
+        max_batch = 301
+        sample_seqs = 602
+
+        batch_size = run_autotune(
+            input_path,
+            model_dir,
+            model_name,
+            cpu,
+            threads,
+            step, 
+            min_batch,
+            max_batch, 
+            sample_seqs)
 
     aas = subcommand_predict(
         aas,
@@ -704,6 +758,7 @@ def predict(
     prefix,
     force,
     database,
+    autotune,
     batch_size,
     cpu,
     omit_probs,
@@ -730,6 +785,7 @@ def predict(
         "--force": force,
         "--prefix": prefix,
         "--database": database,
+        "--autotune": autotune,
         "--batch-size": batch_size,
         "--cpu": cpu,
         "--omit-probs": omit_probs,
@@ -796,6 +852,26 @@ def predict(
     model_dir = database
     model_name = "Rostlab/ProstT5_fp16"
     checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt" / "model.pt"
+
+    if autotune:
+
+        input_path = files("baktfold.features.autotune_data").joinpath("swissprot_5000.fasta.gz")
+
+        step = 20
+        min_batch = 1
+        max_batch = 301
+        sample_seqs = 602
+
+        batch_size = run_autotune(
+            input_path,
+            model_dir,
+            model_name,
+            cpu,
+            threads,
+            step, 
+            min_batch,
+            max_batch, 
+            sample_seqs)
 
     hypotheticals = subcommand_predict(
         hypotheticals,
@@ -1083,6 +1159,7 @@ def proteins_predict(
     prefix,
     force,
     database,
+    autotune,
     batch_size,
     cpu,
     omit_probs,
@@ -1107,6 +1184,7 @@ def proteins_predict(
         "--force": force,
         "--prefix": prefix,
         "--database": database,
+        "--autotune": autotune,
         "--batch-size": batch_size,
         "--cpu": cpu,
         "--omit-probs": omit_probs,
@@ -1143,6 +1221,26 @@ def proteins_predict(
     model_dir = database
     model_name = "Rostlab/ProstT5_fp16"
     checkpoint_path = Path(CNN_DIR) / "cnn_chkpnt" / "model.pt"
+
+    if autotune:
+
+        input_path = files("baktfold.features.autotune_data").joinpath("swissprot_5000.fasta.gz")
+
+        step = 20
+        min_batch = 1
+        max_batch = 301
+        sample_seqs = 602
+
+        batch_size = run_autotune(
+            input_path,
+            model_dir,
+            model_name,
+            cpu,
+            threads,
+            step, 
+            min_batch,
+            max_batch, 
+            sample_seqs)
 
     aas = subcommand_predict(
         aas,
@@ -1656,6 +1754,114 @@ def install(
 
     # will check if db is present, and if not, download it
     install_database(database, foldseek_gpu, threads)
+
+@main_cli.command()
+@click.help_option("--help", "-h")
+@click.version_option(get_version(), "--version", "-V")
+@click.pass_context
+@click.option(
+    "-i",
+    "--input",
+    help="Optional path to input file of proteins if you do not want to use the default sample of 5000 Phold DB proteins",
+    type=click.Path()
+)
+@click.option(
+    "--cpu",
+    is_flag=True,
+    help="Use cpus only.",
+)
+@click.option(
+    "-t",
+    "--threads",
+    help="Number of threads",
+    default=1,
+    type=int,
+    show_default=True,
+)
+@click.option(
+    "-d",
+    "--database",
+    type=str,
+    default=None,
+    help="Specific path to installed phold database",
+)
+@click.option(
+    "--min_batch",
+    show_default=True,
+    type=int,
+    default=1,
+    help="Minimum batch size to test",
+)
+@click.option(
+    "--step",
+    show_default=True,
+    type=int,
+    default=10,
+    help="Controls batch size step increment",
+)
+@click.option(
+    "--max_batch",
+    default=251,
+    show_default=True,
+    type=int,
+    help="Maximum batch size to test",
+)
+@click.option(
+    "--sample_seqs",
+    default=500,
+    show_default=True,
+    type=int,
+    help="Number of proteins to subsample from input.",
+)
+def autotune(
+    ctx,
+    input,
+    cpu,
+    threads,
+    database,
+    step,
+    min_batch,
+    max_batch,
+    sample_seqs,
+    **kwargs,
+):
+    """Determines optimal batch size for 3Di prediction with your hardware"""
+
+    params = {
+        "--input": input,
+        "--threads": threads,
+        "--cpu": cpu,
+        "--database": database,
+        "--step": step,
+        "--min_batch": min_batch,
+        "--max_batch": max_batch,
+        "--sample_seqs": sample_seqs,
+    }
+
+    # initial logging etc
+    start_time = begin_baktfold(params, "autotune", no_log=True)
+
+    # check the database is installed
+    database = validate_db(database, DB_DIR, foldseek_gpu=False)
+
+    if input:
+        input_path = input
+    else:
+        input_path = files("baktfold.features.autotune_data").joinpath("swissprot_5000.fasta.gz")
+
+    model_dir = database
+    model_name = "Rostlab/ProstT5_fp16"
+
+    batch_size = run_autotune(
+        input_path,
+        model_dir,
+        model_name,
+        cpu,
+        threads,
+        step, 
+        min_batch,
+        max_batch, 
+        sample_seqs)
 
 
 @click.command()

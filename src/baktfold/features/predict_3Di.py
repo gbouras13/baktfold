@@ -379,9 +379,9 @@ def get_embeddings(
     output_h5_per_residue: Path,
     output_h5_per_protein: Path,
     half_precision: bool,
-    max_residues: int = 3000,
-    max_seq_len: int = 1000,
-    max_batch: int = 100,
+    max_residues: int = 100000,
+    max_seq_len: int = 30000,
+    max_batch: int = 10000,
     cpu: bool = False,
     output_probs: bool = True,
     save_per_residue_embeddings: bool = False,
@@ -420,11 +420,15 @@ def get_embeddings(
     """
 
     predictions = {}
+    batch_predictions = {}
 
     if save_per_residue_embeddings:
         embeddings_per_residue = {}
+        batch_embeddings_per_residue = {}
     if save_per_protein_embeddings:
         embeddings_per_protein = {}
+        batch_embeddings_per_protein = {}
+
 
     prostt5_prefix = "<AA2fold>"
 
@@ -445,28 +449,24 @@ def get_embeddings(
 
     fail_ids = []
 
-    # for k, v in cds_dict.items():
-    #     #logger.info(f"key: {k}, value: {v}")
-    #     length = len(v)
-    #     if length == 0:
-    #         logger.info(f"key: {k}, value: {v}")
-
-    # Remove entries where the value list has length 0
-    # safe to just remove them - they won't be made into the FS database later on
-
     for k, v in list(cds_dict.items()):
         if len(v) == 0:
             logger.info(f"Skipping empty CDS entry as it has no amino acid string associated (likely pseudo): key={k}")
             del cds_dict[k]
 
-    # sort sequences by length to trigger OOM at the beginning
-    cds_dict = dict(
-        sorted(cds_dict.items(), key=lambda kv: len(kv[1][0]), reverse=True)
-    )
+    # sort sequences by length
+
+    
+
+    original_keys = list(cds_dict.keys())
+        # --- sort once ---
+    cds_dict.sort(key=lambda x: x[1], reverse=True)
 
     batch = list()
-    for seq_idx, (pdb_id, seq) in tqdm(enumerate(cds_dict.items(), 1), total=len(cds_dict), desc=f"Predicting 3Di"):
-    # for seq_idx, (pdb_id, seq) in enumerate(cds_dict.items(), 1):
+
+    batch = list()
+    for seq_idx, (pdb_id, seq) in enumerate(tqdm(cds_dict, desc=f"Predicting 3Di"), 1):
+
         # replace non-standard AAs
         seq = seq.replace("U", "X").replace("Z", "X").replace("O", "X")
         seq_len = len(seq)
@@ -510,7 +510,6 @@ def get_embeddings(
                     fail_ids.append(id)
                 continue
 
-            
 
             # ProtT5 appends a special tokens at the end of each sequence
             # Mask this also out during inference while taking into account the prostt5 prefix
@@ -577,12 +576,12 @@ def get_embeddings(
                             ]
 
                             if save_per_residue_embeddings:
-                                embeddings_per_residue[identifier] = (
+                                batch_embeddings_per_residue[identifier] = (
                                     emb.detach().cpu().numpy().squeeze()
                                 )
 
                             if save_per_protein_embeddings:
-                                embeddings_per_protein[identifier] = (
+                                batch_embeddings_per_protein[identifier] = (
                                     emb.mean(dim=0).detach().cpu().numpy().squeeze()
                                 )
 
@@ -601,16 +600,16 @@ def get_embeddings(
 
                     if output_probs:  # if you want the per-residue probs
                         all_prob = probabilities[batch_idx, :, 0:s_len]
-                        predictions[identifier] = (
+                        batch_predictions[identifier] = (
                             pred,
                             mean_prob,
                             all_prob,
                         )
                     else:
-                        predictions[identifier] = (pred, mean_prob, None)
+                        batch_predictions[identifier] = (pred, mean_prob, None)
 
                     try:
-                        len(predictions[identifier][0])
+                        len(batch_predictions[identifier][0])
                     except:
                         logger.warning(
                             f"{identifier} prediction has length 0"
@@ -618,10 +617,24 @@ def get_embeddings(
                         fail_ids.append(identifier)
                         continue
 
-                    if s_len != len(predictions[identifier][0]):
+                    if s_len != len(batch_predictions[identifier][0]):
                         logger.warning(
-                            f"Length mismatch for {identifier}: is:{len(predictions[identifier][0])} vs should:{s_len}"
+                            f"Length mismatch for {identifier}: is:{len(batch_predictions[identifier][0])} vs should:{s_len}"
                         )
+
+                    for k in original_keys:
+                        if k in batch_predictions:
+                            predictions[k] = batch_predictions[k]
+                
+                    if save_per_residue_embeddings:
+                        for k in original_keys:
+                            if k in batch_predictions:
+                                embeddings_per_residue[k] = batch_embeddings_per_residue[k]
+
+                    if save_per_protein_embeddings:
+                        for k in original_keys:
+                            if k in batch_predictions:
+                                embeddings_per_protein[k] = batch_embeddings_per_protein[k]
 
             except IndexError:
                 logger.warning(

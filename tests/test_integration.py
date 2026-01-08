@@ -134,6 +134,12 @@ def test_run(gpu_available, threads, nvidia):
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
 
+def test_run_autotune(gpu_available, threads):
+    """test baktfold run with --autotune"""
+    cmd = f"baktfold run -i {input_json} -o {run_dir} -t {threads} -d {database_dir} -f --autotune"
+    if gpu_available is False:
+        cmd = f"{cmd} --cpu"
+    exec_command(cmd)
 
 def test_run_all(gpu_available, threads, nvidia):
     """test baktfold run on all proteins not just hyps with -a"""
@@ -271,6 +277,26 @@ def test_proteins_compare_cif(gpu_available, threads, nvidia):
         cmd = f"{cmd} --foldseek-gpu" 
     exec_command(cmd)
 
+
+def test_autotune(gpu_available, threads, nvidia):
+    """test autotune"""
+
+    if gpu_available:
+        min_batch = 1
+        sample_seqs = 602
+        max_batch = 301
+        step = 20
+    else:
+        min_batch = 1
+        sample_seqs = 10
+        max_batch = 10
+        step = 9
+
+    cmd = f"baktfold autotune -t {threads} -d {database_dir}  --min_batch {min_batch}  --sample_seqs {sample_seqs} --max_batch {max_batch} --step {step}"
+    if gpu_available is False:
+        cmd = f"{cmd} --cpu"
+
+    exec_command(cmd)
 
 
 
