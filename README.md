@@ -7,7 +7,7 @@
 
 
 # baktfold
-Rapid &amp; standardized annotation of bacterial genomes, MAGs &amp; plasmids using protein structural information
+Rapid &amp; standardized annotation of bacterial genomes, MAGs &amp; plasmids using protein structural information 
 
 `baktfold` is a sensitive annotation tool for bacterial genomes, MAGs &amp; plasmids genomes using protein structural homology. 
 
