@@ -24,8 +24,6 @@ plugins:
         python:
           options:
             docstring_style: "google"
-  - mkdocs-autorefs:
-      link_titles: auto   # required attribute
 
 markdown_extensions:
   - pymdownx.highlight:
