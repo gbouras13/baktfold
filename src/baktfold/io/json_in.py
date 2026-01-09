@@ -21,6 +21,21 @@ import baktfold.bakta.config as cfg
 # import baktfold.plot as plot
 
 def parse_json_input(input_path, faa_path, all_proteins):
+    """
+    Parses genome annotations from input JSON file.
+
+    Args:
+      input_path (str): Path to input JSON file.
+      faa_path (str): Path to output file for hypothetical proteins.
+      all_proteins (bool): Whether to keep all proteins or only hypothetical ones.
+
+    Returns:
+      tuple: A tuple containing the data, features, and whether there are duplicate locus tags.
+
+    Examples:
+      >>> parse_json_input('input.json', 'hypotheticals.faa', False)
+      (data, features, False)
+    """
 
     ############################################################################
     # Checks and configurations

@@ -36,6 +36,18 @@ RE_GENE_SYMBOL = re.compile(r'[a-z]{3}[A-Z][0-9]?')
 
 
 def combine_annotation(feature: dict):
+    """
+    Combines annotation information from different sources into a single feature.
+
+    Args:
+      feature (dict): The feature to combine annotation for.
+
+    Returns:
+      None
+
+    Examples:
+      >>> combine_annotation(feature)
+    """
 
 
     ups = feature.get('ups', None)
@@ -170,6 +182,18 @@ def combine_annotation(feature: dict):
 
 
 def calc_annotation_score(orf:dict) -> int:
+    """
+    Calculates the annotation score for a given ORF.
+
+    Args:
+      orf (dict): The ORF to calculate the annotation score for.
+
+    Returns:
+      int: The annotation score for the given ORF.
+
+    Examples:
+      >>> calc_annotation_score(orf)
+    """
     score = 0
     if(orf.get('gene', None)):
         score += 1
@@ -179,6 +203,18 @@ def calc_annotation_score(orf:dict) -> int:
 
 
 def extract_protein_gene_symbol(product: str) -> str:
+    """
+    Extracts a valid gene symbol from a protein name.
+
+    Args:
+      product (str): The protein name to extract a gene symbol from.
+
+    Returns:
+      str: The extracted gene symbol.
+
+    Examples:
+      >>> extract_protein_gene_symbol(product)
+    """
     gene_symbols = []
     for part in product.split(' '):  # try to extract valid gene symbols
         m = RE_GENE_SYMBOL.fullmatch(part)
@@ -202,6 +238,18 @@ def extract_protein_gene_symbol(product: str) -> str:
 
 
 def revise_cds_gene_symbols(raw_genes: Sequence[str]):
+    """
+    Revises a list of gene symbols to ensure they are valid.
+
+    Args:
+      raw_genes (Sequence[str]): The list of gene symbols to revise.
+
+    Returns:
+      list: The revised list of gene symbols.
+
+    Examples:
+      >>> revise_cds_gene_symbols(raw_genes)
+    """
     revised_genes = set()
     for gene in raw_genes:
         old_gene = gene
@@ -356,6 +404,18 @@ def revise_cds_product(product: str):
 
 
 def mark_as_hypothetical(feature: dict):
+    """
+    Marks a feature as hypothetical.
+
+    Args:
+      feature (dict): The feature to mark as hypothetical.
+
+    Returns:
+      None
+
+    Examples:
+      >>> mark_as_hypothetical(feature)
+    """
     # no need to actually print this I think
     # logger.info(
     #     f'marked as hypothetical: seq={feature['sequence']}, start={feature['start']}, stop={feature['stop']}, strand={feature['strand']}'
@@ -366,12 +426,42 @@ def mark_as_hypothetical(feature: dict):
     feature['product'] = bc.HYPOTHETICAL_PROTEIN
 
 def unmark_as_hypothetical(feature: dict):
+    """
+    Removes the hypothetical key from the given feature dictionary.
+
+    Args:
+      feature (dict): The feature dictionary to remove the hypothetical key from.
+
+    Returns:
+      None
+
+    Examples:
+      >>> feature = {'sequence': 'ATG', 'start': 1, 'stop': 3, 'strand': '+'}
+      >>> unmark_as_hypothetical(feature)
+      >>> feature
+      {'sequence': 'ATG', 'start': 1, 'stop': 3, 'strand': '+'}
+    """
     # logger.info(
     #     f'unmarked as hypothetical: seq={feature['sequence']}, start={feature['start']}, stop={feature['stop']}, strand={feature['strand']}'
     # )
     feature.pop('hypothetical', None)  # remove completely
 
 def mark_as_baktfold(feature: dict):
+    """
+    Adds the baktfold key to the given feature dictionary.
+
+    Args:
+      feature (dict): The feature dictionary to add the baktfold key to.
+
+    Returns:
+      None
+
+    Examples:
+      >>> feature = {'sequence': 'ATG', 'start': 1, 'stop': 3, 'strand': '+'}
+      >>> mark_as_baktfold(feature)
+      >>> feature
+      {'sequence': 'ATG', 'start': 1, 'stop': 3, 'strand': '+', 'baktfold': True}
+    """
     # logger.info(
     #     f'baktfold found hit(s) for: seq={feature['sequence']}, start={feature['start']}, stop={feature['stop']}, strand={feature['strand']}'
     # )
@@ -459,6 +549,21 @@ def mark_as_baktfold(feature: dict):
 
 
 def annotate_aa(aas: Sequence[dict]):
+    """
+    Combines IPS and PSC annotations and marks hypotheticals.
+
+    Args:
+      aas (Sequence[dict]): A sequence of amino acid dictionaries to annotate.
+
+    Returns:
+      None
+
+    Examples:
+      >>> aas = [{'sequence': 'ATG', 'start': 1, 'stop': 3, 'strand': '+'}]
+      >>> annotate_aa(aas)
+      >>> aas
+      [{'sequence': 'ATG', 'start': 1, 'stop': 3, 'strand': '+'}]
+    """
 
     print('\tcombine annotations and mark hypotheticals...')
 

@@ -28,6 +28,19 @@ from baktfold.utils.constants import CNN_DIR
 
 # Convolutional neural network (two convolutional layers)
 class CNN(nn.Module):
+    """
+    Convolutional neural network (two convolutional layers).
+
+    Args:
+      nn.Module: The base class for all neural network modules.
+
+    Returns:
+      None.
+
+    Examples:
+      >>> CNN()
+      None
+    """
     def __init__(self):
         """
         Initialize the Convolutional Neural Network (CNN) model.

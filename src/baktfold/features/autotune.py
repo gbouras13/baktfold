@@ -52,6 +52,27 @@ def autotune_batching_real_data(
     max_bs=100,
     step=5 # step size
 ):
+    """
+    Autotunes the batch size for a given model and set of sequences.
+
+    Args:
+      model_dir (str): The directory where the model is stored.
+      model_name (str): The name of the model.
+      cpu (bool): Whether to use the CPU or not.
+      threads (int): The number of threads to use.
+      probe_seqs (list): A list of sequences to use for probing.
+      start_bs (int): The starting batch size to use.
+      max_bs (int): The maximum batch size to use.
+      step (int): The step size to use when increasing the batch size.
+
+    Returns:
+      int: The optimal batch size.
+      int: The maximum number of residues per batch.
+
+    Examples:
+      >>> autotune_batching_real_data("model_dir", "model_name", True, 4, ["ATCG", "GCTA"], 1, 100, 5)
+      (10, 100)
+    """
     
     model, tokenizer = get_T5_model(model_dir, model_name, cpu, threads)
     model.eval()
@@ -166,6 +187,27 @@ def run_autotune(
     min_batch,
     max_batch, 
     sample_seqs):
+    """
+    Runs the batch size autotuning process.
+
+    Args:
+      input_path (str): The path to the input file.
+      model_dir (str): The directory where the model is stored.
+      model_name (str): The name of the model.
+      cpu (bool): Whether to use the CPU or not.
+      threads (int): The number of threads to use.
+      step (int): The step size to use when increasing the batch size.
+      min_batch (int): The minimum batch size to use.
+      max_batch (int): The maximum batch size to use.
+      sample_seqs (int): The number of sequences to sample for probing.
+
+    Returns:
+      int: The optimal batch size.
+
+    Examples:
+      >>> run_autotune("input_path", "model_dir", "model_name", True, 4, 5, 1, 100, 10)
+      10
+    """
 
     # Dictionary to store the records
     cds_dict = {}

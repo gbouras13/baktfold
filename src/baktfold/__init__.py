@@ -242,6 +242,16 @@ def bakta_options(func):
 @click.help_option("--help", "-h")
 @click.version_option(get_version(), "--version", "-V")
 def main_cli():
+    """
+    Main command line interface for baktfold.
+
+    Returns:
+      None
+
+    Examples:
+      >>> main_cli()
+      None
+    """
     1 + 1
 
 
@@ -1875,6 +1885,16 @@ main_cli.add_command(citation)
 
 
 def main():
+    """
+    Main function for baktfold.
+
+    Returns:
+      None
+
+    Examples:
+      >>> main()
+      None
+    """
     main_cli()
 
 

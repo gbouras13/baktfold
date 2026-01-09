@@ -15,11 +15,43 @@ wrapper script over all io output submodules
 """
 
 def write_foldseek_tophit(tophit_df: pd.DataFrame, pdb_tophit_path: Path):
+    """
+    Writes the foldseek tophits to a given path.
+
+    Args:
+      tophit_df (pd.DataFrame): The dataframe containing the foldseek tophits.
+      pdb_tophit_path (Path): The path to save the foldseek tophits to.
+
+    Returns:
+      None.
+
+    Examples:
+      >>> write_foldseek_tophit(tophit_df, pdb_tophit_path)
+    """
     logger.info(f"Saving foldseek tophits to {pdb_tophit_path}")
     tophit_df.to_csv(pdb_tophit_path, sep="\t", index=False)
 
 
 def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequence: Sequence[dict] , output: Path, prefix: str, custom_db: bool, euk: bool, has_duplicate_locus: bool):
+    """
+    Writes the bakta outputs to a given path.
+
+    Args:
+      data (dict): The dictionary containing the bakta outputs.
+      features (Sequence[dict]): The sequence of dictionaries containing the features.
+      features_by_sequence (Sequence[dict]): The sequence of dictionaries containing the features by sequence.
+      output (Path): The path to save the bakta outputs to.
+      prefix (str): The prefix to use for the bakta outputs.
+      custom_db (bool): A boolean indicating whether a custom database is used.
+      euk (bool): A boolean indicating whether the sequences are eukaryotic.
+      has_duplicate_locus (bool): A boolean indicating whether there are duplicate loci.
+
+    Returns:
+      None.
+
+    Examples:
+      >>> write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus)
+    """
 
     #logger.info(f'selected features={len(features)}')
 
@@ -109,6 +141,21 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
 
 
 def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str, custom_db: bool):
+    """
+    Writes the bakta protein outputs to a given path.
+
+    Args:
+      aas (Sequence[dict]): The sequence of dictionaries containing the amino acids.
+      output (Path): The path to save the bakta protein outputs to.
+      prefix (str): The prefix to use for the bakta protein outputs.
+      custom_db (bool): A boolean indicating whether a custom database is used.
+
+    Returns:
+      None.
+
+    Examples:
+      >>> write_bakta_proteins_outputs(aas, output, prefix, custom_db)
+    """
 
     
     annotations_path: Path = Path(output) / f"{prefix}.tsv"

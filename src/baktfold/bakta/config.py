@@ -298,18 +298,59 @@ def setup(args):
 
 
 def check_readability(file_name: str, file_Path: Path):
+    """
+    Checks if a file is readable.
+
+    Args:
+      file_name (str): The name of the file to check.
+      file_Path (Path): The path to the file to check.
+
+    Returns:
+      None.
+
+    Examples:
+      >>> check_readability('file', Path('path/to/file'))
+      None
+    """
     if(not os.access(str(file_Path), os.R_OK)):
         log.error('%s file not readable! path=%s', file_name, file_Path)
         sys.exit(f'ERROR: {file_name} file ({file_Path}) not readable!')
 
 
 def check_content_size(file_name: str, file_path: Path):
+    """
+    Checks if a file is empty.
+
+    Args:
+      file_name (str): The name of the file to check.
+      file_path (Path): The path to the file to check.
+
+    Returns:
+      None.
+
+    Examples:
+      >>> check_content_size('file', Path('path/to/file'))
+      None
+    """
     if(file_path.stat().st_size == 0):
         log.error('empty %s file! path=%s', file_name, file_path)
         sys.exit(f'ERROR: {file_name} file ({file_path}) is empty!')
 
 
 def check_threads(args: Namespace) -> int:
+    """
+    Checks the number of threads to use.
+
+    Args:
+      args (Namespace): The arguments passed to the program.
+
+    Returns:
+      int: The number of threads to use.
+
+    Examples:
+      >>> check_threads(args)
+      4
+    """
     global threads
     threads = args.threads
 
@@ -360,6 +401,19 @@ def check_output_path(output: str, force_override: bool) -> Path:
 
 
 def check_db_path(args: Namespace) -> Path:
+    """
+    Checks the path to the database.
+
+    Args:
+      args (Namespace): The arguments passed to the program.
+
+    Returns:
+      Path: The path to the database.
+
+    Examples:
+      >>> check_db_path(args)
+      Path('path/to/db')
+    """
     global db_path
     env = os.environ.copy()
     if(args.db):
@@ -402,6 +456,19 @@ def check_db_path(args: Namespace) -> Path:
 
 
 def check_user_proteins(args: Namespace):
+    """
+    Checks the path to the user proteins file.
+
+    Args:
+      args (Namespace): The arguments passed to the program.
+
+    Returns:
+      Path: The path to the user proteins file.
+
+    Examples:
+      >>> check_user_proteins(args)
+      Path('path/to/user_proteins')
+    """
     global user_proteins
     user_proteins = args.proteins
     if(user_proteins is not None):
@@ -422,6 +489,19 @@ def check_user_proteins(args: Namespace):
 
 
 def check_tmp_path(args: Namespace) -> Path:
+    """
+    Checks the path to the temporary directory.
+
+    Args:
+      args (Namespace): The arguments passed to the program.
+
+    Returns:
+      Path: The path to the temporary directory.
+
+    Examples:
+      >>> check_tmp_path(args)
+      Path('path/to/tmp_dir')
+    """
     global tmp_path
     if(args.tmp_dir is not None):
         tmp_path = Path(args.tmp_dir)

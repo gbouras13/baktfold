@@ -203,6 +203,35 @@ def write_euk_cds_feature(fh, seq_id, feat):
         )
 
 def write_euk_repeat_region_feature(fh, seq_id, feat):
+    """
+    Writes a repeat region feature to a file.
+
+    Args:
+      fh (file): The file handle to write to.
+      seq_id (str): The sequence ID.
+      feat (dict): A dictionary containing the feature information.
+
+    Returns:
+      None
+
+    Examples:
+      >>> write_euk_repeat_region_feature(fh, 'DS572673.1', {
+          "type": "repeat_region",
+          "sequence": "DS571531.1",
+          "start": 1470,
+          "stop": 1716,
+          "strand": "?",
+          "family": "LINE2",
+          "rpt_type": null,
+          "repeat_unit": null,
+          "product": null,
+          "nt": "AATAAAATCATATCAGAAATAAAAAGAATGAAAATAAACAAATTAAAGAAAATAATTATAAAATTAATAAACGATATTTAAATGAAAGAAAATAGAGAATATGTAATAAGTACAAATGGTTCATTCATTAATAAGAAATTAACAATAATAAAATAGAGAATATTGATTATAAAAAGAAATATATTTCTCAAAACAGTAGAGATACAAAAAGAATAGATATGAAATAAATATTAATTCTAAAATACTC",
+          "id": "EHICP_3230",
+          "db_xrefs": [
+              "SO:0000657"
+          ]
+      })
+    """
 
     start = int(feat['start'])
     stop  = int(feat['stop'])
@@ -761,6 +790,25 @@ def encode_attribute(product: str) -> str:
 
 
 def encode_annotations(annotations: Dict[str, Union[str, Sequence[str]]]) -> str:
+    """
+    Encodes annotations into a string.
+
+    Args:
+      annotations (dict): A dictionary containing the annotations.
+
+    Returns:
+      str: The encoded annotations.
+
+    Examples:
+      >>> encode_annotations({
+          'ID': 'EHICP_3230_sigpep',
+          'Name': 'signal peptide',
+          'product': 'signal peptide',
+          'score': 0.5,
+          'Parent': 'EHICP_3230'
+      })
+      'ID=EHICP_3230_sigpep;Name=signal peptide;product=signal peptide;score=0.5;Parent=EHICP_3230'
+    """
     annotation_strings = []
     for key, val in annotations.items():
         if(type(val) is list):
@@ -774,6 +822,28 @@ def encode_annotations(annotations: Dict[str, Union[str, Sequence[str]]]) -> str
 
 
 def write_signal_peptide(fh, feat: dict):  # <1.10.0 compatibility
+    """
+    Writes a signal peptide feature to a file.
+
+    Args:
+      fh (file): The file handle to write to.
+      feat (dict): A dictionary containing the feature information.
+
+    Returns:
+      None
+
+    Examples:
+      >>> write_signal_peptide(fh, {
+          'locus': 'EHICP_3230',
+          'sequence': 'DS571531.1',
+          'strand': '+',
+          'signal_peptide': {
+              'start': 1,
+              'stop': 20,
+              'score': 0.5
+          }
+      })
+    """
     sig_peptide = feat[bc.FEATURE_SIGNAL_PEPTIDE]
     annotations = {
         'ID': f"{feat['locus']}_sigpep",

@@ -15,20 +15,54 @@ class OrderedCommands(click.Group):
     """This class will preserve the order of subcommands, which is useful when printing --help"""
 
     def list_commands(self, ctx: click.Context):
+        """
+        Returns a list of subcommands in the order they were added.
+
+        Args:
+          ctx (click.Context): The click context.
+
+        Returns:
+          list: A list of subcommands in the order they were added.
+        """
         return list(self.commands)
 
 
 def baktfold_base(rel_path):
+    """
+    Returns the absolute path to the given relative path.
+
+    Args:
+      rel_path (str): The relative path to the file.
+
+    Returns:
+      str: The absolute path to the file.
+    """
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), rel_path)
 
 
 def get_version():
+    """
+    Returns the version number from the VERSION file.
+
+    Returns:
+      str: The version number.
+    """
     with open(baktfold_base("VERSION"), "r") as f:
         version = f.readline()
     return version
 
 
 def echo_click(msg, log=None):
+    """
+    Prints a message to stdout and optionally to a log file.
+
+    Args:
+      msg (str): The message to print.
+      log (str): The path to the log file.
+
+    Returns:
+      None
+    """
     click.echo(msg, nl=False, err=True)
     if log:
         with open(log, "a") as lo:
@@ -36,6 +70,12 @@ def echo_click(msg, log=None):
 
 
 def print_citation():
+    """
+    Prints the contents of the CITATION file to stdout.
+
+    Returns:
+      None
+    """
     with open(baktfold_base("CITATION"), "r") as f:
         for line in f:
             echo_click(line)
@@ -118,6 +158,12 @@ def end_baktfold(start_time: float, subcommand: str) -> None:
 
 # need the logo here eventually
 def print_splash():
+    """
+    Prints the splash screen to stdout.
+
+    Returns:
+      None
+    """
     click.echo(
         """\b
 
@@ -235,6 +281,15 @@ def get_type_rank(f):
 
 
 def sort_euk_feature_key(f):
+    """
+    Sorts a feature dictionary by start, locus, type rank, and stop.
+
+    Args:
+      f (dict): The feature dictionary.
+
+    Returns:
+      tuple: A tuple of the sorted values.
+    """
     start = f.get('start', float('inf'))
     stop = f.get('stop', float('inf'))
     locus = f.get('locus')

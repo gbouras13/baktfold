@@ -76,6 +76,22 @@ def export_sequences(sequences: Sequence[dict], fasta_path: Path, description: b
 
 
 def wrap_sequence(sequence: str):
+    """
+    Wraps a sequence into lines of 60 characters.
+
+    Args:
+      sequence (str): The sequence to wrap.
+
+    Returns:
+      str: The wrapped sequence.
+
+    Examples:
+      >>> wrap_sequence('ARNDCQEGHILKMFPOSUTWYVBZXJ')
+      'ARNDCQEGHILKMFPOSUTWYVBZXJ\\n'
+
+    Notes:
+      This function is used to format sequences in FASTA files.
+    """
     lines = []
     for i in range(0, len(sequence), FASTA_LINE_WRAPPING):
         lines.append(sequence[i:i + FASTA_LINE_WRAPPING])

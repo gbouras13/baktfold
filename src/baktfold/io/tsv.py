@@ -159,6 +159,21 @@ def write_feature_inferences(sequences: Sequence[dict], features_by_sequence: Di
     return
 
 def map_aa_columns(feat: dict, custom_db: bool, has_duplicate_locus: bool) -> Sequence[str]:
+    """
+    Maps amino acid columns.
+
+    Args:
+      feat (dict): The dictionary containing the features.
+      custom_db (bool): A boolean indicating whether a custom database is used.
+      has_duplicate_locus (bool): A boolean indicating whether there are duplicate loci.
+
+    Returns:
+      Sequence[str]: A sequence of strings containing the mapped amino acid columns.
+
+    Examples:
+      >>> map_aa_columns({'locus': 'ABC', 'length': 100, 'product': 'protein'}, False, False)
+      ['ABC', '100', 'protein', '', '', '', '']
+    """
     # Ensure length exists
     if 'length' not in feat:
         feat['length'] = int(len(feat['nt']) / 3)
@@ -167,6 +182,20 @@ def map_aa_columns(feat: dict, custom_db: bool, has_duplicate_locus: bool) -> Se
 
     # Extract dbxref groups once
     def join_filtered(prefix: str, replacement: str = None):
+        """
+    Joins filtered database cross-references.
+
+    Args:
+      prefix (str): The prefix to filter by.
+      replacement (str): The string to replace the prefix with. Defaults to None.
+
+    Returns:
+      str: The joined filtered database cross-references.
+
+    Examples:
+      >>> join_filtered('swissprot', 'afdb_v6:')
+      'afdb_v6:'
+    """
         if replacement is None:
             replacement = prefix
         return ','.join(

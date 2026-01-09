@@ -253,6 +253,19 @@ def download(db_url: str, tarball_path: Path, logdir: Path, threads: int) -> Non
     ExternalTool.run_download(download_db)
 
 def download_requests(db_url: str, tarball_path: Path):
+    """
+    Downloads a file from a given URL using the requests library.
+
+    Args:
+      db_url (str): The URL of the file to download.
+      tarball_path (Path): The path to save the downloaded file.
+
+    Returns:
+      None
+
+    Examples:
+      >>> download_requests("https://zenodo.org/records/17347516/files/baktfold_db.tar.gz", Path("baktfold_db.tar.gz"))
+    """
 
     headers = {
         "User-Agent": f"baktfold/{CURRENT_DB_VERSION} (contact: george.bouras@adelaide.edu.au)"
@@ -495,6 +508,18 @@ def validate_db(database: str, default_dir: str, foldseek_gpu: bool) -> Path:
     return database
 
 def foldseek_makepaddedseqdb(db_dir: Path) -> None:
+    """
+    Runs the Foldseek makepaddedseqdb command on a given database directory.
+
+    Args:
+      db_dir (Path): The path to the database directory.
+
+    Returns:
+      None
+
+    Examples:
+      >>> foldseek_makepaddedseqdb(Path("baktfold_db"))
+    """
 
     dbs = ["AFDBClusters", "pdb", "cath", "swissprot"]
     logdir = Path(db_dir) / "logdir"

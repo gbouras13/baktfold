@@ -212,6 +212,17 @@ def lookup_custom(features: Sequence[dict], baktfold_db: Path, custom_annotation
 
 
 def fetch_sql_description(conn, source, accession):
+    """
+    Fetches the product description for a given source and accession from a sqlite3 database.
+
+    Args:
+      conn (sqlite3.Connection): The connection to the sqlite3 database.
+      source (str): The source of the accession.
+      accession (str): The accession to fetch the description for.
+
+    Returns:
+      str: The product description for the given source and accession.
+    """
     table_map = {
         'swissprot': 'swissprot',
         'afdb': 'afdbclusters',
@@ -298,6 +309,16 @@ def lookup_sql(features: Sequence[dict], baktfold_db: Path, threads: int):
     return features
 
 def fetch_db_pscc_result(conn: sqlite3.Connection, uniref50_id: str):
+    """
+    Fetches the PSCC result for a given uniref50_id from a sqlite3 database.
+
+    Args:
+      conn (sqlite3.Connection): The connection to the sqlite3 database.
+      uniref50_id (str): The uniref50_id to fetch the PSCC result for.
+
+    Returns:
+      tuple: The PSCC result for the given uniref50_id.
+    """
     c = conn.cursor()
     c.execute('select * from pscc where uniref50_id=?', (uniref50_id,))
     rec = c.fetchone()

@@ -79,6 +79,20 @@ def get_genbank(genbank: Path) -> dict:
     logger.info(f"Checking if input {genbank} is a Genbank format file")
     logger.info(f"If so, also detecting the likely input style out of Pharokka, Bakta and NCBI Refseq style.")
     def parse_records(handle):
+        """
+    Parses a genbank file and returns a list of SeqRecords.
+
+    Args:
+      file_path (str): The path to the genbank file to parse.
+      file_format (str): The format of the genbank file. Defaults to 'genbank'.
+
+    Returns:
+      list: A list of SeqRecords parsed from the genbank file.
+
+    Examples:
+      >>> parse_records('example.gb')
+      [SeqRecord(seq=Seq('ATGC'), id='example', name='example', description='example', dbxrefs=[]), ...]
+    """
         try:
             records = list(SeqIO.parse(handle, "gb"))
             if not records:
@@ -284,10 +298,38 @@ def get_fasta_run_pyrodigal_gv(input: Path, threads: int) -> dict:
     orf_finder = pyrodigal_gv.ViralGeneFinder(meta=True)
 
     def _find_genes(record):
+        """
+    Finds all genes in a given SeqRecord.
+
+    Args:
+      record (SeqRecord): The SeqRecord to search for genes in.
+
+    Returns:
+      list: A list of SeqFeatures representing the genes found in the SeqRecord.
+
+    Examples:
+      >>> _find_genes(SeqRecord(seq=Seq('ATGC'), id='example', name='example', description='example', dbxrefs=[]))
+      [SeqFeature(FeatureLocation(ExactPosition(0), ExactPosition(3), strand=1), type='gene', qualifiers={'locus_tag': ['example_1']}), ...]
+    """
         genes = orf_finder.find_genes(str(record.seq))
         return (record.id, record.seq, genes)
 
     def run_pool(pool, records):
+        """
+    Runs a multiprocessing pool to process a list of SeqRecords.
+
+    Args:
+      records (list): A list of SeqRecords to process.
+      func (function): The function to apply to each SeqRecord.
+      num_processes (int): The number of processes to use in the pool. Defaults to the number of CPUs on the system.
+
+    Returns:
+      list: A list of results from applying the function to each SeqRecord.
+
+    Examples:
+      >>> run_pool([SeqRecord(seq=Seq('ATGC'), id='example', name='example', description='example', dbxrefs=[]), ...], _find_genes, 4)
+      [[SeqFeature(FeatureLocation(ExactPosition(0), ExactPosition(3), strand=1), type='gene', qualifiers={'locus_tag': ['example_1']}), ...], ...]
+    """
         for record_id, record_seq, genes in pool.imap(_find_genes, records):
             i = 0
             all_features = []
