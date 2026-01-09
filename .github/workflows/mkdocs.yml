@@ -24,7 +24,7 @@ jobs:
           pip install "mkdocs==1.6.0" \
                       "mkdocs-material" \
                       "mkdocstrings==0.22.0" \
-                      "mkdocstrings-python==1.3.*" \
-                      "mkdocs-autorefs>=0.7.0"
+                      "mkdocstrings-python==1.3.*"
+          pip uninstall -y mkdocs-autorefs
       - run: mkdocs gh-deploy --force
         working-directory: docs
