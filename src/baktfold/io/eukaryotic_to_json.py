@@ -864,6 +864,88 @@ def convert_ncrna_feature(feature, rec, id):
 
     return ncrna_entry
 
+
+
+def convert_misc_feature(feature, rec, id):
+    """
+    Convert a misc feature to a Bakta-style feature.
+
+    Parameters:
+        feature: Bio.SeqFeature
+            The mRNA feature from the GBK.
+        rec: Bio.SeqRecord
+            The record containing the sequence.
+
+    Returns:
+        dict: Bakta-style misc_RNA feature.
+    """
+
+    seq = str(rec.seq)
+
+    # Extract location
+    strand = "+" if feature.location.strand == 1 else "-"
+
+    if strand == "-":  # negative strand
+        start = int(feature.location.end)     
+        stop  = int(feature.location.start) - 1  
+    else:  # positive strand
+        start = int(feature.location.start) + 1  
+        stop  = int(feature.location.end)        
+
+    if feature.location.__class__.__name__ == "CompoundLocation":
+        # Multi-exon (join)
+        starts = []
+        stops = []
+        for part in feature.location.parts:
+            if strand == -1:
+                # For minus strand, 5' is end, 3' is start
+                starts.append(int(part.end))
+                stops.append(int(part.start) - 1)
+            else:
+                starts.append(int(part.start) + 1)
+                stops.append(int(part.end))
+
+    else:
+        starts = None
+        stops = None
+
+    qualifiers = feature.qualifiers
+
+    misc_feature_entry = {
+        "type": "misc_feature",
+        "sequence": rec.id,
+        "start": start,
+        "stop": stop,
+        "starts": starts,
+        "stops": stops,
+        "strand": strand,
+        "gene": qualifiers.get("gene", [None])[0],
+        "gene_synonym": qualifiers.get("gene_synonym", [None])[0],
+        "note": qualifiers.get("note", [None])[0],
+        "evidence": qualifiers.get("evidence", [None])[0],
+        "function": qualifiers.get("function", [None])[0],
+        "db_xref": qualifiers.get("db_xref", [None])[0],
+        "id": id,
+    }
+
+
+    #  misc_feature    join(78488668..78488692,78499322..78499359)
+    #                  /gene="Mogat1"
+    #                  /gene_synonym="0610030A14Rik; 1110064N14Rik; Dgat2l;
+    #                  Dgat2l1; mDC2; MGAT1; WI1-2612I11.1"
+    #                  /note="propagated from UniProtKB/Swiss-Prot (Q91ZV4.2);
+    #                  transmembrane region"
+
+    #  misc_feature    78179419..78180585
+    #                  /standard_name="Pax3 upstream hypaxial enhancer"
+    #                  /note="Region: biological region; Derived by automated
+    #                  computational analysis using gene prediction method:
+    #                  RefSeqFE."
+    #                  /function="regulatory_interactions: LOC107980439 | Pax3"
+    #                  /db_xref="GeneID:107980442"    
+
+    return misc_feature_entry
+
 def build_bakta_sequence_entry(rec):
     """
     Convert a  SeqRecord into a Bakta-style sequence entry.
