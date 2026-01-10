@@ -567,6 +567,60 @@ def convert_utr_region_feature(feature, rec, id, three):
     #                  /note="ID:SCF055_s1083_g24060.utr5p1;
     #                  source:feature"
 
+def convert_misc_rna_feature(feature, rec, id):
+    """
+    Convert a GenBank misc_rna feature to a simplified Bakta-style 'misc_rna' feature.
+
+    Parameters:
+        feature: Bio.SeqFeature
+            The assembly_gap feature from the GBK.
+        rec: Bio.SeqRecord
+            The full GenBank record containing the sequence.
+
+    Returns:
+        dict: Simplified Bakta-style gap feature.
+
+    """
+
+        # from ensemble genomes
+        # misc_RNA        complement(437333..442742)
+        #             /gene="YPL060C-A"
+        #             /note="transposable_element"
+        #             /standard_name="YPL060C-A"
+
+    # Coordinates (1-based)
+
+    # Extract location
+    strand = "+" if feature.location.strand == 1 else "-"
+
+    if strand == -1:  # negative strand
+        start = int(feature.location.end)     
+        stop  = int(feature.location.start) - 1  
+    else:  # positive strand
+        start = int(feature.location.start) + 1  
+        stop  = int(feature.location.end)         
+
+    qualifiers = feature.qualifiers
+    gene = qualifiers.get("gene", [None])[0]
+    note = qualifiers.get("note", [None])[0]
+    standard_name = qualifiers.get("note", [None])[0]
+
+
+    misc_rna_entry = {
+        "type": "misc_rna",
+        "sequence": rec.id,
+        "start": start,
+        "stop": stop,
+        "strand": strand, # matches Bakta and is required
+        "gene": gene,
+        "note": note,
+        "standard_name": standard_name,
+        "id": id
+    }
+
+
+    return misc_rna_entry
+
 def build_bakta_sequence_entry(rec):
     """
     Convert a  SeqRecord into a Bakta-style sequence entry.
@@ -779,7 +833,7 @@ def eukaryotic_gbk_to_json(records, output_json):
         for feature in record.features
     }
 
-    ORDER = ["tRNA", "gene", "mRNA", "CDS", "assembly_gap", "gap", "repeat_region", "5'UTR", "3'UTR"]
+    ORDER = ["tRNA", "gene", "mRNA", "CDS", "assembly_gap", "gap", "repeat_region", "5'UTR", "3'UTR", "misc_rna"]
 
      # source always in input - it is made in output anyway
     covered_set = set(ORDER + ["source"])
@@ -858,7 +912,9 @@ def eukaryotic_gbk_to_json(records, output_json):
                 elif ftype == "5'UTR":
                     features.append(convert_utr_region_feature(feat, rec, id, three=False))
                 elif ftype == "3'UTR":
-                    features.append(convert_utr_region_feature(feat, rec, id, three=True))              
+                    features.append(convert_utr_region_feature(feat, rec, id, three=True)) 
+                elif ftype == "misc_rna":
+                    features.append(convert_misc_rna_feature(feat, rec, id))                   
                 i +=1
 
 
