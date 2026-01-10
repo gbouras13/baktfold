@@ -336,11 +336,6 @@ def convert_mrna_feature(feature, rec, id):
 
     seq = str(rec.seq)
 
-    # Coordinates (GBK is 0-based, Bakta is 1-based)
-    start = int(feature.location.start) + 1
-    stop = int(feature.location.end)
-
-
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
 
@@ -671,6 +666,88 @@ def convert_exon_feature(feature, rec, id):
     return exon_entry
 
 
+def convert_mat_peptide_feature(feature, rec, id):
+    """
+    Convert a mat_peptide feature to a Bakta-style feature.
+
+    mus musculus chrom 1 NC_000067
+
+    Parameters:
+        feature: Bio.SeqFeature
+            The mRNA feature from the GBK.
+        rec: Bio.SeqRecord
+            The record containing the sequence.
+
+    Returns:
+        dict: Bakta-style misc_RNA feature.
+    """
+
+    seq = str(rec.seq)
+
+
+    # Extract location
+    strand = "+" if feature.location.strand == 1 else "-"
+
+    if strand == "-":  # negative strand
+        start = int(feature.location.end)     
+        stop  = int(feature.location.start) - 1  
+    else:  # positive strand
+        start = int(feature.location.start) + 1  
+        stop  = int(feature.location.end)        
+
+    if feature.location.__class__.__name__ == "CompoundLocation":
+        # Multi-exon (join)
+        starts = []
+        stops = []
+        for part in feature.location.parts:
+            if strand == -1:
+                # For minus strand, 5' is end, 3' is start
+                starts.append(int(part.end))
+                stops.append(int(part.start) - 1)
+            else:
+                starts.append(int(part.start) + 1)
+                stops.append(int(part.end))
+
+    else:
+        starts = None
+        stops = None
+
+    qualifiers = feature.qualifiers
+
+    mat_peptide_entry = {
+            "type": "mat_peptide",
+            "sequence": rec.id,
+            "start": start,
+            "stop": stop,
+            "starts": starts,
+            "stops": stops,
+            "strand": strand,
+            "gene": qualifiers.get("gene", [None])[0],
+            "product": qualifiers.get("product", [None])[0],
+            "note": qualifiers.get("note", [None])[0],
+            "protein_id": qualifiers.get("protein_id", [None])[0],
+            "id": id,
+        }
+
+     # Optional but common
+    gene_synonym = qualifiers.get("gene_synonym", None)
+    if gene_synonym:
+        mat_peptide_entry["gene_synonym"] = gene_synonym
+
+
+
+    #  mat_peptide     complement(join(194724303..194724321,194744661..194744721,
+    #                  194746996..194747031,194750435..194750476,
+    #                  194757818..194757865,194759962..194760144,
+    #                  194764890..194765087,194765856..194765944,
+    #                  194767641..194767743,194768400..194768583))
+    #                  /gene="Cd46"
+    #                  /gene_synonym="Mcp"
+    #                  /product="Membrane cofactor protein. /id=PRO_0000238971"
+    #                  /note="propagated from UniProtKB/Swiss-Prot (O88174.1)"
+
+    return mat_peptide_entry
+
 def build_bakta_sequence_entry(rec):
     """
     Convert a  SeqRecord into a Bakta-style sequence entry.
@@ -884,7 +961,8 @@ def eukaryotic_gbk_to_json(records, output_json):
         for feature in record.features
     }
 
-    ORDER = ["tRNA", "gene", "mRNA", "CDS", "assembly_gap", "gap", "repeat_region", "5'UTR", "3'UTR", "misc_RNA", "exon"]
+    ORDER = ["tRNA", "gene", "mRNA", "CDS", "assembly_gap", "gap", "repeat_region", "5'UTR", "3'UTR", "misc_RNA", "exon",
+             "mat_peptide"]
 
      # source always in input - it is made in output anyway
     covered_set = set(ORDER + ["source"])
@@ -967,7 +1045,9 @@ def eukaryotic_gbk_to_json(records, output_json):
                 elif ftype == "misc_RNA":
                     features.append(convert_misc_rna_feature(feat, rec, id))  
                 elif ftype == "exon":
-                    features.append(convert_exon_feature(feat, rec, id))               
+                    features.append(convert_exon_feature(feat, rec, id))       
+                elif ftype == "mat_peptide":
+                    features.append(convert_mat_peptide_feature(feat, rec, id))  
                 i +=1
 
 
