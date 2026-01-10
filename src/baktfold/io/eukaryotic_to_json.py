@@ -671,7 +671,7 @@ def build_bakta_sequence_entry(rec):
         "length": len(seq),                           
         "complete": None,                             #  does not define completeness
         "type": None,                                 # plasmid/chromosome not known
-        "topology": rec.annotations["topology"],                             # circular/linear unknown
+        "topology": rec.annotations.get("topology", "unknown"),              # circular/linear unknown
         "simple_id": rec.id,                          # Same as id (placeholder)
         "orig_id": rec.id,                            # No separate original ID fr
         "orig_description": None,                     # Same as description
