@@ -637,6 +637,7 @@ def build_bakta_sequence_entry(rec):
     source_qualifiers = {}
 
     # Defaults (None) for all fields
+    mol_type = None
     organism = None
     strain = None
     db_xref = None
