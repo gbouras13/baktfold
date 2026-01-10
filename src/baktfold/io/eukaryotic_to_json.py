@@ -993,7 +993,7 @@ def convert_proprotein_feature(feature, rec, id):
     qualifiers = feature.qualifiers
 
     proprotein_entry = {
-        "type": "misc_feature",
+        "type": "proprotein",
         "sequence": rec.id,
         "start": start,
         "stop": stop,
@@ -1061,6 +1061,54 @@ def convert_precursor_rna_feature(feature, rec, id):
     #                  /db_xref="miRBase:MI0000712"
 
     return precursor_rna_entry
+
+
+
+def convert_protein_bind_feature(feature, rec, id):
+    """
+    Convert a GenBank protein_bind feature to a Bakta-style feature.
+    """
+
+    # Extract location
+    strand = "+" if feature.location.strand == 1 else "-"
+
+    if strand == "-":  # negative strand
+        start = int(feature.location.end)     
+        stop  = int(feature.location.start) - 1  
+    else:  # positive strand
+        start = int(feature.location.start) + 1  
+        stop  = int(feature.location.end)    
+
+    qualifiers = feature.qualifiers
+
+    protein_bind_entry = {
+            "type": "protein_bind",
+            "sequence": rec.id,
+            "start": start,
+            "stop": stop,
+            "strand": strand,
+            "experiment": qualifiers.get("experiment", [None])[0],
+            "note": qualifiers.get("note", [None])[0],
+            "bound_moiety": qualifiers.get("bound_moiety", [None])[0],
+            "function": qualifiers.get("function", [None])[0],
+            "db_xrefs": qualifiers.get("db_xref", []),
+            "id": id,
+        }
+
+
+    #  protein_bind    133275732..133275761
+    #                  /experiment="EXISTENCE:protein binding evidence
+    #                  [ECO:0000024][PMID:22278040]"
+    #                  /note="WTbc probe"
+    #                  /bound_moiety="nuclear receptor subfamily 2 group F member
+    #                  1"
+    #                  /function="negative regulation of activity in opposition
+    #                  to activation by retinoic acid"
+    #                  /db_xref="GeneID:107604629"
+
+    return protein_bind_entry
+
+
 
 def build_bakta_sequence_entry(rec):
     """
@@ -1276,7 +1324,7 @@ def eukaryotic_gbk_to_json(records, output_json):
     }
 
     ORDER = ["tRNA", "gene", "mRNA", "CDS", "assembly_gap", "gap", "repeat_region", "5'UTR", "3'UTR", "misc_RNA", "exon",
-             "mat_peptide", "mobile_element", "ncRNA", "misc_feature", "precursor_RNA", "proprotein"]
+             "mat_peptide", "mobile_element", "ncRNA", "misc_feature", "precursor_RNA", "proprotein", "protein_bind"]
 
      # source always in input - it is made in output anyway
     covered_set = set(ORDER + ["source"])
@@ -1371,7 +1419,9 @@ def eukaryotic_gbk_to_json(records, output_json):
                 elif ftype == "precursor_RNA":
                     features.append(convert_precursor_rna_feature(feat, rec, id)) 
                 elif ftype == "proprotein":
-                     features.append(convert_proprotein_feature(feat, rec, id)) 
+                    features.append(convert_proprotein_feature(feat, rec, id)) 
+                elif ftype == "protein_bind":
+                    features.append(convert_protein_bind_feature(feat, rec, id)) 
                 i +=1
 
 
