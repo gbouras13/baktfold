@@ -1276,7 +1276,7 @@ def eukaryotic_gbk_to_json(records, output_json):
     }
 
     ORDER = ["tRNA", "gene", "mRNA", "CDS", "assembly_gap", "gap", "repeat_region", "5'UTR", "3'UTR", "misc_RNA", "exon",
-             "mat_peptide", "mobile_element", "ncRNA", "misc_feature", "precursor_RNA"]
+             "mat_peptide", "mobile_element", "ncRNA", "misc_feature", "precursor_RNA", "proprotein"]
 
      # source always in input - it is made in output anyway
     covered_set = set(ORDER + ["source"])
@@ -1369,7 +1369,9 @@ def eukaryotic_gbk_to_json(records, output_json):
                 elif ftype == "misc_feature":
                     features.append(convert_misc_feature(feat, rec, id))  
                 elif ftype == "precursor_RNA":
-                    features.append(convert_precursor_rna_feature(feat, rec, id))  
+                    features.append(convert_precursor_rna_feature(feat, rec, id)) 
+                elif ftype == "proprotein":
+                     features.append(convert_proprotein_feature(feat, rec, id)) 
                 i +=1
 
 
