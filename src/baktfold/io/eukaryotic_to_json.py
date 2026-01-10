@@ -607,7 +607,7 @@ def convert_misc_rna_feature(feature, rec, id):
 
 
     misc_rna_entry = {
-        "type": "misc_rna",
+        "type": "misc_RNA",
         "sequence": rec.id,
         "start": start,
         "stop": stop,
@@ -833,7 +833,7 @@ def eukaryotic_gbk_to_json(records, output_json):
         for feature in record.features
     }
 
-    ORDER = ["tRNA", "gene", "mRNA", "CDS", "assembly_gap", "gap", "repeat_region", "5'UTR", "3'UTR", "misc_rna"]
+    ORDER = ["tRNA", "gene", "mRNA", "CDS", "assembly_gap", "gap", "repeat_region", "5'UTR", "3'UTR", "misc_RNA"]
 
      # source always in input - it is made in output anyway
     covered_set = set(ORDER + ["source"])
@@ -913,7 +913,7 @@ def eukaryotic_gbk_to_json(records, output_json):
                     features.append(convert_utr_region_feature(feat, rec, id, three=False))
                 elif ftype == "3'UTR":
                     features.append(convert_utr_region_feature(feat, rec, id, three=True)) 
-                elif ftype == "misc_rna":
+                elif ftype == "misc_RNA":
                     features.append(convert_misc_rna_feature(feat, rec, id))                   
                 i +=1
 
