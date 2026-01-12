@@ -1680,7 +1680,7 @@ def eukaryotic_gbk_to_json(records, output_json):
     uncovered_features = unique_feature_types - covered_set
 
     if unique_feature_types:
-        logger.infor("Feature types present in your input GenBank and convertible include:")
+        logger.info("Feature types present in your input GenBank and convertible include:")
         for ft in sorted(unique_feature_types):
             logger.info(ft)
 
