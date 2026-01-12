@@ -1858,7 +1858,7 @@ def eukaryotic_gbk_to_json(records, output_json):
     with open(output_json, "w") as fh:
         json.dump(bakta_json, fh, indent=4)
 
-    logger.info(f"Total {total_features} converted successfully") 
+    logger.info(f"{total_features} total features converted successfully") 
     logger.info(f"Output saved as {output_json}")
 
 
