@@ -1654,7 +1654,7 @@ def calc_genome_stats(records):
         "coding_ratio": None  
     }
 
-def eukaryotic_gbk_to_json(records, output_json):
+def eukaryotic_gbk_to_json(records, output_json, verbose):
     
     if len(records) == 0:
         raise ValueError("No GenBank records found.")
@@ -1760,6 +1760,9 @@ def eukaryotic_gbk_to_json(records, output_json):
                 for feat in feats_by_type: # sort by order of the types first
 
                     id = f"{bakta_id_prefix}_{i}"
+
+                    if verbose:
+                        logger.info(f"Converting feature {id}")
 
                     if ftype == "CDS":
                         features.append(convert_cds_feature(feat, rec, translation_table, id))
