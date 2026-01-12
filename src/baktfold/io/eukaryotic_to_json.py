@@ -1145,6 +1145,52 @@ def convert_rrna_feature(feature, rec, id):
     return rrna_entry
 
 
+def convert_regulatory_feature(feature, rec, id):
+    """
+    Convert a GenBank regulatory feature to a Bakta-style feature.
+    """
+
+    # Extract location
+    strand = "+" if feature.location.strand == 1 else "-"
+
+    if strand == "-":  # negative strand
+        start = int(feature.location.end)     
+        stop  = int(feature.location.start) - 1  
+    else:  # positive strand
+        start = int(feature.location.start) + 1  
+        stop  = int(feature.location.end)    
+
+    qualifiers = feature.qualifiers
+
+
+    rrna_entry = {
+            "type": "regulatory",
+            "sequence": rec.id,
+            "start": start,
+            "stop": stop,
+            "strand": strand,
+            "regulatory_class": qualifiers.get("regulatory_class", [None])[0],
+            "experiment": qualifiers.get("experiment", [None])[0],
+            "note": qualifiers.get("note", [None])[0],
+            "db_xrefs": qualifiers.get("db_xref", []),
+            "id": id,
+        }
+    
+    #  regulatory      195030925..195032349
+    #                  /regulatory_class="enhancer"
+    #                  /experiment="EXISTENCE:reporter gene assay evidence
+    #                  [ECO:0000049][PMID:32912294]"
+    #                  /note="C2 STARR-seq-only enhancer starr_03508"
+    #                  /function="activates a minimal SCP1 promoter by STARR-seq
+    #                  in ground-state (2iL) and metastable (SL) mouse embryonic
+    #                  stem cells {active_cell/tissue: mESC(E14 +2i+LIF or
+    #                  +serum+LIF)}"
+    #                  /db_xref="GeneID:131296982"
+
+    return rrna_entry
+
+
+
 
 
 
@@ -1362,7 +1408,8 @@ def eukaryotic_gbk_to_json(records, output_json):
     }
 
     ORDER = ["tRNA", "gene", "mRNA", "CDS", "assembly_gap", "gap", "repeat_region", "5'UTR", "3'UTR", "misc_RNA", "exon",
-             "mat_peptide", "mobile_element", "ncRNA", "misc_feature", "precursor_RNA", "proprotein", "protein_bind", "rRNA"]
+             "mat_peptide", "mobile_element", "ncRNA", "misc_feature", "precursor_RNA", "proprotein", "protein_bind", "rRNA",
+             "regulatory"]
 
      # source always in input - it is made in output anyway
     covered_set = set(ORDER + ["source"])
@@ -1462,6 +1509,8 @@ def eukaryotic_gbk_to_json(records, output_json):
                     features.append(convert_protein_bind_feature(feat, rec, id)) 
                 elif ftype == "rRNA":
                     features.append(convert_rrna_feature(feat, rec, id)) 
+                elif ftype == "regulatory":
+                    features.append(convert_regulatory_feature(feat, rec, id))
                 i +=1
 
 
