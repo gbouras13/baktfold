@@ -1733,10 +1733,6 @@ def eukaryotic_gbk_to_json(records, output_json):
 
     # map feature type → list of features
 
-    features_by_type = defaultdict(list)
-    for feat in rec.features:
-        features_by_type[feat.type].append(feat)
-
     for rec in records:
 
         logger.info(f"Converting record: {rec.id} with {len(rec.features)} features")        
