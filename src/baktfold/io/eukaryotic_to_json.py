@@ -12,7 +12,7 @@ import string
 from collections import defaultdict
 import baktfold.bakta.so as so
 from loguru import logger
-
+from tqdm import tqdm
 import hashlib
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 
@@ -1757,7 +1757,14 @@ def eukaryotic_gbk_to_json(records, output_json, verbose):
             num_feats = len(feats_by_type)
             if num_feats > 0:
                 logger.info(f"Converting feature type: {ftype} with {num_feats} features")  
-                for feat in feats_by_type: # sort by order of the types first
+
+                for feat in tqdm(
+                    feats_by_type,
+                    desc=f"{ftype}",
+                    unit="feat",
+                    leave=False,
+                ):
+                # for feat in feats_by_type: # sort by order of the types first
 
                     id = f"{bakta_id_prefix}_{i}"
 
