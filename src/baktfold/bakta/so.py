@@ -36,6 +36,21 @@ SO_5UTR = SO('mrna', 'SO:0000204')
 
 SO_3UTR = SO('mrna', 'SO:0000205')
 
+SO_MAT_PEPTIDE = SO('mature_protein_region', 'SO:0000419')
+
+SO_MISC_REGION = SO('biological_region', 'SO:0001411')
+
+SO_PRECURSOR_RNA = SO('precursor_RNA', 'SO:0002393')
+SO_PROTEINBIND = SO('protein_binding_site', 'SO:0000410')
+
+SO_TRANSIT_PEPTIDE = SO('transit_peptide', 'SO:0000725') 
+
+
+######
+
+
+
+
 SO_GENE = SO('gene', 'SO:0000704')
 SO_PSEUDO_GENE = SO('pseudogene', 'SO:0000336')
 SO_CDS = SO('CDS', 'SO:0000316')

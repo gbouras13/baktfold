@@ -712,6 +712,9 @@ def convert_mat_peptide_feature(feature, rec, id):
         starts = None
         stops = None
 
+
+    so_code =  so.SO_MAT_PEPTIDE.id
+
     qualifiers = feature.qualifiers
 
     mat_peptide_entry = {
@@ -726,6 +729,7 @@ def convert_mat_peptide_feature(feature, rec, id):
             "product": qualifiers.get("product", [None])[0],
             "note": qualifiers.get("note", [None])[0],
             "protein_id": qualifiers.get("protein_id", [None])[0],
+            "db_xrefs": [so_code],
             "id": id,
         }
 
@@ -733,6 +737,8 @@ def convert_mat_peptide_feature(feature, rec, id):
     gene_synonym = qualifiers.get("gene_synonym", None)
     if gene_synonym:
         mat_peptide_entry["gene_synonym"] = gene_synonym
+
+
 
 
 
@@ -765,6 +771,15 @@ def convert_mobile_element_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+    so_code =  so.SO_MOBILE_ELEMENT.id
+
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
+
     mobile_element_entry = {
         "type": "mobile_element",
         "sequence": rec.id,
@@ -773,9 +788,13 @@ def convert_mobile_element_feature(feature, rec, id):
         "strand": strand,
         "mobile_element_type": qualifiers.get("mobile_element_type", [None])[0],
         "note": qualifiers.get("note", [None])[0],
-        "db_xrefs": qualifiers.get("db_xref", []),
+        "db_xrefs": db_xrefs,
         "id": id,
     }
+
+
+
+
 
     #  mobile_element  57369551..57369723
     #                  /note="Derived by automated computational analysis using
@@ -831,6 +850,15 @@ def convert_ncrna_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+    so_code =  so.SO_NCRNA_GENE.id
+
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append so only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
+
     ncrna_entry = {
         "type": "ncRNA",
         "sequence": rec.id,
@@ -843,7 +871,7 @@ def convert_ncrna_feature(feature, rec, id):
         "product": qualifiers.get("product", [None])[0],
         "ncRNA_class": qualifiers.get("ncRNA_class", [None])[0],
         "transcript_id": qualifiers.get("transcript_id", [None])[0],
-        "db_xrefs": qualifiers.get("db_xref", []),
+        "db_xrefs": db_xrefs,
         "note": qualifiers.get("note", [None])[0],
         "id": id,
     }
@@ -911,6 +939,17 @@ def convert_misc_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+
+    so_code =  so.SO_MISC_REGION.id
+
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append so.SO_CDS.id only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
+
+
     misc_feature_entry = {
         "type": "misc_feature",
         "sequence": rec.id,
@@ -924,7 +963,7 @@ def convert_misc_feature(feature, rec, id):
         "note": qualifiers.get("note", [None])[0],
         "evidence": qualifiers.get("evidence", [None])[0],
         "function": qualifiers.get("function", [None])[0],
-        "db_xref": qualifiers.get("db_xref", []),
+        "db_xref": db_xrefs,
         "id": id,
     }
 
@@ -992,6 +1031,9 @@ def convert_proprotein_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+    db_xrefs = feature.qualifiers.get("db_xref", [])
+
+
     proprotein_entry = {
         "type": "proprotein",
         "sequence": rec.id,
@@ -1002,6 +1044,7 @@ def convert_proprotein_feature(feature, rec, id):
         "strand": strand,
         "gene": qualifiers.get("gene", [None])[0],
         "product": qualifiers.get("product", [None])[0],
+        "db_xref": db_xrefs,
         "id": id,
     }
 
@@ -1037,6 +1080,15 @@ def convert_precursor_rna_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+    so_code =  so.SO_PRECURSOR_RNA.id
+
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
+
     precursor_rna_entry = {
             "type": "precursor_RNA",
             "sequence": rec.id,
@@ -1046,7 +1098,7 @@ def convert_precursor_rna_feature(feature, rec, id):
             "gene": qualifiers.get("gene", [None])[0],
             "product": qualifiers.get("product", [None])[0],
             "transcript_id": qualifiers.get("transcript_id", [None])[0],
-            "db_xrefs": qualifiers.get("db_xref", []),
+            "db_xrefs": db_xrefs,
             "note": qualifiers.get("note", [None])[0],
             "id": id,
         }
@@ -1088,6 +1140,15 @@ def convert_protein_bind_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+    so_code =  so.SO_PROTEINBIND.id
+
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
+
     protein_bind_entry = {
             "type": "protein_bind",
             "sequence": rec.id,
@@ -1098,7 +1159,7 @@ def convert_protein_bind_feature(feature, rec, id):
             "note": qualifiers.get("note", [None])[0],
             "bound_moiety": qualifiers.get("bound_moiety", [None])[0],
             "function": qualifiers.get("function", [None])[0],
-            "db_xrefs": qualifiers.get("db_xref", []),
+            "db_xrefs": db_xrefs,
             "id": id,
         }
 
@@ -1121,6 +1182,15 @@ def convert_rrna_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+    so_code =  so.SO_RRNA.id
+
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
+
 
     rrna_entry = {
             "type": "rRNA",
@@ -1133,7 +1203,7 @@ def convert_rrna_feature(feature, rec, id):
             "inference": qualifiers.get("inference", []),
             "note": qualifiers.get("note", [None])[0],
             "transcript_id": qualifiers.get("transcript_id", [None])[0],
-            "db_xrefs": qualifiers.get("db_xref", []),
+            "db_xrefs": db_xrefs,
             "id": id,
         }
     
@@ -1170,6 +1240,15 @@ def convert_regulatory_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+    so_code =  so.SO_REGULATORY_REGION.id
+
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
+
 
     regulatory_entry = {
             "type": "regulatory",
@@ -1180,7 +1259,7 @@ def convert_regulatory_feature(feature, rec, id):
             "regulatory_class": qualifiers.get("regulatory_class", [None])[0],
             "experiment": qualifiers.get("experiment", [None])[0],
             "note": qualifiers.get("note", [None])[0],
-            "db_xrefs": qualifiers.get("db_xref", []),
+            "db_xrefs": db_xrefs,
             "id": id,
         }
     
@@ -1198,52 +1277,6 @@ def convert_regulatory_feature(feature, rec, id):
     return regulatory_entry
 
 
-
-
-
-def convert_regulatory_feature(feature, rec, id):
-    """
-    Convert a GenBank regulatory feature to a Bakta-style feature.
-    """
-
-    # Extract location
-    strand = "+" if feature.location.strand == 1 else "-"
-
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)    
-
-    qualifiers = feature.qualifiers
-
-
-    regulatory_entry = {
-            "type": "regulatory",
-            "sequence": rec.id,
-            "start": start,
-            "stop": stop,
-            "strand": strand,
-            "regulatory_class": qualifiers.get("regulatory_class", [None])[0],
-            "experiment": qualifiers.get("experiment", [None])[0],
-            "note": qualifiers.get("note", [None])[0],
-            "db_xrefs": qualifiers.get("db_xref", []),
-            "id": id,
-        }
-    
-    #  regulatory      195030925..195032349
-    #                  /regulatory_class="enhancer"
-    #                  /experiment="EXISTENCE:reporter gene assay evidence
-    #                  [ECO:0000049][PMID:32912294]"
-    #                  /note="C2 STARR-seq-only enhancer starr_03508"
-    #                  /function="activates a minimal SCP1 promoter by STARR-seq
-    #                  in ground-state (2iL) and metastable (SL) mouse embryonic
-    #                  stem cells {active_cell/tissue: mESC(E14 +2i+LIF or
-    #                  +serum+LIF)}"
-    #                  /db_xref="GeneID:131296982"
-
-    return regulatory_entry
 
 def convert_sig_peptide_feature(feature, rec, id):
     """
@@ -1293,6 +1326,16 @@ def convert_sig_peptide_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+    so_code =  so.SO_SIGNAL_PEPTIDE.id
+
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
+
+
     sig_peptide_entry = {
             "type": "sig_peptide",
             "sequence": rec.id,
@@ -1303,6 +1346,7 @@ def convert_sig_peptide_feature(feature, rec, id):
             "strand": strand,
             "gene": qualifiers.get("gene", [None])[0],
             "inference": qualifiers.get("inference", [None])[0],
+            "db_xrefs": db_xrefs,
             "id": id,
         }
 
@@ -1370,6 +1414,16 @@ def convert_transit_peptide_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+    so_code =  so.SO_TRANSIT_PEPTIDE.id
+
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
+
+
     transit_peptide_entry = {
             "type": "transit_peptide",
             "sequence": rec.id,
@@ -1381,6 +1435,7 @@ def convert_transit_peptide_feature(feature, rec, id):
             "gene": qualifiers.get("gene", [None])[0],
             "note": qualifiers.get("note", [None])[0],
             "evidence": qualifiers.get("evidence", [None])[0],
+            "db_xrefs": db_xrefs,
             "id": id,
         }
 
