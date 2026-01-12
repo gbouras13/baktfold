@@ -1001,10 +1001,14 @@ def convert_proprotein_feature(feature, rec, id):
         "stops": stops,
         "strand": strand,
         "gene": qualifiers.get("gene", [None])[0],
-        "gene_synonym": qualifiers.get("gene_synonym", [None])[0],
         "product": qualifiers.get("product", [None])[0],
         "id": id,
     }
+
+     # Optional but common
+    gene_synonym = qualifiers.get("gene_synonym", None)
+    if gene_synonym:
+        proprotein_entry["gene_synonym"] = gene_synonym
 
     #  proprotein      join(171053237..171053367,171053712..171053832)
     #                  /gene="Apoa2"
@@ -1040,7 +1044,6 @@ def convert_precursor_rna_feature(feature, rec, id):
             "stop": stop,
             "strand": strand,
             "gene": qualifiers.get("gene", [None])[0],
-            "gene_synonym": qualifiers.get("gene_synonym", [None])[0],
             "product": qualifiers.get("product", [None])[0],
             "transcript_id": qualifiers.get("transcript_id", [None])[0],
             "db_xrefs": qualifiers.get("db_xref", []),
@@ -1048,6 +1051,10 @@ def convert_precursor_rna_feature(feature, rec, id):
             "id": id,
         }
 
+     # Optional but common
+    gene_synonym = qualifiers.get("gene_synonym", None)
+    if gene_synonym:
+        precursor_rna_entry["gene_synonym"] = gene_synonym
 
     #  precursor_RNA   194719348..194719428
     #                  /gene="Mir29b-2"
@@ -1191,6 +1198,9 @@ def convert_regulatory_feature(feature, rec, id):
     return regulatory_entry
 
 
+
+
+
 def convert_regulatory_feature(feature, rec, id):
     """
     Convert a GenBank regulatory feature to a Bakta-style feature.
@@ -1292,7 +1302,7 @@ def convert_sig_peptide_feature(feature, rec, id):
             "stops": stops,
             "strand": strand,
             "gene": qualifiers.get("gene", [None])[0],
-            "inference": qualifiers.get("protein_id", [None])[0],
+            "inference": qualifiers.get("inference", [None])[0],
             "id": id,
         }
 
@@ -1310,6 +1320,86 @@ def convert_sig_peptide_feature(feature, rec, id):
     #                  /inference="COORDINATES: ab initio prediction:SignalP:6.0"
 
     return sig_peptide_entry
+
+
+def convert_transit_peptide_feature(feature, rec, id):
+    """
+    Convert a transit_peptide feature to a Bakta-style feature.
+
+    mus musculus chrom 1 NC_000067
+
+    Parameters:
+        feature: Bio.SeqFeature
+            The mRNA feature from the GBK.
+        rec: Bio.SeqRecord
+            The record containing the sequence.
+
+    Returns:
+        dict: Bakta-style transit_peptide feature.
+    """
+
+    seq = str(rec.seq)
+
+
+    # Extract location
+    strand = "+" if feature.location.strand == 1 else "-"
+
+    if strand == "-":  # negative strand
+        start = int(feature.location.end)     
+        stop  = int(feature.location.start) - 1  
+    else:  # positive strand
+        start = int(feature.location.start) + 1  
+        stop  = int(feature.location.end)        
+
+    if feature.location.__class__.__name__ == "CompoundLocation":
+        # Multi-exon (join)
+        starts = []
+        stops = []
+        for part in feature.location.parts:
+            if strand == -1:
+                # For minus strand, 5' is end, 3' is start
+                starts.append(int(part.end))
+                stops.append(int(part.start) - 1)
+            else:
+                starts.append(int(part.start) + 1)
+                stops.append(int(part.end))
+
+    else:
+        starts = None
+        stops = None
+
+    qualifiers = feature.qualifiers
+
+    transit_peptide_entry = {
+            "type": "transit_peptide",
+            "sequence": rec.id,
+            "start": start,
+            "stop": stop,
+            "starts": starts,
+            "stops": stops,
+            "strand": strand,
+            "gene": qualifiers.get("gene", [None])[0],
+            "note": qualifiers.get("note", [None])[0],
+            "evidence": qualifiers.get("evidence", [None])[0],
+            "id": id,
+        }
+
+     # Optional but common
+    gene_synonym = qualifiers.get("gene_synonym", None)
+    if gene_synonym:
+        transit_peptide_entry["gene_synonym"] = gene_synonym
+
+
+
+    #  transit_peptide complement(join(180006550..180006849,
+    #                  180009627..180009803))
+    #                  /gene="Coq8a"
+    #                  /gene_synonym="4632432J16Rik; Adck3; Cabc1; mKIAA0451"
+    #                  /note="Mitochondrion.
+    #                  /evidence=ECO:0000250|UniProtKB:Q8NI60; propagated from
+    #                  UniProtKB/Swiss-Prot (Q60936.2)"
+
+    return transit_peptide_entry
 
 def build_bakta_sequence_entry(rec):
     """
@@ -1526,7 +1616,7 @@ def eukaryotic_gbk_to_json(records, output_json):
 
     ORDER = ["tRNA", "gene", "mRNA", "CDS", "assembly_gap", "gap", "repeat_region", "5'UTR", "3'UTR", "misc_RNA", "exon",
              "mat_peptide", "mobile_element", "ncRNA", "misc_feature", "precursor_RNA", "proprotein", "protein_bind", "rRNA",
-             "regulatory", "sig_peptide"]
+             "regulatory", "sig_peptide", "transit_peptide"]
 
      # source always in input - it is made in output anyway
     covered_set = set(ORDER + ["source"])
@@ -1534,11 +1624,16 @@ def eukaryotic_gbk_to_json(records, output_json):
     # Compute features in records not in the covered list
     uncovered_features = unique_feature_types - covered_set
 
+    if unique_feature_types:
+        logger.infor("Feature types present in your input GenBank and convertible include:")
+        for ft in sorted(unique_feature_types):
+            logger.info(ft)
+
     if uncovered_features:
-        logger.warning("Feature types present in your input GenBank but not convertible include:")
+        logger.warning("Feature types present in your input GenBank but NOT convertible include:")
         for ft in sorted(uncovered_features):
             logger.warning(ft)
-        logger.warning("Baktfold will always only work on CDS.")
+        logger.warning("Baktfold will always only work on annotating CDS - however, these not converted feature types will not make it into the Baktfold output")
         logger.warning("If you would like to have this feature type supported in GFF3/GenBank output, please make an issue at https://github.com/gbouras13/baktfold")
     else:
         logger.info("All feature types in your input GenBank are convertible.")
@@ -1630,6 +1725,8 @@ def eukaryotic_gbk_to_json(records, output_json):
                     features.append(convert_regulatory_feature(feat, rec, id))
                 elif ftype == "sig_peptide":
                     features.append(convert_sig_peptide_feature(feat, rec, id))
+                elif ftype == "transit_peptide":
+                    features.append(convert_transit_peptide_feature(feat, rec, id))
                 i +=1
 
 
