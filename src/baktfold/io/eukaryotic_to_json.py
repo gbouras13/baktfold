@@ -1756,15 +1756,22 @@ def eukaryotic_gbk_to_json(records, output_json, verbose):
             feats_by_type = features_by_type.get(ftype, [])
             num_feats = len(feats_by_type)
             if num_feats > 0:
-                logger.info(f"Converting feature type: {ftype} with {num_feats} features")  
+                logger.info(f"Converting feature type: {ftype} with {num_feats} features") 
 
-                for feat in tqdm(
-                    feats_by_type,
-                    desc=f"{ftype}",
-                    unit="feat",
-                    leave=False,
-                ):
-                # for feat in feats_by_type: # sort by order of the types first
+                # choose iterator based on verbose or not
+                feat_iter = (
+                    feats_by_type
+                    tqdm(
+                        feats_by_type,
+                        desc=f"{ftype}",
+                        unit="feat",
+                        leave=False,
+                    )
+                    if verbose
+                    else feats_by_type
+                ) 
+
+                for feat in feat_iter:
 
                     id = f"{bakta_id_prefix}_{i}"
 
