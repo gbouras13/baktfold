@@ -21,7 +21,8 @@ def write_gene_feature(fh, seq_id, feat):
     stop  = int(feat['stop'])
     strand = feat['strand']
 
-    locus = feat['locus']
+    # fall back if there is no locus tag
+    locus = feat.get('locus') or f"{seq_id}_{start}_{stop}_{strand}"
 
     attrs = {
         "ID": f"{locus}"
@@ -42,7 +43,8 @@ def write_mrna_feature(fh, seq_id, feat):
     stop  = int(feat['stop'])
     strand = feat['strand']
 
-    locus = feat.get("locus")
+    # fall back if there is no locus tag
+    locus = feat.get('locus') or f"{seq_id}_{start}_{stop}_{strand}"
 
     mrna_id = f"{locus}-T1"
 
