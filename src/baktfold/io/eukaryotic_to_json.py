@@ -50,32 +50,20 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
 
     # ----------- Location info -----------
 
-    # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)        
+    # Handle CompoundLocation (join)
+    starts = None
+    stops = None
 
     if feature.location.__class__.__name__ == "CompoundLocation":
-        # Multi-exon (join)
         starts = []
         stops = []
         for part in feature.location.parts:
-            if strand == -1:
-                # For minus strand, 5' is end, 3' is start
-                starts.append(int(part.end))
-                stops.append(int(part.start) - 1)
-            else:
-                starts.append(int(part.start) + 1)
-                stops.append(int(part.end))
-
-    else:
-        starts = None
-        stops = None
+            starts.append(int(part.start) + 1)
+            stops.append(int(part.end))
 
 
     # frame: Bakta uses 1/2/3; Prokka codon_start is ["1","2","3"]
@@ -175,15 +163,20 @@ def convert_trna_feature(feature, seq_record, id):
 
     # ------------ Location ------------
 
-    # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)        
+    # Handle CompoundLocation (join)
+    starts = None
+    stops = None
+
+    if feature.location.__class__.__name__ == "CompoundLocation":
+        starts = []
+        stops = []
+        for part in feature.location.parts:
+            starts.append(int(part.start) + 1)
+            stops.append(int(part.end))
 
 
 
@@ -284,15 +277,8 @@ def convert_gene_feature(feature, rec, id):
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
-
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)        
-
-
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
 
     qualifiers = feature.qualifiers
@@ -334,30 +320,24 @@ def convert_mrna_feature(feature, rec, id):
         dict: Bakta-style misc_RNA feature.
     """
 
-    seq = str(rec.seq)
+    # seq = str(rec.seq)
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)        
+    # Handle CompoundLocation (join)
+    starts = None
+    stops = None
 
     if feature.location.__class__.__name__ == "CompoundLocation":
-        # Multi-exon (join)
         starts = []
         stops = []
         for part in feature.location.parts:
-            if strand == -1:
-                # For minus strand, 5' is end, 3' is start
-                starts.append(int(part.end))
-                stops.append(int(part.start) - 1)
-            else:
-                starts.append(int(part.start) + 1)
-                stops.append(int(part.end))
+            starts.append(int(part.start) + 1)
+            stops.append(int(part.end))
+
 
     else:
         starts = None
@@ -414,8 +394,9 @@ def convert_assembly_gap_feature(feature, rec, id):
     """
 
     # Coordinates (1-based)
-    start = int(feature.location.start) + 1
-    stop = int(feature.location.end)
+    strand = "." # bakta uses "." for strand on gaps
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
     qualifiers = feature.qualifiers
 
@@ -426,8 +407,7 @@ def convert_assembly_gap_feature(feature, rec, id):
     else:
         length = stop - start + 1  # fallback from coordinates
 
-    # Bakta always uses "." for strand on gaps
-    strand = "."
+
 
     gap_entry = {
         "type": "gap",
@@ -462,16 +442,16 @@ def convert_repeat_region_feature(feature, rec, id):
     """
 
     # Coordinates (Bakta uses 1-based)
-    start = int(feature.location.start) + 1
-    stop = int(feature.location.end)
+    strand = "."
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
+
 
     qualifiers = feature.qualifiers
     note = qualifiers.get("note", [None])[0]
     rpt_family = qualifiers.get("rpt_family", [None])[0]
     rpt_type = qualifiers.get("rpt_type", [None])[0]
     rpt_unit_seq = qualifiers.get("rpt_unit_seq", [None])[0]
-
-    strand = "?"
 
     # always just take the positive strand to get the NT seq (crispr repeat region)
     seq =  str(rec.seq)
@@ -519,13 +499,9 @@ def convert_utr_region_feature(feature, rec, id, three):
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)     
 
     qualifiers = feature.qualifiers
     note = qualifiers.get("note", [None])[0]
@@ -588,13 +564,8 @@ def convert_misc_rna_feature(feature, rec, id):
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
-
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)         
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
 
     qualifiers = feature.qualifiers
@@ -639,13 +610,9 @@ def convert_exon_feature(feature, rec, id):
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
-
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)       
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
+  
 
     qualifiers = feature.qualifiers
 
@@ -687,31 +654,19 @@ def convert_mat_peptide_feature(feature, rec, id):
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)        
+    # Handle CompoundLocation (join)
+    starts = None
+    stops = None
 
     if feature.location.__class__.__name__ == "CompoundLocation":
-        # Multi-exon (join)
         starts = []
         stops = []
         for part in feature.location.parts:
-            if strand == -1:
-                # For minus strand, 5' is end, 3' is start
-                starts.append(int(part.end))
-                stops.append(int(part.start) - 1)
-            else:
-                starts.append(int(part.start) + 1)
-                stops.append(int(part.end))
-
-    else:
-        starts = None
-        stops = None
-
+            starts.append(int(part.start) + 1)
+            stops.append(int(part.end))
 
     so_code =  so.SO_MAT_PEPTIDE.id
 
@@ -761,13 +716,8 @@ def convert_mobile_element_feature(feature, rec, id):
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
-
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)    
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
     qualifiers = feature.qualifiers
 
@@ -819,34 +769,23 @@ def convert_ncrna_feature(feature, rec, id):
         dict: Bakta-style misc_RNA feature.
     """
 
-    seq = str(rec.seq)
+    # seq = str(rec.seq)
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)        
+    # Handle CompoundLocation (join)
+    starts = None
+    stops = None
 
     if feature.location.__class__.__name__ == "CompoundLocation":
-        # Multi-exon (join)
         starts = []
         stops = []
         for part in feature.location.parts:
-            if strand == -1:
-                # For minus strand, 5' is end, 3' is start
-                starts.append(int(part.end))
-                stops.append(int(part.start) - 1)
-            else:
-                starts.append(int(part.start) + 1)
-                stops.append(int(part.end))
-
-    else:
-        starts = None
-        stops = None
+            starts.append(int(part.start) + 1)
+            stops.append(int(part.end))
 
     qualifiers = feature.qualifiers
 
@@ -912,33 +851,21 @@ def convert_misc_feature(feature, rec, id):
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)        
+    # Handle CompoundLocation (join)
+    starts = None
+    stops = None
 
     if feature.location.__class__.__name__ == "CompoundLocation":
-        # Multi-exon (join)
         starts = []
         stops = []
         for part in feature.location.parts:
-            if strand == -1:
-                # For minus strand, 5' is end, 3' is start
-                starts.append(int(part.end))
-                stops.append(int(part.start) - 1)
-            else:
-                starts.append(int(part.start) + 1)
-                stops.append(int(part.end))
-
-    else:
-        starts = None
-        stops = None
+            starts.append(int(part.start) + 1)
+            stops.append(int(part.end))
 
     qualifiers = feature.qualifiers
-
 
     so_code =  so.SO_MISC_REGION.id
 
@@ -1000,34 +927,24 @@ def convert_proprotein_feature(feature, rec, id):
         dict: Bakta-style proprotein feature.
     """
 
-    seq = str(rec.seq)
+    # seq = str(rec.seq)
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)        
+    # Handle CompoundLocation (join)
+    starts = None
+    stops = None
 
     if feature.location.__class__.__name__ == "CompoundLocation":
-        # Multi-exon (join)
         starts = []
         stops = []
         for part in feature.location.parts:
-            if strand == -1:
-                # For minus strand, 5' is end, 3' is start
-                starts.append(int(part.end))
-                stops.append(int(part.start) - 1)
-            else:
-                starts.append(int(part.start) + 1)
-                stops.append(int(part.end))
+            starts.append(int(part.start) + 1)
+            stops.append(int(part.end))
 
-    else:
-        starts = None
-        stops = None
 
     qualifiers = feature.qualifiers
 
@@ -1070,13 +987,8 @@ def convert_precursor_rna_feature(feature, rec, id):
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
-
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)    
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
     qualifiers = feature.qualifiers
 
@@ -1130,13 +1042,8 @@ def convert_protein_bind_feature(feature, rec, id):
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
-
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)    
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
     qualifiers = feature.qualifiers
 
@@ -1172,13 +1079,8 @@ def convert_rrna_feature(feature, rec, id):
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
-
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)    
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
     qualifiers = feature.qualifiers
 
@@ -1230,13 +1132,8 @@ def convert_regulatory_feature(feature, rec, id):
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
-
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)    
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
     qualifiers = feature.qualifiers
 
@@ -1299,30 +1196,20 @@ def convert_sig_peptide_feature(feature, rec, id):
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)        
+    # Handle CompoundLocation (join)
+    starts = None
+    stops = None
 
     if feature.location.__class__.__name__ == "CompoundLocation":
-        # Multi-exon (join)
         starts = []
         stops = []
         for part in feature.location.parts:
-            if strand == -1:
-                # For minus strand, 5' is end, 3' is start
-                starts.append(int(part.end))
-                stops.append(int(part.start) - 1)
-            else:
-                starts.append(int(part.start) + 1)
-                stops.append(int(part.end))
+            starts.append(int(part.start) + 1)
+            stops.append(int(part.end))
 
-    else:
-        starts = None
-        stops = None
 
     qualifiers = feature.qualifiers
 
@@ -1382,35 +1269,24 @@ def convert_transit_peptide_feature(feature, rec, id):
         dict: Bakta-style transit_peptide feature.
     """
 
-    seq = str(rec.seq)
-
+    # seq = str(rec.seq)
 
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
+    start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
+    stop  = int(feature.location.end)         # already inclusive after conversion
 
-    if strand == "-":  # negative strand
-        start = int(feature.location.end)     
-        stop  = int(feature.location.start) - 1  
-    else:  # positive strand
-        start = int(feature.location.start) + 1  
-        stop  = int(feature.location.end)        
+    # Handle CompoundLocation (join)
+    starts = None
+    stops = None
 
     if feature.location.__class__.__name__ == "CompoundLocation":
-        # Multi-exon (join)
         starts = []
         stops = []
         for part in feature.location.parts:
-            if strand == -1:
-                # For minus strand, 5' is end, 3' is start
-                starts.append(int(part.end))
-                stops.append(int(part.start) - 1)
-            else:
-                starts.append(int(part.start) + 1)
-                stops.append(int(part.end))
+            starts.append(int(part.start) + 1)
+            stops.append(int(part.end))
 
-    else:
-        starts = None
-        stops = None
 
     qualifiers = feature.qualifiers
 
