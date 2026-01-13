@@ -16,6 +16,36 @@ import baktfold.bakta.so as so
 
 # log = logging.getLogger('INSDC')
 
+def move_product_to_note_if_exists(qualifiers):
+    """
+    If a 'product' qualifier exists, append it to 'note' and remove 'product'.
+
+    Designed for the eukaryotic entries
+
+    Parameters
+    ----------
+    qualifiers : dict
+        Feature qualifiers dictionary (values are usually lists).
+
+    Returns
+    -------
+    None
+        Modifies qualifiers in place.
+    """
+    product = qualifiers.get("product")
+    if not product:
+        return
+
+    # Ensure note exists and is a list
+    if "note" not in qualifiers:
+        qualifiers["note"] = []
+
+    if isinstance(product, list):
+        qualifiers["note"].extend(product)
+    else:
+        qualifiers["note"].append(product)
+
+    qualifiers.pop("product", None)
 
 def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, euk):
 
@@ -298,56 +328,44 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                 qualifiers.pop('product', None)
             elif(feature['type'] == bc.FEATURE_5UTR) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_5UTR
-                qualifiers['note'].append(feature['product']) 
-                qualifiers.pop('product', None)
+                move_product_to_note_if_exists(qualifiers)
             elif(feature['type'] == bc.FEATURE_3UTR) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_3UTR
-                qualifiers['note'].append(feature['product']) 
-                qualifiers.pop('product', None) 
+                move_product_to_note_if_exists(qualifiers)
             elif(feature['type'] == bc.FEATURE_MISC_RNA) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_MISC_RNA
-                qualifiers['note'].append(feature['product']) 
-                qualifiers.pop('product', None)
+                move_product_to_note_if_exists(qualifiers)
             elif(feature['type'] == bc.FEATURE_EXON) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_EXON
-                qualifiers['note'].append(feature['product']) 
-                qualifiers.pop('product', None)
+                move_product_to_note_if_exists(qualifiers)
             elif(feature['type'] == bc.FEATURE_MAT_PEPTIDE) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_MAT_PEPTIDE
-                qualifiers['note'].append(feature['product']) 
-                qualifiers.pop('product', None)
+                move_product_to_note_if_exists(qualifiers)
             elif(feature['type'] == bc.FEATURE_MOBILE_ELEMENT) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_MOBILE_ELEMENT
-                qualifiers['note'].append(feature['product']) 
-                qualifiers.pop('product', None)
+                move_product_to_note_if_exists(qualifiers)
             elif(feature['type'] == bc.INSDC_FEATURE_MISC_FEATURE) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_MISC_FEATURE
-                qualifiers['note'].append(feature['product']) 
-                qualifiers.pop('product', None)
+                move_product_to_note_if_exists(qualifiers)
             elif(feature['type'] == bc.FEATURE_PRECURSOR_RNA) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_PRECURSOR_RNA
-                qualifiers['note'].append(feature['product']) 
-                qualifiers.pop('product', None)                
-            elif(feature['type'] == bc.FEATURE_PROPROTEIN) and (euk): # for euks
-                insdc_feature_type = bc.INSDC_FEATURE_PROPROTEIN
-                qualifiers['note'].append(feature['product']) 
-                qualifiers.pop('product', None)    
+                move_product_to_note_if_exists(qualifiers)          
+            elif(feature['type'] == bc.FEATURE_PROPEPTIDE) and (euk): # for euks
+                insdc_feature_type = bc.INSDC_FEATURE_PROPEPTIDE
+                move_product_to_note_if_exists(qualifiers)
             elif(feature['type'] == bc.FEATURE_PROTEIN_BIND) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_PROTEIN_BIND
-                qualifiers['note'].append(feature['product']) 
-                qualifiers.pop('product', None)    
+                move_product_to_note_if_exists(qualifiers)
             elif(feature['type'] == bc.INSDC_FEATURE_REGULATORY) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_REGULATORY
                 qualifiers['note'].append(feature['product']) 
                 qualifiers.pop('product', None)  
             elif(feature['type'] == bc.FEATURE_SIGNAL_PEPTIDE) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_SIGNAL_PEPTIDE
-                qualifiers['note'].append(feature['product']) 
-                qualifiers.pop('product', None)  
+                move_product_to_note_if_exists(qualifiers)
             elif(feature['type'] == bc.FEATURE_TRANSIT_PEPTIDE): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_TRANSIT_PEPTIDE
-                qualifiers['note'].append(feature['product']) 
-                qualifiers.pop('product', None)              
+                move_product_to_note_if_exists(qualifiers)           
             
 
             strand = None

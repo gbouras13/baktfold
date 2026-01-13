@@ -42,6 +42,39 @@ AMINO_ACID_DICT = {
     'sec': ('U', so.SO_TRNA_SELCYS)
 }
 
+def add_optional_qualifiers(entry, qualifiers, single_valued=None, multi_valued=None):
+    """
+    Add optional INSDC qualifiers to a feature entry dict in Bakta style.
+
+    Parameters
+    ----------
+    entry : dict
+        The feature dictionary being built.
+    qualifiers : dict
+        The qualifiers dictionary from Bio.SeqFeature.
+    single_valued : set or list
+        Qualifiers expected to be single-valued (take the first if multiple).
+    multi_valued : set or list
+        Qualifiers that can have multiple values (keep as list if >1, else single value).
+    """
+
+    single_valued = single_valued or set()
+    multi_valued = multi_valued or set()
+
+    # Multi-valued qualifiers
+    for key in multi_valued:
+        vals = qualifiers.get(key)
+        if vals:
+            entry[key] = vals if len(vals) > 1 else vals[0]
+
+    # Single-valued qualifiers
+    for key in single_valued:
+        vals = qualifiers.get(key)
+        if vals:
+            if key == "locus_tag":
+                entry["locus"] = vals[0] # this is what bakta needs
+            else:
+                entry[key] = vals[0]
 
 def convert_cds_feature(feature, seq_record, translation_table, id):
     """
@@ -242,7 +275,7 @@ def convert_trna_feature(feature, seq_record, id):
         db_xrefs.append(so_term.id)
 
     # ------------ final Bakta-form dict ------------
-    bakta_trna = {
+    bakta_trna_entry = {
         "type": "tRNA",
         "sequence": seq_record.id,
         "start": start,
@@ -257,10 +290,48 @@ def convert_trna_feature(feature, seq_record, id):
         "db_xrefs": db_xrefs,
        #  "anti_codon_pos": anti_codon_pos,  dont include, not in output
         "id": id,
-        "locus": locus
     }
 
-    return bakta_trna
+# Feature Key           tRNA
+
+
+# Definition            mature transfer RNA, a small RNA molecule (75-85 bases
+#                       long) that mediates the translation of a nucleic acid
+#                       sequence into an amino acid sequence;
+
+# Optional qualifiers   /allele="text"
+#                       /anticodon=(pos:<location>,aa:<amino_acid>,seq:<text>)
+#                       /circular_RNA
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /operon="text"
+#                       /product="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /standard_name="text"
+#                       /trans_splicing
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note" }
+    single_valued = {"allele",  "locus_tag", "map",    "old_locus_tag", "standard_name"}
+
+    qualifiers = feature.qualifiers
+
+    add_optional_qualifiers(bakta_trna_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["circular_RNA", "pseudo", "trans_splicing"]:
+        if flag in qualifiers:
+            bakta_trna_entry[flag] = flag in qualifiers
+
+    return bakta_trna_entry
 
 def convert_gene_feature(feature, rec, id):
     """
@@ -284,9 +355,6 @@ def convert_gene_feature(feature, rec, id):
     qualifiers = feature.qualifiers
 
     locus_tag = qualifiers.get("locus_tag", [None])[0]
-    gene = qualifiers.get("gene", [None])[0]
-
-    pseudo = qualifiers.get("pseudo", [None])[0]
     
 
     gene_entry = {
@@ -295,15 +363,56 @@ def convert_gene_feature(feature, rec, id):
         "start": start,
         "stop": stop,
         "strand": strand,
-        "gene": gene,
         "db_xrefs": [so.SO_GENE.id], 
         "id": id,
-        "locus": locus_tag
     }
 
-    if pseudo:
-        gene_entry["pseudo"] = True
+
+# Feature Key           gene 
+
+
+# Definition            region of biological interest identified as a gene 
+#                       and for which a name has been assigned;
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /operon="text"
+#                       /product="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /phenotype="text"
+#                       /standard_name="text"
+#                       /trans_splicing
+
+        
+# Comment               the gene feature describes the interval of DNA that 
+#                       corresponds to a genetic trait or phenotype; the feature is,
+#                       by definition, not strictly bound to it's positions at the 
+#                       ends;  it is meant to represent a region where the gene is 
+#                       located.
     
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note" }
+    single_valued = {"allele",  "locus_tag", "map",  "old_locus_tag", "operon", "phenotype", "standard_name"}
+
+    qualifiers = feature.qualifiers
+
+    add_optional_qualifiers(gene_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["pseudo", "trans_splicing"]:
+        if flag in qualifiers:
+            gene_entry[flag] = flag in qualifiers
+
     return gene_entry
 
 def convert_mrna_feature(feature, rec, id):
@@ -338,21 +447,13 @@ def convert_mrna_feature(feature, rec, id):
             starts.append(int(part.start) + 1)
             stops.append(int(part.end))
 
-
     else:
         starts = None
         stops = None
 
 
-
     qualifiers = feature.qualifiers
 
-    gene = qualifiers.get("gene", [None])[0]
-    product = qualifiers.get("product", [None])[0]
-    locus_tag = qualifiers.get("locus_tag", [None])[0]
-    # only on some
-    standard_name = qualifiers.get("standard_name", [None])[0]
-    pseudo = qualifiers.get("pseudo", [None])[0]
 
 
     mrna_entry = {
@@ -363,18 +464,51 @@ def convert_mrna_feature(feature, rec, id):
         "starts": starts,
         "stops": stops,
         "strand": strand,
-        "gene": gene,
-        "product": product,
         "db_xrefs": [so.SO_MRNA.id],        
         "id": id,
-        "locus": locus_tag
     }
 
-    if standard_name:
-        mrna_entry["standard_name"] = standard_name
 
-    if pseudo:
-        mrna_entry["pseudo"] = True
+
+# Feature Key           mRNA
+
+
+# Definition            messenger RNA; includes 5'untranslated region (5'UTR),
+#                       coding sequences (CDS, exon) and 3'untranslated region
+#                       (3'UTR);
+
+# Optional qualifiers   /allele="text"
+#                       /artificial_location="[artificial_location_value]"
+#                       /circular_RNA
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /operon="text"
+#                       /product="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /standard_name="text"
+#                       /trans_splicing
+
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note" }
+    single_valued = {"allele", "artificial_location", "gene",  "locus_tag", "map",  "old_locus_tag", "operon", "phenotype", "product", "standard_name"}
+
+    qualifiers = feature.qualifiers
+
+    add_optional_qualifiers(mrna_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["circular_RNA", "pseudo", "trans_splicing"]:
+        if flag in qualifiers:
+            mrna_entry[flag] = flag in qualifiers
 
     return mrna_entry
 
@@ -406,7 +540,6 @@ def convert_assembly_gap_feature(feature, rec, id):
         length = int(est_len)
     else:
         length = stop - start + 1  # fallback from coordinates
-
 
 
     gap_entry = {
@@ -457,6 +590,39 @@ def convert_repeat_region_feature(feature, rec, id):
     seq =  str(rec.seq)
     nt_seq = seq[start-1:stop]
 
+
+# Feature Key           repeat_region
+
+
+# Definition            region of genome containing repeating units;
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>" 
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /rpt_family="text"
+#                       /rpt_type=<repeat_type>
+#                       /rpt_unit_range=<base_range>
+#                       /rpt_unit_seq="text"
+#                       /satellite="<satellite_type>[:<class>][ <identifier>]"
+#                       /standard_name="text"
+
+    so_code =  so.SO_REPEAT.id
+
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
+
     # Minimal Bakta-like CRISPR structure
     repeat_region_entry = {
         "type": "repeat_region",
@@ -471,8 +637,16 @@ def convert_repeat_region_feature(feature, rec, id):
         "nt": nt_seq, # needed for batka .ffn writeout
         "id": id, # bakta_id needed 
         # "locus": None, # no locus tag like Bakta
-        "db_xrefs": [so.SO_REPEAT.id]
+        "db_xrefs": db_xrefs
     }
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note" }
+    single_valued = {"satellite", "gene",  "locus_tag", "map",  "old_locus_tag", "operon", "phenotype", "product", "standard_name"}
+
+    qualifiers = feature.qualifiers
+
+    add_optional_qualifiers(repeat_region_entry, qualifiers, single_valued, multi_valued)
+
 
     return repeat_region_entry
 
@@ -513,7 +687,63 @@ def convert_utr_region_feature(feature, rec, id, three):
     nt_seq = seq[start-1:stop]
 
 
-    # Minimal Bakta-like CRISPR structure
+# Feature Key           3'UTR
+
+
+# Definition            1) region at the 3' end of a mature transcript (following 
+#                       the stop codon) that is not translated into a protein;
+#                       2) region at the 3' end of an RNA virus (following the last stop
+#                       codon) that is not translated into a protein;
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /standard_name="text"
+#                       /trans_splicing
+
+
+
+# Feature Key           5'UTR
+
+
+# Definition            1) region at the 5' end of a mature transcript (preceding 
+#                       the initiation codon) that is not translated into a protein;
+#                       2) region at the 5' end of an RNA virus genome (preceding the first 
+#                       initiation codon) that is not translated into a protein;
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /standard_name="text"
+#                       /trans_splicing
+
+    so_code =  so.SO_REPEAT.id
+
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
+
+
+    # Minimal Bakta-like structure
     utr_entry = {
         "type": type,
         "sequence": rec.id,
@@ -523,9 +753,20 @@ def convert_utr_region_feature(feature, rec, id, three):
         "product": note, 
         "nt": nt_seq, # needed for batka .ffn writeout
         "id": id, # bakta_id needed 
-        "locus": locus_tag,
-        "db_xrefs": [so_code]
+        "db_xrefs": db_xrefs
     }
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note" }
+    single_valued = {"allele", "gene",  "locus_tag", "map",  "old_locus_tag", "operon", "phenotype", "standard_name"}
+
+    qualifiers = feature.qualifiers
+
+    add_optional_qualifiers(utr_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["pseudo", "trans_splicing"]:
+        if flag in qualifiers:
+            utr_entry[flag] = flag in qualifiers
 
     return utr_entry
 
@@ -573,6 +814,31 @@ def convert_misc_rna_feature(feature, rec, id):
     note = qualifiers.get("note", [None])[0]
     standard_name = qualifiers.get("note", [None])[0]
 
+# Feature Key           misc_RNA
+
+
+# Definition            any transcript or RNA product that cannot be defined by
+#                       other RNA keys (prim_transcript, precursor_RNA, mRNA,
+#                       5'UTR, 3'UTR, exon, CDS, sig_peptide, transit_peptide,
+#                       mat_peptide, intron, polyA_site, ncRNA, rRNA and tRNA);
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /operon="text"
+#                       /product="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /standard_name="text"
+#                       /trans_splicing
 
     misc_rna_entry = {
         "type": "misc_RNA", # expects lowercase 
@@ -581,11 +847,21 @@ def convert_misc_rna_feature(feature, rec, id):
         "stop": stop,
         "strand": strand, # matches Bakta and is required
         "gene": gene,
-        "note": note,
-        "standard_name": standard_name,
         "id": id
     }
 
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note" }
+    single_valued = {"allele", "gene",  "locus_tag", "map",  "old_locus_tag", "operon", "product", "phenotype", "standard_name"}
+
+    qualifiers = feature.qualifiers
+
+    add_optional_qualifiers(misc_rna_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["pseudo", "trans_splicing"]:
+        if flag in qualifiers:
+            misc_rna_entry[flag] = flag in qualifiers
 
     return misc_rna_entry
 
@@ -612,23 +888,51 @@ def convert_exon_feature(feature, rec, id):
     strand = "+" if feature.location.strand == 1 else "-"
     start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
     stop  = int(feature.location.end)         # already inclusive after conversion
-  
 
     qualifiers = feature.qualifiers
 
-    gene = qualifiers.get("gene", [None])[0]
-    number = qualifiers.get("number", [None])[0]
+    db_xrefs = qualifiers.get("db_xref", [])
 
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /EC_number="text"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /number=unquoted text (single token)
+#                       /old_locus_tag="text" (single token)
+#                       /product="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /standard_name="text"
+#                       /trans_splicing
+
+
+    # Extract commonly used INSDC qualifiers
     exon_entry = {
-        "type": "exon",
-        "sequence": rec.id,
-        "start": start,
-        "stop": stop,
-        "strand": strand,
-        "gene": gene,
-        "number": number,
-        "id": id,
-    }
+            "type": "exon",
+            "sequence": rec.id,
+            "start": start,
+            "stop": stop,
+            "strand": strand,
+            "id": id,
+            "db_xrefs": db_xrefs
+        }
+    
+    multi_valued = {"EC_number","experiment","function",  "gene_synonym",  "inference","note" }
+    single_valued = {"allele", "gene", "locus_tag", "map", "number",   "old_locus_tag", "operon", "pseudogene", "standard_name"   }
+
+    add_optional_qualifiers(exon_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["pseudo", "trans_splicing"]:
+        if flag in qualifiers:
+            exon_entry[flag] = True
 
     return exon_entry
 
@@ -670,31 +974,66 @@ def convert_mat_peptide_feature(feature, rec, id):
 
     so_code =  so.SO_MAT_PEPTIDE.id
 
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
+
     qualifiers = feature.qualifiers
 
+
+    # Extract commonly used INSDC qualifiers
     mat_peptide_entry = {
             "type": "mat_peptide",
             "sequence": rec.id,
             "start": start,
             "stop": stop,
+            # Join support
             "starts": starts,
             "stops": stops,
             "strand": strand,
-            "gene": qualifiers.get("gene", [None])[0],
-            "product": qualifiers.get("product", [None])[0],
-            "note": qualifiers.get("note", [None])[0],
-            "protein_id": qualifiers.get("protein_id", [None])[0],
-            "db_xrefs": [so_code],
             "id": id,
+            "db_xrefs": db_xrefs
         }
+   
 
-     # Optional but common
-    gene_synonym = qualifiers.get("gene_synonym", None)
-    if gene_synonym:
-        mat_peptide_entry["gene_synonym"] = gene_synonym
+# Feature Key           mat_peptide
 
 
+# Definition            mature peptide or protein coding sequence; coding
+#                       sequence for the mature or final peptide or protein
+#                       product following post-translational modification; the
+#                       location does not include the stop codon (unlike the
+#                       corresponding CDS);
 
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /EC_number="text"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /product="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /standard_name="text"
+
+    multi_valued = {"EC_number","experiment", "function",  "gene_synonym",  "inference","note" }
+    single_valued = {"allele", "gene", "locus_tag", "map", "number",   "old_locus_tag", "operon", "pseudogene", "standard_name"}
+
+    add_optional_qualifiers(mat_peptide_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers) - no flags
+    # for flag in ["pseudo"]:
+    #     if flag in qualifiers:
+    #         mat_peptide_entry[flag] = True
 
 
     #  mat_peptide     complement(join(194724303..194724321,194744661..194744721,
@@ -721,6 +1060,14 @@ def convert_mobile_element_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+    # Mandatory qualifier check (INSDC requirement)
+    mobile_element_type = qualifiers.get("mobile_element_type", [None])[0]
+    if mobile_element_type is None:
+        raise ValueError(
+            f"mobile_element feature {id} is missing mandatory "
+            "/mobile_element_type qualifier"
+        )
+
     so_code =  so.SO_MOBILE_ELEMENT.id
 
     # Get existing db_xref list or default to [so.SO_CDS.id]
@@ -730,17 +1077,53 @@ def convert_mobile_element_feature(feature, rec, id):
     if so_code not in db_xrefs:
         db_xrefs.append(so_code)
 
+
+# Feature Key           mobile_element
+
+
+# Definition            region of genome containing mobile elements;
+
+# Mandatory qualifiers  /mobile_element_type="<mobile_element_type>
+#                       [:<mobile_element_name>]"
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>" 
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /rpt_family="text"
+#                       /rpt_type=<repeat_type>
+#                       /standard_name="text"
+
+
+    # Extract commonly used INSDC qualifiers
     mobile_element_entry = {
-        "type": "mobile_element",
-        "sequence": rec.id,
-        "start": start,
-        "stop": stop,
-        "strand": strand,
-        "mobile_element_type": qualifiers.get("mobile_element_type", [None])[0], # mandatory according to bakta indsc.py
-        "note": qualifiers.get("note", [None])[0],
-        "db_xrefs": db_xrefs,
-        "id": id,
-    }
+            "type": "mobile_element",
+            "sequence": rec.id,
+            "start": start,
+            "stop": stop,
+            "strand": strand,
+            "id": id,
+            "db_xrefs": db_xrefs,
+                    # Mandatory
+            "mobile_element_type": mobile_element_type,
+        }
+    
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note" }
+    single_valued = {"allele", "gene", "locus_tag", "map",    "old_locus_tag", "standard_name", "rpt_family", "rpt_type"}
+
+    add_optional_qualifiers(mobile_element_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    # for flag in ["pseudo"]:
+    #   if flag in qualifiers:
+    #     mobile_element_entry[flag] = True
 
 
     #  mobile_element  57369551..57369723
@@ -795,22 +1178,77 @@ def convert_ncrna_feature(feature, rec, id):
     if so_code not in db_xrefs:
         db_xrefs.append(so_code)
 
+    # Mandatory qualifier (INSDC requirement)
+    ncrna_class = qualifiers.get("ncRNA_class", [None])[0]
+    if ncrna_class is None:
+        raise ValueError(
+            f"ncRNA feature {id} is missing mandatory /ncRNA_class qualifier"
+        )
+
     ncrna_entry = {
         "type": "ncRNA",
         "sequence": rec.id,
         "start": start,
         "stop": stop,
+        "strand": strand,
+        "id": id,
+
+        # Join support
         "starts": starts,
         "stops": stops,
-        "strand": strand,
-        "gene": qualifiers.get("gene", [None])[0],
-        "product": qualifiers.get("product", [None])[0],
-        "ncRNA_class": qualifiers.get("ncRNA_class", [None])[0],
-        "transcript_id": qualifiers.get("transcript_id", [None])[0],
+
+        # Mandatory
+        "ncRNA_class": ncrna_class,
+
+        # Multi-valued qualifiers
         "db_xrefs": db_xrefs,
-        "note": qualifiers.get("note", [None])[0],
-        "id": id,
+
+
     }
+
+# Feature Key           ncRNA
+
+# Definition            a non-protein-coding gene, other than ribosomal RNA and
+#                       transfer RNA, the functional molecule of which is the RNA
+#                       transcript;
+
+# Mandatory qualifiers  /ncRNA_class="TYPE"
+                      
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /operon="text"
+#                       /product="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /standard_name="text"
+#                       /trans_splicing
+
+# Example               /ncRNA_class="miRNA"
+#                       /ncRNA_class="siRNA"
+#                       /ncRNA_class="scRNA"       
+
+# Comment               the ncRNA feature is not used for ribosomal and transfer
+#                       RNA annotation, for which the rRNA and tRNA feature keys
+#                       should be used, respectively;
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note" }
+    single_valued = {"allele", "gene", "locus_tag", "map",    "old_locus_tag", "operon", "product", "standard_name", "pseudogene"}
+
+    add_optional_qualifiers(ncrna_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["pseudo", "trans_splicing"]:
+        if flag in qualifiers:
+            ncrna_entry[flag] = flag in qualifiers
 
     #  ncRNA           join(189791085..189791793,189798997..189799081,
     #                  189819873..189820364,189821703..189822337)
@@ -875,22 +1313,60 @@ def convert_misc_feature(feature, rec, id):
 
 
     misc_feature_entry = {
-        "type": "misc_feature",
-        "sequence": rec.id,
-        "start": start,
-        "stop": stop,
-        "starts": starts,
-        "stops": stops,
-        "strand": strand,
-        "gene": qualifiers.get("gene", [None])[0],
-        "gene_synonym": qualifiers.get("gene_synonym", [None])[0],
-        "note": qualifiers.get("note", [None])[0],
-        "evidence": qualifiers.get("evidence", [None])[0],
-        "function": qualifiers.get("function", [None])[0],
-        "db_xref": db_xrefs,
-        "id": id,
-    }
+            "type": "misc_feature",
+            "sequence": rec.id,
+            "start": start,
+            "stop": stop,
+            "strand": strand,
+            "id": id,
 
+            # Join support
+            "starts": starts,
+            "stops": stops,
+
+            # Multi-valued
+            "db_xrefs": db_xrefs,
+
+
+        }
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note", "phenotype"}
+    single_valued = {"allele", "gene", "locus_tag", "map",    "old_locus_tag", "operon", "product", "standard_name",  "pseudogene"}
+
+    add_optional_qualifiers(misc_feature_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["pseudo",]:
+        if flag in qualifiers:
+            misc_feature_entry[flag] = True
+
+# Feature Key           misc_feature
+
+
+# Definition            region of biological interest which cannot be described
+#                       by any other feature key; a new or rare feature;
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /number=unquoted text (single token)
+#                       /old_locus_tag="text" (single token)
+#                       /phenotype="text"
+#                       /product="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /standard_name="text"
+
+# Comment               this key should not be used when the need is merely to 
+#                       mark a region in order to comment on it or to use it in 
+#                       another feature's location
 
     #  misc_feature    join(78488668..78488692,78499322..78499359)
     #                  /gene="Mogat1"
@@ -910,9 +1386,9 @@ def convert_misc_feature(feature, rec, id):
     return misc_feature_entry
 
 
-def convert_proprotein_feature(feature, rec, id):
+def convert_proprotein_propeptide_feature(feature, rec, id):
     """
-    Convert a proprotein feature to a Bakta-style feature.
+    Convert a proprotein or propeptide feature to a Bakta-style feature.
 
     Parameters:
         feature: Bio.SeqFeature
@@ -945,27 +1421,66 @@ def convert_proprotein_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
-    db_xrefs = feature.qualifiers.get("db_xref", [])
+    so_code =  so.SO_PROPEPTIDE.id
+
+    # Get existing db_xref list or default to [so.SO_CDS.id]
+    db_xrefs = feature.qualifiers.get("db_xref", [so_code])
+
+    # Append so.SO_CDS.id only if it’s not already present
+    if so_code not in db_xrefs:
+        db_xrefs.append(so_code)
 
 
-    proprotein_entry = {
-        "type": "proprotein",
+    propeptide_entry = {
+        "type": "propeptide",
         "sequence": rec.id,
         "start": start,
         "stop": stop,
+        "strand": strand,
+        "id": id,
+
+        # Join support
         "starts": starts,
         "stops": stops,
-        "strand": strand,
-        "gene": qualifiers.get("gene", [None])[0],
-        "product": qualifiers.get("product", [None])[0],
-        "db_xref": db_xrefs,
-        "id": id,
+
+        # Multi-valued
+        "db_xrefs": qualifiers.get("db_xref", []),
+
     }
 
-     # Optional but common
-    gene_synonym = qualifiers.get("gene_synonym", None)
-    if gene_synonym:
-        proprotein_entry["gene_synonym"] = gene_synonym
+
+# Feature Key           propeptide
+
+
+# Definition            propeptide coding sequence; coding sequence for the domain of a 
+#                       proprotein that is cleaved to form the mature protein product.
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /product="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /standard_name="text"
+
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note"}
+    single_valued = {"allele", "gene", "locus_tag", "map",    "old_locus_tag", "product", "standard_name", "pseudogene"}
+
+    add_optional_qualifiers(propeptide_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["pseudo",]:
+        if flag in qualifiers:
+            propeptide_entry[flag] = True
 
     #  proprotein      join(171053237..171053367,171053712..171053832)
     #                  /gene="Apoa2"
@@ -973,7 +1488,7 @@ def convert_proprotein_feature(feature, rec, id):
     #                  Hdl-1"
     #                  /product="apolipoprotein A-II proprotein"  
 
-    return proprotein_entry
+    return propeptide_entry
 
 
 
@@ -1004,18 +1519,45 @@ def convert_precursor_rna_feature(feature, rec, id):
             "start": start,
             "stop": stop,
             "strand": strand,
-            "gene": qualifiers.get("gene", [None])[0],
-            "product": qualifiers.get("product", [None])[0],
-            "transcript_id": qualifiers.get("transcript_id", [None])[0],
             "db_xrefs": db_xrefs,
-            "note": qualifiers.get("note", [None])[0],
             "id": id,
         }
 
-     # Optional but common
-    gene_synonym = qualifiers.get("gene_synonym", None)
-    if gene_synonym:
-        precursor_rna_entry["gene_synonym"] = gene_synonym
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note"}
+    single_valued = {"allele", "gene", "locus_tag", "map",  "operon",  "old_locus_tag", "product", "standard_name"}
+
+    add_optional_qualifiers(precursor_rna_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["trans_splicing"]:
+        if flag in qualifiers:
+            precursor_rna_entry[flag] = True
+
+#     Feature Key           precursor_RNA
+
+
+# Definition            any RNA species that is not yet the mature RNA product;
+#                       may include ncRNA, rRNA, tRNA, 5' untranslated region
+#                       (5'UTR), coding sequences (CDS, exon), intervening
+#                       sequences (intron) and 3' untranslated region (3'UTR);
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"  
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /operon="text"
+#                       /product="text"
+#                       /standard_name="text"
+#                       /trans_splicing
+
 
     #  precursor_RNA   194719348..194719428
     #                  /gene="Mir29b-2"
@@ -1031,7 +1573,6 @@ def convert_precursor_rna_feature(feature, rec, id):
     return precursor_rna_entry
 
 
-
 def convert_protein_bind_feature(feature, rec, id):
     """
     Convert a GenBank protein_bind feature to a Bakta-style feature.
@@ -1044,6 +1585,13 @@ def convert_protein_bind_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+    # Mandatory qualifier
+    bound_moiety = qualifiers.get("bound_moiety", [None])[0]
+    if bound_moiety is None:
+        raise ValueError(
+            f"protein_bind feature {id} is missing mandatory /bound_moiety qualifier"
+        )
+
     so_code =  so.SO_PROTEINBIND.id
 
     # Get existing db_xref list or default to [so.SO_CDS.id]
@@ -1054,18 +1602,51 @@ def convert_protein_bind_feature(feature, rec, id):
         db_xrefs.append(so_code)
 
     protein_bind_entry = {
-            "type": "protein_bind",
-            "sequence": rec.id,
-            "start": start,
-            "stop": stop,
-            "strand": strand,
-            "experiment": qualifiers.get("experiment", [None])[0],
-            "note": qualifiers.get("note", [None])[0],
-            "bound_moiety": qualifiers.get("bound_moiety", [None])[0],
-            "function": qualifiers.get("function", [None])[0],
-            "db_xrefs": db_xrefs,
-            "id": id,
-        }
+        "type": "protein_bind",
+        "sequence": rec.id,
+        "start": start,
+        "stop": stop,
+        "strand": strand,
+        "bound_moiety": bound_moiety,
+        "db_xrefs": db_xrefs,
+        "id": id,
+    }
+
+
+# Feature Key           protein_bind
+
+
+# Definition            non-covalent protein binding site on nucleic acid;
+
+# Mandatory qualifiers  /bound_moiety="text"
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /operon="text"
+#                       /standard_name="text"
+
+# Comment               note that feature key regulatory with /regulatory_class="ribosome_binding_site"
+#                       should be used for ribosome binding sites.
+
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note"}
+    single_valued = {"allele", "gene", "locus_tag", "map",  "operon",  "old_locus_tag", "product", "standard_name"}
+
+    add_optional_qualifiers(protein_bind_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    # for flag in ["trans_splicing"]:
+    #     if flag in qualifiers:
+    #         protein_bind_entry[flag] = True
 
     return protein_bind_entry
 
@@ -1090,6 +1671,33 @@ def convert_rrna_feature(feature, rec, id):
     if so_code not in db_xrefs:
         db_xrefs.append(so_code)
 
+# Feature Key           rRNA
+
+
+# Definition            mature ribosomal RNA; RNA component of the
+#                       ribonucleoprotein particle (ribosome) which assembles
+#                       amino acids into proteins.
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /operon="text"
+#                       /product="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /standard_name="text"
+
+# Comment               rRNA sizes should be annotated with the /product
+#                       qualifier.  
+
 
     rrna_entry = {
             "type": "rRNA",
@@ -1097,14 +1705,20 @@ def convert_rrna_feature(feature, rec, id):
             "start": start,
             "stop": stop,
             "strand": strand,
-            "gene": qualifiers.get("gene", [None])[0],
-            "product": qualifiers.get("product", [None])[0],
-            "inference": qualifiers.get("inference", []),
-            "note": qualifiers.get("note", [None])[0],
-            "transcript_id": qualifiers.get("transcript_id", [None])[0],
             "db_xrefs": db_xrefs,
             "id": id,
         }
+    
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note"}
+    single_valued = {"allele", "gene", "locus_tag", "map",  "operon",  "old_locus_tag", "product", "pseudogene", "standard_name"}
+
+    add_optional_qualifiers(rrna_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["pseudo"]:
+        if flag in qualifiers:
+            rrna_entry[flag] = True
+
     
     #  rRNA            46413357..46413475
     #                  /gene="n-R5s211"
@@ -1134,6 +1748,13 @@ def convert_regulatory_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
+    # Mandatory qualifier
+    regulatory_class = qualifiers.get("regulatory_class", [None])[0]
+    if regulatory_class is None:
+        raise ValueError(
+            f"regulatory feature {id} is missing mandatory /regulatory_class qualifier"
+        )
+
     so_code =  so.SO_REGULATORY_REGION.id
 
     # Get existing db_xref list or default to [so.SO_CDS.id]
@@ -1150,13 +1771,52 @@ def convert_regulatory_feature(feature, rec, id):
             "start": start,
             "stop": stop,
             "strand": strand,
-            "regulatory_class": qualifiers.get("regulatory_class", [None])[0],
-            "experiment": qualifiers.get("experiment", [None])[0],
-            "note": qualifiers.get("note", [None])[0],
+            "regulatory_class": regulatory_class,
             "db_xrefs": db_xrefs,
             "id": id,
         }
     
+
+# Feature Key           regulatory
+
+
+# Definition            any region of sequence that functions in the regulation of
+#                       transcription, translation, replication, recombination, or chromatin structure;
+
+# Mandatory qualifiers  /regulatory_class="TYPE"
+
+# Optional qualifiers   /allele="text"
+#                       /bound_moiety="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /operon="text"
+#                       /phenotype="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /standard_name="text"
+
+# Comment	              This feature has replaced the following Feature Keys on 15-DEC-2014:
+#                       enhancer, promoter, CAAT_signal, TATA_signal, -35_signal, -10_signal,
+#                       RBS, GC_signal, polyA_signal, attenuator, terminator, misc_signal.
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note"}
+    single_valued = {"allele", "bound_moiety", "gene", "locus_tag", "map",  "operon",  "old_locus_tag", "phenotype", "product", "pseudogene", "standard_name"}
+
+    add_optional_qualifiers(regulatory_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["pseudo"]:
+        if flag in qualifiers:
+            regulatory_entry[flag] = True
+
     #  regulatory      195030925..195032349
     #                  /regulatory_class="enhancer"
     #                  /experiment="EXISTENCE:reporter gene assay evidence
@@ -1188,9 +1848,6 @@ def convert_sig_peptide_feature(feature, rec, id):
         dict: Bakta-style sig_peptide feature.
     """
 
-    seq = str(rec.seq)
-
-
     # Extract location
     strand = "+" if feature.location.strand == 1 else "-"
     start = int(feature.location.start) + 1   # Bakta uses 1-based inclusive
@@ -1221,24 +1878,59 @@ def convert_sig_peptide_feature(feature, rec, id):
 
 
     sig_peptide_entry = {
-            "type": "sig_peptide",
-            "sequence": rec.id,
-            "start": start,
-            "stop": stop,
-            "starts": starts,
-            "stops": stops,
-            "strand": strand,
-            "gene": qualifiers.get("gene", [None])[0],
-            "inference": qualifiers.get("inference", [None])[0],
-            "db_xrefs": db_xrefs,
-            "id": id,
-        }
+        "type": "sig_peptide",
+        "sequence": rec.id,
+        "start": start,
+        "stop": stop,
+        "strand": strand,
+        "id": id,
 
-     # Optional but common
-    gene_synonym = qualifiers.get("gene_synonym", None)
-    if gene_synonym:
-        sig_peptide_entry["gene_synonym"] = gene_synonym
+        # Join support
+        "starts": starts,
+        "stops": stops,
 
+        # Multi-valued
+        "db_xrefs": qualifiers.get("db_xref", []),
+
+    }
+
+  
+
+
+# Feature Key           sig_peptide
+
+
+# Definition            signal peptide coding sequence; coding sequence for an
+#                       N-terminal domain of a secreted protein; this domain is
+#                       involved in attaching nascent polypeptide to the
+#                       membrane leader sequence;
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /product="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /standard_name="text"
+
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note"}
+    single_valued = {"allele", "gene", "locus_tag", "map",  "operon",  "old_locus_tag", "phenotype", "product", "pseudogene", "standard_name"}
+
+    add_optional_qualifiers(sig_peptide_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["pseudo"]:
+        if flag in qualifiers:
+            sig_peptide_entry[flag] = True
 
 
     #  sig_peptide     complement(join(194768584..194768588,
@@ -1302,22 +1994,53 @@ def convert_transit_peptide_feature(feature, rec, id):
             "sequence": rec.id,
             "start": start,
             "stop": stop,
+            "strand": strand,
+            "id": id,
+
+            # Join support
             "starts": starts,
             "stops": stops,
-            "strand": strand,
-            "gene": qualifiers.get("gene", [None])[0],
-            "note": qualifiers.get("note", [None])[0],
-            "evidence": qualifiers.get("evidence", [None])[0],
-            "db_xrefs": db_xrefs,
-            "id": id,
+
+            # Multi-valued
+            "db_xrefs": qualifiers.get("db_xref", []),
+
         }
 
-     # Optional but common
-    gene_synonym = qualifiers.get("gene_synonym", None)
-    if gene_synonym:
-        transit_peptide_entry["gene_synonym"] = gene_synonym
 
 
+# Feature Key           transit_peptide
+
+
+# Definition            transit peptide coding sequence; coding sequence for an
+#                       N-terminal domain of a nuclear-encoded organellar
+#                       protein; this domain is involved in post-translational
+#                       import of the protein into the organelle;
+
+# Optional qualifiers   /allele="text"
+#                       /db_xref="<database>:<identifier>"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /old_locus_tag="text" (single token)
+#                       /product="text"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /standard_name="text"
+
+    multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note"}
+    single_valued = {"allele", "gene", "locus_tag", "map",  "operon",  "old_locus_tag", "phenotype", "product", "pseudogene", "standard_name"}
+
+    add_optional_qualifiers(transit_peptide_entry, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["pseudo"]:
+        if flag in qualifiers:
+            transit_peptide_entry[flag] = True
 
     #  transit_peptide complement(join(180006550..180006849,
     #                  180009627..180009803))
@@ -1622,10 +2345,11 @@ def eukaryotic_gbk_to_json(records, output_json, verbose):
     }
 
 # https://www.insdc.org/submitting-standards/feature-table/
-# eventually add them all
-
+# eventually add them
     ORDER = ["tRNA", "gene", "mRNA", "CDS", "assembly_gap", "gap", "repeat_region", "5'UTR", "3'UTR", "misc_RNA", "exon",
-             "mat_peptide", "mobile_element", "ncRNA", "misc_feature", "precursor_RNA", "proprotein", "protein_bind", "rRNA",
+             "mat_peptide", "mobile_element", "ncRNA", "misc_feature", "precursor_RNA", "proprotein",  # proprotein is actually not indsc compliant but is in Refseq
+             "propeptide",
+            "protein_bind", "rRNA",
              "regulatory", "sig_peptide", "transit_peptide"] 
 
      # source always in input - it is made in output anyway
@@ -1763,7 +2487,9 @@ def eukaryotic_gbk_to_json(records, output_json, verbose):
                     elif ftype == "precursor_RNA":
                         features.append(convert_precursor_rna_feature(feat, rec, id)) 
                     elif ftype == "proprotein":
-                        features.append(convert_proprotein_feature(feat, rec, id)) 
+                        features.append(convert_proprotein_propeptide_feature(feat, rec, id)) 
+                    elif ftype == "propeptide":
+                        features.append(convert_proprotein_propeptide_feature(feat, rec, id)) 
                     elif ftype == "protein_bind":
                         features.append(convert_protein_bind_feature(feat, rec, id)) 
                     elif ftype == "rRNA":

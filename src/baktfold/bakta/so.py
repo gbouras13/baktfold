@@ -44,7 +44,7 @@ SO_PRECURSOR_RNA = SO('precursor_RNA', 'SO:0002393')
 SO_PROTEINBIND = SO('protein_binding_site', 'SO:0000410')
 
 SO_TRANSIT_PEPTIDE = SO('transit_peptide', 'SO:0000725') 
-
+SO_PROPEPTIDE = SO('propeptide', 'SO:0001062')
 
 ######
 
