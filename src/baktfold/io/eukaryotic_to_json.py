@@ -317,7 +317,7 @@ def convert_mrna_feature(feature, rec, id):
             The record containing the sequence.
 
     Returns:
-        dict: Bakta-style misc_RNA feature.
+        dict: Bakta-style mRNA feature.
     """
 
     # seq = str(rec.seq)
@@ -575,7 +575,7 @@ def convert_misc_rna_feature(feature, rec, id):
 
 
     misc_rna_entry = {
-        "type": "misc_RNA",
+        "type": "misc_RNA", # expects lowercase 
         "sequence": rec.id,
         "start": start,
         "stop": stop,
@@ -736,14 +736,11 @@ def convert_mobile_element_feature(feature, rec, id):
         "start": start,
         "stop": stop,
         "strand": strand,
-        "mobile_element_type": qualifiers.get("mobile_element_type", [None])[0],
+        "mobile_element_type": qualifiers.get("mobile_element_type", [None])[0], # mandatory according to bakta indsc.py
         "note": qualifiers.get("note", [None])[0],
         "db_xrefs": db_xrefs,
         "id": id,
     }
-
-
-
 
 
     #  mobile_element  57369551..57369723
@@ -844,7 +841,7 @@ def convert_misc_feature(feature, rec, id):
             The record containing the sequence.
 
     Returns:
-        dict: Bakta-style misc_RNA feature.
+        dict: Bakta-style misc_feature feature.
     """
 
     seq = str(rec.seq)
@@ -1415,9 +1412,9 @@ def build_bakta_sequence_entry(rec):
     elif source_feat and "transl_table" in source_feat.qualifiers:
         gcode = source_feat.qualifiers["transl_table"][0]
 
-    # Conservative fallback
+    # Conservative fallback to 1 for euks
     if gcode is None:
-        gcode = 1 if mol_type and "RNA" not in mol_type and organism and "eukary" in organism.lower() else 11
+        gcode = 1 
 
     description_parts = [
         f"[gcode={gcode}]",
@@ -1624,9 +1621,12 @@ def eukaryotic_gbk_to_json(records, output_json, verbose):
         for feature in record.features
     }
 
+# https://www.insdc.org/submitting-standards/feature-table/
+# eventually add them all
+
     ORDER = ["tRNA", "gene", "mRNA", "CDS", "assembly_gap", "gap", "repeat_region", "5'UTR", "3'UTR", "misc_RNA", "exon",
              "mat_peptide", "mobile_element", "ncRNA", "misc_feature", "precursor_RNA", "proprotein", "protein_bind", "rRNA",
-             "regulatory", "sig_peptide", "transit_peptide"]
+             "regulatory", "sig_peptide", "transit_peptide"] 
 
      # source always in input - it is made in output anyway
     covered_set = set(ORDER + ["source"])

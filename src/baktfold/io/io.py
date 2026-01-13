@@ -68,7 +68,7 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
     logger.info('writing INSDC GenBank & EMBL...')
     genbank_path: Path = Path(output) / f"{prefix}.gbff"
     embl_path: Path = Path(output) / f"{prefix}.embl"
-    insdc.write_features(data, features, genbank_path, embl_path, euk)
+    insdc.write_features(data, features, genbank_path, embl_path, prokka, euk)
 
 
     logger.info('writing genome sequences...')
