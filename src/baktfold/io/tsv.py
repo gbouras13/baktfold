@@ -48,16 +48,20 @@ def write_features(sequences: Sequence[dict], features_by_sequence: Dict[str, di
                     product = f"(3' truncated) {product}"
                 elif(feat.get('truncated', '') == bc.FEATURE_END_BOTH):
                     product = f"(partial) {product}"
+
+                def s(x):
+                    return '' if x is None else str(x)
+                
                 fh.write('\t'.join(
                     [
                         seq_id,
                         feat_type,
                         str(feat['start']),
                         str(feat['stop']),
-                        feat['strand'],
-                        feat.get('locus', ''),
-                        str(gene or ''),        # handles None → ''
-                        str(product or ''),     # handles None → ''
+                        str(feat['strand']),
+                        s(feat.get('locus')), # handles None → ''
+                        s(gene),        # handles None → ''
+                        s(product),     # handles None → ''
                         ', '.join(sorted(feat.get('db_xrefs', [])))
                     ])
                 )
