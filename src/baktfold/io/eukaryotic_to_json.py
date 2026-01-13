@@ -112,8 +112,14 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
     gene = qualifiers.get("gene", [None])[0]
     product = qualifiers.get("product", [None])[0]
 
+
     # fall back to start_stop_strand if there is no locus tag
-    locus_tag = qualifiers.get('locus') or f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
+    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
+        locus_tag = qualifiers['locus_tag'][0]
+    else:
+        logger.warning(f"No locus_tag found for feature {id}")
+        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
+        logger.warning(f"Generating a locus_tag: {locus_tag}")
 
     note = qualifiers.get("note", [None])[0]
     locus = locus_tag
@@ -268,8 +274,14 @@ def convert_trna_feature(feature, seq_record, id):
 
     # ------------ Basic qualifiers ------------
     product = feature.qualifiers.get("product", [None])[0]
+
     # fall back to start_stop_strand if there is no locus tag
-    locus_tag = qualifiers.get('locus') or f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
+    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
+        locus_tag = qualifiers['locus_tag'][0]
+    else:
+        logger.warning(f"No locus_tag found for feature {id}")
+        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
+        logger.warning(f"Generating a locus_tag: {locus_tag}")
 
     # ------------ amino acid ------------
     # Prokka product examples:
@@ -406,7 +418,13 @@ def convert_gene_feature(feature, rec, id):
     qualifiers = feature.qualifiers
 
     # fall back to start_stop_strand if there is no locus tag
-    locus_tag = qualifiers.get('locus') or f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
+    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
+        locus_tag = qualifiers['locus_tag'][0]
+    else:
+        logger.warning(f"No locus_tag found for feature {id}")
+        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
+        logger.warning(f"Generating a locus_tag: {locus_tag}")
+        
     
 
     gene_entry = {
@@ -507,9 +525,14 @@ def convert_mrna_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
-   # fall back to start_stop_strand if there is no locus tag
-    locus_tag = qualifiers.get('locus') or f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
 
+    # fall back to start_stop_strand if there is no locus tag
+    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
+        locus_tag = qualifiers['locus_tag'][0]
+    else:
+        logger.warning(f"No locus_tag found for feature {id}")
+        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
+        logger.warning(f"Generating a locus_tag: {locus_tag}")
 
 
     mrna_entry = {
@@ -737,8 +760,14 @@ def convert_utr_region_feature(feature, rec, id, three):
     qualifiers = feature.qualifiers
     note = qualifiers.get("note", [None])[0]
 
+
     # fall back to start_stop_strand if there is no locus tag
-    locus_tag = qualifiers.get('locus') or f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
+    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
+        locus_tag = qualifiers['locus_tag'][0]
+    else:
+        logger.warning(f"No locus_tag found for feature {id}")
+        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
+        logger.warning(f"Generating a locus_tag: {locus_tag}")
 
     # always just take the positive strand to get the NT seq (UTR region)
     seq =  str(rec.seq)
