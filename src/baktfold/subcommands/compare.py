@@ -250,6 +250,9 @@ def subcommand_compare(
 
         afdbclusters_df = get_tophit(result_tsv,structures, cath=False)
 
+    else:
+        logger.info("Skipping AFDB Clusters search as --fast specified.")
+
     #####
     # foldseek search pdb
     #####
