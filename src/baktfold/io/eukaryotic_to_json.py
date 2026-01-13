@@ -103,18 +103,21 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
     codon_start = int(feature.qualifiers.get("codon_start", ["1"])[0])
     frame = codon_start
 
-    # ----------- Basic qualifiers -----------
-    gene = feature.qualifiers.get("gene", [None])[0]
-    product = feature.qualifiers.get("product", [None])[0]
+    qualifiers = feature.qualifiers
 
-    locus_tag = feature.qualifiers.get("locus_tag", [None])[0]
-    note = feature.qualifiers.get("note", [None])[0]
+    # ----------- Basic qualifiers -----------
+    gene = qualifiers.get("gene", [None])[0]
+    product = qualifiers.get("product", [None])[0]
+
+    # fall back to start_stop_strand if there is no locus tag
+    locus_tag = qualifiers.get('locus') or f"{start}_{stop}_{strand}"
+
+    note = qualifiers.get("note", [None])[0]
     locus = locus_tag
 
     # pseudo
-    pseudo = feature.qualifiers.get("pseudo", [None])[0]
 
-    protein_id = feature.qualifiers.get("protein_id", [None])[0]
+    protein_id = qualifiers.get("protein_id", [None])[0]
 
     # ----------- Extract nucleotides -----------
     nt_seq = feature.extract(seq_record.seq)
@@ -149,7 +152,7 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
             seq_stats = None
 
     # Get existing db_xref list or default to [so.SO_CDS.id]
-    db_xref = feature.qualifiers.get("db_xref", [so.SO_CDS.id])
+    db_xref = qualifiers.get("db_xref", [so.SO_CDS.id])
 
     # Append so.SO_CDS.id only if it’s not already present
     if so.SO_CDS.id not in db_xref:
@@ -181,8 +184,51 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
         "protein_id": protein_id
     }
 
-    if pseudo:
-        bakta_cds["pseudo"] = True
+# Feature Key           CDS
+
+# Definition            coding sequence; sequence of nucleotides that
+#                       corresponds with the sequence of amino acids in a
+#                       protein (location includes stop codon); 
+#                       feature includes amino acid conceptual translation.
+
+# Optional qualifiers   /allele="text"
+#                       /artificial_location="[artificial_location_value]"
+#                       /circular_RNA
+#                       /codon_start=<1 or 2 or 3>
+#                       /db_xref="<database>:<identifier>"
+#                       /EC_number="text"
+#                       /exception="[exception_value]"
+#                       /experiment="[CATEGORY:]text"
+#                       /function="text"
+#                       /gene="text"
+#                       /gene_synonym="text"
+#                       /inference="[CATEGORY:]TYPE[ (same species)][:EVIDENCE_BASIS]"
+#                       /locus_tag="text" (single token)
+#                       /map="text"
+#                       /note="text"
+#                       /number=unquoted text (single token)
+#                       /old_locus_tag="text" (single token)
+#                       /operon="text"
+#                       /product="text"
+#                       /protein_id="<identifier>"
+#                       /pseudo
+#                       /pseudogene="TYPE"
+#                       /ribosomal_slippage
+#                       /standard_name="text"
+#                       /translation="text"
+#                       /transl_except=(pos:<location>,aa:<amino_acid>)
+#                       /transl_table =<integer>
+#                       /trans_splicing
+
+    multi_valued = {"EC_number", "exception", "experiment", "function",  "gene_synonym",  "inference", }
+    single_valued = {"allele", "artificial_location",  "map", "number",  "old_locus_tag", "operon", "phenotype", "pseudogene", "standard_name", "transl_except", "transl_table"}
+
+    add_optional_qualifiers(bakta_cds, qualifiers, single_valued, multi_valued)
+
+    # Flags (boolean-like qualifiers)
+    for flag in ["circular_RNA", "pseudo", "ribosomal_slippage", "trans_splicing"]:
+        if flag in qualifiers:
+            bakta_cds[flag] = flag in qualifiers
 
     if hypothetical:
         bakta_cds["hypothetical"] = True
@@ -219,7 +265,8 @@ def convert_trna_feature(feature, seq_record, id):
 
     # ------------ Basic qualifiers ------------
     product = feature.qualifiers.get("product", [None])[0]
-    locus = feature.qualifiers.get("locus_tag", [None])[0]
+    # fall back to start_stop_strand if there is no locus tag
+    locus_tag = qualifiers.get('locus') or f"{start}_{stop}_{strand}"
 
     # ------------ amino acid ------------
     # Prokka product examples:
@@ -289,6 +336,7 @@ def convert_trna_feature(feature, seq_record, id):
         "nt": nt,
         "db_xrefs": db_xrefs,
        #  "anti_codon_pos": anti_codon_pos,  dont include, not in output
+        "locus": locus_tag,
         "id": id,
     }
 
@@ -320,7 +368,7 @@ def convert_trna_feature(feature, seq_record, id):
 #                       /trans_splicing
 
     multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note" }
-    single_valued = {"allele",  "locus_tag", "map",    "old_locus_tag", "standard_name"}
+    single_valued = {"allele",  "map",    "old_locus_tag", "standard_name"}
 
     qualifiers = feature.qualifiers
 
@@ -354,7 +402,8 @@ def convert_gene_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
-    locus_tag = qualifiers.get("locus_tag", [None])[0]
+    # fall back to start_stop_strand if there is no locus tag
+    locus_tag = qualifiers.get('locus') or f"{start}_{stop}_{strand}"
     
 
     gene_entry = {
@@ -455,7 +504,8 @@ def convert_mrna_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
 
-    locus_tag = feature.qualifiers.get("locus_tag", [None])[0]
+   # fall back to start_stop_strand if there is no locus tag
+    locus_tag = qualifiers.get('locus') or f"{start}_{stop}_{strand}"
 
 
 
@@ -684,7 +734,8 @@ def convert_utr_region_feature(feature, rec, id, three):
     qualifiers = feature.qualifiers
     note = qualifiers.get("note", [None])[0]
 
-    locus_tag = qualifiers.get("locus_tag", [None])[0]
+    # fall back to start_stop_strand if there is no locus tag
+    locus_tag = qualifiers.get('locus') or f"{start}_{stop}_{strand}"
 
     # always just take the positive strand to get the NT seq (UTR region)
     seq =  str(rec.seq)
@@ -757,11 +808,12 @@ def convert_utr_region_feature(feature, rec, id, three):
         "product": note, 
         "nt": nt_seq, # needed for batka .ffn writeout
         "id": id, # bakta_id needed 
-        "db_xrefs": db_xrefs
+        "db_xrefs": db_xrefs,
+        "locus": locus_tag
     }
 
     multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note" }
-    single_valued = {"allele", "gene",  "locus_tag", "map",  "old_locus_tag", "operon", "phenotype", "standard_name"}
+    single_valued = {"allele", "gene",   "map",  "old_locus_tag", "operon", "phenotype", "standard_name"}
 
     qualifiers = feature.qualifiers
 
@@ -815,8 +867,6 @@ def convert_misc_rna_feature(feature, rec, id):
 
     qualifiers = feature.qualifiers
     gene = qualifiers.get("gene", [None])[0]
-    note = qualifiers.get("note", [None])[0]
-    standard_name = qualifiers.get("note", [None])[0]
 
 # Feature Key           misc_RNA
 
