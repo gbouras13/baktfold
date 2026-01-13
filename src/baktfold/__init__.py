@@ -520,7 +520,7 @@ def run(
 
 
     logger.info('writing baktfold outputs')
-    io.write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus)
+    io.write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast)
 
     # cleanup the temp files
     if not keep_tmp_files:
@@ -735,7 +735,7 @@ def proteins(
     # - remove temp directory
     ############################################################################
     
-    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db)
+    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast)
 
     # cleanup the temp files
     if not keep_tmp_files:
@@ -1144,7 +1144,7 @@ def compare(
     # bakta output module
     ####
     logger.info('writing baktfold outputs')
-    io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus)
+    io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast)
 
     # cleanup the temp files
     if not keep_tmp_files:
@@ -1460,7 +1460,7 @@ def proteins_compare(
     # - remove temp directory
     ############################################################################
     
-    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db)
+    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast)
 
 
     # cleanup the temp files
