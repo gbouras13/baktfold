@@ -1,7 +1,9 @@
-import logging
+# import logging
 
 from pathlib import Path
 from typing import Dict, Sequence, Union
+
+from loguru import logger
 
 import baktfold.bakta
 import baktfold.bakta.config as cfg
@@ -10,9 +12,6 @@ import baktfold.io.fasta as fasta
 import baktfold.io.insdc as insdc
 import baktfold.bakta.annotation as ba
 import baktfold.bakta.so as so
-from loguru import logger
-
-# log = logging.getLogger('GFF')
 
 
 def write_gene_feature(fh, seq_id, feat):

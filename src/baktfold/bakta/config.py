@@ -1,4 +1,4 @@
-import logging
+# import logging
 import multiprocessing as mp
 import os
 import re
@@ -9,9 +9,9 @@ from argparse import Namespace
 from datetime import datetime
 from pathlib import Path
 
-
 import baktfold.bakta.constants as bc
 from baktfold import __version__
+
 
 PLASMID_NAME_PATTERN = re.compile(r'p[a-zA-Z0-9\._]{1,19}')
 PLASMID_UNNAMED_PATTERN = re.compile(r'unnamed[0-9]{0,3}')

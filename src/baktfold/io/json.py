@@ -1,16 +1,13 @@
 import json
-from loguru import logger
-
 from collections import OrderedDict
 from pathlib import Path
 from typing import Sequence
 
+from loguru import logger
+
 import baktfold.bakta
 import baktfold.bakta.constants as bc
 import baktfold.bakta.config as cfg
-
-
-
 
 
 def write_json(data: dict, features: Sequence[dict], json_path: Path):

@@ -1,16 +1,16 @@
-import logging
+# import logging
+import csv
 import pandas as pd
 import sqlite3
-
 from concurrent.futures import ThreadPoolExecutor
+from collections import defaultdict
 from typing import Sequence, Tuple
+from pathlib import Path
+
+from loguru import logger
 
 # import baktfold.bakta.config as cfg
 import baktfold.bakta.constants as bc
-from loguru import logger
-from pathlib import Path
-from collections import defaultdict
-import csv
 
 
 def parse(features: Sequence[dict], foldseek_df: pd.DataFrame, db_name: str = 'swissprot', has_duplicate_locus: bool = False) -> None:

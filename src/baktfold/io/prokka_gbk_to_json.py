@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
-
+# import argparse
+import hashlib
 import json
-from Bio import SeqIO
-import argparse
-from Bio.SeqUtils import gc_fraction
-import json
-from datetime import datetime
-import re
 import random
+import re
 import string
 from collections import defaultdict
+from datetime import datetime
+
+# from Bio import SeqIO
+from Bio.SeqUtils.ProtParam import ProteinAnalysis
+from Bio.SeqUtils import gc_fraction
+
 import baktfold.bakta.so as so
 
-import hashlib
-from Bio.SeqUtils.ProtParam import ProteinAnalysis
 
 AMINO_ACID_DICT = {
     'ala': ('A', so.SO_TRNA_ALA),

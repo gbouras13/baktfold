@@ -1,16 +1,13 @@
-from loguru import logger
 import re
 
 from pathlib import Path
 from typing import Sequence
 
 from Bio import SeqIO
+from loguru import logger
 from xopen import xopen
 
 import baktfold.bakta.constants as bc
-
-
-# log = logging.getLogger('FASTA')
 
 
 FASTA_AA_SEQUENCE_PATTERN = re.compile(r'[ARNDCQEGHILKMFPOSUTWYVBZXJ]+', re.IGNORECASE)

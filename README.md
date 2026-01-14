@@ -5,13 +5,12 @@
 [![PyPI version](https://badge.fury.io/py/baktfold.svg)](https://badge.fury.io/py/baktfold)
 [![Downloads](https://static.pepy.tech/badge/baktfold)](https://pepy.tech/project/baktfold)
 
-
-# baktfold
+# Baktfold
 Rapid &amp; standardized annotation of bacterial genomes, MAGs &amp; plasmids using protein structural information 
 
-`baktfold` is a sensitive annotation tool for bacterial genomes, MAGs &amp; plasmids genomes using protein structural homology. 
+Baktfold is a sensitive annotation tool for bacterial genomes, MAGs &amp; plasmids genomes using protein structural homology.
 
-`baktfold` is very similar to [phold](https://github.com/gbouras13/phold) but goes beyond phages to bacterial annotation. `baktfold` takes all "hypothetical proteins" from [Bakta's](https://github.com/oschwengers/bakta) output and uses the [ProstT5](https://github.com/mheinzinger/ProstT5) protein language model to rapidly translate protein amino acid sequences to the 3Di token alphabet used by [Foldseek](https://github.com/steineggerlab/foldseek). Foldseek is then used to search these against a series of databases (SwissProt, AlphaFold Database non-singleton clusters, PDB and CATH).
+Baktfold is very similar to [Phold](https://github.com/gbouras13/phold) but goes beyond phages to bacterial annotation. Baktfold takes all _hypothetical proteins_ from [Bakta's](https://github.com/oschwengers/bakta) output and uses the [ProstT5](https://github.com/mheinzinger/ProstT5) protein language model to rapidly translate protein amino acid sequences to the 3Di token alphabet used by [Foldseek](https://github.com/steineggerlab/foldseek). Foldseek is then used to search these against a series of databases (SwissProt, AlphaFold Database non-singleton clusters, PDB and CATH).
 
 Additionally, instead of using ProstT5, you can specify protein structures that you have pre-computed for your hypothetical proteins.
 
@@ -21,11 +20,11 @@ You can also specify custom databases to search against using `--custom-db`
 
 # Google Colab Notebook
 
-If you don't want to install `baktfold` locally, you can run it without any code using the [Google Colab notebook](https://colab.research.google.com/github/gbouras13/baktfold/blob/main/run_baktfold.ipynb)
+If you don't want to install Baktfold locally, you can run it without any code using the [Google Colab notebook](https://colab.research.google.com/github/gbouras13/baktfold/blob/main/run_baktfold.ipynb)
 
 # Table of Contents
 
-- [baktfold](#baktfold)
+- [Baktfold](#baktfold)
 - [Google Colab Notebook](#google-colab-notebook)
 - [Table of Contents](#table-of-contents)
   - [Install](#install)
@@ -43,38 +42,34 @@ If you don't want to install `baktfold` locally, you can run it without any code
 
 ### Conda (recommended)
 
-* The best way to install `baktfold` is using conda, as this will install Foldseek (the only non-Python dependency) along with the Python dependencies
-* We would highly recommend installing conda via [miniforge](https://github.com/conda-forge/miniforge).
-* To install baktfold:
+The best way to install Baktfold is using conda, as this will install Foldseek (the only non-Python dependency) along with the Python dependencies
+We would highly recommend installing Conda via [Miniforge](https://github.com/conda-forge/miniforge):
 
 ```bash
 conda create -n baktfoldENV -c conda-forge -c bioconda baktfold 
 ```
 
-* To utilise phold with GPU, a GPU compatible version of pytorch must be installed. By default conda will usually install a CPU-only version.
-* If you have an NVIDIA GPU, please try:
+To utilise phold with GPU, a GPU compatible version of pytorch must be installed (default: CPU-only version):
 
 ```bash
 conda create -n baktfoldENV -c conda-forge -c bioconda baktfold pytorch=*=cuda*
 ```
 
-* If you have a Mac with M-series Apple Silicon, you may need to install a particular version of Pytorch to utilise GPU-acceleration
-* The same is true if you use other non-NVIDIA e.g. AMD GPUs
-* See [this link](https://phold.readthedocs.io/en/latest/install/) for some more detail and further links
+If you have a Mac with M-series Apple Silicon, you may need to install a particular version of Pytorch to utilise GPU-acceleration. The same is true if you use other non-NVIDIA e.g. AMD GPUs. See [this link](https://phold.readthedocs.io/en/latest/install/) for some more detail and further links
 
-### Pip 
+### Pip
 
-* You can also install baktfold using pip.
+You can also install Baktfold using Pip:
 
 ```bash
 pip install baktfold
 ```
 
-* You will need to have Foldseek (ideally v10.941cd33) installed and available in the $PATH.
+You will need to have Foldseek (ideally v10.941cd33) installed and available in the $PATH.
 
 ### Source
 
-* You can install the latest version of baktfold with potentially untested and unreleased changes into a conda environment using conda as follows:
+You can install the latest version of Baktfold with potentially untested and unreleased changes into a conda environment using conda as follows:
 
 ```bash
 conda create -n baktfoldENV foldseek
@@ -85,16 +80,17 @@ pip install .
 baktfold --help
 ```
 
-### Database Installation 
+### Database Installation
 
-* To download and install baktfold's databases (use as many threads with `-t` as you can to speed up downloading)
+To download and install Baktfold's databases (use as many threads with `-t` as you can to speed up downloading):
 
 ```bash
 baktfold install -d baktfold_db -t 8
 ```
 
-* If you have an NVIDIA GPU, you will need to format the database to allow it to use Foldseek-GPU with `--foldseek-gpu`
-    * Note: you can do this after downloading the database with the above command (it won't redownload the database, only do the relevant Foldseek database padding)
+If you have an NVIDIA GPU, you will need to format the database to allow it to use Foldseek-GPU with `--foldseek-gpu`.
+
+Note: you can do this after downloading the database with the above command (it won't redownload the database, only do the relevant Foldseek database padding)
 
 ```bash
 baktfold install -d baktfold_db --foldseek-gpu
@@ -102,51 +98,62 @@ baktfold install -d baktfold_db --foldseek-gpu
 
 ## Example
 
-* You will first need to run [bakta](https://github.com/oschwengers/bakta) and use the resulting `.json` file as input for `baktfold`
-    * We will add other input formats eventually, put we would always recommend running Bakta first, as it is awesome and comprehensive
-* To use `baktfold run` using a dummy test example
+First, you need to run [Bakta](https://github.com/oschwengers/bakta) and use the resulting `.json` file as input for Baktfold.
+We will add other input formats eventually, but we would always recommend running Bakta first, for a comprehensive genome annotation.
+
+Running Baktfold on Bakta results (using a dummy test example JSON `assembly.json` file:
 
 ```bash
-# with nvidia gpu 
-baktfold run -i tests/test_data/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d baktfold_db   --foldseek-gpu
-# without nvidia gpu available
+# default (CPU-only or non-NVIDIA GPU e.g. Mac or AMD)
 baktfold run -i tests/test_data/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d baktfold_db   
+# with Nvidia GPU
+baktfold run -i tests/test_data/assembly_bakta_output/assembly.json  -o baktfold_output -f -t 8 -d baktfold_db   --foldseek-gpu
 ```
 
-* To use `baktfold proteins` using a dummy test example protein `.faa` file
-* Note that this can be any `.faa` (It does not have to be the output of Bakta)
+Running Baktfold on protein sequences (using a dummy test example Fasta `.faa` file):
 
 ```bash
-# with nvidia gpu 
-baktfold proteins -i tests/test_data/assembly.hypotheticals.faa  -o baktfold_proteins_output -f -t 8 -d baktfold_db   --foldseek-gpu
-# without nvidia gpu available
+# default (CPU-only or non-NVIDIA GPU e.g. Mac or AMD)
 baktfold proteins -i tests/test_data/assembly.hypotheticals.faa  -o baktfold_proteins_output -f -t 8 -d baktfold_db   
+# with Nvidia GPU 
+baktfold proteins -i tests/test_data/assembly.hypotheticals.faa  -o baktfold_proteins_output -f -t 8 -d baktfold_db   --foldseek-gpu
 ```
+
+Note that this can be any `.faa`. It does not have to be the output of Bakta.
 
 ## Usage
 
-* The two most useful commands are `baktfold run` and `baktfold proteins`
-* `baktfold run` accepts a __Bakta json file__ as its input, and by default, it will annotate all hypothetical CDS and return a variety of Bakta-like compliant output formats. All other annotations will be inherited from the Bakta output
-* `baktfold proteins` accepts a protein FASTA `.faa` format file as input. It will annotate all protein sequences and return a variety of `bakta_proteins`-like output formats
-* `baktfold predict` and `baktfold compare` split `baktfold run` into the ProstT5 and Foldseek modules, while `baktfold proteins-predict` and `baktfold proteins-compare` do the same for `baktfold proteins` (useful if you have non-NVIDIA GPUs)
+The two most useful commands are `baktfold run` and `baktfold proteins`
 
-* It is recommend you run baktfold with a GPU if you can.
-* If you do not have a GPU, baktfold will still run, but the ProstT5 step will be fairly slow.
-* If you have a NVIDIA GPU, you can also use the `--foldseek-gpu` parameter to accelerate Foldseek further
+- `baktfold run` accepts a __Bakta json file__ as input, and by default, it will annotate all hypothetical CDS and return a variety of Bakta-like compliant output formats. All other annotations will be inherited from the Bakta output
+- `baktfold proteins` accepts a protein FASTA `.faa` format file as input. It will annotate all protein sequences and return a variety of `bakta_proteins`-like output formats
+- `baktfold predict` and `baktfold compare` split `baktfold run` into the ProstT5 and Foldseek modules, while `baktfold proteins-predict` and `baktfold proteins-compare` do the same for `baktfold proteins` (useful if you have non-NVIDIA GPUs)
+
+It is recommend you run Baktfold with a GPU if you can. If you do not have a GPU, Baktfold will still run, but the ProstT5 step will be fairly slow. If you have a NVIDIA GPU, you can also use the `--foldseek-gpu` parameter to accelerate Foldseek further
 
 ```bash
 Usage: baktfold [OPTIONS] COMMAND [ARGS]...
+
+  Main command line interface for baktfold.
+
+  Returns:   None
+
+  Examples:   >>> main_cli()   None
 
 Options:
   -h, --help     Show this message and exit.
   -V, --version  Show the version and exit.
 
 Commands:
+  autotune          Determines optimal batch size for 3Di prediction with...
   citation          Print the citation(s) for this tool
   compare           Runs Foldseek vs baktfold db
+  convert-euk       (Experimental) Converts eukaryotic GenBank to Bakta...
+  convert-prokka    Converts Prokka GenBank to Bakta format json
+  createdb          Creates foldseek DB from AA FASTA and 3Di FASTA input...
   install           Installs ProstT5 model and baktfold database
   predict           Uses ProstT5 to predict 3Di tokens - GPU recommended
-  proteins          baktfold protein-predict then comapare all in one - GPU...
+  proteins          baktfold proteins-predict then comapare all in one -...
   proteins-compare  Runs Foldseek vs baktfold db on proteins input
   proteins-predict  Runs ProstT5 on a multiFASTA input - GPU recommended
   run               baktfold predict then comapare all in one - GPU...
@@ -167,6 +174,11 @@ Options:
   -p, --prefix TEXT              Prefix for output files  [default: baktfold]
   -d, --database TEXT            Specific path to installed baktfold database
   -f, --force                    Force overwrites the output directory
+  --autotune                     Run autotuning to detect and automatically
+                                 use best batch size for your hardware.
+                                 Recommended only if you have a large dataset
+                                 (e.g. thousands of proteins), or else
+                                 autotuning will add rather than save runtime.
   --batch-size INTEGER           batch size for ProstT5. 1 is usually fastest.
                                  [default: 1]
   --cpu                          Use cpus only.
@@ -201,18 +213,22 @@ Options:
   --custom-annotations PATH      Custom Foldseek DB annotations, 2 column tsv.
                                  Column 1 matches the Foldseek headers, column
                                  2 is the description.
+  --euk                          Eukaryotic input genome.
+  --fast                         Skips Foldseek search against AFDB Clusters.
   -a, --all-proteins             annotate all proteins (not just
                                  hypotheticals)
 ```
 
-
 ## Output
 
-* The majority of outputs match [bakta](https://github.com/oschwengers/bakta?tab=readme-ov-file#input-and-output).
-* Specifically, all the format compliant outputs match bakta's.
-* The differences are:
-    * `<prefix>.inference.tsv` is changed compared to bakta. In `baktfold`, this file gives a quick overview of the different `baktfold` databases the query protein has hit (if any)
-    * For example:
+The majority of outputs match [Bakta](https://github.com/oschwengers/bakta?tab=readme-ov-file#input-and-output). Specifically, all the format compliant outputs match Bakta's.
+
+The differences are:
+
+- `<prefix>.inference.tsv` is different compared to Bakta.
+- In Baktfold, this file gives a quick overview of the different Baktfold databases for which the query protein has a hit (if any)
+
+For example:
 
 ```bash
 ID	Length	Product	Swissprot	AFDBClusters	PDB	CATH
@@ -221,36 +237,38 @@ MEGJMNBEGN_30	68	hypothetical protein
 MEGJMNBEGN_70	94	hypothetical protein		afdbclusters_A0A1I3V7E0		
 ```
 
-    * `<prefix>_<database>_tophit.tsv` files give the detailed Foldseek alignment information for each tophit found for each database.
-    * For example:
+- `<prefix>_<database>_tophit.tsv` files give the detailed Foldseek alignment information for each tophit found for each database.
+
+For example:
 
 ```bash
 query	target	bitscore	fident	evalue	qStart	qEnd	qLen	qCov	tStart	tEnd	tLen	tCov
 MEGJMN_070	AF-A0A1I3V7E0-F1-model_v6	292	0.41	2.619e-06	1	91	93	0.97	1	95	99	0.95
 ```
 
-    * The full Foldseek search outputs are not kept by default (only tophits) - you can keep the full Foldseek search tsvs using `--keep-tmp-files`. They will be called `foldseek_results_<database>.tsv`
-    * `baktfold_3di.fasta` which gives the 3Di tokens for each input CDS
-    * `baktfold_prostT5_3di_mean_probabilities.csv` and `baktfold_prostT5_3di_all_probabilities.json`, which give some score of the confidence ProstT5 has in its predictions. You can disable this output with `--omit-probs`
-    * Baktfold does not have plotting functionality like Bakta (yet)
+- The full Foldseek search outputs are not kept by default (only tophits). You can keep the full Foldseek search TSVs using `--keep-tmp-files`. They will be called `foldseek_results_<database>.tsv`.
+- `baktfold_3di.fasta` which gives the 3Di tokens for each input CDS
+- `baktfold_prostT5_3di_mean_probabilities.csv` and `baktfold_prostT5_3di_all_probabilities.json`, which give some score of the confidence ProstT5 has in its predictions. You can disable this output with `--omit-probs`
+- Baktfold does not have plotting functionality like Bakta (yet)
 
 ### Conceptual terms
 
-* As Baktfold inherits annotations from Bakta, please see the explanation in bakta for all other concepts [here](https://github.com/oschwengers/bakta?tab=readme-ov-file#annotation-workflow)
-* Baktfold adds one conceptual term in addition to Bakta's:
-    * PSTC: protein structure clusters. These comprise of structure-based annotations to any of Baktfold's databases
+As Baktfold inherits annotations and related conceptual terms from Bakta. Hence, we kindly refer to Bakta's [readme](https://github.com/oschwengers/bakta?tab=readme-ov-file#annotation-workflow).
+In addition, Baktfold introduces one conceptual term:
+
+- `PSTC`: protein structure clusters. These comprise of structure-based annotations to any of Baktfold's databases
 
 ## Citations
 
-* A manuscript describing `baktfold` is in preparation.
+A manuscript describing Baktfold is in preparation
 
-* Please be sure to cite the following core dependencies - citing all bioinformatics tools that you use helps us, so helps you get better bioinformatics tools:
+Please, be sure to cite the following core dependencies - citing all bioinformatics tools that you use helps us, so helps you get better bioinformatics tools:
 
-* Foldseek - (https://github.com/steineggerlab/foldseek) van Kempen M, Kim S, Tumescheit C, Mirdita M, Lee J, Gilchrist C, Söding J, and Steinegger M. Fast and accurate protein structure search with Foldseek. Nature Biotechnology (2023), [doi:10.1038/s41587-023-01773-0 ](https://www.nature.com/articles/s41587-023-01773-0)
-* ProstT5 - (https://github.com/mheinzinger/ProstT5) Michael Heinzinger, Konstantin Weissenow, Joaquin Gomez Sanchez, Adrian Henkel, Martin Steinegger, Burkhard Rost. ProstT5: Bilingual language model for protein sequence and structure. NAR Genomics and Bioinformatics (2024) [doi:10.1101/2023.07.23.550085](https://doi.org/10.1093/nargab/lqae150) 
+- Foldseek - (https://github.com/steineggerlab/foldseek) van Kempen M, Kim S, Tumescheit C, Mirdita M, Lee J, Gilchrist C, Söding J, and Steinegger M. Fast and accurate protein structure search with Foldseek. Nature Biotechnology (2023), [doi:10.1038/s41587-023-01773-0](https://www.nature.com/articles/s41587-023-01773-0)
+- ProstT5 - (https://github.com/mheinzinger/ProstT5) Michael Heinzinger, Konstantin Weissenow, Joaquin Gomez Sanchez, Adrian Henkel, Martin Steinegger, Burkhard Rost. ProstT5: Bilingual language model for protein sequence and structure. NAR Genomics and Bioinformatics (2024) [doi:10.1101/2023.07.23.550085](https://doi.org/10.1093/nargab/lqae150) 
 
-* Please also consider citing these databases where relevant:
+Please also consider citing these databases where relevant:
 
-* AFDB/SwissProt - Mihaly Varadi, Damian Bertoni, Paulyna Magana, Urmila Paramval, Ivanna Pidruchna, Malarvizhi Radhakrishnan, Maxim Tsenkov, Sreenath Nair, Milot Mirdita, Jingi Yeo, Oleg Kovalevskiy, Kathryn Tunyasuvunakool, Agata Laydon, Augustin Žídek, Hamish Tomlinson, Dhavanthi Hariharan, Josh Abrahamson, Tim Green, John Jumper, Ewan Birney, Martin Steinegger, Demis Hassabis, Sameer Velankar, AlphaFold Protein Structure Database in 2024: providing structure coverage for over 214 million protein sequences, Nucleic Acids Research, Volume 52, Issue D1, 5 January 2024, Pages D368–D375, [https://doi.org/10.1093/nar/gkad1011](https://doi.org/10.1093/nar/gkad1011)
-* CATH - Orengo CA, Michie AD, Jones S, Jones DT, Swindells MB, Thornton JM. CATH--a hierarchic classification of protein domain structures. Structure. 1997 Aug 15;5(8):1093-108. doi: 10.1016/s0969-2126(97)00260-8. PMID: 9309224.
-* PDB - H.M. Berman, J. Westbrook, Z. Feng, G. Gilliland, T.N. Bhat, H. Weissig, I.N. Shindyalov, P.E. Bourne, The Protein Data Bank (2000) Nucleic Acids Research 28: 235-242 [https://doi.org/10.1093/nar/28.1.235](https://doi.org/10.1093/nar/28.1.235)
+- AFDB/SwissProt - Mihaly Varadi, Damian Bertoni, Paulyna Magana, Urmila Paramval, Ivanna Pidruchna, Malarvizhi Radhakrishnan, Maxim Tsenkov, Sreenath Nair, Milot Mirdita, Jingi Yeo, Oleg Kovalevskiy, Kathryn Tunyasuvunakool, Agata Laydon, Augustin Žídek, Hamish Tomlinson, Dhavanthi Hariharan, Josh Abrahamson, Tim Green, John Jumper, Ewan Birney, Martin Steinegger, Demis Hassabis, Sameer Velankar, AlphaFold Protein Structure Database in 2024: providing structure coverage for over 214 million protein sequences, Nucleic Acids Research, Volume 52, Issue D1, 5 January 2024, Pages D368–D375, [https://doi.org/10.1093/nar/gkad1011](https://doi.org/10.1093/nar/gkad1011)
+- CATH - Orengo CA, Michie AD, Jones S, Jones DT, Swindells MB, Thornton JM. CATH--a hierarchic classification of protein domain structures. Structure. 1997 Aug 15;5(8):1093-108. doi: 10.1016/s0969-2126(97)00260-8. PMID: 9309224.
+- PDB - H.M. Berman, J. Westbrook, Z. Feng, G. Gilliland, T.N. Bhat, H. Weissig, I.N. Shindyalov, P.E. Bourne, The Protein Data Bank (2000) Nucleic Acids Research 28: 235-242 [https://doi.org/10.1093/nar/28.1.235](https://doi.org/10.1093/nar/28.1.235)

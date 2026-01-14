@@ -4,19 +4,18 @@ import shutil
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 
-import numpy as np
-import pandas as pd
-from Bio.SeqFeature import SeqFeature
-from Bio.SeqRecord import SeqRecord
+# import numpy as np
+# import pandas as pd
+# from Bio.SeqFeature import SeqFeature
+# from Bio.SeqRecord import SeqRecord
 from loguru import logger
 
-from baktfold.features.create_foldseek_db import (
-    generate_foldseek_db_from_aa_3di, generate_foldseek_db_from_structures)
+import baktfold.io.io as io
+import baktfold.bakta.pstc as pstc
+from baktfold.features.create_foldseek_db import generate_foldseek_db_from_aa_3di, generate_foldseek_db_from_structures
 from baktfold.features.run_foldseek import create_result_tsv, run_foldseek_search, summarise_hits
 from baktfold.io.handle_genbank import write_genbank
-import baktfold.io.io as io
 from baktfold.results.tophit import get_tophit
-import baktfold.bakta.pstc as pstc
 from baktfold.utils.util import remove_file
 
 def subcommand_compare(

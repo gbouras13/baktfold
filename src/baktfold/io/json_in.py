@@ -1,24 +1,23 @@
-import atexit
+# import atexit
 import json
-import logging
-import os
-import sys
-from loguru import logger
-
-from datetime import datetime
+# import logging
+# import os
+# import sys
+# from datetime import datetime
 from pathlib import Path
 
+from loguru import logger
 from xopen import xopen
 
 import baktfold.bakta.constants as bc
 import baktfold.bakta.config as cfg
-
 # import baktfold.utils as bu
 # import baktfold.io.fasta as fasta
 # import baktfold.io.tsv as tsv
 # import baktfold.io.gff as gff
 # import baktfold.io.insdc as insdc
 # import baktfold.plot as plot
+
 
 def parse_json_input(input_path, faa_path, all_proteins):
     """

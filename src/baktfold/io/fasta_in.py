@@ -1,22 +1,20 @@
-import atexit
-import json
-import logging
-import os
-import sys
-from loguru import logger
-from typing import List, Tuple, TextIO
-import baktfold.io.fasta as fasta
-
-from datetime import datetime
+# import atexit
+# import json
+# import logging
+# import os
+# import sys
+# import binascii
+# import gzip
+# from typing import List, Tuple, TextIO
+# from datetime import datetime
 from pathlib import Path
 
+from loguru import logger
 from xopen import xopen
-import binascii
-import gzip
 
+import baktfold.io.fasta as fasta
 import baktfold.bakta.constants as bc
 # import baktfold.bakta.config as cfg
-
 
 
 def parse_protein_input(input_path, faa_path):

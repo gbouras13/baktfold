@@ -10,21 +10,20 @@ https://github.com/mheinzinger/ProstT5/blob/main/scripts/predict_3Di_encoderOnly
 
 import csv
 import json
+import h5py
 from pathlib import Path
-from tqdm import tqdm
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-import h5py
+from baktfold.databases.db import check_prostT5_download, download_zenodo_prostT5
+from baktfold.utils.constants import CNN_DIR
+
 import numpy as np
 import torch
 import torch.nn.functional as F
 from loguru import logger
 from torch import nn
 from transformers import T5EncoderModel, T5Tokenizer
-
-from baktfold.databases.db import check_prostT5_download, download_zenodo_prostT5
-from baktfold.utils.constants import CNN_DIR
-
+from tqdm import tqdm
 
 # Convolutional neural network (two convolutional layers)
 class CNN(nn.Module):
