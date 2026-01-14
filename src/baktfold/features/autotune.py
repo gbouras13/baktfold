@@ -1,17 +1,17 @@
-
-# autobatch
-
-from baktfold.features.predict_3Di import  get_T5_model
-from tqdm import tqdm
 import random
-import torch
-import torch.nn.functional as F
-from loguru import logger
 import time
 import math
+
+import torch
+import torch.nn.functional as F
 from Bio import SeqIO
 from Bio.SeqFeature import FeatureLocation, SeqFeature
+from tqdm import tqdm
+from loguru import logger
+
 from baktfold.io.handle_genbank import open_protein_fasta_file
+from baktfold.features.predict_3Di import  get_T5_model
+
 
 """
 

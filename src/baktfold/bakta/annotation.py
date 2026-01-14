@@ -3,11 +3,10 @@ import re
 
 from typing import Sequence
 from loguru import logger
+
 import baktfold.bakta.config as cfg
 import baktfold.bakta.constants as bc
 import baktfold.io.insdc as insdc
-
-
 
 
 RE_MULTIWHITESPACE = re.compile(r'\s{2,}')
@@ -50,12 +49,12 @@ def combine_annotation(feature: dict):
     """
 
 
-    ups = feature.get('ups', None)
-    ips = feature.get('ips', None)
-    psc = feature.get('psc', None)
-    pscc = feature.get('pscc', None)
+    # ups = feature.get('ups', None)
+    # ips = feature.get('ips', None)
+    # psc = feature.get('psc', None)
+    # pscc = feature.get('pscc', None)
     pstc = feature.get('pstc', None)
-    expert_hits = feature.get('expert', [])
+    # expert_hits = feature.get('expert', [])
 
     # gene = None
     # genes = set()
@@ -570,7 +569,7 @@ def annotate_aa(aas: Sequence[dict]):
     for aa in aas:
         print(aa)
         combine_annotation(aa)  # combine IPS & PSC annotations and mark hypothetical
-    log.debug('analyze hypotheticals')
+    logger.debug('analyze hypotheticals')
     hypotheticals = [aa for aa in aas if 'hypothetical' in aa]
     if(len(hypotheticals) > 0):
         print(f'\tanalyze hypothetical proteins: {len(hypotheticals)}')

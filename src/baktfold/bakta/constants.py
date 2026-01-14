@@ -12,13 +12,6 @@ RE_INSDC_LOCUSTAG_PREFIX = re.compile(r'[A-Z][A-Z0-9]{2,11}')  # https://ena-doc
 
 
 ############################################################################
-# sORF prediction setttings
-############################################################################
-MIN_SORF_LENGTH = 7  # smallest non-fragmentated protein found in UniProtKB/Swiss-Prot
-MAX_SORF_LENGTH = 30  # smallest ORF length detected by Prodigal
-
-
-############################################################################
 # PSTC settings
 ############################################################################
 
@@ -47,15 +40,6 @@ HYPOTHETICAL_PROTEIN = 'hypothetical protein'  # hypothetical protein product de
 CDS_MAX_OVERLAPS = 30  # max overlap [bp] allowed for user-provided/de novo-predicted CDS overlaps
 CDS_MAX_LENGTH = 50000 * 3  # max length [bp] allowed for predicted CDS
 CDS_SOURCE_USER = 'user-provided'
-
-
-############################################################################
-# Pseudogene identification settings
-############################################################################
-MIN_PSEUDOGENE_IDENTITY = 0.8  # min protein identity for pseudogene prediction
-MIN_PSEUDOGENE_QUERY_COVERAGE = 0.8  # min query coverage for pseudogene prediction
-MIN_PSEUDOGENE_SUBJECT_COVERAGE = 0.4  # min subject coverage for pseudogene prediction
-PSEUDOGENE_OFFSET = 300  # nucleotide offset for pseudogene class detection
 
 
 ############################################################################

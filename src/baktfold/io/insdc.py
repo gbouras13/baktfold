@@ -1,8 +1,8 @@
 import re
-
-from datetime import date
+# from datetime import date
 from pathlib import Path
 from typing import Sequence, Tuple
+
 from loguru import logger
 from Bio import SeqIO
 from Bio.Seq import Seq
@@ -12,7 +12,6 @@ import baktfold.bakta.config as cfg
 import baktfold.bakta.constants as bc
 import baktfold.bakta.annotation as ba
 import baktfold.bakta.so as so
-
 
 # log = logging.getLogger('INSDC')
 

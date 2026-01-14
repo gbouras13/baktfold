@@ -4,11 +4,13 @@ import sys
 import time
 from pathlib import Path
 from typing import Any, Dict
+
+from loguru import logger
+from datetime import datetime
+
 import baktfold.bakta.config as cfg
 import baktfold.bakta.constants as bc
 import click
-from loguru import logger
-from datetime import datetime
 
 
 class OrderedCommands(click.Group):

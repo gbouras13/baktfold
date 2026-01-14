@@ -6,6 +6,7 @@ from loguru import logger
 
 from baktfold.features.predict_3Di import get_embeddings
 
+
 def mask_low_confidence_aa(sequence, scores, threshold=0.5):
     """
     Masks all low confidence AA to X if their corresponding ProstT5 confidence score is below the given threshold.

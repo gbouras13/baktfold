@@ -1,14 +1,17 @@
-from loguru import logger
 from pathlib import Path
+from typing import Sequence
+
+import pandas as pd
+from loguru import logger
+
 import baktfold.bakta.config as cfg
 import baktfold.io.gff as gff
 import baktfold.io.tsv as tsv
 import baktfold.io.insdc as insdc
 import baktfold.io.fasta as fasta
 import baktfold.io.json as json
-import baktfold.bakta.constants as bc
-from typing import Sequence
-import pandas as pd
+# import baktfold.bakta.constants as bc
+
 
 """
 wrapper script over all io output submodules

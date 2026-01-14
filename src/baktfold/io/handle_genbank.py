@@ -11,7 +11,6 @@ from pathlib import Path
 from typing import IO, Dict, Union
 from datetime import datetime
 
-
 import pandas as pd
 from Bio import SeqIO
 from Bio.Seq import Seq
@@ -20,6 +19,7 @@ from Bio.SeqRecord import SeqRecord
 from loguru import logger
 
 from baktfold.utils.util import get_version
+
 
 # imports
 

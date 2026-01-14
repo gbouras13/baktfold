@@ -12,11 +12,11 @@ import os
 import shutil
 from pathlib import Path
 
-from Bio import SeqIO
-from loguru import logger
-
 from baktfold.utils.external_tools import ExternalTool
 from baktfold.utils.util import remove_file
+
+from Bio import SeqIO
+from loguru import logger
 
 
 def generate_foldseek_db_from_aa_3di(
