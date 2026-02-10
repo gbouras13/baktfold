@@ -184,7 +184,7 @@ def install_database(db_dir: Path, foldseek_gpu: bool, threads: int) -> None:
 
         try: 
             logger.info(f"Downloading from HuggingFace")
-            download(tarball_path)
+            download(tarball_path, db_dir)
         except:
             logger.warning(
                 f"Could not download file from HuggingFace: path={tarball_path}"
@@ -229,7 +229,7 @@ aria2c bottlenecked by Zenodo but still faster than wget
 dependency of Foldseek so it is always present
 """
 
-def download(tarball_path: Path) -> None:
+def download(tarball_path: Path, cache_dir: Path) -> None:
     """
     Download the database from the given URL using HF.
 
@@ -240,7 +240,8 @@ def download(tarball_path: Path) -> None:
     tarball_path = hf_hub_download(
         repo_id="gbouras13/baktfold-db",
         repo_type="dataset",
-        filename="baktfold_db.tar.gz"  
+        filename="baktfold_db.tar.gz"  ,
+        cache_dir=f"{cache_dir}"
     )
 
     logger.info(f"Tarball saved to {tarball_path}")
