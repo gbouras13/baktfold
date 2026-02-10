@@ -7,6 +7,7 @@ from pathlib import Path
 import requests
 from alive_progress import alive_bar
 from loguru import logger
+from huggingface_hub import hf_hub_download
 
 from baktfold.utils.util import remove_directory
 from baktfold.utils.external_tools import ExternalTool
@@ -223,9 +224,9 @@ aria2c bottlenecked by Zenodo but still faster than wget
 dependency of Foldseek so it is always present
 """
 
-def download(db_url: str, tarball_path: Path, logdir: Path, threads: int) -> None:
+def download(tarball_path: Path) -> None:
     """
-    Download the database from the given URL using aria2c.
+    Download the database from the given URL using HF.
 
     Args:
         db_url (str): The URL of the database.
@@ -234,23 +235,16 @@ def download(db_url: str, tarball_path: Path, logdir: Path, threads: int) -> Non
         threads (int): Number of threads for aria2c
     """
 
-    cmd = (
-        f'--dir {tarball_path.parent} '
-        f'--out {tarball_path.name} '
-        f'--max-connection-per-server={threads} '
-        f'--allow-overwrite=true '
-        f'{db_url}'
+
+
+    tarball_path = hf_hub_download(
+        repo_id="gbouras13/baktfold-db",
+        repo_type="dataset",
+        filename="baktfold_db.tar.gz"  
     )
 
-    download_db = ExternalTool(
-        tool="aria2c",
-        input=f"",
-        output=f"",
-        params=f"{cmd}",
-        logdir=logdir,
-    )
+    logger.info("Tarball saved to:", tarball_path)
 
-    ExternalTool.run_download(download_db)
 
 def download_requests(db_url: str, tarball_path: Path):
     """
@@ -307,10 +301,10 @@ def download_zenodo_prostT5(model_dir, logdir, threads):
 
 
     try: 
-        download(db_url, tarball_path, logdir, threads)
+        download(tarball_path)
     except IOError:
         logger.warning(
-            f"Could not download file from Zenodo using aria2c! url={db_url}, path={tarball_path}"
+            f"Could not download file from HuggingFace: path={tarball_path}"
         )
         logger.warning(f"Trying now with requests")
         download_requests(db_url, tarball_path)
