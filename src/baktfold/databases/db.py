@@ -180,10 +180,10 @@ def install_database(db_dir: Path, foldseek_gpu: bool, threads: int) -> None:
         logdir = Path(db_dir) / "logdir"
 
         try: 
-            download(db_url, tarball_path, logdir, threads)
+            download(tarball_path)
         except:
             logger.warning(
-                f"Could not download file from Zenodo using aria2c! url={db_url}, path={tarball_path}"
+                f"Could not download file from HuggingFace: path={tarball_path}"
             )
             logger.warning(f"Trying now with requests")
             download_requests(db_url, tarball_path)
@@ -298,16 +298,7 @@ def download_zenodo_prostT5(model_dir, logdir, threads):
 
     tarball = VERSION_DICTIONARY[CURRENT_DB_VERSION]["prostt5_backup_tarball"]
     tarball_path = Path(f"{model_dir}/{tarball}")
-
-
-    try: 
-        download(tarball_path)
-    except IOError:
-        logger.warning(
-            f"Could not download file from HuggingFace: path={tarball_path}"
-        )
-        logger.warning(f"Trying now with requests")
-        download_requests(db_url, tarball_path)
+    download_requests(db_url, tarball_path)
 
     md5_sum = calc_md5_sum(tarball_path)
 
