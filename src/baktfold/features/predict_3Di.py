@@ -522,12 +522,14 @@ def get_embeddings(
             pdb_ids, seqs, seq_lens = zip(*batch)
             batch = list()
 
-            token_encoding = vocab.batch_encode_plus(
+            token_encoding = vocab(
                 seqs,
                 add_special_tokens=True,
                 padding="longest",
-                return_tensors="pt",
-            ).to(device)
+                truncation=False,
+                return_tensors="pt"
+                ).to(device)
+            
             try:
                 with torch.no_grad():
                     embedding_repr = model(
