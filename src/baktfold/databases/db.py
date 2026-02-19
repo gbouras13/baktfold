@@ -21,7 +21,7 @@ VERSION_DICTIONARY = {
         "major": 0,
         "minor": 0,
         "minorest": 1,
-        "db_url": "https://zenodo.org/records/17347516/files/baktfold_db.tar.gz",
+        "db_url": "https://zenodo.org/records/17347516/files/baktfold_db.tar.gz?download=1",
         "dir_name": "baktfold_db",
         "tarball": "baktfold_db.tar.gz",
         "prostt5_backup_url": "https://zenodo.org/records/11234657/files/models--Rostlab--ProstT5_fp16.tar.gz",
