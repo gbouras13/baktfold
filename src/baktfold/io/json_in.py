@@ -97,10 +97,40 @@ def parse_json_input(input_path, faa_path, all_proteins):
             for feat in hypotheticals:
                 fh.write(f">{feat['locus']}\n{feat['aa']}\n")
 
+    try:
+        genome_block = data.get("genome")
+
+        if genome_block is None:
+            logger.error("No 'genome' block found in input JSON. Please check.")
+            translation_table = None
+        else:
+            if "translation_table" not in genome_block:
+                logger.error("No translation table found in input JSON. Please check your input.")
+            else:
+                raw_value = genome_block["translation_table"]
+
+                try:
+                    translation_table = int(raw_value)
+                    logger.info(
+                        f"Translation table {translation_table} detected from input JSON"
+                    )
+
+                except (ValueError, TypeError):
+                    translation_table = str(raw_value)
+                    logger.warning(
+                        f"Translation table '{raw_value}' is not an integer. "
+                        f"Parsing it as a string."
+                    )
+
+    except Exception as e:
+        logger.exception(
+            f"Unexpected error while parsing translation table: {e}"
+        )
+        translation_table = None
 
     logger.info('Parsing complete')
 
-    return data, features, has_duplicate_locus
+    return data, features, has_duplicate_locus, translation_table
 
 
     

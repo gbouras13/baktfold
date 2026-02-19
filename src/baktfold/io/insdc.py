@@ -46,12 +46,10 @@ def move_product_to_note_if_exists(qualifiers):
 
     qualifiers.pop("product", None)
 
-def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, euk):
+def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, euk, translation_table):
 
     # need to pass the transl table from bakta or prokka not the config
     # best to just detect it from the input json
-    # if prokka:
-    #     translation_table
 
     # need to give euk to not give trnas as trnascan - do
 
@@ -215,8 +213,9 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                         qualifiers['protein_id'] = f"gnl|Baktfold|{feature['locus']}"
                     qualifiers['translation'] = feature['aa']
                 qualifiers['codon_start'] = 1
-                if not euk:
-                    qualifiers['transl_table'] = cfg.translation_table
+
+                # add translation table
+                qualifiers['translation_table'] = translation_table
                 insdc_feature_type = bc.INSDC_FEATURE_CDS
                 inference = []
                 if(feature['type'] == bc.FEATURE_CDS):
@@ -474,11 +473,12 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
     return sequence_list
 
 
-def write_features(data: dict, features: Sequence[dict], genbank_output_path: Path, embl_output_path: Path, prokka: bool = False, euk: bool = False):
+def write_features(data: dict, features: Sequence[dict], genbank_output_path: Path, embl_output_path: Path, prokka: bool = False, euk: bool = False, 
+                   translation_table: int = 11):
     logger.info(f'prepare: genbank={genbank_output_path}, embl={embl_output_path}')
 
     # fix later
-    sequence_list = build_biopython_sequence_list(data, features, prokka, euk)
+    sequence_list = build_biopython_sequence_list(data, features, prokka, euk, translation_table)
     
     with genbank_output_path.open('wt', encoding='utf-8') as fh:
         logger.info(f'write GenBank: path={genbank_output_path}')

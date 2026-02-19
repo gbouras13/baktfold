@@ -35,6 +35,7 @@ If you don't want to install Baktfold locally, you can run it without any code u
   - [Example](#example)
   - [Usage](#usage)
   - [Output](#output)
+    - [Conversion wrapper commands](#conversion-wrapper-commands)
     - [Conceptual terms](#conceptual-terms)
   - [Citations](#citations)
 
@@ -250,6 +251,40 @@ MEGJMN_070	AF-A0A1I3V7E0-F1-model_v6	292	0.41	2.619e-06	1	91	93	0.97	1	95	99	0.9
 - `baktfold_3di.fasta` which gives the 3Di tokens for each input CDS
 - `baktfold_prostT5_3di_mean_probabilities.csv` and `baktfold_prostT5_3di_all_probabilities.json`, which give some score of the confidence ProstT5 has in its predictions. You can disable this output with `--omit-probs`
 - Baktfold does not have plotting functionality like Bakta (yet)
+
+### Conversion wrapper commands
+
+If you have not used Bakta to annotate your genome before running Baktfold, you will still need to convert your GenBank to the Bakta `.json` format
+
+You have 3 options:
+
+1. `baktfold convert-prokka`
+
+* If you have used Prokka to annotate your genome, `baktfold` has a subcommand that will do the conversion for you
+* e.g.
+```bash
+baktfold convert-prokka -i prokka.gbk -o prokka.json
+```
+
+2. `baktfold convert-euk`
+
+* This is a very experimental feature for eukaryotes (fungi, protists etc) - you can try converting these with a subcommand
+* You will then need to pass `--euk` to `baktfold run` as well to make sure it can handle the different genomic features of eukaryotes
+
+* e.g.
+```bash
+baktfold convert-euk -i euk.gbk -o euk.json
+```
+
+3. `genbank_to`
+
+* If neither of those work for you, you try the [genbank_to](https://github.com/linsalrob/genbank_to) package which has the functionality of converting a genbank file into the Bakta format JSON
+* You will need to install it separately (`pip install genbank_to`) then
+
+* e.g.
+```bash
+genbank_to -g test.gbk --bakta-json test.json
+```
 
 ### Conceptual terms
 

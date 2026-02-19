@@ -1,0 +1,527 @@
+Discrepancy Report Results
+
+Summary
+FATAL: MISSING_PROTEIN_ID:91 proteins have invalid IDs.
+DISC_SOURCE_QUALS_ASNDISC:strain (all present, all same)
+DISC_SOURCE_QUALS_ASNDISC:taxname (all present, all same)
+DISC_FEATURE_COUNT:CDS: 91 present
+DISC_COUNT_NUCLEOTIDES:2 nucleotide Bioseqs are present
+FEATURE_LOCATION_CONFLICT:91 features have inconsistent gene locations.
+DISC_QUALITY_SCORES:Quality scores are missing on all sequences.
+ONCALLER_COMMENT_PRESENT:2 comment descriptors were found (all same)
+SHORT_PROT_SEQUENCES:4 protein sequences are shorter than 50 aa.
+MISSING_GENOMEASSEMBLY_COMMENTS:2 bioseqs are missing GenomeAssembly structured comments
+MOLTYPE_NOT_MRNA:2 molecule types are not set as mRNA.
+TECHNIQUE_NOT_TSA:2 technique are not set as TSA
+MISSING_STRUCTURED_COMMENT:2 sequences do not include structured comments.
+MISSING_PROJECT:93 sequences do not include project.
+DISC_INCONSISTENT_MOLINFO_TECH:Molinfo Technique Report (some missing, all same)
+
+
+Detailed Report
+
+FATAL: DiscRep_ALL:MISSING_PROTEIN_ID::91 proteins have invalid IDs.
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_1 (length 291)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_2 (length 138)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_3 (length 38)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_4 (length 264)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_5 (length 47)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_6 (length 321)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_7 (length 103)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_8 (length 109)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_9 (length 1039)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_10 (length 78)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_11 (length 191)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_12 (length 205)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_13 (length 234)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_14 (length 90)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_15 (length 215)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_16 (length 234)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_17 (length 203)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_18 (length 93)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_19 (length 80)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_20 (length 358)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_21 (length 135)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_22 (length 100)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_23 (length 111)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_24 (length 50)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_25 (length 210)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_26 (length 128)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_27 (length 161)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_28 (length 192)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_29 (length 177)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_30 (length 67)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_31 (length 103)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_32 (length 201)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_33 (length 159)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_34 (length 155)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_35 (length 272)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_36 (length 395)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_37 (length 88)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_38 (length 1107)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_39 (length 117)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_40 (length 234)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_41 (length 367)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_42 (length 135)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_43 (length 304)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_44 (length 239)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_45 (length 177)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_46 (length 133)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_47 (length 187)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_48 (length 1015)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_49 (length 398)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_50 (length 193)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_51 (length 714)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_52 (length 207)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_53 (length 472)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_54 (length 375)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_55 (length 730)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_56 (length 101)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_57 (length 529)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_58 (length 116)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_59 (length 135)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_60 (length 46)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_61 (length 121)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_62 (length 271)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_63 (length 83)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_64 (length 642)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_65 (length 63)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_66 (length 110)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_67 (length 43)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_68 (length 106)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_69 (length 77)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_70 (length 93)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_71 (length 79)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_72 (length 286)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_73 (length 60)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_74 (length 119)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_75 (length 98)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_76 (length 64)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_77 (length 162)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_78 (length 152)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_79 (length 142)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_80 (length 326)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_81 (length 147)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_82 (length 79)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_83 (length 139)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_84 (length 85)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_85 (length 188)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_86 (length 114)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_87 (length 101)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_88 (length 72)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_89 (length 216)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_90 (length 423)
+PROKKA_02192026/PROKKA_02192026:small_plasmid_1 (length 158)
+
+DiscRep_ALL:DISC_SOURCE_QUALS_ASNDISC::strain (all present, all same)
+DiscRep_SUB:DISC_SOURCE_QUALS_ASNDISC::2 sources have 'strain' for strain
+DiscRep_ALL:DISC_SOURCE_QUALS_ASNDISC::taxname (all present, all same)
+DiscRep_SUB:DISC_SOURCE_QUALS_ASNDISC::2 sources have 'Genus species' for taxname
+DiscRep_ALL:DISC_FEATURE_COUNT::CDS: 91 present
+DiscRep_ALL:DISC_COUNT_NUCLEOTIDES::2 nucleotide Bioseqs are present
+PROKKA_02192026/PROKKA_02192026:fake_chromosome (length 70606)
+PROKKA_02192026/PROKKA_02192026:small_plasmid (length 2473)
+
+DiscRep_ALL:FEATURE_LOCATION_CONFLICT::91 features have inconsistent gene locations.
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	Replication protein RepA	fake_chromosome:19-894	FLLLIEBD_00001
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:1519-1935	FLLLIEBD_00002
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c2048-1932	FLLLIEBD_00003
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	Tyrosine recombinase XerC	fake_chromosome:c3669-2875	FLLLIEBD_00004
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:3729-3872	FLLLIEBD_00005
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c4870-3905	FLLLIEBD_00006
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c5246-4935	FLLLIEBD_00007
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c5609-5280	FLLLIEBD_00008
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c9288-6169	FLLLIEBD_00009
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:9604-9840	FLLLIEBD_00010
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:9837-10412	FLLLIEBD_00011
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:10446-11063	FLLLIEBD_00012
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	IS6 family transposase IS26	fake_chromosome:c11658-10954	FLLLIEBD_00013
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	Glycogen synthase	fake_chromosome:c11942-11670	FLLLIEBD_00014
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	Glucose-1-phosphate adenylyltransferase	fake_chromosome:c12678-12031	FLLLIEBD_00015
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	IS6 family transposase IS26	fake_chromosome:12811-13515	FLLLIEBD_00016
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c14517-13906	FLLLIEBD_00017
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c14852-14571	FLLLIEBD_00018
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	IS3 family transposase ISLad1	fake_chromosome:c15267-15025	FLLLIEBD_00019
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	IS110 family transposase ISEc21	fake_chromosome:c16426-15350	FLLLIEBD_00020
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c17052-16645	FLLLIEBD_00021
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	IS3 family transposase ISEc52	fake_chromosome:c17567-17265	FLLLIEBD_00022
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:17651-17986	FLLLIEBD_00023
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:18169-18321	FLLLIEBD_00024
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c19565-18933	FLLLIEBD_00025
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c20404-20018	FLLLIEBD_00026
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c20889-20404	FLLLIEBD_00027
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c21434-20856	FLLLIEBD_00028
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	Transcription antitermination protein RfaH	fake_chromosome:21702-22235	FLLLIEBD_00029
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:22253-22456	FLLLIEBD_00030
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:22490-22801	FLLLIEBD_00031
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:22881-23486	FLLLIEBD_00032
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:23499-23978	FLLLIEBD_00033
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:24001-24468	FLLLIEBD_00034
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:24465-25283	FLLLIEBD_00035
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:25261-26448	FLLLIEBD_00036
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:26445-26711	FLLLIEBD_00037
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:26729-30052	FLLLIEBD_00038
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:30086-30439	FLLLIEBD_00039
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:30475-31179	FLLLIEBD_00040
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:31190-32293	FLLLIEBD_00041
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:32297-32704	FLLLIEBD_00042
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:32722-33636	FLLLIEBD_00043
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:33642-34361	FLLLIEBD_00044
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:34371-34904	FLLLIEBD_00045
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:34958-35359	FLLLIEBD_00046
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:35403-35966	FLLLIEBD_00047
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:35976-39023	FLLLIEBD_00048
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:39034-40230	FLLLIEBD_00049
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:40227-40808	FLLLIEBD_00050
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:40850-42994	FLLLIEBD_00051
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:43060-43683	FLLLIEBD_00052
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:43785-45203	FLLLIEBD_00053
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:45178-46305	FLLLIEBD_00054
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:46307-48499	FLLLIEBD_00055
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:48545-48850	FLLLIEBD_00056
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	IS66 family transposase ISKox1	fake_chromosome:c50462-48873	FLLLIEBD_00057
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c50842-50492	FLLLIEBD_00058
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c51246-50839	FLLLIEBD_00059
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:51322-51462	FLLLIEBD_00060
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:51538-51903	FLLLIEBD_00061
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	IS3 family transposase ISEc27	fake_chromosome:51951-52766	FLLLIEBD_00062
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:52927-53178	FLLLIEBD_00063
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	Protein TraI	fake_chromosome:c55147-53219	FLLLIEBD_00064
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c55341-55150	FLLLIEBD_00065
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:55857-56189	FLLLIEBD_00066
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c56358-56227	FLLLIEBD_00067
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c56780-56460	FLLLIEBD_00068
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c57067-56834	FLLLIEBD_00069
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c57492-57211	FLLLIEBD_00070
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	Antirestriction protein KlcA	fake_chromosome:c57998-57759	FLLLIEBD_00071
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c59226-58366	FLLLIEBD_00072
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c59482-59300	FLLLIEBD_00073
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c59982-59623	FLLLIEBD_00074
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c60872-60576	FLLLIEBD_00075
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c61026-60832	FLLLIEBD_00076
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c61629-61141	FLLLIEBD_00077
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c62084-61626	FLLLIEBD_00078
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c62665-62237	FLLLIEBD_00079
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	Plasmid segregation protein ParM	fake_chromosome:c63638-62658	FLLLIEBD_00080
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:64207-64650	FLLLIEBD_00081
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:64647-64886	FLLLIEBD_00082
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:64941-65360	FLLLIEBD_00083
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:65649-65906	FLLLIEBD_00084
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c66676-66110	FLLLIEBD_00085
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	fake_chromosome:c67062-66718	FLLLIEBD_00086
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	Toxin CcdB	fake_chromosome:c67512-67207	FLLLIEBD_00087
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	Antitoxin CcdA	fake_chromosome:c67730-67512	FLLLIEBD_00088
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	LexA repressor	fake_chromosome:68292-68942	FLLLIEBD_00089
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	Protein UmuC	fake_chromosome:68942-70213	FLLLIEBD_00090
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+PROKKA_02192026/PROKKA_02192026:CDS	hypothetical protein	small_plasmid:c2016-1540	FLLLIEBD_00091
+
+DiscRep_ALL:DISC_QUALITY_SCORES::Quality scores are missing on all sequences.
+
+DiscRep_ALL:ONCALLER_COMMENT_PRESENT::2 comment descriptors were found (all same)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome:Annotated using prokka 1.15.6 from https://github.com/tseemann/prokka
+PROKKA_02192026/PROKKA_02192026:small_plasmid:Annotated using prokka 1.15.6 from https://github.com/tseemann/prokka
+
+DiscRep_ALL:SHORT_PROT_SEQUENCES::4 protein sequences are shorter than 50 aa.
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_3 (length 38)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_5 (length 47)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_60 (length 46)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_67 (length 43)
+
+DiscRep_ALL:MISSING_GENOMEASSEMBLY_COMMENTS::2 bioseqs are missing GenomeAssembly structured comments
+PROKKA_02192026/PROKKA_02192026:fake_chromosome (length 70606)
+PROKKA_02192026/PROKKA_02192026:small_plasmid (length 2473)
+
+DiscRep_ALL:MOLTYPE_NOT_MRNA::2 molecule types are not set as mRNA.
+PROKKA_02192026/PROKKA_02192026:fake_chromosome (length 70606)
+PROKKA_02192026/PROKKA_02192026:small_plasmid (length 2473)
+
+DiscRep_ALL:TECHNIQUE_NOT_TSA::2 technique are not set as TSA
+PROKKA_02192026/PROKKA_02192026:fake_chromosome (length 70606)
+PROKKA_02192026/PROKKA_02192026:small_plasmid (length 2473)
+
+DiscRep_ALL:MISSING_STRUCTURED_COMMENT::2 sequences do not include structured comments.
+PROKKA_02192026/PROKKA_02192026:fake_chromosome (length 70606)
+PROKKA_02192026/PROKKA_02192026:small_plasmid (length 2473)
+
+DiscRep_ALL:MISSING_PROJECT::93 sequences do not include project.
+PROKKA_02192026/PROKKA_02192026:fake_chromosome (length 70606)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_1 (length 291)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_2 (length 138)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_3 (length 38)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_4 (length 264)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_5 (length 47)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_6 (length 321)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_7 (length 103)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_8 (length 109)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_9 (length 1039)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_10 (length 78)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_11 (length 191)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_12 (length 205)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_13 (length 234)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_14 (length 90)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_15 (length 215)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_16 (length 234)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_17 (length 203)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_18 (length 93)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_19 (length 80)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_20 (length 358)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_21 (length 135)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_22 (length 100)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_23 (length 111)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_24 (length 50)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_25 (length 210)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_26 (length 128)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_27 (length 161)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_28 (length 192)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_29 (length 177)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_30 (length 67)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_31 (length 103)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_32 (length 201)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_33 (length 159)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_34 (length 155)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_35 (length 272)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_36 (length 395)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_37 (length 88)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_38 (length 1107)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_39 (length 117)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_40 (length 234)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_41 (length 367)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_42 (length 135)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_43 (length 304)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_44 (length 239)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_45 (length 177)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_46 (length 133)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_47 (length 187)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_48 (length 1015)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_49 (length 398)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_50 (length 193)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_51 (length 714)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_52 (length 207)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_53 (length 472)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_54 (length 375)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_55 (length 730)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_56 (length 101)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_57 (length 529)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_58 (length 116)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_59 (length 135)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_60 (length 46)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_61 (length 121)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_62 (length 271)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_63 (length 83)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_64 (length 642)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_65 (length 63)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_66 (length 110)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_67 (length 43)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_68 (length 106)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_69 (length 77)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_70 (length 93)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_71 (length 79)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_72 (length 286)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_73 (length 60)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_74 (length 119)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_75 (length 98)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_76 (length 64)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_77 (length 162)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_78 (length 152)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_79 (length 142)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_80 (length 326)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_81 (length 147)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_82 (length 79)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_83 (length 139)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_84 (length 85)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_85 (length 188)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_86 (length 114)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_87 (length 101)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_88 (length 72)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_89 (length 216)
+PROKKA_02192026/PROKKA_02192026:fake_chromosome_90 (length 423)
+PROKKA_02192026/PROKKA_02192026:small_plasmid (length 2473)
+PROKKA_02192026/PROKKA_02192026:small_plasmid_1 (length 158)
+
+DiscRep_ALL:DISC_INCONSISTENT_MOLINFO_TECH::Molinfo Technique Report (some missing, all same)
+DiscRep_SUB:DISC_INCONSISTENT_MOLINFO_TECH::technique (all missing)
+DiscRep_SUB:DISC_INCONSISTENT_MOLINFO_TECH::2 Molinfos are missing field technique
+PROKKA_02192026/PROKKA_02192026:fake_chromosome (length 70606)
+PROKKA_02192026/PROKKA_02192026:small_plasmid (length 2473)
+

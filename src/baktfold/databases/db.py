@@ -7,6 +7,7 @@ from pathlib import Path
 import requests
 from alive_progress import alive_bar
 from loguru import logger
+from huggingface_hub import hf_hub_download
 
 from baktfold.utils.util import remove_directory
 from baktfold.utils.external_tools import ExternalTool
@@ -17,7 +18,9 @@ CURRENT_DB_VERSION: str = "0.0.1"
 # to hold information about the different DBs
 VERSION_DICTIONARY = {
     "0.0.1": {
-        "md5": "b1eba2ac1a35e9c34b125887cb4aaf51",
+        "md5": [
+            "b1eba2ac1a35e9c34b125887cb4aaf51",
+        ],
         "major": 0,
         "minor": 0,
         "minorest": 1,
@@ -172,17 +175,18 @@ def install_database(db_dir: Path, foldseek_gpu: bool, threads: int) -> None:
         db_url = DICT[CURRENT_DB_VERSION]["db_url"]
         logger.info(f"Downloading baktfold DB from {db_url}")
 
-        requiredmd5 = DICT[CURRENT_DB_VERSION]["md5"]
+        requiredmd5s = DICT[CURRENT_DB_VERSION]["md5"]
         tarball = DICT[CURRENT_DB_VERSION]["tarball"]
         
         tarball_path = Path(f"{db_dir}/{tarball}")
         logdir = Path(db_dir) / "logdir"
 
         try: 
-            download(db_url, tarball_path, logdir, threads)
+            logger.info(f"Downloading from HuggingFace")
+            download(tarball_path, db_dir)
         except:
             logger.warning(
-                f"Could not download file from Zenodo using aria2c! url={db_url}, path={tarball_path}"
+                f"Could not download file from HuggingFace: path={tarball_path}"
             )
             logger.warning(f"Trying now with requests")
             download_requests(db_url, tarball_path)
@@ -190,11 +194,12 @@ def install_database(db_dir: Path, foldseek_gpu: bool, threads: int) -> None:
 
         md5_sum = calc_md5_sum(tarball_path)
 
-        if md5_sum == requiredmd5:
+
+        if md5_sum in requiredmd5s:
             logger.info(f"baktfold database file download OK: {md5_sum}")
         else:
             logger.error(
-                f"Error: corrupt database file! MD5 should be '{requiredmd5}' but is '{md5_sum}'"
+                f"Error: corrupt database file! MD5 should be '{requiredmd5s}' but is '{md5_sum}'"
             )
 
         logger.info(
@@ -211,6 +216,8 @@ def install_database(db_dir: Path, foldseek_gpu: bool, threads: int) -> None:
             logger.info("Creating them")
             foldseek_makepaddedseqdb(db_dir)
 
+    logger.info("Database download and processing complete")
+
 
 
 """
@@ -223,34 +230,30 @@ aria2c bottlenecked by Zenodo but still faster than wget
 dependency of Foldseek so it is always present
 """
 
-def download(db_url: str, tarball_path: Path, logdir: Path, threads: int) -> None:
+def download(tarball_path: Path, cache_dir: Path) -> None:
     """
-    Download the database from the given URL using aria2c.
+    Download the database from the given URL using HF.
 
     Args:
-        db_url (str): The URL of the database.
         tarball_path (Path): The path where the downloaded tarball should be saved.
-        logdir (Path): The path to store logs
-        threads (int): Number of threads for aria2c
     """
 
-    cmd = (
-        f'--dir {tarball_path.parent} '
-        f'--out {tarball_path.name} '
-        f'--max-connection-per-server={threads} '
-        f'--allow-overwrite=true '
-        f'{db_url}'
+    hf_tarball_path = hf_hub_download(
+        repo_id="gbouras13/baktfold-db",
+        repo_type="dataset",
+        filename="baktfold_db.tar.gz"  ,
+        cache_dir=f"{cache_dir}"
     )
+    # move from cache_dir to the base
+    # need to get the actual path not symlink
 
-    download_db = ExternalTool(
-        tool="aria2c",
-        input=f"",
-        output=f"",
-        params=f"{cmd}",
-        logdir=logdir,
-    )
+    real_tarball = Path(hf_tarball_path).resolve()
+    tarball_path.parent.mkdir(parents=True, exist_ok=True)
 
-    ExternalTool.run_download(download_db)
+    shutil.move(real_tarball, tarball_path)
+
+    logger.info(f"Tarball saved to {tarball_path}")
+
 
 def download_requests(db_url: str, tarball_path: Path):
     """
@@ -304,16 +307,7 @@ def download_zenodo_prostT5(model_dir, logdir, threads):
 
     tarball = VERSION_DICTIONARY[CURRENT_DB_VERSION]["prostt5_backup_tarball"]
     tarball_path = Path(f"{model_dir}/{tarball}")
-
-
-    try: 
-        download(db_url, tarball_path, logdir, threads)
-    except IOError:
-        logger.warning(
-            f"Could not download file from Zenodo using aria2c! url={db_url}, path={tarball_path}"
-        )
-        logger.warning(f"Trying now with requests")
-        download_requests(db_url, tarball_path)
+    download_requests(db_url, tarball_path)
 
     md5_sum = calc_md5_sum(tarball_path)
 
