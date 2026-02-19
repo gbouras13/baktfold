@@ -1,0 +1,406 @@
+>Feature fake_chromosome
+19	894	CDS
+			gene	repA
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:UniProtKB:P24042
+			locus_tag	FLLLIEBD_00001
+			product	Replication protein RepA
+1519	1935	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00002
+			product	hypothetical protein
+2048	1932	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00003
+			product	hypothetical protein
+3669	2875	CDS
+			gene	xerC
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	protein motif:HAMAP:MF_01808
+			locus_tag	FLLLIEBD_00004
+			product	Tyrosine recombinase XerC
+3729	3872	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00005
+			product	hypothetical protein
+4870	3905	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00006
+			product	hypothetical protein
+5246	4935	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00007
+			product	hypothetical protein
+5609	5280	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00008
+			product	hypothetical protein
+9288	6169	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00009
+			product	hypothetical protein
+9604	9840	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00010
+			product	hypothetical protein
+9837	10412	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00011
+			product	hypothetical protein
+10446	11063	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00012
+			product	hypothetical protein
+11658	10954	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:ISfinder:IS26
+			locus_tag	FLLLIEBD_00013
+			product	IS6 family transposase IS26
+11942	11670	CDS
+			EC_number	2.4.1.21
+			db_xref	COG:COG0297
+			gene	glgA
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:UniProtKB:P0A6U8
+			locus_tag	FLLLIEBD_00014
+			product	Glycogen synthase
+12678	12031	CDS
+			EC_number	2.7.7.27
+			db_xref	COG:COG0448
+			gene	glgC
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:UniProtKB:P0A6V1
+			locus_tag	FLLLIEBD_00015
+			product	Glucose-1-phosphate adenylyltransferase
+12811	13515	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:ISfinder:IS26
+			locus_tag	FLLLIEBD_00016
+			product	IS6 family transposase IS26
+14517	13906	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00017
+			product	hypothetical protein
+14852	14571	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00018
+			product	hypothetical protein
+15267	15025	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:ISfinder:ISLad1
+			locus_tag	FLLLIEBD_00019
+			product	IS3 family transposase ISLad1
+16426	15350	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:ISfinder:ISEc21
+			locus_tag	FLLLIEBD_00020
+			product	IS110 family transposase ISEc21
+17052	16645	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00021
+			product	hypothetical protein
+17567	17265	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:ISfinder:ISEc52
+			locus_tag	FLLLIEBD_00022
+			product	IS3 family transposase ISEc52
+17651	17986	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00023
+			product	hypothetical protein
+18169	18321	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00024
+			product	hypothetical protein
+19565	18933	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00025
+			product	hypothetical protein
+20404	20018	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00026
+			product	hypothetical protein
+20889	20404	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00027
+			product	hypothetical protein
+21434	20856	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00028
+			product	hypothetical protein
+21702	22235	CDS
+			gene	rfaH
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	protein motif:HAMAP:MF_00951
+			locus_tag	FLLLIEBD_00029
+			product	Transcription antitermination protein RfaH
+22253	22456	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00030
+			product	hypothetical protein
+22490	22801	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00031
+			product	hypothetical protein
+22881	23486	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00032
+			product	hypothetical protein
+23499	23978	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00033
+			product	hypothetical protein
+24001	24468	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00034
+			product	hypothetical protein
+24465	25283	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00035
+			product	hypothetical protein
+25261	26448	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00036
+			product	hypothetical protein
+26445	26711	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00037
+			product	hypothetical protein
+26729	30052	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00038
+			product	hypothetical protein
+30086	30439	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00039
+			product	hypothetical protein
+30475	31179	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00040
+			product	hypothetical protein
+31190	32293	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00041
+			product	hypothetical protein
+32297	32704	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00042
+			product	hypothetical protein
+32722	33636	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00043
+			product	hypothetical protein
+33642	34361	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00044
+			product	hypothetical protein
+34371	34904	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00045
+			product	hypothetical protein
+34958	35359	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00046
+			product	hypothetical protein
+35403	35966	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00047
+			product	hypothetical protein
+35976	39023	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00048
+			product	hypothetical protein
+39034	40230	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00049
+			product	hypothetical protein
+40227	40808	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00050
+			product	hypothetical protein
+40850	42994	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00051
+			product	hypothetical protein
+43060	43683	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00052
+			product	hypothetical protein
+43785	45203	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00053
+			product	hypothetical protein
+45178	46305	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00054
+			product	hypothetical protein
+46307	48499	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00055
+			product	hypothetical protein
+48545	48850	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00056
+			product	hypothetical protein
+50462	48873	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:ISfinder:ISKox1
+			locus_tag	FLLLIEBD_00057
+			product	IS66 family transposase ISKox1
+50842	50492	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00058
+			product	hypothetical protein
+51246	50839	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00059
+			product	hypothetical protein
+51322	51462	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00060
+			product	hypothetical protein
+51538	51903	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00061
+			product	hypothetical protein
+51951	52766	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:ISfinder:ISEc27
+			locus_tag	FLLLIEBD_00062
+			product	IS3 family transposase ISEc27
+52927	53178	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00063
+			product	hypothetical protein
+55147	53219	CDS
+			gene	traI
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:UniProtKB:Q00191
+			locus_tag	FLLLIEBD_00064
+			product	Protein TraI
+55341	55150	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00065
+			product	hypothetical protein
+55857	56189	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00066
+			product	hypothetical protein
+56358	56227	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00067
+			product	hypothetical protein
+56780	56460	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00068
+			product	hypothetical protein
+57067	56834	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00069
+			product	hypothetical protein
+57492	57211	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00070
+			product	hypothetical protein
+57998	57759	CDS
+			gene	klcA
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:UniProtKB:P52603
+			locus_tag	FLLLIEBD_00071
+			product	Antirestriction protein KlcA
+59226	58366	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00072
+			product	hypothetical protein
+59482	59300	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00073
+			product	hypothetical protein
+59982	59623	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00074
+			product	hypothetical protein
+60872	60576	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:UniProtKB:P72255
+			locus_tag	FLLLIEBD_00075
+			note	UPF0758 protein
+			product	hypothetical protein
+61026	60832	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00076
+			product	hypothetical protein
+61629	61141	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00077
+			product	hypothetical protein
+62084	61626	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00078
+			product	hypothetical protein
+62665	62237	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00079
+			product	hypothetical protein
+63638	62658	CDS
+			gene	parM
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:UniProtKB:P11904
+			locus_tag	FLLLIEBD_00080
+			product	Plasmid segregation protein ParM
+64207	64650	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00081
+			product	hypothetical protein
+64647	64886	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00082
+			product	hypothetical protein
+64941	65360	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00083
+			product	hypothetical protein
+65649	65906	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00084
+			product	hypothetical protein
+66676	66110	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00085
+			product	hypothetical protein
+67062	66718	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00086
+			product	hypothetical protein
+67512	67207	CDS
+			gene	ccdB
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:UniProtKB:P62554
+			locus_tag	FLLLIEBD_00087
+			product	Toxin CcdB
+67730	67512	CDS
+			db_xref	COG:COG5302
+			gene	ccdA
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:UniProtKB:P62553
+			locus_tag	FLLLIEBD_00088
+			product	Antitoxin CcdA
+68292	68942	CDS
+			EC_number	3.4.21.88
+			gene	lexA
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	protein motif:HAMAP:MF_00015
+			locus_tag	FLLLIEBD_00089
+			product	LexA repressor
+68942	70213	CDS
+			db_xref	COG:COG0389
+			gene	umuC
+			inference	ab initio prediction:Prodigal:v2.6
+			inference	similar to AA sequence:UniProtKB:P04152
+			locus_tag	FLLLIEBD_00090
+			product	Protein UmuC
+>Feature small_plasmid
+2016	1540	CDS
+			inference	ab initio prediction:Prodigal:v2.6
+			locus_tag	FLLLIEBD_00091
+			product	hypothetical protein

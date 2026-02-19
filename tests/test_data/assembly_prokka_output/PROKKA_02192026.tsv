@@ -1,0 +1,92 @@
+locus_tag	ftype	length_bp	gene	EC_number	COG	product
+FLLLIEBD_00001	CDS	876	repA			Replication protein RepA
+FLLLIEBD_00002	CDS	417				hypothetical protein
+FLLLIEBD_00003	CDS	117				hypothetical protein
+FLLLIEBD_00004	CDS	795	xerC			Tyrosine recombinase XerC
+FLLLIEBD_00005	CDS	144				hypothetical protein
+FLLLIEBD_00006	CDS	966				hypothetical protein
+FLLLIEBD_00007	CDS	312				hypothetical protein
+FLLLIEBD_00008	CDS	330				hypothetical protein
+FLLLIEBD_00009	CDS	3120				hypothetical protein
+FLLLIEBD_00010	CDS	237				hypothetical protein
+FLLLIEBD_00011	CDS	576				hypothetical protein
+FLLLIEBD_00012	CDS	618				hypothetical protein
+FLLLIEBD_00013	CDS	705				IS6 family transposase IS26
+FLLLIEBD_00014	CDS	273	glgA	2.4.1.21	COG0297	Glycogen synthase
+FLLLIEBD_00015	CDS	648	glgC	2.7.7.27	COG0448	Glucose-1-phosphate adenylyltransferase
+FLLLIEBD_00016	CDS	705				IS6 family transposase IS26
+FLLLIEBD_00017	CDS	612				hypothetical protein
+FLLLIEBD_00018	CDS	282				hypothetical protein
+FLLLIEBD_00019	CDS	243				IS3 family transposase ISLad1
+FLLLIEBD_00020	CDS	1077				IS110 family transposase ISEc21
+FLLLIEBD_00021	CDS	408				hypothetical protein
+FLLLIEBD_00022	CDS	303				IS3 family transposase ISEc52
+FLLLIEBD_00023	CDS	336				hypothetical protein
+FLLLIEBD_00024	CDS	153				hypothetical protein
+FLLLIEBD_00025	CDS	633				hypothetical protein
+FLLLIEBD_00026	CDS	387				hypothetical protein
+FLLLIEBD_00027	CDS	486				hypothetical protein
+FLLLIEBD_00028	CDS	579				hypothetical protein
+FLLLIEBD_00029	CDS	534	rfaH			Transcription antitermination protein RfaH
+FLLLIEBD_00030	CDS	204				hypothetical protein
+FLLLIEBD_00031	CDS	312				hypothetical protein
+FLLLIEBD_00032	CDS	606				hypothetical protein
+FLLLIEBD_00033	CDS	480				hypothetical protein
+FLLLIEBD_00034	CDS	468				hypothetical protein
+FLLLIEBD_00035	CDS	819				hypothetical protein
+FLLLIEBD_00036	CDS	1188				hypothetical protein
+FLLLIEBD_00037	CDS	267				hypothetical protein
+FLLLIEBD_00038	CDS	3324				hypothetical protein
+FLLLIEBD_00039	CDS	354				hypothetical protein
+FLLLIEBD_00040	CDS	705				hypothetical protein
+FLLLIEBD_00041	CDS	1104				hypothetical protein
+FLLLIEBD_00042	CDS	408				hypothetical protein
+FLLLIEBD_00043	CDS	915				hypothetical protein
+FLLLIEBD_00044	CDS	720				hypothetical protein
+FLLLIEBD_00045	CDS	534				hypothetical protein
+FLLLIEBD_00046	CDS	402				hypothetical protein
+FLLLIEBD_00047	CDS	564				hypothetical protein
+FLLLIEBD_00048	CDS	3048				hypothetical protein
+FLLLIEBD_00049	CDS	1197				hypothetical protein
+FLLLIEBD_00050	CDS	582				hypothetical protein
+FLLLIEBD_00051	CDS	2145				hypothetical protein
+FLLLIEBD_00052	CDS	624				hypothetical protein
+FLLLIEBD_00053	CDS	1419				hypothetical protein
+FLLLIEBD_00054	CDS	1128				hypothetical protein
+FLLLIEBD_00055	CDS	2193				hypothetical protein
+FLLLIEBD_00056	CDS	306				hypothetical protein
+FLLLIEBD_00057	CDS	1590				IS66 family transposase ISKox1
+FLLLIEBD_00058	CDS	351				hypothetical protein
+FLLLIEBD_00059	CDS	408				hypothetical protein
+FLLLIEBD_00060	CDS	141				hypothetical protein
+FLLLIEBD_00061	CDS	366				hypothetical protein
+FLLLIEBD_00062	CDS	816				IS3 family transposase ISEc27
+FLLLIEBD_00063	CDS	252				hypothetical protein
+FLLLIEBD_00064	CDS	1929	traI			Protein TraI
+FLLLIEBD_00065	CDS	192				hypothetical protein
+FLLLIEBD_00066	CDS	333				hypothetical protein
+FLLLIEBD_00067	CDS	132				hypothetical protein
+FLLLIEBD_00068	CDS	321				hypothetical protein
+FLLLIEBD_00069	CDS	234				hypothetical protein
+FLLLIEBD_00070	CDS	282				hypothetical protein
+FLLLIEBD_00071	CDS	240	klcA			Antirestriction protein KlcA
+FLLLIEBD_00072	CDS	861				hypothetical protein
+FLLLIEBD_00073	CDS	183				hypothetical protein
+FLLLIEBD_00074	CDS	360				hypothetical protein
+FLLLIEBD_00075	CDS	297				hypothetical protein
+FLLLIEBD_00076	CDS	195				hypothetical protein
+FLLLIEBD_00077	CDS	489				hypothetical protein
+FLLLIEBD_00078	CDS	459				hypothetical protein
+FLLLIEBD_00079	CDS	429				hypothetical protein
+FLLLIEBD_00080	CDS	981	parM			Plasmid segregation protein ParM
+FLLLIEBD_00081	CDS	444				hypothetical protein
+FLLLIEBD_00082	CDS	240				hypothetical protein
+FLLLIEBD_00083	CDS	420				hypothetical protein
+FLLLIEBD_00084	CDS	258				hypothetical protein
+FLLLIEBD_00085	CDS	567				hypothetical protein
+FLLLIEBD_00086	CDS	345				hypothetical protein
+FLLLIEBD_00087	CDS	306	ccdB			Toxin CcdB
+FLLLIEBD_00088	CDS	219	ccdA		COG5302	Antitoxin CcdA
+FLLLIEBD_00089	CDS	651	lexA	3.4.21.88		LexA repressor
+FLLLIEBD_00090	CDS	1272	umuC		COG0389	Protein UmuC
+FLLLIEBD_00091	CDS	477				hypothetical protein

@@ -8,6 +8,7 @@ import string
 # import argparse
 # import re
 from collections import defaultdict
+from pathlib import Path
 
 from tqdm import tqdm
 import hashlib
@@ -2645,7 +2646,7 @@ def eukaryotic_gbk_to_json(records, output_json, verbose):
 
 
 
-
+    Path(output_json).parent.mkdir(parents=True, exist_ok=True)
     with open(output_json, "w") as fh:
         json.dump(bakta_json, fh, indent=4)
 
