@@ -481,11 +481,30 @@ def run(
     # map features by sequence for io
     features_by_sequence = {seq['id']: [] for seq in data['sequences']}
 
+    # for feature in data['features']:
+    #     if 'discarded' not in feature:
+    #         seq_features = features_by_sequence.get(feature['sequence'])
+    #         if seq_features is not None:
+    #             seq_features.append(feature)
+                
     for feature in data['features']:
-        if 'discarded' not in feature:
-            seq_features = features_by_sequence.get(feature['sequence'])
-            if seq_features is not None:
-                seq_features.append(feature)
+        if 'discarded' in feature:
+            continue
+
+        seq_id = feature.get('sequence')
+
+        if seq_id is None:
+            logger.warning(f"Feature missing 'sequence', skipping: {feature}")
+            continue
+
+        seq_features = features_by_sequence.get(seq_id)
+
+        if seq_features is None:
+            logger.warning(f"Feature has unknown sequence '{seq_id}', skipping: {feature}")
+            continue
+
+        seq_features.append(feature)
+
 
     # flatten sorted features
     features = []
