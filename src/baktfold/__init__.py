@@ -486,12 +486,14 @@ def run(
     #         seq_features = features_by_sequence.get(feature['sequence'])
     #         if seq_features is not None:
     #             seq_features.append(feature)
-                
+
+    # https://github.com/oschwengers/bakta/blob/99886fca4a41b5a9ede52611077bcf6ecdb2bfd0/bakta/json_io.py#L100C4-L103C42
+      
     for feature in data['features']:
         if 'discarded' in feature:
             continue
 
-        seq_id = feature.get('sequence')
+        seq_id = feature['sequence'] if 'sequence' in feature else feature['contig']  # <1.10.0 compatibility
 
         if seq_id is None:
             logger.warning(f"Feature missing 'sequence', skipping: {feature}")
