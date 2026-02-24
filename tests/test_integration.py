@@ -44,6 +44,7 @@ database_dir = Path(f"{test_data}/baktfold_db")
 
 # inputs
 input_json: Path = f"{test_bakta_output}/assembly.json"
+input_no_fs_hits_json: Path = f"{test_data}/SAMEA111266571.bakta.json"
 input_fasta: Path = f"{test_data}/assembly.hypotheticals.faa"
 input_prok_gbk: Path = f"{test_prokka_output}/PROKKA_02192026.gbk"
 input_prok_json: Path = f"{test_data}/assembly_prokka.json"
@@ -155,6 +156,15 @@ run tests
 def test_run(gpu_available, threads, nvidia):
     """test baktfold run"""
     cmd = f"baktfold run -i {input_json} -o {run_dir} -t {threads} -d {database_dir} -f"
+    if nvidia:
+       cmd = f"{cmd} --foldseek-gpu" 
+    if gpu_available is False:
+        cmd = f"{cmd} --cpu"
+    exec_command(cmd)
+
+def test_run_no_fs_hits(gpu_available, threads, nvidia):
+    """test baktfold run on a genome with no foldseek hits for some dbs"""
+    cmd = f"baktfold run -i {input_no_fs_hits_json} -o {run_dir} -t {threads} -d {database_dir} -f"
     if nvidia:
        cmd = f"{cmd} --foldseek-gpu" 
     if gpu_available is False:

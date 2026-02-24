@@ -18,7 +18,10 @@ def parse(features: Sequence[dict], foldseek_df: pd.DataFrame, db_name: str = 's
     
     has_duplicate_locus - some euks have multiple CDS per locus tag
 
-    """
+    """ 
+
+    if foldseek_df.empty:
+        return features
 
     # Convert foldseek_df to a lookup table keyed by query ID
     foldseek_hits = {row['query']: row for _, row in foldseek_df.iterrows()}

@@ -68,43 +68,44 @@ def get_tophit(
 
     # in case the foldseek output is empty
     if foldseek_df.empty:
-        logger.error(
-            "Foldseek found no hits whatsoever - please check whether your input"
+        logger.warning(
+            "Foldseek found no hits whatsoever - please check your input if you expect hits"
         )
+        
+    else:
 
+        # add qcov and tcov 
+        foldseek_df["qCov"] = ((foldseek_df["qEnd"] - foldseek_df["qStart"] ) / foldseek_df["qLen"]).round(2)
+        foldseek_df["tCov"] = ((foldseek_df["tEnd"] - foldseek_df["tStart"] ) / foldseek_df["tLen"]).round(2)
 
-    # add qcov and tcov 
-    foldseek_df["qCov"] = ((foldseek_df["qEnd"] - foldseek_df["qStart"] ) / foldseek_df["qLen"]).round(2)
-    foldseek_df["tCov"] = ((foldseek_df["tEnd"] - foldseek_df["tStart"] ) / foldseek_df["tLen"]).round(2)
+        # reorder
+        qLen_index = foldseek_df.columns.get_loc("qLen")
+        tLen_index = foldseek_df.columns.get_loc("tLen")
 
-    # reorder
-    qLen_index = foldseek_df.columns.get_loc("qLen")
-    tLen_index = foldseek_df.columns.get_loc("tLen")
-
-    new_column_order = (
-        list(
-            [
-                col
-                for col in foldseek_df.columns[: qLen_index + 1]
-                if col not in ["qCov", "tStart","tEnd",	"tLen", "tCov"]
-            ]
+        new_column_order = (
+            list(
+                [
+                    col
+                    for col in foldseek_df.columns[: qLen_index + 1]
+                    if col not in ["qCov", "tStart","tEnd",	"tLen", "tCov"]
+                ]
+            )
+            + ["qCov", "tStart","tEnd",	"tLen", "tCov"]
+            + list(
+                [
+                    col
+                    for col in foldseek_df.columns[tLen_index + 1 :]
+                    if col not in ["qCov", "tStart","tEnd",	"tLen", "tCov"]
+                ]
+            )
         )
-        + ["qCov", "tStart","tEnd",	"tLen", "tCov"]
-        + list(
-            [
-                col
-                for col in foldseek_df.columns[tLen_index + 1 :]
-                if col not in ["qCov", "tStart","tEnd",	"tLen", "tCov"]
-            ]
-        )
-    )
-    foldseek_df = foldseek_df.reindex(columns=new_column_order)
+        foldseek_df = foldseek_df.reindex(columns=new_column_order)
 
 
-    if not cath:
-        # get only the tophit - will always be the first hit for each query (top bitscore)
-        foldseek_df = foldseek_df.drop_duplicates(subset="query", keep="first")
-    # otherwise, the df will contain all greedy tophits from CATH
+        if not cath:
+            # get only the tophit - will always be the first hit for each query (top bitscore)
+            foldseek_df = foldseek_df.drop_duplicates(subset="query", keep="first")
+        # otherwise, the df will contain all greedy tophits from CATH
 
 
     return foldseek_df
