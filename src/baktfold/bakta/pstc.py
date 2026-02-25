@@ -301,8 +301,8 @@ def lookup_sql(features: Sequence[dict], baktfold_db: Path, threads: int):
                     else:
                         entry['description'] = "hypothetical protein"
 
-        # Write back normalized list or single entry
-        feat['pstc'] = pstc_entries if isinstance(pstc, list) else pstc_entries[0]
+            # Write back normalized list or single entry
+            feat['pstc'] = pstc_entries if isinstance(pstc, list) else pstc_entries[0]
     
     # except Exception as ex:
     #     logger.error('Could not read PSTCs from db!')
