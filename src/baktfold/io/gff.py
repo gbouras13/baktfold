@@ -377,7 +377,7 @@ def write_euk_trna_feature(fh, seq_id, feat):
     fh.write(f"{seq_id}\tbaktfold\texon\t{start}\t{stop}\t.\t{strand}\t.\t{exon_attrs}\n")
 
 
-def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path: Path, prokka: bool = False, euk: bool = False):
+def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path: Path, prokka: bool = False, euk: bool = False, other_genbank: bool = False, cds_tool: str = "Prodigal:2.6", trna_program: str = "tRNAscan-SE:2.0.12", tmrna_program: str = "Aragorn", rrna_program: str = "Infernal", ncrna_program: str = "Infernal"):
     """Export features in GFF3 format."""
     logger.info(f'write features: path={gff3_path}')
 
@@ -434,16 +434,18 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                     if euk:
                         write_euk_trna_feature(fh, seq_id, feat)
                     else:
-
                         trna_tool = "tRNAscan-SE"
                         if prokka:
                             trna_tool = "Aragorn"
+                        if other_genbank:
+                            trna_tool = trna_program
+
                         annotations = {
                             'ID': feat['locus'],
                             'Name': feat['product'],
                             'locus_tag': feat['locus'],
                             'product': feat['product'],
-                            'Dbxref': feat['db_xrefs']
+                            'Dbxref': feat.get('db_xrefs', [])
                         }
                         if(feat.get('gene', None)):  # add gene annotation if available
                             annotations['gene'] = feat['gene']
@@ -474,13 +476,18 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         fh.write(f"{seq_id}\t{trna_tool}\t{so.SO_TRNA.name}\t{start}\t{stop}\t.\t{feat['strand']}\t.\t{annotations}\n")
                 elif(feat['type'] == bc.FEATURE_TM_RNA):
                     # both prokka and bakta use Aragorn
+
+                    tmrna_tool = "Aragorn"
+                    if other_genbank:
+                        tmrna_tool = tmrna_program
+
                     annotations = {
                         'ID': feat['locus'],
                         'Name': feat['product'],
                         'locus_tag': feat['locus'],
-                        'gene': feat['gene'],
+                        'gene': feat.get('gene', []),
                         'product': feat['product'],
-                        'Dbxref': feat['db_xrefs']
+                        'Dbxref': feat.get('db_xrefs', [])
                     }
                     if('tag' in feat):
                         annotations['tag_peptide'] = feat['tag']['aa']
@@ -508,13 +515,16 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                     rrna_tool = "Infernal"
                     if prokka:
                         rrna_tool = "barrnap"
+                    if other_genbank:
+                        rrna_tool = rrna_program
+
                     annotations = {
                         'ID': feat['locus'],
                         'Name': feat['product'],
                         'locus_tag': feat['locus'],
-                        'gene': feat['gene'],
+                        'gene': feat.get('gene', []),
                         'product': feat['product'],
-                        'Dbxref': feat['db_xrefs']
+                        'Dbxref': feat.get('db_xrefs', [])
                     }
                     if('truncated' in feat):
                         annotations[bc.INSDC_FEATURE_PSEUDO] = True
@@ -534,16 +544,23 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         gene_annotations = encode_annotations(gene_annotations)
                         fh.write(f"{seq_id}\t{rrna_tool}\tgene\t{start}\t{stop}\t.\t{feat['strand']}\t.\t{gene_annotations}\n")
                     annotations = encode_annotations(annotations)
-                    fh.write(f"{seq_id}\t{rrna_tool}\t{so.SO_RRNA.name}\t{start}\t{stop}\t{feat['evalue']}\t{feat['strand']}\t.\t{annotations}\n")
+                    if other_genbank or prokka:
+                        fh.write(f"{seq_id}\t{rrna_tool}\t{so.SO_RRNA.name}\t{start}\t{stop}\t{feat['strand']}\t.\t{annotations}\n")
+                    else:
+                        fh.write(f"{seq_id}\t{rrna_tool}\t{so.SO_RRNA.name}\t{start}\t{stop}\t{feat['evalue']}\t{feat['strand']}\t.\t{annotations}\n")
                 elif(feat['type'] == bc.FEATURE_NC_RNA):
                     # both prokka and bakta use infernal for ncrna
+
+                    if other_genbank:
+                        ncrna_tool = ncrna_program
+
                     annotations = {
                         'ID': feat['locus'],
                         'Name': feat['product'],
                         'locus_tag': feat['locus'],
-                        'gene': feat['gene'],
+                        'gene': feat.get('gene', []),
                         'product': feat['product'],
-                        'Dbxref': feat['db_xrefs']
+                        'Dbxref': feat.get('db_xrefs', [])
                     }
                     if('truncated' in feat):
                         annotations[bc.INSDC_FEATURE_PSEUDO] = True
@@ -566,15 +583,18 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         if('truncated' in feat):
                             gene_annotations[bc.INSDC_FEATURE_PSEUDO] = True
                         gene_annotations = encode_annotations(gene_annotations)
-                        fh.write(f"{seq_id}\tInfernal\tgene\t{start}\t{stop}\t.\t{feat['strand']}\t.\t{gene_annotations}\n")
+                        fh.write(f"{seq_id}\t{ncrna_tool}\tgene\t{start}\t{stop}\t.\t{feat['strand']}\t.\t{gene_annotations}\n")
                     annotations = encode_annotations(annotations)
-                    fh.write(f"{seq_id}\tInfernal\t{so.SO_NCRNA_GENE.name}\t{start}\t{stop}\t{feat['evalue']}\t{feat['strand']}\t.\t{annotations}\n")
+                    if other_genbank or prokka:
+                        fh.write(f"{seq_id}\t{ncrna_tool}\t{so.SO_NCRNA_GENE.name}\t{start}\t{stop}\t{feat['strand']}\t.\t{annotations}\n")
+                    else:
+                        fh.write(f"{seq_id}\t{ncrna_tool}\t{so.SO_NCRNA_GENE.name}\t{start}\t{stop}\t{feat['evalue']}\t{feat['strand']}\t.\t{annotations}\n")
                 elif(feat['type'] == bc.FEATURE_NC_RNA_REGION):
                     annotations = {
                         'ID': feat['id'],
                         'Name': feat['product'],
                         'product': feat['product'],
-                        'Dbxref': feat['db_xrefs']
+                        'Dbxref': feat.get('db_xrefs', [])
                     }
                     if('truncated' in feat):
                         annotations[bc.INSDC_FEATURE_PSEUDO] = True
@@ -638,11 +658,11 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         write_euk_cds_feature(fh, seq_id, feat)
                     else:
                         annotations = {
-                            'ID': feat['locus'],
-                            'Name': feat['product'],
-                            'locus_tag': feat['locus'],
-                            'product': feat['product'],
-                            'Dbxref': feat['db_xrefs']
+                            'ID': feat.get('locus'),
+                            'Name': feat.get('product'),
+                            'locus_tag': feat.get('locus'),
+                            'product': feat.get('product'),
+                            'Dbxref': feat.get('db_xrefs', [])  # default to empty list if db_xrefs doesn't exist
                         }
                         if(bc.PSEUDOGENE in feat):
                             annotations[bc.INSDC_FEATURE_PSEUDOGENE] = bc.INSDC_FEATURE_PSEUDOGENE_TYPE_UNPROCESSED if feat[bc.PSEUDOGENE]['paralog'] else bc.INSDC_FEATURE_PSEUDOGENE_TYPE_UNITARY
@@ -653,6 +673,10 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         source = '?' if feat.get('source', None) == bc.CDS_SOURCE_USER else 'Pyrodigal'
                         if prokka: 
                             source = 'Prodigal'
+
+                        if other_genbank:
+                            source = cds_tool
+
                         if(cfg.compliant):
                             gene_id = f"{feat['locus']}_gene"
                             annotations['Parent'] = gene_id
@@ -691,7 +715,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         'Name': feat['product'],
                         'locus_tag': feat['locus'],
                         'product': feat['product'],
-                        'Dbxref': feat['db_xrefs']
+                        'Dbxref': feat.get('db_xrefs', [])
                     }
                     if(feat.get('gene', None)):  # add gene annotation if available
                         annotations['gene'] = feat['gene']

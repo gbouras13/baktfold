@@ -163,8 +163,8 @@ def test_run(gpu_available, threads, nvidia):
     exec_command(cmd)
 
 def test_run_no_fs_hits(gpu_available, threads, nvidia):
-    """test baktfold run on a genome with no foldseek hits for some dbs"""
-    cmd = f"baktfold run -i {input_no_fs_hits_json} -o {run_dir} -t {threads} -d {database_dir} -f"
+    """test baktfold run on a genome with no foldseek hits for all dbs"""
+    cmd = f"baktfold run -i {input_no_fs_hits_json} -o {run_dir} -t {threads} -d {database_dir} -e 1e-50 -f"
     if nvidia:
        cmd = f"{cmd} --foldseek-gpu" 
     if gpu_available is False:

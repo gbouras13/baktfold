@@ -37,7 +37,8 @@ def write_foldseek_tophit(tophit_df: pd.DataFrame, pdb_tophit_path: Path):
 
 def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequence: Sequence[dict] , 
                         output: Path, prefix: str, custom_db: bool, euk: bool, has_duplicate_locus: bool,
-                        fast: bool, translation_table: int):
+                        fast: bool, translation_table: int, prokka: bool, other_genbank: bool,
+                        cds_program: str ,trna_program: str, rrna_program: str, tmrna_program: str, ncrna_program: str):
     """
     Writes the bakta outputs to a given path.
 
@@ -52,12 +53,14 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
       has_duplicate_locus (bool): A boolean indicating whether there are duplicate loci.
       fast (bool): If True, skips AFDB step
       translation_table (str): Translation table inferred from input JSON
+      prokka (bool): boolean indicating if prokka was used to do initial annotation
+      other_genbank (bool): boolean indicating if other genbank (prokaryotic, genbank_to) was used to do initial annotation
 
     Returns:
       None.
 
     Examples:
-      >>> write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus)
+      >>> write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank)
     """
 
     #logger.info(f'selected features={len(features)}')
@@ -69,13 +72,12 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
     logger.info('writing GFF3...')
     gff3_path: Path = Path(output) / f"{prefix}.gff3"
     # fix later prokka
-    prokka = False
-    gff.write_features(data, features_by_sequence, gff3_path, prokka, euk)
+    gff.write_features(data, features_by_sequence, gff3_path, prokka, euk, other_genbank, cds_program, trna_program, tmrna_program, rrna_program, ncrna_program)
 
     logger.info('writing INSDC GenBank & EMBL...')
     genbank_path: Path = Path(output) / f"{prefix}.gbff"
     embl_path: Path = Path(output) / f"{prefix}.embl"
-    insdc.write_features(data, features, genbank_path, embl_path, prokka, euk, translation_table)
+    insdc.write_features(data, features, genbank_path, embl_path, prokka, euk, other_genbank, translation_table, cds_program, trna_program, tmrna_program, rrna_program, ncrna_program)
 
     logger.info('writing genome sequences...')
     fna_path: Path = Path(output) / f"{prefix}.fna"
