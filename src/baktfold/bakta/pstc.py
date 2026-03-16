@@ -18,7 +18,10 @@ def parse(features: Sequence[dict], foldseek_df: pd.DataFrame, db_name: str = 's
     
     has_duplicate_locus - some euks have multiple CDS per locus tag
 
-    """
+    """ 
+
+    if foldseek_df.empty:
+        return features
 
     # Convert foldseek_df to a lookup table keyed by query ID
     foldseek_hits = {row['query']: row for _, row in foldseek_df.iterrows()}
@@ -298,8 +301,8 @@ def lookup_sql(features: Sequence[dict], baktfold_db: Path, threads: int):
                     else:
                         entry['description'] = "hypothetical protein"
 
-        # Write back normalized list or single entry
-        feat['pstc'] = pstc_entries if isinstance(pstc, list) else pstc_entries[0]
+            # Write back normalized list or single entry
+            feat['pstc'] = pstc_entries if isinstance(pstc, list) else pstc_entries[0]
     
     # except Exception as ex:
     #     logger.error('Could not read PSTCs from db!')

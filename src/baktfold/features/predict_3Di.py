@@ -174,8 +174,16 @@ def get_T5_model(
 
     model = model.eval()
     vocab = T5Tokenizer.from_pretrained(
-        model_name, cache_dir=f"{model_dir}/", do_lower_case=False
+        model_name, cache_dir=f"{model_dir}/", do_lower_case=False,
+        use_fast=False
     )
+    
+    model = T5EncoderModel.from_pretrained(
+                model_name,
+                cache_dir=f"{model_dir}/",
+                force_download=False,
+                local_files_only=True,
+            ).to(device)
 
     logger.info(f"{model_name} loaded")
 
@@ -514,12 +522,14 @@ def get_embeddings(
             pdb_ids, seqs, seq_lens = zip(*batch)
             batch = list()
 
-            token_encoding = vocab.batch_encode_plus(
+            token_encoding = vocab(
                 seqs,
                 add_special_tokens=True,
                 padding="longest",
-                return_tensors="pt",
-            ).to(device)
+                truncation=False,
+                return_tensors="pt"
+                ).to(device)
+            
             try:
                 with torch.no_grad():
                     embedding_repr = model(

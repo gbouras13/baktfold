@@ -7,6 +7,7 @@ import re
 import string
 from collections import defaultdict
 from datetime import datetime
+from pathlib import Path
 
 # from Bio import SeqIO
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
@@ -947,7 +948,7 @@ def prokka_gbk_to_json(records, output_json):
     }
 
 
-
+    Path(output_json).parent.mkdir(parents=True, exist_ok=True)
     with open(output_json, "w") as fh:
         json.dump(bakta_json, fh, indent=4)
         complete = True

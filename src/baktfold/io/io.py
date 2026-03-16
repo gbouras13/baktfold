@@ -37,7 +37,7 @@ def write_foldseek_tophit(tophit_df: pd.DataFrame, pdb_tophit_path: Path):
 
 def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequence: Sequence[dict] , 
                         output: Path, prefix: str, custom_db: bool, euk: bool, has_duplicate_locus: bool,
-                        fast: bool):
+                        fast: bool, translation_table: int):
     """
     Writes the bakta outputs to a given path.
 
@@ -51,6 +51,7 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
       euk (bool): A boolean indicating whether the sequences are eukaryotic.
       has_duplicate_locus (bool): A boolean indicating whether there are duplicate loci.
       fast (bool): If True, skips AFDB step
+      translation_table (str): Translation table inferred from input JSON
 
     Returns:
       None.
@@ -74,8 +75,7 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
     logger.info('writing INSDC GenBank & EMBL...')
     genbank_path: Path = Path(output) / f"{prefix}.gbff"
     embl_path: Path = Path(output) / f"{prefix}.embl"
-    insdc.write_features(data, features, genbank_path, embl_path, prokka, euk)
-
+    insdc.write_features(data, features, genbank_path, embl_path, prokka, euk, translation_table)
 
     logger.info('writing genome sequences...')
     fna_path: Path = Path(output) / f"{prefix}.fna"

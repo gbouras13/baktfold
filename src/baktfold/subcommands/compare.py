@@ -14,7 +14,6 @@ import baktfold.io.io as io
 import baktfold.bakta.pstc as pstc
 from baktfold.features.create_foldseek_db import generate_foldseek_db_from_aa_3di, generate_foldseek_db_from_structures
 from baktfold.features.run_foldseek import create_result_tsv, run_foldseek_search, summarise_hits
-from baktfold.io.handle_genbank import write_genbank
 from baktfold.results.tophit import get_tophit
 from baktfold.utils.util import remove_file
 

@@ -8,6 +8,7 @@ import string
 # import argparse
 # import re
 from collections import defaultdict
+from pathlib import Path
 
 from tqdm import tqdm
 import hashlib
@@ -281,6 +282,8 @@ def convert_trna_feature(feature, seq_record, id):
     # ------------ Basic qualifiers ------------
     product = feature.qualifiers.get("product", [None])[0]
 
+    qualifiers = feature.qualifiers
+
     # fall back to start_stop_strand if there is no locus tag
     if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
         locus_tag = qualifiers['locus_tag'][0]
@@ -431,7 +434,7 @@ def convert_gene_feature(feature, rec, id):
         locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
         logger.warning(f"Generating a locus_tag: {locus_tag}")
         
-    
+   
 
     gene_entry = {
         "type": "gene",
@@ -2643,7 +2646,7 @@ def eukaryotic_gbk_to_json(records, output_json, verbose):
 
 
 
-
+    Path(output_json).parent.mkdir(parents=True, exist_ok=True)
     with open(output_json, "w") as fh:
         json.dump(bakta_json, fh, indent=4)
 

@@ -126,7 +126,7 @@ def summarise_hits(result_db: Path, result_db_greedy_best_hits: Path, logdir: Pa
         None
     """
 
-    cmd = f"summarizeresult  {result_db} {result_db_greedy_best_hits} --threads {threads}"
+    cmd = f"summarizeresult  {result_db} {result_db_greedy_best_hits} --threads {threads} -a 1"
 
     foldseek_summarizeresult = ExternalTool(
         tool="foldseek",
