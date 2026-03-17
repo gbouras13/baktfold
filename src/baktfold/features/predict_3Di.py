@@ -152,6 +152,8 @@ def get_T5_model(
     if download:
         localfile = False
         logger.info("ProstT5 not found. Downloading ProstT5 from Hugging Face")
+
+
     try:
         model = T5EncoderModel.from_pretrained(
             model_name,
@@ -160,17 +162,20 @@ def get_T5_model(
             local_files_only=localfile,
         ).to(device)
         
-    except:
-        logger.warning("Download from Hugging Face failed. Trying backup from Zenodo.")
-        logdir = f"{model_dir}/logdir"
-        download_zenodo_prostT5(model_dir, logdir, threads )
+    except Exception as e:
+        if download:
+            logger.warning("Download from Hugging Face failed. Trying backup from Zenodo.")
+            logdir = f"{model_dir}/logdir"
+            download_zenodo_prostT5(model_dir, logdir, threads )
 
-        model = T5EncoderModel.from_pretrained(
-            model_name,
-            cache_dir=f"{model_dir}/",
-            force_download=False,
-            local_files_only=True,
-        ).to(device)
+            model = T5EncoderModel.from_pretrained(
+                model_name,
+                cache_dir=f"{model_dir}/",
+                force_download=False,
+                local_files_only=True,
+            ).to(device)
+        else:
+            logger.error(f"Model loading failed with error: {e}")
 
     model = model.eval()
     vocab = T5Tokenizer.from_pretrained(

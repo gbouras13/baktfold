@@ -550,7 +550,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         fh.write(f"{seq_id}\t{rrna_tool}\t{so.SO_RRNA.name}\t{start}\t{stop}\t{feat['evalue']}\t{feat['strand']}\t.\t{annotations}\n")
                 elif(feat['type'] == bc.FEATURE_NC_RNA):
                     # both prokka and bakta use infernal for ncrna
-
+                    ncrna_tool = "Infernal"
                     if other_genbank:
                         ncrna_tool = ncrna_program
 
