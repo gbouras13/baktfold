@@ -36,6 +36,8 @@ def parse_json_input(input_path, faa_path, all_proteins):
       (data, features, False)
     """
 
+    
+
     ############################################################################
     # Checks and configurations
     # - check parameters and setup global configuration
@@ -70,6 +72,7 @@ def parse_json_input(input_path, faa_path, all_proteins):
     else:
 
         hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
+
 
 
     # check if dupe locus tags (euks can have multiple CDS same locus tag e.g. Cladocopium goreaui CAMXCT020000001.1)
@@ -128,9 +131,32 @@ def parse_json_input(input_path, faa_path, all_proteins):
         )
         translation_table = None
 
+    # input detection
+
+
+    version = data.get("version", {})
+
+
+    prokka = False
+    other_genbank = False
+
+    if "prokka" in version:
+        prokka = True
+        logger.info("Prokka input detected")
+    if  "prokka"  not in version and "bakta" not in version:
+        other_genbank = True
+
     logger.info('Parsing complete')
 
-    return data, features, has_duplicate_locus, translation_table
+    return data, features, has_duplicate_locus, translation_table, prokka, other_genbank
+
+
+def log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program):
+
+    logger.warning("Neither bakta nor prokka input detected")
+    logger.info("If you would like to specify consituent inference tools for CDS, tRNA, rRNA, tmRNA and ncRNA")
+    logger.info("Reminder: please use --cds-tool --trna-program --rrna-program  --tmrna-program --ncrna-program to modify them if you haven't already")
+    logger.info(f"For this genome, they are --cds_program {cds_program} --trna-program {trna_program} --rrna_program {rrna_program} --tmrna-program {tmrna_program} --ncrna-program  {ncrna_program}")
 
 
     

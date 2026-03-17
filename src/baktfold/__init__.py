@@ -11,7 +11,7 @@ from loguru import logger
 
 import baktfold.bakta.constants as bc
 import baktfold.bakta.annotation as anno
-from baktfold.io.json_in import parse_json_input
+from baktfold.io.json_in import parse_json_input, log_for_other_genbank_tools
 from baktfold.io.fasta_in import parse_protein_input
 from baktfold.databases.db import install_database, validate_db
 from baktfold.features.create_foldseek_db import generate_foldseek_db_from_aa_3di
@@ -209,7 +209,37 @@ def compare_options(func):
             "--fast",
             is_flag=True,
             help="Skips Foldseek search against AFDB Clusters."
-        )
+        ),
+        click.option(
+            "--cds-program",
+            type=str,
+            default="Prodigal:2.6",
+            help="CDS prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+        ),
+        click.option(
+            "--trna-program",
+            type=str,
+            default="tRNAscan-SE:2.0.12",
+            help="tRNA prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+        ),
+        click.option(
+            "--tmrna-program",
+            type=str,
+            default="INFERNAL:1.1.5",
+            help="tmRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+        ),
+        click.option(
+            "--rrna-program",
+            type=str,
+            default="INFERNAL:1.1.5",
+            help="rRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+        ),
+        click.option(
+            "--ncrna-program",
+            type=str,
+            default="INFERNAL:1.1.5",
+            help="ncRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+        ),
     ]
     for option in reversed(options):
         func = option(func)
@@ -302,6 +332,11 @@ def run(
     all_proteins,
     euk,
     fast,
+    cds_program,
+    trna_program,
+    tmrna_program,
+    rrna_program,
+    ncrna_program,
     **kwargs,
 ):
     """baktfold predict then comapare all in one - GPU recommended"""
@@ -337,7 +372,12 @@ def run(
         "--foldseek-gpu": foldseek_gpu,
         "--all-proteins": all_proteins,
         "--euk": euk,
-        "--fast": fast
+        "--fast": fast,
+        "--cds-program": cds_program,
+        "--trna-program": trna_program,
+        "--tmrna-program": tmrna_program,
+        "--rrna-program": rrna_program,
+        "--ncrna-program": ncrna_program
     }
 
     # initial logging etc
@@ -354,7 +394,10 @@ def run(
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
-    data, features, has_duplicate_locus, translation_table = parse_json_input(input, fasta_aa, all_proteins)
+    data, features, has_duplicate_locus, translation_table, prokka, other_genbank = parse_json_input(input, fasta_aa, all_proteins)
+
+    if other_genbank:
+        log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
 
     ###
     # split features in hypotheticals and non hypotheticals
@@ -536,7 +579,8 @@ def run(
 
 
     logger.info('writing baktfold outputs')
-    io.write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table)
+    io.write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank,
+    cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
 
     # cleanup the temp files
     if not keep_tmp_files:
@@ -848,7 +892,10 @@ def predict(
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
-    data, features, has_duplicate_locus, translation_table = parse_json_input(input, fasta_aa, all_proteins)
+    data, features, has_duplicate_locus, translation_table, prokka, other_genbank = parse_json_input(input, fasta_aa, all_proteins)
+    if other_genbank:
+        log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
+
 
     ###
     # split features in hypotheticals and non hypotheticals
@@ -988,6 +1035,11 @@ def compare(
     all_proteins,
     euk,
     fast,
+    cds_program,
+    trna_program,
+    tmrna_program,
+    rrna_program,
+    ncrna_program,
     **kwargs,
 ):
     """Runs Foldseek vs baktfold db"""
@@ -1019,7 +1071,12 @@ def compare(
         "--foldseek-gpu": foldseek_gpu,
         "--all-proteins": all_proteins,
         "--euk": euk,
-        "--fast": fast
+        "--fast": fast,
+        "--cds-program": cds_program,
+        "--trna-program": trna_program,
+        "--tmrna-program": tmrna_program,
+        "--rrna-program": rrna_program,
+        "--ncrna-program": ncrna_program
     }
 
     # initial logging etc
@@ -1049,7 +1106,10 @@ def compare(
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
-    data, features, has_duplicate_locus, translation_table = parse_json_input(input, fasta_aa, all_proteins)
+    data, features, has_duplicate_locus, translation_table, prokka, other_genbank = parse_json_input(input, fasta_aa, all_proteins)
+    if other_genbank:
+        log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
+
 
     ###
     # split features in hypotheticals and non hypotheticals
@@ -1160,7 +1220,8 @@ def compare(
     # bakta output module
     ####
     logger.info('writing baktfold outputs')
-    io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table)
+    io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank,
+    cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
 
     # cleanup the temp files
     if not keep_tmp_files:

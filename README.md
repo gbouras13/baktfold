@@ -6,15 +6,17 @@
 [![Downloads](https://static.pepy.tech/badge/baktfold)](https://pepy.tech/project/baktfold)
 
 # Baktfold
-Rapid &amp; standardized annotation of bacterial genomes, MAGs &amp; plasmids using protein structural information 
+Rapid &amp; standardized genome annotation using protein structural information
 
-Baktfold is a sensitive annotation tool for bacterial genomes, MAGs &amp; plasmids genomes using protein structural homology.
+Baktfold is a sensitive annotation tool for genome annotation using protein structural homology. While it was designed with bacterial genomes in mind to work in conjunction with Bakta (hence the name!), Baktfold also works well on archaea, plasmids and even eukaryotes.
 
-Baktfold is very similar to [Phold](https://github.com/gbouras13/phold) but goes beyond phages to bacterial annotation. Baktfold takes all _hypothetical proteins_ from [Bakta's](https://github.com/oschwengers/bakta) output and uses the [ProstT5](https://github.com/mheinzinger/ProstT5) protein language model to rapidly translate protein amino acid sequences to the 3Di token alphabet used by [Foldseek](https://github.com/steineggerlab/foldseek). Foldseek is then used to search these against a series of databases (SwissProt, AlphaFold Database non-singleton clusters, PDB and CATH).
+Baktfold is similar to [Phold](https://github.com/gbouras13/phold) but goes beyond phages. 
+
+Baktfold takes all _hypothetical proteins_ from [Bakta's](https://github.com/oschwengers/bakta) output and uses the [ProstT5](https://github.com/mheinzinger/ProstT5) protein language model to rapidly translate protein amino acid sequences to the 3Di token alphabet used by [Foldseek](https://github.com/steineggerlab/foldseek). Foldseek is then used to search these against a series of databases (SwissProt, AlphaFold Database non-singleton clusters, PDB and CATH).
 
 Additionally, instead of using ProstT5, you can specify protein structures that you have pre-computed for your hypothetical proteins.
 
-You can also specify custom databases to search against using `--custom-db`
+You can also specify custom databases to search against using `--custom-db`.
 
 **Baktfold is currently under active development. We would welcome any and all feedback (especially bugs) via Issues**
 
@@ -32,10 +34,10 @@ If you don't want to install Baktfold locally, you can run it without any code u
     - [Pip](#pip)
     - [Source](#source)
     - [Database Installation](#database-installation)
-  - [Example](#example)
+  - [Example - Bacteria](#example---bacteria)
+  - [Conversion wrapper commands](#conversion-wrapper-commands)
   - [Usage](#usage)
   - [Output](#output)
-    - [Conversion wrapper commands](#conversion-wrapper-commands)
     - [Conceptual terms](#conceptual-terms)
   - [Citations](#citations)
 
@@ -97,12 +99,11 @@ Note: you can do this after downloading the database with the above command (it 
 baktfold install -d baktfold_db --foldseek-gpu
 ```
 
-## Example
+## Example - Bacteria
 
-First, you need to run [Bakta](https://github.com/oschwengers/bakta) and use the resulting `.json` file as input for Baktfold.
-We will add other input formats eventually, but we would always recommend running Bakta first, for a comprehensive genome annotation.
+First, you need to run [Bakta](https://github.com/oschwengers/bakta) and use the resulting `.json` file as input for Baktfold. For bacteria or plasmids, we always recommend Bakta.
 
-Running Baktfold on Bakta results (using a dummy test example JSON `assembly.json` file:
+Running Baktfold on Bakta results (using a dummy test example JSON `assembly.json` file):
 
 ```bash
 # default (CPU-only or non-NVIDIA GPU e.g. Mac or AMD)
@@ -122,11 +123,45 @@ baktfold proteins -i tests/test_data/assembly.hypotheticals.faa  -o baktfold_pro
 
 Note that this can be any `.faa`. It does not have to be the output of Bakta.
 
+## Conversion wrapper commands
+
+If you have not used Bakta to annotate your genome before running Baktfold, you have two choices: (1) annotate proteins only with `baktfold proteins` or (2) if you have a GenBank format file, you will need to convert your GenBank to the Bakta `.json` format
+
+To do this, you have 3 options:
+
+1. `baktfold convert-prokka`
+
+* If you have used Prokka to annotate your genome, `baktfold` has a subcommand that will do the conversion for you
+* e.g.
+```bash
+baktfold convert-prokka -i prokka.gbk -o prokka.json
+```
+
+2. `baktfold convert-euk`
+
+* This is an experimental feature for eukaryotes (protists, fungi etc) - you can try converting these with a subcommand
+* You will then need to pass `--euk` to `baktfold run` as well to make sure it can handle the different genomic features of eukaryotes
+
+* e.g.
+```bash
+baktfold convert-euk -i euk.gbk -o euk.json
+```
+
+3. `genbank_to`
+
+* If neither of those work for you, you try the [genbank_to](https://github.com/linsalrob/genbank_to) package which has the functionality of converting a genbank file into the Bakta format JSON
+* You will need to install it separately (`pip install genbank_to`) then
+
+* e.g.
+```bash
+genbank_to -g test.gbk --bakta-json test.json
+```
+
 ## Usage
 
 The two most useful commands are `baktfold run` and `baktfold proteins`
 
-- `baktfold run` accepts a __Bakta json file__ as input, and by default, it will annotate all hypothetical CDS and return a variety of Bakta-like compliant output formats. All other annotations will be inherited from the Bakta output
+- `baktfold run` accepts a __Bakta JSON file__ as input, and by default, it will annotate all hypothetical CDS and return a variety of Bakta-like compliant output formats. All other annotations will be inherited from the Bakta output
 - `baktfold proteins` accepts a protein FASTA `.faa` format file as input. It will annotate all protein sequences and return a variety of `bakta_proteins`-like output formats
 - `baktfold predict` and `baktfold compare` split `baktfold run` into the ProstT5 and Foldseek modules, while `baktfold proteins-predict` and `baktfold proteins-compare` do the same for `baktfold proteins` (useful if you have non-NVIDIA GPUs)
 
@@ -251,40 +286,6 @@ MEGJMN_070	AF-A0A1I3V7E0-F1-model_v6	292	0.41	2.619e-06	1	91	93	0.97	1	95	99	0.9
 - `baktfold_3di.fasta` which gives the 3Di tokens for each input CDS
 - `baktfold_prostT5_3di_mean_probabilities.csv` and `baktfold_prostT5_3di_all_probabilities.json`, which give some score of the confidence ProstT5 has in its predictions. You can disable this output with `--omit-probs`
 - Baktfold does not have plotting functionality like Bakta (yet)
-
-### Conversion wrapper commands
-
-If you have not used Bakta to annotate your genome before running Baktfold, you will still need to convert your GenBank to the Bakta `.json` format
-
-You have 3 options:
-
-1. `baktfold convert-prokka`
-
-* If you have used Prokka to annotate your genome, `baktfold` has a subcommand that will do the conversion for you
-* e.g.
-```bash
-baktfold convert-prokka -i prokka.gbk -o prokka.json
-```
-
-2. `baktfold convert-euk`
-
-* This is a very experimental feature for eukaryotes (fungi, protists etc) - you can try converting these with a subcommand
-* You will then need to pass `--euk` to `baktfold run` as well to make sure it can handle the different genomic features of eukaryotes
-
-* e.g.
-```bash
-baktfold convert-euk -i euk.gbk -o euk.json
-```
-
-3. `genbank_to`
-
-* If neither of those work for you, you try the [genbank_to](https://github.com/linsalrob/genbank_to) package which has the functionality of converting a genbank file into the Bakta format JSON
-* You will need to install it separately (`pip install genbank_to`) then
-
-* e.g.
-```bash
-genbank_to -g test.gbk --bakta-json test.json
-```
 
 ### Conceptual terms
 

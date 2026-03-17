@@ -46,7 +46,7 @@ def move_product_to_note_if_exists(qualifiers):
 
     qualifiers.pop("product", None)
 
-def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, euk, translation_table):
+def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, euk, translation_table, other_genbank: bool = False, cds_program: str = "Prodigal", trna_program: str = "tRNAscan-SE", tmrna_program: str = "Aragorn", rrna_program: str = "Infernal", ncrna_program: str = "Infernal"):
 
     # need to pass the transl table from bakta or prokka not the config
     # best to just detect it from the input json
@@ -222,11 +222,13 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                     # add inference
                     if prokka:
                         inference.append('ab initio prediction:Prodigal:2.6')
-                    if(feature.get('source', None) == bc.CDS_SOURCE_USER):
+                    elif(feature.get('source', None) == bc.CDS_SOURCE_USER):
                         inference.append('EXISTENCE:non-experimental evidence, no additional details recorded')
+                    elif other_genbank:
+                        inference.append(f'ab initio prediction:{cds_program}')
                     else:
                         if not euk: # if euk just dont have anything
-                            inference.append('ab initio prediction:Prodigal:2.6')
+                            inference.append('ab initio prediction:Prodigal:2.6') # bakta
                 else:
                     inference.append(f"ab initio prediction:Bakta:{'.'.join(cfg.version.split('.')[0:2])}")
                 if('ncbi_nrp_id' in feature.get('ups', {})):
@@ -276,13 +278,18 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                     qualifiers['inference'] = 'profile:tRNAscan:2.0'
                 elif euk:
                     qualifiers['inference'] = 'profile:other:unknown'
+                elif other_genbank:
+                    qualifiers['inference'] = f'profile:{trna_program}'
                 else:
                     qualifiers['inference'] = 'profile:aragorn:1.2'
                 insdc_feature_type = bc.INSDC_FEATURE_T_RNA
                 if(bc.PSEUDOGENE in feature):
                     qualifiers[bc.INSDC_FEATURE_PSEUDOGENE] = bc.INSDC_FEATURE_PSEUDOGENE_TYPE_UNKNOWN
             elif(feature['type'] == bc.FEATURE_TM_RNA):
-                qualifiers['inference'] = 'profile:aragorn:1.2'
+                if other_genbank:
+                    qualifiers['inference'] = f'profile:{tmrna_program}'
+                else:
+                    qualifiers['inference'] = 'profile:aragorn:1.2'
                 if('tag' in feature):
                     qualifiers['tag_peptide'] = f"{feature['tag']['start']}..{feature['tag']['stop']}"
                     if feature['strand'] == bc.STRAND_REVERSE:
@@ -291,12 +298,19 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
             elif(feature['type'] == bc.FEATURE_R_RNA):
                 if prokka:
                     qualifiers['inference'] = 'profile:barrnap:0.9'
+                elif other_genbank:
+                    qualifiers['inference'] = f'profile:{rrna_program}'
+                # else: # bakta has only profile:Rfam - no tool
+
                 for rfam_id in [dbxref.split(':')[1] for dbxref in feature['db_xrefs'] if dbxref.split(':')[0] == bc.DB_XREF_RFAM]:
                     qualifiers['inference'] = f'profile:Rfam:{rfam_id}'
                 insdc_feature_type = bc.INSDC_FEATURE_R_RNA
             elif(feature['type'] == bc.FEATURE_NC_RNA):
                 if prokka:
                     qualifiers['inference'] = 'profile:aragorn:1.2'
+                elif other_genbank:
+                    qualifiers['inference'] = f'profile:{ncrna_program}'
+                # else: # bakta has only profile:Rfam - no tool
                 for rfam_id in [dbxref.split(':')[1] for dbxref in feature['db_xrefs'] if dbxref.split(':')[0] == bc.DB_XREF_RFAM]:
                     qualifiers['inference'] = f'profile:Rfam:{rfam_id}'
                 qualifiers[bc.INSDC_FEATURE_NC_RNA_CLASS] = select_ncrna_class(feature)
@@ -474,11 +488,11 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
 
 
 def write_features(data: dict, features: Sequence[dict], genbank_output_path: Path, embl_output_path: Path, prokka: bool = False, euk: bool = False, 
-                   translation_table: int = 11):
+                   translation_table: int = 11, other_genbank: bool = False, cds_program: str = "Prodigal:2.6", trna_program: str = "tRNAscan-SE:2.0.12", tmrna_program: str = "INFERNAL:1.1.5", rrna_program: str = "INFERNAL:1.1.5", ncrna_program: str = "INFERNAL:1.1.5"):
     logger.info(f'prepare: genbank={genbank_output_path}, embl={embl_output_path}')
 
     # fix later
-    sequence_list = build_biopython_sequence_list(data, features, prokka, euk, translation_table)
+    sequence_list = build_biopython_sequence_list(data, features, prokka, euk, translation_table, other_genbank, cds_program, trna_program, tmrna_program, rrna_program, ncrna_program)
     
     with genbank_output_path.open('wt', encoding='utf-8') as fh:
         logger.info(f'write GenBank: path={genbank_output_path}')
@@ -490,22 +504,42 @@ def write_features(data: dict, features: Sequence[dict], genbank_output_path: Pa
 
 
 def select_ncrna_class(feature: dict) -> str:
-    feature_class = feature['class']
-    if(feature_class is None):
+    feature_class = feature.get('class')
+    if not feature_class: # if empty
         return bc.INSDC_FEATURE_NC_RNA_CLASS_OTHER
-    else:
-        if(isinstance(feature_class, list)):  #  workaround for JSON-imported features
-            feature_class = so.SO(feature_class[0], feature_class[1])
-            feature['class'] = feature_class
 
-        if(feature_class.id == so.SO_NCRNA_GENE_ANTISENSE.id):
-            return bc.INSDC_FEATURE_NC_RNA_CLASS_ANTISENSE
-        elif(feature_class.id == so.SO_NCRNA_GENE_RIBOZYME.id):
-            return bc.INSDC_FEATURE_NC_RNA_CLASS_RIBOZYME
-        elif(feature_class.id == so.SO_NCRNA_GENE_RNASEP.id):
-            return bc.INSDC_FEATURE_NC_RNA_CLASS_RNASEP
-        else:
-            return bc.INSDC_FEATURE_NC_RNA_CLASS_OTHER
+    # Convert JSON list → SO object (Bakta workaround)
+    if isinstance(feature_class, list):
+        feature_class = so.SO(feature_class[0], feature_class[1])
+        feature['class'] = feature_class
+
+    # Safely extract id and name
+    fc_id = getattr(feature_class, "id", None)
+    fc_name = getattr(feature_class, "name", feature_class)
+    fc_name = fc_name.lower() if isinstance(fc_name, str) else None
+
+    # Mapping table (single source of truth)
+    mapping = {
+        so.SO_NCRNA_GENE_ANTISENSE.id: bc.INSDC_FEATURE_NC_RNA_CLASS_ANTISENSE,
+        so.SO_NCRNA_GENE_RIBOZYME.id: bc.INSDC_FEATURE_NC_RNA_CLASS_RIBOZYME,
+        so.SO_NCRNA_GENE_RNASEP.id: bc.INSDC_FEATURE_NC_RNA_CLASS_RNASEP,
+    }
+
+    # --- Try ID match first ---
+    if fc_id in mapping:
+        return mapping[fc_id]
+
+    # --- Fallback to name match ---
+    name_mapping = {
+        so.SO_NCRNA_GENE_ANTISENSE.name.lower(): bc.INSDC_FEATURE_NC_RNA_CLASS_ANTISENSE,
+        so.SO_NCRNA_GENE_RIBOZYME.name.lower(): bc.INSDC_FEATURE_NC_RNA_CLASS_RIBOZYME,
+        so.SO_NCRNA_GENE_RNASEP.name.lower(): bc.INSDC_FEATURE_NC_RNA_CLASS_RNASEP,
+    }
+
+    if fc_name in name_mapping:
+        return name_mapping[fc_name]
+
+    return bc.INSDC_FEATURE_NC_RNA_CLASS_OTHER
 
 
 def select_regulatory_class(feature: dict) -> str:
