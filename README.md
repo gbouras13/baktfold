@@ -6,9 +6,9 @@
 [![Downloads](https://static.pepy.tech/badge/baktfold)](https://pepy.tech/project/baktfold)
 
 # Baktfold
-Rapid &amp; standardized genome annotation using protein structural information
+Rapid &amp; standardized protein annotation using structural information
 
-Baktfold is a sensitive annotation tool for genome annotation using protein structural homology. While it was designed with bacterial genomes in mind to work in conjunction with Bakta (hence the name!), Baktfold also works well on archaea, plasmids and even eukaryotes.
+Baktfold is a sensitive annotation tool for protein annotation using structural homology. While it was designed with bacterial genomes in mind to work in conjunction with Bakta (hence the name!), Baktfold also works well on archaea, plasmids and even eukaryotes.
 
 Baktfold is similar to [Phold](https://github.com/gbouras13/phold) but goes beyond phages. 
 
