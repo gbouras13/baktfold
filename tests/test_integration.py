@@ -46,6 +46,7 @@ database_dir = Path(f"{test_data}/baktfold_db")
 input_json: Path = f"{test_bakta_output}/assembly.json"
 input_no_fs_hits_json: Path = f"{test_data}/SAMEA111266571.bakta.json"
 input_fasta: Path = f"{test_data}/assembly.hypotheticals.faa"
+input_pipe_fasta: Path = f"{test_data}/pipe.faa"
 input_prok_gbk: Path = f"{test_prokka_output}/PROKKA_02192026.gbk"
 input_prok_json: Path = f"{test_data}/assembly_prokka.json"
 input_euk_gbk: Path = f"{test_data}/protist.gbk.gz"
@@ -91,7 +92,7 @@ compare_pdb_dir: Path = f"{output_dir}/compare_pdb_json"
 compare_cif_dir: Path = f"{output_dir}/compare_cif_json"
 
 proteins_dir: Path = f"{output_dir}/proteins"
-
+proteins_pipe_dir: Path = f"{output_dir}/proteins_pipe"
 proteins_predict_dir: Path = f"{output_dir}/proteins_predict"
 
 proteins_compare_dir: Path = f"{output_dir}/proteins_compare"
@@ -287,6 +288,14 @@ def test_proteins(gpu_available, threads, nvidia):
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
 
+def test_proteins_pioe(gpu_available, threads, nvidia):
+    """test baktfold proteins where some inputs have | in header"""
+    cmd = f"baktfold proteins -i {input_pipe_fasta} -o {proteins_pipe_dir} -t {threads} -d {database_dir} -f"
+    if nvidia:
+       cmd = f"{cmd} --foldseek-gpu" 
+    if gpu_available is False:
+        cmd = f"{cmd} --cpu"
+    exec_command(cmd)
 
 """
 proteins-predict

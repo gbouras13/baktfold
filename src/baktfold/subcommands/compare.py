@@ -15,7 +15,7 @@ import baktfold.bakta.pstc as pstc
 from baktfold.features.create_foldseek_db import generate_foldseek_db_from_aa_3di, generate_foldseek_db_from_structures
 from baktfold.features.run_foldseek import create_result_tsv, run_foldseek_search, summarise_hits
 from baktfold.results.tophit import get_tophit
-from baktfold.utils.util import remove_file
+from baktfold.utils.util import remove_file, replace_pipe_in_fasta
 
 def subcommand_compare(
     hypotheticals: Dict,
@@ -417,6 +417,61 @@ def subcommand_compare(
         
         except:
             logger.error(f"Foldseek failed to run against your custom database {custom_db}. Please check that it is formatted correctly as a Foldseek database")
+
+
+    ####
+    # covvert pipe back - proteins
+    # in theory, from JSON, the pipe shouldn't happen as we only take the ID.
+    
+    ####
+
+    """
+    https://github.com/steineggerlab/foldseek/blob/8dc75c74ad0eddab73cfd905963d13bf74dc012b/lib/mmseqs/src/commons/Util.cpp#L142
+    const struct Databases databases[] = {
+            { "uc",   2, 0}, // Uniclust
+            { "cl|",   3, 1},
+            { "sp|",   3, 1}, // Swiss prot
+            { "tr|",   3, 1}, // trembl
+            { "gb|",   3, 1}, // GenBank
+            { "ref|",  4, 1}, // NCBI Reference Sequence
+            { "pdb|",  4, 1}, // Brookhaven Protein Data Bank
+            { "bbs|",  4, 1}, // GenInfo Backbone Id
+            { "lcl|",  4, 1}, // Local Sequence identifier
+            { "pir||", 5, 1}, // NBRF PIR
+            { "prf||", 5, 1}, // Protein Research Foundation
+            { "gnl|",  4, 2}, // General database identifier
+            { "pat|",  4, 2}, // Patents
+            { "gi|",   3, 3}  // NCBI GI
+    };
+    """
+
+
+    if proteins_flag:
+
+
+        pipe_warning_logged = False
+
+        new_hypotheticals = []
+        for record in hypotheticals:
+            rid = record["id"]
+            if not pipe_warning_logged:
+                if "~PIPE~" in rid:
+                    pipe_warning_logged = True
+                    logger.warning("At least one input protein has | in the header. Note these will be replaced with ~PIPE~ in the raw foldseek output if you chose --keep-tmp-files")
+            record["id"] = record["id"].replace("~PIPE~", "|")
+            record["locus"] = record["locus"].replace("~PIPE~", "|")
+            new_hypotheticals.append(record)
+
+        hypotheticals = new_hypotheticals
+        del new_hypotheticals
+
+        ###
+        # overwrite the output aa and 3dis with | if they were in the input
+
+        if pipe_warning_logged:
+            replace_pipe_in_fasta(fasta_aa)
+            if not structures:
+                replace_pipe_in_fasta(fasta_3di)
 
 
     ####

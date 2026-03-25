@@ -115,12 +115,6 @@ def subcommand_predict(
     # easiest just 
     #######
 
-
-  
-    # for feat in hypotheticals:
-    #     pred = prediction_dict.get(feat['locus']) # None if it doesn't exist
-    #     feat['3di'] = pred[2].tolist() if pred is not None else None
-
     ########
     ## write the AA CDS to file
     ######
