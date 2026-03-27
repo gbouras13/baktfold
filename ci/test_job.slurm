@@ -1,11 +1,11 @@
 #! /bin/bash
 #SBATCH --job-name testjob
-#SBATCH -p a100
-#SBATCH -N 1              	                             
-#SBATCH -c 8              	                                
-#SBATCH --time=03:59:50                                                          
-#SBATCH --mem=40GB                                 
-#SBATCH --gres=gpu:1 
+#SBATCH --partition=gpu-dev
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:1  
+#SBATCH --time=03:59:30
+#SBATCH --account="$ACCOUNT"-gpu  
+
 
 set -eu -o pipefail
 
