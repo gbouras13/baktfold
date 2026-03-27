@@ -70,7 +70,6 @@ def parse_json_input(input_path, faa_path, all_proteins):
     if all_proteins:
         hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS ]
     else:
-
         hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
 
 

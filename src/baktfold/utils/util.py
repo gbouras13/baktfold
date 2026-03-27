@@ -12,6 +12,8 @@ import baktfold.bakta.config as cfg
 import baktfold.bakta.constants as bc
 import click
 
+from Bio import SeqIO
+
 
 class OrderedCommands(click.Group):
     """This class will preserve the order of subcommands, which is useful when printing --help"""
@@ -304,3 +306,15 @@ def sort_euk_feature_key(f):
         # Non-locus or non-gene features → sort only by start
         return (start, 1, '', 99, stop)
 
+def replace_pipe_in_fasta(input_path):
+    """
+    Reads a FASTA with Biopython, replace '~PIPE~' with '|' in headers, and write the result.
+    """
+    records = []
+    for record in SeqIO.parse(input_path, "fasta"):
+        record.id = record.id.replace("~PIPE~", "|")
+        record.description = record.description.replace("~PIPE~", "|")
+        records.append(record)
+    
+    # overwrites
+    SeqIO.write(records, input_path, "fasta")

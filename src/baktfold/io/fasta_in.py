@@ -32,7 +32,6 @@ def parse_protein_input(input_path, faa_path):
     except:
         logger.error(f'ERROR: annotation file {input_path} not valid!')
 
-
     try:
         logger.info('Parsing input protein sequences...')
         aas = fasta.import_sequences(input_path, False, False)
