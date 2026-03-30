@@ -1,5 +1,5 @@
 #! /bin/bash
-#SBATCH --job-name testjob
+#SBATCH --job-name=hpcitestjob
 #SBATCH --partition=gpu-dev
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1  
