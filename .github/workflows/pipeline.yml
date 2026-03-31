@@ -12,7 +12,7 @@ jobs:
           KEY: ${{ secrets.PRIVATE_KEY }}
           PUB: ${{ secrets.PUBLIC_KEY }}
         run: |
-          wget -qO hpci-exe https://github.com/Garvan-Data-Science-Platform/hpci/releases/download/v0.0.5/hpci-exe
+          wget -qO hpci-exe https://github.com/Garvan-Data-Science-Platform/hpci/releases/download/v0.1.0/hpci-exe
           chmod +x ./hpci-exe
           ./hpci-exe --help
 
