@@ -1,5 +1,4 @@
 #! /bin/bash
-SBATCH_ACCOUNT=$SBATCH_ACCOUNT
 #SBATCH --job-name=hpcitestjob
 #SBATCH --partition=gpu-dev
 #SBATCH --nodes=1
