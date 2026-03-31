@@ -30,7 +30,7 @@ jobs:
             --scheduler slurm \
             --script ci/test_job.slurm \
             --logFile ${{ github.sha }}/test_job.log \
-            -c COMMIT_SHA=${{ github.sha }},REPO_URL=https://github.com/${{ github.repository }}.git,REPO_NAME=${{ github.event.repository.name }},PAWSEY_ACCOUNT=${{ secrets.PAWSEY_ACCOUNT }},SBATCH_OUTPUT="baktfold-${{ github.sha }}""
+            -c COMMIT_SHA=${{ github.sha }},REPO_URL=https://github.com/${{ github.repository }}.git,REPO_NAME=${{ github.event.repository.name }},PAWSEY_ACCOUNT=${{ secrets.PAWSEY_ACCOUNT }},SBATCH_OUTPUT="baktfold-${{ github.sha }}"
 
       - name: Cleanup keys and binary
         if: always()
