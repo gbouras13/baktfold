@@ -20,8 +20,19 @@ def import_sequences(sequences_path: Path, is_genomic: bool=True, is_dna: bool=T
     sequences = []
     with xopen(str(sequences_path), threads=0) as fh:
         for record in SeqIO.parse(fh, 'fasta'):
+
+            rid = record.id
+
+            if "~PIPE~" in rid:
+                logger.error(
+                    f"Your proteins FASTA header has ~PIPE~ in the header"
+                    "Please remove all instances of ~PIPE~ before running Baktfold as this creates downstream issues with Foldseek"
+                )
+            else:
+                rid = rid.replace("|", "~PIPE~")
+
             sequence = {
-                'id': record.id,
+                'id': rid,
                 'description': record.description.split(' ', maxsplit=1)[1] if ' ' in record.description else ''
             }
             
@@ -49,7 +60,7 @@ def import_sequences(sequences_path: Path, is_genomic: bool=True, is_dna: bool=T
                 sequence['type'] = bc.REPLICON_CONTIG
                 sequence['topology'] = bc.TOPOLOGY_LINEAR
             logger.info(
-                f"imported: id={sequence['id']}, length={sequence['length']}, description={sequence['description']}, genomic={is_genomic}, dna={is_dna}"
+                f"imported: id={record.id}, length={sequence['length']}, description={sequence['description']}, genomic={is_genomic}, dna={is_dna}"
             )   
             sequences.append(sequence)
     return sequences

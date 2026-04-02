@@ -112,7 +112,7 @@ def get_T5_model(
 
     torch.set_num_threads(threads)
 
-    if cpu is True:
+    if cpu:
         device = torch.device("cpu")
         dev_name = "cpu"
     else:
@@ -177,7 +177,7 @@ def get_T5_model(
         else:
             logger.error(f"Model loading failed with error: {e}")
 
-    model = model.eval()
+
     vocab = T5Tokenizer.from_pretrained(
         model_name, cache_dir=f"{model_dir}/", do_lower_case=False,
         use_fast=False
@@ -190,6 +190,10 @@ def get_T5_model(
                 local_files_only=True,
             ).to(device)
 
+    if cpu:
+        model = model.float()   # FORCE FP32 - https://github.com/gbouras13/baktfold/issues/28
+
+    model = model.eval()
     logger.info(f"{model_name} loaded")
 
     return model, vocab
@@ -570,8 +574,8 @@ def get_embeddings(
                 )
                 # slice off embedding of special token prepended before to each sequence
                 residue_embedding = residue_embedding[:, 1:]
-                prediction = predictor(residue_embedding)
 
+                prediction = predictor(residue_embedding)
 
                 # compute max probabilities per token/residue
                 probabilities = toCPU(

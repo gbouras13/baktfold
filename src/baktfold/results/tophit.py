@@ -64,6 +64,9 @@ def get_tophit(
     foldseek_df = pd.read_csv(
         result_tsv, delimiter="\t", index_col=False, names=col_list
     )
+
+    # replace ~PIPE~ with |
+    foldseek_df["query"] = foldseek_df["query"].str.replace("~PIPE~", "|", regex=False)
     
 
     # in case the foldseek output is empty
