@@ -45,7 +45,7 @@ def parse_protein_input(input_path, faa_path):
             aas = fasta.import_sequences(input_path, False, False)
         else:
             logger.info('Attempting to parse input protein sequences as Bakta JSON format ...')
-            aas, hypotheticals = parse_json_input(input_path, False, False, protein_json_flag=True)
+            aas, hypotheticals, bakta_version = parse_json_input(input_path, False, False, protein_json_flag=True)
         logger.info(f'Imported sequences={len(aas)}')
     except:
         logger.error('ERROR: wrong file format or unallowed characters in amino acid sequences!')
@@ -73,7 +73,7 @@ def parse_protein_input(input_path, faa_path):
 
     logger.info('Parsing complete')
 
-    return aas
+    return aas, bakta_version
 
 
    

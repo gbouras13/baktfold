@@ -78,7 +78,8 @@ def parse_json_input(input_path, faa_path, all_proteins, protein_json_flag):
 
 
     if protein_json_flag: # this will also be only hypotheticals if protein mode (or else why not just run with the FASTA)
-        return features, hypotheticals
+        version = data.get("version", {})
+        return features, hypotheticals, version
 
 
     # check if dupe locus tags (euks can have multiple CDS same locus tag e.g. Cladocopium goreaui CAMXCT020000001.1)
@@ -93,8 +94,6 @@ def parse_json_input(input_path, faa_path, all_proteins, protein_json_flag):
             logger.warning("CDS id (which is unique) rather than locus tag will be used for ProstT5+Foldseek searches.")
             break
         seen_loci.add(locus)
-
-    
 
     # this is done after getting all the sequences into the dict for baktfold proteins
 
@@ -157,7 +156,7 @@ def parse_json_input(input_path, faa_path, all_proteins, protein_json_flag):
 
     logger.info('Parsing complete')
 
-    return data, features, has_duplicate_locus, translation_table, prokka, other_genbank
+    return data, features, has_duplicate_locus, translation_table, prokka, other_genbank, version
 
 
 def log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program):

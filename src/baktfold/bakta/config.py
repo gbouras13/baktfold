@@ -27,6 +27,7 @@ debug = None
 
 # input / output configuration
 version = get_version()
+db_version = "0.1.0" # hardcoded, don't anticipate a new DB for ages
 db_path = None
 db_info = None
 tmp_path = None

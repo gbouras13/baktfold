@@ -391,7 +391,7 @@ def run(
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
-    data, features, has_duplicate_locus, translation_table, prokka, other_genbank = parse_json_input(input, fasta_aa, all_proteins, protein_json_flag=False)
+    data, features, has_duplicate_locus, translation_table, prokka, other_genbank, bakta_version = parse_json_input(input, fasta_aa, all_proteins, protein_json_flag=False)
 
     if other_genbank:
         log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
@@ -577,7 +577,7 @@ def run(
 
     logger.info('writing baktfold outputs')
     io.write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank,
-    cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
+    cds_program,trna_program, rrna_program, tmrna_program, ncrna_program, bakta_version)
 
     # cleanup the temp files
     if not keep_tmp_files:
@@ -686,7 +686,7 @@ def proteins(
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
     # puts the CDS AA in a simple dictionary for ProstT5 code
-    aas = parse_protein_input(input, fasta_aa)
+    aas, bakta_version = parse_protein_input(input, fasta_aa)
 
     # put the CDS AA in a simple dictionary for ProstT5 code
     cds_dict = {}
@@ -792,7 +792,7 @@ def proteins(
     # - remove temp directory
     ############################################################################
     
-    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast)
+    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast, bakta_version)
 
     # cleanup the temp files
     if not keep_tmp_files:
@@ -889,7 +889,7 @@ def predict(
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
-    data, features, has_duplicate_locus, translation_table, prokka, other_genbank = parse_json_input(input, fasta_aa, all_proteins, protein_json_flag=False)
+    data, features, has_duplicate_locus, translation_table, prokka, other_genbank, bakta_version = parse_json_input(input, fasta_aa, all_proteins, protein_json_flag=False)
     if other_genbank:
         log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
 
@@ -1103,7 +1103,7 @@ def compare(
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
-    data, features, has_duplicate_locus, translation_table, prokka, other_genbank = parse_json_input(input, fasta_aa, all_proteins, protein_json_flag=False)
+    data, features, has_duplicate_locus, translation_table, prokka, other_genbank, bakta_version = parse_json_input(input, fasta_aa, all_proteins, protein_json_flag=False)
     if other_genbank:
         log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
 
@@ -1218,7 +1218,7 @@ def compare(
     ####
     logger.info('writing baktfold outputs')
     io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank,
-    cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
+    cds_program,trna_program, rrna_program, tmrna_program, ncrna_program, bakta_version)
 
     # cleanup the temp files
     if not keep_tmp_files:
@@ -1308,7 +1308,7 @@ def proteins_predict(
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
     # puts the CDS AA in a simple dictionary for ProstT5 code
-    aas = parse_protein_input(input, fasta_aa)
+    aas, bakta_version = parse_protein_input(input, fasta_aa)
 
     # put the CDS AA in a simple dictionary for ProstT5 code
     cds_dict = {}
@@ -1471,7 +1471,7 @@ def proteins_compare(
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
     # puts the CDS AA in a simple dictionary for ProstT5 code
-    aas = parse_protein_input(input, fasta_aa)
+    aas, bakta_version = parse_protein_input(input, fasta_aa)
 
     # for adding the 3Di to the dictionary
     if predictions_dir:
@@ -1534,7 +1534,7 @@ def proteins_compare(
     # - remove temp directory
     ############################################################################
     
-    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast)
+    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast, bakta_version)
 
     # cleanup the temp files
     if not keep_tmp_files:
