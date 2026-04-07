@@ -30,7 +30,7 @@ jobs:
             --scheduler slurm \
             --script ci/test_job.slurm \
             --logFile ${{ github.sha }}/test_job.log \
-            --scheduler-arg ${{ secrets.PAWSEY_ACCOUNT }}-gpu \
+            --scheduler-arg --account=${{ secrets.PAWSEY_ACCOUNT }}-gpu \
             -c COMMIT_SHA=${{ github.sha }},REPO_URL=https://github.com/${{ github.repository }}.git,REPO_NAME=${{ github.event.repository.name }}
 
       - name: Cleanup keys and binary
