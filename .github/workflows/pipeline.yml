@@ -12,7 +12,7 @@ jobs:
           KEY: ${{ secrets.PRIVATE_KEY }}
           PUB: ${{ secrets.PUBLIC_KEY }}
         run: |
-          wget -qO hpci-exe https://github.com/Garvan-Data-Science-Platform/hpci/releases/download/v0.1.0/hpci-exe
+          wget -qO hpci-exe https://github.com/Garvan-Data-Science-Platform/hpci/releases/download/v0.1.2/hpci-exe
           chmod +x ./hpci-exe
           ./hpci-exe --help
 
@@ -30,8 +30,11 @@ jobs:
             --scheduler slurm \
             --script ci/test_job.slurm \
             --logFile ${{ github.sha }}/test_job.log \
-            -c COMMIT_SHA=${{ github.sha }},REPO_URL=https://github.com/${{ github.repository }}.git,REPO_NAME=${{ github.event.repository.name }},SBATCH_ACCOUNT="${{ secrets.PAWSEY_ACCOUNT }}-gpu"
+            --scheduler-arg "${{ secrets.PAWSEY_ACCOUNT }}-gpu" \
+            -c COMMIT_SHA=${{ github.sha }},REPO_URL=https://github.com/${{ github.repository }}.git,REPO_NAME=${{ github.event.repository.name }}"
 
       - name: Cleanup keys and binary
         if: always()
         run: rm -f ./hpci-exe key key.pub
+
+

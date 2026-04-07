@@ -4,7 +4,6 @@
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1  
 #SBATCH --time=03:59:30
-#SBATCH --account="${SBATCH_ACCOUNT}"  
 
 
 set -eu -o pipefail
