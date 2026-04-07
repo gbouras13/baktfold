@@ -8,11 +8,19 @@
 # Baktfold
 Rapid &amp; standardized protein annotation using structural information
 
+**To learn more about `baktfold`, please [read our preprint](https://www.biorxiv.org/content/10.64898/2026.03.31.715528v1)**  
+
+> George Bouras, Sung won Lim, Lindsay Durr, Sarah Vreugde, Alexander Goesmann, Robert A. Edwards, Oliver Schwengers
+> Baktfold: Sensitive protein functional annotation across the microbial tree of life using structural information
+> bioRxiv 2026.03.31.715528; doi: https://doi.org/10.64898/2026.03.31.715528
+
 Baktfold is a sensitive annotation tool for protein annotation using structural homology. While it was designed with bacterial genomes in mind to work in conjunction with Bakta (hence the name!), Baktfold also works well on archaea, plasmids and even eukaryotes.
 
 Baktfold is similar to [Phold](https://github.com/gbouras13/phold) but goes beyond phages. 
 
 Baktfold takes all _hypothetical proteins_ from [Bakta's](https://github.com/oschwengers/bakta) output and uses the [ProstT5](https://github.com/mheinzinger/ProstT5) protein language model to rapidly translate protein amino acid sequences to the 3Di token alphabet used by [Foldseek](https://github.com/steineggerlab/foldseek). Foldseek is then used to search these against a series of databases (SwissProt, AlphaFold Database non-singleton clusters, PDB and CATH).
+
+Along with Bakta, Baktfold also supports [Prokka](https://github.com/tseemann/prokka) and generic GenBank format files as input.
 
 Additionally, instead of using ProstT5, you can specify protein structures that you have pre-computed for your hypothetical proteins.
 
@@ -24,10 +32,15 @@ You can also specify custom databases to search against using `--custom-db`.
 
 If you don't want to install Baktfold locally, you can run it without any code using the [Google Colab notebook](https://colab.research.google.com/github/gbouras13/baktfold/blob/main/run_baktfold.ipynb)
 
+# Webserver
+
+Baktfold is available to run via Bakta's web server - the provisional link is [here](https://staging.bakta.computational.bio/).
+
 # Table of Contents
 
 - [Baktfold](#baktfold)
 - [Google Colab Notebook](#google-colab-notebook)
+- [Webserver](#webserver)
 - [Table of Contents](#table-of-contents)
   - [Install](#install)
     - [Conda (recommended)](#conda-recommended)
@@ -296,9 +309,13 @@ In addition, Baktfold introduces one conceptual term:
 
 ## Citations
 
-A manuscript describing Baktfold is in preparation
+Please cite our preprint
 
-Please, be sure to cite the following core dependencies - citing all bioinformatics tools that you use helps us, so helps you get better bioinformatics tools:
+> George Bouras, Sung won Lim, Lindsay Durr, Sarah Vreugde, Alexander Goesmann, Robert A. Edwards, Oliver Schwengers
+> Baktfold: Sensitive protein functional annotation across the microbial tree of life using structural information
+> bioRxiv 2026.03.31.715528; doi: https://doi.org/10.64898/2026.03.31.715528
+
+Please also be sure to cite the following core dependencies - citing all bioinformatics tools that you use helps us, so helps you get better bioinformatics tools:
 
 - Foldseek - (https://github.com/steineggerlab/foldseek) van Kempen M, Kim S, Tumescheit C, Mirdita M, Lee J, Gilchrist C, Söding J, and Steinegger M. Fast and accurate protein structure search with Foldseek. Nature Biotechnology (2023), [doi:10.1038/s41587-023-01773-0](https://www.nature.com/articles/s41587-023-01773-0)
 - ProstT5 - (https://github.com/mheinzinger/ProstT5) Michael Heinzinger, Konstantin Weissenow, Joaquin Gomez Sanchez, Adrian Henkel, Martin Steinegger, Burkhard Rost. ProstT5: Bilingual language model for protein sequence and structure. NAR Genomics and Bioinformatics (2024) [doi:10.1101/2023.07.23.550085](https://doi.org/10.1093/nargab/lqae150) 
