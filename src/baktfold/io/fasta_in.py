@@ -26,7 +26,6 @@ def parse_protein_input(input_path, faa_path):
     """
 
     # handles regular FASTA and gzipped 
-
     try:
         if input_path == '':
             raise ValueError('File path argument must be non-empty')

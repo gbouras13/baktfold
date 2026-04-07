@@ -190,18 +190,24 @@ def check_genbank_and_prokka(filepath, euk):
 
 def is_fasta(filepath: Path) -> bool:
     try:
+    
         # Use xopen so gzip/bz2/xz/zst work automatically
         with xopen(filepath, "rb") as f:
             first_line = f.readline().strip()
-            if not first_line.startswith(">"):
+
+            if not first_line.startswith(b">"):
                 return False
 
             for line in f:
                 line = line.strip()
                 if not line:
                     continue
-                if line.startswith(">"):
+
+                if line.startswith(b">"):
                     continue
+
+                line = line.decode("utf-8", errors="ignore")
+
                 if not all(c.isalpha() or c in "-*." for c in line):
                     return False
 
