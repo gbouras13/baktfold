@@ -1,0 +1,4609 @@
+{
+    "features": [
+        {
+            "id": "MEGJMN_001",
+            "description": "RepB family plasmid replication initiator protein",
+            "aa": "MNGYNYMNENVYIGEVIGPDCESVNNKLTVTSKATVQPVALMRLNVFVPSSRPAKGTRTSIDATSVLKDLEFSRREGYDDIRITGERLSMAIDFKVWVGIIEAFSKYGLKTNSIKLTFHEFAGMCRFESKRFDSRLRKSISEALTRIRGKTITFTRSDSEGLQKVSVTGLLKTGELDFANDQVELEADQRLWELYQTDYTVLLRHKPINALTRKEAAQALYTFIESLPTNPVPISFKRIRDRLSLLSPVKEQNRIIKLALKQLQDIGYLDHSITKKGKETFILIHRRSANLKPGTAV",
+            "length": 297,
+            "type": "cds",
+            "locus": "MEGJMN_001",
+            "aa_hexdigest": "9233c224793d1b3be72e021001413607",
+            "ups": {
+                "uniparc_id": "UPI0000DAD751",
+                "uniref100_id": "UniRef100_A0A142EBD3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0000DAD751",
+                    "UniRef:UniRef100_A0A142EBD3"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A142EBD3",
+                "uniref90_id": "UniRef90_A0A6M3HH18"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6M3HH18",
+                "product": "Initiator Rep protein WH1 domain-containing protein",
+                "uniref50_id": "UniRef50_A0A6M3HH18"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6M3HH18",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6M3HH18"
+                ],
+                "product": "Initiator Rep protein WH1 domain-containing protein"
+            },
+            "product": "Initiator Rep protein WH1 domain-containing protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "SO:0001217",
+                "UniParc:UPI0000DAD751",
+                "UniRef:UniRef100_A0A142EBD3",
+                "UniRef:UniRef50_A0A6M3HH18",
+                "UniRef:UniRef90_A0A6M3HH18"
+            ]
+        },
+        {
+            "id": "MEGJMN_002",
+            "description": "CobQ/CobB/MinD/ParA nucleotide binding domain-containing protein",
+            "aa": "MIIVLGSQKGGVGKSTLAVSIAAYLMSLGNRVIIVDADDQKSVLTWYNNRPEDLPHIPVTGATGNIKAMLKEHEKSYDFVIADCAGRDSAEMRSGLMAADVFISPLRPSQMDLDVVPHTCSVFTAAKDFNEDVRDISF",
+            "length": 138,
+            "type": "cds",
+            "locus": "MEGJMN_002",
+            "aa_hexdigest": "2eff2caf4d414ee27f7f547de475f7f1",
+            "psc": {
+                "uniref90_id": "UniRef90_A0A811ARZ9",
+                "query_cov": 0.9202898550724637,
+                "subject_cov": 0.8639455782312925,
+                "identity": 1.0,
+                "score": 257.0,
+                "evalue": 2.33e-86,
+                "valid": true,
+                "product": "CobQ/CobB/MinD/ParA nucleotide binding domain-containing protein",
+                "uniref50_id": "UniRef50_A0A811ARZ9"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A811ARZ9",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A811ARZ9"
+                ],
+                "product": "CobQ/CobB/MinD/ParA nucleotide binding domain-containing protein"
+            },
+            "product": "CobQ/CobB/MinD/ParA nucleotide binding domain-containing protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "SO:0001217",
+                "UniRef:UniRef50_A0A811ARZ9",
+                "UniRef:UniRef90_A0A811ARZ9"
+            ]
+        },
+        {
+            "id": "MEGJMN_003",
+            "description": "hypothetical protein",
+            "aa": "MRFSITNSGTSQTHFRIILEYVSCLICFIDKHVRGRHV",
+            "length": 38,
+            "type": "cds",
+            "locus": "MEGJMN_003",
+            "aa_hexdigest": "5e6600c5b5adb595c1e6bf28769611c5",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [],
+            "seq_stats": {
+                "molecular_weight": 4466.1776,
+                "isoelectric_point": 9.495048713684085
+            }
+        },
+        {
+            "id": "MEGJMN_004",
+            "description": "ResA resolvase",
+            "aa": "MNNLVPVGSPASPGTLLPVAIDYPAALALRQMALVQDELPKYLLAPEVSALLHYVPDLHRKMLLATLWNTGARINEALALTRGDFSLAPPYPFVQLATLKQRTEKAARTAGRAPAGSQVHRLVPLSDHHYVSQLQMMVATLKIPLERRNKRTGRMEKARIWEITDRTVRTWLSEAVEAAAADGVTFSVPVTPHTFRHSYAMHMLYAGIPLKVLQSLMGHKSISSTEVYTKVFALDVAARHRVQFAMPEAEAVALIKKLTPNQST",
+            "length": 264,
+            "type": "cds",
+            "locus": "MEGJMN_004",
+            "aa_hexdigest": "e36e61ca63f23e3c244ecf0b7985510c",
+            "ups": {
+                "uniparc_id": "UPI00032969B4",
+                "ncbi_nrp_id": "WP_015632375.1",
+                "uniref100_id": "UniRef100_A0A0C5H1Q2",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032969B4",
+                    "RefSeq:WP_015632375.1",
+                    "UniRef:UniRef100_A0A0C5H1Q2"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A0C5H1Q2",
+                "uniref90_id": "UniRef90_A0A377YP69"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A377YP69",
+                "product": "ResA resolvase",
+                "uniref50_id": "UniRef50_P06615"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_P06615",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_P06615"
+                ],
+                "product": "Resolvase"
+            },
+            "product": "ResA resolvase",
+            "gene": "resA",
+            "genes": [
+                "resA"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632375.1",
+                "SO:0001217",
+                "UniParc:UPI00032969B4",
+                "UniRef:UniRef100_A0A0C5H1Q2",
+                "UniRef:UniRef50_P06615",
+                "UniRef:UniRef90_A0A377YP69"
+            ]
+        },
+        {
+            "id": "MEGJMN_005",
+            "description": "hypothetical protein",
+            "aa": "MTNQPATASQKTDEVANKTTPSMTVDTIFSATGFTPLQWVAMEREHS",
+            "length": 47,
+            "type": "cds",
+            "locus": "MEGJMN_005",
+            "aa_hexdigest": "97ff90425da7e79099736043a5a17de6",
+            "ups": {
+                "uniparc_id": "UPI0007224B15",
+                "ncbi_nrp_id": "WP_248299255.1",
+                "uniref100_id": "UniRef100_A0A6C0NCX4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0007224B15",
+                    "RefSeq:WP_248299255.1",
+                    "UniRef:UniRef100_A0A6C0NCX4"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NCX4",
+                "uniref90_id": "UniRef90_A0A142EBE8"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A142EBE8",
+                "uniref50_id": "UniRef50_A0A142EBE8"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A142EBE8",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A142EBE8"
+                ]
+            },
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "RefSeq:WP_248299255.1",
+                "SO:0001217",
+                "UniParc:UPI0007224B15",
+                "UniRef:UniRef100_A0A6C0NCX4",
+                "UniRef:UniRef50_A0A142EBE8",
+                "UniRef:UniRef90_A0A142EBE8"
+            ],
+            "seq_stats": {
+                "molecular_weight": 5157.6789,
+                "isoelectric_point": 4.895906257629394
+            }
+        },
+        {
+            "id": "MEGJMN_006",
+            "description": "N-acetyltransferase domain-containing protein",
+            "aa": "MEGKTETFIKTSVDDNGMWLLTVPAGSTGDETVVVVVRRVEECRYGSEDSPGAYLSITSSLTLYGDGQGTPQTIVAKFVPGTVELFSVEFMLKEFLPRGRGVGSWIMQQMVLWTRSLPPETLVGRIDISSVDEKNIHNLIRRSRLWRGLGFRFPPGETSSMPLRADELQLPRGRCSTLRVEPLVSAVRQLEDCYRGLQEKIVQLEGKKRSQKQLITSLQNRPFYHLLHRKGGQLPDEKCDALPLRAEKLSLPQSGDSDLEVAQRATGVIRLATLCAQSQKRILELERELASQSEELVDLQANLLSILREKVGNEALFWGAW",
+            "length": 321,
+            "type": "cds",
+            "locus": "MEGJMN_006",
+            "aa_hexdigest": "231b98db0c68f8f4f17d0f423bb44557",
+            "psc": {
+                "uniref90_id": "UniRef90_A0A0C5HDB6",
+                "query_cov": 0.9937694704049844,
+                "subject_cov": 0.8715846994535519,
+                "identity": 1.0,
+                "score": 629.0,
+                "evalue": 8.42e-227,
+                "valid": true,
+                "uniref50_id": "UniRef50_A0A8D9MPV2"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A8D9MPV2",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A8D9MPV2"
+                ],
+                "product": "N-acetyltransferase domain-containing protein"
+            },
+            "product": "N-acetyltransferase domain-containing protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "SO:0001217",
+                "UniRef:UniRef50_A0A8D9MPV2",
+                "UniRef:UniRef90_A0A0C5HDB6"
+            ]
+        },
+        {
+            "id": "MEGJMN_007",
+            "description": "Cytoplasmic protein",
+            "aa": "MCDLCRADENYFHTAECVYDQLVSEYPVMWLRDSTRIGACYTLRELLSPEGMVLAIQNSLPIKGWRLRMLYNEAIDEEINPQHGDCIELPSRADALQAFVGSA",
+            "length": 103,
+            "type": "cds",
+            "locus": "MEGJMN_007",
+            "aa_hexdigest": "a33c52ef518ff5cafeb4983eb1a99f1c",
+            "ups": {
+                "uniparc_id": "UPI0003EE6ED4",
+                "ncbi_nrp_id": "WP_024191724.1",
+                "uniref100_id": "UniRef100_A0A6C0ND31",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003EE6ED4",
+                    "RefSeq:WP_024191724.1",
+                    "UniRef:UniRef100_A0A6C0ND31"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0ND31",
+                "uniref90_id": "UniRef90_A0A3P2EIW4"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A3P2EIW4",
+                "uniref50_id": "UniRef50_A0A5W9DD28"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A5W9DD28",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A5W9DD28"
+                ],
+                "product": "Cytoplasmic protein"
+            },
+            "product": "Cytoplasmic protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_024191724.1",
+                "SO:0001217",
+                "UniParc:UPI0003EE6ED4",
+                "UniRef:UniRef100_A0A6C0ND31",
+                "UniRef:UniRef50_A0A5W9DD28",
+                "UniRef:UniRef90_A0A3P2EIW4"
+            ]
+        },
+        {
+            "id": "MEGJMN_008",
+            "description": "PhoD-like phosphatase metallophosphatase domain-containing protein",
+            "aa": "MGKPTFRSFIDVVRELEDAYGHKELWLYSGTAYATPTEMIKAKYNWKSPKILKRNGRMVAERMDNSDSWQLVGDYKDPQSQDCAPPWQSCLIDKPFMLLYSIVTRKPEE",
+            "length": 109,
+            "type": "cds",
+            "locus": "MEGJMN_008",
+            "aa_hexdigest": "437b06b2d7705171e51177f73c9ace17",
+            "ups": {
+                "uniparc_id": "UPI00058B55FA",
+                "ncbi_nrp_id": "WP_040214038.1",
+                "uniref100_id": "UniRef100_UPI00058B55FA",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00058B55FA",
+                    "RefSeq:WP_040214038.1",
+                    "UniRef:UniRef100_UPI00058B55FA"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_UPI00058B55FA",
+                "uniref90_id": "UniRef90_UPI00224511F9"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_UPI00224511F9",
+                "uniref50_id": "UniRef50_A0A837F5I3"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A837F5I3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A837F5I3"
+                ],
+                "product": "PhoD-like phosphatase metallophosphatase domain-containing protein"
+            },
+            "product": "PhoD-like phosphatase metallophosphatase domain-containing protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_040214038.1",
+                "SO:0001217",
+                "UniParc:UPI00058B55FA",
+                "UniRef:UniRef100_UPI00058B55FA",
+                "UniRef:UniRef50_A0A837F5I3",
+                "UniRef:UniRef90_UPI00224511F9"
+            ]
+        },
+        {
+            "id": "MEGJMN_009",
+            "description": "Chromate transporter",
+            "aa": "MFGKLLKSVSWQVRAELRRSLKSNQDYKKLRWNRVERILIACTTHYIRAMLVLWSAAFGAVCVVEYFRPVLQPFALQHFKGITTLSGWMSNLLGSQLTIIGIVFPLVVGLISVLFQKKSARMHIQSAYQLHSGYLFAGLSGLSLAAFIVVGGMMLSVGDRYLNTAFAVTAFVWMLFNIILSIWFFVSSLNVLDESKRDRLLNKFFLSQIVDDYIQKAYILAWLRYPGANVGENYLGNIKILPYSISEKNEMLHVKSNVSKGDVVTDIYIRPFLFLLRRLEAVDGQDAEIIILPSFGVRSGELTLMSLKNIKPVSGLWRWLFIRCIVTGRPEKKRDLDDITFDFFGEAYDALNDKNISVFRAGIERLTDTYTSIKRSYNYGVDKNYLDEVKESGFSHTFSDSFHYELRKFFRESVKSTEYSGEYFRESMAIPLHVYRKTQSTCFTDFRQFLLSLFRVWHVLNDWKAGLGGPLSASQELTHQALIREFIGLWEGWSMTTITGKPGSEDSTGRLMYHLHNTVRLLIPSVVADNASSVRYAHDVLCLWFNQNRFTRYWEEEYRWHSFFLTPDYLSLKETEPQWDMLLRGSMYKKDAALSIMFANALSDLRLLMAGYLIAHFEPQKNIDLADLVNHLIMSELYEDRDTHDTLTPAFRCSVDIIDMILRIEHCNLHTNTSWYSGLSETIEVMNSYNERPYIPGRVYTGVNEDIGSLYGAFSLLAIKLARPAEQVTQRVNEALAGRLFSYFSKDRIISILERLKRDPSVPYEGYIISEADYATNVVFFNDVLDKYIDVFNRSKTADIVAAEIDQERLRNTDTRLTNELPGALSEDVLLKYFTFTQNSECDRNWLVRYIPVGVSKDYVARDLNQNVYGDFPSVSEVKRNILHRLHYELWKSQAKLTIEVNNLETLLMEVAQRSADQNNYILMIYGSRFSEELRELVYQPARHDAFSIHVDVSARGSRSLPFRINNCLIYLVLNSEQKFSLMVSAESFGELRLFRYPDGTLFNTFYRSNGDPLEGVMKTLWEMEMEITDTPVVRFEHR",
+            "length": 1039,
+            "type": "cds",
+            "locus": "MEGJMN_009",
+            "aa_hexdigest": "64a5f4a86ad8004a7156eb0e7fc7e051",
+            "ups": {
+                "uniparc_id": "UPI0007CCE74C",
+                "ncbi_nrp_id": "WP_064174377.1",
+                "uniref100_id": "UniRef100_UPI0007CCE74C",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0007CCE74C",
+                    "RefSeq:WP_064174377.1",
+                    "UniRef:UniRef100_UPI0007CCE74C"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_UPI0007CCE74C",
+                "uniref90_id": "UniRef90_A0AAE4EAU4"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0AAE4EAU4",
+                "product": "Chromate transporter",
+                "uniref50_id": "UniRef50_Q0QCC2"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_Q0QCC2",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_Q0QCC2"
+                ],
+                "product": "Chromate transporter"
+            },
+            "product": "Chromate transporter",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_064174377.1",
+                "SO:0001217",
+                "UniParc:UPI0007CCE74C",
+                "UniRef:UniRef100_UPI0007CCE74C",
+                "UniRef:UniRef50_Q0QCC2",
+                "UniRef:UniRef90_A0AAE4EAU4"
+            ]
+        },
+        {
+            "id": "MEGJMN_010",
+            "description": "hypothetical protein",
+            "aa": "MDEKEVNFSLSYEQLAATTTEVIEAIKKRQDQTTAAKISSVEAVIFLWSELAKAGASDFSPVQADLRRFQERVAGMKE",
+            "length": 78,
+            "type": "cds",
+            "locus": "MEGJMN_010",
+            "aa_hexdigest": "8b7f55a9d39a637ba86934ded79a52df",
+            "ups": {
+                "uniparc_id": "UPI000760AAA3",
+                "ncbi_nrp_id": "WP_060415434.1",
+                "uniref100_id": "UniRef100_A0A8B3MBM4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000760AAA3",
+                    "RefSeq:WP_060415434.1",
+                    "UniRef:UniRef100_A0A8B3MBM4"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A8B3MBM4",
+                "uniref90_id": "UniRef90_A0A8B3MBM4"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A8B3MBM4",
+                "uniref50_id": "UniRef50_A0A8B3MBM4"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A8B3MBM4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A8B3MBM4"
+                ]
+            },
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "RefSeq:WP_060415434.1",
+                "SO:0001217",
+                "UniParc:UPI000760AAA3",
+                "UniRef:UniRef100_A0A8B3MBM4",
+                "UniRef:UniRef50_A0A8B3MBM4",
+                "UniRef:UniRef90_A0A8B3MBM4"
+            ],
+            "seq_stats": {
+                "molecular_weight": 8710.7261,
+                "isoelectric_point": 4.947629737854004
+            }
+        },
+        {
+            "id": "MEGJMN_011",
+            "description": "YdeA protein",
+            "aa": "MNGTVKSRRPSPLQRRVLIVLAALDAKRPGPVATRDIERVLEQGGDAPVYGPNLRASCRRMEAAGWLRTLRAPNLQLAVELTEAGRGIAEPLFQAEREAETARQRLTDVRRLPLRQTAAGDAVALQLDDDHYTIREAAYVIRPDGSTCLQLTDAGGIRRIKEGDPLQVASWYQTCFDAGLPVTIQVNESRD",
+            "length": 191,
+            "type": "cds",
+            "locus": "MEGJMN_011",
+            "aa_hexdigest": "567638e4dec88f39a679526a17d71d1b",
+            "ups": {
+                "uniparc_id": "UPI0007604B90",
+                "ncbi_nrp_id": "WP_060415435.1",
+                "uniref100_id": "UniRef100_A0A8B3M6V8",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0007604B90",
+                    "RefSeq:WP_060415435.1",
+                    "UniRef:UniRef100_A0A8B3M6V8"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A8B3M6V8",
+                "uniref90_id": "UniRef90_A0A2P9E0K7"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A2P9E0K7",
+                "product": "YdeA protein",
+                "uniref50_id": "UniRef50_A0A8B0ST96"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A8B0ST96",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A8B0ST96"
+                ],
+                "product": "YdeA"
+            },
+            "product": "YdeA protein",
+            "gene": "ydeA",
+            "genes": [
+                "ydeA"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_060415435.1",
+                "SO:0001217",
+                "UniParc:UPI0007604B90",
+                "UniRef:UniRef100_A0A8B3M6V8",
+                "UniRef:UniRef50_A0A8B0ST96",
+                "UniRef:UniRef90_A0A2P9E0K7"
+            ]
+        },
+        {
+            "id": "MEGJMN_012",
+            "description": "DNA-binding protein",
+            "aa": "MKLTEPKLNTLIDNLNALICEDSLLTRQEREDLVRAVAAIGAMKARVSMKKSSVPAASKLKEEKQERVPDPRFPHAGEPWREEEGTMLLDALESVPDEEVGVHLFWLAEKLGRTPYSVACKIAVLRDMPEEWKDQYRKVSDDIRKSGLSISDGTVAKLAMRQPFVLFKGLTFQKLCLPGAFRPGDHHNKMLRPGLCVVHASPQYL",
+            "length": 205,
+            "type": "cds",
+            "locus": "MEGJMN_012",
+            "aa_hexdigest": "be4274c26ec7a3a0fe7fc404a71f5f85",
+            "psc": {
+                "uniref90_id": "UniRef90_A0A8B3M5V4",
+                "query_cov": 0.8341463414634146,
+                "subject_cov": 1.0,
+                "identity": 1.0,
+                "score": 330.0,
+                "evalue": 8.61e-114,
+                "valid": true,
+                "product": "DNA-binding protein",
+                "uniref50_id": "UniRef50_A0A2P9E0J6"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A2P9E0J6",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A2P9E0J6"
+                ],
+                "product": "DNA-binding protein"
+            },
+            "product": "DNA-binding protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "SO:0001217",
+                "UniRef:UniRef50_A0A2P9E0J6",
+                "UniRef:UniRef90_A0A8B3M5V4"
+            ]
+        },
+        {
+            "id": "MEGJMN_013",
+            "description": "IS6 family IS15DIV transposase",
+            "aa": "MNPFKGRHFQRDIILWAVRWYCKYGISYRELQEMLAERGVNVDHSTIYRWVQRYAPEMEKRLRWYWRNPSDLCPWHMDETYVKVNGRWAYLYRAVDSRGRTVDFYLSSRRNSKAAYRFLGKILNNVKKWQIPRFINTDKAPAYGRALALLKREGRCPSDVEHRQIKYRNNVIECDHGKLKRIIGATLGFKSMKTAYATIKGIEVMRALRKGQASAFYYGDPLGEMRLVSRVFEM",
+            "length": 234,
+            "type": "cds",
+            "locus": "MEGJMN_013",
+            "aa_hexdigest": "a47e7568518d6227d24c732f328a36ac",
+            "ups": {
+                "uniparc_id": "UPI0000003DD8",
+                "ncbi_nrp_id": "WP_001067855.1",
+                "uniref100_id": "UniRef100_A0A6H1PZP7",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0000003DD8",
+                    "RefSeq:WP_001067855.1",
+                    "UniRef:UniRef100_A0A6H1PZP7"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6H1PZP7",
+                "uniref90_id": "UniRef90_A0A6H1PZP7"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6H1PZP7",
+                "gene": "tnp",
+                "product": "IS6 family transposase",
+                "uniref50_id": "UniRef50_Q573Q1",
+                "cog_id": "COG3316",
+                "cog_category": "X",
+                "go_ids": [
+                    "GO:0004803"
+                ]
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_Q573Q1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_Q573Q1"
+                ],
+                "product": "IS26 transposase"
+            },
+            "expert": [
+                {
+                    "type": "expert_proteins",
+                    "source": "IS",
+                    "rank": 90,
+                    "id": "IS15DIV-1",
+                    "gene": "tnp",
+                    "product": "IS6 family IS15DIV transposase",
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
+                    "identity": 1.0,
+                    "score": 495.0,
+                    "evalue": 2.47e-181,
+                    "db_xrefs": [
+                        "IS:IS15DIV"
+                    ]
+                }
+            ],
+            "product": "IS6 family IS15DIV transposase",
+            "gene": "tnp",
+            "genes": [
+                "tnp"
+            ],
+            "db_xrefs": [
+                "COG:COG3316",
+                "COG:X",
+                "GO:0004803",
+                "IS:IS15DIV",
+                "RefSeq:WP_001067855.1",
+                "SO:0001217",
+                "UniParc:UPI0000003DD8",
+                "UniRef:UniRef100_A0A6H1PZP7",
+                "UniRef:UniRef50_Q573Q1",
+                "UniRef:UniRef90_A0A6H1PZP7"
+            ]
+        },
+        {
+            "id": "MEGJMN_014",
+            "description": "starch synthase",
+            "aa": "MQVLHVGAEMFPLLKTGGLADVTGALPAAQIAEGLDTRVLLPGFPAIRNGVQDPQVVASRETFAGRMTLLFGHLALLQIVGGDKLIIPFC",
+            "length": 90,
+            "type": "cds",
+            "locus": "MEGJMN_014",
+            "aa_hexdigest": "3e0a14dbcae1f126f8fc15616b344f7e",
+            "psc": {
+                "uniref90_id": "UniRef90_A0A376MK16",
+                "query_cov": 0.8222222222222222,
+                "subject_cov": 0.9024390243902439,
+                "identity": 0.757,
+                "score": 112.0,
+                "evalue": 6.32e-31,
+                "valid": false,
+                "product": "starch synthase",
+                "uniref50_id": "UniRef50_A0A3P8IPK2"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A3P8IPK2",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A3P8IPK2"
+                ],
+                "product": "starch synthase"
+            },
+            "product": "starch synthase",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "SO:0001217",
+                "UniRef:UniRef50_A0A3P8IPK2"
+            ]
+        },
+        {
+            "id": "MEGJMN_015",
+            "description": "Glucose-1-phosphate adenylyltransferase",
+            "aa": "MGIYVFDAEYLYQLLEDDDRDEHSTHDFGKDIIPRITAAGEAYAHPFPRSCVQSDNNAEPYWRDVGTLEAYWKANLDLASVVPELDVYDRNWPIRTYVESLPSAKFVQDRSGSHGMTMNSLVSGGCIISGSVVVQSVLFSRVRINSFCNIDSSVLLPGVWVGRSCRIRRCVIDRGCVIPEGTVIGENAVEDARRFYRSEEGIVLVTKEMLDKLEV",
+            "length": 215,
+            "type": "cds",
+            "locus": "MEGJMN_015",
+            "aa_hexdigest": "b5ff334797c2b28e7c469cd2656cadb1",
+            "psc": {
+                "uniref90_id": "UniRef90_A0A3S4G3I5",
+                "query_cov": 0.9953488372093023,
+                "subject_cov": 0.9385964912280702,
+                "identity": 0.794,
+                "score": 352.0,
+                "evalue": 2.79e-121,
+                "valid": false,
+                "product": "Glucose-1-phosphate adenylyltransferase",
+                "ec_ids": [
+                    "2.7.7.27"
+                ],
+                "uniref50_id": "UniRef50_A0A3S4G3I5",
+                "kegg_orthology_id": "K00975"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A3S4G3I5",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A3S4G3I5"
+                ],
+                "product": "Glucose-1-phosphate adenylyltransferase"
+            },
+            "product": "Glucose-1-phosphate adenylyltransferase",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "SO:0001217",
+                "UniRef:UniRef50_A0A3S4G3I5"
+            ]
+        },
+        {
+            "id": "MEGJMN_016",
+            "description": "IS6 family IS15DIV transposase",
+            "aa": "MNPFKGRHFQRDIILWAVRWYCKYGISYRELQEMLAERGVNVDHSTIYRWVQRYAPEMEKRLRWYWRNPSDLCPWHMDETYVKVNGRWAYLYRAVDSRGRTVDFYLSSRRNSKAAYRFLGKILNNVKKWQIPRFINTDKAPAYGRALALLKREGRCPSDVEHRQIKYRNNVIECDHGKLKRIIGATLGFKSMKTAYATIKGIEVMRALRKGQASAFYYGDPLGEMRLVSRVFEM",
+            "length": 234,
+            "type": "cds",
+            "locus": "MEGJMN_016",
+            "aa_hexdigest": "a47e7568518d6227d24c732f328a36ac",
+            "ups": {
+                "uniparc_id": "UPI0000003DD8",
+                "ncbi_nrp_id": "WP_001067855.1",
+                "uniref100_id": "UniRef100_A0A6H1PZP7",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0000003DD8",
+                    "RefSeq:WP_001067855.1",
+                    "UniRef:UniRef100_A0A6H1PZP7"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6H1PZP7",
+                "uniref90_id": "UniRef90_A0A6H1PZP7"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6H1PZP7",
+                "gene": "tnp",
+                "product": "IS6 family transposase",
+                "uniref50_id": "UniRef50_Q573Q1",
+                "cog_id": "COG3316",
+                "cog_category": "X",
+                "go_ids": [
+                    "GO:0004803"
+                ]
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_Q573Q1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_Q573Q1"
+                ],
+                "product": "IS26 transposase"
+            },
+            "expert": [
+                {
+                    "type": "expert_proteins",
+                    "source": "IS",
+                    "rank": 90,
+                    "id": "IS15DIV-1",
+                    "gene": "tnp",
+                    "product": "IS6 family IS15DIV transposase",
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
+                    "identity": 1.0,
+                    "score": 495.0,
+                    "evalue": 2.47e-181,
+                    "db_xrefs": [
+                        "IS:IS15DIV"
+                    ]
+                }
+            ],
+            "product": "IS6 family IS15DIV transposase",
+            "gene": "tnp",
+            "genes": [
+                "tnp"
+            ],
+            "db_xrefs": [
+                "COG:COG3316",
+                "COG:X",
+                "GO:0004803",
+                "IS:IS15DIV",
+                "RefSeq:WP_001067855.1",
+                "SO:0001217",
+                "UniParc:UPI0000003DD8",
+                "UniRef:UniRef100_A0A6H1PZP7",
+                "UniRef:UniRef50_Q573Q1",
+                "UniRef:UniRef90_A0A6H1PZP7"
+            ]
+        },
+        {
+            "id": "MEGJMN_017",
+            "description": "DUF2913 domain-containing protein",
+            "aa": "MTLTEKTGHLAWCALVALALARQEQGELSPAQENLFLTRWLAAALKQRRFSRDVAQDIGWLLNQGRLLGVRAKLADKLGYVWRSCSGELTEQNDMFRLTYALETAKDMGWNYRVMSDREWAGRYALVLNPGVNGVYLLRTNLDAAFDDNGQQTNPLTVRLTGNVTGIMKLLNRCGWQAEPESDASLPHQFSLMARQGVPGKGD",
+            "length": 203,
+            "type": "cds",
+            "locus": "MEGJMN_017",
+            "aa_hexdigest": "d4edc687f041c32cdf705526f6629f8f",
+            "ups": {
+                "uniparc_id": "UPI00015763D5",
+                "ncbi_nrp_id": "WP_000176305.1",
+                "uniref100_id": "UniRef100_A0A1U9SS67",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00015763D5",
+                    "RefSeq:WP_000176305.1",
+                    "UniRef:UniRef100_A0A1U9SS67"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A1U9SS67",
+                "uniref90_id": "UniRef90_R9R7Y6"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_R9R7Y6",
+                "product": "DUF2913 family protein",
+                "uniref50_id": "UniRef50_A0A636ILE6"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A636ILE6",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A636ILE6"
+                ],
+                "product": "DUF2913 family protein"
+            },
+            "product": "DUF2913 domain-containing protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_000176305.1",
+                "SO:0001217",
+                "UniParc:UPI00015763D5",
+                "UniRef:UniRef100_A0A1U9SS67",
+                "UniRef:UniRef50_A0A636ILE6",
+                "UniRef:UniRef90_R9R7Y6"
+            ]
+        },
+        {
+            "id": "MEGJMN_018",
+            "description": "Cytoplasmic protein",
+            "aa": "MRVAESIILDALTRGGCIKTFYRISSRQAAESATRIPEGYILESPGEREDIVLSRADFHALEKLLEQKETWEQVVGVTCFGGATWQLRPTVQS",
+            "length": 93,
+            "type": "cds",
+            "locus": "MEGJMN_018",
+            "aa_hexdigest": "98f8d735f6929ad2111bdc6cd6c44daf",
+            "ups": {
+                "uniparc_id": "UPI00015763D6",
+                "ncbi_nrp_id": "WP_001568067.1",
+                "uniref100_id": "UniRef100_A0A1U9SSL0",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00015763D6",
+                    "RefSeq:WP_001568067.1",
+                    "UniRef:UniRef100_A0A1U9SSL0"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A1U9SSL0",
+                "uniref90_id": "UniRef90_A0AAN1YBH3"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0AAN1YBH3",
+                "product": "Cytoplasmic protein",
+                "uniref50_id": "UniRef50_A0AAN1YBH3"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0AAN1YBH3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0AAN1YBH3"
+                ],
+                "product": "Cytoplasmic protein"
+            },
+            "product": "Cytoplasmic protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_001568067.1",
+                "SO:0001217",
+                "UniParc:UPI00015763D6",
+                "UniRef:UniRef100_A0A1U9SSL0",
+                "UniRef:UniRef50_A0AAN1YBH3",
+                "UniRef:UniRef90_A0AAN1YBH3"
+            ]
+        },
+        {
+            "id": "MEGJMN_019",
+            "description": "IS3 family transposase",
+            "aa": "MSRRGNCWDNSPMERFFRSLKNEWVPATGYVSFSDAAHAITDYIVGYYSALRPHEYNGGLPPNESENRYWKNSNAVASFC",
+            "length": 80,
+            "type": "cds",
+            "locus": "MEGJMN_019",
+            "aa_hexdigest": "0da6eee258bc65925903bb26114f487c",
+            "ups": {
+                "uniparc_id": "UPI0002C4069D",
+                "uniref100_id": "UniRef100_A0A2X7IQ80",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0002C4069D",
+                    "UniRef:UniRef100_A0A2X7IQ80"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A2X7IQ80",
+                "uniref90_id": "UniRef90_A0A4P7TWT1"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A4P7TWT1",
+                "gene": "tnp",
+                "product": "IS3 family transposase",
+                "uniref50_id": "UniRef50_A0A653BZJ7",
+                "cog_id": "COG2963",
+                "cog_category": "X",
+                "go_ids": [
+                    "GO:0004803"
+                ]
+            },
+            "product": "IS3 family transposase",
+            "gene": "tnp",
+            "genes": [
+                "tnp"
+            ],
+            "db_xrefs": [
+                "COG:COG2963",
+                "COG:X",
+                "GO:0004803",
+                "SO:0001217",
+                "UniParc:UPI0002C4069D",
+                "UniRef:UniRef100_A0A2X7IQ80",
+                "UniRef:UniRef50_A0A653BZJ7",
+                "UniRef:UniRef90_A0A4P7TWT1"
+            ]
+        },
+        {
+            "id": "MEGJMN_020",
+            "description": "IS110 family ISEc21 transposase",
+            "aa": "MVDKVTEAAVVGGVDTHKDLHVAAVVDQNNKVLGTQYFSTTRQGYRQMLAWMTSFGTLKRIGVECTGTYGSGLLRYFQNAGLEVLEVTAPDRMERRKRGKSDTIDAECAAHAAFSGIRTVTPKTRDGMIESLRVLKTCRKTAISARRVALQIIHSNIISAPDELREQLRNMTRMQLIRTLGSWRPDASEYRNVTNVYRISLKSLARRYLELHDEIADLDVMIAAIVDELAPELIKRNAIGYESASQLLITAGDNPQRLRSESGFAALCGVSPVPVSSGKTNRYRLNRGGDRAANSALHIIAIGRLRTDAKTKEYVARRVAEGHTKMEAIRCLKRYISREVYTLLRNQNRRINSIPITA",
+            "length": 358,
+            "type": "cds",
+            "locus": "MEGJMN_020",
+            "aa_hexdigest": "5e69668adcf2dfa953628aa1e9c41e4b",
+            "ups": {
+                "uniparc_id": "UPI0000332EC8",
+                "ncbi_nrp_id": "WP_000227969.1",
+                "uniref100_id": "UniRef100_A0A1M0GG24",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0000332EC8",
+                    "RefSeq:WP_000227969.1",
+                    "UniRef:UniRef100_A0A1M0GG24"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A1M0GG24",
+                "gene": "tnp",
+                "product": "IS110 family ISEc21 transposase",
+                "uniref90_id": "UniRef90_A0A348DKT0"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A348DKT0",
+                "gene": "tnp",
+                "product": "IS110 family transposase",
+                "uniref50_id": "UniRef50_A0A6J5F9T1",
+                "cog_id": "COG3547",
+                "cog_category": "X",
+                "go_ids": [
+                    "GO:0004803"
+                ]
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6J5F9T1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6J5F9T1"
+                ],
+                "product": "IS110 family transposase ISEc21"
+            },
+            "expert": [
+                {
+                    "type": "expert_proteins",
+                    "source": "IS",
+                    "rank": 90,
+                    "id": "ISEc21-1",
+                    "gene": "tnp",
+                    "product": "IS110 family ISEc21 transposase",
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
+                    "identity": 0.972,
+                    "score": 675.0,
+                    "evalue": 3.41e-248,
+                    "db_xrefs": [
+                        "IS:ISEc21"
+                    ]
+                }
+            ],
+            "product": "IS110 family ISEc21 transposase",
+            "gene": "tnp",
+            "genes": [
+                "tnp"
+            ],
+            "db_xrefs": [
+                "COG:COG3547",
+                "COG:X",
+                "GO:0004803",
+                "IS:ISEc21",
+                "RefSeq:WP_000227969.1",
+                "SO:0001217",
+                "UniParc:UPI0000332EC8",
+                "UniRef:UniRef100_A0A1M0GG24",
+                "UniRef:UniRef50_A0A6J5F9T1",
+                "UniRef:UniRef90_A0A348DKT0"
+            ]
+        },
+        {
+            "id": "MEGJMN_021",
+            "description": "IS3 family transposase",
+            "aa": "MGRWLAGRLMKELGLVSCQQPTHRYKRGGHEHVAIPNHLERQFAVTEPNQVWCGDVTYIWTGKRWAYLAVVLDLFARKPVGWAMSFSPDSRLTMKALEMAWETRGKPVGVMFHSDSNNADVSLYHHLVCRLTRLV",
+            "length": 135,
+            "type": "cds",
+            "locus": "MEGJMN_021",
+            "aa_hexdigest": "f1452903dd901d031beba44796d2eccb",
+            "ups": {
+                "uniparc_id": "UPI00032DC2A9",
+                "uniref100_id": "UniRef100_A0A345X0A4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032DC2A9",
+                    "UniRef:UniRef100_A0A345X0A4"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A345X0A4",
+                "uniref90_id": "UniRef90_A0A455TK33"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A455TK33",
+                "product": "IS3 family transposase",
+                "uniref50_id": "UniRef50_Q47718",
+                "go_ids": [
+                    "GO:0004803"
+                ]
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_Q47718",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_Q47718"
+                ],
+                "product": "Putative transposase InsO for insertion sequence element IS911B"
+            },
+            "product": "IS3 family transposase",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "GO:0004803",
+                "SO:0001217",
+                "UniParc:UPI00032DC2A9",
+                "UniRef:UniRef100_A0A345X0A4",
+                "UniRef:UniRef50_Q47718",
+                "UniRef:UniRef90_A0A455TK33"
+            ]
+        },
+        {
+            "id": "MEGJMN_022",
+            "description": "IS3 family ISEc52 transposase ORF A",
+            "aa": "MKKRNFSAEFKRESAQLVVDQNYTVADAASAMDVGLSTMTRWVKQLRDERQGKTPKASPITPEQIEIRELRKKLQRIEMENEILKKATALLMSDSLNSSR",
+            "length": 100,
+            "type": "cds",
+            "locus": "MEGJMN_022",
+            "aa_hexdigest": "b135d59ef0102446ff29ba2de3908c02",
+            "ups": {
+                "uniparc_id": "UPI00000BFAFC",
+                "ncbi_nrp_id": "WP_001325805.1",
+                "uniref100_id": "UniRef100_Q8GJ18",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00000BFAFC",
+                    "RefSeq:WP_001325805.1",
+                    "UniRef:UniRef100_Q8GJ18"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_Q8GJ18",
+                "gene": "tnp",
+                "product": "IS3 family ISEc52 transposase ORF A",
+                "uniref90_id": "UniRef90_Q8GJ18"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_Q8GJ18",
+                "gene": "tnp",
+                "product": "IS3 family transposase ORF A",
+                "uniref50_id": "UniRef50_P39212"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_P39212",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_P39212"
+                ],
+                "product": "Putative transposase InsN for insertion sequence element IS911B"
+            },
+            "expert": [
+                {
+                    "type": "expert_proteins",
+                    "source": "IS",
+                    "rank": 90,
+                    "id": "ISEc52-ORFA",
+                    "gene": "tnp",
+                    "product": "IS3 family ISEc52 transposase ORF A",
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
+                    "identity": 1.0,
+                    "score": 184.0,
+                    "evalue": 1.67e-62,
+                    "db_xrefs": [
+                        "IS:ISEc52"
+                    ]
+                }
+            ],
+            "product": "IS3 family ISEc52 transposase ORF A",
+            "gene": "tnp",
+            "genes": [
+                "tnp"
+            ],
+            "db_xrefs": [
+                "IS:ISEc52",
+                "RefSeq:WP_001325805.1",
+                "SO:0001217",
+                "UniParc:UPI00000BFAFC",
+                "UniRef:UniRef100_Q8GJ18",
+                "UniRef:UniRef50_P39212",
+                "UniRef:UniRef90_Q8GJ18"
+            ]
+        },
+        {
+            "id": "MEGJMN_023",
+            "description": "C2H2-type domain-containing protein",
+            "aa": "MKLMEELFTCPICKLSFGHKARLRKHIKKHTKSLEKNLAKANSTKKAEHEKMLIQERIARTGSAFKNESERNKYFERRRAENPIFDIDTPIRKASFIVNAGAFGLGKSRKN",
+            "length": 111,
+            "type": "cds",
+            "locus": "MEGJMN_023",
+            "aa_hexdigest": "1d3b6e61a4488749299d54255b75fd2d",
+            "ups": {
+                "uniparc_id": "UPI0001576A45",
+                "ncbi_nrp_id": "WP_011977766.1",
+                "uniref100_id": "UniRef100_A0A1U9SSU4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0001576A45",
+                    "RefSeq:WP_011977766.1",
+                    "UniRef:UniRef100_A0A1U9SSU4"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A1U9SSU4",
+                "uniref90_id": "UniRef90_A0A6B2F389"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6B2F389",
+                "product": "C2H2-type domain-containing protein",
+                "uniref50_id": "UniRef50_A0A6B2F389"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6B2F389",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6B2F389"
+                ],
+                "product": "C2H2-type domain-containing protein"
+            },
+            "product": "C2H2-type domain-containing protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_011977766.1",
+                "SO:0001217",
+                "UniParc:UPI0001576A45",
+                "UniRef:UniRef100_A0A1U9SSU4",
+                "UniRef:UniRef50_A0A6B2F389",
+                "UniRef:UniRef90_A0A6B2F389"
+            ]
+        },
+        {
+            "id": "MEGJMN_024",
+            "description": "hypothetical protein",
+            "aa": "MRRRPPQRSEDEKSITASAVIIPHTAKPRTNPLKTIQKLLCAVGVVTTRR",
+            "length": 50,
+            "type": "cds",
+            "locus": "MEGJMN_024",
+            "aa_hexdigest": "596d2a0f5af77a33e8eb0dc83e45d81b",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [],
+            "seq_stats": {
+                "molecular_weight": 5622.5804,
+                "isoelectric_point": 11.630241584777831
+            }
+        },
+        {
+            "id": "MEGJMN_025",
+            "description": "Replication initiation protein",
+            "aa": "MASRRRRRFLNRWIKSLATPAGRQKIKAELRRRIRHNRYWVNEANKFGLETLCELMLAILDDVDLRDWQTRHNLETLAERAGLATRSDGGHKSISRASRGCDRLYWLNAIITDKAPFNPYDARCACKHIEVTEDFFAILGIPLKQAYRERARLLKADPNEVISSGDIRLISIRVENWTRKAAAGLSRMKAKRDVARQRKREYFSQSPVLA",
+            "length": 210,
+            "type": "cds",
+            "locus": "MEGJMN_025",
+            "aa_hexdigest": "215936e7660ec60a918d1f5688e19193",
+            "ups": {
+                "uniparc_id": "UPI0003D902F4",
+                "ncbi_nrp_id": "WP_032495741.1",
+                "uniref100_id": "UniRef100_A0A0C5GXS3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003D902F4",
+                    "RefSeq:WP_032495741.1",
+                    "UniRef:UniRef100_A0A0C5GXS3"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A0C5GXS3",
+                "uniref90_id": "UniRef90_A0A6C0ND82"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0ND82",
+                "product": "Replication initiation protein",
+                "uniref50_id": "UniRef50_B2CBC6"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_B2CBC6",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_B2CBC6"
+                ],
+                "product": "Replication initiation protein"
+            },
+            "product": "Replication initiation protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_032495741.1",
+                "SO:0001217",
+                "UniParc:UPI0003D902F4",
+                "UniRef:UniRef100_A0A0C5GXS3",
+                "UniRef:UniRef50_B2CBC6",
+                "UniRef:UniRef90_A0A6C0ND82"
+            ]
+        },
+        {
+            "id": "MEGJMN_026",
+            "description": "Thioesterase",
+            "aa": "MFTKKFAVDEKHVDFQGVVDGLYYPFYMEWTRHAYMKDALGLDLEAEFKEGRLHMILEYSMKFKKSLLKDHNMEVTCQLQKNEKRNRVNFVQQILVDGVVFAEATFVATCLVNGRPSVPEVVQNAIVE",
+            "length": 128,
+            "type": "cds",
+            "locus": "MEGJMN_026",
+            "aa_hexdigest": "0a6dc0e1e561593e5ac3bd436796af88",
+            "ups": {
+                "uniparc_id": "UPI00032968CA",
+                "ncbi_nrp_id": "WP_015632417.1",
+                "uniref100_id": "UniRef100_A0A6C0NDI2",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032968CA",
+                    "RefSeq:WP_015632417.1",
+                    "UniRef:UniRef100_A0A6C0NDI2"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NDI2",
+                "uniref90_id": "UniRef90_A0A6C0NDI2"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0NDI2",
+                "product": "Thioesterase",
+                "uniref50_id": "UniRef50_C6CPI2"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_C6CPI2",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_C6CPI2"
+                ],
+                "product": "Thioesterase superfamily protein"
+            },
+            "product": "Thioesterase",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632417.1",
+                "SO:0001217",
+                "UniParc:UPI00032968CA",
+                "UniRef:UniRef100_A0A6C0NDI2",
+                "UniRef:UniRef50_C6CPI2",
+                "UniRef:UniRef90_A0A6C0NDI2"
+            ]
+        },
+        {
+            "id": "MEGJMN_027",
+            "description": "hypothetical protein",
+            "aa": "MQESEVDKKSIKINFHRYSNEAINFLNSFEKVTYVSTLLVEDNILSAHQSNGYADWDKKFYYDGKYKDSLLIKLGLELTKIEGGDKKTVIWDDVLRNHPENEIDRQRRAHNIYHGVSFIYGLTDNISMAINVCTDSATTKREFEDLILPHRLKLLTMFQDM",
+            "length": 161,
+            "type": "cds",
+            "locus": "MEGJMN_027",
+            "aa_hexdigest": "a08c13806aec527a92928dfbd0ce23ff",
+            "ups": {
+                "uniparc_id": "UPI000329691F",
+                "ncbi_nrp_id": "WP_015632418.1",
+                "uniref100_id": "UniRef100_A0A6C0L1X5",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000329691F",
+                    "RefSeq:WP_015632418.1",
+                    "UniRef:UniRef100_A0A6C0L1X5"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L1X5",
+                "uniref90_id": "UniRef90_A0A0C5H1S2"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A0C5H1S2",
+                "uniref50_id": "UniRef50_J2UQ18"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_J2UQ18",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_J2UQ18"
+                ]
+            },
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "RefSeq:WP_015632418.1",
+                "SO:0001217",
+                "UniParc:UPI000329691F",
+                "UniRef:UniRef100_A0A6C0L1X5",
+                "UniRef:UniRef50_J2UQ18",
+                "UniRef:UniRef90_A0A0C5H1S2"
+            ],
+            "seq_stats": {
+                "molecular_weight": 18826.0958,
+                "isoelectric_point": 5.854382133483886
+            }
+        },
+        {
+            "id": "MEGJMN_028",
+            "description": "XRE family transcriptional regulator",
+            "aa": "MLDTIGKRLKCCRAATGTTTHEVVDYIHSQGEELSYPTYTRWEAGSAFPGKKTAHLIGIVSDFFKKNGLQVEANWILSGEGFPPQFAEYTTMDEDTLFILASRTMQDVELIQVGGKYGEPYVNFGEFVIVSNESDIYKNNGKLCYVKTTEGVKIGIVSILDEKSILLVGIGEKEIKKSVVQECRKVKWIKKV",
+            "length": 192,
+            "type": "cds",
+            "locus": "MEGJMN_028",
+            "aa_hexdigest": "e93516bc438998162e2e5d871ccb9382",
+            "ups": {
+                "uniparc_id": "UPI000329699F",
+                "ncbi_nrp_id": "WP_015632419.1",
+                "uniref100_id": "UniRef100_A0A6C0NDC2",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000329699F",
+                    "RefSeq:WP_015632419.1",
+                    "UniRef:UniRef100_A0A6C0NDC2"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NDC2",
+                "uniref90_id": "UniRef90_A0A6C0NDC2"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0NDC2",
+                "product": "XRE family transcriptional regulator",
+                "uniref50_id": "UniRef50_A0A0U5LAP5"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A0U5LAP5",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A0U5LAP5"
+                ],
+                "product": "Repressor"
+            },
+            "product": "XRE family transcriptional regulator",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632419.1",
+                "SO:0001217",
+                "UniParc:UPI000329699F",
+                "UniRef:UniRef100_A0A6C0NDC2",
+                "UniRef:UniRef50_A0A0U5LAP5",
+                "UniRef:UniRef90_A0A6C0NDC2"
+            ]
+        },
+        {
+            "id": "MEGJMN_029",
+            "description": "Transcription antitermination protein RfaH",
+            "aa": "MRNWYLLQCQVQNFQRITTRIHMLNIESFVPTEVKISRRRDCNGCRTTEKPLFPGYIFLRFDPEEIHTTTFTEIPGARHFVSFGGQPETVSDTIIAALKCSAHLLIYPEDNAVGFKNLPPELIEKISLIFSTKNALERQISFFKLLESDNDIELMTRNGGRIYSQVPSNQPQIRPSV",
+            "length": 177,
+            "type": "cds",
+            "locus": "MEGJMN_029",
+            "aa_hexdigest": "a6a7c481086eb1b38b0bac1294f42a5f",
+            "ups": {
+                "uniparc_id": "UPI0003296925",
+                "ncbi_nrp_id": "WP_015632420.1",
+                "uniref100_id": "UniRef100_A0A6C0NCZ7",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003296925",
+                    "RefSeq:WP_015632420.1",
+                    "UniRef:UniRef100_A0A6C0NCZ7"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NCZ7",
+                "uniref90_id": "UniRef90_A0A6C0NCZ7"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0NCZ7",
+                "product": "Transcription antitermination protein RfaH",
+                "uniref50_id": "UniRef50_A0A6C0NCZ7"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0NCZ7",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0NCZ7"
+                ],
+                "product": "Transcription antitermination protein RfaH"
+            },
+            "product": "Transcription antitermination protein RfaH",
+            "gene": "rfaH",
+            "genes": [
+                "rfaH"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632420.1",
+                "SO:0001217",
+                "UniParc:UPI0003296925",
+                "UniRef:UniRef100_A0A6C0NCZ7",
+                "UniRef:UniRef50_A0A6C0NCZ7",
+                "UniRef:UniRef90_A0A6C0NCZ7"
+            ]
+        },
+        {
+            "id": "MEGJMN_030",
+            "description": "hypothetical protein",
+            "aa": "MSSSAEKKTNVIYIGSTRRRKIEKAAISLSVHAGKPISAAKITQEVLDMYLESYIKDFIENTPPDDD",
+            "length": 67,
+            "type": "cds",
+            "locus": "MEGJMN_030",
+            "aa_hexdigest": "5d28518b6ce946dfb2a0198e927dd8ee",
+            "ups": {
+                "uniparc_id": "UPI0003D8E070",
+                "ncbi_nrp_id": "WP_032495743.1",
+                "uniref100_id": "UniRef100_A0A6C0L2Y1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003D8E070",
+                    "RefSeq:WP_032495743.1",
+                    "UniRef:UniRef100_A0A6C0L2Y1"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L2Y1",
+                "uniref90_id": "UniRef90_A0A6C0L2Y1"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L2Y1",
+                "uniref50_id": "UniRef50_A0A6C0L2Y1"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0L2Y1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0L2Y1"
+                ]
+            },
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "RefSeq:WP_032495743.1",
+                "SO:0001217",
+                "UniParc:UPI0003D8E070",
+                "UniRef:UniRef100_A0A6C0L2Y1",
+                "UniRef:UniRef50_A0A6C0L2Y1",
+                "UniRef:UniRef90_A0A6C0L2Y1"
+            ],
+            "seq_stats": {
+                "molecular_weight": 7472.4208,
+                "isoelectric_point": 6.561857032775879
+            }
+        },
+        {
+            "id": "MEGJMN_031",
+            "description": "DUF1496 domain-containing protein",
+            "aa": "MNKVLYLTLSLLTFPIIASASSSVNDVVSEQYLISISNQLKEISSDIKLQNTMLEDKHHNRCYWEGKAYSAGAVHTDNAQSYVCREQNNARVWELMSADGSAK",
+            "length": 103,
+            "type": "cds",
+            "locus": "MEGJMN_031",
+            "aa_hexdigest": "57d24cf3ff8d13408917af523ed2a5e1",
+            "ups": {
+                "uniparc_id": "UPI00032968ED",
+                "ncbi_nrp_id": "WP_015632421.1",
+                "uniref100_id": "UniRef100_A0A6C0L6Y8",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032968ED",
+                    "RefSeq:WP_015632421.1",
+                    "UniRef:UniRef100_A0A6C0L6Y8"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L6Y8",
+                "uniref90_id": "UniRef90_A0A6C0L6Y8"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L6Y8",
+                "product": "DUF1496 domain-containing protein",
+                "uniref50_id": "UniRef50_A0A6C0L6Y8"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0L6Y8",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0L6Y8"
+                ],
+                "product": "DUF1496 domain-containing protein"
+            },
+            "product": "DUF1496 domain-containing protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632421.1",
+                "SO:0001217",
+                "UniParc:UPI00032968ED",
+                "UniRef:UniRef100_A0A6C0L6Y8",
+                "UniRef:UniRef50_A0A6C0L6Y8",
+                "UniRef:UniRef90_A0A6C0L6Y8"
+            ]
+        },
+        {
+            "id": "MEGJMN_032",
+            "description": "Lipoprotein",
+            "aa": "MKHLLPGLLIPAVLAGCVSHSASTDAPASIYVDGLIADSAQTISHAQTGLHQTGPYPARPVSPAAQFKPLPPSTPVRKGTTEPYRSQPRPVSQNVQPPTLSHVVYNGRPGPLSFPQRAGYARNITVQAAAQRIIPVGWSVNWSPGLEKVRRQRVNLSLNDQWPRVLNNLIAAKSLYATVEWGQSRITITSYSPRPRLFSHQ",
+            "length": 201,
+            "type": "cds",
+            "locus": "MEGJMN_032",
+            "aa_hexdigest": "f310a7faa419cb7005cfaa9498ae8eab",
+            "ups": {
+                "uniparc_id": "UPI000329697F",
+                "ncbi_nrp_id": "WP_015632422.1",
+                "uniref100_id": "UniRef100_A0A6C0L5V6",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000329697F",
+                    "RefSeq:WP_015632422.1",
+                    "UniRef:UniRef100_A0A6C0L5V6"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L5V6",
+                "uniref90_id": "UniRef90_A0A7G3L4A4"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L4A4",
+                "product": "Lipoprotein",
+                "uniref50_id": "UniRef50_A0A7G3L4A4"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L4A4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L4A4"
+                ],
+                "product": "Lipoprotein"
+            },
+            "product": "Lipoprotein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632422.1",
+                "SO:0001217",
+                "UniParc:UPI000329697F",
+                "UniRef:UniRef100_A0A6C0L5V6",
+                "UniRef:UniRef50_A0A7G3L4A4",
+                "UniRef:UniRef90_A0A7G3L4A4"
+            ]
+        },
+        {
+            "id": "MEGJMN_033",
+            "description": "Transglycosylase SLT domain-containing protein",
+            "aa": "MKLPAIFLSTLLFLPQAQAYCFNYAAAKYNQNPLVVESIAIWESSLRPDAVGRNYDKAGRLLSSDYCLMQINTANVRALVSIGVISSADDLLKDPCLCVQAGAWVLAKHLRKCGNTWRCLGSYNAGFSDDPKQERKRQTYAAEIRSIYERLYARQHRAS",
+            "length": 159,
+            "type": "cds",
+            "locus": "MEGJMN_033",
+            "aa_hexdigest": "3c3229b6f39b2cb8761f52a48747eabc",
+            "ups": {
+                "uniparc_id": "UPI0003296919",
+                "ncbi_nrp_id": "WP_015632423.1",
+                "uniref100_id": "UniRef100_A0A6C0ND22",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003296919",
+                    "RefSeq:WP_015632423.1",
+                    "UniRef:UniRef100_A0A6C0ND22"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0ND22",
+                "uniref90_id": "UniRef90_A0A7G3L7G8"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L7G8",
+                "product": "Transglycosylase SLT domain-containing protein",
+                "uniref50_id": "UniRef50_A0A0P9RVK3"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A0P9RVK3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A0P9RVK3"
+                ],
+                "product": "Transglycosylase SLT domain-containing protein"
+            },
+            "product": "Transglycosylase SLT domain-containing protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632423.1",
+                "SO:0001217",
+                "UniParc:UPI0003296919",
+                "UniRef:UniRef100_A0A6C0ND22",
+                "UniRef:UniRef50_A0A0P9RVK3",
+                "UniRef:UniRef90_A0A7G3L7G8"
+            ]
+        },
+        {
+            "id": "MEGJMN_034",
+            "description": "DotD/TraH family lipoprotein",
+            "aa": "MKEKLLATVVASFMLAGCQQPKSVITAPYVPPEKTSQNVSIVRAQQYQLWDEKVINTRTPLPADTIYANSTRLSLDWDGDAIELLAQLARQRGLQFNYSGVHLPLPLNIHVRDMTFQNLLRIVESQISWRATLHQYPGLLRVEFMPVKAPPGGRR",
+            "length": 155,
+            "type": "cds",
+            "locus": "MEGJMN_034",
+            "aa_hexdigest": "e638828ae06ef191dff8579111a3b2c5",
+            "ups": {
+                "uniparc_id": "UPI000329699B",
+                "ncbi_nrp_id": "WP_015632424.1",
+                "uniref100_id": "UniRef100_A0A6C0ND56",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000329699B",
+                    "RefSeq:WP_015632424.1",
+                    "UniRef:UniRef100_A0A6C0ND56"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0ND56",
+                "uniref90_id": "UniRef90_A0A7G3L854"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L854",
+                "product": "DotD/TraH family lipoprotein",
+                "uniref50_id": "UniRef50_A0A2J5Q4Q6"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A2J5Q4Q6",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A2J5Q4Q6"
+                ],
+                "product": "DotD/TraH family lipoprotein"
+            },
+            "product": "DotD/TraH family lipoprotein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632424.1",
+                "SO:0001217",
+                "UniParc:UPI000329699B",
+                "UniRef:UniRef100_A0A6C0ND56",
+                "UniRef:UniRef50_A0A2J5Q4Q6",
+                "UniRef:UniRef90_A0A7G3L854"
+            ]
+        },
+        {
+            "id": "MEGJMN_035",
+            "description": "Conjugal transfer protein",
+            "aa": "MKYSAIALFCLCVAGYATADDSEPSTPQGMEHYLDISNDSKSDITDARAAIIRSAGHTIGFRGGKAQRAFELVNALNARESTLNALYDFRTLVSQEGWLPPVIDEAQDVAHITDNQIRTASRVYQIILPERFVSNPPSWRRWLLAGLSTTSPSGQEGGVIPKNSDERKIWQEAVEKGWQDGRDGADHTLEANFNRLTRDYRGMLLYSRLLREGYISRPEITEQQQSVSGGHKKLVTGDRVRNLRRHAEFNPNKGHWKPVINTESHHEARQTF",
+            "length": 272,
+            "type": "cds",
+            "locus": "MEGJMN_035",
+            "aa_hexdigest": "3d811fb99eaf950148552d9caf8ebcbb",
+            "ups": {
+                "uniparc_id": "UPI000329691D",
+                "ncbi_nrp_id": "WP_015632425.1",
+                "uniref100_id": "UniRef100_A0A6C0ND76",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000329691D",
+                    "RefSeq:WP_015632425.1",
+                    "UniRef:UniRef100_A0A6C0ND76"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0ND76",
+                "uniref90_id": "UniRef90_A0A7G3L7Q4"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L7Q4",
+                "product": "Conjugal transfer protein",
+                "uniref50_id": "UniRef50_A0A7G3L7Q4",
+                "kegg_orthology_id": "K12204"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L7Q4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L7Q4"
+                ],
+                "product": "Conjugal transfer protein"
+            },
+            "product": "Conjugal transfer protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "KEGG:K12204",
+                "RefSeq:WP_015632425.1",
+                "SO:0001217",
+                "UniParc:UPI000329691D",
+                "UniRef:UniRef100_A0A6C0ND76",
+                "UniRef:UniRef50_A0A7G3L7Q4",
+                "UniRef:UniRef90_A0A7G3L7Q4"
+            ]
+        },
+        {
+            "id": "MEGJMN_036",
+            "description": "plasmid transfer ATPase TraJ",
+            "aa": "MKPVKLSDPTTPDIELFNFDGPVNASNYKEFLVWAAKNAVSDIHVQGGNPIVIERYGRMVPVTTFSLPDNILSDIIDGLFDPELRAKVRGGTPQDRAIQLDGDQNKRYGLDRGERLRFRCNVVQATAANMLTTCAMTQRVIPTEIPELENMGIEPDLFEALLPHKGLGLVCGETGSGKSTLLAAIYRYCADHYPDRKITTAEDPVEYIIGRKGDVLPATQLELGRDVATFAEAIRAALRRAPSIIGVGEMRDTETILAAVLSALLGHLCLSTLHTDSVGETIPRLLAGIPIEIREATARDVMGTMQYIIVQRLLRTTDGKRQAVREYLVFDQPLRNEMAQVPYTEWGHLLNRKVREKKGRIADKAFRLLREGIIERDEMLSVVSPAELREMEDSV",
+            "length": 395,
+            "type": "cds",
+            "locus": "MEGJMN_036",
+            "aa_hexdigest": "df1689d15f163bbef6d3bf4d8db3845d",
+            "ups": {
+                "uniparc_id": "UPI0003D878FC",
+                "ncbi_nrp_id": "WP_032495744.1",
+                "uniref100_id": "UniRef100_A0A0C5H2U4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003D878FC",
+                    "RefSeq:WP_032495744.1",
+                    "UniRef:UniRef100_A0A0C5H2U4"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A0C5H2U4",
+                "uniref90_id": "UniRef90_A0A0C5H2U4"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A0C5H2U4",
+                "gene": "traJ",
+                "product": "plasmid transfer ATPase TraJ",
+                "ec_ids": [
+                    "7.2.4.8"
+                ],
+                "uniref50_id": "UniRef50_A0A0C5H2U4",
+                "kegg_orthology_id": "K12203"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A0C5H2U4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A0C5H2U4"
+                ],
+                "product": "TraJ"
+            },
+            "product": "plasmid transfer ATPase TraJ",
+            "gene": "traJ",
+            "genes": [
+                "traJ"
+            ],
+            "db_xrefs": [
+                "EC:7.2.4.8",
+                "KEGG:K12203",
+                "RefSeq:WP_032495744.1",
+                "SO:0001217",
+                "UniParc:UPI0003D878FC",
+                "UniRef:UniRef100_A0A0C5H2U4",
+                "UniRef:UniRef50_A0A0C5H2U4",
+                "UniRef:UniRef90_A0A0C5H2U4"
+            ]
+        },
+        {
+            "id": "MEGJMN_037",
+            "description": "IcmT/TraK family protein",
+            "aa": "MRSVENRCRESSRPLTIYGVPVAMFLIYLIWCKFPSFMTLWICSGVLTFFGVIAHFGWSWPVLLQRLLHMMRGSRKAGRPWWYRRFYE",
+            "length": 88,
+            "type": "cds",
+            "locus": "MEGJMN_037",
+            "aa_hexdigest": "27ce2876b4cd7b6dd88f575f76956a0d",
+            "ups": {
+                "uniparc_id": "UPI0003D7ED4E",
+                "ncbi_nrp_id": "WP_032441926.1",
+                "uniref100_id": "UniRef100_A0A6C0L1W9",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003D7ED4E",
+                    "RefSeq:WP_032441926.1",
+                    "UniRef:UniRef100_A0A6C0L1W9"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L1W9",
+                "uniref90_id": "UniRef90_A0A7G3L622"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L622",
+                "gene": "icmT",
+                "product": "IcmT/TraK family protein",
+                "uniref50_id": "UniRef50_A0A7G3L622",
+                "kegg_orthology_id": "K12222"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L622",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L622"
+                ],
+                "product": "Conjugal transfer protein"
+            },
+            "product": "IcmT/TraK family protein",
+            "gene": "icmT",
+            "genes": [
+                "icmT"
+            ],
+            "db_xrefs": [
+                "KEGG:K12222",
+                "RefSeq:WP_032441926.1",
+                "SO:0001217",
+                "UniParc:UPI0003D7ED4E",
+                "UniRef:UniRef100_A0A6C0L1W9",
+                "UniRef:UniRef50_A0A7G3L622",
+                "UniRef:UniRef90_A0A7G3L622"
+            ]
+        },
+        {
+            "id": "MEGJMN_038",
+            "description": "DNA primase TraC",
+            "aa": "MAQNAQVADRRLWLAVPHEEKDEAVAAGGLASDGRPNISWSPDDKLWYAREGTALAGIRLWLPDTTARATGDADPLVEFADRLKEAGFLLEGLPVMDGKWHRAKVEEDKKGKSHREGGGAYKGFSDGHPAGIFVNYHRSSEKEVSRWRAQGGETDPLTRLHIRAATRQAQDDSERVRQQAYAEKAWAASQLYDKLAPATDSHPYLLRKGVSADPALRVTRNNRLVIPFYNHDDKFQSLQYIAEDGEKKLFFEAPKAGNFYITGATPVNGKPILYAEGYATAKSLNVATGLPVVMTIDAGNMRTIAESFGKRFPDSPHFFMADMDLKKNDNKDDLYLSIQSSRFVPSDPGFYMDEEKLKEIKGLYMALQAADRVPDGHVVIPPFTEQEMKAGLSDFNDLHSARGLDSLKTVLAETPGLGAYLYHPETQTMTVPVEKQTPAQPYPDSAPAYDNVLLEGSDDASADMESYEAMMAAEAIAAPEAAAVPEAAAAPEAAAAPEAAAVPEATAAPEAAAVPEATAAPEAAAAPTIASLLKVTSAPAEPEVSADPAANDNPAPVKAKSTAENATTAANEPDDTENAIVWGPRAPGEGNFTPETASASALIDTNALLQRITHEMQSNTVLYKLDGQPAFRDHGNRMTMETPDASKQDDMVMAALLTAMQHYGRRIQITGSETFQTKVIGLIASHGLDVQMRDPVQQAMLNEAIKQQAADRPDARDSINATPVMPANAPVQASPGKNTSGPAPAGEQPSPAPSAGTAVPPVKSSEPAGQQPFTTKAEDFKDGVKGRLLEHGRAHYQFNEQNSMNYYVHLETREGVREVWGKELEQAINQSRVSEGQVISLKFEGNKPVTVNQPIMKDGKIQGYEQVTAHRNSWSMTPLVNSRVRPPASPTTGETLAAYDLQEFSKIQARLLRTIRAENVPPIAGQKNNLLWIRPDGRGTGDAGDPATVKLPAKDGQSTTPVVSAWRDDGQLALHLVKGHGPYLQGIAQINGQYQHVLASMTGNQNNAGLVINAITPDGLKTVGYGQALNKVEGKPVARDAMAFRFAGETDPDRKLIGKLENPETLPRTIHARLGFDEPYRPDTDYPKSQPRAEHHHKAAPGAGRPG",
+            "length": 1107,
+            "type": "cds",
+            "locus": "MEGJMN_038",
+            "aa_hexdigest": "467bf5acec30576c1ec710d3124a7437",
+            "ups": {
+                "uniparc_id": "UPI0003D941A3",
+                "ncbi_nrp_id": "WP_032495745.1",
+                "uniref100_id": "UniRef100_A0A6C0L4D4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003D941A3",
+                    "RefSeq:WP_032495745.1",
+                    "UniRef:UniRef100_A0A6C0L4D4"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L4D4",
+                "uniref90_id": "UniRef90_A0A7G3L4B5"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L4B5",
+                "product": "DNA primase TraC",
+                "uniref50_id": "UniRef50_A0A7G3L4B5"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L4B5",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L4B5"
+                ],
+                "product": "DNA primase TraC"
+            },
+            "product": "DNA primase TraC",
+            "gene": "traC",
+            "genes": [
+                "traC"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_032495745.1",
+                "SO:0001217",
+                "UniParc:UPI0003D941A3",
+                "UniRef:UniRef100_A0A6C0L4D4",
+                "UniRef:UniRef50_A0A7G3L4B5",
+                "UniRef:UniRef90_A0A7G3L4B5"
+            ]
+        },
+        {
+            "id": "MEGJMN_039",
+            "description": "Conjugal transfer protein",
+            "aa": "MPVKKMLGALAVCALFLTPLSLQAATCRASTAAETGSETGYNTAKKAAEAWYDRESDVSDSLQTCLDKIRTLSITMPNFSSLSSILNGYADEICSTVVSEVNSYIPSSIDPWDELTN",
+            "length": 117,
+            "type": "cds",
+            "locus": "MEGJMN_039",
+            "aa_hexdigest": "b3d8334e6c87bca8d37f214c21fbb2e9",
+            "ups": {
+                "uniparc_id": "UPI0003296943",
+                "ncbi_nrp_id": "WP_015632427.1",
+                "uniref100_id": "UniRef100_A0A6C0L5S2",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003296943",
+                    "RefSeq:WP_015632427.1",
+                    "UniRef:UniRef100_A0A6C0L5S2"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L5S2",
+                "uniref90_id": "UniRef90_A0A7G3LBI7"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3LBI7",
+                "product": "Conjugal transfer protein",
+                "uniref50_id": "UniRef50_A0A7G3LBI7",
+                "kegg_orthology_id": "K12227"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3LBI7",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3LBI7"
+                ],
+                "product": "Conjugal transfer protein"
+            },
+            "product": "Conjugal transfer protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "KEGG:K12227",
+                "RefSeq:WP_015632427.1",
+                "SO:0001217",
+                "UniParc:UPI0003296943",
+                "UniRef:UniRef100_A0A6C0L5S2",
+                "UniRef:UniRef50_A0A7G3LBI7",
+                "UniRef:UniRef90_A0A7G3LBI7"
+            ]
+        },
+        {
+            "id": "MEGJMN_040",
+            "description": "Conjugal transfer protein TraM",
+            "aa": "MNTPATGGTDSSAPQTTRSLSAQEQLVYDEAVRLQNEQALGATFARKLLTSNLILGTAFLLTTSLSAVTLWKVYHPDNHYFATENGRVTPIYPLNKPAWSMEDIAGFGADTLQRAFTMDFVHYRQQMTSVMTRFTNQGYADYYKALTSSNVLKMVRDQRMNLSTTVSPGVVHSQGIINGIYTVRVQYPVSLKLDGQERSLPAANYIIELTIQQTDPRKKPLGLEVRQTIMTSSH",
+            "length": 234,
+            "type": "cds",
+            "locus": "MEGJMN_040",
+            "aa_hexdigest": "a751f21bc51b376c00c8302ff347fdff",
+            "ups": {
+                "uniparc_id": "UPI0003296974",
+                "ncbi_nrp_id": "WP_015632428.1",
+                "uniref100_id": "UniRef100_A0A6C0L2X6",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003296974",
+                    "RefSeq:WP_015632428.1",
+                    "UniRef:UniRef100_A0A6C0L2X6"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L2X6",
+                "uniref90_id": "UniRef90_A0A7G3L479"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L479",
+                "product": "Conjugal transfer protein TraM",
+                "uniref50_id": "UniRef50_A0A7G3L479"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L479",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L479"
+                ],
+                "product": "Conjugal transfer protein TraM"
+            },
+            "product": "Conjugal transfer protein TraM",
+            "gene": "traM",
+            "genes": [
+                "traM"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632428.1",
+                "SO:0001217",
+                "UniParc:UPI0003296974",
+                "UniRef:UniRef100_A0A6C0L2X6",
+                "UniRef:UniRef50_A0A7G3L479",
+                "UniRef:UniRef90_A0A7G3L479"
+            ]
+        },
+        {
+            "id": "MEGJMN_041",
+            "description": "Conjugal transfer protein TraN",
+            "aa": "MKPYFALSLLAVMCCNVGAAEPQQTVVPHSADPILVTDGPQQDAALMNKAGLPPQPAEQPPAQPVQPPETTQATPPSAPTAAPPQAGSQTDQAPSATQNSDELPPPSPLYSAAQKQVSPLTPDEVRQLRGQKENINRALASPAMTVVPRISAQTVNLSPGSSLPLVRTAVNHPSNLSFTDATGAPWPVAGKPTNPMTKDFDVYYIPDSPIVTIVAKRPYASGSITVLLKGLSVPISVEVTSGDTDSKSRVWTVDNRLDLRIPQRGPSARPMAAPESKIGLYDNTLQAFLDGTPPREAHRLKATGQVPDTTVWQLGDDLFIRTRAEIVDEYDQTLSSADGMHLFKLPVTPYVTFSVMGRSQALNITLE",
+            "length": 367,
+            "type": "cds",
+            "locus": "MEGJMN_041",
+            "aa_hexdigest": "f06071f96b77efc9fe7bcfa32e5b3f03",
+            "ups": {
+                "uniparc_id": "UPI00032969A3",
+                "ncbi_nrp_id": "WP_015632429.1",
+                "uniref100_id": "UniRef100_A0A6C0L6Y2",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032969A3",
+                    "RefSeq:WP_015632429.1",
+                    "UniRef:UniRef100_A0A6C0L6Y2"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L6Y2",
+                "uniref90_id": "UniRef90_A0A7G3L550"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L550",
+                "product": "Conjugal transfer protein TraN",
+                "uniref50_id": "UniRef50_A0A7G3L550",
+                "kegg_orthology_id": "K12213"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L550",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L550"
+                ],
+                "product": "Conjugal transfer protein TraN"
+            },
+            "product": "Conjugal transfer protein TraN",
+            "gene": "traN",
+            "genes": [
+                "traN"
+            ],
+            "db_xrefs": [
+                "KEGG:K12213",
+                "RefSeq:WP_015632429.1",
+                "SO:0001217",
+                "UniParc:UPI00032969A3",
+                "UniRef:UniRef100_A0A6C0L6Y2",
+                "UniRef:UniRef50_A0A7G3L550",
+                "UniRef:UniRef90_A0A7G3L550"
+            ]
+        },
+        {
+            "id": "MEGJMN_042",
+            "description": "hypothetical protein",
+            "aa": "MANENDASRDKKLLVGLIALVCAGAAGGGYLVWNHFFAPPPTPSRINVTNVTSAGKHQSTETEQYRQLLHEYNREGASAARADNSSFIASIPVGGGTPVHTVEAPRKRRSGNPHTRKNRRRRKRTRVSVSQIRQP",
+            "length": 135,
+            "type": "cds",
+            "locus": "MEGJMN_042",
+            "aa_hexdigest": "0b0b37a9ac3b849c5772c2b96c2888b9",
+            "ups": {
+                "uniparc_id": "UPI0009386B92",
+                "ncbi_nrp_id": "WP_104022059.1",
+                "uniref100_id": "UniRef100_UPI0009386B92",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0009386B92",
+                    "RefSeq:WP_104022059.1",
+                    "UniRef:UniRef100_UPI0009386B92"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_UPI0009386B92",
+                "uniref90_id": "UniRef90_UPI0009386B92"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_UPI0009386B92",
+                "uniref50_id": "UniRef50_UPI0009386B92"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_UPI0009386B92",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_UPI0009386B92"
+                ]
+            },
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "RefSeq:WP_104022059.1",
+                "SO:0001217",
+                "UniParc:UPI0009386B92",
+                "UniRef:UniRef100_UPI0009386B92",
+                "UniRef:UniRef50_UPI0009386B92",
+                "UniRef:UniRef90_UPI0009386B92"
+            ],
+            "seq_stats": {
+                "molecular_weight": 14824.5005,
+                "isoelectric_point": 11.26186923980713
+            }
+        },
+        {
+            "id": "MEGJMN_043",
+            "description": "conjugal transfer protein TraO",
+            "aa": "MDTSAQSPDLQQVSLAVATEPGAAAEGSQAKSAYADWTSSIMPRSTGGGLSGGEGSTAPIIELIPAYTRVPGSVDFGIDSDNNNSPAVVRLYTGPYKGAVLKASQAKLGGDGVVIHMTTMYWNRKNYRVDAYALKDDTLMANVATDVNHHYMSRILLPSIAAGIGKAGDLYADANTEILTNGYSTVTSHAGMPDGEAVAGVVAGGAASNAADVLKSDAAKISPTQVTVDAGQAVYVEFMAAVTTADEIKPRGQNSPGNTATTPENLQDSHTGNALSPVSPTLAQLREQTQSRIRTQSKPENTSE",
+            "length": 304,
+            "type": "cds",
+            "locus": "MEGJMN_043",
+            "aa_hexdigest": "6db5d96234dd26bcf4729aab3ad7e898",
+            "psc": {
+                "uniref90_id": "UniRef90_UPI00215B38C2",
+                "query_cov": 1.0,
+                "subject_cov": 0.8760806916426513,
+                "identity": 0.951,
+                "score": 545.0,
+                "evalue": 2.43e-194,
+                "valid": true,
+                "gene": "traO",
+                "product": "conjugal transfer protein TraO",
+                "uniref50_id": "UniRef50_UPI00215B38C2",
+                "kegg_orthology_id": "K12209"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_UPI00215B38C2",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_UPI00215B38C2"
+                ],
+                "product": "conjugal transfer protein TraO"
+            },
+            "product": "conjugal transfer protein TraO",
+            "gene": "traO",
+            "genes": [
+                "traO"
+            ],
+            "db_xrefs": [
+                "KEGG:K12209",
+                "SO:0001217",
+                "UniRef:UniRef50_UPI00215B38C2",
+                "UniRef:UniRef90_UPI00215B38C2"
+            ]
+        },
+        {
+            "id": "MEGJMN_044",
+            "description": "conjugal transfer protein TraP",
+            "aa": "MNEFNHPATEKDDQPDTSAIVQHEKPGLKYFLLEKQYILGLNGPWLIGMLTAATLGVWYLFGTVAPSSSDELNAAAGFEDVPPAASQPQNRSLSPPMSQPASDNVKQEVATMVNGVKTYAETNRTAIQRLAGTVKTLQQQADAAQQLQSQYLNEISVLKSRVATLEVEKVNTATSAHHRPRLLTSGMKVNSVQDGAAWIFWKNKTWAVREGDTLADGKVSIIRIDSANRQVFTTEGVIR",
+            "length": 239,
+            "type": "cds",
+            "locus": "MEGJMN_044",
+            "aa_hexdigest": "e2258c54ee84f211f4c1883fc1f9b149",
+            "ups": {
+                "uniparc_id": "UPI0003296995",
+                "ncbi_nrp_id": "WP_015632431.1",
+                "uniref100_id": "UniRef100_A0A6C0ND15",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003296995",
+                    "RefSeq:WP_015632431.1",
+                    "UniRef:UniRef100_A0A6C0ND15"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0ND15",
+                "uniref90_id": "UniRef90_A0A6C0ND15"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0ND15",
+                "gene": "traP",
+                "product": "conjugal transfer protein TraP",
+                "uniref50_id": "UniRef50_A0A486BGK9",
+                "kegg_orthology_id": "K12211"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A486BGK9",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A486BGK9"
+                ],
+                "product": "TraP"
+            },
+            "product": "conjugal transfer protein TraP",
+            "gene": "traP",
+            "genes": [
+                "traP"
+            ],
+            "db_xrefs": [
+                "KEGG:K12211",
+                "RefSeq:WP_015632431.1",
+                "SO:0001217",
+                "UniParc:UPI0003296995",
+                "UniRef:UniRef100_A0A6C0ND15",
+                "UniRef:UniRef50_A0A486BGK9",
+                "UniRef:UniRef90_A0A6C0ND15"
+            ]
+        },
+        {
+            "id": "MEGJMN_045",
+            "description": "conjugal transfer protein TraQ",
+            "aa": "MVDALTALVNLASAIHTSANRFIFALAVVLGIYGVMFALVKEARMARQVPGHNGMGKIIGVIILGGMLVGLSQIINAGAVQLGWSDVTFDEVSYVSTDTFGQGADAANALLTLLQTLGVAYALAGTQRIKRSLKDGHTGLSAGEDVGTGAVKFITGVFLICAPTLLDAIQTSLGLSL",
+            "length": 177,
+            "type": "cds",
+            "locus": "MEGJMN_045",
+            "aa_hexdigest": "d4b8196b71721b13d9598af2d04b041c",
+            "ups": {
+                "uniparc_id": "UPI0003296963",
+                "ncbi_nrp_id": "WP_015632432.1",
+                "uniref100_id": "UniRef100_A0A6C0L1W3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003296963",
+                    "RefSeq:WP_015632432.1",
+                    "UniRef:UniRef100_A0A6C0L1W3"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L1W3",
+                "uniref90_id": "UniRef90_A0A7G3L862"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L862",
+                "gene": "traQ",
+                "product": "conjugal transfer protein TraQ",
+                "uniref50_id": "UniRef50_A0A7G3L862"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L862",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L862"
+                ],
+                "product": "Conjugal transfer protein"
+            },
+            "product": "conjugal transfer protein TraQ",
+            "gene": "traQ",
+            "genes": [
+                "traQ"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632432.1",
+                "SO:0001217",
+                "UniParc:UPI0003296963",
+                "UniRef:UniRef100_A0A6C0L1W3",
+                "UniRef:UniRef50_A0A7G3L862",
+                "UniRef:UniRef90_A0A7G3L862"
+            ]
+        },
+        {
+            "id": "MEGJMN_046",
+            "description": "Conjugal transfer protein",
+            "aa": "MSAIFDRVLKASIAAHELRHSMKRKFTAGMASLVALTPLSALADGSLTDMVDEGATGMSDVEKDALVFAEGLGVLIVFASIIAMKNKAKSPHITTGGIITGWVVGIFLIGLAEIVRRSQSQVGMTEVTVGSGS",
+            "length": 133,
+            "type": "cds",
+            "locus": "MEGJMN_046",
+            "aa_hexdigest": "1acb4b1b3cf0977a26953c2e79973c57",
+            "ups": {
+                "uniparc_id": "UPI00032968E0",
+                "ncbi_nrp_id": "WP_015632433.1",
+                "uniref100_id": "UniRef100_A0A6C0L622",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032968E0",
+                    "RefSeq:WP_015632433.1",
+                    "UniRef:UniRef100_A0A6C0L622"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L622",
+                "uniref90_id": "UniRef90_A0A6C0L622"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L622",
+                "product": "Conjugal transfer protein",
+                "uniref50_id": "UniRef50_A0A7G3L7P3"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L7P3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L7P3"
+                ],
+                "product": "Conjugal transfer protein"
+            },
+            "product": "Conjugal transfer protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632433.1",
+                "SO:0001217",
+                "UniParc:UPI00032968E0",
+                "UniRef:UniRef100_A0A6C0L622",
+                "UniRef:UniRef50_A0A7G3L7P3",
+                "UniRef:UniRef90_A0A6C0L622"
+            ]
+        },
+        {
+            "id": "MEGJMN_047",
+            "description": "Conjugal transfer protein TraT",
+            "aa": "MTQTGVDDVAWLDVSGDEMPPSPVQVNAECCSRCRWPAQRLFRLREAENDTVCATCWISHNLDTASAHKGALCWFPGLHAADVVNLQRTACIAAIAGNSTAKKQGQRVLRWMLRHKRETERAWDTSRPAEFAAVMSRLHPDDRLVFRQRLAGCHLVLPATVFSDLSLLLPAGMDADTFLNTLTLPRL",
+            "length": 187,
+            "type": "cds",
+            "locus": "MEGJMN_047",
+            "aa_hexdigest": "30d7103122c5f8458e84d257aeef4344",
+            "ups": {
+                "uniparc_id": "UPI0003D82576",
+                "ncbi_nrp_id": "WP_032495746.1",
+                "uniref100_id": "UniRef100_A0A6C0NDH2",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003D82576",
+                    "RefSeq:WP_032495746.1",
+                    "UniRef:UniRef100_A0A6C0NDH2"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NDH2",
+                "uniref90_id": "UniRef90_A0A7G3L4E4"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L4E4",
+                "product": "Conjugal transfer protein TraT",
+                "uniref50_id": "UniRef50_A0A7G3L4E4"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L4E4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L4E4"
+                ],
+                "product": "Conjugal transfer protein TraT"
+            },
+            "product": "Conjugal transfer protein TraT",
+            "gene": "traT",
+            "genes": [
+                "traT"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_032495746.1",
+                "SO:0001217",
+                "UniParc:UPI0003D82576",
+                "UniRef:UniRef100_A0A6C0NDH2",
+                "UniRef:UniRef50_A0A7G3L4E4",
+                "UniRef:UniRef90_A0A7G3L4E4"
+            ]
+        },
+        {
+            "id": "MEGJMN_048",
+            "description": "Conjugal transfer protein",
+            "aa": "MSLMNAIEDFITTISRNTVSDAMPDYCDLRTIVNLTDSDRNFYPDMQVPFIAVTEAGHYASTFEVQGGFCEMDEDAPASQKFSFDGFINKVATAMATDFKSPGHKISVVIENDPSLGKSELKRLMAHQFRSIARTGVGMADILDEKIAKISPWVSRERVWLTCWTGRETLSPQELKSDMHRISKLASKAPKTQFGQVPAFSELTGLKIRHDAFLSTIKTALFDGGDGQLIDLIDVHQLGREIRHQVDRKGTDEAYRPVLASDRVRPHGKRNREDASPFFAPWLNYQLMGIDADAENNFININGMWHATLSVSMGPQQLLTFAQLKARIPRSVPYRIRMDVMPGGLKSLSWKGTLLTYTAFIPPLRPIWEAVEELKKRNRHDPVCVVTIVASTWGETKEEATLNLTLLTKAFQGWGVCEVTSTFGNPYRAWASTLLTARTGGGPHNLHLPLKDALSLLPLSRPASAWSDDASIVFPTPDGKIIPVGLASSKQNKHTEVIVGEPGSGKSLIMNMLSNAIVCNAQQKLPFIAVVDKGYSAQGQIQLIRDSLPPERKDEAIGWALRNHSDHCRNMFDIQLGARYPVAPELTWMKSMLTAMCIDSNTGLPPNSRDIDVLLERIISMAYRDKDETSPNKFSDGASPEITRALKASGLWFRHDAEWWDECPWYDVRDMLFSAGYVKEAQLAQFLAVPELSDMSQYINSPEIKASFGKVCRDNSQELLTDYIARVLSQACNTYKMLAGRTRFIINPATRIIAIDLNNVVGDKSAEGQLRTGIMYLFAGQISGGDFILPQYRKELMEAVPDMYRALHAEKIDQLDQEVKSKYYDELHNAKDVPFIFPMLETQDREQRKFGIRTVLCSQYVTDFPDSVLKSANSVYVMHCRPEDKQALIDHYQVPEVTIKKFMQIPKGPAADGSGTSLLAVFRTKAGRIAHILKNTAGPKELWALSSTQGDTALRDYLYDELDGPTARAILAENFEHGSAQRVIEFRRKKAGEQDAGNVTRHLAREIIEKRGYRL",
+            "length": 1015,
+            "type": "cds",
+            "locus": "MEGJMN_048",
+            "aa_hexdigest": "bd168cb2060378f12d532d92071171ea",
+            "ups": {
+                "uniparc_id": "UPI00093847B4",
+                "ncbi_nrp_id": "WP_086581441.1",
+                "uniref100_id": "UniRef100_UPI00093847B4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00093847B4",
+                    "RefSeq:WP_086581441.1",
+                    "UniRef:UniRef100_UPI00093847B4"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_UPI00093847B4",
+                "uniref90_id": "UniRef90_A0A7G3L613"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L613",
+                "product": "Conjugal transfer protein",
+                "ec_ids": [
+                    "7.2.4.8"
+                ],
+                "uniref50_id": "UniRef50_A0A0N8QU23",
+                "kegg_orthology_id": "K12206"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A0N8QU23",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A0N8QU23"
+                ],
+                "product": "TraU protein"
+            },
+            "product": "Conjugal transfer protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "EC:7.2.4.8",
+                "KEGG:K12206",
+                "RefSeq:WP_086581441.1",
+                "SO:0001217",
+                "UniParc:UPI00093847B4",
+                "UniRef:UniRef100_UPI00093847B4",
+                "UniRef:UniRef50_A0A0N8QU23",
+                "UniRef:UniRef90_A0A7G3L613"
+            ]
+        },
+        {
+            "id": "MEGJMN_049",
+            "description": "conjugal transfer protein TraW",
+            "aa": "MRLKILAATLTVMCGQAFAGYPVSVISSVPITSQVVPQLTTMQTTLAEILTTNTEIGSAITQASDKNTATLTEGFQAQRQADNFGRETERLEKARASFTVPDSICSESASGVAQQVHNTARATASSLASGSGISNTAIQKAVASAPVLPAQDDYRSAAIHANYCTSAEYAVYGGTALCQSVSSDMPGGDIQVQSLYDGAGAVGKEPELTFSDDQIDAGMAYMRNSAKHSPGRTLGKGEIKNETGWQYQGLLTQYKAIQSAAQQPQLSMIADSKPNSSTTTALKEALENASAQSYFDDTASDQAKSNYQMSAREFESFEVGRRYANTDYQEDLQAMDGDNLMRELIRVQSLSNYLQLGIKNQLRESNIIAGQQLALAADREYRPQLQALMQEISGGVAK",
+            "length": 398,
+            "type": "cds",
+            "locus": "MEGJMN_049",
+            "aa_hexdigest": "dff3a1fab3ff35b54016f419cedd90b3",
+            "ups": {
+                "uniparc_id": "UPI00032969B2",
+                "ncbi_nrp_id": "WP_015632436.1",
+                "uniref100_id": "UniRef100_A0A6C0NDA4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032969B2",
+                    "RefSeq:WP_015632436.1",
+                    "UniRef:UniRef100_A0A6C0NDA4"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NDA4",
+                "uniref90_id": "UniRef90_A0A7G3L4A8"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L4A8",
+                "gene": "traW",
+                "product": "conjugal transfer protein TraW",
+                "uniref50_id": "UniRef50_A0AA46K2G6"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0AA46K2G6",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0AA46K2G6"
+                ],
+                "product": "Conjugal transfer protein"
+            },
+            "product": "conjugal transfer protein TraW",
+            "gene": "traW",
+            "genes": [
+                "traW"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632436.1",
+                "SO:0001217",
+                "UniParc:UPI00032969B2",
+                "UniRef:UniRef100_A0A6C0NDA4",
+                "UniRef:UniRef50_A0AA46K2G6",
+                "UniRef:UniRef90_A0A7G3L4A8"
+            ]
+        },
+        {
+            "id": "MEGJMN_050",
+            "description": "conjugal transfer protein TraX",
+            "aa": "MTHKAHDNQTEPAGQPTRSTAVKRVRKALSLSVSIFTPINDMRRMGSDVSQSLKTSISRLKAFRRQAREEKREKLTFEQAVQASGYSLPQLLWKYRFLKRLWWVVAGLFLVLTPVLMAMILLTASTLPSMTFWRAIIFVVIFAALASLAALKVVICQYRLWQLQQRRVSDEEGGRFSDFLHHAHWIKDALNPV",
+            "length": 193,
+            "type": "cds",
+            "locus": "MEGJMN_050",
+            "aa_hexdigest": "109d9cac7a7b0753df59146f177ff766",
+            "ups": {
+                "uniparc_id": "UPI00032968CF",
+                "ncbi_nrp_id": "WP_015632437.1",
+                "uniref100_id": "UniRef100_A0A6C0NCY4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032968CF",
+                    "RefSeq:WP_015632437.1",
+                    "UniRef:UniRef100_A0A6C0NCY4"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NCY4",
+                "uniref90_id": "UniRef90_A0A7G3LBL1"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3LBL1",
+                "gene": "traX",
+                "product": "conjugal transfer protein TraX",
+                "uniref50_id": "UniRef50_A0A7G3LBL1"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3LBL1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3LBL1"
+                ],
+                "product": "Conjugal transfer protein TraX"
+            },
+            "product": "conjugal transfer protein TraX",
+            "gene": "traX",
+            "genes": [
+                "traX"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632437.1",
+                "SO:0001217",
+                "UniParc:UPI00032968CF",
+                "UniRef:UniRef100_A0A6C0NCY4",
+                "UniRef:UniRef50_A0A7G3LBL1",
+                "UniRef:UniRef90_A0A7G3LBL1"
+            ]
+        },
+        {
+            "id": "MEGJMN_051",
+            "description": "Conjugal transfer protein TraY",
+            "aa": "MKLFKQPLQGLLLLLVSLPALADDVTYSTIRDAAENSSDLSRQALVTIFGDVVTSPFTATDTTVIGSLFGILNGVICAIALFWFLTVTLKSIVKAGNAGKVFGSTRTAMAPLMSFVGFITLVPTSSGWSLSQLIMLWAASIMGVGSANLLTNKAVDMMDDRYSLVTQPVASSTRDAAQQIFEMNLCKYAINEQLSGFYDDAGSASTSEMSTSGSDGSYETSNGSAYCGTAKIPTTTRSSSWSVLFDSDVDTDAIVSAQKSALDTMQTTLDSAAQTFVSTYISKRDDDSGTLTDVETTIQNAATAYENTINSALSQIDYEDTLQSSLSSNMKTYGWIALGAWYQTFATANAKTTDVGKSAPTVSGPTGLGEMGNTDLYQQVFTAYNAQLQNSSYTATLGIQTSKKDIETGRAKDPKSVFVGLFNSPMQQLTNWFATQNIGQVNDDSDQLNPLIQMKTIGDYTLDTVGTALTSYVAIQGSIALSGNNIVGRFTNGLTGWKATAVAVMQALSPPFYFLLLILFSAGFSLSVLLPAIPFIYWMTGVLNWSVSVLVGCAAGPMWSATHLGTEEDQGSRAAYGYVFLIDMMLRPSLMVLAFFFASVAIVAAGTILNLLFASALANAQIDSWTGLFAAVGWLFIYARICTTVATKVFSMLVVIPDYVIGFLGGREGASLFSGLSDSVSNIFAGVGSTVSPGNIPGMAAKERNSGDKDGFKG",
+            "length": 714,
+            "type": "cds",
+            "locus": "MEGJMN_051",
+            "aa_hexdigest": "509e277d5d24f4e22e104ca47920123f",
+            "ups": {
+                "uniparc_id": "UPI0009384037",
+                "ncbi_nrp_id": "WP_103857356.1",
+                "uniref100_id": "UniRef100_UPI0009384037",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0009384037",
+                    "RefSeq:WP_103857356.1",
+                    "UniRef:UniRef100_UPI0009384037"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_UPI0009384037",
+                "uniref90_id": "UniRef90_A0A7G3L488"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L488",
+                "product": "Conjugal transfer protein TraY",
+                "uniref50_id": "UniRef50_A0A0P9SZQ3"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A0P9SZQ3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A0P9SZQ3"
+                ],
+                "product": "TraY protein"
+            },
+            "product": "Conjugal transfer protein TraY",
+            "gene": "traY",
+            "genes": [
+                "traY"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_103857356.1",
+                "SO:0001217",
+                "UniParc:UPI0009384037",
+                "UniRef:UniRef100_UPI0009384037",
+                "UniRef:UniRef50_A0A0P9SZQ3",
+                "UniRef:UniRef90_A0A7G3L488"
+            ]
+        },
+        {
+            "id": "MEGJMN_052",
+            "description": "plasmid IncI1-type surface exclusion protein ExcA",
+            "aa": "MESQRERTGMETFVLLVKFWSAIIYFPVCLLFAFVCTISSRKGSFELAVLFWALFVTPFIIRQFTLQKRRRALNSVVAAVSGEEFMPQKGNVIISGNRTYLGVDAIRGTLLYVSMRRKGEYDVMGMDMSSWTRVEYKGDVITLKTKNPELPSVSVDAPGGEKYSAALYDVICAMEHRQYADLQFPQKAHERARNARKETGLTVFSYT",
+            "length": 207,
+            "type": "cds",
+            "locus": "MEGJMN_052",
+            "aa_hexdigest": "2ab457fe10e14238b9a2f4e59bb6e865",
+            "ups": {
+                "uniparc_id": "UPI000329693E",
+                "ncbi_nrp_id": "WP_015632439.1",
+                "uniref100_id": "UniRef100_A0A6C0L6X5",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000329693E",
+                    "RefSeq:WP_015632439.1",
+                    "UniRef:UniRef100_A0A6C0L6X5"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L6X5",
+                "uniref90_id": "UniRef90_A0A6C0L6X5"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L6X5",
+                "gene": "excA",
+                "product": "plasmid IncI1-type surface exclusion protein ExcA",
+                "uniref50_id": "UniRef50_A0A7G3L543"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L543",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L543"
+                ],
+                "product": "Exclusion-determining protein"
+            },
+            "product": "plasmid IncI1-type surface exclusion protein ExcA",
+            "gene": "excA",
+            "genes": [
+                "excA"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632439.1",
+                "SO:0001217",
+                "UniParc:UPI000329693E",
+                "UniRef:UniRef100_A0A6C0L6X5",
+                "UniRef:UniRef50_A0A7G3L543",
+                "UniRef:UniRef90_A0A6C0L6X5"
+            ]
+        },
+        {
+            "id": "MEGJMN_053",
+            "description": "Conjugal transfer protein TrbA",
+            "aa": "MSQNRQAATGHDDAYGFLLIPAALVIICWLWFSKFVWASCLLLYWLWGMVDFQRIHPWVAEKINLLARTGNHAQAVSWHDWFAVMNETSGILLIFLLPIAISALVSIKNHPSQPMKSKRIVNIHTLPQIMSKWSPAIVPVLAESRSPDLLMNDDGPERRWAEKPEEFAARHGLITSRMLDREKARDVFISQLGTRLSASPDTLQDYEKALFAVFGLQVLMNNRKAAKKLLDDLNRSCLPRNRKERKRTKNLYRPDFSLAEKTFQKVWQAEGMQEIHATHQYVRTALSDLLGHDIRLPPSQYLWLKPIDRTLWYALHGADTASVFVEGAGVIAQTRFEIVVRKEKLPLQIDYVESAIDGLQYELEGLGLVHERRVKKTERRKKAPDWLPPTLGQDSFTDLHSDEPEPAEAEQPEDNPIAAQAHPSQEAGINAVPSPTYHADTATSAAQPATPPHVSHDAAAGEPADDDEPAYI",
+            "length": 472,
+            "type": "cds",
+            "locus": "MEGJMN_053",
+            "aa_hexdigest": "acbfc88421fe2f73fafdc3b7cb8d8d51",
+            "ups": {
+                "uniparc_id": "UPI0003296998",
+                "ncbi_nrp_id": "WP_015632440.1",
+                "uniref100_id": "UniRef100_A0A6C0L5T9",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003296998",
+                    "RefSeq:WP_015632440.1",
+                    "UniRef:UniRef100_A0A6C0L5T9"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L5T9",
+                "uniref90_id": "UniRef90_A0A6C0L5T9"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L5T9",
+                "product": "Conjugal transfer protein TrbA",
+                "uniref50_id": "UniRef50_A0A6C0L5T9",
+                "kegg_orthology_id": "K12218"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0L5T9",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0L5T9"
+                ],
+                "product": "Conjugal transfer protein TrbA"
+            },
+            "product": "Conjugal transfer protein TrbA",
+            "gene": "trbA",
+            "genes": [
+                "trbA"
+            ],
+            "db_xrefs": [
+                "KEGG:K12218",
+                "RefSeq:WP_015632440.1",
+                "SO:0001217",
+                "UniParc:UPI0003296998",
+                "UniRef:UniRef100_A0A6C0L5T9",
+                "UniRef:UniRef50_A0A6C0L5T9",
+                "UniRef:UniRef90_A0A6C0L5T9"
+            ]
+        },
+        {
+            "id": "MEGJMN_054",
+            "description": "TrbB",
+            "aa": "MTMNLLIYKATAMMTPTFNARISGNNLIASLNDDTPIFSLNVSEDPSFWIEGGTLMVSLNTDSSHPVYRALDYKEAEQLLSVITLVLCNRKPKMKWKSTILPAAALLVTCFAVWRFAPAPPSPGMPPFGQAEPRNATAESAPPRFQGLPQLRNPAPRNPYFGHNTTRNADDGQTMPARDPARPSAARPASVASQETLSPHIMQNLQKAAGRGYFTVPLSSGHERTLYIFADPQCPHCQDFEPLFEALSTRYNVEIFPVTYVGGKQSSQQIQPVLYLNKDQRAAAWKKLFSVDDGMLTIGKKKTGDDQKEAPAQRDDKRWKIAGEALAINDVAFSQYHIPGTPWVVADDGRHVPQSMMKDPATMQAFIAGHSKAEN",
+            "length": 375,
+            "type": "cds",
+            "locus": "MEGJMN_054",
+            "aa_hexdigest": "43af240d4e580c0f9db063bc35dd78ef",
+            "ups": {
+                "uniparc_id": "UPI0013F14D80",
+                "ncbi_nrp_id": "WP_165488786.1",
+                "uniref100_id": "UniRef100_UPI0013F14D80",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0013F14D80",
+                    "RefSeq:WP_165488786.1",
+                    "UniRef:UniRef100_UPI0013F14D80"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_UPI0013F14D80",
+                "uniref90_id": "UniRef90_A0A0C5H1T8"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A0C5H1T8",
+                "product": "TrbB",
+                "uniref50_id": "UniRef50_A0A7G3L7E7",
+                "kegg_orthology_id": "K12228"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L7E7",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L7E7"
+                ],
+                "product": "Thioredoxin-like fold domain-containing protein"
+            },
+            "product": "TrbB",
+            "gene": "trbB",
+            "genes": [
+                "trbB"
+            ],
+            "db_xrefs": [
+                "KEGG:K12228",
+                "RefSeq:WP_165488786.1",
+                "SO:0001217",
+                "UniParc:UPI0013F14D80",
+                "UniRef:UniRef100_UPI0013F14D80",
+                "UniRef:UniRef50_A0A7G3L7E7",
+                "UniRef:UniRef90_A0A0C5H1T8"
+            ]
+        },
+        {
+            "id": "MEGJMN_055",
+            "description": "F-type conjugative transfer protein TrbC",
+            "aa": "MQQKQKPVDAARLQRQVHQGMVEEMAYRTGPLLLAIIVIFGAAIVWPVLLWVAIPVMLVWVPMFMLNEFRMPARMPMDMDRLDPSTETMRPGKLLGFLPVTKLSRHMDNAAGVFYTGYERMLDGGREIWLRMDDLTRHLILLATTGAGKTEMLLGFVLNALCWAKGLIFSDGKAQNDVWFAVASLSRRFGREDDLRLLNYITGGQSRSQRLLENDKSRQQSNNTNPFALAQETYITQLMDSMMPEAGNDRTWQEKAKGMNQVLTKALIYKSRKEQKVMSQRLIQEYLSLDKFAELYLQAEAEEWHEEIRTGLRNYLSTSVPGFDMSLITKPSEWSQEARNQHGYLTSQYNRMLSLFSDTYGHVFSSGAGDIDLRDVVHNDRILVILIPALELSASEALTLGRLTTSQLAMILSQDLGERMEGKAEDILVIKKFRDRFPFIWLADEVGSYYSDTIGQLATQVRSLGYALVLAGQDLQKLKTAVGDKLWTLLGNMFTRIFGTITDPTETAEFAAKSAGMEYQAIQDSMEYRPGAISGSYADTGRVTVQEKSKLPFDELQTLNQGEQATIFKGAVIRNNALYIADDDKITDKDVRINRFVEVEWPTYDSLAHLLPAKVRRDRPRPASINRIMAIVKNDKIRHAPDSMIIQDGVLYAIADEAMYFDEVAPTPPDAVQRATQLLSLAASVLTETRGRYSVEYPEPEKLSVKKDEFEKYQHIHQSAVTQQADGFVY",
+            "length": 730,
+            "type": "cds",
+            "locus": "MEGJMN_055",
+            "aa_hexdigest": "3cc58e5bb6c6bab07305e789c6f0afb3",
+            "ups": {
+                "uniparc_id": "UPI00032968D8",
+                "ncbi_nrp_id": "WP_015632442.1",
+                "uniref100_id": "UniRef100_A0A6C0L1V6",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032968D8",
+                    "RefSeq:WP_015632442.1",
+                    "UniRef:UniRef100_A0A6C0L1V6"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L1V6",
+                "uniref90_id": "UniRef90_A0A7G3L880"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L880",
+                "gene": "trbC",
+                "product": "F-type conjugative transfer protein TrbC",
+                "ec_ids": [
+                    "7.2.4.8"
+                ],
+                "uniref50_id": "UniRef50_A0A7G3L880",
+                "kegg_orthology_id": "K12217"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L880",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L880"
+                ],
+                "product": "TraD/TraG TraM recognition site domain-containing protein"
+            },
+            "product": "F-type conjugative transfer protein TrbC",
+            "gene": "trbC",
+            "genes": [
+                "trbC"
+            ],
+            "db_xrefs": [
+                "EC:7.2.4.8",
+                "KEGG:K12217",
+                "RefSeq:WP_015632442.1",
+                "SO:0001217",
+                "UniParc:UPI00032968D8",
+                "UniRef:UniRef100_A0A6C0L1V6",
+                "UniRef:UniRef50_A0A7G3L880",
+                "UniRef:UniRef90_A0A7G3L880"
+            ]
+        },
+        {
+            "id": "MEGJMN_056",
+            "description": "phospholipase D",
+            "aa": "MFKKILVAAVMATTLSSSLSAIAAPSVQVGFSPEGTAQELVLKTINNAQSSVRMLGYNLTAADIAKALASASRRGVDVKVILDKRENQNKYSKAALNIRKR",
+            "length": 101,
+            "type": "cds",
+            "locus": "MEGJMN_056",
+            "aa_hexdigest": "ea525d1f071ef2ee2df9b64cc7f4afac",
+            "ups": {
+                "uniparc_id": "UPI00032969B6",
+                "ncbi_nrp_id": "WP_015632443.1",
+                "uniref100_id": "UniRef100_A0A6C0L616",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032969B6",
+                    "RefSeq:WP_015632443.1",
+                    "UniRef:UniRef100_A0A6C0L616"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L616",
+                "uniref90_id": "UniRef90_A0A6C0L616"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L616",
+                "product": "phospholipase D",
+                "uniref50_id": "UniRef50_A0A6C0L616"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0L616",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0L616"
+                ],
+                "product": "phospholipase D"
+            },
+            "product": "phospholipase D",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632443.1",
+                "SO:0001217",
+                "UniParc:UPI00032969B6",
+                "UniRef:UniRef100_A0A6C0L616",
+                "UniRef:UniRef50_A0A6C0L616",
+                "UniRef:UniRef90_A0A6C0L616"
+            ]
+        },
+        {
+            "id": "MEGJMN_057",
+            "description": "IS66 family transposase",
+            "aa": "MSQDYLARITALEEELRRKDSQLSLVAETEAFLRSALTRAEEKIEEDEREIEHLRSQIEKLRRMMFGTRSEKLRREVAQAEALLKQREQASDRYSGREDDPQVPRQLRQSRHRRPLPEHLPREILRLEPEETCCPACGGEMAYLSEVSAEQLELVASALKVIRTVRVKKACTKCDGIVEAPAPSRPVERGIAGPGLLARVLTAKYCEHLPLYRQTEILARQGVELSRALLSNWVDACCRLMAPLDEALYHYVMNCRKLHTDDTPVPVLAPGRKKTKTGRIWTYVRDDRNAGSSDPPAAWFAYSPDRQGKHPELHLRSFRGVLQADAFAGYDRLFSTSREGGVLTEAACWAHARRKIHDVYISSQSATAEEALKRIGELYAIEAEIRGMPETERLAARQSRSAPLLASLHEWMVEKSATLSKKSRLGEAFTYALNQWDALCYYCRDGLAEPDNNAAERALRAVCLGKKNYIFFGSDHGGERGALLYGLIGTCRLNGIDPEAYLRHILSVLPEWPSNRVGELLPWNVAIPA",
+            "length": 529,
+            "type": "cds",
+            "locus": "MEGJMN_057",
+            "aa_hexdigest": "f2f19a2ef66ccb29b4c5e538d8319a6c",
+            "ups": {
+                "uniparc_id": "UPI00032969B8",
+                "ncbi_nrp_id": "WP_015632444.1",
+                "uniref100_id": "UniRef100_A0A6C0L3Q4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032969B8",
+                    "RefSeq:WP_015632444.1",
+                    "UniRef:UniRef100_A0A6C0L3Q4"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L3Q4",
+                "uniref90_id": "UniRef90_A0AAN1A8N4"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0AAN1A8N4",
+                "gene": "tnpC",
+                "product": "IS66 family transposase",
+                "uniref50_id": "UniRef50_B7LBX6",
+                "go_ids": [
+                    "GO:0004803"
+                ]
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_B7LBX6",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_B7LBX6"
+                ],
+                "product": "IS66 family transposase"
+            },
+            "product": "IS66 family transposase",
+            "gene": "tnpC",
+            "genes": [
+                "tnpC"
+            ],
+            "db_xrefs": [
+                "GO:0004803",
+                "RefSeq:WP_015632444.1",
+                "SO:0001217",
+                "UniParc:UPI00032969B8",
+                "UniRef:UniRef100_A0A6C0L3Q4",
+                "UniRef:UniRef50_B7LBX6",
+                "UniRef:UniRef90_A0AAN1A8N4"
+            ]
+        },
+        {
+            "id": "MEGJMN_058",
+            "description": "IS66 family insertion sequence element accessory protein TnpB",
+            "aa": "MISLPSGTRIWLVAGATDMRKSFNGLGEQIQHVLDENPFSGHLFIFRGRRGDTVKILWADADGLCLFTKRLEEGQFIWPAVRDGKVAISRSQLAMLLDKLDWRQPKTPRLNSLTML",
+            "length": 116,
+            "type": "cds",
+            "locus": "MEGJMN_058",
+            "aa_hexdigest": "c05bb08d9769aa284cb7183dc469d642",
+            "ups": {
+                "uniparc_id": "UPI000461CC33",
+                "ncbi_nrp_id": "WP_032414478.1",
+                "uniref100_id": "UniRef100_A0A5U6TJF2",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000461CC33",
+                    "RefSeq:WP_032414478.1",
+                    "UniRef:UniRef100_A0A5U6TJF2"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A5U6TJF2",
+                "uniref90_id": "UniRef90_A0A2U3ERJ0"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A2U3ERJ0",
+                "gene": "tnpB",
+                "product": "IS66 family insertion sequence element accessory protein TnpB",
+                "uniref50_id": "UniRef50_B7MRH6"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_B7MRH6",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_B7MRH6"
+                ],
+                "product": "Transposase"
+            },
+            "product": "IS66 family insertion sequence element accessory protein TnpB",
+            "gene": "tnpB",
+            "genes": [
+                "tnpB"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_032414478.1",
+                "SO:0001217",
+                "UniParc:UPI000461CC33",
+                "UniRef:UniRef100_A0A5U6TJF2",
+                "UniRef:UniRef50_B7MRH6",
+                "UniRef:UniRef90_A0A2U3ERJ0"
+            ]
+        },
+        {
+            "id": "MEGJMN_059",
+            "description": "IS66-like element accessory protein TnpA",
+            "aa": "MSDSLRPRRVRASYSMDFKLELVEKSYQPGACVAQLAREHGINDNLLFTWRQRYSHLLPDEIQRSVSKPDAVIPVVVSDMSLSHHAEPHYEPSGSAYGEVMTCEVAVGSASLRLTGNLSPAILKTLLRELTGRGR",
+            "length": 135,
+            "type": "cds",
+            "locus": "MEGJMN_059",
+            "aa_hexdigest": "bf4c951b32f1b10691821f33ffa9a6f3",
+            "ups": {
+                "uniparc_id": "UPI000329699C",
+                "ncbi_nrp_id": "WP_015632445.1",
+                "uniref100_id": "UniRef100_A0A6C0L4C0",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000329699C",
+                    "RefSeq:WP_015632445.1",
+                    "UniRef:UniRef100_A0A6C0L4C0"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L4C0",
+                "uniref90_id": "UniRef90_A0A6C0L4C0"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L4C0",
+                "gene": "tnpA",
+                "product": "IS66-like element accessory protein TnpA",
+                "uniref50_id": "UniRef50_A0A5R9LIB0"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A5R9LIB0",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A5R9LIB0"
+                ],
+                "product": "Transposase"
+            },
+            "product": "IS66-like element accessory protein TnpA",
+            "gene": "tnpA",
+            "genes": [
+                "tnpA"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632445.1",
+                "SO:0001217",
+                "UniParc:UPI000329699C",
+                "UniRef:UniRef100_A0A6C0L4C0",
+                "UniRef:UniRef50_A0A5R9LIB0",
+                "UniRef:UniRef90_A0A6C0L4C0"
+            ]
+        },
+        {
+            "id": "MEGJMN_060",
+            "description": "hypothetical protein",
+            "aa": "MTLTNILVNAGVKVRLTDAYKIHHDKVIIIDRSTVETGSFNFRLAP",
+            "length": 46,
+            "type": "cds",
+            "locus": "MEGJMN_060",
+            "aa_hexdigest": "6940a97cc925bcc04615691882c14dc7",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "PFAM:PF13091.12"
+            ],
+            "pfams": [
+                {
+                    "id": "PF13091.12",
+                    "name": "PLDc_2",
+                    "length": 37,
+                    "aa_cov": 0.782608695652174,
+                    "hmm_cov": 1.0,
+                    "evalue": 2.64619082381428e-10,
+                    "score": 30.427148818969727,
+                    "start": 7,
+                    "stop": 42
+                }
+            ],
+            "seq_stats": {
+                "molecular_weight": 5168.9677,
+                "isoelectric_point": 9.51922435760498
+            }
+        },
+        {
+            "id": "MEGJMN_061",
+            "description": "Transposase",
+            "aa": "MIDVLGPEKRRRRSVQEKIAIVQQSFEPGMTVSLVARQHGVAASQLFLWRKQYQEGSLTAVAAGEQVVPASELASAMKQIKELQRLLGKKTMENELLKEAVEYGRQKKWIAHVPLLPEDGE",
+            "length": 121,
+            "type": "cds",
+            "locus": "MEGJMN_061",
+            "aa_hexdigest": "4988f1b728483173e648ca36f85c19e3",
+            "ups": {
+                "uniparc_id": "UPI00016024A5",
+                "ncbi_nrp_id": "WP_004118743.1",
+                "uniref100_id": "UniRef100_A0A377E910",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00016024A5",
+                    "RefSeq:WP_004118743.1",
+                    "UniRef:UniRef100_A0A377E910"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A377E910",
+                "uniref90_id": "UniRef90_A0A377E910"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A377E910",
+                "product": "Transposase",
+                "uniref50_id": "UniRef50_A0A377E910"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A377E910",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A377E910"
+                ],
+                "product": "Transposase"
+            },
+            "product": "Transposase",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_004118743.1",
+                "SO:0001217",
+                "UniParc:UPI00016024A5",
+                "UniRef:UniRef100_A0A377E910",
+                "UniRef:UniRef50_A0A377E910",
+                "UniRef:UniRef90_A0A377E910"
+            ]
+        },
+        {
+            "id": "MEGJMN_062",
+            "description": "IS3 family ISEc36 transposase",
+            "aa": "MARRSKDWQDRRCKRKPDDTDALARIHTVIGDLPTYGYRRVWALLRRQSETDDMAVINAKRVYRIMRQNALLLERKPEIPPSKRAHTGKVAVGESNQRWCSDGFEFSCDNGEKLRVTFALDCCDREALYWAASNGGYDSETVQDVMLGAVERRFGNSLPTSPVEWLTDNGSAYRSYQTRQFARMVGLEPKHTAVRSPESNGMAESFVKTMKRDYISIMPKPDGLTAVKNLAEAFEHYNEWHPHSALGYRSPREYLRRRTSNGLSDKKCMEI",
+            "length": 271,
+            "type": "cds",
+            "locus": "MEGJMN_062",
+            "aa_hexdigest": "0f0b858155c4d07f9180f5319f472943",
+            "ups": {
+                "uniparc_id": "UPI000272D796",
+                "uniref100_id": "UniRef100_A0AB36B0N7",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000272D796",
+                    "UniRef:UniRef100_A0AB36B0N7"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0AB36B0N7",
+                "gene": "tnp",
+                "product": "IS3 family ISEc36 transposase",
+                "uniref90_id": "UniRef90_A0A2T2XUN4"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A2T2XUN4",
+                "gene": "tnp",
+                "product": "IS3 family transposase",
+                "uniref50_id": "UniRef50_P0CF60",
+                "go_ids": [
+                    "GO:0004803"
+                ]
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_P0CF60",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_P0CF60"
+                ],
+                "product": "Putative transposase InsD for insertion element IS2E"
+            },
+            "product": "IS3 family ISEc36 transposase",
+            "gene": "tnp",
+            "genes": [
+                "tnp"
+            ],
+            "db_xrefs": [
+                "GO:0004803",
+                "SO:0001217",
+                "UniParc:UPI000272D796",
+                "UniRef:UniRef100_A0AB36B0N7",
+                "UniRef:UniRef50_P0CF60",
+                "UniRef:UniRef90_A0A2T2XUN4"
+            ]
+        },
+        {
+            "id": "MEGJMN_063",
+            "description": "AlpA family phage regulatory protein",
+            "aa": "MSENTQRKKARRNNDIQITTREFALMLGIPEHELGVAAATTNILRGMTLPAPVSLLKGKTRQFWLTDCLDFAEQLKGASAKNK",
+            "length": 83,
+            "type": "cds",
+            "locus": "MEGJMN_063",
+            "aa_hexdigest": "02fcd6d8f71dbcadb5328c4176b38aea",
+            "ups": {
+                "uniparc_id": "UPI00032E55D8",
+                "ncbi_nrp_id": "WP_016162080.1",
+                "uniref100_id": "UniRef100_A0A6C0NCV1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032E55D8",
+                    "RefSeq:WP_016162080.1",
+                    "UniRef:UniRef100_A0A6C0NCV1"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NCV1",
+                "uniref90_id": "UniRef90_A0A6C0NCV1"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0NCV1",
+                "product": "AlpA family phage regulatory protein",
+                "uniref50_id": "UniRef50_A0A6C0NCV1"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0NCV1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0NCV1"
+                ],
+                "product": "AlpA family phage regulatory protein"
+            },
+            "product": "AlpA family phage regulatory protein",
+            "gene": "alpA",
+            "genes": [
+                "alpA"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_016162080.1",
+                "SO:0001217",
+                "UniParc:UPI00032E55D8",
+                "UniRef:UniRef100_A0A6C0NCV1",
+                "UniRef:UniRef50_A0A6C0NCV1",
+                "UniRef:UniRef90_A0A6C0NCV1"
+            ]
+        },
+        {
+            "id": "MEGJMN_064",
+            "description": "TraI/MobA(P) family conjugative relaxase",
+            "aa": "MNAIIPPKRRDRKSSFVQLVAYVSVRDDVPLKDELKEDQRFRRPSRSRQAIFDRLVDYMNRSEGTIIEQISDMTPEGDIRCSVDGVTCQHNLMSVETAAMEMNSIAMQNLHVKDAVYHYILSWQEDENPSDDQVFDSVKHSLKRLGMEEHQYVAAIHRDTDNLHVHIAANRVHPVSYRAANVWNDADKLQRTCRELELKHGFKVDNGSWVRDADNNLVRARKGYRNAPRSARQLEHFSDKESLHHFAVQHVRKPVNTMFREKNASWEKLHQVMNDAGLMLEPSGKGLVVRDVCGDEKLAVKSSRVHPGMTLSRLEPALGTFVPSSRSAEMVKQSVQTPYSDRLHVRDRGARAERRQARAEARIDLRERYEKYRNAWKKPDLHAAERFRAVSAAFKEQKTHIRDNEKDAHMRKLMYHIVEFEREKSMAALRIELKAERRKLYDEGRMRPLTYRAWTEQQALHGDQAALSQLRGWAYRQNRKNRTPQASDSIIFCAPADDTSLIKADGYDARLYRDGAVVYSRHGQDAIIDRGDRVEVINPYDNGDLNTRIAVDMVAWKSGERIEFSRDGSFAYAAGDAVAAHNLHHRDSILVPSNREQYDYTREKFNQLKGRYTDREREAVRQQYDNRYYDDVRHNDDNSYKP",
+            "length": 642,
+            "type": "cds",
+            "locus": "MEGJMN_064",
+            "aa_hexdigest": "052dae2c71ba1f95cb2f412d45c7c346",
+            "ups": {
+                "uniparc_id": "UPI00032968C9",
+                "ncbi_nrp_id": "WP_015632446.1",
+                "uniref100_id": "UniRef100_A0A6C0NCZ3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032968C9",
+                    "RefSeq:WP_015632446.1",
+                    "UniRef:UniRef100_A0A6C0NCZ3"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NCZ3",
+                "uniref90_id": "UniRef90_A0A7G3L4G1"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L4G1",
+                "gene": "traI",
+                "product": "TraI/MobA(P) family conjugative relaxase",
+                "uniref50_id": "UniRef50_A0A7G3L4G1"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A7G3L4G1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A7G3L4G1"
+                ],
+                "product": "MobA relaxase/mobilization protein"
+            },
+            "product": "TraI/MobA(P) family conjugative relaxase",
+            "gene": "traI",
+            "genes": [
+                "traI"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632446.1",
+                "SO:0001217",
+                "UniParc:UPI00032968C9",
+                "UniRef:UniRef100_A0A6C0NCZ3",
+                "UniRef:UniRef50_A0A7G3L4G1",
+                "UniRef:UniRef90_A0A7G3L4G1"
+            ]
+        },
+        {
+            "id": "MEGJMN_065",
+            "description": "plasmid mobilization protein MobA",
+            "aa": "MLRAALGRKIAPQTDHKLINELSRLGGLQKHLFKEGNGVGSKEYAEILQAIKAAIFRIEQKND",
+            "length": 63,
+            "type": "cds",
+            "locus": "MEGJMN_065",
+            "aa_hexdigest": "82df0359dece6fb04b77dcfaaf36148d",
+            "ups": {
+                "uniparc_id": "UPI000D20EA8B",
+                "uniref100_id": "UniRef100_A0A6C0L5T3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000D20EA8B",
+                    "UniRef:UniRef100_A0A6C0L5T3"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L5T3",
+                "uniref90_id": "UniRef90_A0A6C0L5T3"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L5T3",
+                "gene": "mobA",
+                "product": "plasmid mobilization protein MobA",
+                "uniref50_id": "UniRef50_A0A6C0L5T3",
+                "go_ids": [
+                    "GO:0006355"
+                ]
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0L5T3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0L5T3"
+                ],
+                "product": "Mobilization protein"
+            },
+            "product": "plasmid mobilization protein MobA",
+            "gene": "mobA",
+            "genes": [
+                "mobA"
+            ],
+            "db_xrefs": [
+                "GO:0006355",
+                "SO:0001217",
+                "UniParc:UPI000D20EA8B",
+                "UniRef:UniRef100_A0A6C0L5T3",
+                "UniRef:UniRef50_A0A6C0L5T3",
+                "UniRef:UniRef90_A0A6C0L5T3"
+            ]
+        },
+        {
+            "id": "MEGJMN_066",
+            "description": "MobC",
+            "aa": "MVAKKSNLYSATDIESIRGQLAKLPDVTQERLQKRDVLDSLKSDIETLIRNKGYTLSEILEHLKNFGFHDVTLKDLKEITEGKRTRQRKRVSSSTEDKTPVHAANSPAES",
+            "length": 110,
+            "type": "cds",
+            "locus": "MEGJMN_066",
+            "aa_hexdigest": "66dd0c8d81dd9426f5b3cce46656a520",
+            "ups": {
+                "uniparc_id": "UPI00032968F6",
+                "ncbi_nrp_id": "WP_015632448.1",
+                "uniref100_id": "UniRef100_A0A0C5GSX3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032968F6",
+                    "RefSeq:WP_015632448.1",
+                    "UniRef:UniRef100_A0A0C5GSX3"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A0C5GSX3",
+                "uniref90_id": "UniRef90_A0A0C5GSX3"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A0C5GSX3",
+                "product": "MobC",
+                "uniref50_id": "UniRef50_A0A486BCE1"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A486BCE1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A486BCE1"
+                ],
+                "product": "CBS domain-containing protein"
+            },
+            "product": "MobC",
+            "gene": "mobC",
+            "genes": [
+                "mobC"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632448.1",
+                "SO:0001217",
+                "UniParc:UPI00032968F6",
+                "UniRef:UniRef100_A0A0C5GSX3",
+                "UniRef:UniRef50_A0A486BCE1",
+                "UniRef:UniRef90_A0A0C5GSX3"
+            ]
+        },
+        {
+            "id": "MEGJMN_067",
+            "description": "hypothetical protein",
+            "aa": "MSLSILQLAEDLAKGKRMRVPPMNGPEWRYFCFWLEYYMGYSM",
+            "length": 43,
+            "type": "cds",
+            "locus": "MEGJMN_067",
+            "aa_hexdigest": "f5e291ae2432e726a337843a613b534d",
+            "ups": {
+                "uniparc_id": "UPI00032DD3F2",
+                "uniref100_id": "UniRef100_A0A6C0L1U9",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032DD3F2",
+                    "UniRef:UniRef100_A0A6C0L1U9"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L1U9",
+                "uniref90_id": "UniRef90_A0A6C0L1U9"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L1U9",
+                "uniref50_id": "UniRef50_A0A6C0L1U9"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0L1U9",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0L1U9"
+                ]
+            },
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "SO:0001217",
+                "UniParc:UPI00032DD3F2",
+                "UniRef:UniRef100_A0A6C0L1U9",
+                "UniRef:UniRef50_A0A6C0L1U9",
+                "UniRef:UniRef90_A0A6C0L1U9"
+            ],
+            "seq_stats": {
+                "molecular_weight": 5210.1251,
+                "isoelectric_point": 7.883790397644043
+            }
+        },
+        {
+            "id": "MEGJMN_068",
+            "description": "Transposase",
+            "aa": "MVLTGIETVKVAVICTGHVSHKDSEIIPEFLWNNWKESGEFWISSTAHGWLFRLCALPYEWEERLKNFGVSDGCISNLRMLECEGYDWVHFQADAPIIEELKHWDW",
+            "length": 106,
+            "type": "cds",
+            "locus": "MEGJMN_068",
+            "aa_hexdigest": "f034e68b5aa748ec4152a31e18365271",
+            "ups": {
+                "uniparc_id": "UPI000329697B",
+                "ncbi_nrp_id": "WP_015632449.1",
+                "uniref100_id": "UniRef100_A0A6C0ND33",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000329697B",
+                    "RefSeq:WP_015632449.1",
+                    "UniRef:UniRef100_A0A6C0ND33"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0ND33",
+                "uniref90_id": "UniRef90_A0AAN1A8B8"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0AAN1A8B8",
+                "product": "Transposase",
+                "uniref50_id": "UniRef50_A0AAN1A8B8"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0AAN1A8B8",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0AAN1A8B8"
+                ],
+                "product": "Transposase"
+            },
+            "product": "Transposase",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632449.1",
+                "SO:0001217",
+                "UniParc:UPI000329697B",
+                "UniRef:UniRef100_A0A6C0ND33",
+                "UniRef:UniRef50_A0AAN1A8B8",
+                "UniRef:UniRef90_A0AAN1A8B8"
+            ]
+        },
+        {
+            "id": "MEGJMN_069",
+            "description": "hypothetical protein",
+            "aa": "MELNDTAILPESDARKINAVASQAYPLGLLPNLKINFYSIDAIQLELRDNSGDLIWRDFTFSRDFIKGFMPYIRTRN",
+            "length": 77,
+            "type": "cds",
+            "locus": "MEGJMN_069",
+            "aa_hexdigest": "4d525afb59a000b44283e2e6819b3fb1",
+            "ups": {
+                "uniparc_id": "UPI00032E941B",
+                "ncbi_nrp_id": "WP_016162076.1",
+                "uniref100_id": "UniRef100_A0A6C0L3P9",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032E941B",
+                    "RefSeq:WP_016162076.1",
+                    "UniRef:UniRef100_A0A6C0L3P9"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L3P9",
+                "uniref90_id": "UniRef90_A0A7G3L5W7"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A7G3L5W7",
+                "uniref50_id": "UniRef50_A0A486BC99"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A486BC99",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A486BC99"
+                ]
+            },
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "RefSeq:WP_016162076.1",
+                "SO:0001217",
+                "UniParc:UPI00032E941B",
+                "UniRef:UniRef100_A0A6C0L3P9",
+                "UniRef:UniRef50_A0A486BC99",
+                "UniRef:UniRef90_A0A7G3L5W7"
+            ],
+            "seq_stats": {
+                "molecular_weight": 8895.0552,
+                "isoelectric_point": 5.161571693420409
+            }
+        },
+        {
+            "id": "MEGJMN_070",
+            "description": "hypothetical protein",
+            "aa": "MTNSNKMTKDYRASVTIIVCPVRGNTAIHFCAIPSLQGSDCELWWPVVAGTSLHEAVEAIMVTNGIAINVTRVDKVRMQGRSTDYQVTYNRMQ",
+            "length": 93,
+            "type": "cds",
+            "locus": "MEGJMN_070",
+            "aa_hexdigest": "61575445e43804043a15ddeb2e75d83d",
+            "ups": {
+                "uniparc_id": "UPI000461A81E",
+                "ncbi_nrp_id": "WP_049078430.1",
+                "uniref100_id": "UniRef100_A0A6C0NDG0",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000461A81E",
+                    "RefSeq:WP_049078430.1",
+                    "UniRef:UniRef100_A0A6C0NDG0"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NDG0",
+                "uniref90_id": "UniRef90_A0A6C0NDG0"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0NDG0",
+                "uniref50_id": "UniRef50_A0A6C0NDG0"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0NDG0",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0NDG0"
+                ]
+            },
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "RefSeq:WP_049078430.1",
+                "SO:0001217",
+                "UniParc:UPI000461A81E",
+                "UniRef:UniRef100_A0A6C0NDG0",
+                "UniRef:UniRef50_A0A6C0NDG0",
+                "UniRef:UniRef90_A0A6C0NDG0"
+            ],
+            "seq_stats": {
+                "molecular_weight": 10361.8342,
+                "isoelectric_point": 8.57095890045166
+            }
+        },
+        {
+            "id": "MEGJMN_071",
+            "description": "hypothetical protein",
+            "aa": "MPECAEYFNVSVPGNYFEGELSADATGIVLTLFTLNALIFLAWDKKWHNAQEELIKQSERLKGYASQHKEKVKIFAAID",
+            "length": 79,
+            "type": "cds",
+            "locus": "MEGJMN_071",
+            "aa_hexdigest": "6a19165aa92831bed81573626b7e2b5c",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [],
+            "seq_stats": {
+                "molecular_weight": 8978.1356,
+                "isoelectric_point": 5.2808198928833
+            }
+        },
+        {
+            "id": "MEGJMN_072",
+            "description": "DUF4942 domain-containing protein",
+            "aa": "MSESKNVPSVEIILGQQSAEVVPSVAIERIISLRDEGIRLYLDAIGQIRKARDLMQEAGGCQYLYDFDKAVENAIRWKDTPSDRAVTAIARVIDGKIWDRLMSETGMYTLMSNKQRQEWDRQVAGSEMPPITLDNVMSTFRHLNASKADTFTQGLIDIFKSLSWDYKTNNPCMFGKRIIIAPLLDVWRSGWVRFSSDGHTKIDDLARPFYVLDGRNVPDHRVSDGAKLDAFFSENQFNGKVFECDYFSVRYYKKGSAHITFKRLDLVEKINDMVASHYPDMLPPRQ",
+            "length": 286,
+            "type": "cds",
+            "locus": "MEGJMN_072",
+            "aa_hexdigest": "ebaeb0426e4d93cc058fde5062aed20a",
+            "ups": {
+                "uniparc_id": "UPI0003296961",
+                "ncbi_nrp_id": "WP_015632451.1",
+                "uniref100_id": "UniRef100_A0A6C0L5Q4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003296961",
+                    "RefSeq:WP_015632451.1",
+                    "UniRef:UniRef100_A0A6C0L5Q4"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L5Q4",
+                "uniref90_id": "UniRef90_A0A6C0L5Q4"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L5Q4",
+                "product": "DUF4942 domain-containing protein",
+                "uniref50_id": "UniRef50_A0A088FSA3"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A088FSA3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A088FSA3"
+                ],
+                "product": "DUF4942 domain-containing protein"
+            },
+            "product": "DUF4942 domain-containing protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632451.1",
+                "SO:0001217",
+                "UniParc:UPI0003296961",
+                "UniRef:UniRef100_A0A6C0L5Q4",
+                "UniRef:UniRef50_A0A088FSA3",
+                "UniRef:UniRef90_A0A6C0L5Q4"
+            ]
+        },
+        {
+            "id": "MEGJMN_073",
+            "description": "Cobalamin biosynthesis protein CbiX",
+            "aa": "MMSKALTPSQLKAEFAAEKDFLLKACLSALNQIPNQRISGPFPSTYALAAQISKLLPSRR",
+            "length": 60,
+            "type": "cds",
+            "locus": "MEGJMN_073",
+            "aa_hexdigest": "943ba8dc4395be41c7dcabaeac76bdfd",
+            "ups": {
+                "uniparc_id": "UPI0006D2EBE2",
+                "ncbi_nrp_id": "WP_223351475.1",
+                "uniref100_id": "UniRef100_A0A6C0L2V3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0006D2EBE2",
+                    "RefSeq:WP_223351475.1",
+                    "UniRef:UniRef100_A0A6C0L2V3"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L2V3",
+                "uniref90_id": "UniRef90_A0A6C0L2V3"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L2V3",
+                "product": "Cobalamin biosynthesis protein CbiX",
+                "uniref50_id": "UniRef50_A0A6C0L2V3"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0L2V3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0L2V3"
+                ],
+                "product": "Cobalamin biosynthesis protein CbiX"
+            },
+            "product": "Cobalamin biosynthesis protein CbiX",
+            "gene": "cbiX",
+            "genes": [
+                "cbiX"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_223351475.1",
+                "SO:0001217",
+                "UniParc:UPI0006D2EBE2",
+                "UniRef:UniRef100_A0A6C0L2V3",
+                "UniRef:UniRef50_A0A6C0L2V3",
+                "UniRef:UniRef90_A0A6C0L2V3"
+            ]
+        },
+        {
+            "id": "MEGJMN_074",
+            "description": "hypothetical protein",
+            "aa": "MASEKGIKNPQSDLCDKAEGIATYTDLVFLDAEQFRNCGDDLFVSNAERAQMAATGLIEFAKISGQHQHGTEPVRGIVISMLASTMHACHLLGVTEAEPFLSLVNIAAGHFEAEIRDEY",
+            "length": 119,
+            "type": "cds",
+            "locus": "MEGJMN_074",
+            "aa_hexdigest": "75014789078caadd33f27ee2155ee0a7",
+            "ups": {
+                "uniparc_id": "UPI00032E55A7",
+                "ncbi_nrp_id": "WP_016162075.1",
+                "uniref100_id": "UniRef100_A0A0C5HDG0",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032E55A7",
+                    "RefSeq:WP_016162075.1",
+                    "UniRef:UniRef100_A0A0C5HDG0"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A0C5HDG0",
+                "uniref90_id": "UniRef90_A0A0C5HDG0"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A0C5HDG0",
+                "uniref50_id": "UniRef50_A0A0C5HDG0"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A0C5HDG0",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A0C5HDG0"
+                ]
+            },
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "RefSeq:WP_016162075.1",
+                "SO:0001217",
+                "UniParc:UPI00032E55A7",
+                "UniRef:UniRef100_A0A0C5HDG0",
+                "UniRef:UniRef50_A0A0C5HDG0",
+                "UniRef:UniRef90_A0A0C5HDG0"
+            ],
+            "seq_stats": {
+                "molecular_weight": 12926.431,
+                "isoelectric_point": 4.705779838562011
+            }
+        },
+        {
+            "id": "MEGJMN_075",
+            "description": "MPN domain-containing protein",
+            "aa": "MLFLDSQNGVIAFEELFQGSINTCSIYVRIIVQKAMQYNASSVILAHNHPSSNPVPSAADKALTLRIKAALLLVEVNTHDHMIVTGNTLTSFAESGLL",
+            "length": 98,
+            "type": "cds",
+            "locus": "MEGJMN_075",
+            "aa_hexdigest": "c2ce3dc292405d70b97690af37e2291f",
+            "ups": {
+                "uniparc_id": "UPI00039EE66B",
+                "uniref100_id": "UniRef100_A0A6C0NCY8",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00039EE66B",
+                    "UniRef:UniRef100_A0A6C0NCY8"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NCY8",
+                "uniref90_id": "UniRef90_A0A6C0NCY8"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0NCY8",
+                "product": "MPN domain-containing protein",
+                "uniref50_id": "UniRef50_A0A6C0NCY8",
+                "kegg_orthology_id": "K03630"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0NCY8",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0NCY8"
+                ],
+                "product": "MPN domain-containing protein"
+            },
+            "product": "MPN domain-containing protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "KEGG:K03630",
+                "SO:0001217",
+                "UniParc:UPI00039EE66B",
+                "UniRef:UniRef100_A0A6C0NCY8",
+                "UniRef:UniRef50_A0A6C0NCY8",
+                "UniRef:UniRef90_A0A6C0NCY8"
+            ]
+        },
+        {
+            "id": "MEGJMN_076",
+            "description": "hypothetical protein",
+            "aa": "MKFTDEEQQIIRRAEAIISAKLPGTDYLTSPDMVRSFLRLHFASADRELFWGAVSGQPEWCNCF",
+            "length": 64,
+            "type": "cds",
+            "locus": "MEGJMN_076",
+            "aa_hexdigest": "a406e967dbd420e7e08b28bfab865df2",
+            "ups": {
+                "uniparc_id": "UPI00071FBE6A",
+                "ncbi_nrp_id": "WP_227665541.1",
+                "uniref100_id": "UniRef100_A0A6C0L480",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00071FBE6A",
+                    "RefSeq:WP_227665541.1",
+                    "UniRef:UniRef100_A0A6C0L480"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L480",
+                "uniref90_id": "UniRef90_A0A6C0L480"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L480",
+                "uniref50_id": "UniRef50_A0A6C0L480"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0L480",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0L480"
+                ]
+            },
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "RefSeq:WP_227665541.1",
+                "SO:0001217",
+                "UniParc:UPI00071FBE6A",
+                "UniRef:UniRef100_A0A6C0L480",
+                "UniRef:UniRef50_A0A6C0L480",
+                "UniRef:UniRef90_A0A6C0L480"
+            ],
+            "seq_stats": {
+                "molecular_weight": 7381.322800000001,
+                "isoelectric_point": 5.1528753280639625
+            }
+        },
+        {
+            "id": "MEGJMN_077",
+            "description": "Transcriptional regulator",
+            "aa": "MKDGTVKTPLEPAQVAAIRQRMGLTQTELADLMGVDLRTWMRKEADPEKVGSKYDSSLLNIGETNFLLLIADEHPAWRIKNYRLDRLFSEVIRSQPSAEEVKELRVALGMKQQEIADLLGYTLAAWKSKQSKANAGTLKPGEYNFLMLLADEHPGLNLIRRS",
+            "length": 162,
+            "type": "cds",
+            "locus": "MEGJMN_077",
+            "aa_hexdigest": "7342159fc2dc02c27cd2092b78861fd8",
+            "ups": {
+                "uniparc_id": "UPI0003296933",
+                "ncbi_nrp_id": "WP_015632454.1",
+                "uniref100_id": "UniRef100_A0A6C0L1U3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003296933",
+                    "RefSeq:WP_015632454.1",
+                    "UniRef:UniRef100_A0A6C0L1U3"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L1U3",
+                "uniref90_id": "UniRef90_A0A6C0L1U3"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L1U3",
+                "product": "Transcriptional regulator",
+                "uniref50_id": "UniRef50_A0A6C0L1U3"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0L1U3",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0L1U3"
+                ],
+                "product": "Transcriptional regulator"
+            },
+            "product": "Transcriptional regulator",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632454.1",
+                "SO:0001217",
+                "UniParc:UPI0003296933",
+                "UniRef:UniRef100_A0A6C0L1U3",
+                "UniRef:UniRef50_A0A6C0L1U3",
+                "UniRef:UniRef90_A0A6C0L1U3"
+            ]
+        },
+        {
+            "id": "MEGJMN_078",
+            "description": "hypothetical protein",
+            "aa": "MNTNLLLTADDVHISMPAGAYLPVTCRFYSHIPHRRHAVRPVTERQRTGTSLFRLTQCCHRRPAVHRTYFMTETAPLYYDEGVNGSTKFTFEVYRDSAQYVVYVRRWNAKKNTILEETRYTSPDKAGLREIKYTNSRQAKAFFSSDFWSQSV",
+            "length": 152,
+            "type": "cds",
+            "locus": "MEGJMN_078",
+            "aa_hexdigest": "a74f9c4cb7da596ad5f61ecfd89a50c7",
+            "ups": {
+                "uniparc_id": "UPI0003296929",
+                "ncbi_nrp_id": "WP_015632455.1",
+                "uniref100_id": "UniRef100_A0A0C5H2X1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003296929",
+                    "RefSeq:WP_015632455.1",
+                    "UniRef:UniRef100_A0A0C5H2X1"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A0C5H2X1",
+                "uniref90_id": "UniRef90_A0A0C5H2X1"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A0C5H2X1",
+                "uniref50_id": "UniRef50_A0A0C5H2X1"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A0C5H2X1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A0C5H2X1"
+                ]
+            },
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "RefSeq:WP_015632455.1",
+                "SO:0001217",
+                "UniParc:UPI0003296929",
+                "UniRef:UniRef100_A0A0C5H2X1",
+                "UniRef:UniRef50_A0A0C5H2X1",
+                "UniRef:UniRef90_A0A0C5H2X1"
+            ],
+            "seq_stats": {
+                "molecular_weight": 17796.921299999998,
+                "isoelectric_point": 9.708632469177246
+            }
+        },
+        {
+            "id": "MEGJMN_079",
+            "description": "Partitioning protein",
+            "aa": "MSDETKPRKIAFNLYPEEHAGDRLASDLLDNIRLKERGRAMRAFLLTGAALAAIDPRLPNLIAELANEDVTLKDIQRIISSVIPDAFAPDDAMVRALLSRLMAPGVEGETPPVKAPDATPENKDLVETRNNALKMFQSDDDD",
+            "length": 142,
+            "type": "cds",
+            "locus": "MEGJMN_079",
+            "aa_hexdigest": "49c0f384d97b55d98dc6dbf69f61f084",
+            "ups": {
+                "uniparc_id": "UPI000329695E",
+                "ncbi_nrp_id": "WP_015632456.1",
+                "uniref100_id": "UniRef100_A0A6C0ND45",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000329695E",
+                    "RefSeq:WP_015632456.1",
+                    "UniRef:UniRef100_A0A6C0ND45"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0ND45",
+                "uniref90_id": "UniRef90_A0A6C0ND45"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0ND45",
+                "product": "Partitioning protein",
+                "uniref50_id": "UniRef50_A0AAU0KQB0"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0AAU0KQB0",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0AAU0KQB0"
+                ],
+                "product": "Plasmid partitioning/stability family protein"
+            },
+            "product": "Partitioning protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632456.1",
+                "SO:0001217",
+                "UniParc:UPI000329695E",
+                "UniRef:UniRef100_A0A6C0ND45",
+                "UniRef:UniRef50_A0AAU0KQB0",
+                "UniRef:UniRef90_A0A6C0ND45"
+            ]
+        },
+        {
+            "id": "MEGJMN_080",
+            "description": "Partitioning protein",
+            "aa": "MRIYVDDGSTNIKLAWKDENGEVKTFISPNSFKPEWSLNLFGDGQSSNYVIEGEKFSFDPGSADAIVTTETRYQYSQVNTVAIHHALLHSGIKPGEVDVVVTLPLSEYLDADFQPNTVNISRKKNSVKREVTLQGKKPGFTIGKVSVLPESIPAGFNILTSLKDDDSLLIVDLGGTTLDVSHVRSKMSGITNTWCDPKIGVSIVTNGIKNAMASDTRISSLQADNMIIHRQDKDWIEHRLPDDKLRKAFSEAFAEKERILINRVIDALDRFTGFTHVMCVGGGAKLISEAVKKATNVPSDRFYTSKEPQFDLVLGMLEMKEGSANE",
+            "length": 326,
+            "type": "cds",
+            "locus": "MEGJMN_080",
+            "aa_hexdigest": "7d9819883fce2d2257947d7497e86087",
+            "ups": {
+                "uniparc_id": "UPI0003296905",
+                "ncbi_nrp_id": "WP_015632457.1",
+                "uniref100_id": "UniRef100_A0A6C0L1U0",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003296905",
+                    "RefSeq:WP_015632457.1",
+                    "UniRef:UniRef100_A0A6C0L1U0"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L1U0",
+                "uniref90_id": "UniRef90_A0A6C0L1U0"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L1U0",
+                "product": "Partitioning protein",
+                "uniref50_id": "UniRef50_C7SA10",
+                "kegg_orthology_id": "K18640"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_C7SA10",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_C7SA10"
+                ],
+                "product": "ParA"
+            },
+            "product": "Partitioning protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "KEGG:K18640",
+                "RefSeq:WP_015632457.1",
+                "SO:0001217",
+                "UniParc:UPI0003296905",
+                "UniRef:UniRef100_A0A6C0L1U0",
+                "UniRef:UniRef50_C7SA10",
+                "UniRef:UniRef90_A0A6C0L1U0"
+            ]
+        },
+        {
+            "id": "MEGJMN_081",
+            "description": "CopG family transcriptional regulator",
+            "aa": "MFFSVGIESPVNSDTAYGISVPAFDRFDYGCVSAADEQSDIPVMAREAILMVVEEMLLSGKHSVEDITDAGFMVYSANADYAHCDYWVMIDVDLSQFEGKQQRLNITLPDVLVKRIDGFIQGNKAVYRDRSHFLAQAARHELTQKNT",
+            "length": 147,
+            "type": "cds",
+            "locus": "MEGJMN_081",
+            "aa_hexdigest": "c0b8c954ffc0c84db02d0f61e7cf88fc",
+            "ups": {
+                "uniparc_id": "UPI000329694F",
+                "ncbi_nrp_id": "WP_015632459.1",
+                "uniref100_id": "UniRef100_A0A6C0ND78",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000329694F",
+                    "RefSeq:WP_015632459.1",
+                    "UniRef:UniRef100_A0A6C0ND78"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0ND78",
+                "uniref90_id": "UniRef90_A0A6C0ND78"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0ND78",
+                "product": "CopG family transcriptional regulator",
+                "uniref50_id": "UniRef50_I2B5J4"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_I2B5J4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_I2B5J4"
+                ],
+                "product": "HicB-like antitoxin of toxin-antitoxin system domain-containing protein"
+            },
+            "product": "CopG family transcriptional regulator",
+            "gene": "copG",
+            "genes": [
+                "copG"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632459.1",
+                "SO:0001217",
+                "UniParc:UPI000329694F",
+                "UniRef:UniRef100_A0A6C0ND78",
+                "UniRef:UniRef50_I2B5J4",
+                "UniRef:UniRef90_A0A6C0ND78"
+            ]
+        },
+        {
+            "id": "MEGJMN_082",
+            "description": "hypothetical protein",
+            "aa": "MSDGQSLKVTASLLVFHPQRKEDRSAESLVGFLHLYAGRYNVLPDPYINLSRLSSQSWSVNCDLSIFPSNGSVWKVLWR",
+            "length": 79,
+            "type": "cds",
+            "locus": "MEGJMN_082",
+            "aa_hexdigest": "fe5228e1eae3c14387cd99a56d6ffbd2",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [],
+            "seq_stats": {
+                "molecular_weight": 8969.0988,
+                "isoelectric_point": 8.977754402160645
+            }
+        },
+        {
+            "id": "MEGJMN_083",
+            "description": "hypothetical protein",
+            "aa": "MLLIRTSKSSLSINFSFSRCYTLVPGVGVWAVFAGTDTGHILCIAIAGERAAHLIDNPRFMVRGFPAAVSGRSLKRRLDGRCQFFWCSDVGKHERLLACIVFVNIFPRSSCVAQVSRPLDDLPATFELTVARLLAIRTR",
+            "length": 139,
+            "type": "cds",
+            "locus": "MEGJMN_083",
+            "aa_hexdigest": "02a05f107d59ca079b50577a2de1896d",
+            "ups": {
+                "uniparc_id": "UPI00032968EC",
+                "uniref100_id": "UniRef100_A0A0C5H2X4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032968EC",
+                    "UniRef:UniRef100_A0A0C5H2X4"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A0C5H2X4",
+                "uniref90_id": "UniRef90_A0A0C5H2X4"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A0C5H2X4",
+                "uniref50_id": "UniRef50_A0A0C5H2X4"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A0C5H2X4",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A0C5H2X4"
+                ]
+            },
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "SO:0001217",
+                "UniParc:UPI00032968EC",
+                "UniRef:UniRef100_A0A0C5H2X4",
+                "UniRef:UniRef50_A0A0C5H2X4",
+                "UniRef:UniRef90_A0A0C5H2X4"
+            ],
+            "seq_stats": {
+                "molecular_weight": 15399.923499999999,
+                "isoelectric_point": 10.107369422912598
+            }
+        },
+        {
+            "id": "MEGJMN_084",
+            "description": "HTH cro/C1-type domain-containing protein",
+            "aa": "MLGYELRLWRKGCGWTQERAAEEFDVSLRTYQMYEKNQRDIPLLAERATRELQLRLMLREFESLTKEQILQRLQTLLNTDNPCLA",
+            "length": 85,
+            "type": "cds",
+            "locus": "MEGJMN_084",
+            "aa_hexdigest": "ec033e8f61835a1b3d5a6fac26cb57aa",
+            "ups": {
+                "uniparc_id": "UPI00032EE7B6",
+                "ncbi_nrp_id": "WP_016162071.1",
+                "uniref100_id": "UniRef100_A0A0C5H1V1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032EE7B6",
+                    "RefSeq:WP_016162071.1",
+                    "UniRef:UniRef100_A0A0C5H1V1"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A0C5H1V1",
+                "uniref90_id": "UniRef90_A0A0C5H1V1"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A0C5H1V1",
+                "product": "HTH cro/C1-type domain-containing protein",
+                "uniref50_id": "UniRef50_A0A0C5H1V1"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A0C5H1V1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A0C5H1V1"
+                ],
+                "product": "HTH cro/C1-type domain-containing protein"
+            },
+            "product": "HTH cro/C1-type domain-containing protein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_016162071.1",
+                "SO:0001217",
+                "UniParc:UPI00032EE7B6",
+                "UniRef:UniRef100_A0A0C5H1V1",
+                "UniRef:UniRef50_A0A0C5H1V1",
+                "UniRef:UniRef90_A0A0C5H1V1"
+            ]
+        },
+        {
+            "id": "MEGJMN_085",
+            "description": "InsA N-terminal domain-containing protein",
+            "aa": "MDEEIRRHIISLYYQYTSVREIARVTGITVKQVTRIVAPFMDERPPETGPVCPACGDTRKKHRIGQVNDRQRLKCLSCGRRFCPSATSGTNTALPPETVSSVVAKYHAFMPRKEIAVRCGLTVKAVSEILKPYRHTRIHVMCPRCSGLKIYRWGKVSGGLQKYRCRECGRVFSQNPDRLTSGFTVSES",
+            "length": 188,
+            "type": "cds",
+            "locus": "MEGJMN_085",
+            "aa_hexdigest": "571a8525bf6b7a1ff03df228aa896606",
+            "ups": {
+                "uniparc_id": "UPI00032968EA",
+                "ncbi_nrp_id": "WP_015632462.1",
+                "uniref100_id": "UniRef100_A0A6C0NCW1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032968EA",
+                    "RefSeq:WP_015632462.1",
+                    "UniRef:UniRef100_A0A6C0NCW1"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NCW1",
+                "uniref90_id": "UniRef90_A0A6C0NCW1"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0NCW1",
+                "product": "InsA N-terminal domain-containing protein",
+                "uniref50_id": "UniRef50_A0A6C0NCW1"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0NCW1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0NCW1"
+                ],
+                "product": "InsA N-terminal domain-containing protein"
+            },
+            "product": "InsA N-terminal domain-containing protein",
+            "gene": "insA",
+            "genes": [
+                "insA"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632462.1",
+                "SO:0001217",
+                "UniParc:UPI00032968EA",
+                "UniRef:UniRef100_A0A6C0NCW1",
+                "UniRef:UniRef50_A0A6C0NCW1",
+                "UniRef:UniRef90_A0A6C0NCW1"
+            ]
+        },
+        {
+            "id": "MEGJMN_086",
+            "description": "Lipoprotein",
+            "aa": "MFLTGCDMASYFPDGPQPVPVISPGYQVSIDGHTVTISGFDNCPQKNVDGNLSADTDRKSCIALEKARTEVKVIVAWPDNVVIETWRIIREKDTHDNEAIRLQRPNGEFVKSFN",
+            "length": 114,
+            "type": "cds",
+            "locus": "MEGJMN_086",
+            "aa_hexdigest": "4f65c4a59510e59ca2cb0dc4e60ac8c8",
+            "ups": {
+                "uniparc_id": "UPI0003296966",
+                "ncbi_nrp_id": "WP_015632463.1",
+                "uniref100_id": "UniRef100_A0A6C0NCY1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0003296966",
+                    "RefSeq:WP_015632463.1",
+                    "UniRef:UniRef100_A0A6C0NCY1"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0NCY1",
+                "uniref90_id": "UniRef90_A0A6C0NCY1"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0NCY1",
+                "product": "Lipoprotein",
+                "uniref50_id": "UniRef50_A0A6C0NCY1"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A6C0NCY1",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A6C0NCY1"
+                ],
+                "product": "Lipoprotein"
+            },
+            "product": "Lipoprotein",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "RefSeq:WP_015632463.1",
+                "SO:0001217",
+                "UniParc:UPI0003296966",
+                "UniRef:UniRef100_A0A6C0NCY1",
+                "UniRef:UniRef50_A0A6C0NCY1",
+                "UniRef:UniRef90_A0A6C0NCY1"
+            ]
+        },
+        {
+            "id": "MEGJMN_087",
+            "description": "type II toxin-antitoxin system toxin CcdB",
+            "aa": "MQFTVYEYTRESHYRLFVDVQSDIVETPGRRIVIPLLESHHLSEKVNQQLFPVVSVNGKEYRAVTSELSGVSVSVIGDAVADLSHEANAIKNALNLMFWGI",
+            "length": 101,
+            "type": "cds",
+            "locus": "MEGJMN_087",
+            "aa_hexdigest": "1977642bace41834d7db8c68db4c2a16",
+            "ups": {
+                "uniparc_id": "UPI000329691A",
+                "ncbi_nrp_id": "WP_015632464.1",
+                "uniref100_id": "UniRef100_A0A6C0ND19",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI000329691A",
+                    "RefSeq:WP_015632464.1",
+                    "UniRef:UniRef100_A0A6C0ND19"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0ND19",
+                "uniref90_id": "UniRef90_A0A6C0ND19"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0ND19",
+                "gene": "ccdB",
+                "product": "type II toxin-antitoxin system toxin CcdB",
+                "uniref50_id": "UniRef50_Q46996",
+                "kegg_orthology_id": "K19163"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_Q46996",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_Q46996"
+                ],
+                "product": "Toxin CcdB"
+            },
+            "product": "type II toxin-antitoxin system toxin CcdB",
+            "gene": "ccdB",
+            "genes": [
+                "ccdB"
+            ],
+            "db_xrefs": [
+                "KEGG:K19163",
+                "RefSeq:WP_015632464.1",
+                "SO:0001217",
+                "UniParc:UPI000329691A",
+                "UniRef:UniRef100_A0A6C0ND19",
+                "UniRef:UniRef50_Q46996",
+                "UniRef:UniRef90_A0A6C0ND19"
+            ]
+        },
+        {
+            "id": "MEGJMN_088",
+            "description": "type II toxin-antitoxin system antitoxin CcdA",
+            "aa": "MKHRASVTVDKEHYLELLAAGVNISGLVNEAIGREARRIQAERWKAENREGMEEVANFIAQHGSFADENRSW",
+            "length": 72,
+            "type": "cds",
+            "locus": "MEGJMN_088",
+            "aa_hexdigest": "46fc1aacd7733e3a46c4b5f8caa2d37f",
+            "ups": {
+                "uniparc_id": "UPI00032968F7",
+                "ncbi_nrp_id": "WP_015632465.1",
+                "uniref100_id": "UniRef100_A0A6C0L1T7",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032968F7",
+                    "RefSeq:WP_015632465.1",
+                    "UniRef:UniRef100_A0A6C0L1T7"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0L1T7",
+                "uniref90_id": "UniRef90_A0A6C0L1T7"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A6C0L1T7",
+                "gene": "ccdA",
+                "product": "type II toxin-antitoxin system antitoxin CcdA",
+                "uniref50_id": "UniRef50_Q46995"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_Q46995",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_Q46995"
+                ],
+                "product": "Antitoxin CcdA"
+            },
+            "product": "type II toxin-antitoxin system antitoxin CcdA",
+            "gene": "ccdA",
+            "genes": [
+                "ccdA"
+            ],
+            "db_xrefs": [
+                "RefSeq:WP_015632465.1",
+                "SO:0001217",
+                "UniParc:UPI00032968F7",
+                "UniRef:UniRef100_A0A6C0L1T7",
+                "UniRef:UniRef50_Q46995",
+                "UniRef:UniRef90_A0A6C0L1T7"
+            ]
+        },
+        {
+            "id": "MEGJMN_089",
+            "description": "Translesion error-prone DNA polymerase V autoproteolytic subunit",
+            "aa": "MKASGKSKNTAKNAVVSGEINASPHTSRYATHDSGTLWIAGPSMVGDFHPLISTGLPAHTVCITSKIRVSGGKMKLQLFSTGKELPPQALPLFADLASCGFPSPAADYVESDLDLHDYCIRHPSATYYLRASGDSMADGSLYNGDLLVVDSAEKPRHGDIVVASVQGEFTVKRLLLTPRLTLQPMNASWSPIYPDPDELDIFGVVTHIIHRPREMY",
+            "length": 216,
+            "type": "cds",
+            "locus": "MEGJMN_089",
+            "aa_hexdigest": "cf244c3bd3edb0cac2b9a9d3114cb15d",
+            "psc": {
+                "uniref90_id": "UniRef90_A0AAW9PQV0",
+                "query_cov": 0.9166666666666666,
+                "subject_cov": 0.8839285714285714,
+                "identity": 0.626,
+                "score": 248.0,
+                "evalue": 2.12e-80,
+                "valid": false,
+                "gene": "LexA",
+                "product": "Translesion error-prone DNA polymerase V autoproteolytic subunit",
+                "ec_ids": [
+                    "3.4.21.-"
+                ],
+                "uniref50_id": "UniRef50_A0A0A5MNX7",
+                "cog_id": "COG1974",
+                "cog_category": "KT",
+                "kegg_orthology_id": "K03503"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A0A5MNX7",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A0A5MNX7"
+                ],
+                "product": "Translesion error-prone DNA polymerase V autoproteolytic subunit"
+            },
+            "product": "Translesion error-prone DNA polymerase V autoproteolytic subunit",
+            "gene": null,
+            "genes": [],
+            "db_xrefs": [
+                "SO:0001217",
+                "UniRef:UniRef50_A0A0A5MNX7"
+            ]
+        },
+        {
+            "id": "MEGJMN_090",
+            "description": "DNA polymerase V subunit UmuC",
+            "aa": "MFALADVNSFYASCERVFRPDLKGKPIVVLSNNDGNVIARSAEAKPWIKMGTPWFQIKNERYPEKIYAFSSNYELYASMSARVMNCLEELAPRVEQYSIDEMFLDLTGVEHCMELEDFGRQLRQHVYDCTRLTIGVGAGPTKTLAKSAQWASKEWKQFRGVLALTRGNPQRTRKLLSLQPVEEIWGVGNRIARKLHVLGIRTALDLALTNPAFIRKNFSVVLERTVRELNGESCMSLEEAPPTKQQIVCSRSFGEKITEYDSLRQAVCQYAERASEKLRKERQYCRHISVFIKTSPFAVKEPYYGNVATEKLLTPTQDTRDIIAAATMALERIWKDGHRYAKAGVMLNDFTGSGVSQLQLFDERPPRPHSAELMRVLDGINNSGLGKVWFAGRGIAPSWQMKRDMLSPAYTTRWRDIPVARIG",
+            "length": 423,
+            "type": "cds",
+            "locus": "MEGJMN_090",
+            "aa_hexdigest": "c6fd14fc89e6c7cf277ce79447be3049",
+            "ups": {
+                "uniparc_id": "UPI00032D98C0",
+                "ncbi_nrp_id": "WP_016162068.1",
+                "uniref100_id": "UniRef100_A0A6C0ND75",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00032D98C0",
+                    "RefSeq:WP_016162068.1",
+                    "UniRef:UniRef100_A0A6C0ND75"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_A0A6C0ND75",
+                "uniref90_id": "UniRef90_A0A2P9E5E6"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_A0A2P9E5E6",
+                "gene": "DinP",
+                "product": "DNA polymerase V subunit UmuC",
+                "uniref50_id": "UniRef50_A0A155JVW9",
+                "cog_id": "COG0389",
+                "cog_category": "L",
+                "kegg_orthology_id": "K03502"
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_A0A155JVW9",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_A0A155JVW9"
+                ],
+                "product": "DNA polymerase V subunit UmuC"
+            },
+            "product": "DNA polymerase V subunit UmuC",
+            "gene": "dinP",
+            "genes": [
+                "dinP",
+                "umuC"
+            ],
+            "db_xrefs": [
+                "COG:COG0389",
+                "COG:L",
+                "KEGG:K03502",
+                "RefSeq:WP_016162068.1",
+                "SO:0001217",
+                "UniParc:UPI00032D98C0",
+                "UniRef:UniRef100_A0A6C0ND75",
+                "UniRef:UniRef50_A0A155JVW9",
+                "UniRef:UniRef90_A0A2P9E5E6"
+            ]
+        },
+        {
+            "id": "MEGJMN_091",
+            "description": "23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(C)",
+            "aa": "MNEKNIKHSQNFITSKHNIDKIMTNIRLNEHDNIFEIGSGKGHFTLELVQRCNFVTAIEIDHKLCKTTENKLVDHDNFQVLNKDILQFKFPKNQSYKIFGNIPYNISTDIIRKIVFDSIADEIYLIVEYGFAKRLLNTKRSLALFLMAEVDISILSMVPREYFHPKPKVNSSLIRLNRKKSRISHKDKQKYNYFVMKWVNKEYKKIFTKNQFNNSLKHAGIDDLNNISFEQFLSLFNSYKL",
+            "length": 241,
+            "type": "cds",
+            "locus": "MEGJMN_091",
+            "aa_hexdigest": "15e040bc0b0291ea6ca71aa4d14d4d39",
+            "psc": {
+                "uniref90_id": "UniRef90_P13956",
+                "query_cov": 1.0871369294605808,
+                "subject_cov": 0.9886792452830189,
+                "identity": 0.92,
+                "score": 465.0,
+                "evalue": 4.76e-165,
+                "valid": true,
+                "gene": "erm(C)",
+                "product": "23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(C)",
+                "ec_ids": [
+                    "2.1.1.184"
+                ],
+                "uniref50_id": "UniRef50_P13956",
+                "cog_id": "COG0030",
+                "cog_category": "J",
+                "go_ids": [
+                    "GO:0005829",
+                    "GO:0052910",
+                    "GO:0003723",
+                    "GO:0000179",
+                    "GO:0046677"
+                ]
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_P13956",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_P13956"
+                ],
+                "product": "rRNA adenine N-6-methyltransferase"
+            },
+            "expert": [
+                {
+                    "type": "amrfinder",
+                    "rank": 95,
+                    "gene": "erm(C)",
+                    "product": "23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(C)",
+                    "method": "BLASTP",
+                    "query_cov": 1.0,
+                    "subject_cov": 0.9876999999999999,
+                    "identity": 1.0,
+                    "id": "WP_001003263.1",
+                    "db_xrefs": [
+                        "NCBIProtein:WP_001003263.1"
+                    ]
+                }
+            ],
+            "product": "23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(C)",
+            "gene": "erm(C)",
+            "genes": [
+                "erm(C)"
+            ],
+            "db_xrefs": [
+                "COG:COG0030",
+                "COG:J",
+                "EC:2.1.1.184",
+                "GO:0000179",
+                "GO:0003723",
+                "GO:0005829",
+                "GO:0046677",
+                "GO:0052910",
+                "NCBIProtein:WP_001003263.1",
+                "SO:0001217",
+                "UniRef:UniRef50_P13956",
+                "UniRef:UniRef90_P13956"
+            ]
+        },
+        {
+            "id": "MEGJMN_092",
+            "description": "23S rRNA methylase leader peptide",
+            "aa": "MGIFSIFVISTVHYQPNKK",
+            "length": 19,
+            "type": "cds",
+            "locus": "MEGJMN_092",
+            "aa_hexdigest": "fc0c5ac5aa5dc39fc65a05869673fe66",
+            "ups": {
+                "uniparc_id": "UPI00000003A9",
+                "ncbi_nrp_id": "WP_002497446.1",
+                "uniref100_id": "UniRef100_P03063",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI00000003A9",
+                    "RefSeq:WP_002497446.1",
+                    "UniRef:UniRef100_P03063"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_P03063",
+                "uniref90_id": "UniRef90_P03063"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_P03063",
+                "gene": "ermC",
+                "product": "23S rRNA methylase leader peptide",
+                "uniref50_id": "UniRef50_P03063",
+                "go_ids": [
+                    "GO:0046677"
+                ]
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_P03063",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_P03063"
+                ],
+                "product": "23S rRNA methylase leader peptide"
+            },
+            "expert": [
+                {
+                    "type": "expert_proteins",
+                    "source": "BlastRules",
+                    "rank": 80,
+                    "id": "WP_002497446",
+                    "gene": "ermCL",
+                    "product": "23S rRNA methylase leader peptide ErmCL",
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
+                    "identity": 1.0,
+                    "score": 43.1,
+                    "evalue": 8.4e-09,
+                    "db_xrefs": [
+                        "BlastRules:WP_002497446"
+                    ]
+                }
+            ],
+            "product": "23S rRNA methylase leader peptide ErmCL",
+            "gene": "ermCL",
+            "genes": [
+                "ermC",
+                "ermCL"
+            ],
+            "db_xrefs": [
+                "BlastRules:WP_002497446",
+                "GO:0046677",
+                "RefSeq:WP_002497446.1",
+                "SO:0001217",
+                "UniParc:UPI00000003A9",
+                "UniRef:UniRef100_P03063",
+                "UniRef:UniRef50_P03063",
+                "UniRef:UniRef90_P03063"
+            ]
+        },
+        {
+            "id": "MEGJMN_093",
+            "description": "Replication and maintenance protein",
+            "aa": "MKERYGTVYKGSQRLIDEESGEVIEVDKLYRKQTSGNFVKAYIVQLISMLDMIGGKKLKIVNYILDNVHLSNNTMIATTREIAKATGTSLQTVITTLKILEEGNIIKRKTGVLMLNPELLMRGDDQKQKYLLLEFGNFEQEANEKQENALSDYYSFKD",
+            "length": 158,
+            "type": "cds",
+            "locus": "MEGJMN_093",
+            "aa_hexdigest": "075bc83c5dc2c8065f0301a8da24fc4e",
+            "ups": {
+                "uniparc_id": "UPI0000000442",
+                "ncbi_nrp_id": "WP_000664727.1",
+                "uniref100_id": "UniRef100_P0A0C8",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniParc:UPI0000000442",
+                    "RefSeq:WP_000664727.1",
+                    "UniRef:UniRef100_P0A0C8"
+                ]
+            },
+            "ips": {
+                "uniref100_id": "UniRef100_P0A0C8",
+                "uniref90_id": "UniRef90_P0A0C8"
+            },
+            "psc": {
+                "uniref90_id": "UniRef90_P0A0C8",
+                "gene": "repL",
+                "product": "Replication and maintenance protein",
+                "uniref50_id": "UniRef50_P0A0C8",
+                "go_ids": [
+                    "GO:0003677",
+                    "GO:0006260",
+                    "GO:0006276",
+                    "GO:0006355"
+                ]
+            },
+            "pscc": {
+                "uniref50_id": "UniRef50_P0A0C8",
+                "db_xrefs": [
+                    "SO:0001217",
+                    "UniRef:UniRef50_P0A0C8"
+                ],
+                "product": "Replication and maintenance protein"
+            },
+            "product": "Replication and maintenance protein",
+            "gene": "repL",
+            "genes": [
+                "repL"
+            ],
+            "db_xrefs": [
+                "GO:0003677",
+                "GO:0006260",
+                "GO:0006276",
+                "GO:0006355",
+                "RefSeq:WP_000664727.1",
+                "SO:0001217",
+                "UniParc:UPI0000000442",
+                "UniRef:UniRef100_P0A0C8",
+                "UniRef:UniRef50_P0A0C8",
+                "UniRef:UniRef90_P0A0C8"
+            ]
+        }
+    ],
+    "version": {
+        "bakta": "1.12.0",
+        "db": {
+            "version": "6.0",
+            "type": "full"
+        }
+    }
+}

@@ -43,6 +43,7 @@ def parse_protein_input(input_path, faa_path):
         if fasta_flag:
             logger.info('Attempting to parse input protein sequences as .faa format ...')
             aas = fasta.import_sequences(input_path, False, False)
+            bakta_version = {}
         else:
             logger.info('Attempting to parse input protein sequences as Bakta JSON format ...')
             aas, hypotheticals, bakta_version = parse_json_input(input_path, False, False, protein_json_flag=True)
