@@ -171,6 +171,12 @@ def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str,
       >>> write_bakta_proteins_outputs(aas, output, prefix, custom_db)
     """
 
+    # remove fields that were mocked to avoid baktfold crashing but not in the bakta protein JSON outputs
+    fields_to_remove = ['sequence', 'start', 'stop', 'strand', 'frame']
+
+    for aa in aas:
+        for f in fields_to_remove:
+            aa.pop(f, None)
     
     annotations_path: Path = Path(output) / f"{prefix}.tsv"
     if custom_db:
@@ -193,7 +199,7 @@ def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str,
     json.write_json({'features': aas}, aas, full_annotations_path)
 
 
-    #### don't write hyps I think
+    #### don't write hyps I think as tsv
 
     # hypotheticals_path = output_path.joinpath(f'{cfg.prefix}.hypotheticals.tsv')
     # header_columns = ['ID', 'Length', 'Mol Weight [kDa]', 'Iso El. Point', 'Pfam hits']

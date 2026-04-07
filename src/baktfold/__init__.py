@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 
-__version__ = '0.1.0'
-
 from pathlib import Path
-
 from datetime import datetime
 import click
 from Bio import SeqIO
@@ -394,7 +391,7 @@ def run(
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
-    data, features, has_duplicate_locus, translation_table, prokka, other_genbank = parse_json_input(input, fasta_aa, all_proteins)
+    data, features, has_duplicate_locus, translation_table, prokka, other_genbank = parse_json_input(input, fasta_aa, all_proteins, protein_json_flag=False)
 
     if other_genbank:
         log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
@@ -892,7 +889,7 @@ def predict(
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
-    data, features, has_duplicate_locus, translation_table, prokka, other_genbank = parse_json_input(input, fasta_aa, all_proteins)
+    data, features, has_duplicate_locus, translation_table, prokka, other_genbank = parse_json_input(input, fasta_aa, all_proteins, protein_json_flag=False)
     if other_genbank:
         log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
 
@@ -1106,7 +1103,7 @@ def compare(
     ###
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
-    data, features, has_duplicate_locus, translation_table, prokka, other_genbank = parse_json_input(input, fasta_aa, all_proteins)
+    data, features, has_duplicate_locus, translation_table, prokka, other_genbank = parse_json_input(input, fasta_aa, all_proteins, protein_json_flag=False)
     if other_genbank:
         log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
 
@@ -1538,7 +1535,6 @@ def proteins_compare(
     ############################################################################
     
     io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast)
-
 
     # cleanup the temp files
     if not keep_tmp_files:

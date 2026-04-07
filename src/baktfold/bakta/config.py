@@ -10,8 +10,7 @@ from datetime import datetime
 from pathlib import Path
 
 import baktfold.bakta.constants as bc
-from baktfold import __version__
-
+from baktfold.utils.util import get_version
 
 PLASMID_NAME_PATTERN = re.compile(r'p[a-zA-Z0-9\._]{1,19}')
 PLASMID_UNNAMED_PATTERN = re.compile(r'unnamed[0-9]{0,3}')
@@ -27,7 +26,7 @@ verbose = None
 debug = None
 
 # input / output configuration
-version = __version__
+version = get_version()
 db_path = None
 db_info = None
 tmp_path = None

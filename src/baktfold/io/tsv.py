@@ -97,7 +97,7 @@ def write_feature_inferences(sequences: Sequence[dict], features_by_sequence: Di
     logger.info('write tsv: path=%s', tsv_path)
 
     with tsv_path.open('wt') as fh:
-        fh.write('# Annotated with Bakta\n')
+        fh.write('# Annotated with Baktfold\n')
         fh.write(f'# Software: v{cfg.version}\n')
         fh.write(f"# Database: v{cfg.version}\n") # fix later
         #fh.write(f"# Database: v{cfg.db_info['major']}.{cfg.db_info['minor']}, {cfg.db_info['type']}\n")
