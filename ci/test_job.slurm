@@ -13,8 +13,6 @@ cd "$BASEDIR"
 # # pull the sif 
 
 containerImage="$BASEDIR/baktfold_${COMMIT_SHA}.sif"
-
-module load pawseyenv/2023.08
 module load singularity/3.11.4-slurm
 export SINGULARITY_CACHEDIR=$PWD
 
@@ -26,6 +24,7 @@ else
     echo "Container already exists. Skipping pull."
 fi
 
+# run help to ensure baktfold is installed
 singularity exec "$containerImage" baktfold --help
 
 # Define the target directory name

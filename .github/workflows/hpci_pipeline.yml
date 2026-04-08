@@ -33,6 +33,7 @@ jobs:
             --scheduler-arg --account=${{ secrets.PAWSEY_ACCOUNT }}-gpu \
             --scheduler-arg --err=baktfold=${{ github.sha }}.err \
             --scheduler-arg --output=baktfold=${{ github.sha }}.out \
+            --scheduler-arg --begin=now+15min \
             -c BASEDIR=${{ secrets.BASEDIR }},COMMIT_SHA=${{ github.sha }},REPO_URL=https://github.com/${{ github.repository }}.git,REPO_NAME=${{ github.event.repository.name }}
 
       - name: Cleanup keys and binary
