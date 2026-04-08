@@ -19,7 +19,7 @@ export SINGULARITY_CACHEDIR=$PWD
 # Only pull if the image doesn't already exist
 if [ ! -f "$containerImage" ]; then
     echo "Container not found. Pulling image..."
-    singularity pull --dir "$PWD" "docker://quay.io/gbouras13/baktfold:$COMMIT_SHAA"
+    singularity pull --dir "$PWD" "docker://quay.io/gbouras13/baktfold:$COMMIT_SHA"
 else
     echo "Container already exists. Skipping pull."
 fi
