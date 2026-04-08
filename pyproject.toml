@@ -81,4 +81,4 @@ include-package-data = true
 zip-safe = true  # This just means it's safe to zip up the bdist
 
 [tool.setuptools.package-data]
-phold = ["features/autotune_data/*.fasta"]
+baktfold = ["features/autotune_data/*.fasta.gz"]
