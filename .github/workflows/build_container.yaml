@@ -1,10 +1,5 @@
-name: Build and Push Container
-
-on: 
-  push:
-    branches: ["dev"]
-  pull_request:
-    branches: ["dev"]
+name: Build and Push Container to Quay
+on: [push,pull_request]
 
 jobs:
   build:
