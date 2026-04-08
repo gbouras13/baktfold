@@ -1,4 +1,19 @@
 # History
+
+0.2.0 (2026-04-08)
+------------------
+
+* Add support for `bakta_proteins` JSON output format as `baktfold proteins` input - `baktfold proteins` will automatically detect the format (`.faa` or Bakta JSON) #30
+* Fix tool description in JSON (inherits Bakta's and add Baktfold's) #27
+* Adds comprehensive CI tests synced to Setonix via @ignatiusm [HPCI](https://github.com/Garvan-Data-Science-Platform/hpci), getting around GitHub CI runner difficulties (and adding GPU access)
+
+0.1.1 (2026-03-30)
+------------------
+
+* Support Uniprot/Trembl etc protein headers with baktfold proteins that Foldseek trims by default
+* Fix bug where embeddings were cast to half precision with `--cpu` #28
+
+
 0.1.0 (2026-02-19)
 ------------------
 

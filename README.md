@@ -126,6 +126,7 @@ baktfold run -i tests/test_data/assembly_bakta_output/assembly.json  -o baktfold
 ```
 
 Running Baktfold on protein sequences (using a dummy test example Fasta `.faa` file):
+  * Note that this can be any `.faa`. It does not have to be the output of Bakta.
 
 ```bash
 # default (CPU-only or non-NVIDIA GPU e.g. Mac or AMD)
@@ -134,7 +135,15 @@ baktfold proteins -i tests/test_data/assembly.hypotheticals.faa  -o baktfold_pro
 baktfold proteins -i tests/test_data/assembly.hypotheticals.faa  -o baktfold_proteins_output -f -t 8 -d baktfold_db   --foldseek-gpu
 ```
 
-Note that this can be any `.faa`. It does not have to be the output of Bakta.
+As of v0.2.0, you can also use `baktfold proteins` with a Bakta proteins JSON output format file e.g.
+  * Note that this will only annotate the hypothetical proteins in the Bakta JSON output.
+  * Note also that `baktfold proteins` will automatically detect the format (`.faa` or Bakta JSON)
+
+```bash
+baktfold proteins -i tests/test_data/assembly_bakta_proteins_output_all/assembly.json  -o baktfold_proteins_output_from_json -f -t 8 -d baktfold_db   
+# with Nvidia GPU 
+baktfold proteins -i tests/test_data/assembly_bakta_proteins_output_all/assembly.json  -o baktfold_proteins_output_from_json -f -t 8 -d baktfold_db   --foldseek-gpu
+```
 
 ## Conversion wrapper commands
 

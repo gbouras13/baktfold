@@ -46,6 +46,7 @@ database_dir = Path(f"{test_data}/baktfold_db")
 input_json: Path = f"{test_bakta_output}/assembly.json"
 input_no_fs_hits_json: Path = f"{test_data}/SAMEA111266571.bakta.json"
 input_fasta: Path = f"{test_data}/assembly.hypotheticals.faa"
+input_proteins_json: Path = f"{test_data}/assembly_bakta_proteins_output_all/assembly.json"
 input_pipe_fasta: Path = f"{test_data}/pipe.faa"
 input_prok_gbk: Path = f"{test_prokka_output}/PROKKA_02192026.gbk"
 input_prok_json: Path = f"{test_data}/assembly_prokka.json"
@@ -53,7 +54,6 @@ input_euk_gbk: Path = f"{test_data}/protist.gbk.gz"
 input_ncbi_gbk: Path = f"{test_data}/clado.gbk.gz"
 input_funannotate_gbk: Path = f"{test_data}/funannotate.gbk.gz"
 input_fungi_gbk: Path = f"{test_data}/Aaosphaeria_arxii_cbs_175_79_gca_010015735.Aaoar1.62.nonchromosomal.gbk.gz"
-
 
 pdb_dir = Path(f"{test_data}/pdbs")
 cif_dir = Path(f"{test_data}/cifs")
@@ -92,6 +92,7 @@ compare_pdb_dir: Path = f"{output_dir}/compare_pdb_json"
 compare_cif_dir: Path = f"{output_dir}/compare_cif_json"
 
 proteins_dir: Path = f"{output_dir}/proteins"
+proteins_dir_from_json = f"{output_dir}/proteins_json"
 proteins_pipe_dir: Path = f"{output_dir}/proteins_pipe"
 proteins_predict_dir: Path = f"{output_dir}/proteins_predict"
 
@@ -278,7 +279,6 @@ def test_compare_cif(gpu_available, threads, nvidia):
 proteins 
 """
 
-
 def test_proteins(gpu_available, threads, nvidia):
     """test baktfold proteins"""
     cmd = f"baktfold proteins -i {input_fasta} -o {proteins_dir} -t {threads} -d {database_dir} -f"
@@ -288,7 +288,16 @@ def test_proteins(gpu_available, threads, nvidia):
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
 
-def test_proteins_pioe(gpu_available, threads, nvidia):
+def test_proteins_json(gpu_available, threads, nvidia):
+    """test baktfold proteins with json input"""
+    cmd = f"baktfold proteins -i {input_proteins_json} -o {proteins_dir_from_json} -t {threads} -d {database_dir} -f"
+    if nvidia:
+       cmd = f"{cmd} --foldseek-gpu" 
+    if gpu_available is False:
+        cmd = f"{cmd} --cpu"
+    exec_command(cmd)
+
+def test_proteins_pipe(gpu_available, threads, nvidia):
     """test baktfold proteins where some inputs have | in header"""
     cmd = f"baktfold proteins -i {input_pipe_fasta} -o {proteins_pipe_dir} -t {threads} -d {database_dir} -f"
     if nvidia:

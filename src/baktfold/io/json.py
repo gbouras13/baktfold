@@ -10,7 +10,7 @@ import baktfold.bakta.constants as bc
 import baktfold.bakta.config as cfg
 
 
-def write_json(data: dict, features: Sequence[dict], json_path: Path):
+def write_json(data: dict, features: Sequence[dict], json_path: Path, bakta_version: dict):
     logger.info(f'write JSON: path={json_path}' )
 
     # clean feature attributes
@@ -29,9 +29,10 @@ def write_json(data: dict, features: Sequence[dict], json_path: Path):
             if isinstance(psc, dict):
                 psc.pop('db_xrefs', None)
 
-    version = OrderedDict()
-    version['bakta'] = cfg.version
-    version['db'] = cfg.version
+    version = bakta_version
+    version['baktfold'] = cfg.version
+    version['baktfold_db'] = cfg.db_version
+
     # version['db'] = {
     #     'version': f"{cfg.db_info['major']}.{cfg.db_info['minor']}",
     #     'type': cfg.db_info['type']

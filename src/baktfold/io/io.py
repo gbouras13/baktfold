@@ -38,7 +38,7 @@ def write_foldseek_tophit(tophit_df: pd.DataFrame, pdb_tophit_path: Path):
 def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequence: Sequence[dict] , 
                         output: Path, prefix: str, custom_db: bool, euk: bool, has_duplicate_locus: bool,
                         fast: bool, translation_table: int, prokka: bool, other_genbank: bool,
-                        cds_program: str ,trna_program: str, rrna_program: str, tmrna_program: str, ncrna_program: str):
+                        cds_program: str ,trna_program: str, rrna_program: str, tmrna_program: str, ncrna_program: str, bakta_version: dict):
     """
     Writes the bakta outputs to a given path.
 
@@ -55,12 +55,13 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
       translation_table (str): Translation table inferred from input JSON
       prokka (bool): boolean indicating if prokka was used to do initial annotation
       other_genbank (bool): boolean indicating if other genbank (prokaryotic, genbank_to) was used to do initial annotation
+      bakta_version (dict): Dictionary of Bakta (or whatever other program) was used for the initial annotation
 
     Returns:
       None.
 
     Examples:
-      >>> write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank)
+      >>> write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank, bakta_version)
     """
 
     #logger.info(f'selected features={len(features)}')
@@ -118,42 +119,17 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
 
 
     tsv.write_protein_features(selected_features, header_columns, annotations_path, custom_db, has_duplicate_locus, fast=fast)
-    
-    
-
+        
     cfg.skip_cds = False
     if(cfg.skip_cds is False):
 
-        # no need to write the hypotheticals I think
-
-        # hypotheticals = [feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in feat]
-
-
-        # print('writing hypothetical TSV...')
-        # tsv_path: Path = Path(output) / f"{prefix}.hypotheticals.tsv"
-        # tsv.write_hypotheticals(hypotheticals, tsv_path)
-
-        # print('writing translated hypothetical CDS sequences...')
-        # print('writing translated CDS sequences...')
-        # faa_path: Path = Path(output) / f"{prefix}.hypotheticals.faa"
-        # fasta.write_faa(hypotheticals, faa_path)
-
-        # calc & store runtime
-
-        # run_duration = (cfg.run_end - cfg.run_start).total_seconds()
-        # data['run'] = {
-        #     'start': cfg.run_start.strftime('%Y-%m-%d %H:%M:%S'),
-        #     'end': cfg.run_end.strftime('%Y-%m-%d %H:%M:%S'),
-        #     'duration': f'{(run_duration / 60):.2f} min'
-        # }
-
         logger.info('write machine readable JSON...')
         json_path: Path = Path(output) / f"{prefix}.json"
-        json.write_json(data, features, json_path)
+        json.write_json(data, features, json_path, bakta_version)
 
 
 
-def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str, custom_db: bool, fast: bool):
+def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str, custom_db: bool, fast: bool, bakta_version: dict):
     """
     Writes the bakta protein outputs to a given path.
 
@@ -163,6 +139,7 @@ def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str,
       prefix (str): The prefix to use for the bakta protein outputs.
       custom_db (bool): A boolean indicating whether a custom database is used.
       fast (bool): If True, skips AFDB step
+      bakta_version (dict): Original Bakta version
 
     Returns:
       None.
@@ -171,6 +148,12 @@ def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str,
       >>> write_bakta_proteins_outputs(aas, output, prefix, custom_db)
     """
 
+    # remove fields that were mocked to avoid baktfold crashing but not in the bakta protein JSON outputs
+    fields_to_remove = ['sequence', 'start', 'stop', 'strand', 'frame']
+
+    for aa in aas:
+        for f in fields_to_remove:
+            aa.pop(f, None)
     
     annotations_path: Path = Path(output) / f"{prefix}.tsv"
     if custom_db:
@@ -190,10 +173,10 @@ def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str,
 
     full_annotations_path: Path = Path(output) / f"{prefix}.json"
     logger.info(f'Full annotations (JSON): {full_annotations_path}')
-    json.write_json({'features': aas}, aas, full_annotations_path)
+    json.write_json({'features': aas}, aas, full_annotations_path, bakta_version)
 
 
-    #### don't write hyps I think
+    #### don't write hyps I think as tsv
 
     # hypotheticals_path = output_path.joinpath(f'{cfg.prefix}.hypotheticals.tsv')
     # header_columns = ['ID', 'Length', 'Mol Weight [kDa]', 'Iso El. Point', 'Pfam hits']

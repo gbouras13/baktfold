@@ -4,10 +4,28 @@
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1  
 #SBATCH --time=03:59:30
-#SBATCH --account="${SBATCH_ACCOUNT}"  
-
 
 set -eu -o pipefail
+
+mkdir -p "$BASEDIR"
+cd "$BASEDIR"
+
+# # pull the sif 
+
+containerImage="$BASEDIR/baktfold_${COMMIT_SHA}.sif"
+module load singularity/3.11.4-slurm
+export SINGULARITY_CACHEDIR=$PWD
+
+# Only pull if the image doesn't already exist
+if [ ! -f "$containerImage" ]; then
+    echo "Container not found. Pulling image..."
+    singularity pull --dir "$PWD" "docker://quay.io/gbouras13/baktfold:$COMMIT_SHA"
+else
+    echo "Container already exists. Skipping pull."
+fi
+
+# run help to ensure baktfold is installed
+singularity exec "$containerImage" baktfold --help
 
 # Define the target directory name
 TARGET_DIR="${REPO_NAME}-${COMMIT_SHA}"
@@ -18,4 +36,9 @@ cd "$TARGET_DIR"
 
 git checkout "$COMMIT_SHA"
 
-echo "Working Dir: $(pwd); Sbatch version: $(sbatch --version)" > test_job.log 2>&1
+singularity exec "$containerImage" pytest --gpu-available --threads 8 .
+
+cd ..
+
+rm -rf $TARGET_DIR
+

@@ -12,57 +12,6 @@ from xopen import xopen
 
 from baktfold.io.handle_genbank import  get_genbank
 
-def validate_input(input: Path, threads: int) -> Dict[str, Union[bool, Dict]]:
-    """
-    Validate the input file format and retrieve genomic data.
-
-    Parameters:
-        input (Path): Path to the input file.
-        threads (int): Number of threads to use for prediction.
-
-    Returns:
-        Dict[str, Union[bool, Dict]]: A dictionary containing validation flags and genomic data.
-    """
-
-    # validates input
-    fasta_flag = False
-    gb_dict, method = get_genbank(input)
-
-    if not gb_dict:
-        logger.warning(f"{input} was not a Genbank format file")
-        logger.warning(
-            f"Now checking if the input {input} is a genome in nucleotide FASTA format"
-        )
-        logger.warning(f"pyrodigal-gv will be used to predict CDS")
-        logger.warning(f"baktfold will not predict tRNAs, tmRNAs or CRISPR repeats")
-        logger.warning(
-            f"Please use pharokka https://github.com/gbouras13/pharokka if you would like to predict these"
-        )
-        logger.warning(
-            f"And then use the genbank output pharokka.gbk as --input for baktfold"
-        )
-
-        # check the contig ids are < 54 chars
-        for record in SeqIO.parse(input, "fasta"):
-            # Check if the length of the record ID is 54 characters or more
-            if len(record.id) >= 54:
-                logger.warning(
-                    f"The contig header {record.id} is longer than 54 characters. It is recommended that you use shorter contig headers as this can create issues downstream."
-                )
-
-        gb_dict = get_fasta_run_pyrodigal_gv(input, threads)
-        if not gb_dict:
-            logger.warning("Error: no records found in FASTA file")
-            logger.error("Please check your input")
-        else:
-            logger.info(
-                f"Successfully parsed input {input} as a FASTA and predicted CDS"
-            )
-            fasta_flag = True
-    else:
-        logger.info(f"Successfully parsed input {input} as a {method} style Genbank file.")
-
-    return fasta_flag, gb_dict, method
 
 
 def instantiate_dirs(output_dir: Union[str, Path], force: bool) -> Path:
@@ -128,8 +77,6 @@ def validate_outfile(outfile: Union[str, Path], force: bool) -> Path:
             logger.error(
                 f"Output file {outfile} already exists and force was not specified. Please specify -f or --force to overwrite the output file"
             )
-
-
 
 
 def check_dependencies() -> None:
@@ -238,3 +185,32 @@ def check_genbank_and_prokka(filepath, euk):
         return None
 
     return records
+
+
+
+def is_fasta(filepath: Path) -> bool:
+    try:
+    
+        # Use xopen so gzip/bz2/xz/zst work automatically
+        with xopen(filepath, "rb") as f:
+            first_line = f.readline().strip()
+
+            if not first_line.startswith(b">"):
+                return False
+
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+
+                if line.startswith(b">"):
+                    continue
+
+                line = line.decode("utf-8", errors="ignore")
+
+                if not all(c.isalpha() or c in "-*." for c in line):
+                    return False
+
+        return True
+    except Exception:
+        return False
