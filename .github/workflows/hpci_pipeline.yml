@@ -31,7 +31,9 @@ jobs:
             --script ci/test_job.slurm \
             --logFile ${{ github.sha }}/test_job.log \
             --scheduler-arg --account=${{ secrets.PAWSEY_ACCOUNT }}-gpu \
-            -c COMMIT_SHA=${{ github.sha }},REPO_URL=https://github.com/${{ github.repository }}.git,REPO_NAME=${{ github.event.repository.name }}
+            --scheduler-arg --err=baktfold=${{ github.sha }}.err \
+            --scheduler-arg --output=baktfold=${{ github.sha }}.out \
+            -c BASEDIR=${{ secrets.BASEDIR }},COMMIT_SHA=${{ github.sha }},REPO_URL=https://github.com/${{ github.repository }}.git,REPO_NAME=${{ github.event.repository.name }}
 
       - name: Cleanup keys and binary
         if: always()
