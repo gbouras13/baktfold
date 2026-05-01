@@ -39,19 +39,25 @@ def write_summary_txt_file(output, prefix, features):
     
     summary_path: Path = Path(output) / f"{prefix}.summary.txt"
 
+    end_hyps = len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in str(feat).lower()])
+    baktfold_function = len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'baktfold' in str(feat).lower() and 'hypothetical' not in str(feat).lower() ])
+    begin_hyps = end_hyps + baktfold_function
 
     logger.info(f'Baktfold annotation summary {summary_path}') 
     with summary_path.open('w') as fh_out:
         fh_out.write('Annotation:\n')
         fh_out.write(f"CDS count: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS])}\n")
         fh_out.write(
+            f"CDS beginning hypotheticals: {begin_hyps}\n"
+        )
+        fh_out.write(
             f"CDS annotated with Baktfold database hit: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'baktfold' in str(feat).lower()])}\n"
         )
         fh_out.write(
-            f"CDS annotated with Baktfold function: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'baktfold' in str(feat).lower() and 'hypothetical' not in str(feat).lower() ])}\n"
+            f"CDS annotated with Baktfold function: {baktfold_function}\n"
         )
         fh_out.write(
-            f"CDS remaining hypotheticals: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in str(feat).lower()])}\n"
+            f"CDS remaining hypotheticals: {end_hyps}\n"
         )
         fh_out.write('\nBaktfold:\n')
         fh_out.write(f'Software: v{cfg.version}\n')
@@ -134,9 +140,17 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
     if fast:
         header_columns = [col for col in header_columns if col != 'AFDBClusters']
 
+    # flatten all features across sequences
+    all_features = [
+        feat
+        for features in features_by_sequence.values()
+        for feat in features
+    ]
+
     logger.info(f'Exporting annotations (TSV) to: {annotations_path}')
 
     selected_features = []
+
 
     for seq_id, features in features_by_sequence.items():
         for feat in features:
@@ -144,17 +158,17 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
             if 'hypothetical' in feat or 'baktfold' in feat:
                 selected_features.append(feat)
 
-
     tsv.write_protein_features(selected_features, header_columns, annotations_path, custom_db, has_duplicate_locus, fast=fast)
+
+    # write summary file
+
+    write_summary_txt_file(output, prefix, all_features)
         
-    cfg.skip_cds = False
-    if(cfg.skip_cds is False):
+    logger.info('write machine readable JSON...')
+    json_path: Path = Path(output) / f"{prefix}.json"
+    json.write_json(data, features, json_path, bakta_version)
 
-        logger.info('write machine readable JSON...')
-        json_path: Path = Path(output) / f"{prefix}.json"
-        json.write_json(data, features, json_path, bakta_version)
-
-    write_summary_txt_file(output, prefix, features)
+    
 
 def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str, custom_db: bool, fast: bool, bakta_version: dict):
     """
