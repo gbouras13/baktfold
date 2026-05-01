@@ -42,8 +42,8 @@ def write_summary_txt_file(output, prefix, features):
 
     logger.info(f'Baktfold annotation summary {summary_path}') 
     with summary_path.open('w') as fh_out:
-        fh_out.write('\nAnnotation:\n')
-        fh_out.write(f"CDSs: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS])}\n")
+        fh_out.write('Annotation:\n')
+        fh_out.write(f"CDS count: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS])}\n")
         fh_out.write(
             f"CDS annotated with Baktfold database hit: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'baktfold' in str(feat).lower()])}\n"
         )
@@ -56,7 +56,7 @@ def write_summary_txt_file(output, prefix, features):
         fh_out.write('\nBaktfold:\n')
         fh_out.write(f'Software: v{cfg.version}\n')
         fh_out.write(f"Database: v{cfg.db_version}\n")
-        fh_out.write('DOI: 10.1099/mgen.0.000685\n')
+        fh_out.write('DOI: https://doi.org/10.64898/2026.03.31.715528\n')
         fh_out.write('URL: github.com/gbouras13/baktfold\n')
 
 
