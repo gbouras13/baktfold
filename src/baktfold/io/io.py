@@ -51,7 +51,7 @@ def write_summary_txt_file(output, prefix, features):
             f"CDS annotated with Baktfold function: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'baktfold' in str(feat).lower() and 'hypothetical' not in str(feat).lower() ])}\n"
         )
         fh_out.write(
-            f"CDS remaining hypothetical function: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in str(feat).lower()])}\n"
+            f"CDS remaining hypotheticals: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in str(feat).lower()])}\n"
         )
         fh_out.write('\nBaktfold:\n')
         fh_out.write(f'Software: v{cfg.version}\n')
