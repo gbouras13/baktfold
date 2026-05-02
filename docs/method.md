@@ -3,13 +3,13 @@
 ## ProstT5 3Di Inference
 
 * `baktfold` begins by predicting the Foldseek 3Di tokens for every **hypothetical** protein input using the [ProstT5](https://github.com/mheinzinger/ProstT5) protein language model
-* Alternatively, this step is skipped if you specify pre-computed protein structures in the .pdb or .cif formats using the `--structures` flag along with specifying the directory containing the structures with `--structure_dir`
+* Alternatively, this step is skipped if you specify pre-computed protein structures in the `.pdb` or `.cif` formats by specifying the directory containing the structures with `--structure-dir`
 * You can also annotate all proteins using `-a`
 
 ##  Foldseek Structural Comparison
 
 * `baktfold` then creates a [Foldseek](https://github.com/steineggerlab/foldseek) database combining the AA and 3Di representations of each protein, and compares this to each of the four `baktfold` databases with Foldseek (detailed below)
-* Alternatively, you can specify protein structures that you have pre-computed for your phage(s) instead of using ProstT5 with the parameter `--structure_dir`
+* Alternatively, you can specify protein structures that you have pre-computed for your phage(s) instead of using ProstT5 with the parameter `--structure-dir`
 * You can also specify a custom Foldseek database with `--custom-db`
 
 ## `baktfold` databases

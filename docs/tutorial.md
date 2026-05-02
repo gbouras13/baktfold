@@ -26,7 +26,7 @@ bakta   --db "$DB_PATH" \
         "GCF_002368115.1_ASM236811v1_genomic.fna.gz"
 ```
 
-## Step 1 Get the test data from 
+## Step 1 Get the test data from the Baktfold repository
 
 ```bash
 curl -L -o GCF_002368115.json https://raw.githubusercontent.com/gbouras13/baktfold/main/tests/test_data/GCF_002368115.json

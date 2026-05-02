@@ -36,11 +36,16 @@ If you don't want to install Baktfold locally, you can run it without any code u
 
 Baktfold is available to run via Bakta's web server - the provisional link is [here](https://staging.bakta.computational.bio/).
 
+# Documentation
+
+Baktfold's documentation, including a quick tutorial, is available [here](https://gbouras13.github.io/baktfold/).
+
 # Table of Contents
 
 - [Baktfold](#baktfold)
 - [Google Colab Notebook](#google-colab-notebook)
 - [Webserver](#webserver)
+- [Documentation](#documentation)
 - [Table of Contents](#table-of-contents)
   - [Install](#install)
     - [Conda (recommended)](#conda-recommended)
