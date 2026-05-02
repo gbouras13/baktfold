@@ -65,13 +65,13 @@ We would highly recommend installing Conda via [Miniforge](https://github.com/co
 conda create -n baktfoldENV -c conda-forge -c bioconda baktfold 
 ```
 
-To utilise phold with GPU, a GPU compatible version of pytorch must be installed (default: CPU-only version):
+To utilise baktfold with GPU, a GPU compatible version of pytorch must be installed (default: CPU-only version):
 
 ```bash
 conda create -n baktfoldENV -c conda-forge -c bioconda baktfold pytorch=*=cuda*
 ```
 
-If you have a Mac with M-series Apple Silicon, you may need to install a particular version of Pytorch to utilise GPU-acceleration. The same is true if you use other non-NVIDIA e.g. AMD GPUs. See [this link](https://phold.readthedocs.io/en/latest/install/) for some more detail and further links
+If you have a Mac with M-series Apple Silicon, you may need to install a particular version of Pytorch to utilise GPU-acceleration. The same is true if you use other non-NVIDIA e.g. AMD GPUs. See [this link](https://gbouras13.github.io/baktfold/install/) for some more detail and further links
 
 ### Pip
 
