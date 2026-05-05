@@ -296,7 +296,7 @@ run command
     "--input",
     type=click.Path(),
     required=True,
-    help="Path to input file in Bakta Genbank format or Bakta JSON format"
+    help="Path to input file in Bakta JSON format"
 )
 @common_options
 @predict_options
@@ -604,7 +604,7 @@ proteins command
     "--input",
     type=click.Path(),
     required=True,
-    help="Path to input file (amino acid FASTA format)"
+    help="Path to input file (amino acid FASTA or Bakta proteins output JSON format)"
 )
 @common_options
 @predict_options
@@ -820,7 +820,7 @@ Uses ProstT5 to predict 3Di sequences from bakta json input
     "--input",
     type=click.Path(),
     required=True,
-    help="Path to input file (Genbank or nucleotide FASTA format)"
+    help="Path to input file (Bakta JSON format)"
 )
 @common_options
 @predict_options
@@ -890,8 +890,6 @@ def predict(
 
     fasta_aa: Path = Path(output) / f"{prefix}_aa.fasta"
     data, features, has_duplicate_locus, translation_table, prokka, other_genbank, bakta_version = parse_json_input(input, fasta_aa, all_proteins, protein_json_flag=False)
-    if other_genbank:
-        log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program)
 
 
     ###
@@ -1245,7 +1243,7 @@ Uses ProstT5 to predict 3Di from a multi FASTA of proteins as input
     "--input",
     type=click.Path(),
     required=True,
-    help="Path to input file (FASTA format"
+    help="Path to input file (FASTA format or Bakta proteins output JSON)"
 )
 @common_options
 @predict_options
@@ -1377,7 +1375,7 @@ Runs Foldseek vs baktfold DBs for multiFASTA 3Di sequences (predicted with prote
     "--input",
     type=click.Path(),
     required=True,
-    help="Path to input file (FASTA format)"
+    help="Path to input file (FASTA format or Bakta proteins output JSON)"
 )
 @click.option(
     "--predictions-dir",
@@ -1869,7 +1867,7 @@ def install(
 @click.option(
     "-i",
     "--input",
-    help="Optional path to input file of proteins if you do not want to use the default sample of 5,000 Phold DB proteins",
+    help="Optional path to input file of proteins if you do not want to use the default sample of 5,000 swissprot proteins",
     type=click.Path()
 )
 @click.option(
@@ -1890,7 +1888,7 @@ def install(
     "--database",
     type=str,
     default=None,
-    help="Path to Phold's database"
+    help="Path to Baktfold's database"
 )
 @click.option(
     "--min-batch",

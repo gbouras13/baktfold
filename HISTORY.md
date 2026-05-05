@@ -1,5 +1,27 @@
 # History
 
+0.3.0 (2026-05-05)
+------------------
+
+* Adds improved [documentation](https://gbouras13.github.io/baktfold/) with tutorial
+* Adds `.summary.txt` output file with summary statisics of Baktfold's performance (thanks @mbhall88 for the suggestion)
+* e.g.
+
+```
+Annotation:
+CDS count: 2635
+CDS beginning hypotheticals: 55
+CDS annotated with Baktfold database hit: 12
+CDS annotated with Baktfold function: 7
+CDS remaining hypotheticals: 48
+
+Baktfold:
+Software: v0.2.0
+Database: v0.1.0
+DOI: https://doi.org/10.64898/2026.03.31.715528
+URL: github.com/gbouras13/baktfold
+```
+
 0.2.0 (2026-04-08)
 ------------------
 

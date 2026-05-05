@@ -36,11 +36,16 @@ If you don't want to install Baktfold locally, you can run it without any code u
 
 Baktfold is available to run via Bakta's web server - the provisional link is [here](https://staging.bakta.computational.bio/).
 
+# Documentation
+
+Baktfold's documentation, including a quick tutorial, is available [here](https://gbouras13.github.io/baktfold/).
+
 # Table of Contents
 
 - [Baktfold](#baktfold)
 - [Google Colab Notebook](#google-colab-notebook)
 - [Webserver](#webserver)
+- [Documentation](#documentation)
 - [Table of Contents](#table-of-contents)
   - [Install](#install)
     - [Conda (recommended)](#conda-recommended)
@@ -65,13 +70,13 @@ We would highly recommend installing Conda via [Miniforge](https://github.com/co
 conda create -n baktfoldENV -c conda-forge -c bioconda baktfold 
 ```
 
-To utilise phold with GPU, a GPU compatible version of pytorch must be installed (default: CPU-only version):
+To utilise baktfold with GPU, a GPU compatible version of pytorch must be installed (default: CPU-only version):
 
 ```bash
 conda create -n baktfoldENV -c conda-forge -c bioconda baktfold pytorch=*=cuda*
 ```
 
-If you have a Mac with M-series Apple Silicon, you may need to install a particular version of Pytorch to utilise GPU-acceleration. The same is true if you use other non-NVIDIA e.g. AMD GPUs. See [this link](https://phold.readthedocs.io/en/latest/install/) for some more detail and further links
+If you have a Mac with M-series Apple Silicon, you may need to install a particular version of Pytorch to utilise GPU-acceleration. The same is true if you use other non-NVIDIA e.g. AMD GPUs. See [this link](https://gbouras13.github.io/baktfold/install/) for some more detail and further links
 
 ### Pip
 
