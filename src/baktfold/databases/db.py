@@ -495,7 +495,7 @@ def validate_db(database: str, default_dir: str, foldseek_gpu: bool) -> Path:
             logger.info("All baktfold database files compatible with Foldseek-GPU are present")
         else:
             logger.error(
-                f"baktfold database files compatible with Foldseek-GPU not found. Please run baktfold install -d {database} --foldseek_gpu"
+                f"baktfold database files compatible with Foldseek-GPU not found. Please run baktfold install -d {database} --foldseek-gpu"
             )
 
 
