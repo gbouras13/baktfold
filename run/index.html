@@ -1,0 +1,1760 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../output/">
+      
+      
+        <link rel="next" href="../tutorial/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Running baktfold - baktfold</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#running-baktfold" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="baktfold" class="md-header__button md-logo" aria-label="baktfold" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            baktfold
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Running baktfold
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gbouras13/baktfold" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="baktfold" class="md-nav__button md-logo" aria-label="baktfold" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    baktfold
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gbouras13/baktfold" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../citation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Citation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../method/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    baktfold Method
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebook_webserver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    baktfold No Code Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    baktfold Output Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running baktfold
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running baktfold
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#all-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subcommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subcommands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subcommands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-autotune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold autotune
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-predict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold predict
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-compare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold compare
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-proteins-predict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold proteins-predict
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-proteins-compare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold proteins-compare
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-proteins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold proteins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-createdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold createdb
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-convert-prokka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold convert-prokka
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-convert-euk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold convert-euk
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    baktfold Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/bakta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bakta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Io
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/prokka_gbk_to_json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prokka gbk to json
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Results
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/subcommands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subcommands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utils
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#all-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subcommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subcommands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subcommands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-autotune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold autotune
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-predict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold predict
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-compare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold compare
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-proteins-predict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold proteins-predict
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-proteins-compare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold proteins-compare
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-proteins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold proteins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-createdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold createdb
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-convert-prokka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold convert-prokka
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baktfold-convert-euk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baktfold convert-euk
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/gbouras13/baktfold/edit/master/docs/run.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="running-baktfold">Running <code>baktfold</code></h1>
+<p><code>baktfold</code> has been split into two overall modules regardless of your input - <code>predict</code> and <code>compare</code>. </p>
+<p>The reason <code>baktfold</code> has been split as such was to enable optimal resource usage between GPU and CPU in cluster environments (before Foldseek-GPU).</p>
+<p>However, now if you have an NVIDIA GPU available, please use <code>baktfold run</code>, which combines both in one as both <code>predict</code> and <code>compare</code> can utilise GPU acceleration.</p>
+<p>If you do not have an NVIDIA GPUI available, we recommend using <code>baktfold predict</code> with GPU and <code>baktfold compare</code> with CPU.</p>
+<p>If you do not have an available GPU, please use <code>baktfold run</code> with <code>--cpu</code>.</p>
+<p>If you are having troubing runing <code>baktfold</code> offline after installation (e.g. on a HPC), you may need to add <code>TRANSFORMERS_OFFLINE=True</code> to your environment. </p>
+<p>All off the above applies for <code>baktfold proteins</code> with <code>baktfold proteins-predict</code> and <code>baktfold proteins-compare</code> as the analogous command</p>
+<h2 id="all-commands">All commands</h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Usage:<span class="w"> </span>baktfold<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>COMMAND<span class="w"> </span><span class="o">[</span>ARGS<span class="o">]</span>...
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>Main<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span><span class="k">for</span><span class="w"> </span>baktfold.
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Options:
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">     </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">  </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Commands:
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span>autotune<span class="w">          </span>Determines<span class="w"> </span>optimal<span class="w"> </span>batch<span class="w"> </span>size<span class="w"> </span><span class="k">for</span><span class="w"> </span>3Di<span class="w"> </span>prediction<span class="w"> </span>with...
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span>citation<span class="w">          </span>Print<span class="w"> </span>the<span class="w"> </span>citation<span class="o">(</span>s<span class="o">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>this<span class="w"> </span>tool
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span>compare<span class="w">           </span>Runs<span class="w"> </span>Foldseek<span class="w"> </span>vs<span class="w"> </span>baktfold<span class="w"> </span>db
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span>convert-euk<span class="w">       </span><span class="o">(</span>Experimental<span class="o">)</span><span class="w"> </span>Converts<span class="w"> </span>eukaryotic<span class="w"> </span>GenBank<span class="w"> </span>to<span class="w"> </span>Bakta...
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span>convert-prokka<span class="w">    </span>Converts<span class="w"> </span>Prokka<span class="w"> </span>GenBank<span class="w"> </span>to<span class="w"> </span>Bakta<span class="w"> </span>format<span class="w"> </span>json
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span>createdb<span class="w">          </span>Creates<span class="w"> </span>foldseek<span class="w"> </span>DB<span class="w"> </span>from<span class="w"> </span>AA<span class="w"> </span>FASTA<span class="w"> </span>and<span class="w"> </span>3Di<span class="w"> </span>FASTA<span class="w"> </span>input...
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span>install<span class="w">           </span>Installs<span class="w"> </span>ProstT5<span class="w"> </span>model<span class="w"> </span>and<span class="w"> </span>baktfold<span class="w"> </span>database
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span>predict<span class="w">           </span>Uses<span class="w"> </span>ProstT5<span class="w"> </span>to<span class="w"> </span>predict<span class="w"> </span>3Di<span class="w"> </span>tokens<span class="w"> </span>-<span class="w"> </span>GPU<span class="w"> </span>recommended
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span>proteins<span class="w">          </span>baktfold<span class="w"> </span>proteins-predict<span class="w"> </span><span class="k">then</span><span class="w"> </span>comapare<span class="w"> </span>all<span class="w"> </span><span class="k">in</span><span class="w"> </span>one<span class="w"> </span>-...
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span>proteins-compare<span class="w">  </span>Runs<span class="w"> </span>Foldseek<span class="w"> </span>vs<span class="w"> </span>baktfold<span class="w"> </span>db<span class="w"> </span>on<span class="w"> </span>proteins<span class="w"> </span>input
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span>proteins-predict<span class="w">  </span>Runs<span class="w"> </span>ProstT5<span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>multi<span class="w"> </span>FASTA<span class="w"> </span>input<span class="w"> </span>-<span class="w"> </span>GPU<span class="w"> </span>recommended
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span>run<span class="w">               </span>baktfold<span class="w"> </span>predict<span class="w"> </span><span class="k">then</span><span class="w"> </span>comapare<span class="w"> </span>all<span class="w"> </span><span class="k">in</span><span class="w"> </span>one<span class="w"> </span>-<span class="w"> </span>GPU...
+</span></code></pre></div>
+<h2 id="input">Input</h2>
+<p><code>baktfold run</code> takes a <a href="https://github.com/oschwengers/bakta">Bakta</a> output JSON format genome annotation output. <code>baktfold</code> supports conversion from Prokka GenBank files using <code>baktfold convert-prokka</code> and from eukaryotic GenBank files using <code>baktfold convert-euk</code>. </p>
+<p><strong>For genomes annotated using other methods, we recommend <a href="https://github.com/linsalrob/genbank_to">genbank_to</a> to convert you GenBank file to the Bakta JSON format.</strong></p>
+<p><code>baktfold proteins</code> takes a <code>.faa</code> FASTA file of amino acid protein sequences as input. You can also use a <code>bakta_proteins</code> output JSON file as input if you have already annotated your protein FASTA with <code>bakta</code>.</p>
+<h2 id="subcommands">Subcommands</h2>
+<h3 id="baktfold-autotune"><code>baktfold autotune</code></h3>
+<p>If you are running baktfold on a large dataset, you might want to determine the optimal batchsize for ProstT5 for your data. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Usage:<span class="w"> </span>baktfold<span class="w"> </span>autotune<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>Determines<span class="w"> </span>optimal<span class="w"> </span>batch<span class="w"> </span>size<span class="w"> </span><span class="k">for</span><span class="w"> </span>3Di<span class="w"> </span>prediction<span class="w"> </span>with<span class="w"> </span>your<span class="w"> </span>hardware
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Options:
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">             </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">          </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span>-i,<span class="w"> </span>--input<span class="w"> </span>PATH<span class="w">       </span>Optional<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span>of<span class="w"> </span>proteins<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span><span class="k">do</span><span class="w"> </span>not
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">                         </span>want<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>sample<span class="w"> </span>of<span class="w">  </span><span class="m">5</span>,000<span class="w"> </span>swissprot<span class="w"> </span>proteins
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">                         </span>proteins
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span>--cpu<span class="w">                  </span>Use<span class="w"> </span>CPU<span class="w"> </span>only
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span>-t,<span class="w"> </span>--threads<span class="w"> </span>INTEGER<span class="w">  </span>Number<span class="w"> </span>of<span class="w"> </span>threads<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span>-d,<span class="w"> </span>--database<span class="w"> </span>TEXT<span class="w">    </span>Path<span class="w"> </span>to<span class="w"> </span>Baktfold<span class="err">&#39;</span>s<span class="w"> </span>database
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span>--min-batch<span class="w"> </span>INTEGER<span class="w">    </span>Minimum<span class="w"> </span>batch<span class="w"> </span>size<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span>--step<span class="w"> </span>INTEGER<span class="w">         </span>Batch<span class="w"> </span>size<span class="w"> </span>step<span class="w"> </span>increment<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">10</span><span class="o">]</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span>--max-batch<span class="w"> </span>INTEGER<span class="w">    </span>Maximum<span class="w"> </span>batch<span class="w"> </span>size<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">251</span><span class="o">]</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span>--sample-seqs<span class="w"> </span>INTEGER<span class="w">  </span>Subsample<span class="w"> </span>size<span class="w"> </span>of<span class="w"> </span>input<span class="w"> </span>proteins<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">500</span><span class="o">]</span>
+</span></code></pre></div>
+<p>Example usage (assuming you have run <code>baktfold install</code>)</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>baktfold<span class="w"> </span>autotune<span class="w"> </span>-d<span class="w"> </span>baktfold_db
+</span></code></pre></div>
+<h3 id="baktfold-predict"><code>baktfold predict</code></h3>
+<p><code>predict</code> uses the <a href="https://github.com/mheinzinger/ProstT5">ProstT5</a> protein language model to translate protein amino acid sequences to the 3Di token alphabet used by <a href="https://github.com/steineggerlab/foldseek">foldseek</a>. This module is greatly accelerated if you have a GPU available and is recommended.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Usage:<span class="w"> </span>baktfold<span class="w"> </span>predict<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>Uses<span class="w"> </span>ProstT5<span class="w"> </span>to<span class="w"> </span>predict<span class="w"> </span>3Di<span class="w"> </span>tokens<span class="w"> </span>-<span class="w"> </span>GPU<span class="w"> </span>recommended
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Options:
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                     </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">                  </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>-i,<span class="w"> </span>--input<span class="w"> </span>PATH<span class="w">               </span>Path<span class="w"> </span>to<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>Bakta<span class="w"> </span>JSON
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">                                 </span>format<span class="o">)</span><span class="w">  </span><span class="o">[</span>required<span class="o">]</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span>-o,<span class="w"> </span>--output<span class="w"> </span>PATH<span class="w">              </span>Output<span class="w"> </span>directory<span class="w">   </span><span class="o">[</span>default:<span class="w"> </span>output_baktfold<span class="o">]</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span>-t,<span class="w"> </span>--threads<span class="w"> </span>INTEGER<span class="w">          </span>Number<span class="w"> </span>of<span class="w"> </span>threads<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span>-p,<span class="w"> </span>--prefix<span class="w"> </span>TEXT<span class="w">              </span>Output<span class="w"> </span>files<span class="s1">&#39; prefix  [default: baktfold]</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s1">  -d, --database TEXT            Path to Baktfold&#39;</span>s<span class="w"> </span>database
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span>-f,<span class="w"> </span>--force<span class="w">                    </span>Force<span class="w"> </span>overwrites<span class="w"> </span>output<span class="w"> </span>directory
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span>--autotune<span class="w">                     </span>Run<span class="w"> </span>autotuning<span class="w"> </span>to<span class="w"> </span>detect<span class="w"> </span>and<span class="w"> </span><span class="nb">set</span><span class="w"> </span>best<span class="w"> </span>batch
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">                                 </span>size<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>hardware<span class="w"> </span><span class="o">(</span>recommended<span class="w"> </span>only<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">                                 </span>large<span class="w"> </span>dataset,<span class="w"> </span>e.g.<span class="w"> </span>thousands<span class="w"> </span>of<span class="w"> </span>proteins<span class="o">)</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span>--batch-size<span class="w"> </span>INTEGER<span class="w">           </span>Batch<span class="w"> </span>size<span class="w"> </span><span class="k">for</span><span class="w"> </span>ProstT5<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>is<span class="w"> </span>usually<span class="w"> </span>fastest<span class="o">)</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">                                 </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span>--cpu<span class="w">                          </span>Use<span class="w"> </span>CPU<span class="w"> </span>only.
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span>--omit-probs<span class="w">                   </span>Do<span class="w"> </span>not<span class="w"> </span>output<span class="w"> </span>per<span class="w"> </span>residue<span class="w"> </span>3Di<span class="w"> </span>probabilities
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">                                 </span>from<span class="w"> </span>ProstT5
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span>--save-per-residue-embeddings<span class="w">  </span>Save<span class="w"> </span>ProstT5<span class="w"> </span>embeddings<span class="w"> </span>per<span class="w"> </span>resuide<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>H5
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">                                 </span>file
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">  </span>--save-per-protein-embeddings<span class="w">  </span>Save<span class="w"> </span>ProstT5<span class="w"> </span>embeddings<span class="w"> </span>as<span class="w"> </span>means<span class="w"> </span>per<span class="w"> </span>protein
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">                                 </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>H5<span class="w"> </span>file
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">  </span>--mask-threshold<span class="w"> </span>FLOAT<span class="w">         </span>Mask<span class="w"> </span>3Di<span class="w"> </span>residues<span class="w"> </span>below<span class="w"> </span>this<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span>ProstT5
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">                                 </span>confidence<span class="w"> </span><span class="k">for</span><span class="w"> </span>Foldseek<span class="w"> </span>searches<span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">                                 </span><span class="m">25</span><span class="o">]</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">  </span>-a,<span class="w"> </span>--all-proteins<span class="w">             </span>Annotate<span class="w"> </span>all<span class="w"> </span>proteins<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>only
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">                                 </span>hypotheticals<span class="o">)</span>
+</span></code></pre></div>
+<ul>
+<li>Example usage (assuming you have run <code>baktfold install</code>) using a batch size of <code>10</code> using <code>-b</code></li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>baktfold<span class="w"> </span>predict<span class="w"> </span>-i<span class="w"> </span>bakta.json<span class="w"> </span>-o<span class="w"> </span>baktfold_predict_output<span class="w"> </span>-b<span class="w"> </span><span class="m">10</span>
+</span></code></pre></div>
+<ul>
+<li>Use <code>-a</code> to annotate all proteins (not just hypotheticals)</li>
+</ul>
+<h3 id="baktfold-compare"><code>baktfold compare</code></h3>
+<p><code>baktfold compare</code> runs <a href="https://github.com/steineggerlab/foldseek">foldseek</a> to compare ProstT5 predictions generated by <code>baktfold predict</code> to the baktfold databases.</p>
+<p>Alternatively, if you have provided pre-generated <code>.pdb</code> or <code>,cif</code> format protein structures for you proteins, you can specify those by specifiying <code>--structures --structure-dir &lt;directory&gt;</code>. </p>
+<p><code>baktfold compare</code> does not use a GPU by default. However, if you have an NVIDIA GPU available, you can utilise Foldseek-GPU acceleration using <code>--foldseek-gpu</code>. Note that you need to make sure your also run <code>baktfold install</code> with <code>--foldseek-gpu</code> prior. Regardless of whether you use <code>--foldseek-gpu</code> or not, it is recommended to use as many CPU threads with <code>-t</code> as you can (as the GPU only accelerates Foldseek's prefilter, not the alignment step).</p>
+<p>Example usage of <code>baktfold compare</code> following <code>baktfold predict</code></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>baktfold<span class="w"> </span>compare<span class="w"> </span>-i<span class="w"> </span>bakta.json-o<span class="w"> </span>baktfold_compare_output<span class="w">  </span>--predictions_dir<span class="w"> </span>baktfold_predict_output
+</span></code></pre></div>
+<ul>
+<li>Example usage if you have <code>.pdb</code> or <code>.cif</code> format structures available for your input proteins (note: the .pdb file names must be called cds_id.pdb, where cds_id is the CDS ids). You can see an example in the <code>tests/test_data/pdbs</code> directory <a href="https://github.com/gbouras13/baktfold/tree/main/tests/test_data/pdbs">here</a>.</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>baktfold<span class="w"> </span>compare<span class="w"> </span>-i<span class="w"> </span>bakta.json<span class="w"> </span>-o<span class="w"> </span>baktfold_compare_output_custom<span class="w">  </span>--structure-dir<span class="w"> </span>directory_with_pdbs<span class="w">  </span>-t<span class="w"> </span><span class="m">8</span>
+</span></code></pre></div>
+<ul>
+<li>If you have a custom database of protein structures would would additionally like to search against, Baktfold will support this using <code>--custom-db</code>, with the 
+You will first need to use <code>foldseek createdb</code> first to create a Foldseek compatible database. For example, assuming you have protein structures in a directory called <code>custom-structures</code></li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>custom_db
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>foldseek<span class="w"> </span>createdb<span class="w"> </span>custom_structures/<span class="w"> </span>custom_db/db
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># if you want to use with `--foldseek-gpu`</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>foldseek<span class="w"> </span>makepaddedseqdb<span class="w"> </span>custom_db/db<span class="w"> </span>custom_db/db_pad
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>baktfold<span class="w"> </span>compare<span class="w"> </span>-i<span class="w"> </span>bakta.json<span class="w"> </span>-o<span class="w"> </span>baktfold_compare_output_custom<span class="w">  </span>--custom_db<span class="w"> </span>custom_db/db<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># if you want to use with `--foldseek-gpu`</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>baktfold<span class="w"> </span>compare<span class="w"> </span>-i<span class="w"> </span>bakta.json<span class="w"> </span>-o<span class="w"> </span>baktfold_compare_output_custom<span class="w">  </span>--custom_db<span class="w"> </span>custom_db/db_pad<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span><span class="w"> </span>--foldseek-gpu
+</span></code></pre></div>
+<ul>
+<li>If you have custom annotations for your custom database, these can be specified using <code>--custom-annotations</code>. This file must be a headerless 2 column TSV file where column 1 are your DB ids, and column 2 is the annotation. </li>
+</ul>
+<p>e.g. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>MEGJMN_003<span class="w">  </span>dummy<span class="w"> </span>annotation
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>MEGJMN_005<span class="w">  </span>dummy<span class="w"> </span>annotation
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>MEGJMN_010<span class="w">  </span>dummy<span class="w"> </span>annotation
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>MEGJMN_024<span class="w">  </span>dummy<span class="w"> </span>annotation
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>MEGJMN_027<span class="w">  </span>dummy<span class="w"> </span>annotation
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>MEGJMN_030<span class="w">  </span>dummy<span class="w"> </span>annotation
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>MEGJMN_042<span class="w">  </span>dummy<span class="w"> </span>annotation
+</span></code></pre></div>
+<p>For an example, see this (link)[https://github.com/gbouras13/baktfold/tree/main/tests/test_data/custom_db] for an example custom database, with <code>dummy_custom_db_annotations.tsv</code> representing the custom annotations file. </p>
+<ul>
+<li>
+<p>If your input genome is eukaryotic, please use <code>--euk</code> to ensure all common eukaryotic genomic features are parsed correctly.</p>
+</li>
+<li>
+<p>If you want to keep all Foldseek hits (not just the tophits), use <code>--keep-tmp-files</code></p>
+</li>
+<li>
+<p>If you want to skip searching against the AFDB (the most expensive step), use <code>--fast</code></p>
+</li>
+<li>
+<p>If your input genome was not annotated with Bakta or Prokka and you want to specify various specific inference tools in your output, please use <code>--cds-program</code>, <code>--trna-program</code>, <code>--tmrna-program</code>, <code>--ncrna-program</code>, <code>--rrna-program</code></p>
+</li>
+<li>
+<p>If you would like to specify custom Foldseek parameters, use <code>--extra-foldseek-params</code> along with double quotes enclosing your extra parameters e.g. <code>--extra-foldseek-params "-c 0.8"</code></p>
+</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Usage:<span class="w"> </span>baktfold<span class="w"> </span>compare<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span>Runs<span class="w"> </span>Foldseek<span class="w"> </span>vs<span class="w"> </span>baktfold<span class="w"> </span>db
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>Options:
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                    </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">                 </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">  </span>-i,<span class="w"> </span>--input<span class="w"> </span>PATH<span class="w">              </span>Path<span class="w"> </span>to<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>Bakta<span class="w"> </span>JSON
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">                                </span>format<span class="o">)</span><span class="w">  </span><span class="o">[</span>required<span class="o">]</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">  </span>--predictions-dir<span class="w"> </span>PATH<span class="w">        </span>Path<span class="w"> </span>to<span class="w"> </span>output<span class="w"> </span>directory<span class="w"> </span>from<span class="w"> </span>Baktfold<span class="w"> </span>predict
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">  </span>--structure-dir<span class="w"> </span>PATH<span class="w">          </span>Path<span class="w"> </span>to<span class="w"> </span>directory<span class="w"> </span>with<span class="w"> </span>.pdb<span class="w"> </span>or<span class="w"> </span>.cif<span class="w"> </span>file
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">                                </span>structures<span class="w"> </span><span class="o">(</span>IDs<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span><span class="k">in</span><span class="w"> </span>file<span class="w"> </span>names,<span class="w"> </span>i.e
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">                                </span>id.pdb<span class="w"> </span>or<span class="w"> </span>id.cif<span class="o">)</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">  </span>-o,<span class="w"> </span>--output<span class="w"> </span>PATH<span class="w">             </span>Output<span class="w"> </span>directory<span class="w">   </span><span class="o">[</span>default:<span class="w"> </span>output_baktfold<span class="o">]</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">  </span>-t,<span class="w"> </span>--threads<span class="w"> </span>INTEGER<span class="w">         </span>Number<span class="w"> </span>of<span class="w"> </span>threads<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">  </span>-p,<span class="w"> </span>--prefix<span class="w"> </span>TEXT<span class="w">             </span>Output<span class="w"> </span>files<span class="s1">&#39; prefix  [default: baktfold]</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="s1">  -d, --database TEXT           Path to Baktfold&#39;</span>s<span class="w"> </span>database
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">  </span>-f,<span class="w"> </span>--force<span class="w">                   </span>Force<span class="w"> </span>overwrites<span class="w"> </span>output<span class="w"> </span>directory
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">  </span>-e,<span class="w"> </span>--evalue<span class="w"> </span>FLOAT<span class="w">            </span>Evalue<span class="w"> </span>threshold<span class="w"> </span><span class="k">for</span><span class="w"> </span>Foldseek<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span>1e-3<span class="o">]</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">  </span>-s,<span class="w"> </span>--sensitivity<span class="w"> </span>FLOAT<span class="w">       </span>Sensitivity<span class="w"> </span>parameter<span class="w"> </span><span class="k">for</span><span class="w"> </span>Foldseek<span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">                                </span><span class="m">9</span>.5<span class="o">]</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">  </span>--keep-tmp-files<span class="w">              </span>Keep<span class="w"> </span>temporary<span class="w"> </span>intermediate<span class="w"> </span>files<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>large
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">                                </span>foldseek_results.tsv<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>Foldseek<span class="w"> </span>hits<span class="o">)</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">  </span>--max-seqs<span class="w"> </span>INTEGER<span class="w">            </span>Maximum<span class="w"> </span>results<span class="w"> </span>per<span class="w"> </span>query<span class="w"> </span>sequence<span class="w"> </span>allowed<span class="w"> </span>to
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">                                </span>pass<span class="w"> </span>the<span class="w"> </span>prefilter<span class="w"> </span><span class="o">(</span>saves<span class="w"> </span>disk<span class="w"> </span>space<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">                                </span>enormous<span class="w"> </span>datasets<span class="o">)</span><span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1000</span><span class="o">]</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">  </span>--ultra-sensitive<span class="w">             </span>Run<span class="w"> </span>with<span class="w"> </span>maximum<span class="w"> </span>sensitivity<span class="w"> </span>by<span class="w"> </span>skipping
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">                                </span>Foldseek<span class="w"> </span>prefilter<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>recommended<span class="w"> </span><span class="k">for</span><span class="w"> </span>large
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">                                </span>datasets<span class="o">)</span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">  </span>--extra-foldseek-params<span class="w"> </span>TEXT<span class="w">  </span>Extra<span class="w"> </span>Foldseek<span class="w"> </span>search<span class="w"> </span>params
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="w">  </span>--custom-db<span class="w"> </span>TEXT<span class="w">              </span>Path<span class="w"> </span>to<span class="w"> </span>custom<span class="w"> </span>database
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="w">  </span>--foldseek-gpu<span class="w">                </span>Enable<span class="w"> </span>Foldseek-GPU<span class="w"> </span>search<span class="w"> </span>acceleration
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="w">  </span>--custom-annotations<span class="w"> </span>PATH<span class="w">     </span>Custom<span class="w"> </span>Foldseek<span class="w"> </span>DB<span class="w"> </span>annotations<span class="w"> </span><span class="o">(</span><span class="m">2</span><span class="w"> </span>column<span class="w"> </span>tsv:
+</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="w">                                </span>Foldseek<span class="w"> </span>headers,<span class="w"> </span>description<span class="o">)</span>
+</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="w">  </span>--euk<span class="w">                         </span>Eukaryotic<span class="w"> </span>input<span class="w"> </span>genome.
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="w">  </span>--fast<span class="w">                        </span>Skips<span class="w"> </span>Foldseek<span class="w"> </span>search<span class="w"> </span>against<span class="w"> </span>AFDB<span class="w"> </span>Clusters.
+</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="w">  </span>--cds-program<span class="w"> </span>TEXT<span class="w">            </span>CDS<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span><span class="w"> </span>compliant
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a><span class="w">                                </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka<span class="w"> </span>input
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="w">  </span>--trna-program<span class="w"> </span>TEXT<span class="w">           </span>tRNA<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span><span class="w"> </span>compliant
+</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="w">                                </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka<span class="w"> </span>input
+</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="w">  </span>--tmrna-program<span class="w"> </span>TEXT<span class="w">          </span>tmRNA<span class="w"> </span>profile<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-9-42"><a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a><span class="w">                                </span>compliant<span class="w"> </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka
+</span><span id="__span-9-43"><a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a><span class="w">                                </span>input
+</span><span id="__span-9-44"><a id="__codelineno-9-44" name="__codelineno-9-44" href="#__codelineno-9-44"></a><span class="w">  </span>--rrna-program<span class="w"> </span>TEXT<span class="w">           </span>rRNA<span class="w"> </span>profile<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-9-45"><a id="__codelineno-9-45" name="__codelineno-9-45" href="#__codelineno-9-45"></a><span class="w">                                </span>compliant<span class="w"> </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka
+</span><span id="__span-9-46"><a id="__codelineno-9-46" name="__codelineno-9-46" href="#__codelineno-9-46"></a><span class="w">                                </span>input
+</span><span id="__span-9-47"><a id="__codelineno-9-47" name="__codelineno-9-47" href="#__codelineno-9-47"></a><span class="w">  </span>--ncrna-program<span class="w"> </span>TEXT<span class="w">          </span>ncRNA<span class="w"> </span>profile<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-9-48"><a id="__codelineno-9-48" name="__codelineno-9-48" href="#__codelineno-9-48"></a><span class="w">                                </span>compliant<span class="w"> </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka
+</span><span id="__span-9-49"><a id="__codelineno-9-49" name="__codelineno-9-49" href="#__codelineno-9-49"></a><span class="w">                                </span>input
+</span><span id="__span-9-50"><a id="__codelineno-9-50" name="__codelineno-9-50" href="#__codelineno-9-50"></a><span class="w">  </span>-a,<span class="w"> </span>--all-proteins<span class="w">            </span>Annotate<span class="w"> </span>all<span class="w"> </span>proteins<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>only<span class="w"> </span>hypotheticals<span class="o">)</span>
+</span></code></pre></div>
+<h3 id="baktfold-run"><code>baktfold run</code></h3>
+<ul>
+<li><code>baktfold run</code> runs <code>baktfold predict</code> and <code>baktfold compare</code> together in one command. Recommended if you are running <code>baktfold</code> with an NVIDIA GPU, along with <code>--foldseek-gpu</code>.</li>
+<li>Also recommended if you are running <code>baktfold</code> in a lower-resource environment without a GPU - you will also need to specify <code>--cpu</code>.</li>
+<li>See <code>baktfold predict</code> and <code>baktfold compare</code> for more details on specific parameters</li>
+</ul>
+<p>Example usage where NVIDIA GPU is available:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>baktfold<span class="w"> </span>proteins<span class="w"> </span>-i<span class="w"> </span>proteins,faa<span class="w"> </span>-o<span class="w"> </span>baktfold_proteins_output<span class="w"> </span>-d<span class="w"> </span>baktfold_db<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span><span class="w"> </span>--foldseek-gpu
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Usage:<span class="w"> </span>baktfold<span class="w"> </span>run<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span>baktfold<span class="w"> </span>predict<span class="w"> </span><span class="k">then</span><span class="w"> </span>comapare<span class="w"> </span>all<span class="w"> </span><span class="k">in</span><span class="w"> </span>one<span class="w"> </span>-<span class="w"> </span>GPU<span class="w"> </span>recommended
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>Options:
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                     </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">                  </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span>-i,<span class="w"> </span>--input<span class="w"> </span>PATH<span class="w">               </span>Path<span class="w"> </span>to<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>Bakta<span class="w"> </span>JSON<span class="w"> </span>format<span class="w">  </span><span class="o">[</span>required<span class="o">]</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">  </span>-o,<span class="w"> </span>--output<span class="w"> </span>PATH<span class="w">              </span>Output<span class="w"> </span>directory<span class="w">   </span><span class="o">[</span>default:<span class="w"> </span>output_baktfold<span class="o">]</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">  </span>-t,<span class="w"> </span>--threads<span class="w"> </span>INTEGER<span class="w">          </span>Number<span class="w"> </span>of<span class="w"> </span>threads<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">  </span>-p,<span class="w"> </span>--prefix<span class="w"> </span>TEXT<span class="w">              </span>Output<span class="w"> </span>files<span class="s1">&#39; prefix  [default: baktfold]</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="s1">  -d, --database TEXT            Path to Baktfold&#39;</span>s<span class="w"> </span>database
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">  </span>-f,<span class="w"> </span>--force<span class="w">                    </span>Force<span class="w"> </span>overwrites<span class="w"> </span>output<span class="w"> </span>directory
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">  </span>--autotune<span class="w">                     </span>Run<span class="w"> </span>autotuning<span class="w"> </span>to<span class="w"> </span>detect<span class="w"> </span>and<span class="w"> </span><span class="nb">set</span><span class="w"> </span>best<span class="w"> </span>batch
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">                                 </span>size<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>hardware<span class="w"> </span><span class="o">(</span>recommended<span class="w"> </span>only<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">                                 </span>large<span class="w"> </span>dataset,<span class="w"> </span>e.g.<span class="w"> </span>thousands<span class="w"> </span>of<span class="w"> </span>proteins<span class="o">)</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">  </span>--batch-size<span class="w"> </span>INTEGER<span class="w">           </span>Batch<span class="w"> </span>size<span class="w"> </span><span class="k">for</span><span class="w"> </span>ProstT5<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>is<span class="w"> </span>usually<span class="w"> </span>fastest<span class="o">)</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">                                 </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">  </span>--cpu<span class="w">                          </span>Use<span class="w"> </span>CPU<span class="w"> </span>only.
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">  </span>--omit-probs<span class="w">                   </span>Do<span class="w"> </span>not<span class="w"> </span>output<span class="w"> </span>per<span class="w"> </span>residue<span class="w"> </span>3Di<span class="w"> </span>probabilities
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">                                 </span>from<span class="w"> </span>ProstT5
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">  </span>--save-per-residue-embeddings<span class="w">  </span>Save<span class="w"> </span>ProstT5<span class="w"> </span>embeddings<span class="w"> </span>per<span class="w"> </span>resuide<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>H5
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">                                 </span>file
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">  </span>--save-per-protein-embeddings<span class="w">  </span>Save<span class="w"> </span>ProstT5<span class="w"> </span>embeddings<span class="w"> </span>as<span class="w"> </span>means<span class="w"> </span>per<span class="w"> </span>protein
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="w">                                 </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>H5<span class="w"> </span>file
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">  </span>--mask-threshold<span class="w"> </span>FLOAT<span class="w">         </span>Mask<span class="w"> </span>3Di<span class="w"> </span>residues<span class="w"> </span>below<span class="w"> </span>this<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span>ProstT5
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">                                 </span>confidence<span class="w"> </span><span class="k">for</span><span class="w"> </span>Foldseek<span class="w"> </span>searches<span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">                                 </span><span class="m">25</span><span class="o">]</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">  </span>-e,<span class="w"> </span>--evalue<span class="w"> </span>FLOAT<span class="w">             </span>Evalue<span class="w"> </span>threshold<span class="w"> </span><span class="k">for</span><span class="w"> </span>Foldseek<span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">                                 </span>1e-3<span class="o">]</span>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="w">  </span>-s,<span class="w"> </span>--sensitivity<span class="w"> </span>FLOAT<span class="w">        </span>Sensitivity<span class="w"> </span>parameter<span class="w"> </span><span class="k">for</span><span class="w"> </span>Foldseek<span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="w">                                 </span><span class="m">9</span>.5<span class="o">]</span>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="w">  </span>--keep-tmp-files<span class="w">               </span>Keep<span class="w"> </span>temporary<span class="w"> </span>intermediate<span class="w"> </span>files<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>large
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a><span class="w">                                 </span>foldseek_results.tsv<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>Foldseek<span class="w"> </span>hits<span class="o">)</span>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="w">  </span>--max-seqs<span class="w"> </span>INTEGER<span class="w">             </span>Maximum<span class="w"> </span>results<span class="w"> </span>per<span class="w"> </span>query<span class="w"> </span>sequence<span class="w"> </span>allowed<span class="w"> </span>to
+</span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a><span class="w">                                 </span>pass<span class="w"> </span>the<span class="w"> </span>prefilter<span class="w"> </span><span class="o">(</span>saves<span class="w"> </span>disk<span class="w"> </span>space<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="w">                                 </span>enormous<span class="w"> </span>datasets<span class="o">)</span><span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1000</span><span class="o">]</span>
+</span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a><span class="w">  </span>--ultra-sensitive<span class="w">              </span>Run<span class="w"> </span>with<span class="w"> </span>maximum<span class="w"> </span>sensitivity<span class="w"> </span>by<span class="w"> </span>skipping
+</span><span id="__span-11-39"><a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a><span class="w">                                 </span>Foldseek<span class="w"> </span>prefilter<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>recommended<span class="w"> </span><span class="k">for</span><span class="w"> </span>large
+</span><span id="__span-11-40"><a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a><span class="w">                                 </span>datasets<span class="o">)</span>
+</span><span id="__span-11-41"><a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a><span class="w">  </span>--extra-foldseek-params<span class="w"> </span>TEXT<span class="w">   </span>Extra<span class="w"> </span>Foldseek<span class="w"> </span>search<span class="w"> </span>params
+</span><span id="__span-11-42"><a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a><span class="w">  </span>--custom-db<span class="w"> </span>TEXT<span class="w">               </span>Path<span class="w"> </span>to<span class="w"> </span>custom<span class="w"> </span>database
+</span><span id="__span-11-43"><a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a><span class="w">  </span>--foldseek-gpu<span class="w">                 </span>Enable<span class="w"> </span>Foldseek-GPU<span class="w"> </span>search<span class="w"> </span>acceleration
+</span><span id="__span-11-44"><a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a><span class="w">  </span>--custom-annotations<span class="w"> </span>PATH<span class="w">      </span>Custom<span class="w"> </span>Foldseek<span class="w"> </span>DB<span class="w"> </span>annotations<span class="w"> </span><span class="o">(</span><span class="m">2</span><span class="w"> </span>column<span class="w"> </span>tsv:
+</span><span id="__span-11-45"><a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a><span class="w">                                 </span>Foldseek<span class="w"> </span>headers,<span class="w"> </span>description<span class="o">)</span>
+</span><span id="__span-11-46"><a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a><span class="w">  </span>--euk<span class="w">                          </span>Eukaryotic<span class="w"> </span>input<span class="w"> </span>genome.
+</span><span id="__span-11-47"><a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a><span class="w">  </span>--fast<span class="w">                         </span>Skips<span class="w"> </span>Foldseek<span class="w"> </span>search<span class="w"> </span>against<span class="w"> </span>AFDB<span class="w"> </span>Clusters.
+</span><span id="__span-11-48"><a id="__codelineno-11-48" name="__codelineno-11-48" href="#__codelineno-11-48"></a><span class="w">  </span>--cds-program<span class="w"> </span>TEXT<span class="w">             </span>CDS<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span><span class="w"> </span>compliant
+</span><span id="__span-11-49"><a id="__codelineno-11-49" name="__codelineno-11-49" href="#__codelineno-11-49"></a><span class="w">                                 </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka<span class="w"> </span>input
+</span><span id="__span-11-50"><a id="__codelineno-11-50" name="__codelineno-11-50" href="#__codelineno-11-50"></a><span class="w">  </span>--trna-program<span class="w"> </span>TEXT<span class="w">            </span>tRNA<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span><span class="w"> </span>compliant
+</span><span id="__span-11-51"><a id="__codelineno-11-51" name="__codelineno-11-51" href="#__codelineno-11-51"></a><span class="w">                                 </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka<span class="w"> </span>input
+</span><span id="__span-11-52"><a id="__codelineno-11-52" name="__codelineno-11-52" href="#__codelineno-11-52"></a><span class="w">  </span>--tmrna-program<span class="w"> </span>TEXT<span class="w">           </span>tmRNA<span class="w"> </span>profile<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-11-53"><a id="__codelineno-11-53" name="__codelineno-11-53" href="#__codelineno-11-53"></a><span class="w">                                 </span>compliant<span class="w"> </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or
+</span><span id="__span-11-54"><a id="__codelineno-11-54" name="__codelineno-11-54" href="#__codelineno-11-54"></a><span class="w">                                 </span>Prokka<span class="w"> </span>input
+</span><span id="__span-11-55"><a id="__codelineno-11-55" name="__codelineno-11-55" href="#__codelineno-11-55"></a><span class="w">  </span>--rrna-program<span class="w"> </span>TEXT<span class="w">            </span>rRNA<span class="w"> </span>profile<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-11-56"><a id="__codelineno-11-56" name="__codelineno-11-56" href="#__codelineno-11-56"></a><span class="w">                                 </span>compliant<span class="w"> </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or
+</span><span id="__span-11-57"><a id="__codelineno-11-57" name="__codelineno-11-57" href="#__codelineno-11-57"></a><span class="w">                                 </span>Prokka<span class="w"> </span>input
+</span><span id="__span-11-58"><a id="__codelineno-11-58" name="__codelineno-11-58" href="#__codelineno-11-58"></a><span class="w">  </span>--ncrna-program<span class="w"> </span>TEXT<span class="w">           </span>ncRNA<span class="w"> </span>profile<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-11-59"><a id="__codelineno-11-59" name="__codelineno-11-59" href="#__codelineno-11-59"></a><span class="w">                                 </span>compliant<span class="w"> </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or
+</span><span id="__span-11-60"><a id="__codelineno-11-60" name="__codelineno-11-60" href="#__codelineno-11-60"></a><span class="w">                                 </span>Prokka<span class="w"> </span>input
+</span><span id="__span-11-61"><a id="__codelineno-11-61" name="__codelineno-11-61" href="#__codelineno-11-61"></a><span class="w">  </span>-a,<span class="w"> </span>--all-proteins<span class="w">             </span>Annotate<span class="w"> </span>all<span class="w"> </span>proteins<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>only
+</span><span id="__span-11-62"><a id="__codelineno-11-62" name="__codelineno-11-62" href="#__codelineno-11-62"></a><span class="w">                                 </span>hypotheticals<span class="o">)</span>
+</span></code></pre></div>
+<h3 id="baktfold-proteins-predict"><code>baktfold proteins-predict</code></h3>
+<ul>
+<li>
+<p>Identical to <code>baktfold predict</code>, but instead takes a FASTA input file of amino acid protein sequences. Useful for bulk annotation of protein catalogs.</p>
+</li>
+<li>
+<p>Note: You can also use a <code>bakta_proteins</code> output JSON file as input if you have already annotated your protein FASTA with <code>bakta</code></p>
+</li>
+<li>
+<p>Example usage </p>
+</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>baktfold<span class="w"> </span>proteins-predict<span class="w"> </span>-i<span class="w"> </span>proteins.faa<span class="w"> </span>-o<span class="w"> </span>baktfold_proteins_predict_output<span class="w"> </span>-d<span class="w"> </span>baktfold_db<span class="w"> </span>-b<span class="w"> </span><span class="m">10</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Usage:<span class="w"> </span>baktfold<span class="w"> </span>proteins-predict<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span>Runs<span class="w"> </span>ProstT5<span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>multi<span class="w"> </span>FASTA<span class="w"> </span>input<span class="w"> </span>-<span class="w"> </span>GPU<span class="w"> </span>recommended
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>Options:
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                     </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">                  </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">  </span>-i,<span class="w"> </span>--input<span class="w"> </span>PATH<span class="w">               </span>Path<span class="w"> </span>to<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>amino<span class="w"> </span>acid<span class="w"> </span>FASTA<span class="w"> </span>or<span class="w"> </span>Bakta<span class="w"> </span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">                                  </span>proteins<span class="w"> </span>output<span class="w"> </span>JSON<span class="w"> </span>format<span class="o">)</span><span class="w"> </span><span class="o">[</span>required<span class="o">]</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">  </span>-o,<span class="w"> </span>--output<span class="w"> </span>PATH<span class="w">              </span>Output<span class="w"> </span>directory<span class="w">   </span><span class="o">[</span>default:<span class="w"> </span>output_baktfold<span class="o">]</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">  </span>-t,<span class="w"> </span>--threads<span class="w"> </span>INTEGER<span class="w">          </span>Number<span class="w"> </span>of<span class="w"> </span>threads<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">  </span>-p,<span class="w"> </span>--prefix<span class="w"> </span>TEXT<span class="w">              </span>Output<span class="w"> </span>files<span class="s1">&#39; prefix  [default: baktfold]</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="s1">  -d, --database TEXT            Path to Baktfold&#39;</span>s<span class="w"> </span>database
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">  </span>-f,<span class="w"> </span>--force<span class="w">                    </span>Force<span class="w"> </span>overwrites<span class="w"> </span>output<span class="w"> </span>directory
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">  </span>--autotune<span class="w">                     </span>Run<span class="w"> </span>autotuning<span class="w"> </span>to<span class="w"> </span>detect<span class="w"> </span>and<span class="w"> </span><span class="nb">set</span><span class="w"> </span>best<span class="w"> </span>batch
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">                                 </span>size<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>hardware<span class="w"> </span><span class="o">(</span>recommended<span class="w"> </span>only<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">                                 </span>large<span class="w"> </span>dataset,<span class="w"> </span>e.g.<span class="w"> </span>thousands<span class="w"> </span>of<span class="w"> </span>proteins<span class="o">)</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">  </span>--batch-size<span class="w"> </span>INTEGER<span class="w">           </span>Batch<span class="w"> </span>size<span class="w"> </span><span class="k">for</span><span class="w"> </span>ProstT5<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>is<span class="w"> </span>usually<span class="w"> </span>fastest<span class="o">)</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">                                 </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">  </span>--cpu<span class="w">                          </span>Use<span class="w"> </span>CPU<span class="w"> </span>only.
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">  </span>--omit-probs<span class="w">                   </span>Do<span class="w"> </span>not<span class="w"> </span>output<span class="w"> </span>per<span class="w"> </span>residue<span class="w"> </span>3Di<span class="w"> </span>probabilities
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">                                 </span>from<span class="w"> </span>ProstT5
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">  </span>--save-per-residue-embeddings<span class="w">  </span>Save<span class="w"> </span>ProstT5<span class="w"> </span>embeddings<span class="w"> </span>per<span class="w"> </span>resuide<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>H5
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">                                 </span>file
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="w">  </span>--save-per-protein-embeddings<span class="w">  </span>Save<span class="w"> </span>ProstT5<span class="w"> </span>embeddings<span class="w"> </span>as<span class="w"> </span>means<span class="w"> </span>per<span class="w"> </span>protein
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">                                 </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>H5<span class="w"> </span>file
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="w">  </span>--mask-threshold<span class="w"> </span>FLOAT<span class="w">         </span>Mask<span class="w"> </span>3Di<span class="w"> </span>residues<span class="w"> </span>below<span class="w"> </span>this<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span>ProstT5
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="w">                                 </span>confidence<span class="w"> </span><span class="k">for</span><span class="w"> </span>Foldseek<span class="w"> </span>searches<span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-13-29"><a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a><span class="w">                                 </span><span class="m">25</span><span class="o">]</span>
+</span></code></pre></div>
+<h3 id="baktfold-proteins-compare"><code>baktfold proteins-compare</code></h3>
+<ul>
+<li>
+<p>Identical to <code>baktfold compare</code>, but instead takes a FASTA input file of amino acid protein sequences. Useful for bulk annotation of protein catalogs.</p>
+</li>
+<li>
+<p>Note: You can also use a <code>bakta_proteins</code> output JSON file as input if you have already annotated your protein FASTA with <code>bakta</code></p>
+</li>
+</ul>
+<p>Example usage </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>baktfold<span class="w"> </span>proteins-compare<span class="w"> </span>-i<span class="w"> </span>proteins.faa<span class="w"> </span>--predictions_dir<span class="w"> </span>baktfold_proteins_predict_output<span class="w"> </span>-o<span class="w"> </span>baktfold_proteins_compare_output<span class="w">  </span>-t<span class="w"> </span><span class="m">8</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Usage:<span class="w"> </span>baktfold<span class="w"> </span>proteins-compare<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span>Runs<span class="w"> </span>Foldseek<span class="w"> </span>vs<span class="w"> </span>baktfold<span class="w"> </span>db<span class="w"> </span>on<span class="w"> </span>proteins<span class="w"> </span>input
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>Options:
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                    </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">                 </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">  </span>-i,<span class="w"> </span>--input<span class="w"> </span>PATH<span class="w">               </span>Path<span class="w"> </span>to<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>amino<span class="w"> </span>acid<span class="w"> </span>FASTA<span class="w"> </span>or<span class="w"> </span>Bakta<span class="w"> </span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">                                  </span>proteins<span class="w"> </span>output<span class="w"> </span>JSON<span class="w"> </span>format<span class="o">)</span><span class="w"> </span><span class="o">[</span>required<span class="o">]</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">  </span>--predictions-dir<span class="w"> </span>PATH<span class="w">        </span>Path<span class="w"> </span>to<span class="w"> </span>output<span class="w"> </span>directory<span class="w"> </span>from<span class="w"> </span>Baktfold
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">                                </span>proteins-predict
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">  </span>--structure-dir<span class="w"> </span>PATH<span class="w">          </span>Path<span class="w"> </span>to<span class="w"> </span>directory<span class="w"> </span>with<span class="w"> </span>.pdb<span class="w"> </span>or<span class="w"> </span>.cif<span class="w"> </span>file
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">                                </span>structures.<span class="w"> </span>The<span class="w"> </span>CDS<span class="w"> </span>IDs<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>name
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">                                </span>of<span class="w"> </span>the<span class="w"> </span>file
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">  </span>-o,<span class="w"> </span>--output<span class="w"> </span>PATH<span class="w">             </span>Output<span class="w"> </span>directory<span class="w">   </span><span class="o">[</span>default:<span class="w"> </span>output_baktfold<span class="o">]</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">  </span>-t,<span class="w"> </span>--threads<span class="w"> </span>INTEGER<span class="w">         </span>Number<span class="w"> </span>of<span class="w"> </span>threads<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">  </span>-p,<span class="w"> </span>--prefix<span class="w"> </span>TEXT<span class="w">             </span>Output<span class="w"> </span>files<span class="s1">&#39; prefix  [default: baktfold]</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="s1">  -d, --database TEXT           Path to Baktfold&#39;</span>s<span class="w"> </span>database
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">  </span>-f,<span class="w"> </span>--force<span class="w">                   </span>Force<span class="w"> </span>overwrites<span class="w"> </span>output<span class="w"> </span>directory
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="w">  </span>-e,<span class="w"> </span>--evalue<span class="w"> </span>FLOAT<span class="w">            </span>Evalue<span class="w"> </span>threshold<span class="w"> </span><span class="k">for</span><span class="w"> </span>Foldseek<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span>1e-3<span class="o">]</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">  </span>-s,<span class="w"> </span>--sensitivity<span class="w"> </span>FLOAT<span class="w">       </span>Sensitivity<span class="w"> </span>parameter<span class="w"> </span><span class="k">for</span><span class="w"> </span>Foldseek<span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">                                </span><span class="m">9</span>.5<span class="o">]</span>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">  </span>--keep-tmp-files<span class="w">              </span>Keep<span class="w"> </span>temporary<span class="w"> </span>intermediate<span class="w"> </span>files<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>large
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="w">                                </span>foldseek_results.tsv<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>Foldseek<span class="w"> </span>hits<span class="o">)</span>
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="w">  </span>--max-seqs<span class="w"> </span>INTEGER<span class="w">            </span>Maximum<span class="w"> </span>results<span class="w"> </span>per<span class="w"> </span>query<span class="w"> </span>sequence<span class="w"> </span>allowed<span class="w"> </span>to
+</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="w">                                </span>pass<span class="w"> </span>the<span class="w"> </span>prefilter<span class="w"> </span><span class="o">(</span>saves<span class="w"> </span>disk<span class="w"> </span>space<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="w">                                </span>enormous<span class="w"> </span>datasets<span class="o">)</span><span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1000</span><span class="o">]</span>
+</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="w">  </span>--ultra-sensitive<span class="w">             </span>Run<span class="w"> </span>with<span class="w"> </span>maximum<span class="w"> </span>sensitivity<span class="w"> </span>by<span class="w"> </span>skipping
+</span><span id="__span-15-29"><a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a><span class="w">                                </span>Foldseek<span class="w"> </span>prefilter<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>recommended<span class="w"> </span><span class="k">for</span><span class="w"> </span>large
+</span><span id="__span-15-30"><a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a><span class="w">                                </span>datasets<span class="o">)</span>
+</span><span id="__span-15-31"><a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a><span class="w">  </span>--extra-foldseek-params<span class="w"> </span>TEXT<span class="w">  </span>Extra<span class="w"> </span>Foldseek<span class="w"> </span>search<span class="w"> </span>params
+</span><span id="__span-15-32"><a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a><span class="w">  </span>--custom-db<span class="w"> </span>TEXT<span class="w">              </span>Path<span class="w"> </span>to<span class="w"> </span>custom<span class="w"> </span>database
+</span><span id="__span-15-33"><a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a><span class="w">  </span>--foldseek-gpu<span class="w">                </span>Enable<span class="w"> </span>Foldseek-GPU<span class="w"> </span>search<span class="w"> </span>acceleration
+</span><span id="__span-15-34"><a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a><span class="w">  </span>--custom-annotations<span class="w"> </span>PATH<span class="w">     </span>Custom<span class="w"> </span>Foldseek<span class="w"> </span>DB<span class="w"> </span>annotations<span class="w"> </span><span class="o">(</span><span class="m">2</span><span class="w"> </span>column<span class="w"> </span>tsv:
+</span><span id="__span-15-35"><a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a><span class="w">                                </span>Foldseek<span class="w"> </span>headers,<span class="w"> </span>description<span class="o">)</span>
+</span><span id="__span-15-36"><a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a><span class="w">  </span>--euk<span class="w">                         </span>Eukaryotic<span class="w"> </span>input<span class="w"> </span>genome.
+</span><span id="__span-15-37"><a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a><span class="w">  </span>--fast<span class="w">                        </span>Skips<span class="w"> </span>Foldseek<span class="w"> </span>search<span class="w"> </span>against<span class="w"> </span>AFDB<span class="w"> </span>Clusters.
+</span><span id="__span-15-38"><a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a><span class="w">  </span>--cds-program<span class="w"> </span>TEXT<span class="w">            </span>CDS<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span><span class="w"> </span>compliant
+</span><span id="__span-15-39"><a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a><span class="w">                                </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka<span class="w"> </span>input
+</span><span id="__span-15-40"><a id="__codelineno-15-40" name="__codelineno-15-40" href="#__codelineno-15-40"></a><span class="w">  </span>--trna-program<span class="w"> </span>TEXT<span class="w">           </span>tRNA<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span><span class="w"> </span>compliant
+</span><span id="__span-15-41"><a id="__codelineno-15-41" name="__codelineno-15-41" href="#__codelineno-15-41"></a><span class="w">                                </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka<span class="w"> </span>input
+</span><span id="__span-15-42"><a id="__codelineno-15-42" name="__codelineno-15-42" href="#__codelineno-15-42"></a><span class="w">  </span>--tmrna-program<span class="w"> </span>TEXT<span class="w">          </span>tmRNA<span class="w"> </span>profile<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-15-43"><a id="__codelineno-15-43" name="__codelineno-15-43" href="#__codelineno-15-43"></a><span class="w">                                </span>compliant<span class="w"> </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka
+</span><span id="__span-15-44"><a id="__codelineno-15-44" name="__codelineno-15-44" href="#__codelineno-15-44"></a><span class="w">                                </span>input
+</span><span id="__span-15-45"><a id="__codelineno-15-45" name="__codelineno-15-45" href="#__codelineno-15-45"></a><span class="w">  </span>--rrna-program<span class="w"> </span>TEXT<span class="w">           </span>rRNA<span class="w"> </span>profile<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-15-46"><a id="__codelineno-15-46" name="__codelineno-15-46" href="#__codelineno-15-46"></a><span class="w">                                </span>compliant<span class="w"> </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka
+</span><span id="__span-15-47"><a id="__codelineno-15-47" name="__codelineno-15-47" href="#__codelineno-15-47"></a><span class="w">                                </span>input
+</span><span id="__span-15-48"><a id="__codelineno-15-48" name="__codelineno-15-48" href="#__codelineno-15-48"></a><span class="w">  </span>--ncrna-program<span class="w"> </span>TEXT<span class="w">          </span>ncRNA<span class="w"> </span>profile<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-15-49"><a id="__codelineno-15-49" name="__codelineno-15-49" href="#__codelineno-15-49"></a><span class="w">                                </span>compliant<span class="w"> </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka
+</span><span id="__span-15-50"><a id="__codelineno-15-50" name="__codelineno-15-50" href="#__codelineno-15-50"></a><span class="w">                                </span>input
+</span></code></pre></div>
+<h3 id="baktfold-proteins"><code>baktfold proteins</code></h3>
+<ul>
+<li><code>baktfold proteins</code> runs <code>baktfold proteins-predict</code> and <code>baktfold proteins-compare</code> together in one command. Recommended if you are running <code>baktfold</code> with an NVIDIA GPU, along with <code>--foldseek-gpu</code>.</li>
+<li>Also recommended if you are running <code>baktfold</code> in a lower-resource environment without a GPU - you will also need to specify <code>--cpu</code>.</li>
+<li>
+<p>See <code>baktfold predict</code> and <code>baktfold compare</code> for more details on specific parameters</p>
+</li>
+<li>
+<p>Note: You can also use a <code>bakta_proteins</code> output JSON file as input if you have already annotated your protein FASTA with <code>bakta</code></p>
+</li>
+</ul>
+<p>Example usage where NVIDIA GPU is available:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>baktfold<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>bakta.json<span class="w"> </span>-o<span class="w"> </span>baktfold_output<span class="w"> </span>-d<span class="w"> </span>baktfold_db<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span><span class="w"> </span>--foldseek-gpu
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Usage:<span class="w"> </span>baktfold<span class="w"> </span>proteins<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span>baktfold<span class="w"> </span>proteins-predict<span class="w"> </span><span class="k">then</span><span class="w"> </span>comapare<span class="w"> </span>all<span class="w"> </span><span class="k">in</span><span class="w"> </span>one<span class="w"> </span>-<span class="w"> </span>GPU<span class="w"> </span>recommended
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>Options:
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                     </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">                  </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">  </span>-i,<span class="w"> </span>--input<span class="w"> </span>PATH<span class="w">               </span>Path<span class="w"> </span>to<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>amino<span class="w"> </span>acid<span class="w"> </span>FASTA<span class="w"> </span>or<span class="w"> </span>Bakta<span class="w"> </span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">                                  </span>proteins<span class="w"> </span>output<span class="w"> </span>JSON<span class="w"> </span>format<span class="o">)</span><span class="w"> </span><span class="o">[</span>required<span class="o">]</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">  </span>-o,<span class="w"> </span>--output<span class="w"> </span>PATH<span class="w">              </span>Output<span class="w"> </span>directory<span class="w">   </span><span class="o">[</span>default:<span class="w"> </span>output_baktfold<span class="o">]</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">  </span>-t,<span class="w"> </span>--threads<span class="w"> </span>INTEGER<span class="w">          </span>Number<span class="w"> </span>of<span class="w"> </span>threads<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">  </span>-p,<span class="w"> </span>--prefix<span class="w"> </span>TEXT<span class="w">              </span>Output<span class="w"> </span>files<span class="s1">&#39; prefix  [default: baktfold]</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="s1">  -d, --database TEXT            Path to Baktfold&#39;</span>s<span class="w"> </span>database
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">  </span>-f,<span class="w"> </span>--force<span class="w">                    </span>Force<span class="w"> </span>overwrites<span class="w"> </span>output<span class="w"> </span>directory
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">  </span>--autotune<span class="w">                     </span>Run<span class="w"> </span>autotuning<span class="w"> </span>to<span class="w"> </span>detect<span class="w"> </span>and<span class="w"> </span><span class="nb">set</span><span class="w"> </span>best<span class="w"> </span>batch
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="w">                                 </span>size<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>hardware<span class="w"> </span><span class="o">(</span>recommended<span class="w"> </span>only<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="w">                                 </span>large<span class="w"> </span>dataset,<span class="w"> </span>e.g.<span class="w"> </span>thousands<span class="w"> </span>of<span class="w"> </span>proteins<span class="o">)</span>
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="w">  </span>--batch-size<span class="w"> </span>INTEGER<span class="w">           </span>Batch<span class="w"> </span>size<span class="w"> </span><span class="k">for</span><span class="w"> </span>ProstT5<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>is<span class="w"> </span>usually<span class="w"> </span>fastest<span class="o">)</span>
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="w">                                 </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="w">  </span>--cpu<span class="w">                          </span>Use<span class="w"> </span>CPU<span class="w"> </span>only.
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="w">  </span>--omit-probs<span class="w">                   </span>Do<span class="w"> </span>not<span class="w"> </span>output<span class="w"> </span>per<span class="w"> </span>residue<span class="w"> </span>3Di<span class="w"> </span>probabilities
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="w">                                 </span>from<span class="w"> </span>ProstT5
+</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="w">  </span>--save-per-residue-embeddings<span class="w">  </span>Save<span class="w"> </span>ProstT5<span class="w"> </span>embeddings<span class="w"> </span>per<span class="w"> </span>resuide<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>H5
+</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="w">                                 </span>file
+</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="w">  </span>--save-per-protein-embeddings<span class="w">  </span>Save<span class="w"> </span>ProstT5<span class="w"> </span>embeddings<span class="w"> </span>as<span class="w"> </span>means<span class="w"> </span>per<span class="w"> </span>protein
+</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a><span class="w">                                 </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>H5<span class="w"> </span>file
+</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a><span class="w">  </span>--mask-threshold<span class="w"> </span>FLOAT<span class="w">         </span>Mask<span class="w"> </span>3Di<span class="w"> </span>residues<span class="w"> </span>below<span class="w"> </span>this<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span>ProstT5
+</span><span id="__span-17-28"><a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a><span class="w">                                 </span>confidence<span class="w"> </span><span class="k">for</span><span class="w"> </span>Foldseek<span class="w"> </span>searches<span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-17-29"><a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a><span class="w">                                 </span><span class="m">25</span><span class="o">]</span>
+</span><span id="__span-17-30"><a id="__codelineno-17-30" name="__codelineno-17-30" href="#__codelineno-17-30"></a><span class="w">  </span>-e,<span class="w"> </span>--evalue<span class="w"> </span>FLOAT<span class="w">             </span>Evalue<span class="w"> </span>threshold<span class="w"> </span><span class="k">for</span><span class="w"> </span>Foldseek<span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-17-31"><a id="__codelineno-17-31" name="__codelineno-17-31" href="#__codelineno-17-31"></a><span class="w">                                 </span>1e-3<span class="o">]</span>
+</span><span id="__span-17-32"><a id="__codelineno-17-32" name="__codelineno-17-32" href="#__codelineno-17-32"></a><span class="w">  </span>-s,<span class="w"> </span>--sensitivity<span class="w"> </span>FLOAT<span class="w">        </span>Sensitivity<span class="w"> </span>parameter<span class="w"> </span><span class="k">for</span><span class="w"> </span>Foldseek<span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-17-33"><a id="__codelineno-17-33" name="__codelineno-17-33" href="#__codelineno-17-33"></a><span class="w">                                 </span><span class="m">9</span>.5<span class="o">]</span>
+</span><span id="__span-17-34"><a id="__codelineno-17-34" name="__codelineno-17-34" href="#__codelineno-17-34"></a><span class="w">  </span>--keep-tmp-files<span class="w">               </span>Keep<span class="w"> </span>temporary<span class="w"> </span>intermediate<span class="w"> </span>files<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>large
+</span><span id="__span-17-35"><a id="__codelineno-17-35" name="__codelineno-17-35" href="#__codelineno-17-35"></a><span class="w">                                 </span>foldseek_results.tsv<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>Foldseek<span class="w"> </span>hits<span class="o">)</span>
+</span><span id="__span-17-36"><a id="__codelineno-17-36" name="__codelineno-17-36" href="#__codelineno-17-36"></a><span class="w">  </span>--max-seqs<span class="w"> </span>INTEGER<span class="w">             </span>Maximum<span class="w"> </span>results<span class="w"> </span>per<span class="w"> </span>query<span class="w"> </span>sequence<span class="w"> </span>allowed<span class="w"> </span>to
+</span><span id="__span-17-37"><a id="__codelineno-17-37" name="__codelineno-17-37" href="#__codelineno-17-37"></a><span class="w">                                 </span>pass<span class="w"> </span>the<span class="w"> </span>prefilter<span class="w"> </span><span class="o">(</span>saves<span class="w"> </span>disk<span class="w"> </span>space<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-17-38"><a id="__codelineno-17-38" name="__codelineno-17-38" href="#__codelineno-17-38"></a><span class="w">                                 </span>enormous<span class="w"> </span>datasets<span class="o">)</span><span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1000</span><span class="o">]</span>
+</span><span id="__span-17-39"><a id="__codelineno-17-39" name="__codelineno-17-39" href="#__codelineno-17-39"></a><span class="w">  </span>--ultra-sensitive<span class="w">              </span>Run<span class="w"> </span>with<span class="w"> </span>maximum<span class="w"> </span>sensitivity<span class="w"> </span>by<span class="w"> </span>skipping
+</span><span id="__span-17-40"><a id="__codelineno-17-40" name="__codelineno-17-40" href="#__codelineno-17-40"></a><span class="w">                                 </span>Foldseek<span class="w"> </span>prefilter<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>recommended<span class="w"> </span><span class="k">for</span><span class="w"> </span>large
+</span><span id="__span-17-41"><a id="__codelineno-17-41" name="__codelineno-17-41" href="#__codelineno-17-41"></a><span class="w">                                 </span>datasets<span class="o">)</span>
+</span><span id="__span-17-42"><a id="__codelineno-17-42" name="__codelineno-17-42" href="#__codelineno-17-42"></a><span class="w">  </span>--extra-foldseek-params<span class="w"> </span>TEXT<span class="w">   </span>Extra<span class="w"> </span>Foldseek<span class="w"> </span>search<span class="w"> </span>params
+</span><span id="__span-17-43"><a id="__codelineno-17-43" name="__codelineno-17-43" href="#__codelineno-17-43"></a><span class="w">  </span>--custom-db<span class="w"> </span>TEXT<span class="w">               </span>Path<span class="w"> </span>to<span class="w"> </span>custom<span class="w"> </span>database
+</span><span id="__span-17-44"><a id="__codelineno-17-44" name="__codelineno-17-44" href="#__codelineno-17-44"></a><span class="w">  </span>--foldseek-gpu<span class="w">                 </span>Enable<span class="w"> </span>Foldseek-GPU<span class="w"> </span>search<span class="w"> </span>acceleration
+</span><span id="__span-17-45"><a id="__codelineno-17-45" name="__codelineno-17-45" href="#__codelineno-17-45"></a><span class="w">  </span>--custom-annotations<span class="w"> </span>PATH<span class="w">      </span>Custom<span class="w"> </span>Foldseek<span class="w"> </span>DB<span class="w"> </span>annotations<span class="w"> </span><span class="o">(</span><span class="m">2</span><span class="w"> </span>column<span class="w"> </span>tsv:
+</span><span id="__span-17-46"><a id="__codelineno-17-46" name="__codelineno-17-46" href="#__codelineno-17-46"></a><span class="w">                                 </span>Foldseek<span class="w"> </span>headers,<span class="w"> </span>description<span class="o">)</span>
+</span><span id="__span-17-47"><a id="__codelineno-17-47" name="__codelineno-17-47" href="#__codelineno-17-47"></a><span class="w">  </span>--euk<span class="w">                          </span>Eukaryotic<span class="w"> </span>input<span class="w"> </span>genome.
+</span><span id="__span-17-48"><a id="__codelineno-17-48" name="__codelineno-17-48" href="#__codelineno-17-48"></a><span class="w">  </span>--fast<span class="w">                         </span>Skips<span class="w"> </span>Foldseek<span class="w"> </span>search<span class="w"> </span>against<span class="w"> </span>AFDB<span class="w"> </span>Clusters.
+</span><span id="__span-17-49"><a id="__codelineno-17-49" name="__codelineno-17-49" href="#__codelineno-17-49"></a><span class="w">  </span>--cds-program<span class="w"> </span>TEXT<span class="w">             </span>CDS<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span><span class="w"> </span>compliant
+</span><span id="__span-17-50"><a id="__codelineno-17-50" name="__codelineno-17-50" href="#__codelineno-17-50"></a><span class="w">                                 </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka<span class="w"> </span>input
+</span><span id="__span-17-51"><a id="__codelineno-17-51" name="__codelineno-17-51" href="#__codelineno-17-51"></a><span class="w">  </span>--trna-program<span class="w"> </span>TEXT<span class="w">            </span>tRNA<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span><span class="w"> </span>compliant
+</span><span id="__span-17-52"><a id="__codelineno-17-52" name="__codelineno-17-52" href="#__codelineno-17-52"></a><span class="w">                                 </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or<span class="w"> </span>Prokka<span class="w"> </span>input
+</span><span id="__span-17-53"><a id="__codelineno-17-53" name="__codelineno-17-53" href="#__codelineno-17-53"></a><span class="w">  </span>--tmrna-program<span class="w"> </span>TEXT<span class="w">           </span>tmRNA<span class="w"> </span>profile<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-17-54"><a id="__codelineno-17-54" name="__codelineno-17-54" href="#__codelineno-17-54"></a><span class="w">                                 </span>compliant<span class="w"> </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or
+</span><span id="__span-17-55"><a id="__codelineno-17-55" name="__codelineno-17-55" href="#__codelineno-17-55"></a><span class="w">                                 </span>Prokka<span class="w"> </span>input
+</span><span id="__span-17-56"><a id="__codelineno-17-56" name="__codelineno-17-56" href="#__codelineno-17-56"></a><span class="w">  </span>--rrna-program<span class="w"> </span>TEXT<span class="w">            </span>rRNA<span class="w"> </span>profile<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-17-57"><a id="__codelineno-17-57" name="__codelineno-17-57" href="#__codelineno-17-57"></a><span class="w">                                 </span>compliant<span class="w"> </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or
+</span><span id="__span-17-58"><a id="__codelineno-17-58" name="__codelineno-17-58" href="#__codelineno-17-58"></a><span class="w">                                 </span>Prokka<span class="w"> </span>input
+</span><span id="__span-17-59"><a id="__codelineno-17-59" name="__codelineno-17-59" href="#__codelineno-17-59"></a><span class="w">  </span>--ncrna-program<span class="w"> </span>TEXT<span class="w">           </span>ncRNA<span class="w"> </span>profile<span class="w"> </span>prediction<span class="w"> </span>tool<span class="w"> </span>string<span class="w"> </span><span class="k">for</span>
+</span><span id="__span-17-60"><a id="__codelineno-17-60" name="__codelineno-17-60" href="#__codelineno-17-60"></a><span class="w">                                 </span>compliant<span class="w"> </span>outputs<span class="w"> </span><span class="k">if</span><span class="w"> </span>using<span class="w"> </span>non-Bakta<span class="w"> </span>or
+</span><span id="__span-17-61"><a id="__codelineno-17-61" name="__codelineno-17-61" href="#__codelineno-17-61"></a><span class="w">                                 </span>Prokka<span class="w"> </span>input
+</span></code></pre></div>
+<h3 id="baktfold-createdb"><code>baktfold createdb</code></h3>
+<p>This in an auxillary command that allows you to create a Foldseek compatible database from AA and 3Di protein sequences (such as those created by <code>baktfold predict</code>). </p>
+<p>Example usage </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>baktfold<span class="w"> </span>createdb<span class="w"> </span>--fasta_aa<span class="w"> </span>proteins_aa.fasta<span class="w">  </span>--fasta_3di<span class="w"> </span>baktfold_3di.fasta<span class="w"> </span>-o<span class="w"> </span>my_foldseek_db<span class="w">  </span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Usage:<span class="w"> </span>baktfold<span class="w"> </span>createdb<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span>Creates<span class="w"> </span>foldseek<span class="w"> </span>DB<span class="w"> </span>from<span class="w"> </span>AA<span class="w"> </span>FASTA<span class="w"> </span>and<span class="w"> </span>3Di<span class="w"> </span>FASTA<span class="w"> </span>input<span class="w"> </span>files
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>Options:
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">             </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">          </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">  </span>--fasta-aa<span class="w"> </span>PATH<span class="w">        </span>Path<span class="w"> </span>to<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>amino<span class="w"> </span>acid<span class="w"> </span>FASTA<span class="w"> </span>format<span class="o">)</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">                         </span><span class="o">[</span>required<span class="o">]</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">  </span>--fasta-3di<span class="w"> </span>PATH<span class="w">       </span>Path<span class="w"> </span>to<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>3Di<span class="w"> </span>FASTA<span class="w"> </span>format<span class="o">)</span><span class="w">  </span><span class="o">[</span>required<span class="o">]</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">  </span>-o,<span class="w"> </span>--output<span class="w"> </span>PATH<span class="w">      </span>Output<span class="w"> </span>directory<span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">                         </span>output_baktfold_foldseek_db<span class="o">]</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">  </span>-t,<span class="w"> </span>--threads<span class="w"> </span>INTEGER<span class="w">  </span>Number<span class="w"> </span>of<span class="w"> </span>threads<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">  </span>-p,<span class="w"> </span>--prefix<span class="w"> </span>TEXT<span class="w">      </span>Foldseek<span class="w"> </span>database<span class="w"> </span>prefix<span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">                         </span>baktfold_foldseek_db<span class="o">]</span>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">  </span>-f,<span class="w"> </span>--force<span class="w">            </span>Force<span class="w"> </span>overwrites<span class="w"> </span>output<span class="w"> </span>directory
+</span></code></pre></div>
+<h3 id="baktfold-convert-prokka"><code>baktfold convert-prokka</code></h3>
+<ul>
+<li>
+<p>This is an auxillary command that enables you to convert a Prokka GenBank format annotation output file into a Bakta JSON file compatible as input for <code>baktfold run</code></p>
+</li>
+<li>
+<p>Example usage</p>
+</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>baktfold<span class="w"> </span>convert-prokka<span class="w"> </span>-i<span class="w"> </span>prokka.gbk<span class="w"> </span>-o<span class="w"> </span>prokka_baktfold_input.json<span class="w"> </span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>Usage:<span class="w"> </span>baktfold<span class="w"> </span>convert-prokka<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span>Converts<span class="w"> </span>Prokka<span class="w"> </span>GenBank<span class="w"> </span>to<span class="w"> </span>Bakta<span class="w"> </span>format<span class="w"> </span>json
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>Options:
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">          </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">       </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">  </span>-i,<span class="w"> </span>--input<span class="w"> </span>PATH<span class="w">    </span>Path<span class="w"> </span>to<span class="w"> </span>Prokka<span class="w"> </span>input<span class="w"> </span><span class="o">(</span>GenBank:<span class="w"> </span>.gbk<span class="o">)</span><span class="w">  </span><span class="o">[</span>required<span class="o">]</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">  </span>-o,<span class="w"> </span>--outfile<span class="w"> </span>PATH<span class="w">  </span>Output<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>Bakta:<span class="w"> </span>.json<span class="o">)</span><span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">                      </span>converted_bakta_formatted.json<span class="o">]</span>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="w">  </span>-f,<span class="w"> </span>--force<span class="w">         </span>Force<span class="w"> </span>overwrites<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>file
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="w">  </span>--verbose<span class="w">           </span>Verbose<span class="w"> </span>output
+</span></code></pre></div>
+<h3 id="baktfold-convert-euk"><code>baktfold convert-euk</code></h3>
+<ul>
+<li>
+<p>This is an auxillary command that enables you to convert a eukaryote GenBank format annotation output file into a Bakta JSON file compatible as input for <code>baktfold run</code> with <code>--euk</code></p>
+</li>
+<li>
+<p>Example usage</p>
+</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>baktfold<span class="w"> </span>convert-euk<span class="w"> </span>-i<span class="w"> </span>eukaryote.gbk<span class="w"> </span>-o<span class="w"> </span>euk_baktfold_input.json<span class="w"> </span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>Usage:<span class="w"> </span>baktfold<span class="w"> </span>convert-euk<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">  </span><span class="o">(</span>Experimental<span class="o">)</span><span class="w"> </span>Converts<span class="w"> </span>eukaryotic<span class="w"> </span>GenBank<span class="w"> </span>to<span class="w"> </span>Bakta<span class="w"> </span>format<span class="w"> </span>json
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>Options:
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">          </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">       </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">  </span>-i,<span class="w"> </span>--input<span class="w"> </span>PATH<span class="w">    </span>Path<span class="w"> </span>to<span class="w"> </span>Prokka<span class="w"> </span>input<span class="w"> </span><span class="o">(</span>GenBank:<span class="w"> </span>.gbk<span class="o">)</span><span class="w">  </span><span class="o">[</span>required<span class="o">]</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">  </span>-o,<span class="w"> </span>--outfile<span class="w"> </span>PATH<span class="w">  </span>Output<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>Bakta:<span class="w"> </span>.json<span class="o">)</span><span class="w">  </span><span class="o">[</span>default:
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="w">                      </span>converted_bakta_formatted.json<span class="o">]</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="w">  </span>-f,<span class="w"> </span>--force<span class="w">         </span>Force<span class="w"> </span>overwrites<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>file
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="w">  </span>--verbose<span class="w">           </span>Verbose<span class="w"> </span>output
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["toc.follow", "content.action.edit"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
