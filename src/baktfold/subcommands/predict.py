@@ -5,22 +5,7 @@ from pathlib import Path
 from loguru import logger
 
 from baktfold.features.predict_3Di import get_embeddings
-
-
-def mask_low_confidence_aa(sequence, scores, threshold=0.5):
-    """
-    Masks all low confidence AA to X if their corresponding ProstT5 confidence score is below the given threshold.
-
-    Parameters:
-    sequence (str): The amino acid sequence.
-    scores (List[float]): A list of confidence scores for each amino acid.
-    threshold (float, optional): The confidence threshold below which amino acids are converted to lowercase. Default is 0.5.
-
-    Returns:
-    str: The modified amino acid sequence with low-confidence residues in lowercase.
-    """
-    return "".join('X' if float(score) < threshold else aa 
-                   for aa, score in zip(sequence, *scores))
+from pholdlib.prostt5.output import mask_low_confidence_aa
 
 def subcommand_predict(
     hypotheticals: dict,

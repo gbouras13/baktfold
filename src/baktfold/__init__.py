@@ -10,7 +10,7 @@ import baktfold.bakta.constants as bc
 import baktfold.bakta.annotation as anno
 from baktfold.io.json_in import parse_json_input, log_for_other_genbank_tools
 from baktfold.io.fasta_in import parse_protein_input
-from baktfold.databases.db import install_database, validate_db
+from baktfold.databases.db import install_database, validate_db, check_prostT5_download, download_zenodo_prostT5
 from baktfold.features.create_foldseek_db import generate_foldseek_db_from_aa_3di
 from baktfold.features.predict_3Di import get_T5_model
 from baktfold.subcommands.compare import subcommand_compare
@@ -1852,7 +1852,11 @@ def install(
     cpu = True
 
     # load model (will be downloaded if not present)
-    model, vocab = get_T5_model(database, model_name, cpu, threads=1)
+    model, vocab, _ = get_T5_model(
+        database, model_name, cpu, threads=1,
+        check_fn=check_prostT5_download,
+        zenodo_fn=download_zenodo_prostT5,
+    )
     del model
     del vocab
     logger.info(f"ProstT5 model downloaded")

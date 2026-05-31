@@ -10,7 +10,7 @@ from tqdm import tqdm
 from loguru import logger
 
 from baktfold.io.handle_genbank import open_protein_fasta_file
-from baktfold.features.predict_3Di import  get_T5_model
+from pholdlib.prostt5.model import get_T5_model, device_synchronize
 
 
 """
@@ -74,27 +74,12 @@ def autotune_batching_real_data(
       (10, 100)
     """
     
-    model, tokenizer = get_T5_model(model_dir, model_name, cpu, threads)
+    model, tokenizer, device = get_T5_model(model_dir, model_name, cpu, threads)
     model.eval()
     model.half()
 
     bs = start_bs
     results = []
-
-    # get device
-    device = None
-
-    if cpu is True:
-        device = torch.device("cpu")
-    else:
-        # check for NVIDIA/cuda
-        if torch.cuda.is_available():
-            device = torch.device("cuda:0")
-        # check for apple silicon/metal
-        elif torch.backends.mps.is_available():
-            device = torch.device("mps")
-        else:
-            device = torch.device("cpu")
 
 
     while bs <= max_bs:
@@ -126,12 +111,12 @@ def autotune_batching_real_data(
                 inputs.pop("token_type_ids", None)
                 inputs = {k: v.to(device) for k, v in inputs.items()}
 
-                # timing
-                torch.cuda.synchronize()
+                # timing — device_synchronize handles CUDA/MPS/XPU/CPU (PR #129)
+                device_synchronize(device)
                 t0 = time.perf_counter()
                 with torch.no_grad():
                     _ = model(**inputs)
-                torch.cuda.synchronize()
+                device_synchronize(device)
 
                 total_time += time.perf_counter() - t0
                 
@@ -155,8 +140,10 @@ def autotune_batching_real_data(
 
             bs += step
 
-        except torch.cuda.OutOfMemoryError:
-            torch.cuda.empty_cache()
+        except (torch.cuda.OutOfMemoryError, RuntimeError):
+            # RuntimeError covers XPU/MPS OOM; torch.cuda.OutOfMemoryError covers CUDA.
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
             break
 
     

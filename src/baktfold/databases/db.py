@@ -173,7 +173,7 @@ def install_database(db_dir: Path, foldseek_gpu: bool, threads: int) -> None:
 
         DICT = VERSION_DICTIONARY
         db_url = DICT[CURRENT_DB_VERSION]["db_url"]
-        logger.info(f"Downloading baktfold DB from {db_url}")
+        logger.info(f"Downloading baktfold DB")
 
         requiredmd5s = DICT[CURRENT_DB_VERSION]["md5"]
         tarball = DICT[CURRENT_DB_VERSION]["tarball"]
