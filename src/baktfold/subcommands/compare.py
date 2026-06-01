@@ -36,8 +36,9 @@ def subcommand_compare(
     custom_db: str,
     foldseek_gpu: bool,
     custom_annotations: Optional[Path],
-    has_duplicate_locus: bool, 
-    fast: bool
+    has_duplicate_locus: bool,
+    fast: bool,
+    gpus: Optional[str] = None,
 ) -> bool:
     """
     Compare 3Di or PDB structures to the baktfold DB
@@ -187,7 +188,8 @@ def subcommand_compare(
         ultra_sensitive,
         extra_foldseek_params,
         foldseek_gpu,
-        structures
+        structures,
+        gpus=gpus,
     )
 
        
@@ -240,7 +242,8 @@ def subcommand_compare(
             ultra_sensitive,
             extra_foldseek_params,
             foldseek_gpu,
-            structures
+            structures,
+            gpus=gpus,
         )
 
         
@@ -291,7 +294,8 @@ def subcommand_compare(
         ultra_sensitive,
         extra_foldseek_params,
         foldseek_gpu,
-        structures
+        structures,
+        gpus=gpus,
     )
 
        
@@ -342,7 +346,8 @@ def subcommand_compare(
         ultra_sensitive,
         extra_foldseek_params,
         foldseek_gpu,
-        structures
+        structures,
+        gpus=gpus,
     )
 
     # this keeps the greedy best hits for cath
@@ -403,7 +408,8 @@ def subcommand_compare(
             ultra_sensitive,
             extra_foldseek_params,
             foldseek_gpu,
-            structures
+            structures,
+            gpus=gpus,
         )
 
             create_result_tsv(query_db, Path(custom_db),

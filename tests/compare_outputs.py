@@ -1,0 +1,303 @@
+#!/usr/bin/env python3
+"""
+Compare baktfold outputs between two runs (dev pholdlib-refactored vs bioconda reference).
+Ignores timestamp-dependent content (log files, dates in annotation JSON run key).
+
+Usage:
+    python tests/compare_outputs.py <dir_dev> <dir_ref> [--cpu]
+
+Exit code 0 = identical (modulo timestamps), non-zero = differences found.
+"""
+import json
+import math
+import re
+import sys
+from pathlib import Path
+
+# ── patterns that are timestamp/run-specific and should be ignored ──────────
+SKIP_LINE_PATTERNS = [
+    re.compile(r"^\d{4}-\d{2}-\d{2}"),          # log lines: 2026-05-26 ...
+    re.compile(r"#.*baktfold.*run"),              # any baktfold run pragma
+]
+
+# file extensions to skip entirely
+SKIP_EXTENSIONS = {".log"}
+
+# files to skip by name
+SKIP_FILENAMES = set()
+
+# directory components to skip entirely (any file under these dirs is ignored)
+SKIP_DIRS = {"logs", "logdir"}
+
+
+def filter_lines(path: Path) -> list:
+    """Read a file and return lines with timestamp-like content removed."""
+    try:
+        lines = path.read_text(errors="replace").splitlines()
+    except Exception as e:
+        return [f"<ERROR reading {path}: {e}>"]
+    return [l for l in lines if not any(p.search(l) for p in SKIP_LINE_PATTERNS)]
+
+
+def _csv_float_differ(lines_dev: list, lines_ref: list, tol: float = 0.01) -> list:
+    """Return diff messages for two sorted lists of CSV lines where the second
+    column is a float (e.g. mean_probabilities.csv: 'seq_id,mean_prob').
+    Lines with matching seq_ids are compared numerically; count mismatches
+    are flagged."""
+    row_diffs = []
+    if len(lines_dev) != len(lines_ref):
+        row_diffs.append(f"    line count: dev={len(lines_dev)} ref={len(lines_ref)}")
+    for i, (a, b) in enumerate(zip(lines_dev, lines_ref)):
+        if a == b:
+            continue
+        pa, pb = a.split(",", 1), b.split(",", 1)
+        if pa[0] != pb[0]:
+            row_diffs.append(f"    seq_id mismatch dev[{i}]: {a[:120]} | ref: {b[:120]}")
+            continue
+        try:
+            if not math.isclose(float(pa[1]), float(pb[1]), abs_tol=tol):
+                row_diffs.append(f"    value mismatch dev[{i}]: {a[:120]}")
+                row_diffs.append(f"                   ref[{i}]: {b[:120]}")
+        except ValueError:
+            row_diffs.append(f"    parse error dev[{i}]: {a[:120]}")
+    return row_diffs
+
+
+def _jsonl_float_differ(lines_dev: list, lines_ref: list, tol: float = 0.01) -> list:
+    """Return diff messages for two sorted lists of JSONL lines.
+
+    Each line is a JSON object {"seq_id": str, "probability": [float, ...]}.
+    Float values in the probability list are compared with tolerance *tol*
+    to absorb any floating-point differences between torch versions.
+    The seq_id is compared exactly; the two lists must be in the same order.
+    """
+    row_diffs = []
+    if len(lines_dev) != len(lines_ref):
+        row_diffs.append(f"    line count: dev={len(lines_dev)} ref={len(lines_ref)}")
+    for i, (a, b) in enumerate(zip(lines_dev, lines_ref)):
+        if a == b:
+            continue
+        try:
+            da, db = json.loads(a), json.loads(b)
+        except Exception:
+            row_diffs.append(f"    JSON parse error dev[{i}]: {a[:120]}")
+            continue
+        if da.get("seq_id") != db.get("seq_id"):
+            row_diffs.append(
+                f"    seq_id mismatch dev[{i}]: {da.get('seq_id')} | ref: {db.get('seq_id')}"
+            )
+            continue
+        pa, pb = da.get("probability", []), db.get("probability", [])
+        if len(pa) != len(pb):
+            row_diffs.append(
+                f"    prob length mismatch for {da.get('seq_id')}: "
+                f"dev={len(pa)} ref={len(pb)}"
+            )
+            continue
+        bad_pos = [
+            j for j, (fa, fb) in enumerate(zip(pa, pb))
+            if not math.isclose(fa, fb, abs_tol=tol)
+        ]
+        if bad_pos:
+            row_diffs.append(
+                f"    prob mismatch for {da.get('seq_id')} at positions {bad_pos[:10]}: "
+                f"dev={[pa[j] for j in bad_pos[:3]]} ref={[pb[j] for j in bad_pos[:3]]}"
+            )
+    return row_diffs
+
+
+def _strip_volatile_fields(obj) -> None:
+    """Recursively strip run-specific fields from bakta annotation objects.
+
+    Removes:
+      - 'id'  : feature IDs contain a randomly-generated 2-char suffix that
+                differs between runs (e.g. FLLLIEBDNM_1 vs FLLLIEBDMB_1).
+                The stable 'locus' field uniquely identifies each feature.
+    """
+    if isinstance(obj, list):
+        for item in obj:
+            _strip_volatile_fields(item)
+    elif isinstance(obj, dict):
+        obj.pop("id", None)
+        for v in obj.values():
+            _strip_volatile_fields(v)
+
+
+def _compare_annotation_json(fd: Path, fr: Path) -> list:
+    """Compare two bakta annotation JSON files, ignoring the 'run' key (timestamps)
+    and randomly-generated feature 'id' values.
+
+    Returns a list of diff messages (empty = identical modulo timestamps).
+    """
+    diffs = []
+    try:
+        dev_obj = json.loads(fd.read_text(errors="replace"))
+        ref_obj = json.loads(fr.read_text(errors="replace"))
+    except json.JSONDecodeError as e:
+        diffs.append(f"    JSON parse error: {e}")
+        return diffs
+
+    # strip run-specific keys
+    for obj in (dev_obj, ref_obj):
+        obj.pop("run", None)
+        _strip_volatile_fields(obj)
+
+    dev_str = json.dumps(dev_obj, sort_keys=True, separators=(",", ":"))
+    ref_str = json.dumps(ref_obj, sort_keys=True, separators=(",", ":"))
+    if dev_str != ref_str:
+        for i, (a, b) in enumerate(zip(dev_str, ref_str)):
+            if a != b:
+                start = max(0, i - 50)
+                diffs.append(f"    first diff at char {i}:")
+                diffs.append(f"      dev: ...{dev_str[start:i+40]!r}...")
+                diffs.append(f"      ref: ...{ref_str[start:i+40]!r}...")
+                break
+        if len(dev_str) != len(ref_str):
+            diffs.append(f"    length: dev={len(dev_str)} ref={len(ref_str)}")
+    return diffs
+
+
+def compare_dirs(dir_dev: Path, dir_ref: Path, strict: bool = False) -> list:
+    """Recursively compare two directories. Returns list of diff messages."""
+    diffs = []
+
+    dev_files = {f.relative_to(dir_dev) for f in dir_dev.rglob("*") if f.is_file()}
+    ref_files = {f.relative_to(dir_ref) for f in dir_ref.rglob("*") if f.is_file()}
+
+    def should_skip(rel: Path) -> bool:
+        return (
+            rel.suffix in SKIP_EXTENSIONS
+            or rel.name in SKIP_FILENAMES
+            or bool(SKIP_DIRS.intersection(rel.parts))
+        )
+
+    for f in sorted(dev_files - ref_files):
+        if not should_skip(f):
+            diffs.append(f"  ONLY IN DEV : {f}")
+
+    for f in sorted(ref_files - dev_files):
+        if not should_skip(f):
+            diffs.append(f"  ONLY IN REF : {f}")
+
+    for rel in sorted(dev_files & ref_files):
+        if should_skip(rel):
+            continue
+
+        fd = dir_dev / rel
+        fr = dir_ref / rel
+
+        ld = filter_lines(fd)
+        lr = filter_lines(fr)
+
+        # ── mean_probabilities.csv ─────────────────────────────────────────
+        if "mean_probabilities" in rel.name and rel.suffix == ".csv":
+            prob_tol = 0.01 if strict else 0.5
+            sd, sr = sorted(ld), sorted(lr)
+            row_diffs = _csv_float_differ(sd, sr, tol=prob_tol)
+            if row_diffs:
+                diffs.append(f"  DIFFER (sorted, tol={prob_tol}) : {rel}")
+                diffs.extend(row_diffs[:22])
+
+        # ── all_probabilities.json (JSONL probability file) ────────────────
+        elif rel.suffix == ".json" and "_all_probabilities" in rel.name:
+            json_tol = 0.01 if strict else 0.5
+            def _sort_key(line):
+                try:
+                    return json.loads(line).get("seq_id", line)
+                except Exception:
+                    return line
+            sd = sorted(ld, key=_sort_key)
+            sr = sorted(lr, key=_sort_key)
+            row_diffs = _jsonl_float_differ(sd, sr, tol=json_tol)
+            if row_diffs:
+                diffs.append(f"  DIFFER (sorted by seq_id, tol={json_tol}) : {rel}")
+                diffs.extend(row_diffs[:22])
+                if len(sd) != len(sr):
+                    diffs.append(f"    line count: dev={len(sd)} ref={len(sr)}")
+
+        # ── bakta annotation JSON (single large JSON, not JSONL) ───────────
+        # Strip run.start/run.end timestamps before comparing.
+        elif rel.suffix == ".json":
+            ann_diffs = _compare_annotation_json(fd, fr)
+            if ann_diffs:
+                diffs.append(f"  DIFFER (annotation JSON, 'run' key stripped) : {rel}")
+                diffs.extend(ann_diffs[:22])
+
+        # ── TSV/CSV/TXT (exact, sorted) ────────────────────────────────────
+        elif rel.suffix in {".tsv", ".csv", ".txt"}:
+            sd, sr = sorted(ld), sorted(lr)
+            if sd != sr:
+                diffs.append(f"  DIFFER (sorted) : {rel}")
+                for i, (a, b) in enumerate(zip(sd, sr)):
+                    if a != b:
+                        diffs.append(f"    dev[{i}]: {a[:140]}")
+                        diffs.append(f"    ref[{i}]: {b[:140]}")
+                        if i > 10:
+                            diffs.append("    ... (truncated)")
+                            break
+                if len(sd) != len(sr):
+                    diffs.append(f"    line count: dev={len(sd)} ref={len(sr)}")
+
+        # ── FASTA and everything else (exact) ──────────────────────────────
+        else:
+            if ld != lr:
+                diffs.append(f"  DIFFER : {rel}")
+                for i, (a, b) in enumerate(zip(ld, lr)):
+                    if a != b:
+                        diffs.append(f"    dev[{i}]: {a[:140]}")
+                        diffs.append(f"    ref[{i}]: {b[:140]}")
+                        if i > 10:
+                            diffs.append("    ... (truncated)")
+                            break
+                if len(ld) != len(lr):
+                    diffs.append(f"    line count: dev={len(ld)} ref={len(lr)}")
+
+    return diffs
+
+
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(
+        description="Compare baktfold outputs between two runs."
+    )
+    parser.add_argument("dir_dev", type=Path, help="Dev output directory")
+    parser.add_argument("dir_ref", type=Path, help="Ref output directory")
+    parser.add_argument(
+        "--cpu",
+        action="store_true",
+        help=(
+            "Both runs used --cpu (deterministic). "
+            "Probability CSVs compared with abs_tol=0.01; all other files exact."
+        ),
+    )
+    args = parser.parse_args()
+
+    dir_dev = args.dir_dev
+    dir_ref = args.dir_ref
+    strict = args.cpu
+
+    for d, label in [(dir_dev, "dev"), (dir_ref, "ref")]:
+        if not d.is_dir():
+            print(f"ERROR: {label} directory does not exist: {d}")
+            sys.exit(2)
+
+    print(f"Comparing:\n  DEV: {dir_dev}\n  REF: {dir_ref}\n")
+    if strict:
+        print("Mode: --cpu (prob CSVs/JSON: abs_tol=0.01; all else exact)\n")
+    else:
+        print("Mode: MPS/GPU (prob CSVs/JSON: abs_tol=0.5)\n")
+
+    diffs = compare_dirs(dir_dev, dir_ref, strict=strict)
+
+    if diffs:
+        print(f"DIFFERENCES FOUND ({len(diffs)} issues):")
+        for d in diffs:
+            print(d)
+        sys.exit(1)
+    else:
+        print("ALL OUTPUTS MATCH (modulo timestamps).")
+        sys.exit(0)
+
+
+if __name__ == "__main__":
+    main()

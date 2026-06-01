@@ -109,6 +109,14 @@ def predict_options(func):
             help="Use CPU only."
         ),
         click.option(
+            "--gpus",
+            type=str,
+            default=None,
+            help=('Comma-separated CUDA device indices to use (e.g. "0,2"). '
+                  "Default: all visible CUDA GPUs. Overridden by --cpu. "
+                  "Has no effect on MPS / XPU systems.")
+        ),
+        click.option(
             "--omit-probs",
             is_flag=True,
             help="Do not output per residue 3Di probabilities from ProstT5"
@@ -315,6 +323,7 @@ def run(
     batch_size,
     sensitivity,
     cpu,
+    gpus,
     omit_probs,
     keep_tmp_files,
     max_seqs,
@@ -357,6 +366,7 @@ def run(
         "--sensitivity": sensitivity,
         "--keep-tmp-files": keep_tmp_files,
         "--cpu": cpu,
+        "--gpus": gpus,
         "--omit_probs": omit_probs,
         "--max-seqs": max_seqs,
         "--save-per-residue-embeddings": save_per_residue_embeddings,
@@ -449,10 +459,12 @@ def run(
             model_name,
             cpu,
             threads,
-            step, 
+            step,
             min_batch,
-            max_batch, 
-            sample_seqs)
+            max_batch,
+            sample_seqs,
+            gpus=gpus,
+        )
 
 
     # hypotheticals is input to the function as it updates the 3Di feature
@@ -472,7 +484,8 @@ def run(
         save_per_protein_embeddings=save_per_protein_embeddings,
         threads=threads,
         mask_threshold=mask_threshold,
-        has_duplicate_locus=has_duplicate_locus
+        has_duplicate_locus=has_duplicate_locus,
+        gpus=gpus,
     )
 
     # baktfold compare
@@ -499,7 +512,8 @@ def run(
         foldseek_gpu=foldseek_gpu,
         custom_annotations=custom_annotations,
         has_duplicate_locus=has_duplicate_locus,
-        fast=fast
+        fast=fast,
+        gpus=gpus,
     )
 
     #####
@@ -622,6 +636,7 @@ def proteins(
     batch_size,
     sensitivity,
     cpu,
+    gpus,
     omit_probs,
     keep_tmp_files,
     max_seqs,
@@ -657,6 +672,7 @@ def proteins(
         "--sensitivity": sensitivity,
         "--keep-tmp-files": keep_tmp_files,
         "--cpu": cpu,
+        "--gpus": gpus,
         "--omit-probs": omit_probs,
         "--max-seqs": max_seqs,
         "--save-per-residue-embeddings": save_per_residue_embeddings,
@@ -714,10 +730,12 @@ def proteins(
             model_name,
             cpu,
             threads,
-            step, 
+            step,
             min_batch,
-            max_batch, 
-            sample_seqs)
+            max_batch,
+            sample_seqs,
+            gpus=gpus,
+        )
 
     aas = subcommand_predict(
         aas,
@@ -734,7 +752,8 @@ def proteins(
         save_per_protein_embeddings=save_per_protein_embeddings,
         threads=threads,
         mask_threshold=mask_threshold,
-        has_duplicate_locus=False
+        has_duplicate_locus=False,
+        gpus=gpus,
     )
 
     # baktfold compare
@@ -762,7 +781,8 @@ def proteins(
         foldseek_gpu=foldseek_gpu,
         custom_annotations=custom_annotations,
         has_duplicate_locus=False,
-        fast=fast
+        fast=fast,
+        gpus=gpus,
     )
 
     #####
@@ -839,6 +859,7 @@ def predict(
     autotune,
     batch_size,
     cpu,
+    gpus,
     omit_probs,
     save_per_residue_embeddings,
     save_per_protein_embeddings,
@@ -866,6 +887,7 @@ def predict(
         "--autotune": autotune,
         "--batch-size": batch_size,
         "--cpu": cpu,
+        "--gpus": gpus,
         "--omit-probs": omit_probs,
         "--save-per-residue-embeddings": save_per_residue_embeddings,
         "--save-per-protein-embeddings": save_per_protein_embeddings,
@@ -947,10 +969,12 @@ def predict(
             model_name,
             cpu,
             threads,
-            step, 
+            step,
             min_batch,
-            max_batch, 
-            sample_seqs)
+            max_batch,
+            sample_seqs,
+            gpus=gpus,
+        )
 
     hypotheticals = subcommand_predict(
         hypotheticals,
@@ -967,7 +991,8 @@ def predict(
         save_per_protein_embeddings=save_per_protein_embeddings,
         threads=threads,
         mask_threshold=mask_threshold,
-        has_duplicate_locus=has_duplicate_locus
+        has_duplicate_locus=has_duplicate_locus,
+        gpus=gpus,
     )
 
     # end baktfold
@@ -1005,6 +1030,13 @@ runs Foldseek using either 1) output of baktfold predict or 2) user defined prot
     default=None,
     help="Path to directory with .pdb or .cif file structures (IDs need to be in file names, i.e id.pdb or id.cif)"
 )
+@click.option(
+    "--gpus",
+    type=str,
+    default=None,
+    help=('Comma-separated CUDA device indices for Foldseek-GPU (e.g. "0,2"). '
+          "Default: all visible CUDA GPUs. Only meaningful with --foldseek-gpu."),
+)
 @common_options
 @compare_options
 @bakta_options
@@ -1021,6 +1053,7 @@ def compare(
     keep_tmp_files,
     predictions_dir,
     structure_dir,
+    gpus,
     max_seqs,
     ultra_sensitive,
     extra_foldseek_params,
@@ -1064,6 +1097,7 @@ def compare(
         "--custom-db": custom_db,
         "--custom-annotations": custom_annotations,
         "--foldseek-gpu": foldseek_gpu,
+        "--gpus": gpus,
         "--all-proteins": all_proteins,
         "--euk": euk,
         "--fast": fast,
@@ -1160,7 +1194,8 @@ def compare(
         foldseek_gpu=foldseek_gpu,
         custom_annotations=custom_annotations,
         has_duplicate_locus=has_duplicate_locus,
-        fast=fast
+        fast=fast,
+        gpus=gpus,
     )
 
 
@@ -1258,6 +1293,7 @@ def proteins_predict(
     autotune,
     batch_size,
     cpu,
+    gpus,
     omit_probs,
     save_per_residue_embeddings,
     save_per_protein_embeddings,
@@ -1283,6 +1319,7 @@ def proteins_predict(
         "--autotune": autotune,
         "--batch-size": batch_size,
         "--cpu": cpu,
+        "--gpus": gpus,
         "--omit-probs": omit_probs,
         "--save-per-residue-embeddings": save_per_residue_embeddings,
         "--save-per-protein-embeddings": save_per_protein_embeddings,
@@ -1333,10 +1370,12 @@ def proteins_predict(
             model_name,
             cpu,
             threads,
-            step, 
+            step,
             min_batch,
-            max_batch, 
-            sample_seqs)
+            max_batch,
+            sample_seqs,
+            gpus=gpus,
+        )
 
     aas = subcommand_predict(
         aas,
@@ -1353,7 +1392,8 @@ def proteins_predict(
         save_per_protein_embeddings=save_per_protein_embeddings,
         threads=threads,
         mask_threshold=mask_threshold,
-        has_duplicate_locus=False
+        has_duplicate_locus=False,
+        gpus=gpus,
     )
 
     # end baktfold
@@ -1387,6 +1427,13 @@ Runs Foldseek vs baktfold DBs for multiFASTA 3Di sequences (predicted with prote
     help="Path to directory with .pdb or .cif file structures. The CDS IDs need to be in the name of the file",
     type=click.Path(),
 )
+@click.option(
+    "--gpus",
+    type=str,
+    default=None,
+    help=('Comma-separated CUDA device indices for Foldseek-GPU (e.g. "0,2"). '
+          "Default: all visible CUDA GPUs. Only meaningful with --foldseek-gpu."),
+)
 @common_options
 @compare_options
 def proteins_compare(
@@ -1402,6 +1449,7 @@ def proteins_compare(
     keep_tmp_files,
     predictions_dir,
     structure_dir,
+    gpus,
     max_seqs,
     ultra_sensitive,
     extra_foldseek_params,
@@ -1438,6 +1486,7 @@ def proteins_compare(
         "--custom-db": custom_db,
         "--custom-annotations": custom_annotations,
         "--foldseek-gpu": foldseek_gpu,
+        "--gpus": gpus,
         "--fast": fast
     }
 
@@ -1482,7 +1531,7 @@ def proteins_compare(
 
 
     aas = subcommand_compare(
-        aas, 
+        aas,
         output,
         threads,
         evalue,
@@ -1501,7 +1550,8 @@ def proteins_compare(
         foldseek_gpu=foldseek_gpu,
         custom_annotations=custom_annotations,
         has_duplicate_locus=False,
-        fast=fast
+        fast=fast,
+        gpus=gpus,
     )
 
     #####
@@ -1880,6 +1930,13 @@ def install(
     help="Use CPU only",
 )
 @click.option(
+    "--gpus",
+    type=str,
+    default=None,
+    help=('Comma-separated CUDA device indices (e.g. "0,2"). '
+          "Default: lowest visible CUDA GPU. Overridden by --cpu."),
+)
+@click.option(
     "-t",
     "--threads",
     type=int,
@@ -1926,6 +1983,7 @@ def autotune(
     ctx,
     input,
     cpu,
+    gpus,
     threads,
     database,
     step,
@@ -1940,6 +1998,7 @@ def autotune(
         "--input": input,
         "--threads": threads,
         "--cpu": cpu,
+        "--gpus": gpus,
         "--database": database,
         "--step": step,
         "--min-batch": min_batch,
@@ -1967,10 +2026,12 @@ def autotune(
         model_name,
         cpu,
         threads,
-        step, 
+        step,
         min_batch,
-        max_batch, 
-        sample_seqs)
+        max_batch,
+        sample_seqs,
+        gpus=gpus,
+    )
 
 
 @click.command()

@@ -6,11 +6,12 @@ Also used by a variety of other tools (Dnaapler, Plassembler, Pharokka)
 """
 
 import hashlib
+import os
 import shlex
 import subprocess
 import sys
 from pathlib import Path
-from typing import List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 
 import click
 from loguru import logger
@@ -41,7 +42,15 @@ class ExternalTool:
       >>> tool.err_log
       "logdir/tool_1234567890abcdef1234567890abcdef.err"
     """
-    def __init__(self, tool: str, input: str, output: str, params: str, logdir: Path):
+    def __init__(
+        self,
+        tool: str,
+        input: str,
+        output: str,
+        params: str,
+        logdir: Path,
+        env: Optional[Dict[str, str]] = None,
+    ):
         """
         Initializes an ExternalTool object.
 
@@ -51,11 +60,15 @@ class ExternalTool:
           output (str): The output file.
           params (str): The parameters to pass to the tool.
           logdir (Path): The directory to store log files.
+          env (Optional[Dict[str, str]]): Extra env vars merged with
+            os.environ for the subprocess (e.g. CUDA_VISIBLE_DEVICES
+            for multi-GPU foldseek). None == inherit unchanged.
 
         Attributes:
           command (List[str]): The command to run.
           out_log (str): The path to the stdout log file.
           err_log (str): The path to the stderr log file.
+          env (Optional[Dict[str, str]]): Extra subprocess env vars.
 
         Examples:
           >>> tool = ExternalTool("tool", "input", "output", "params", "logdir")
@@ -66,7 +79,7 @@ class ExternalTool:
           >>> tool.err_log
           "logdir/tool_1234567890abcdef1234567890abcdef.err"
         """
-        logdir = Path(logdir)   
+        logdir = Path(logdir)
         self.command: List[str] = self._build_command(tool, input, output, params)
         Path(logdir).mkdir(parents=True, exist_ok=True)
         command_hash = hashlib.sha256(self.command_as_str.encode("utf-8")).hexdigest()
@@ -74,6 +87,7 @@ class ExternalTool:
         logfile_prefix: Path = logdir / f"{tool_name}_{command_hash}"
         self.out_log = f"{logfile_prefix}.out"
         self.err_log = f"{logfile_prefix}.err"
+        self.env = env
 
     @property
     def command_as_str(self) -> str:
@@ -125,8 +139,15 @@ class ExternalTool:
         """
         with open(self.out_log, "w") as stdout_fh, open(self.err_log, "w") as stderr_fh:
             print(f"Command line: {self.command_as_str}", file=stderr_fh)
+            if self.env:
+                print(f"Extra env: {self.env}", file=stderr_fh)
             logger.info(f"Started running {self.command_as_str} ...")
-            self._run_core(self.command, stdout_fh=stdout_fh, stderr_fh=stderr_fh)
+            self._run_core(
+                self.command,
+                stdout_fh=stdout_fh,
+                stderr_fh=stderr_fh,
+                env=self.env,
+            )
             logger.info(f"Done running {self.command_as_str}")
 
     """
@@ -167,7 +188,12 @@ class ExternalTool:
 
 
     @staticmethod
-    def _run_core(command: List[str], stdout_fh, stderr_fh) -> None:
+    def _run_core(
+        command: List[str],
+        stdout_fh,
+        stderr_fh,
+        env: Optional[Dict[str, str]] = None,
+    ) -> None:
         """
         Runs the tool.
 
@@ -175,12 +201,17 @@ class ExternalTool:
           command (List[str]): The command to run.
           stdout_fh: The file handle to write stdout to.
           stderr_fh: The file handle to write stderr to.
+          env (Optional[Dict[str, str]]): Extra env vars merged with
+            os.environ for the subprocess. None == inherit.
 
         Examples:
           >>> tool = ExternalTool("tool", "input", "output", "params", "logdir")
           >>> tool._run_core(["tool", "params", "output", "input"], stdout_fh, stderr_fh)
         """
-        subprocess.check_call(command, stdout=stdout_fh, stderr=stderr_fh)
+        merged_env = {**os.environ, **env} if env else None
+        subprocess.check_call(
+            command, stdout=stdout_fh, stderr=stderr_fh, env=merged_env
+        )
 
     @staticmethod
     def run_tools(

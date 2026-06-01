@@ -18,7 +18,11 @@ from loguru import logger
 
 # ── pholdlib shared components ────────────────────────────────────────────────
 from pholdlib.prostt5.model import CNN, get_T5_model, load_predictor, toCPU  # noqa: F401
-from pholdlib.prostt5.inference import run_prostt5_inference
+from pholdlib.prostt5.inference import (
+    run_prostt5_inference,
+    run_prostt5_inference_multi_gpu,
+)
+from pholdlib.prostt5.device import parse_gpus
 from pholdlib.prostt5.output import (
     SS_MAPPING,
     write_fail_ids,
@@ -117,6 +121,7 @@ def get_embeddings(
     threads: int = 1,
     mask_threshold: float = 0,
     has_duplicate_locus: bool = False,
+    gpus: Optional[str] = None,
 ) -> Dict:
     """Run ProstT5 + CNN 3Di prediction for all sequences in *cds_dict*.
 
@@ -142,24 +147,20 @@ def get_embeddings(
         threads: Number of CPU threads for torch.
         mask_threshold: Residues with max softmax prob < threshold/100 → 'X'.
         has_duplicate_locus: If True use feat["id"] rather than feat["locus"].
+        gpus: Comma-separated CUDA indices (e.g. "0,2"). None = auto-detect
+              all visible CUDA GPUs. Overridden by ``cpu=True``.
 
     Returns:
         predictions: Flat ``{seq_id: (pred, mean_prob, all_prob)}`` dict,
                      in original cds_dict key order.
     """
-    # ── load model ──────────────────────────────────────────────────────────
-    model, vocab, device = get_T5_model(
-        model_dir, model_name, cpu, threads,
-        check_fn=check_prostT5_download,
-        zenodo_fn=download_zenodo_prostT5,
-    )
-    predictor = load_predictor(checkpoint_path, device)
-
-    logger.info("Beginning ProstT5 predictions")
-
+    # ── resolve devices ─────────────────────────────────────────────────────
+    devices = parse_gpus(cpu, gpus)
+    logger.info(f"Beginning ProstT5 predictions on device(s): {devices}")
+    if half_precision and devices == ["cpu"]:
+        logger.info("CPU device — forcing full-precision (half-precision disabled).")
+        half_precision = False
     if half_precision:
-        model = model.half()
-        predictor = predictor.half()
         logger.info("Using models in half-precision")
     else:
         logger.info("Using models in full-precision")
@@ -181,10 +182,17 @@ def get_embeddings(
     # sort descending by length (minimises padding in each batch)
     seq_dict.sort(key=lambda x: x[2], reverse=True)
 
-    # ── run shared inference engine ──────────────────────────────────────────
-    predictions, emb_res, emb_prot, inf_fail_ids = run_prostt5_inference(
+    # ── run shared inference engine (single- or multi-GPU) ──────────────────
+    predictions, emb_res, emb_prot, inf_fail_ids = run_prostt5_inference_multi_gpu(
         seq_dict,
-        model, vocab, predictor, device,
+        devices=devices,
+        model_dir=model_dir,
+        model_name=model_name,
+        checkpoint_path=checkpoint_path,
+        half_precision=half_precision,
+        threads=threads,
+        check_fn=check_prostT5_download,
+        zenodo_fn=download_zenodo_prostT5,
         max_residues=max_residues,
         max_seq_len=max_seq_len,
         max_batch=max_batch,

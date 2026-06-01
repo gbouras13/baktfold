@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from pathlib import Path
+from typing import Optional
 
 from loguru import logger
 
@@ -22,7 +23,8 @@ def subcommand_predict(
     save_per_protein_embeddings: bool,
     threads: int,
     mask_threshold: float,
-    has_duplicate_locus: bool
+    has_duplicate_locus: bool,
+    gpus: Optional[str] = None,
 ) -> bool:
     """
     Wrapper command for baktfold predict. Predicts embeddings using ProstT5 encoder + CNN prediction head.
@@ -90,7 +92,8 @@ def subcommand_predict(
         save_per_protein_embeddings=save_per_protein_embeddings,
         threads=threads,
         mask_threshold=mask_threshold,
-        has_duplicate_locus=has_duplicate_locus
+        has_duplicate_locus=has_duplicate_locus,
+        gpus=gpus,
     )
 
     mask_prop_threshold = mask_threshold/100
