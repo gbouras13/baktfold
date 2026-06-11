@@ -11,7 +11,6 @@ from pathlib import Path
 from typing import IO, Dict, Union
 from datetime import datetime
 
-import pandas as pd
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqFeature import FeatureLocation, SeqFeature

@@ -4,10 +4,6 @@ import shutil
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 
-# import numpy as np
-# import pandas as pd
-# from Bio.SeqFeature import SeqFeature
-# from Bio.SeqRecord import SeqRecord
 from loguru import logger
 
 import baktfold.io.io as io

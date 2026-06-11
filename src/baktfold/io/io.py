@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Sequence
 
-import pandas as pd
+import polars as pl
 from loguru import logger
 
 import baktfold.bakta.config as cfg
@@ -18,12 +18,12 @@ import baktfold.bakta.constants as bc
 wrapper script over all io output submodules
 """
 
-def write_foldseek_tophit(tophit_df: pd.DataFrame, pdb_tophit_path: Path):
+def write_foldseek_tophit(tophit_df: pl.DataFrame, pdb_tophit_path: Path):
     """
     Writes the foldseek tophits to a given path.
 
     Args:
-      tophit_df (pd.DataFrame): The dataframe containing the foldseek tophits.
+      tophit_df (pl.DataFrame): The dataframe containing the foldseek tophits.
       pdb_tophit_path (Path): The path to save the foldseek tophits to.
 
     Returns:
@@ -33,7 +33,7 @@ def write_foldseek_tophit(tophit_df: pd.DataFrame, pdb_tophit_path: Path):
       >>> write_foldseek_tophit(tophit_df, pdb_tophit_path)
     """
     logger.info(f"Saving foldseek tophits to {pdb_tophit_path}")
-    tophit_df.to_csv(pdb_tophit_path, sep="\t", index=False)
+    tophit_df.write_csv(pdb_tophit_path, separator="\t")
 
 def write_summary_txt_file(output, prefix, features):
     

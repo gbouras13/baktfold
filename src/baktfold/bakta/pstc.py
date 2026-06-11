@@ -1,6 +1,6 @@
 # import logging
 import csv
-import pandas as pd
+import polars as pl
 import sqlite3
 from concurrent.futures import ThreadPoolExecutor
 from collections import defaultdict
@@ -13,22 +13,20 @@ from loguru import logger
 import baktfold.bakta.constants as bc
 
 
-def parse(features: Sequence[dict], foldseek_df: pd.DataFrame, db_name: str = 'swissprot', has_duplicate_locus: bool = False) -> None:
+def parse(features: Sequence[dict], foldseek_df: pl.DataFrame, db_name: str = 'swissprot', has_duplicate_locus: bool = False) -> None:
     """Update CDS in place with PSTC hits from foldseek_df if they pass filters.
-    
+
     has_duplicate_locus - some euks have multiple CDS per locus tag
 
-    """ 
+    """
 
-    if foldseek_df.empty:
+    if foldseek_df.is_empty():
         return features
 
-    # Convert foldseek_df to a lookup table keyed by query ID
-    foldseek_hits = {row['query']: row for _, row in foldseek_df.iterrows()}
-
-    # each query maps to a list of rows now (to handle multiple CATH greedy tophits for multidomain proteins)
+    # each query maps to a list of hit rows (to handle multiple CATH greedy
+    # tophits for multidomain proteins). Single pass over the rows as dicts.
     foldseek_hits = defaultdict(list)
-    for _, row in foldseek_df.iterrows():
+    for row in foldseek_df.iter_rows(named=True):
         foldseek_hits[row['query']].append(row)
 
     updated_count = 0
