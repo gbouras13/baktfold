@@ -11,7 +11,7 @@ import baktfold.bakta.pstc as pstc
 from baktfold.features.create_foldseek_db import generate_foldseek_db_from_aa_3di, generate_foldseek_db_from_structures
 from baktfold.features.run_foldseek import create_result_tsv, run_foldseek_search, summarise_hits
 from baktfold.results.tophit import get_tophit
-from baktfold.utils.util import remove_file, replace_pipe_in_fasta
+from baktfold.utils.util import atomic_write_path, remove_file, replace_pipe_in_fasta
 
 def subcommand_compare(
     hypotheticals: Dict,
@@ -85,7 +85,8 @@ def subcommand_compare(
                 f"Checked that the 3Di CDS file {fasta_3di_input} exists from baktfold predict"
             )
             if fasta_3di.exists() is False:
-                shutil.copyfile(fasta_3di_input, fasta_3di)
+                with atomic_write_path(fasta_3di) as tmp:
+                    shutil.copyfile(fasta_3di_input, tmp)
         else:
             logger.error(
                 f"The 3Di CDS file {fasta_3di_input} does not exist. Please run baktfold predict and/or check the prediction directory {predictions_dir}"
@@ -96,7 +97,8 @@ def subcommand_compare(
                 f"Checked that the AA CDS file {fasta_aa_input} exists from baktfold predict."
             )
             if fasta_aa.exists() is False:
-                shutil.copyfile(fasta_aa_input, fasta_aa)
+                with atomic_write_path(fasta_aa) as tmp:
+                    shutil.copyfile(fasta_aa_input, tmp)
         else:
             logger.error(
                 f"The AA CDS file {fasta_aa_input} does not exist. Please run baktfold predict and/or check the prediction directory {predictions_dir}"
@@ -107,7 +109,7 @@ def subcommand_compare(
         ## write the CDS to file
         logger.info(f"Writing the AAs to file {fasta_aa}.")
 
-        with open(fasta_aa, "w+") as out_f:
+        with atomic_write_path(fasta_aa) as tmp_fasta, open(tmp_fasta, "w") as out_f:
             for entry in hypotheticals:
                 if has_duplicate_locus:
                     header = f">{entry['id']}\n"

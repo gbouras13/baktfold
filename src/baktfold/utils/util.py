@@ -359,14 +359,14 @@ def sort_euk_feature_key(f):
         return (start, 1, '', 99, stop)
 
 def replace_pipe_in_fasta(input_path):
+    """Replace '~PIPE~' with '|' in FASTA headers, writing atomically.
+
+    Streams line-by-line to a sibling temp file and renames it onto
+    ``input_path`` on success.  A kill mid-write leaves the original intact.
     """
-    Reads a FASTA with Biopython, replace '~PIPE~' with '|' in headers, and write the result.
-    """
-    records = []
-    for record in SeqIO.parse(input_path, "fasta"):
-        record.id = record.id.replace("~PIPE~", "|")
-        record.description = record.description.replace("~PIPE~", "|")
-        records.append(record)
-    
-    # overwrites
-    SeqIO.write(records, input_path, "fasta")
+    with atomic_write_path(input_path) as tmp:
+        with open(input_path, "r") as in_f, open(tmp, "w") as out_f:
+            for line in in_f:
+                if line.startswith(">") and "~PIPE~" in line:
+                    line = line.replace("~PIPE~", "|")
+                out_f.write(line)
