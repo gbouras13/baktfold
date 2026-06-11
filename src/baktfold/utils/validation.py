@@ -28,7 +28,6 @@ def instantiate_dirs(output_dir: Union[str, Path], force: bool) -> Path:
 
     # Checks the output directory
     # remove outdir on force
-    logger.add(lambda _: sys.exit(1), level="ERROR")
     logger.info(f"Checking the output directory {output_dir}")
     if force is True:
         if Path(output_dir).exists():
@@ -62,7 +61,6 @@ def validate_outfile(outfile: Union[str, Path], force: bool) -> Path:
 
     # Checks the output directory
     # remove outdir on force
-    logger.add(lambda _: sys.exit(1), level="ERROR")
     logger.info(f"Checking the output file {outfile}")
     if force is True:
         if Path(outfile).exists():
@@ -150,8 +148,6 @@ def check_genbank_and_prokka(filepath, euk):
         A list of Biopython SeqRecord objects if parsing succeeds.
         Returns None if the file is not valid GenBank or cannot be parsed.
     """
-
-    logger.add(lambda _: sys.exit(1), level="ERROR")
 
     is_valid_genbank = False
     is_prokka = False

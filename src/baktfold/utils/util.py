@@ -5,7 +5,7 @@ import tempfile
 import time
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Dict, Iterator, Union
+from typing import Any, Dict, Iterator, List, Union
 
 from loguru import logger
 from datetime import datetime
@@ -120,6 +120,23 @@ log_fmt = (
     "<level>{message}</level>"
 )
 
+# Module-level register of every loguru sink that ``begin_baktfold`` installed.
+# loguru's logger is a process-wide singleton — without tracking, every
+# re-invocation stacks a new file handler and a new ``sys.exit``-on-error
+# handler on top of the previous ones, multiplying log output unboundedly.
+_BAKTFOLD_SINK_IDS: List[int] = []
+
+
+def _remove_baktfold_sinks() -> None:
+    """Idempotently remove every sink installed by a prior begin_baktfold."""
+    while _BAKTFOLD_SINK_IDS:
+        sink_id = _BAKTFOLD_SINK_IDS.pop()
+        try:
+            logger.remove(sink_id)
+        except ValueError:
+            pass  # already removed elsewhere
+
+
 """
 begin and end functions
 """
@@ -137,17 +154,19 @@ def begin_baktfold(params: Dict[str, Any], subcommand: str, no_log: bool = False
     Returns:
         int: Start time of the baktfold process.
     """
+    # Tear down any sinks from a prior call before installing fresh ones.
+    _remove_baktfold_sinks()
+
     # get start time
     start_time = time.time()
 
     cfg.run_start = datetime.now()
 
-    # initial logging stuff
+    # initial logging stuff — track ids so they can be removed in end_baktfold.
     if not no_log:
         log_file = os.path.join(params["--output"], f"baktfold_{subcommand}_{start_time}.log")
-        # adds log file
-        logger.add(log_file)
-    logger.add(lambda _: sys.exit(1), level="ERROR")
+        _BAKTFOLD_SINK_IDS.append(logger.add(log_file))
+    _BAKTFOLD_SINK_IDS.append(logger.add(lambda _: sys.exit(1), level="ERROR"))
 
     print_splash()
     logger.info("baktfold: rapid & standardized annotation of bacterial genomes, MAGs & plasmids using protein structural information")
@@ -188,6 +207,9 @@ def end_baktfold(start_time: float, subcommand: str) -> None:
     # Show elapsed time for the process
     logger.info(f"baktfold {subcommand} has finished")
     logger.info("Elapsed time: " + str(elapsed_time) + " seconds")
+
+    # Clean up sinks so a subsequent call (or test) starts with a clean logger.
+    _remove_baktfold_sinks()
 
 
 # need the logo here eventually
