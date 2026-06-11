@@ -1,5 +1,6 @@
 import hashlib
 import shutil
+import sys
 import tarfile
 from pathlib import Path
 
@@ -13,6 +14,47 @@ from baktfold.utils.external_tools import ExternalTool
 
 # (connect_timeout, read_timeout) seconds for HTTP downloads.
 _DOWNLOAD_TIMEOUT = (30, 120)
+
+
+def _safe_extractall(tar: tarfile.TarFile, dest: Path) -> None:
+    """Extract ``tar`` into ``dest`` with path-traversal protection.
+
+    Plain ``TarFile.extractall`` honours malicious member names like
+    ``../../etc/passwd`` — a MITM or supply-chain compromise could write
+    arbitrary files. The mitigation:
+
+    * **Python 3.12+**: pass ``filter="data"`` (strips absolute paths,
+      rejects ``..``-escapes, blocks out-of-tree symlinks, disallows
+      setuid/device nodes). This becomes the default in 3.14.
+    * **Python 3.8–3.11**: equivalent hand-written checks.
+    """
+    dest = Path(dest).resolve()
+
+    if sys.version_info >= (3, 12):
+        tar.extractall(path=str(dest), filter="data")
+        return
+
+    for member in tar.getmembers():
+        member_dest = (dest / member.name).resolve()
+        try:
+            member_dest.relative_to(dest)
+        except ValueError:
+            raise tarfile.TarError(
+                f"Refusing to extract '{member.name}': "
+                f"resolved path {member_dest} escapes destination {dest}"
+            )
+        if member.issym() or member.islnk():
+            link_target = (member_dest.parent / member.linkname).resolve()
+            try:
+                link_target.relative_to(dest)
+            except ValueError:
+                raise tarfile.TarError(
+                    f"Refusing to extract link '{member.name}' "
+                    f"→ '{member.linkname}': target {link_target} "
+                    f"escapes destination {dest}"
+                )
+    tar.extractall(path=str(dest))
+
 
 # set this if changes
 CURRENT_DB_VERSION: str = "0.0.1"
@@ -371,7 +413,7 @@ def download_zenodo_prostT5(model_dir, logdir, threads):
         with tarball_path.open("rb") as fh_in, tarfile.open(
             fileobj=fh_in, mode="r:gz"
         ) as tar_file:
-            tar_file.extractall(path=str(model_dir))
+            _safe_extractall(tar_file, model_dir)
 
     except (OSError, tarfile.TarError) as e:
         logger.error(
@@ -456,7 +498,7 @@ def untar(tarball_path: Path, output_path: Path, DICT: dict) -> None:
         with tarball_path.open("rb") as fh_in, tarfile.open(
             fileobj=fh_in, mode="r:gz"
         ) as tar_file:
-            tar_file.extractall(path=str(output_path))
+            _safe_extractall(tar_file, output_path)
 
         tarpath = Path(output_path) / DICT[CURRENT_DB_VERSION]["dir_name"]
 
