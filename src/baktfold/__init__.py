@@ -12,19 +12,21 @@ from baktfold.io.json_in import parse_json_input, log_for_other_genbank_tools
 from baktfold.io.fasta_in import parse_protein_input
 from baktfold.databases.db import install_database, validate_db, check_prostT5_download, download_zenodo_prostT5
 from baktfold.features.create_foldseek_db import generate_foldseek_db_from_aa_3di
-from baktfold.features.predict_3Di import get_T5_model
-from baktfold.subcommands.compare import subcommand_compare
-from baktfold.subcommands.predict import subcommand_predict
 from baktfold.utils.constants import DB_DIR, CNN_DIR
 from baktfold.utils.util import (begin_baktfold, clean_up_temporary_files, end_baktfold, get_version, print_citation, sort_euk_feature_key)
-from baktfold.utils.validation import (check_dependencies, instantiate_dirs,validate_outfile, check_genbank_and_prokka)
+from baktfold.utils.validation import (check_dependencies, instantiate_dirs, validate_outfile, check_genbank_and_prokka)
 
 from baktfold.io.prokka_gbk_to_json import prokka_gbk_to_json
 from baktfold.io.eukaryotic_to_json import eukaryotic_gbk_to_json
 import baktfold.bakta.config as cfg
 import baktfold.io.io as io
-from baktfold.features.autotune import run_autotune
 from importlib.resources import files
+
+# get_T5_model (from predict_3Di), subcommand_predict, subcommand_compare, and
+# run_autotune are lazy-imported inside their handler bodies.  All four
+# transitively import torch (~4 s cold start), so a module-level import made
+# every subcommand — including install, citation, createdb, and convert —
+# pay that cost even though they never call those functions.
 
 log_fmt = (
     "[<green>{time:YYYY-MM-DD HH:mm:ss}</green>] <level>{level: <8}</level> | "
@@ -387,6 +389,10 @@ def run(
         "--ncrna-program": ncrna_program
     }
 
+    from baktfold.subcommands.predict import subcommand_predict
+    from baktfold.subcommands.compare import subcommand_compare
+    from baktfold.features.autotune import run_autotune
+
     # initial logging etc
     start_time = begin_baktfold(params, "run")
 
@@ -686,6 +692,10 @@ def proteins(
         "--fast": fast
     }
 
+    from baktfold.subcommands.predict import subcommand_predict
+    from baktfold.subcommands.compare import subcommand_compare
+    from baktfold.features.autotune import run_autotune
+
     # initial logging etc
     start_time = begin_baktfold(params, "proteins")
 
@@ -895,6 +905,9 @@ def predict(
         "--all-proteins": all_proteins,
 
     }
+
+    from baktfold.subcommands.predict import subcommand_predict
+    from baktfold.features.autotune import run_autotune
 
     # initial logging etc
     start_time = begin_baktfold(params, "predict")
@@ -1107,6 +1120,8 @@ def compare(
         "--rrna-program": rrna_program,
         "--ncrna-program": ncrna_program
     }
+
+    from baktfold.subcommands.compare import subcommand_compare
 
     # initial logging etc
     start_time = begin_baktfold(params, "compare")
@@ -1327,6 +1342,9 @@ def proteins_predict(
 
     }
 
+    from baktfold.subcommands.predict import subcommand_predict
+    from baktfold.features.autotune import run_autotune
+
     # initial logging etc
     start_time = begin_baktfold(params, "proteins-predict")
 
@@ -1490,6 +1508,8 @@ def proteins_compare(
         "--fast": fast
     }
 
+
+    from baktfold.subcommands.compare import subcommand_compare
 
     # initial logging etc
     start_time = begin_baktfold(params, "proteins-compare")
@@ -1898,6 +1918,8 @@ def install(
         f"Checking that the {model_name} ProstT5 model is available in {database}"
     )
 
+    from baktfold.features.predict_3Di import get_T5_model
+
     # always install with cpu mode as guaranteed to be present
     cpu = True
 
@@ -2005,6 +2027,8 @@ def autotune(
         "--max-batch": max_batch,
         "--sample-seqs": sample_seqs,
     }
+
+    from baktfold.features.autotune import run_autotune
 
     # initial logging etc
     start_time = begin_baktfold(params, "autotune", no_log=True)
