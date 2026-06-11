@@ -84,9 +84,7 @@ def write_predictions(
 
     # apply confidence masking in-place on pred index arrays
     for seq_id, (pred, mean_prob, all_prob) in predictions.items():
-        for i in range(len(pred)):
-            if all_prob[0][i] < mask_prop:
-                pred[i] = 20  # 'X'
+        pred[all_prob[0] < mask_prop] = 20  # 'X'
 
     with open(out_path, "w+") as out_f:
         for feat in hypotheticals:

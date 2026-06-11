@@ -53,19 +53,15 @@ def generate_foldseek_db_from_aa_3di(
             sequences_3di[record.id] = str(record.seq)  #no upper if masked
 
     # assert that we parsed 3Di strings for all sequences in the amino-acid FASTA file
-    for id in sequences_aa.keys():
-        if not id in sequences_3di.keys():
-            logger.warning(
-                "Warning: entry {} in amino-acid FASTA file has no corresponding 3Di string".format(
-                    id
-                )
+    missing_3di = [cds_id for cds_id in sequences_aa if cds_id not in sequences_3di]
+    for cds_id in missing_3di:
+        logger.warning(
+            "Warning: entry {} in amino-acid FASTA file has no corresponding 3Di string".format(
+                cds_id
             )
-            logger.warning("Removing: entry {} from the Foldseek database ".format(id))
-            sequences_aa = {
-                id: sequence
-                for id, sequence in sequences_aa.items()
-                if id in sequences_3di
-            }
+        )
+        logger.warning("Removing: entry {} from the Foldseek database ".format(cds_id))
+        del sequences_aa[cds_id]
 
     # generate TSV file contents
     tsv_aa = ""
@@ -162,15 +158,14 @@ def generate_foldseek_db_from_structures(
     for record in SeqIO.parse(fasta_aa, "fasta"):
         sequences_aa[record.id] = str(record.seq)
 
-    # lists all the pdb files
-
-    structure_files = [
-        file
-        for file in os.listdir(structure_dir)
-        if file.endswith(".pdb") or file.endswith(".cif")
-    ]
-
-    num_structures = len(structure_files)
+    # Index structure files by stem so per-CDS lookup is O(1).
+    # The old code did an O(N) list-comprehension inside an O(K) loop —
+    # O(K×N) total. For 50k CDS × 50k files that was ~2.5e9 string compares.
+    structures_by_cds_id: dict = {}
+    for file in os.listdir(structure_dir):
+        if file.endswith(".pdb") or file.endswith(".cif"):
+            stem = file[:-4]  # ".pdb" and ".cif" are both 4 chars
+            structures_by_cds_id.setdefault(stem, []).append(file)
 
     num_structures = 0
 
@@ -180,21 +175,17 @@ def generate_foldseek_db_from_structures(
 
     for cds_id in sequences_aa.keys():
 
-        matching_files = [
-            file
-            for file in structure_files
-            if f"{cds_id}.pdb" == file or f"{cds_id}.cif" == file
-        ]
+        matching_files = structures_by_cds_id.get(cds_id, [])
 
         if len(matching_files) == 1:
             num_structures += 1
 
-        # should neve happen but in case
-        if len(matching_files) > 1:
+        # should never happen but in case
+        elif len(matching_files) > 1:
             logger.warning(f"More than 1 structures found for {cds_id}")
             logger.warning("Taking the first one")
             num_structures += 1
-        elif len(matching_files) == 0:
+        else:
             logger.warning(f"No structure found for {cds_id}")
             logger.warning(f"{cds_id} will be ignored in annotation")
             no_structure_cds_ids.append(cds_id)
