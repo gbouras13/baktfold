@@ -31,6 +31,7 @@ from pholdlib.prostt5.output import (
 
 # ── baktfold-specific DB helpers ──────────────────────────────────────────────
 from baktfold.databases.db import check_prostT5_download, download_zenodo_prostT5
+from baktfold.utils.util import atomic_write_path
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -38,10 +39,17 @@ from baktfold.databases.db import check_prostT5_download, download_zenodo_prostT
 # ─────────────────────────────────────────────────────────────────────────────
 
 def write_embeddings(embeddings: Dict[str, Any], out_path: Path) -> None:
-    """Write per-residue or per-protein embeddings to HDF5 (flat key structure)."""
-    with h5py.File(str(out_path), "w") as hf:
-        for sequence_id, embedding in embeddings.items():
-            hf.create_dataset(sequence_id, data=embedding)
+    """Write per-residue or per-protein embeddings to HDF5 (flat key structure).
+
+    Streams into a sibling temp file and renames it onto ``out_path`` on
+    success.  A crash mid-write (OOM, Ctrl-C, disk full) leaves the original
+    ``out_path`` (if any) untouched rather than a truncated .h5 that the
+    next run would silently accept as valid.
+    """
+    with atomic_write_path(out_path) as tmp:
+        with h5py.File(str(tmp), "w") as hf:
+            for sequence_id, embedding in embeddings.items():
+                hf.create_dataset(sequence_id, data=embedding)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
