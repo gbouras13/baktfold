@@ -113,18 +113,16 @@ def check_dependencies() -> None:
     foldseek_version = foldseek_out.strip()
 
     if "941cd33" in foldseek_version:
-        foldseek_major_version=10
-        foldseek_minor_version="941cd33"
+        foldseek_major_version = 10
+        foldseek_minor_version = "941cd33"
         logger.info(
-        f"Foldseek version found is v{foldseek_major_version}.{foldseek_minor_version}"
-    )
+            f"Foldseek version found is v{foldseek_major_version}.{foldseek_minor_version}"
+        )
+        logger.info("Foldseek version is ok")
     else:
         logger.warning(f"Foldseek version found is v{foldseek_version}")
         logger.warning(f"baktfold is recommended to be run with Foldseek v10.941cd33")
         logger.warning(f"Using a different Foldseek version is likely to work without issue, but this cannot be guaranteed.")
-
-
-    logger.info("Foldseek version is ok")
 
 def check_genbank_and_prokka(filepath, euk):
     """
