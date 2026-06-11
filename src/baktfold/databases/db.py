@@ -293,26 +293,32 @@ dependency of Foldseek so it is always present
 """
 
 def download(tarball_path: Path, cache_dir: Path) -> None:
-    """
-    Download the database from the given URL using HF.
+    """Download the baktfold database from HuggingFace.
 
-    Args:
-        tarball_path (Path): The path where the downloaded tarball should be saved.
+    Leaves the HF cache intact (copy, don't move) so subsequent installs
+    can reuse the cached blob. ``shutil.move`` had three problems:
+    1. Broke HF cache integrity — moved the blob out from under the
+       ``snapshots/<rev>/`` symlink, making re-installs re-download.
+    2. Cross-device-unsafe — on shared storage, move falls back to
+       copy-then-delete; an interrupt left both ends corrupt.
+    3. Non-atomic — an interrupted move left a half-written tarball.
+    Fix: copy into a sibling temp via ``atomic_write_path``; renamed
+    onto ``tarball_path`` on success, cleaned up on any failure.
     """
 
     hf_tarball_path = hf_hub_download(
         repo_id="gbouras13/baktfold-db",
         repo_type="dataset",
-        filename="baktfold_db.tar.gz"  ,
-        cache_dir=f"{cache_dir}"
+        filename="baktfold_db.tar.gz",
+        cache_dir=f"{cache_dir}",
     )
-    # move from cache_dir to the base
-    # need to get the actual path not symlink
 
+    # HF returns a symlink under snapshots/<rev>/; resolve to the real blob.
     real_tarball = Path(hf_tarball_path).resolve()
     tarball_path.parent.mkdir(parents=True, exist_ok=True)
 
-    shutil.move(real_tarball, tarball_path)
+    with atomic_write_path(tarball_path) as tmp_path:
+        shutil.copyfile(real_tarball, tmp_path)
 
     logger.info(f"Tarball saved to {tarball_path}")
 
