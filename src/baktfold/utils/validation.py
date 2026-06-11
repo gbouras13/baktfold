@@ -94,10 +94,18 @@ def check_dependencies() -> None:
     #############
     # foldseek
     #############
+    # Previously a bare ``except`` logged the error but fell through to
+    # ``process.communicate()`` on an unbound ``process`` → UnboundLocalError.
+    # Bare ``except`` also swallowed Ctrl-C. Narrowed to the errors Popen
+    # actually raises for a missing binary; exit cleanly on failure.
     try:
         process = sp.Popen(["foldseek", "version"], stdout=sp.PIPE, stderr=sp.STDOUT)
-    except:
-        logger.error("Foldseek not found. Please reinstall baktfold.")
+    except (FileNotFoundError, PermissionError, OSError) as e:
+        logger.error(
+            f"Foldseek not found on PATH ({type(e).__name__}: {e}). "
+            "Install foldseek and ensure it is on your PATH, then re-run baktfold."
+        )
+        sys.exit(1)
 
     foldseek_out, _ = process.communicate()
     foldseek_out = foldseek_out.decode()
