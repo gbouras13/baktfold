@@ -111,13 +111,8 @@ def subcommand_compare(
 
         with atomic_write_path(fasta_aa) as tmp_fasta, open(tmp_fasta, "w") as out_f:
             for entry in hypotheticals:
-                if has_duplicate_locus:
-                    header = f">{entry['id']}\n"
-                else:
-                    header = f">{entry['locus']}\n"
-                seq = f"{entry['aa']}\n"
-                out_f.write(header)
-                out_f.write(seq)
+                seq_id = entry['id'] if has_duplicate_locus else entry['locus']
+                out_f.write(f">{seq_id}\n{entry['aa']}\n")
 
 
     ############
