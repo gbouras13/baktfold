@@ -80,10 +80,11 @@ def _df_to_tsv(df) -> str:
 
 
 @pytest.fixture
-def df_snapshot(snapshot):
+def df_snapshot(request):
     """Snapshot-compare a DataFrame as canonical TSV.
 
     Snapshots live under ``tests/unit/snapshots/<subdir>/<name>``.
+    Skips automatically when pytest-snapshot is not installed.
 
     Usage::
 
@@ -91,6 +92,10 @@ def df_snapshot(snapshot):
             out = some_function(...)
             df_snapshot(out, "expected.tsv", subdir="test_thing_module")
     """
+    try:
+        snapshot = request.getfixturevalue("snapshot")
+    except pytest.FixtureLookupError:
+        pytest.skip("pytest-snapshot not installed")
 
     def _snapshot(df, name: str, subdir: str) -> None:
         snapshot.snapshot_dir = SNAPSHOTS / subdir
@@ -100,8 +105,15 @@ def df_snapshot(snapshot):
 
 
 @pytest.fixture
-def text_snapshot(snapshot):
-    """Snapshot-compare arbitrary text (e.g. a generated TSV/FASTA file body)."""
+def text_snapshot(request):
+    """Snapshot-compare arbitrary text (e.g. a generated TSV/FASTA file body).
+
+    Skips automatically when pytest-snapshot is not installed.
+    """
+    try:
+        snapshot = request.getfixturevalue("snapshot")
+    except pytest.FixtureLookupError:
+        pytest.skip("pytest-snapshot not installed")
 
     def _snapshot(text: str, name: str, subdir: str) -> None:
         snapshot.snapshot_dir = SNAPSHOTS / subdir
