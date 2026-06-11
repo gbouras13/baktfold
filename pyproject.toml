@@ -47,7 +47,15 @@ dependencies = [
         "torch >=2.1.2",
         "pyarrow >=14.0.0",
         "alive-progress >=3.0.1",
-        "numpy >=2.0",
+        # Loosened from `>=2.0` to `>=1.24` so Docker base images that ship
+        # numpy 1.26.x via Debian (e.g. pawsey/pytorch ROCm images) don't
+        # trigger pip's "Cannot uninstall numpy: RECORD file not found" error —
+        # those installs have no pip metadata so pip can't replace them with a
+        # 2.x build. baktfold uses no numpy directly; all numpy goes through
+        # pholdlib, which is already pinned >=1.24 and neutralises the only
+        # 1.x/2.x divergence (np.float32 round) with a float() cast. Matches
+        # phold's pin.
+        "numpy >=1.24",
         "h5py >=3.5",
         "tqdm >=4.35.0",
         "xopen >=1.5.0",
