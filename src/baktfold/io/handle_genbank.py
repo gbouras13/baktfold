@@ -119,11 +119,15 @@ def get_genbank(genbank: Path) -> dict:
                     method = "Pharokka"
                 else:
                     logger.error(
-                                f"Feature {cds_feature} could not be parsed. Therefore, the input style format for {genbank} could not be detected. Please check your input."
-                            )
+                        f"Feature {cds_feature} could not be parsed. Therefore, the input style format for {genbank} could not be detected. Please check your input."
+                    )
+                    # Bind ``method`` so the return below never raises
+                    # ``UnboundLocalError`` (which the broad except would
+                    # mislabel as "not a genbank file").
+                    method = None
             return identify_long_ids(gb_dict), method
         except Exception as e:
-            logger.warning(f"{genbank} is not a genbank file")
+            logger.warning(f"{genbank} is not a genbank file: {e}")
             return {}, None
 
     try:
@@ -134,7 +138,7 @@ def get_genbank(genbank: Path) -> dict:
             with open(genbank.strip(), "rt") as handle:
                 return parse_records(handle)
     except Exception as e:
-        logger.warning(f"{genbank} is not a genbank file")
+        logger.warning(f"{genbank} is not a genbank file: {e}")
         return {}, None
 
 

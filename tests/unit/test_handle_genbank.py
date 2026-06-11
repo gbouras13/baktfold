@@ -3,9 +3,7 @@ Function-level tests for baktfold.io.handle_genbank.
 
 Covers:
   - get_genbank input-style detection (Pharokka / Bakta / NCBI) and the
-    fall-through paths (REVIEW_FINDINGS #9 — these tests pin the CURRENT
-    behaviour, which is buggy for the unrecognised-style case; update them
-    when #9 is fixed).
+    fall-through paths (REVIEW_FINDINGS #9 fixed).
   - get_proteins FASTA->dict, plain + gzipped (REVIEW_FINDINGS #36).
   - identify_long_ids space-stripping for >54-char IDs.
 
@@ -86,15 +84,15 @@ def test_get_genbank_no_cds_returns_dict_and_none(tmp_path):
     assert "contig_1" in gb_dict
 
 
-def test_get_genbank_unrecognised_style_current_behaviour(tmp_path):
-    """A valid GenBank whose CDS matches no known style. CURRENT behaviour
-    (REVIEW_FINDINGS #9): the unset `method` triggers UnboundLocalError which
-    the broad except swallows -> ({}, None). Update this test when #9 is fixed
-    (it should then return (gb_dict, None) with the real records)."""
+def test_get_genbank_unrecognised_style_returns_records(tmp_path):
+    """A valid GenBank whose CDS matches no known style should return the
+    records with method=None (REVIEW_FINDINGS #9 fixed). Previously the unset
+    `method` triggered UnboundLocalError which the broad except swallowed,
+    losing the records entirely."""
     p = _write_genbank(tmp_path / "weird.gbk", {"gene": ["xyz"]})
     gb_dict, method = get_genbank(p)
     assert method is None
-    assert gb_dict == {}  # ← buggy: records are lost. Flip to non-empty after #9.
+    assert "contig_1" in gb_dict  # records are preserved, not lost
 
 
 def test_get_genbank_non_genbank_returns_empty(tmp_path):
