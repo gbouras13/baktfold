@@ -1,9 +1,11 @@
 import os
 import shutil
 import sys
+import tempfile
 import time
+from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, Iterator, Union
 
 from loguru import logger
 from datetime import datetime
@@ -13,6 +15,34 @@ import baktfold.bakta.constants as bc
 import click
 
 from Bio import SeqIO
+
+
+@contextmanager
+def atomic_write_path(target: Union[str, Path]) -> Iterator[Path]:
+    """Yield a sibling temp path that is renamed over ``target`` on success.
+
+    On any exception (including KeyboardInterrupt), the temp is removed and
+    ``target`` is left exactly as it was before the with-block.
+    """
+    target = Path(target)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp_name = tempfile.mkstemp(
+        prefix=f".{target.name}.",
+        suffix=".tmp",
+        dir=str(target.parent),
+    )
+    os.close(fd)
+    tmp_path = Path(tmp_name)
+    try:
+        yield tmp_path
+    except BaseException:
+        try:
+            tmp_path.unlink()
+        except FileNotFoundError:
+            pass
+        raise
+    else:
+        os.replace(tmp_path, target)
 
 
 class OrderedCommands(click.Group):

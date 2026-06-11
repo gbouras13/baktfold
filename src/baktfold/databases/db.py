@@ -1,5 +1,4 @@
 import hashlib
-# import os
 import shutil
 import tarfile
 from pathlib import Path
@@ -9,8 +8,11 @@ from alive_progress import alive_bar
 from loguru import logger
 from huggingface_hub import hf_hub_download
 
-from baktfold.utils.util import remove_directory
+from baktfold.utils.util import atomic_write_path, remove_directory
 from baktfold.utils.external_tools import ExternalTool
+
+# (connect_timeout, read_timeout) seconds for HTTP downloads.
+_DOWNLOAD_TIMEOUT = (30, 120)
 
 # set this if changes
 CURRENT_DB_VERSION: str = "0.0.1"
@@ -181,12 +183,14 @@ def install_database(db_dir: Path, foldseek_gpu: bool, threads: int) -> None:
         tarball_path = Path(f"{db_dir}/{tarball}")
         logdir = Path(db_dir) / "logdir"
 
-        try: 
+        try:
             logger.info(f"Downloading from HuggingFace")
             download(tarball_path, db_dir)
-        except:
+        except Exception as e:
+            # Narrowed from bare ``except`` so that KeyboardInterrupt /
+            # SystemExit are not silently swallowed.
             logger.warning(
-                f"Could not download file from HuggingFace: path={tarball_path}"
+                f"Could not download file from HuggingFace: path={tarball_path} ({type(e).__name__}: {e})"
             )
             logger.warning(f"Trying now with requests")
             download_requests(db_url, tarball_path)
@@ -198,13 +202,29 @@ def install_database(db_dir: Path, foldseek_gpu: bool, threads: int) -> None:
         if md5_sum in requiredmd5s:
             logger.info(f"baktfold database file download OK: {md5_sum}")
         else:
-            logger.error(
-                f"Error: corrupt database file! MD5 should be '{requiredmd5s}' but is '{md5_sum}'"
+            corrupt_path = tarball_path.with_suffix(tarball_path.suffix + ".corrupt")
+            try:
+                tarball_path.replace(corrupt_path)
+            except OSError:
+                try:
+                    tarball_path.unlink()
+                except FileNotFoundError:
+                    pass
+                corrupt_path = None
+            raise RuntimeError(
+                f"Corrupt baktfold database tarball: MD5 should be "
+                f"'{requiredmd5s}' but is '{md5_sum}'. "
+                + (
+                    f"Bad file preserved at {corrupt_path} for inspection."
+                    if corrupt_path is not None
+                    else "Bad file removed."
+                )
             )
 
         logger.info(
             f"Extracting baktfold database tarball: file={tarball_path}, output={db_dir}"
         )
+        # untar raises on extract failure, so unlink is reached only on success.
         untar(tarball_path, db_dir, DICT)
         tarball_path.unlink()
 
@@ -275,20 +295,30 @@ def download_requests(db_url: str, tarball_path: Path):
     }
 
     try:
-        with tarball_path.open("wb") as fh_out, requests.get(
-            db_url, stream=True, headers=headers
+        with requests.get(
+            db_url,
+            stream=True,
+            headers=headers,
+            timeout=_DOWNLOAD_TIMEOUT,
         ) as resp:
+            resp.raise_for_status()
+
             total_length = resp.headers.get("content-length")
-            if total_length is not None:  # content length header is set
+            if total_length is not None:
                 total_length = int(total_length)
-            with alive_bar(total=total_length, scale="SI") as bar:
-                for data in resp.iter_content(chunk_size=1024 * 1024):
-                    fh_out.write(data)
-                    bar(count=len(data))
-    except:
+
+            with atomic_write_path(tarball_path) as tmp_path:
+                with tmp_path.open("wb") as fh_out, alive_bar(
+                    total=total_length, scale="SI"
+                ) as bar:
+                    for data in resp.iter_content(chunk_size=1024 * 1024):
+                        fh_out.write(data)
+                        bar(count=len(data))
+    except requests.exceptions.RequestException:
         logger.error(
             f"ERROR: Could not download file from Zenodo! url={db_url}, path={tarball_path}"
         )
+        raise
 
 
 def download_zenodo_prostT5(model_dir, logdir, threads):
@@ -314,8 +344,23 @@ def download_zenodo_prostT5(model_dir, logdir, threads):
     if md5_sum == requiredmd5:
         logger.info(f"ProstT5 model backup file download OK: {md5_sum}")
     else:
-        logger.error(
-            f"Error: corrupt file! MD5 should be '{requiredmd5}' but is '{md5_sum}'"
+        corrupt_path = tarball_path.with_suffix(tarball_path.suffix + ".corrupt")
+        try:
+            tarball_path.replace(corrupt_path)
+        except OSError:
+            try:
+                tarball_path.unlink()
+            except FileNotFoundError:
+                pass
+            corrupt_path = None
+        raise RuntimeError(
+            f"Corrupt ProstT5 model backup tarball: MD5 should be "
+            f"'{requiredmd5}' but is '{md5_sum}'. "
+            + (
+                f"Bad file preserved at {corrupt_path} for inspection."
+                if corrupt_path is not None
+                else "Bad file removed."
+            )
         )
 
     logger.info(
@@ -328,9 +373,12 @@ def download_zenodo_prostT5(model_dir, logdir, threads):
         ) as tar_file:
             tar_file.extractall(path=str(model_dir))
 
-    except OSError:
-        logger.warning("Encountered OSError: {}".format(OSError))
-        logger.error(f"Could not extract {tarball_path} to {model_dir}")
+    except (OSError, tarfile.TarError) as e:
+        logger.error(
+            f"Could not extract ProstT5 tarball {tarball_path} to {model_dir}: "
+            f"{type(e).__name__}: {e}. The tarball has been preserved for inspection."
+        )
+        raise
 
     tarball_path.unlink()
 
@@ -422,9 +470,12 @@ def untar(tarball_path: Path, output_path: Path, DICT: dict) -> None:
         # remove the directory
         remove_directory(tarpath)
 
-    except OSError:
-        logger.warning("Encountered OSError: {}".format(OSError))
-        logger.error(f"Could not extract {tarball_path} to {output_path}")
+    except (OSError, tarfile.TarError) as e:
+        logger.error(
+            f"Could not extract {tarball_path} to {output_path}: "
+            f"{type(e).__name__}: {e}. The tarball has been preserved for inspection."
+        )
+        raise
 
 
 def check_db_installation(db_dir: Path, foldseek_gpu: bool) -> bool:
