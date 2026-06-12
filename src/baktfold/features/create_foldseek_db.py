@@ -63,27 +63,18 @@ def generate_foldseek_db_from_aa_3di(
         logger.warning("Removing: entry {} from the Foldseek database ".format(cds_id))
         del sequences_aa[cds_id]
 
-    # generate TSV file contents
-    tsv_aa = ""
-    tsv_3di = ""
-    tsv_header = ""
-    for i, id in enumerate(sequences_aa.keys()):
-        tsv_aa += "{}\t{}\n".format(str(i + 1), sequences_aa[id])
-        tsv_3di += "{}\t{}\n".format(str(i + 1), sequences_3di[id])
-        tsv_header += "{}\t{}\n".format(str(i + 1), id)
-
-    #### write temp tsv files
-
-    # write TSV files
+    # write TSV files directly (streaming, no string accumulation)
     temp_aa_tsv: Path = Path(foldseek_db_path) / "aa.tsv"
     temp_3di_tsv: Path = Path(foldseek_db_path) / "3di.tsv"
     temp_header_tsv: Path = Path(foldseek_db_path) / "header.tsv"
-    with open(temp_aa_tsv, "w") as f:
-        f.write(tsv_aa)
-    with open(temp_3di_tsv, "w") as f:
-        f.write(tsv_3di)
-    with open(temp_header_tsv, "w") as f:
-        f.write(tsv_header)
+    with open(temp_aa_tsv, "w") as aa_f, \
+         open(temp_3di_tsv, "w") as di_f, \
+         open(temp_header_tsv, "w") as hdr_f:
+        for i, seq_id in enumerate(sequences_aa.keys()):
+            idx = str(i + 1)
+            aa_f.write(f"{idx}\t{sequences_aa[seq_id]}\n")
+            di_f.write(f"{idx}\t{sequences_3di[seq_id]}\n")
+            hdr_f.write(f"{idx}\t{seq_id}\n")
 
     # create foldseek db names
 
