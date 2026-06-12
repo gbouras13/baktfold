@@ -1,9 +1,5 @@
-# import atexit
 import json
-# import logging
-# import os
-# import sys
-# from datetime import datetime
+import sys
 from pathlib import Path
 
 from loguru import logger
@@ -52,8 +48,9 @@ def parse_json_input(input_path, faa_path, all_proteins, protein_json_flag):
         annotation_path = Path(input_path).resolve()
         cfg.check_readability('annotation', annotation_path)
         cfg.check_content_size('annotation', annotation_path)
-    except:
-        logger.error(f'ERROR: annotation file {annotation_path} not valid!')
+    except Exception as e:
+        logger.error(f'ERROR: annotation file {annotation_path} not valid! {e}')
+        sys.exit(1)
     
     #print(f'baktfold v{cfg.version}')
 

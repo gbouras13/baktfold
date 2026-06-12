@@ -174,7 +174,7 @@ def identify_long_ids(gb_dict: dict) -> dict:
                     cds_feature.qualifiers["ID"][0] = cds_feature.qualifiers["ID"][
                         0
                     ].replace(" ", "")
-            except:
+            except Exception:
                 # will be GenBank/NCBI formatted
                 # ID isn't a field and should be properly formatted - famous last words probably
                 continue

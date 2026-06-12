@@ -414,8 +414,8 @@ def subcommand_compare(
             custom_db_tophit_path: Path = Path(output) / "baktfold_custom_db_tophit.tsv"
             io.write_foldseek_tophit(custom_df, custom_db_tophit_path)
         
-        except:
-            logger.error(f"Foldseek failed to run against your custom database {custom_db}. Please check that it is formatted correctly as a Foldseek database")
+        except Exception as e:
+            logger.error(f"Foldseek failed to run against your custom database {custom_db}. Please check that it is formatted correctly as a Foldseek database: {e}")
 
 
     ####
