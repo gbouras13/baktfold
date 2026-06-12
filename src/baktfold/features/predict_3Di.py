@@ -86,7 +86,7 @@ def write_predictions(
     for seq_id, (pred, mean_prob, all_prob) in predictions.items():
         pred[all_prob[0] < mask_prop] = 20  # 'X'
 
-    with open(out_path, "w+") as out_f:
+    with open(out_path, "w") as out_f:
         for feat in hypotheticals:
             seq_id = feat["id"] if has_duplicate_locus else feat["locus"]
             pred_tuple = predictions.get(seq_id)

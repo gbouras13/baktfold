@@ -114,7 +114,7 @@ def subcommand_predict(
             }
 
 
-    with open(fasta_aa, "w+") as out_f:
+    with open(fasta_aa, "w") as out_f:
         for cds_id, prot_seq in cds_dict.items():
             try:
                 # prediction_dict[cds_id][2]: ProstT5 confidence scores 0-1
