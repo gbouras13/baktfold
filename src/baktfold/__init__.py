@@ -19,7 +19,13 @@ from baktfold.utils.validation import (check_dependencies, instantiate_dirs, val
 from baktfold.io.prokka_gbk_to_json import prokka_gbk_to_json
 from baktfold.io.eukaryotic_to_json import eukaryotic_gbk_to_json
 import baktfold.bakta.config as cfg
-import baktfold.io.io as io
+# NB: aliased to ``bakta_io`` rather than ``io``.  ``__init__.py``'s globals
+# ARE the ``baktfold`` package namespace, so binding the name ``io`` here
+# overwrites the ``baktfold.io`` subpackage attribute — afterwards every
+# ``import baktfold.io.io as io`` elsewhere (e.g. subcommands/compare.py)
+# resolves ``getattr(baktfold, "io")`` to this module instead of the package
+# and dies with "cannot import name 'io' from 'baktfold.io.io'".
+from baktfold.io import io as bakta_io
 from importlib.resources import files
 
 # get_T5_model (from predict_3Di), subcommand_predict, subcommand_compare, and
@@ -596,7 +602,7 @@ def run(
 
 
     logger.info('writing baktfold outputs')
-    io.write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank,
+    bakta_io.write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank,
     cds_program,trna_program, rrna_program, tmrna_program, ncrna_program, bakta_version)
 
     # cleanup the temp files
@@ -822,7 +828,7 @@ def proteins(
     # - remove temp directory
     ############################################################################
     
-    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast, bakta_version)
+    bakta_io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast, bakta_version)
 
     # cleanup the temp files
     if not keep_tmp_files:
@@ -1265,7 +1271,7 @@ def compare(
     # bakta output module
     ####
     logger.info('writing baktfold outputs')
-    io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank,
+    bakta_io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank,
     cds_program,trna_program, rrna_program, tmrna_program, ncrna_program, bakta_version)
 
     # cleanup the temp files
@@ -1602,7 +1608,7 @@ def proteins_compare(
     # - remove temp directory
     ############################################################################
     
-    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast, bakta_version)
+    bakta_io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast, bakta_version)
 
     # cleanup the temp files
     if not keep_tmp_files:
