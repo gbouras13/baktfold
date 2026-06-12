@@ -215,7 +215,6 @@ def get_proteins(fasta: Path) -> dict:
                         sequence += line
                 if sequence_id:
                     fasta_dict[sequence_id] = sequence
-            handle.close()
         except ValueError:
             logger.error(f"{fasta.strip()} is not a FASTA file!")
             raise
@@ -237,7 +236,6 @@ def get_proteins(fasta: Path) -> dict:
                         sequence += line
                 if sequence_id:
                     fasta_dict[sequence_id] = sequence
-            handle.close()
         except ValueError:
             logger.error(f"{fasta.strip()} is not a FASTA file!")
             raise
