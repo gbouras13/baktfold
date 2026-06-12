@@ -118,7 +118,7 @@ def subcommand_predict(
         for cds_id, prot_seq in cds_dict.items():
             try:
                 # prediction_dict[cds_id][2]: ProstT5 confidence scores 0-1
-                prot_seq = mask_low_confidence_aa(prot_seq, prediction_dict[cds_id][2].tolist(), threshold=mask_prop_threshold)
+                prot_seq = mask_low_confidence_aa(prot_seq, prediction_dict[cds_id][2], threshold=mask_prop_threshold)
             except (KeyError, IndexError):
                 prot_seq = "X" * len(prot_seq)
 
