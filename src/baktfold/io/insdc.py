@@ -214,8 +214,8 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                     qualifiers['translation'] = feature['aa']
                 qualifiers['codon_start'] = 1
 
-                # add translation table
-                qualifiers['translation_table'] = translation_table
+                # add translation table (INSDC qualifier is /transl_table, matching Bakta)
+                qualifiers['transl_table'] = translation_table
                 insdc_feature_type = bc.INSDC_FEATURE_CDS
                 inference = []
                 if(feature['type'] == bc.FEATURE_CDS):
@@ -274,14 +274,14 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                         qualifiers['anticodon'] = f"(pos:{anti_codon_pos[0]}..{anti_codon_pos[1]},aa:{feature['amino_acid']},seq:{feature['anti_codon']})"
                     else:
                         qualifiers['note'].append(f"tRNA-{feature['amino_acid']} ({feature['anti_codon']})")
-                if prokka:
-                    qualifiers['inference'] = 'profile:tRNAscan:2.0'
+                if prokka:  # Prokka predicts tRNAs with Aragorn
+                    qualifiers['inference'] = 'profile:aragorn:1.2'
                 elif euk:
                     qualifiers['inference'] = 'profile:other:unknown'
                 elif other_genbank:
                     qualifiers['inference'] = f'profile:{trna_program}'
-                else:
-                    qualifiers['inference'] = 'profile:aragorn:1.2'
+                else:  # Bakta predicts tRNAs with tRNAscan-SE (matches GFF source column)
+                    qualifiers['inference'] = 'profile:tRNAscan:2.0'
                 insdc_feature_type = bc.INSDC_FEATURE_T_RNA
                 if(bc.PSEUDOGENE in feature):
                     qualifiers[bc.INSDC_FEATURE_PSEUDOGENE] = bc.INSDC_FEATURE_PSEUDOGENE_TYPE_UNKNOWN

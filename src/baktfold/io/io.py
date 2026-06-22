@@ -125,7 +125,8 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
     logger.info('writing INSDC GenBank & EMBL...')
     genbank_path: Path = Path(output) / f"{prefix}.gbff"
     embl_path: Path = Path(output) / f"{prefix}.embl"
-    insdc.write_features(data, features, genbank_path, embl_path, prokka, euk, other_genbank, translation_table, cds_program, trna_program, tmrna_program, rrna_program, ncrna_program)
+    # arg order must match write_features(...): translation_table BEFORE other_genbank.
+    insdc.write_features(data, features, genbank_path, embl_path, prokka, euk, translation_table, other_genbank, cds_program, trna_program, tmrna_program, rrna_program, ncrna_program)
 
     logger.info('writing genome sequences...')
     fna_path: Path = Path(output) / f"{prefix}.fna"
@@ -180,7 +181,24 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
         
     logger.info('write machine readable JSON...')
     json_path: Path = Path(output) / f"{prefix}.json"
-    json.write_json(data, features, json_path, bakta_version)
+    # Provenance block: lets ``baktfold json`` reconstitute these outputs later
+    # without re-supplying runtime flags. See io/json.py:write_json.
+    baktfold_run = {
+        'mode': 'genome',
+        'euk': euk,
+        'custom_db': custom_db,
+        'fast': fast,
+        'has_duplicate_locus': has_duplicate_locus,
+        'translation_table': translation_table,
+        'prokka': prokka,
+        'other_genbank': other_genbank,
+        'cds_program': cds_program,
+        'trna_program': trna_program,
+        'rrna_program': rrna_program,
+        'tmrna_program': tmrna_program,
+        'ncrna_program': ncrna_program,
+    }
+    json.write_json(data, features, json_path, bakta_version, baktfold_run)
 
     
 
@@ -228,7 +246,13 @@ def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str,
 
     full_annotations_path: Path = Path(output) / f"{prefix}.json"
     logger.info(f'Full annotations (JSON): {full_annotations_path}')
-    json.write_json({'features': aas}, aas, full_annotations_path, bakta_version)
+    # Provenance block for ``baktfold json`` (proteins mode). See io/json.py.
+    baktfold_run = {
+        'mode': 'proteins',
+        'custom_db': custom_db,
+        'fast': fast,
+    }
+    json.write_json({'features': aas}, aas, full_annotations_path, bakta_version, baktfold_run)
 
 
     #### don't write hyps I think as tsv

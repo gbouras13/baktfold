@@ -20,6 +20,7 @@ pytest --gpu-available --nvidia --euks --threads 8 .
 """
 
 # import
+import json
 import os
 import shutil
 # import functions
@@ -71,6 +72,9 @@ dummy_custom_db = Path(f"{test_data}/custom_db/dummy_custom_db")
 dummy_custom_db_annotations = Path(f"{test_data}/custom_db/dummy_custom_db_annotations.tsv")
 
 run_dir: Path = f"{output_dir}/run_json"
+json_recon_dir: Path = f"{output_dir}/json_reconstruct"
+json_recon_trna_dir: Path = f"{output_dir}/json_reconstruct_trna"
+json_recon_proteins_dir: Path = f"{output_dir}/json_reconstruct_proteins"
 run_prok_dir: Path = f"{output_dir}/run_prok_json"
 run_euk_dir: Path = f"{output_dir}/run_protist_json"
 run_funannotate_dir: Path = f"{output_dir}/run_funannotate_json"
@@ -376,6 +380,43 @@ def test_convert_prokka(gpu_available, threads, nvidia):
     """test baktfold convert-prokka"""
     cmd = f"baktfold convert-prokka -i {input_prok_gbk} -o {output_prok_json} "
     exec_command(cmd)
+
+def test_json(gpu_available, threads, nvidia):
+    """test baktfold json: reconstitute all genome outputs from a Bakta JSON (no database/foldseek required)"""
+    cmd = f"baktfold json -i {input_json} -o {json_recon_dir} -f"
+    exec_command(cmd)
+    # every reconstitutable genome output is produced
+    for ext in ("gff3", "gbff", "embl", "tsv", "inference.tsv", "faa", "ffn", "fna", "summary.txt", "json"):
+        assert Path(f"{json_recon_dir}/baktfold.{ext}").exists()
+    # the self-describing provenance block is persisted for faithful re-reconstruction
+    data = json.loads(Path(f"{json_recon_dir}/baktfold.json").read_text())
+    assert data.get("baktfold_run", {}).get("mode") == "genome"
+    # INSDC genetic-code qualifier regression: must be /transl_table=11, not the
+    # non-standard /translation_table or the boolean the old swapped args produced
+    gbff = Path(f"{json_recon_dir}/baktfold.gbff").read_text()
+    assert "/transl_table=11" in gbff
+    assert "/translation_table" not in gbff
+
+def test_json_trna_inference(gpu_available, threads, nvidia):
+    """test baktfold json: bakta tRNA /inference is profile:tRNAscan:2.0 (matches the GFF source column)"""
+    cmd = f"baktfold json -i {input_no_fs_hits_json} -o {json_recon_trna_dir} -f"
+    exec_command(cmd)
+    gbff = Path(f"{json_recon_trna_dir}/baktfold.gbff").read_text()
+    assert "profile:tRNAscan:2.0" in gbff            # bakta tRNA inference
+    assert "profile:tRNAscan-SE:2.0.12" not in gbff  # other_genbank program string must not leak
+
+def test_json_proteins(gpu_available, threads, nvidia):
+    """test baktfold json: reconstitute proteins outputs from a Bakta proteins JSON"""
+    cmd = f"baktfold json -i {input_proteins_json} -o {json_recon_proteins_dir} -f"
+    exec_command(cmd)
+    # proteins mode emits exactly these
+    for ext in ("tsv", "faa", "summary.txt", "json"):
+        assert Path(f"{json_recon_proteins_dir}/baktfold.{ext}").exists()
+    # and none of the genome-only formats
+    for ext in ("gff3", "gbff", "embl", "ffn", "fna"):
+        assert not Path(f"{json_recon_proteins_dir}/baktfold.{ext}").exists()
+    data = json.loads(Path(f"{json_recon_proteins_dir}/baktfold.json").read_text())
+    assert data.get("baktfold_run", {}).get("mode") == "proteins"
 
 def test_run_prokka(gpu_available, threads, nvidia):
     """test baktfold run with prokka input"""

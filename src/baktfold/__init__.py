@@ -1861,9 +1861,194 @@ def convert_euk(
 
     logger.info(f"Conversion successful.")
     logger.info(f"Bakta format JSON → {outfile}")
- 
+
     # end
     end_baktfold(start_time, "convert-euk")
+
+
+"""
+json command
+
+Reconstitutes all (non-Foldseek) baktfold output formats from a baktfold JSON
+output file. Modelled on bakta's ``bakta_io`` command. No database, ProstT5 or
+Foldseek run is required - this is pure output reconstruction.
+"""
+
+
+@main_cli.command(name="json")
+@click.help_option("--help", "-h")
+@click.version_option(get_version(), "--version", "-V")
+@click.pass_context
+@click.option(
+    "-i",
+    "--input",
+    type=click.Path(),
+    required=True,
+    help="Path to a baktfold (or bakta) JSON output file"
+)
+@click.option(
+    "-o",
+    "--output",
+    type=click.Path(),
+    default="output_baktfold_json",
+    show_default=True,
+    help="Output directory"
+)
+@click.option(
+    "-p",
+    "--prefix",
+    type=str,
+    default="baktfold",
+    show_default=True,
+    help="Output files' prefix"
+)
+@click.option(
+    "-f",
+    "--force",
+    is_flag=True,
+    help="Force overwrites output directory"
+)
+@click.option(
+    "--euk/--no-euk",
+    "euk",
+    default=None,
+    help="Override eukaryotic mode (default: read from JSON provenance, else auto-detect from features)"
+)
+@click.option(
+    "--custom-db/--no-custom-db",
+    "custom_db",
+    default=None,
+    help="Override custom-DB column (default: read from JSON provenance, else auto-detect)"
+)
+@click.option(
+    "--fast/--no-fast",
+    "fast",
+    default=None,
+    help="Override fast mode i.e. whether the AFDBClusters column is omitted (default: read from JSON provenance, else off)"
+)
+@click.option(
+    "--cds-program",
+    type=str,
+    default=None,
+    help="CDS prediction tool string for compliant outputs (non-Bakta/Prokka input only). Default: Prodigal:2.6"
+)
+@click.option(
+    "--trna-program",
+    type=str,
+    default=None,
+    help="tRNA prediction tool string (non-Bakta/Prokka input only). Default: tRNAscan-SE:2.0.12"
+)
+@click.option(
+    "--tmrna-program",
+    type=str,
+    default=None,
+    help="tmRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5"
+)
+@click.option(
+    "--rrna-program",
+    type=str,
+    default=None,
+    help="rRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5"
+)
+@click.option(
+    "--ncrna-program",
+    type=str,
+    default=None,
+    help="ncRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5"
+)
+def json_reconstruct(
+    ctx,
+    input,
+    output,
+    prefix,
+    force,
+    euk,
+    custom_db,
+    fast,
+    cds_program,
+    trna_program,
+    tmrna_program,
+    rrna_program,
+    ncrna_program,
+    **kwargs,
+):
+    """Reconstitute all outputs (GFF3/GenBank/EMBL/TSV/FASTA) from a baktfold JSON (no Foldseek TSVs)"""
+
+    # validates the directory (need to before baktfold starts or else no log file is written)
+    instantiate_dirs(output, force)
+
+    output: Path = Path(output)
+
+    params = {
+        "--input": input,
+        "--output": output,
+        "--prefix": prefix,
+        "--force": force,
+        "--euk": euk,
+        "--custom-db": custom_db,
+        "--fast": fast,
+        "--cds-program": cds_program,
+        "--trna-program": trna_program,
+        "--tmrna-program": tmrna_program,
+        "--rrna-program": rrna_program,
+        "--ncrna-program": ncrna_program,
+    }
+
+    from baktfold.io.json_in import parse_baktfold_json_for_reconstruction
+
+    # initial logging etc - no foldseek/database dependencies for reconstruction
+    start_time = begin_baktfold(params, "json")
+
+    recon = parse_baktfold_json_for_reconstruction(
+        input,
+        euk_override=euk,
+        custom_db_override=custom_db,
+        fast_override=fast,
+        program_overrides={
+            "cds_program": cds_program,
+            "trna_program": trna_program,
+            "rrna_program": rrna_program,
+            "tmrna_program": tmrna_program,
+            "ncrna_program": ncrna_program,
+        },
+    )
+
+    logger.info('Reconstituting baktfold outputs from JSON')
+    logger.warning('Note: Foldseek result/tophit TSVs, 3Di FASTA and embeddings cannot be reconstituted from JSON.')
+
+    if recon['mode'] == 'proteins':
+        bakta_io.write_bakta_proteins_outputs(
+            recon['aas'],
+            output,
+            prefix,
+            recon['custom_db'],
+            recon['fast'],
+            recon['bakta_version'],
+        )
+    else:
+        bakta_io.write_bakta_outputs(
+            recon['data'],
+            recon['features'],
+            recon['features_by_sequence'],
+            output,
+            prefix,
+            recon['custom_db'],
+            recon['euk'],
+            recon['has_duplicate_locus'],
+            recon['fast'],
+            recon['translation_table'],
+            recon['prokka'],
+            recon['other_genbank'],
+            recon['cds_program'],
+            recon['trna_program'],
+            recon['rrna_program'],
+            recon['tmrna_program'],
+            recon['ncrna_program'],
+            recon['bakta_version'],
+        )
+
+    # end baktfold
+    end_baktfold(start_time, "json")
 
 
 

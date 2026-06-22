@@ -62,3 +62,10 @@ URL: github.com/gbouras13/baktfold
 *  `_embeddings_per_protein.h5` - contains the ProstT5 embeddings for each protein in the h5 format
 *  `_embeddings_per_residue.h5` - contains the ProstT5 embeddings for each residue in the h5 format
 
+## Reconstituting outputs from the JSON
+
+The `.json` is the authoritative record of a `baktfold` run. You can regenerate every standard output above from it (without re-running ProstT5 or Foldseek) with [`baktfold json`](run.md#baktfold-json):
+
+* **Reconstitutable** from the `.json`: `.gff3`, `.gbff`, `.embl`, `.tsv`, `.inference.tsv`, `.faa`, `.ffn`, `.fna`, `.summary.txt` (and a fresh `.json`).
+* **Not** reconstitutable (only produced by an actual `compare`/`run`): the Foldseek `*_tophit.tsv`, `foldseek_results_*.tsv`, `_3di.fasta`, the ProstT5 probability files and the embedding `.h5` files.
+
