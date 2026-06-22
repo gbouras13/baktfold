@@ -1,0 +1,12 @@
+Annotation:
+CDS count: 17
+CDS beginning hypotheticals: 17
+CDS annotated with Baktfold database hit: 0
+CDS annotated with Baktfold function: 0
+CDS remaining hypotheticals: 17
+
+Baktfold:
+Software: v<VERSION>
+Database: v<VERSION>
+DOI: https://doi.org/10.64898/2026.03.31.715528
+URL: github.com/gbouras13/baktfold

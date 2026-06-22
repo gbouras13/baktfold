@@ -1,0 +1,1956 @@
+LOCUS       contig_1               70606 bp    DNA     circular BCT 01-JAN-1980
+DEFINITION  plasmid unnamed1, complete sequence.
+ACCESSION   contig_1
+VERSION     contig_1
+KEYWORDS    .
+SOURCE      None
+  ORGANISM  .
+            .
+COMMENT     Annotated with Baktfold
+            Software: v<VERSION>
+            Database: v<VERSION>
+            DOI: https://github.com/gbouras13/baktfold
+            URL: https://github.com/gbouras13/baktfold
+            
+            ##Genome Annotation Summary:##
+            CDSs                           ::    90
+            tRNAs                          ::     0
+            tmRNAs                         ::     0
+            rRNAs                          ::     0
+            ncRNAs                         ::     0
+            regulatory ncRNAs              ::     1
+            CRISPR Arrays                  ::     0
+            oriCs/oriVs                    ::     1
+            oriTs                          ::     0
+            gaps                           ::     0
+            pseudogenes                    ::     1
+FEATURES             Location/Qualifiers
+     source          1..70606
+                     /mol_type="genomic DNA"
+                     /plasmid="unnamed1"
+     gene            <1..894
+                     /locus_tag="MEGJMN_001"
+                     /gene="repB"
+                     /pseudo
+     CDS             <1..894
+                     /note="(5' truncated)"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniRef:UniRef50_A0A6M3HH18"
+                     /db_xref="UniRef:UniRef90_UPI003365312D"
+                     /product="RepB family plasmid replication initiator
+                     protein"
+                     /locus_tag="MEGJMN_001"
+                     /protein_id="gnl|Baktfold|MEGJMN_001"
+                     /translation="MNGYNYMNENVYIGEVIGPDCESVNNKLTVTSKATVQPVALMRLN
+                     VFVPSSRPAKGTRTSIDATSVLKDLEFSRREGYDDIRITGERLSMAIDFKVWVGIIEAF
+                     SKYGLKTNSIKLTFHEFAGMCRFESKRFDSRLRKSISEALTRIRGKTITFTRSDSEGLQ
+                     KVSVTGLLKTGELDFANDQVELEADQRLWELYQTDYTVLLRHKPINALTRKEAAQALYT
+                     FIESLPTNPVPISFKRIRDRLSLLSPVKEQNRIIKLALKQLQDIGYLDHSITKKGKETF
+                     ILIHRRSANLKPGTAV"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef90_UPI003365312D"
+                     /pseudo
+                     /gene="repB"
+     rep_origin      895..1518
+                     /note="origin of replication"
+                     /inference="similar to DNA sequence"
+     gene            1519..1935
+                     /locus_tag="MEGJMN_002"
+     CDS             1519..1935
+                     /db_xref="SO:0001217"
+                     /db_xref="UniRef:UniRef50_A0A811ARZ9"
+                     /db_xref="UniRef:UniRef90_A0A811ARZ9"
+                     /product="CobQ/CobB/MinD/ParA nucleotide binding
+                     domain-containing protein"
+                     /locus_tag="MEGJMN_002"
+                     /protein_id="gnl|Baktfold|MEGJMN_002"
+                     /translation="MIIVLGSQKGGVGKSTLAVSIAAYLMSLGNRVIIVDADDQKSVLT
+                     WYNNRPEDLPHIPVTGATGNIKAMLKEHEKSYDFVIADCAGRDSAEMRSGLMAADVFIS
+                     PLRPSQMDLDVVPHTCSVFTAAKDFNEDVRDISF"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef90_A0A811ARZ9"
+     gene            complement(1932..2048)
+                     /locus_tag="MEGJMN_003"
+     CDS             complement(1932..2048)
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_003"
+                     /protein_id="gnl|Baktfold|MEGJMN_003"
+                     /translation="MRFSITNSGTSQTHFRIILEYVSCLICFIDKHVRGRHV"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+     gene            complement(2875..3669)
+                     /locus_tag="MEGJMN_004"
+                     /gene="resA"
+     CDS             complement(2875..3669)
+                     /db_xref="RefSeq:WP_015632375.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032969B4"
+                     /db_xref="UniRef:UniRef100_A0A0C5H1Q2"
+                     /db_xref="UniRef:UniRef50_P06615"
+                     /db_xref="UniRef:UniRef90_A0A377YP69"
+                     /product="ResA resolvase"
+                     /locus_tag="MEGJMN_004"
+                     /protein_id="gnl|Baktfold|MEGJMN_004"
+                     /translation="MNNLVPVGSPASPGTLLPVAIDYPAALALRQMALVQDELPKYLLA
+                     PEVSALLHYVPDLHRKMLLATLWNTGARINEALALTRGDFSLAPPYPFVQLATLKQRTE
+                     KAARTAGRAPAGSQVHRLVPLSDHHYVSQLQMMVATLKIPLERRNKRTGRMEKARIWEI
+                     TDRTVRTWLSEAVEAAAADGVTFSVPVTPHTFRHSYAMHMLYAGIPLKVLQSLMGHKSI
+                     SSTEVYTKVFALDVAARHRVQFAMPEAEAVALIKKLTPNQST"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632375.1"
+                     /gene="resA"
+     gene            3729..3872
+                     /locus_tag="MEGJMN_005"
+     CDS             3729..3872
+                     /db_xref="RefSeq:WP_248299255.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0007224B15"
+                     /db_xref="UniRef:UniRef100_A0A6C0NCX4"
+                     /db_xref="UniRef:UniRef50_A0A142EBE8"
+                     /db_xref="UniRef:UniRef90_A0A142EBE8"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_005"
+                     /protein_id="gnl|Baktfold|MEGJMN_005"
+                     /translation="MTNQPATASQKTDEVANKTTPSMTVDTIFSATGFTPLQWVAMERE
+                     HS"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_248299255.1"
+     gene            complement(3905..4870)
+                     /locus_tag="MEGJMN_006"
+     CDS             complement(3905..4870)
+                     /db_xref="SO:0001217"
+                     /db_xref="UniRef:UniRef50_A0A8D9MPV2"
+                     /db_xref="UniRef:UniRef90_A0A0C5HDB6"
+                     /product="N-acetyltransferase domain-containing protein"
+                     /locus_tag="MEGJMN_006"
+                     /protein_id="gnl|Baktfold|MEGJMN_006"
+                     /translation="MEGKTETFIKTSVDDNGMWLLTVPAGSTGDETVVVVVRRVEECRY
+                     GSEDSPGAYLSITSSLTLYGDGQGTPQTIVAKFVPGTVELFSVEFMLKEFLPRGRGVGS
+                     WIMQQMVLWTRSLPPETLVGRIDISSVDEKNIHNLIRRSRLWRGLGFRFPPGETSSMPL
+                     RADELQLPRGRCSTLRVEPLVSAVRQLEDCYRGLQEKIVQLEGKKRSQKQLITSLQNRP
+                     FYHLLHRKGGQLPDEKCDALPLRAEKLSLPQSGDSDLEVAQRATGVIRLATLCAQSQKR
+                     ILELERELASQSEELVDLQANLLSILREKVGNEALFWGAW"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef90_A0A0C5HDB6"
+     gene            complement(4935..5246)
+                     /locus_tag="MEGJMN_007"
+     CDS             complement(4935..5246)
+                     /db_xref="RefSeq:WP_024191724.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003EE6ED4"
+                     /db_xref="UniRef:UniRef100_A0A6C0ND31"
+                     /db_xref="UniRef:UniRef50_A0A5W9DD28"
+                     /db_xref="UniRef:UniRef90_A0A3P2EIW4"
+                     /product="Cytoplasmic protein"
+                     /locus_tag="MEGJMN_007"
+                     /protein_id="gnl|Baktfold|MEGJMN_007"
+                     /translation="MCDLCRADENYFHTAECVYDQLVSEYPVMWLRDSTRIGACYTLRE
+                     LLSPEGMVLAIQNSLPIKGWRLRMLYNEAIDEEINPQHGDCIELPSRADALQAFVGSA"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_024191724.1"
+     gene            complement(5280..5609)
+                     /locus_tag="MEGJMN_008"
+     CDS             complement(5280..5609)
+                     /db_xref="RefSeq:WP_040214038.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00058B55FA"
+                     /db_xref="UniRef:UniRef100_UPI00058B55FA"
+                     /db_xref="UniRef:UniRef50_A0A837F5I3"
+                     /db_xref="UniRef:UniRef90_UPI00224511F9"
+                     /product="PhoD-like phosphatase metallophosphatase
+                     domain-containing protein"
+                     /locus_tag="MEGJMN_008"
+                     /protein_id="gnl|Baktfold|MEGJMN_008"
+                     /translation="MGKPTFRSFIDVVRELEDAYGHKELWLYSGTAYATPTEMIKAKYN
+                     WKSPKILKRNGRMVAERMDNSDSWQLVGDYKDPQSQDCAPPWQSCLIDKPFMLLYSIVT
+                     RKPEE"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_040214038.1"
+     gene            complement(6169..9288)
+                     /locus_tag="MEGJMN_009"
+     CDS             complement(6169..9288)
+                     /db_xref="RefSeq:WP_064174377.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0007CCE74C"
+                     /db_xref="UniRef:UniRef100_UPI0007CCE74C"
+                     /db_xref="UniRef:UniRef50_Q0QCC2"
+                     /db_xref="UniRef:UniRef90_A0AAE4EAU4"
+                     /product="Chromate transporter"
+                     /locus_tag="MEGJMN_009"
+                     /protein_id="gnl|Baktfold|MEGJMN_009"
+                     /translation="MFGKLLKSVSWQVRAELRRSLKSNQDYKKLRWNRVERILIACTTH
+                     YIRAMLVLWSAAFGAVCVVEYFRPVLQPFALQHFKGITTLSGWMSNLLGSQLTIIGIVF
+                     PLVVGLISVLFQKKSARMHIQSAYQLHSGYLFAGLSGLSLAAFIVVGGMMLSVGDRYLN
+                     TAFAVTAFVWMLFNIILSIWFFVSSLNVLDESKRDRLLNKFFLSQIVDDYIQKAYILAW
+                     LRYPGANVGENYLGNIKILPYSISEKNEMLHVKSNVSKGDVVTDIYIRPFLFLLRRLEA
+                     VDGQDAEIIILPSFGVRSGELTLMSLKNIKPVSGLWRWLFIRCIVTGRPEKKRDLDDIT
+                     FDFFGEAYDALNDKNISVFRAGIERLTDTYTSIKRSYNYGVDKNYLDEVKESGFSHTFS
+                     DSFHYELRKFFRESVKSTEYSGEYFRESMAIPLHVYRKTQSTCFTDFRQFLLSLFRVWH
+                     VLNDWKAGLGGPLSASQELTHQALIREFIGLWEGWSMTTITGKPGSEDSTGRLMYHLHN
+                     TVRLLIPSVVADNASSVRYAHDVLCLWFNQNRFTRYWEEEYRWHSFFLTPDYLSLKETE
+                     PQWDMLLRGSMYKKDAALSIMFANALSDLRLLMAGYLIAHFEPQKNIDLADLVNHLIMS
+                     ELYEDRDTHDTLTPAFRCSVDIIDMILRIEHCNLHTNTSWYSGLSETIEVMNSYNERPY
+                     IPGRVYTGVNEDIGSLYGAFSLLAIKLARPAEQVTQRVNEALAGRLFSYFSKDRIISIL
+                     ERLKRDPSVPYEGYIISEADYATNVVFFNDVLDKYIDVFNRSKTADIVAAEIDQERLRN
+                     TDTRLTNELPGALSEDVLLKYFTFTQNSECDRNWLVRYIPVGVSKDYVARDLNQNVYGD
+                     FPSVSEVKRNILHRLHYELWKSQAKLTIEVNNLETLLMEVAQRSADQNNYILMIYGSRF
+                     SEELRELVYQPARHDAFSIHVDVSARGSRSLPFRINNCLIYLVLNSEQKFSLMVSAESF
+                     GELRLFRYPDGTLFNTFYRSNGDPLEGVMKTLWEMEMEITDTPVVRFEHR"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_064174377.1"
+     gene            9604..9840
+                     /locus_tag="MEGJMN_010"
+     CDS             9604..9840
+                     /db_xref="RefSeq:WP_060415434.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000760AAA3"
+                     /db_xref="UniRef:UniRef100_A0A8B3MBM4"
+                     /db_xref="UniRef:UniRef50_A0A8B3MBM4"
+                     /db_xref="UniRef:UniRef90_A0A8B3MBM4"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_010"
+                     /protein_id="gnl|Baktfold|MEGJMN_010"
+                     /translation="MDEKEVNFSLSYEQLAATTTEVIEAIKKRQDQTTAAKISSVEAVI
+                     FLWSELAKAGASDFSPVQADLRRFQERVAGMKE"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_060415434.1"
+     gene            9837..10412
+                     /locus_tag="MEGJMN_011"
+                     /gene="ydeA"
+     CDS             9837..10412
+                     /db_xref="RefSeq:WP_060415435.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0007604B90"
+                     /db_xref="UniRef:UniRef100_A0A8B3M6V8"
+                     /db_xref="UniRef:UniRef50_A0A8B0ST96"
+                     /db_xref="UniRef:UniRef90_A0A2P9E0K7"
+                     /product="YdeA protein"
+                     /locus_tag="MEGJMN_011"
+                     /protein_id="gnl|Baktfold|MEGJMN_011"
+                     /translation="MNGTVKSRRPSPLQRRVLIVLAALDAKRPGPVATRDIERVLEQGG
+                     DAPVYGPNLRASCRRMEAAGWLRTLRAPNLQLAVELTEAGRGIAEPLFQAEREAETARQ
+                     RLTDVRRLPLRQTAAGDAVALQLDDDHYTIREAAYVIRPDGSTCLQLTDAGGIRRIKEG
+                     DPLQVASWYQTCFDAGLPVTIQVNESRD"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_060415435.1"
+                     /gene="ydeA"
+     gene            10446..11063
+                     /locus_tag="MEGJMN_012"
+     CDS             10446..11063
+                     /db_xref="SO:0001217"
+                     /db_xref="UniRef:UniRef50_A0A2P9E0J6"
+                     /db_xref="UniRef:UniRef90_A0A8B3M5V4"
+                     /product="DNA-binding protein"
+                     /locus_tag="MEGJMN_012"
+                     /protein_id="gnl|Baktfold|MEGJMN_012"
+                     /translation="MKLTEPKLNTLIDNLNALICEDSLLTRQEREDLVRAVAAIGAMKA
+                     RVSMKKSSVPAASKLKEEKQERVPDPRFPHAGEPWREEEGTMLLDALESVPDEEVGVHL
+                     FWLAEKLGRTPYSVACKIAVLRDMPEEWKDQYRKVSDDIRKSGLSISDGTVAKLAMRQP
+                     FVLFKGLTFQKLCLPGAFRPGDHHNKMLRPGLCVVHASPQYL"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef90_A0A8B3M5V4"
+     gene            complement(10954..11658)
+                     /locus_tag="MEGJMN_013"
+                     /gene="tnp"
+     CDS             complement(10954..11658)
+                     /db_xref="COG:COG3316"
+                     /db_xref="COG:X"
+                     /db_xref="GO:0004803"
+                     /db_xref="IS:IS15DIV"
+                     /db_xref="RefSeq:WP_001067855.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0000003DD8"
+                     /db_xref="UniRef:UniRef100_A0A6H1PZP7"
+                     /db_xref="UniRef:UniRef50_Q573Q1"
+                     /db_xref="UniRef:UniRef90_A0A6H1PZP7"
+                     /product="IS6 family IS15DIV transposase"
+                     /locus_tag="MEGJMN_013"
+                     /protein_id="gnl|Baktfold|MEGJMN_013"
+                     /translation="MNPFKGRHFQRDIILWAVRWYCKYGISYRELQEMLAERGVNVDHS
+                     TIYRWVQRYAPEMEKRLRWYWRNPSDLCPWHMDETYVKVNGRWAYLYRAVDSRGRTVDF
+                     YLSSRRNSKAAYRFLGKILNNVKKWQIPRFINTDKAPAYGRALALLKREGRCPSDVEHR
+                     QIKYRNNVIECDHGKLKRIIGATLGFKSMKTAYATIKGIEVMRALRKGQASAFYYGDPL
+                     GEMRLVSRVFEM"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_001067855.1"
+                     /gene="tnp"
+     gene            complement(11670..11942)
+                     /locus_tag="MEGJMN_014"
+     CDS             complement(11670..11942)
+                     /db_xref="SO:0001217"
+                     /db_xref="UniRef:UniRef50_A0A3P8IPK2"
+                     /product="starch synthase"
+                     /locus_tag="MEGJMN_014"
+                     /protein_id="gnl|Baktfold|MEGJMN_014"
+                     /translation="MQVLHVGAEMFPLLKTGGLADVTGALPAAQIAEGLDTRVLLPGFP
+                     AIRNGVQDPQVVASRETFAGRMTLLFGHLALLQIVGGDKLIIPFC"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef50_A0A3P8IPK2"
+     gene            complement(12031..12678)
+                     /locus_tag="MEGJMN_015"
+     CDS             complement(12031..12678)
+                     /db_xref="SO:0001217"
+                     /db_xref="UniRef:UniRef50_A0A3S4G3I5"
+                     /product="Glucose-1-phosphate adenylyltransferase"
+                     /locus_tag="MEGJMN_015"
+                     /protein_id="gnl|Baktfold|MEGJMN_015"
+                     /translation="MGIYVFDAEYLYQLLEDDDRDEHSTHDFGKDIIPRITAAGEAYAH
+                     PFPRSCVQSDNNAEPYWRDVGTLEAYWKANLDLASVVPELDVYDRNWPIRTYVESLPSA
+                     KFVQDRSGSHGMTMNSLVSGGCIISGSVVVQSVLFSRVRINSFCNIDSSVLLPGVWVGR
+                     SCRIRRCVIDRGCVIPEGTVIGENAVEDARRFYRSEEGIVLVTKEMLDKLEV"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef50_A0A3S4G3I5"
+     gene            12811..13515
+                     /locus_tag="MEGJMN_016"
+                     /gene="tnp"
+     CDS             12811..13515
+                     /db_xref="COG:COG3316"
+                     /db_xref="COG:X"
+                     /db_xref="GO:0004803"
+                     /db_xref="IS:IS15DIV"
+                     /db_xref="RefSeq:WP_001067855.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0000003DD8"
+                     /db_xref="UniRef:UniRef100_A0A6H1PZP7"
+                     /db_xref="UniRef:UniRef50_Q573Q1"
+                     /db_xref="UniRef:UniRef90_A0A6H1PZP7"
+                     /product="IS6 family IS15DIV transposase"
+                     /locus_tag="MEGJMN_016"
+                     /protein_id="gnl|Baktfold|MEGJMN_016"
+                     /translation="MNPFKGRHFQRDIILWAVRWYCKYGISYRELQEMLAERGVNVDHS
+                     TIYRWVQRYAPEMEKRLRWYWRNPSDLCPWHMDETYVKVNGRWAYLYRAVDSRGRTVDF
+                     YLSSRRNSKAAYRFLGKILNNVKKWQIPRFINTDKAPAYGRALALLKREGRCPSDVEHR
+                     QIKYRNNVIECDHGKLKRIIGATLGFKSMKTAYATIKGIEVMRALRKGQASAFYYGDPL
+                     GEMRLVSRVFEM"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_001067855.1"
+                     /gene="tnp"
+     gene            complement(13906..14517)
+                     /locus_tag="MEGJMN_017"
+     CDS             complement(13906..14517)
+                     /db_xref="RefSeq:WP_000176305.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00015763D5"
+                     /db_xref="UniRef:UniRef100_A0A1U9SS67"
+                     /db_xref="UniRef:UniRef50_A0A636ILE6"
+                     /db_xref="UniRef:UniRef90_R9R7Y6"
+                     /product="DUF2913 domain-containing protein"
+                     /locus_tag="MEGJMN_017"
+                     /protein_id="gnl|Baktfold|MEGJMN_017"
+                     /translation="MTLTEKTGHLAWCALVALALARQEQGELSPAQENLFLTRWLAAAL
+                     KQRRFSRDVAQDIGWLLNQGRLLGVRAKLADKLGYVWRSCSGELTEQNDMFRLTYALET
+                     AKDMGWNYRVMSDREWAGRYALVLNPGVNGVYLLRTNLDAAFDDNGQQTNPLTVRLTGN
+                     VTGIMKLLNRCGWQAEPESDASLPHQFSLMARQGVPGKGD"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_000176305.1"
+     gene            complement(14571..14852)
+                     /locus_tag="MEGJMN_018"
+     CDS             complement(14571..14852)
+                     /db_xref="RefSeq:WP_001568067.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00015763D6"
+                     /db_xref="UniRef:UniRef100_A0A1U9SSL0"
+                     /db_xref="UniRef:UniRef50_A0AAN1YBH3"
+                     /db_xref="UniRef:UniRef90_A0AAN1YBH3"
+                     /product="Cytoplasmic protein"
+                     /locus_tag="MEGJMN_018"
+                     /protein_id="gnl|Baktfold|MEGJMN_018"
+                     /translation="MRVAESIILDALTRGGCIKTFYRISSRQAAESATRIPEGYILESP
+                     GEREDIVLSRADFHALEKLLEQKETWEQVVGVTCFGGATWQLRPTVQS"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_001568067.1"
+     gene            complement(15025..15267)
+                     /locus_tag="MEGJMN_019"
+                     /gene="tnp"
+     CDS             complement(15025..15267)
+                     /db_xref="COG:COG2963"
+                     /db_xref="COG:X"
+                     /db_xref="GO:0004803"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0002C4069D"
+                     /db_xref="UniRef:UniRef100_A0A2X7IQ80"
+                     /db_xref="UniRef:UniRef50_A0A653BZJ7"
+                     /db_xref="UniRef:UniRef90_A0A4P7TWT1"
+                     /product="IS3 family transposase"
+                     /locus_tag="MEGJMN_019"
+                     /protein_id="gnl|Baktfold|MEGJMN_019"
+                     /translation="MSRRGNCWDNSPMERFFRSLKNEWVPATGYVSFSDAAHAITDYIV
+                     GYYSALRPHEYNGGLPPNESENRYWKNSNAVASFC"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef100_A0A2X7IQ80"
+                     /gene="tnp"
+     gene            complement(15350..16426)
+                     /locus_tag="MEGJMN_020"
+                     /gene="tnp"
+     CDS             complement(15350..16426)
+                     /db_xref="COG:COG3547"
+                     /db_xref="COG:X"
+                     /db_xref="GO:0004803"
+                     /db_xref="IS:ISEc21"
+                     /db_xref="RefSeq:WP_000227969.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0000332EC8"
+                     /db_xref="UniRef:UniRef100_A0A1M0GG24"
+                     /db_xref="UniRef:UniRef50_A0A6J5F9T1"
+                     /db_xref="UniRef:UniRef90_A0A348DKT0"
+                     /product="IS110 family ISEc21 transposase"
+                     /locus_tag="MEGJMN_020"
+                     /protein_id="gnl|Baktfold|MEGJMN_020"
+                     /translation="MVDKVTEAAVVGGVDTHKDLHVAAVVDQNNKVLGTQYFSTTRQGY
+                     RQMLAWMTSFGTLKRIGVECTGTYGSGLLRYFQNAGLEVLEVTAPDRMERRKRGKSDTI
+                     DAECAAHAAFSGIRTVTPKTRDGMIESLRVLKTCRKTAISARRVALQIIHSNIISAPDE
+                     LREQLRNMTRMQLIRTLGSWRPDASEYRNVTNVYRISLKSLARRYLELHDEIADLDVMI
+                     AAIVDELAPELIKRNAIGYESASQLLITAGDNPQRLRSESGFAALCGVSPVPVSSGKTN
+                     RYRLNRGGDRAANSALHIIAIGRLRTDAKTKEYVARRVAEGHTKMEAIRCLKRYISREV
+                     YTLLRNQNRRINSIPITA"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_000227969.1"
+                     /gene="tnp"
+     gene            complement(16645..17052)
+                     /locus_tag="MEGJMN_021"
+     CDS             complement(16645..17052)
+                     /db_xref="GO:0004803"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032DC2A9"
+                     /db_xref="UniRef:UniRef100_A0A345X0A4"
+                     /db_xref="UniRef:UniRef50_Q47718"
+                     /db_xref="UniRef:UniRef90_A0A455TK33"
+                     /product="IS3 family transposase"
+                     /locus_tag="MEGJMN_021"
+                     /protein_id="gnl|Baktfold|MEGJMN_021"
+                     /translation="MGRWLAGRLMKELGLVSCQQPTHRYKRGGHEHVAIPNHLERQFAV
+                     TEPNQVWCGDVTYIWTGKRWAYLAVVLDLFARKPVGWAMSFSPDSRLTMKALEMAWETR
+                     GKPVGVMFHSDSNNADVSLYHHLVCRLTRLV"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef100_A0A345X0A4"
+     gene            complement(17265..17567)
+                     /locus_tag="MEGJMN_022"
+                     /gene="tnp"
+     CDS             complement(17265..17567)
+                     /db_xref="IS:ISEc52"
+                     /db_xref="RefSeq:WP_001325805.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00000BFAFC"
+                     /db_xref="UniRef:UniRef100_Q8GJ18"
+                     /db_xref="UniRef:UniRef50_P39212"
+                     /db_xref="UniRef:UniRef90_Q8GJ18"
+                     /product="IS3 family ISEc52 transposase ORF A"
+                     /locus_tag="MEGJMN_022"
+                     /protein_id="gnl|Baktfold|MEGJMN_022"
+                     /translation="MKKRNFSAEFKRESAQLVVDQNYTVADAASAMDVGLSTMTRWVKQ
+                     LRDERQGKTPKASPITPEQIEIRELRKKLQRIEMENEILKKATALLMSDSLNSSR"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_001325805.1"
+                     /gene="tnp"
+     gene            17651..17986
+                     /locus_tag="MEGJMN_023"
+     CDS             17651..17986
+                     /db_xref="RefSeq:WP_011977766.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0001576A45"
+                     /db_xref="UniRef:UniRef100_A0A1U9SSU4"
+                     /db_xref="UniRef:UniRef50_A0A6B2F389"
+                     /db_xref="UniRef:UniRef90_A0A6B2F389"
+                     /product="C2H2-type domain-containing protein"
+                     /locus_tag="MEGJMN_023"
+                     /protein_id="gnl|Baktfold|MEGJMN_023"
+                     /translation="MKLMEELFTCPICKLSFGHKARLRKHIKKHTKSLEKNLAKANSTK
+                     KAEHEKMLIQERIARTGSAFKNESERNKYFERRRAENPIFDIDTPIRKASFIVNAGAFG
+                     LGKSRKN"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_011977766.1"
+     gene            <18169..18321
+                     /locus_tag="MEGJMN_024"
+                     /pseudogene="unitary"
+     CDS             <18169..18321
+                     /note="Frameshift due to insertion around 18135."
+                     /note="(5' truncated)"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniRef:UniRef50_A0A919LT20"
+                     /db_xref="UniRef:UniRef90_A0A919LT20"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_024"
+                     /pseudogene="unitary"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+     gene            complement(18933..19565)
+                     /locus_tag="MEGJMN_025"
+     CDS             complement(18933..19565)
+                     /db_xref="RefSeq:WP_032495741.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003D902F4"
+                     /db_xref="UniRef:UniRef100_A0A0C5GXS3"
+                     /db_xref="UniRef:UniRef50_B2CBC6"
+                     /db_xref="UniRef:UniRef90_A0A6C0ND82"
+                     /product="Replication initiation protein"
+                     /locus_tag="MEGJMN_025"
+                     /protein_id="gnl|Baktfold|MEGJMN_025"
+                     /translation="MASRRRRRFLNRWIKSLATPAGRQKIKAELRRRIRHNRYWVNEAN
+                     KFGLETLCELMLAILDDVDLRDWQTRHNLETLAERAGLATRSDGGHKSISRASRGCDRL
+                     YWLNAIITDKAPFNPYDARCACKHIEVTEDFFAILGIPLKQAYRERARLLKADPNEVIS
+                     SGDIRLISIRVENWTRKAAAGLSRMKAKRDVARQRKREYFSQSPVLA"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_032495741.1"
+     regulatory      complement(19645..19769)
+                     /note="Pseudoknot of the regulatory region of the repBA
+                     gene"
+                     /db_xref="RFAM:RF01089"
+                     /db_xref="SO:0005836"
+                     /inference="profile:Rfam:RF01089"
+                     /regulatory_class="other"
+     gene            complement(20018..20404)
+                     /locus_tag="MEGJMN_026"
+     CDS             complement(20018..20404)
+                     /db_xref="RefSeq:WP_015632417.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032968CA"
+                     /db_xref="UniRef:UniRef100_A0A6C0NDI2"
+                     /db_xref="UniRef:UniRef50_C6CPI2"
+                     /db_xref="UniRef:UniRef90_A0A6C0NDI2"
+                     /product="Thioesterase"
+                     /locus_tag="MEGJMN_026"
+                     /protein_id="gnl|Baktfold|MEGJMN_026"
+                     /translation="MFTKKFAVDEKHVDFQGVVDGLYYPFYMEWTRHAYMKDALGLDLE
+                     AEFKEGRLHMILEYSMKFKKSLLKDHNMEVTCQLQKNEKRNRVNFVQQILVDGVVFAEA
+                     TFVATCLVNGRPSVPEVVQNAIVE"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632417.1"
+     gene            complement(20404..20889)
+                     /locus_tag="MEGJMN_027"
+     CDS             complement(20404..20889)
+                     /db_xref="RefSeq:WP_015632418.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000329691F"
+                     /db_xref="UniRef:UniRef100_A0A6C0L1X5"
+                     /db_xref="UniRef:UniRef50_J2UQ18"
+                     /db_xref="UniRef:UniRef90_A0A0C5H1S2"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_027"
+                     /protein_id="gnl|Baktfold|MEGJMN_027"
+                     /translation="MQESEVDKKSIKINFHRYSNEAINFLNSFEKVTYVSTLLVEDNIL
+                     SAHQSNGYADWDKKFYYDGKYKDSLLIKLGLELTKIEGGDKKTVIWDDVLRNHPENEID
+                     RQRRAHNIYHGVSFIYGLTDNISMAINVCTDSATTKREFEDLILPHRLKLLTMFQDM"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632418.1"
+     gene            complement(20856..21434)
+                     /locus_tag="MEGJMN_028"
+     CDS             complement(20856..21434)
+                     /db_xref="RefSeq:WP_015632419.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000329699F"
+                     /db_xref="UniRef:UniRef100_A0A6C0NDC2"
+                     /db_xref="UniRef:UniRef50_A0A0U5LAP5"
+                     /db_xref="UniRef:UniRef90_A0A6C0NDC2"
+                     /product="XRE family transcriptional regulator"
+                     /locus_tag="MEGJMN_028"
+                     /protein_id="gnl|Baktfold|MEGJMN_028"
+                     /translation="MLDTIGKRLKCCRAATGTTTHEVVDYIHSQGEELSYPTYTRWEAG
+                     SAFPGKKTAHLIGIVSDFFKKNGLQVEANWILSGEGFPPQFAEYTTMDEDTLFILASRT
+                     MQDVELIQVGGKYGEPYVNFGEFVIVSNESDIYKNNGKLCYVKTTEGVKIGIVSILDEK
+                     SILLVGIGEKEIKKSVVQECRKVKWIKKV"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632419.1"
+     gene            21702..22235
+                     /locus_tag="MEGJMN_029"
+                     /gene="rfaH"
+     CDS             21702..22235
+                     /db_xref="RefSeq:WP_015632420.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003296925"
+                     /db_xref="UniRef:UniRef100_A0A6C0NCZ7"
+                     /db_xref="UniRef:UniRef50_A0A6C0NCZ7"
+                     /db_xref="UniRef:UniRef90_A0A6C0NCZ7"
+                     /product="Transcription antitermination protein RfaH"
+                     /locus_tag="MEGJMN_029"
+                     /protein_id="gnl|Baktfold|MEGJMN_029"
+                     /translation="MRNWYLLQCQVQNFQRITTRIHMLNIESFVPTEVKISRRRDCNGC
+                     RTTEKPLFPGYIFLRFDPEEIHTTTFTEIPGARHFVSFGGQPETVSDTIIAALKCSAHL
+                     LIYPEDNAVGFKNLPPELIEKISLIFSTKNALERQISFFKLLESDNDIELMTRNGGRIY
+                     SQVPSNQPQIRPSV"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632420.1"
+                     /gene="rfaH"
+     gene            22253..22456
+                     /locus_tag="MEGJMN_030"
+     CDS             22253..22456
+                     /db_xref="RefSeq:WP_032495743.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003D8E070"
+                     /db_xref="UniRef:UniRef100_A0A6C0L2Y1"
+                     /db_xref="UniRef:UniRef50_A0A6C0L2Y1"
+                     /db_xref="UniRef:UniRef90_A0A6C0L2Y1"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_030"
+                     /protein_id="gnl|Baktfold|MEGJMN_030"
+                     /translation="MSSSAEKKTNVIYIGSTRRRKIEKAAISLSVHAGKPISAAKITQE
+                     VLDMYLESYIKDFIENTPPDDD"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_032495743.1"
+     gene            22490..22801
+                     /locus_tag="MEGJMN_031"
+     CDS             22490..22801
+                     /db_xref="RefSeq:WP_015632421.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032968ED"
+                     /db_xref="UniRef:UniRef100_A0A6C0L6Y8"
+                     /db_xref="UniRef:UniRef50_A0A6C0L6Y8"
+                     /db_xref="UniRef:UniRef90_A0A6C0L6Y8"
+                     /product="DUF1496 domain-containing protein"
+                     /locus_tag="MEGJMN_031"
+                     /protein_id="gnl|Baktfold|MEGJMN_031"
+                     /translation="MNKVLYLTLSLLTFPIIASASSSVNDVVSEQYLISISNQLKEISS
+                     DIKLQNTMLEDKHHNRCYWEGKAYSAGAVHTDNAQSYVCREQNNARVWELMSADGSAK"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632421.1"
+     gene            22881..23486
+                     /locus_tag="MEGJMN_032"
+     CDS             22881..23486
+                     /db_xref="RefSeq:WP_015632422.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000329697F"
+                     /db_xref="UniRef:UniRef100_A0A6C0L5V6"
+                     /db_xref="UniRef:UniRef50_A0A7G3L4A4"
+                     /db_xref="UniRef:UniRef90_A0A7G3L4A4"
+                     /product="Lipoprotein"
+                     /locus_tag="MEGJMN_032"
+                     /protein_id="gnl|Baktfold|MEGJMN_032"
+                     /translation="MKHLLPGLLIPAVLAGCVSHSASTDAPASIYVDGLIADSAQTISH
+                     AQTGLHQTGPYPARPVSPAAQFKPLPPSTPVRKGTTEPYRSQPRPVSQNVQPPTLSHVV
+                     YNGRPGPLSFPQRAGYARNITVQAAAQRIIPVGWSVNWSPGLEKVRRQRVNLSLNDQWP
+                     RVLNNLIAAKSLYATVEWGQSRITITSYSPRPRLFSHQ"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632422.1"
+     gene            23499..23978
+                     /locus_tag="MEGJMN_033"
+     CDS             23499..23978
+                     /db_xref="RefSeq:WP_015632423.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003296919"
+                     /db_xref="UniRef:UniRef100_A0A6C0ND22"
+                     /db_xref="UniRef:UniRef50_A0A0P9RVK3"
+                     /db_xref="UniRef:UniRef90_A0A7G3L7G8"
+                     /product="Transglycosylase SLT domain-containing protein"
+                     /locus_tag="MEGJMN_033"
+                     /protein_id="gnl|Baktfold|MEGJMN_033"
+                     /translation="MKLPAIFLSTLLFLPQAQAYCFNYAAAKYNQNPLVVESIAIWESS
+                     LRPDAVGRNYDKAGRLLSSDYCLMQINTANVRALVSIGVISSADDLLKDPCLCVQAGAW
+                     VLAKHLRKCGNTWRCLGSYNAGFSDDPKQERKRQTYAAEIRSIYERLYARQHRAS"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632423.1"
+     gene            24001..24468
+                     /locus_tag="MEGJMN_034"
+     CDS             24001..24468
+                     /db_xref="RefSeq:WP_015632424.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000329699B"
+                     /db_xref="UniRef:UniRef100_A0A6C0ND56"
+                     /db_xref="UniRef:UniRef50_A0A2J5Q4Q6"
+                     /db_xref="UniRef:UniRef90_A0A7G3L854"
+                     /product="DotD/TraH family lipoprotein"
+                     /locus_tag="MEGJMN_034"
+                     /protein_id="gnl|Baktfold|MEGJMN_034"
+                     /translation="MKEKLLATVVASFMLAGCQQPKSVITAPYVPPEKTSQNVSIVRAQ
+                     QYQLWDEKVINTRTPLPADTIYANSTRLSLDWDGDAIELLAQLARQRGLQFNYSGVHLP
+                     LPLNIHVRDMTFQNLLRIVESQISWRATLHQYPGLLRVEFMPVKAPPGGRR"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632424.1"
+     gene            24465..25283
+                     /locus_tag="MEGJMN_035"
+     CDS             24465..25283
+                     /db_xref="KEGG:K12204"
+                     /db_xref="RefSeq:WP_015632425.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000329691D"
+                     /db_xref="UniRef:UniRef100_A0A6C0ND76"
+                     /db_xref="UniRef:UniRef50_A0A7G3L7Q4"
+                     /db_xref="UniRef:UniRef90_A0A7G3L7Q4"
+                     /product="Conjugal transfer protein"
+                     /locus_tag="MEGJMN_035"
+                     /protein_id="gnl|Baktfold|MEGJMN_035"
+                     /translation="MKYSAIALFCLCVAGYATADDSEPSTPQGMEHYLDISNDSKSDIT
+                     DARAAIIRSAGHTIGFRGGKAQRAFELVNALNARESTLNALYDFRTLVSQEGWLPPVID
+                     EAQDVAHITDNQIRTASRVYQIILPERFVSNPPSWRRWLLAGLSTTSPSGQEGGVIPKN
+                     SDERKIWQEAVEKGWQDGRDGADHTLEANFNRLTRDYRGMLLYSRLLREGYISRPEITE
+                     QQQSVSGGHKKLVTGDRVRNLRRHAEFNPNKGHWKPVINTESHHEARQTF"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632425.1"
+     gene            25261..26448
+                     /locus_tag="MEGJMN_036"
+                     /gene="traJ"
+     CDS             25261..26448
+                     /db_xref="EC:7.2.4.8"
+                     /db_xref="KEGG:K12203"
+                     /db_xref="RefSeq:WP_032495744.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003D878FC"
+                     /db_xref="UniRef:UniRef100_A0A0C5H2U4"
+                     /db_xref="UniRef:UniRef50_A0A0C5H2U4"
+                     /db_xref="UniRef:UniRef90_A0A0C5H2U4"
+                     /product="plasmid transfer ATPase TraJ"
+                     /locus_tag="MEGJMN_036"
+                     /protein_id="gnl|Baktfold|MEGJMN_036"
+                     /translation="MKPVKLSDPTTPDIELFNFDGPVNASNYKEFLVWAAKNAVSDIHV
+                     QGGNPIVIERYGRMVPVTTFSLPDNILSDIIDGLFDPELRAKVRGGTPQDRAIQLDGDQ
+                     NKRYGLDRGERLRFRCNVVQATAANMLTTCAMTQRVIPTEIPELENMGIEPDLFEALLP
+                     HKGLGLVCGETGSGKSTLLAAIYRYCADHYPDRKITTAEDPVEYIIGRKGDVLPATQLE
+                     LGRDVATFAEAIRAALRRAPSIIGVGEMRDTETILAAVLSALLGHLCLSTLHTDSVGET
+                     IPRLLAGIPIEIREATARDVMGTMQYIIVQRLLRTTDGKRQAVREYLVFDQPLRNEMAQ
+                     VPYTEWGHLLNRKVREKKGRIADKAFRLLREGIIERDEMLSVVSPAELREMEDSV"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_032495744.1"
+                     /gene="traJ"
+     gene            26445..26711
+                     /locus_tag="MEGJMN_037"
+                     /gene="icmT"
+     CDS             26445..26711
+                     /db_xref="KEGG:K12222"
+                     /db_xref="RefSeq:WP_032441926.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003D7ED4E"
+                     /db_xref="UniRef:UniRef100_A0A6C0L1W9"
+                     /db_xref="UniRef:UniRef50_A0A7G3L622"
+                     /db_xref="UniRef:UniRef90_A0A7G3L622"
+                     /product="IcmT/TraK family protein"
+                     /locus_tag="MEGJMN_037"
+                     /protein_id="gnl|Baktfold|MEGJMN_037"
+                     /translation="MRSVENRCRESSRPLTIYGVPVAMFLIYLIWCKFPSFMTLWICSG
+                     VLTFFGVIAHFGWSWPVLLQRLLHMMRGSRKAGRPWWYRRFYE"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_032441926.1"
+                     /gene="icmT"
+     gene            26729..30052
+                     /locus_tag="MEGJMN_038"
+                     /gene="traC"
+     CDS             26729..30052
+                     /db_xref="RefSeq:WP_032495745.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003D941A3"
+                     /db_xref="UniRef:UniRef100_A0A6C0L4D4"
+                     /db_xref="UniRef:UniRef50_A0A7G3L4B5"
+                     /db_xref="UniRef:UniRef90_A0A7G3L4B5"
+                     /product="DNA primase TraC"
+                     /locus_tag="MEGJMN_038"
+                     /protein_id="gnl|Baktfold|MEGJMN_038"
+                     /translation="MAQNAQVADRRLWLAVPHEEKDEAVAAGGLASDGRPNISWSPDDK
+                     LWYAREGTALAGIRLWLPDTTARATGDADPLVEFADRLKEAGFLLEGLPVMDGKWHRAK
+                     VEEDKKGKSHREGGGAYKGFSDGHPAGIFVNYHRSSEKEVSRWRAQGGETDPLTRLHIR
+                     AATRQAQDDSERVRQQAYAEKAWAASQLYDKLAPATDSHPYLLRKGVSADPALRVTRNN
+                     RLVIPFYNHDDKFQSLQYIAEDGEKKLFFEAPKAGNFYITGATPVNGKPILYAEGYATA
+                     KSLNVATGLPVVMTIDAGNMRTIAESFGKRFPDSPHFFMADMDLKKNDNKDDLYLSIQS
+                     SRFVPSDPGFYMDEEKLKEIKGLYMALQAADRVPDGHVVIPPFTEQEMKAGLSDFNDLH
+                     SARGLDSLKTVLAETPGLGAYLYHPETQTMTVPVEKQTPAQPYPDSAPAYDNVLLEGSD
+                     DASADMESYEAMMAAEAIAAPEAAAVPEAAAAPEAAAAPEAAAVPEATAAPEAAAVPEA
+                     TAAPEAAAAPTIASLLKVTSAPAEPEVSADPAANDNPAPVKAKSTAENATTAANEPDDT
+                     ENAIVWGPRAPGEGNFTPETASASALIDTNALLQRITHEMQSNTVLYKLDGQPAFRDHG
+                     NRMTMETPDASKQDDMVMAALLTAMQHYGRRIQITGSETFQTKVIGLIASHGLDVQMRD
+                     PVQQAMLNEAIKQQAADRPDARDSINATPVMPANAPVQASPGKNTSGPAPAGEQPSPAP
+                     SAGTAVPPVKSSEPAGQQPFTTKAEDFKDGVKGRLLEHGRAHYQFNEQNSMNYYVHLET
+                     REGVREVWGKELEQAINQSRVSEGQVISLKFEGNKPVTVNQPIMKDGKIQGYEQVTAHR
+                     NSWSMTPLVNSRVRPPASPTTGETLAAYDLQEFSKIQARLLRTIRAENVPPIAGQKNNL
+                     LWIRPDGRGTGDAGDPATVKLPAKDGQSTTPVVSAWRDDGQLALHLVKGHGPYLQGIAQ
+                     INGQYQHVLASMTGNQNNAGLVINAITPDGLKTVGYGQALNKVEGKPVARDAMAFRFAG
+                     ETDPDRKLIGKLENPETLPRTIHARLGFDEPYRPDTDYPKSQPRAEHHHKAAPGAGRPG
+                     "
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_032495745.1"
+                     /gene="traC"
+     gene            30086..30439
+                     /locus_tag="MEGJMN_039"
+     CDS             30086..30439
+                     /db_xref="KEGG:K12227"
+                     /db_xref="RefSeq:WP_015632427.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003296943"
+                     /db_xref="UniRef:UniRef100_A0A6C0L5S2"
+                     /db_xref="UniRef:UniRef50_A0A7G3LBI7"
+                     /db_xref="UniRef:UniRef90_A0A7G3LBI7"
+                     /product="Conjugal transfer protein"
+                     /locus_tag="MEGJMN_039"
+                     /protein_id="gnl|Baktfold|MEGJMN_039"
+                     /translation="MPVKKMLGALAVCALFLTPLSLQAATCRASTAAETGSETGYNTAK
+                     KAAEAWYDRESDVSDSLQTCLDKIRTLSITMPNFSSLSSILNGYADEICSTVVSEVNSY
+                     IPSSIDPWDELTN"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632427.1"
+     gene            30475..31179
+                     /locus_tag="MEGJMN_040"
+                     /gene="traM"
+     CDS             30475..31179
+                     /db_xref="RefSeq:WP_015632428.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003296974"
+                     /db_xref="UniRef:UniRef100_A0A6C0L2X6"
+                     /db_xref="UniRef:UniRef50_A0A7G3L479"
+                     /db_xref="UniRef:UniRef90_A0A7G3L479"
+                     /product="Conjugal transfer protein TraM"
+                     /locus_tag="MEGJMN_040"
+                     /protein_id="gnl|Baktfold|MEGJMN_040"
+                     /translation="MNTPATGGTDSSAPQTTRSLSAQEQLVYDEAVRLQNEQALGATFA
+                     RKLLTSNLILGTAFLLTTSLSAVTLWKVYHPDNHYFATENGRVTPIYPLNKPAWSMEDI
+                     AGFGADTLQRAFTMDFVHYRQQMTSVMTRFTNQGYADYYKALTSSNVLKMVRDQRMNLS
+                     TTVSPGVVHSQGIINGIYTVRVQYPVSLKLDGQERSLPAANYIIELTIQQTDPRKKPLG
+                     LEVRQTIMTSSH"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632428.1"
+                     /gene="traM"
+     gene            31190..32293
+                     /locus_tag="MEGJMN_041"
+                     /gene="traN"
+     CDS             31190..32293
+                     /db_xref="KEGG:K12213"
+                     /db_xref="RefSeq:WP_015632429.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032969A3"
+                     /db_xref="UniRef:UniRef100_A0A6C0L6Y2"
+                     /db_xref="UniRef:UniRef50_A0A7G3L550"
+                     /db_xref="UniRef:UniRef90_A0A7G3L550"
+                     /product="Conjugal transfer protein TraN"
+                     /locus_tag="MEGJMN_041"
+                     /protein_id="gnl|Baktfold|MEGJMN_041"
+                     /translation="MKPYFALSLLAVMCCNVGAAEPQQTVVPHSADPILVTDGPQQDAA
+                     LMNKAGLPPQPAEQPPAQPVQPPETTQATPPSAPTAAPPQAGSQTDQAPSATQNSDELP
+                     PPSPLYSAAQKQVSPLTPDEVRQLRGQKENINRALASPAMTVVPRISAQTVNLSPGSSL
+                     PLVRTAVNHPSNLSFTDATGAPWPVAGKPTNPMTKDFDVYYIPDSPIVTIVAKRPYASG
+                     SITVLLKGLSVPISVEVTSGDTDSKSRVWTVDNRLDLRIPQRGPSARPMAAPESKIGLY
+                     DNTLQAFLDGTPPREAHRLKATGQVPDTTVWQLGDDLFIRTRAEIVDEYDQTLSSADGM
+                     HLFKLPVTPYVTFSVMGRSQALNITLE"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632429.1"
+                     /gene="traN"
+     gene            32297..32704
+                     /locus_tag="MEGJMN_042"
+     CDS             32297..32704
+                     /db_xref="RefSeq:WP_104022059.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0009386B92"
+                     /db_xref="UniRef:UniRef100_UPI0009386B92"
+                     /db_xref="UniRef:UniRef50_UPI0009386B92"
+                     /db_xref="UniRef:UniRef90_UPI0009386B92"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_042"
+                     /protein_id="gnl|Baktfold|MEGJMN_042"
+                     /translation="MANENDASRDKKLLVGLIALVCAGAAGGGYLVWNHFFAPPPTPSR
+                     INVTNVTSAGKHQSTETEQYRQLLHEYNREGASAARADNSSFIASIPVGGGTPVHTVEA
+                     PRKRRSGNPHTRKNRRRRKRTRVSVSQIRQP"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_104022059.1"
+     gene            32722..33636
+                     /locus_tag="MEGJMN_043"
+                     /gene="traO"
+     CDS             32722..33636
+                     /db_xref="KEGG:K12209"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniRef:UniRef50_UPI00215B38C2"
+                     /db_xref="UniRef:UniRef90_UPI00215B38C2"
+                     /product="conjugal transfer protein TraO"
+                     /locus_tag="MEGJMN_043"
+                     /protein_id="gnl|Baktfold|MEGJMN_043"
+                     /translation="MDTSAQSPDLQQVSLAVATEPGAAAEGSQAKSAYADWTSSIMPRS
+                     TGGGLSGGEGSTAPIIELIPAYTRVPGSVDFGIDSDNNNSPAVVRLYTGPYKGAVLKAS
+                     QAKLGGDGVVIHMTTMYWNRKNYRVDAYALKDDTLMANVATDVNHHYMSRILLPSIAAG
+                     IGKAGDLYADANTEILTNGYSTVTSHAGMPDGEAVAGVVAGGAASNAADVLKSDAAKIS
+                     PTQVTVDAGQAVYVEFMAAVTTADEIKPRGQNSPGNTATTPENLQDSHTGNALSPVSPT
+                     LAQLREQTQSRIRTQSKPENTSE"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef90_UPI00215B38C2"
+                     /gene="traO"
+     gene            33642..34361
+                     /locus_tag="MEGJMN_044"
+                     /gene="traP"
+     CDS             33642..34361
+                     /db_xref="KEGG:K12211"
+                     /db_xref="RefSeq:WP_015632431.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003296995"
+                     /db_xref="UniRef:UniRef100_A0A6C0ND15"
+                     /db_xref="UniRef:UniRef50_A0A486BGK9"
+                     /db_xref="UniRef:UniRef90_A0A6C0ND15"
+                     /product="conjugal transfer protein TraP"
+                     /locus_tag="MEGJMN_044"
+                     /protein_id="gnl|Baktfold|MEGJMN_044"
+                     /translation="MNEFNHPATEKDDQPDTSAIVQHEKPGLKYFLLEKQYILGLNGPW
+                     LIGMLTAATLGVWYLFGTVAPSSSDELNAAAGFEDVPPAASQPQNRSLSPPMSQPASDN
+                     VKQEVATMVNGVKTYAETNRTAIQRLAGTVKTLQQQADAAQQLQSQYLNEISVLKSRVA
+                     TLEVEKVNTATSAHHRPRLLTSGMKVNSVQDGAAWIFWKNKTWAVREGDTLADGKVSII
+                     RIDSANRQVFTTEGVIR"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632431.1"
+                     /gene="traP"
+     gene            34371..34904
+                     /locus_tag="MEGJMN_045"
+                     /gene="traQ"
+     CDS             34371..34904
+                     /db_xref="RefSeq:WP_015632432.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003296963"
+                     /db_xref="UniRef:UniRef100_A0A6C0L1W3"
+                     /db_xref="UniRef:UniRef50_A0A7G3L862"
+                     /db_xref="UniRef:UniRef90_A0A7G3L862"
+                     /product="conjugal transfer protein TraQ"
+                     /locus_tag="MEGJMN_045"
+                     /protein_id="gnl|Baktfold|MEGJMN_045"
+                     /translation="MVDALTALVNLASAIHTSANRFIFALAVVLGIYGVMFALVKEARM
+                     ARQVPGHNGMGKIIGVIILGGMLVGLSQIINAGAVQLGWSDVTFDEVSYVSTDTFGQGA
+                     DAANALLTLLQTLGVAYALAGTQRIKRSLKDGHTGLSAGEDVGTGAVKFITGVFLICAP
+                     TLLDAIQTSLGLSL"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632432.1"
+                     /gene="traQ"
+     gene            34958..35359
+                     /locus_tag="MEGJMN_046"
+     CDS             34958..35359
+                     /db_xref="RefSeq:WP_015632433.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032968E0"
+                     /db_xref="UniRef:UniRef100_A0A6C0L622"
+                     /db_xref="UniRef:UniRef50_A0A7G3L7P3"
+                     /db_xref="UniRef:UniRef90_A0A6C0L622"
+                     /product="Conjugal transfer protein"
+                     /locus_tag="MEGJMN_046"
+                     /protein_id="gnl|Baktfold|MEGJMN_046"
+                     /translation="MSAIFDRVLKASIAAHELRHSMKRKFTAGMASLVALTPLSALADG
+                     SLTDMVDEGATGMSDVEKDALVFAEGLGVLIVFASIIAMKNKAKSPHITTGGIITGWVV
+                     GIFLIGLAEIVRRSQSQVGMTEVTVGSGS"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632433.1"
+     gene            35403..35966
+                     /locus_tag="MEGJMN_047"
+                     /gene="traT"
+     CDS             35403..35966
+                     /db_xref="RefSeq:WP_032495746.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003D82576"
+                     /db_xref="UniRef:UniRef100_A0A6C0NDH2"
+                     /db_xref="UniRef:UniRef50_A0A7G3L4E4"
+                     /db_xref="UniRef:UniRef90_A0A7G3L4E4"
+                     /product="Conjugal transfer protein TraT"
+                     /locus_tag="MEGJMN_047"
+                     /protein_id="gnl|Baktfold|MEGJMN_047"
+                     /translation="MTQTGVDDVAWLDVSGDEMPPSPVQVNAECCSRCRWPAQRLFRLR
+                     EAENDTVCATCWISHNLDTASAHKGALCWFPGLHAADVVNLQRTACIAAIAGNSTAKKQ
+                     GQRVLRWMLRHKRETERAWDTSRPAEFAAVMSRLHPDDRLVFRQRLAGCHLVLPATVFS
+                     DLSLLLPAGMDADTFLNTLTLPRL"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_032495746.1"
+                     /gene="traT"
+     gene            35976..39023
+                     /locus_tag="MEGJMN_048"
+     CDS             35976..39023
+                     /db_xref="EC:7.2.4.8"
+                     /db_xref="KEGG:K12206"
+                     /db_xref="RefSeq:WP_086581441.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00093847B4"
+                     /db_xref="UniRef:UniRef100_UPI00093847B4"
+                     /db_xref="UniRef:UniRef50_A0A0N8QU23"
+                     /db_xref="UniRef:UniRef90_A0A7G3L613"
+                     /product="Conjugal transfer protein"
+                     /locus_tag="MEGJMN_048"
+                     /protein_id="gnl|Baktfold|MEGJMN_048"
+                     /translation="MSLMNAIEDFITTISRNTVSDAMPDYCDLRTIVNLTDSDRNFYPD
+                     MQVPFIAVTEAGHYASTFEVQGGFCEMDEDAPASQKFSFDGFINKVATAMATDFKSPGH
+                     KISVVIENDPSLGKSELKRLMAHQFRSIARTGVGMADILDEKIAKISPWVSRERVWLTC
+                     WTGRETLSPQELKSDMHRISKLASKAPKTQFGQVPAFSELTGLKIRHDAFLSTIKTALF
+                     DGGDGQLIDLIDVHQLGREIRHQVDRKGTDEAYRPVLASDRVRPHGKRNREDASPFFAP
+                     WLNYQLMGIDADAENNFININGMWHATLSVSMGPQQLLTFAQLKARIPRSVPYRIRMDV
+                     MPGGLKSLSWKGTLLTYTAFIPPLRPIWEAVEELKKRNRHDPVCVVTIVASTWGETKEE
+                     ATLNLTLLTKAFQGWGVCEVTSTFGNPYRAWASTLLTARTGGGPHNLHLPLKDALSLLP
+                     LSRPASAWSDDASIVFPTPDGKIIPVGLASSKQNKHTEVIVGEPGSGKSLIMNMLSNAI
+                     VCNAQQKLPFIAVVDKGYSAQGQIQLIRDSLPPERKDEAIGWALRNHSDHCRNMFDIQL
+                     GARYPVAPELTWMKSMLTAMCIDSNTGLPPNSRDIDVLLERIISMAYRDKDETSPNKFS
+                     DGASPEITRALKASGLWFRHDAEWWDECPWYDVRDMLFSAGYVKEAQLAQFLAVPELSD
+                     MSQYINSPEIKASFGKVCRDNSQELLTDYIARVLSQACNTYKMLAGRTRFIINPATRII
+                     AIDLNNVVGDKSAEGQLRTGIMYLFAGQISGGDFILPQYRKELMEAVPDMYRALHAEKI
+                     DQLDQEVKSKYYDELHNAKDVPFIFPMLETQDREQRKFGIRTVLCSQYVTDFPDSVLKS
+                     ANSVYVMHCRPEDKQALIDHYQVPEVTIKKFMQIPKGPAADGSGTSLLAVFRTKAGRIA
+                     HILKNTAGPKELWALSSTQGDTALRDYLYDELDGPTARAILAENFEHGSAQRVIEFRRK
+                     KAGEQDAGNVTRHLAREIIEKRGYRL"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_086581441.1"
+     gene            39034..40230
+                     /locus_tag="MEGJMN_049"
+                     /gene="traW"
+     CDS             39034..40230
+                     /db_xref="RefSeq:WP_015632436.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032969B2"
+                     /db_xref="UniRef:UniRef100_A0A6C0NDA4"
+                     /db_xref="UniRef:UniRef50_A0AA46K2G6"
+                     /db_xref="UniRef:UniRef90_A0A7G3L4A8"
+                     /product="conjugal transfer protein TraW"
+                     /locus_tag="MEGJMN_049"
+                     /protein_id="gnl|Baktfold|MEGJMN_049"
+                     /translation="MRLKILAATLTVMCGQAFAGYPVSVISSVPITSQVVPQLTTMQTT
+                     LAEILTTNTEIGSAITQASDKNTATLTEGFQAQRQADNFGRETERLEKARASFTVPDSI
+                     CSESASGVAQQVHNTARATASSLASGSGISNTAIQKAVASAPVLPAQDDYRSAAIHANY
+                     CTSAEYAVYGGTALCQSVSSDMPGGDIQVQSLYDGAGAVGKEPELTFSDDQIDAGMAYM
+                     RNSAKHSPGRTLGKGEIKNETGWQYQGLLTQYKAIQSAAQQPQLSMIADSKPNSSTTTA
+                     LKEALENASAQSYFDDTASDQAKSNYQMSAREFESFEVGRRYANTDYQEDLQAMDGDNL
+                     MRELIRVQSLSNYLQLGIKNQLRESNIIAGQQLALAADREYRPQLQALMQEISGGVAK"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632436.1"
+                     /gene="traW"
+     gene            40227..40808
+                     /locus_tag="MEGJMN_050"
+                     /gene="traX"
+     CDS             40227..40808
+                     /db_xref="RefSeq:WP_015632437.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032968CF"
+                     /db_xref="UniRef:UniRef100_A0A6C0NCY4"
+                     /db_xref="UniRef:UniRef50_A0A7G3LBL1"
+                     /db_xref="UniRef:UniRef90_A0A7G3LBL1"
+                     /product="conjugal transfer protein TraX"
+                     /locus_tag="MEGJMN_050"
+                     /protein_id="gnl|Baktfold|MEGJMN_050"
+                     /translation="MTHKAHDNQTEPAGQPTRSTAVKRVRKALSLSVSIFTPINDMRRM
+                     GSDVSQSLKTSISRLKAFRRQAREEKREKLTFEQAVQASGYSLPQLLWKYRFLKRLWWV
+                     VAGLFLVLTPVLMAMILLTASTLPSMTFWRAIIFVVIFAALASLAALKVVICQYRLWQL
+                     QQRRVSDEEGGRFSDFLHHAHWIKDALNPV"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632437.1"
+                     /gene="traX"
+     gene            40850..42994
+                     /locus_tag="MEGJMN_051"
+                     /gene="traY"
+     CDS             40850..42994
+                     /db_xref="RefSeq:WP_103857356.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0009384037"
+                     /db_xref="UniRef:UniRef100_UPI0009384037"
+                     /db_xref="UniRef:UniRef50_A0A0P9SZQ3"
+                     /db_xref="UniRef:UniRef90_A0A7G3L488"
+                     /product="Conjugal transfer protein TraY"
+                     /locus_tag="MEGJMN_051"
+                     /protein_id="gnl|Baktfold|MEGJMN_051"
+                     /translation="MKLFKQPLQGLLLLLVSLPALADDVTYSTIRDAAENSSDLSRQAL
+                     VTIFGDVVTSPFTATDTTVIGSLFGILNGVICAIALFWFLTVTLKSIVKAGNAGKVFGS
+                     TRTAMAPLMSFVGFITLVPTSSGWSLSQLIMLWAASIMGVGSANLLTNKAVDMMDDRYS
+                     LVTQPVASSTRDAAQQIFEMNLCKYAINEQLSGFYDDAGSASTSEMSTSGSDGSYETSN
+                     GSAYCGTAKIPTTTRSSSWSVLFDSDVDTDAIVSAQKSALDTMQTTLDSAAQTFVSTYI
+                     SKRDDDSGTLTDVETTIQNAATAYENTINSALSQIDYEDTLQSSLSSNMKTYGWIALGA
+                     WYQTFATANAKTTDVGKSAPTVSGPTGLGEMGNTDLYQQVFTAYNAQLQNSSYTATLGI
+                     QTSKKDIETGRAKDPKSVFVGLFNSPMQQLTNWFATQNIGQVNDDSDQLNPLIQMKTIG
+                     DYTLDTVGTALTSYVAIQGSIALSGNNIVGRFTNGLTGWKATAVAVMQALSPPFYFLLL
+                     ILFSAGFSLSVLLPAIPFIYWMTGVLNWSVSVLVGCAAGPMWSATHLGTEEDQGSRAAY
+                     GYVFLIDMMLRPSLMVLAFFFASVAIVAAGTILNLLFASALANAQIDSWTGLFAAVGWL
+                     FIYARICTTVATKVFSMLVVIPDYVIGFLGGREGASLFSGLSDSVSNIFAGVGSTVSPG
+                     NIPGMAAKERNSGDKDGFKG"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_103857356.1"
+                     /gene="traY"
+     gene            43060..43683
+                     /locus_tag="MEGJMN_052"
+                     /gene="excA"
+     CDS             43060..43683
+                     /db_xref="RefSeq:WP_015632439.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000329693E"
+                     /db_xref="UniRef:UniRef100_A0A6C0L6X5"
+                     /db_xref="UniRef:UniRef50_A0A7G3L543"
+                     /db_xref="UniRef:UniRef90_A0A6C0L6X5"
+                     /product="plasmid IncI1-type surface exclusion protein
+                     ExcA"
+                     /locus_tag="MEGJMN_052"
+                     /protein_id="gnl|Baktfold|MEGJMN_052"
+                     /translation="MESQRERTGMETFVLLVKFWSAIIYFPVCLLFAFVCTISSRKGSF
+                     ELAVLFWALFVTPFIIRQFTLQKRRRALNSVVAAVSGEEFMPQKGNVIISGNRTYLGVD
+                     AIRGTLLYVSMRRKGEYDVMGMDMSSWTRVEYKGDVITLKTKNPELPSVSVDAPGGEKY
+                     SAALYDVICAMEHRQYADLQFPQKAHERARNARKETGLTVFSYT"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632439.1"
+                     /gene="excA"
+     gene            43785..45203
+                     /locus_tag="MEGJMN_053"
+                     /gene="trbA"
+     CDS             43785..45203
+                     /db_xref="KEGG:K12218"
+                     /db_xref="RefSeq:WP_015632440.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003296998"
+                     /db_xref="UniRef:UniRef100_A0A6C0L5T9"
+                     /db_xref="UniRef:UniRef50_A0A6C0L5T9"
+                     /db_xref="UniRef:UniRef90_A0A6C0L5T9"
+                     /product="Conjugal transfer protein TrbA"
+                     /locus_tag="MEGJMN_053"
+                     /protein_id="gnl|Baktfold|MEGJMN_053"
+                     /translation="MSQNRQAATGHDDAYGFLLIPAALVIICWLWFSKFVWASCLLLYW
+                     LWGMVDFQRIHPWVAEKINLLARTGNHAQAVSWHDWFAVMNETSGILLIFLLPIAISAL
+                     VSIKNHPSQPMKSKRIVNIHTLPQIMSKWSPAIVPVLAESRSPDLLMNDDGPERRWAEK
+                     PEEFAARHGLITSRMLDREKARDVFISQLGTRLSASPDTLQDYEKALFAVFGLQVLMNN
+                     RKAAKKLLDDLNRSCLPRNRKERKRTKNLYRPDFSLAEKTFQKVWQAEGMQEIHATHQY
+                     VRTALSDLLGHDIRLPPSQYLWLKPIDRTLWYALHGADTASVFVEGAGVIAQTRFEIVV
+                     RKEKLPLQIDYVESAIDGLQYELEGLGLVHERRVKKTERRKKAPDWLPPTLGQDSFTDL
+                     HSDEPEPAEAEQPEDNPIAAQAHPSQEAGINAVPSPTYHADTATSAAQPATPPHVSHDA
+                     AAGEPADDDEPAYI"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632440.1"
+                     /gene="trbA"
+     gene            45178..46305
+                     /locus_tag="MEGJMN_054"
+                     /gene="trbB"
+     CDS             45178..46305
+                     /db_xref="KEGG:K12228"
+                     /db_xref="RefSeq:WP_165488786.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0013F14D80"
+                     /db_xref="UniRef:UniRef100_UPI0013F14D80"
+                     /db_xref="UniRef:UniRef50_A0A7G3L7E7"
+                     /db_xref="UniRef:UniRef90_A0A0C5H1T8"
+                     /product="TrbB"
+                     /locus_tag="MEGJMN_054"
+                     /protein_id="gnl|Baktfold|MEGJMN_054"
+                     /translation="MTMNLLIYKATAMMTPTFNARISGNNLIASLNDDTPIFSLNVSED
+                     PSFWIEGGTLMVSLNTDSSHPVYRALDYKEAEQLLSVITLVLCNRKPKMKWKSTILPAA
+                     ALLVTCFAVWRFAPAPPSPGMPPFGQAEPRNATAESAPPRFQGLPQLRNPAPRNPYFGH
+                     NTTRNADDGQTMPARDPARPSAARPASVASQETLSPHIMQNLQKAAGRGYFTVPLSSGH
+                     ERTLYIFADPQCPHCQDFEPLFEALSTRYNVEIFPVTYVGGKQSSQQIQPVLYLNKDQR
+                     AAAWKKLFSVDDGMLTIGKKKTGDDQKEAPAQRDDKRWKIAGEALAINDVAFSQYHIPG
+                     TPWVVADDGRHVPQSMMKDPATMQAFIAGHSKAEN"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_165488786.1"
+                     /gene="trbB"
+     gene            46307..48499
+                     /locus_tag="MEGJMN_055"
+                     /gene="trbC"
+     CDS             46307..48499
+                     /db_xref="EC:7.2.4.8"
+                     /db_xref="KEGG:K12217"
+                     /db_xref="RefSeq:WP_015632442.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032968D8"
+                     /db_xref="UniRef:UniRef100_A0A6C0L1V6"
+                     /db_xref="UniRef:UniRef50_A0A7G3L880"
+                     /db_xref="UniRef:UniRef90_A0A7G3L880"
+                     /product="F-type conjugative transfer protein TrbC"
+                     /locus_tag="MEGJMN_055"
+                     /protein_id="gnl|Baktfold|MEGJMN_055"
+                     /translation="MQQKQKPVDAARLQRQVHQGMVEEMAYRTGPLLLAIIVIFGAAIV
+                     WPVLLWVAIPVMLVWVPMFMLNEFRMPARMPMDMDRLDPSTETMRPGKLLGFLPVTKLS
+                     RHMDNAAGVFYTGYERMLDGGREIWLRMDDLTRHLILLATTGAGKTEMLLGFVLNALCW
+                     AKGLIFSDGKAQNDVWFAVASLSRRFGREDDLRLLNYITGGQSRSQRLLENDKSRQQSN
+                     NTNPFALAQETYITQLMDSMMPEAGNDRTWQEKAKGMNQVLTKALIYKSRKEQKVMSQR
+                     LIQEYLSLDKFAELYLQAEAEEWHEEIRTGLRNYLSTSVPGFDMSLITKPSEWSQEARN
+                     QHGYLTSQYNRMLSLFSDTYGHVFSSGAGDIDLRDVVHNDRILVILIPALELSASEALT
+                     LGRLTTSQLAMILSQDLGERMEGKAEDILVIKKFRDRFPFIWLADEVGSYYSDTIGQLA
+                     TQVRSLGYALVLAGQDLQKLKTAVGDKLWTLLGNMFTRIFGTITDPTETAEFAAKSAGM
+                     EYQAIQDSMEYRPGAISGSYADTGRVTVQEKSKLPFDELQTLNQGEQATIFKGAVIRNN
+                     ALYIADDDKITDKDVRINRFVEVEWPTYDSLAHLLPAKVRRDRPRPASINRIMAIVKND
+                     KIRHAPDSMIIQDGVLYAIADEAMYFDEVAPTPPDAVQRATQLLSLAASVLTETRGRYS
+                     VEYPEPEKLSVKKDEFEKYQHIHQSAVTQQADGFVY"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632442.1"
+                     /gene="trbC"
+     gene            48545..48850
+                     /locus_tag="MEGJMN_056"
+     CDS             48545..48850
+                     /db_xref="RefSeq:WP_015632443.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032969B6"
+                     /db_xref="UniRef:UniRef100_A0A6C0L616"
+                     /db_xref="UniRef:UniRef50_A0A6C0L616"
+                     /db_xref="UniRef:UniRef90_A0A6C0L616"
+                     /product="phospholipase D"
+                     /locus_tag="MEGJMN_056"
+                     /protein_id="gnl|Baktfold|MEGJMN_056"
+                     /translation="MFKKILVAAVMATTLSSSLSAIAAPSVQVGFSPEGTAQELVLKTI
+                     NNAQSSVRMLGYNLTAADIAKALASASRRGVDVKVILDKRENQNKYSKAALNIRKR"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632443.1"
+     gene            complement(48873..50462)
+                     /locus_tag="MEGJMN_057"
+                     /gene="tnpC"
+     CDS             complement(48873..50462)
+                     /db_xref="GO:0004803"
+                     /db_xref="RefSeq:WP_015632444.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032969B8"
+                     /db_xref="UniRef:UniRef100_A0A6C0L3Q4"
+                     /db_xref="UniRef:UniRef50_B7LBX6"
+                     /db_xref="UniRef:UniRef90_A0AAN1A8N4"
+                     /product="IS66 family transposase"
+                     /locus_tag="MEGJMN_057"
+                     /protein_id="gnl|Baktfold|MEGJMN_057"
+                     /translation="MSQDYLARITALEEELRRKDSQLSLVAETEAFLRSALTRAEEKIE
+                     EDEREIEHLRSQIEKLRRMMFGTRSEKLRREVAQAEALLKQREQASDRYSGREDDPQVP
+                     RQLRQSRHRRPLPEHLPREILRLEPEETCCPACGGEMAYLSEVSAEQLELVASALKVIR
+                     TVRVKKACTKCDGIVEAPAPSRPVERGIAGPGLLARVLTAKYCEHLPLYRQTEILARQG
+                     VELSRALLSNWVDACCRLMAPLDEALYHYVMNCRKLHTDDTPVPVLAPGRKKTKTGRIW
+                     TYVRDDRNAGSSDPPAAWFAYSPDRQGKHPELHLRSFRGVLQADAFAGYDRLFSTSREG
+                     GVLTEAACWAHARRKIHDVYISSQSATAEEALKRIGELYAIEAEIRGMPETERLAARQS
+                     RSAPLLASLHEWMVEKSATLSKKSRLGEAFTYALNQWDALCYYCRDGLAEPDNNAAERA
+                     LRAVCLGKKNYIFFGSDHGGERGALLYGLIGTCRLNGIDPEAYLRHILSVLPEWPSNRV
+                     GELLPWNVAIPA"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632444.1"
+                     /gene="tnpC"
+     gene            complement(50492..50842)
+                     /locus_tag="MEGJMN_058"
+                     /gene="tnpB"
+     CDS             complement(50492..50842)
+                     /db_xref="RefSeq:WP_032414478.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000461CC33"
+                     /db_xref="UniRef:UniRef100_A0A5U6TJF2"
+                     /db_xref="UniRef:UniRef50_B7MRH6"
+                     /db_xref="UniRef:UniRef90_A0A2U3ERJ0"
+                     /product="IS66 family insertion sequence element accessory
+                     protein TnpB"
+                     /locus_tag="MEGJMN_058"
+                     /protein_id="gnl|Baktfold|MEGJMN_058"
+                     /translation="MISLPSGTRIWLVAGATDMRKSFNGLGEQIQHVLDENPFSGHLFI
+                     FRGRRGDTVKILWADADGLCLFTKRLEEGQFIWPAVRDGKVAISRSQLAMLLDKLDWRQ
+                     PKTPRLNSLTML"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_032414478.1"
+                     /gene="tnpB"
+     gene            complement(50839..51246)
+                     /locus_tag="MEGJMN_059"
+                     /gene="tnpA"
+     CDS             complement(50839..51246)
+                     /db_xref="RefSeq:WP_015632445.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000329699C"
+                     /db_xref="UniRef:UniRef100_A0A6C0L4C0"
+                     /db_xref="UniRef:UniRef50_A0A5R9LIB0"
+                     /db_xref="UniRef:UniRef90_A0A6C0L4C0"
+                     /product="IS66-like element accessory protein TnpA"
+                     /locus_tag="MEGJMN_059"
+                     /protein_id="gnl|Baktfold|MEGJMN_059"
+                     /translation="MSDSLRPRRVRASYSMDFKLELVEKSYQPGACVAQLAREHGINDN
+                     LLFTWRQRYSHLLPDEIQRSVSKPDAVIPVVVSDMSLSHHAEPHYEPSGSAYGEVMTCE
+                     VAVGSASLRLTGNLSPAILKTLLRELTGRGR"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632445.1"
+                     /gene="tnpA"
+     gene            51322..51462
+                     /locus_tag="MEGJMN_060"
+     CDS             51322..51462
+                     /db_xref="PFAM:PF13091.12"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_060"
+                     /protein_id="gnl|Baktfold|MEGJMN_060"
+                     /translation="MTLTNILVNAGVKVRLTDAYKIHHDKVIIIDRSTVETGSFNFRLA
+                     P"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+     gene            51538..51903
+                     /locus_tag="MEGJMN_061"
+     CDS             51538..51903
+                     /db_xref="RefSeq:WP_004118743.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00016024A5"
+                     /db_xref="UniRef:UniRef100_A0A377E910"
+                     /db_xref="UniRef:UniRef50_A0A377E910"
+                     /db_xref="UniRef:UniRef90_A0A377E910"
+                     /product="Transposase"
+                     /locus_tag="MEGJMN_061"
+                     /protein_id="gnl|Baktfold|MEGJMN_061"
+                     /translation="MIDVLGPEKRRRRSVQEKIAIVQQSFEPGMTVSLVARQHGVAASQ
+                     LFLWRKQYQEGSLTAVAAGEQVVPASELASAMKQIKELQRLLGKKTMENELLKEAVEYG
+                     RQKKWIAHVPLLPEDGE"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_004118743.1"
+     gene            51951..52766
+                     /locus_tag="MEGJMN_062"
+                     /gene="tnp"
+     CDS             51951..52766
+                     /db_xref="GO:0004803"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000272D796"
+                     /db_xref="UniRef:UniRef100_A0AB36B0N7"
+                     /db_xref="UniRef:UniRef50_P0CF60"
+                     /db_xref="UniRef:UniRef90_A0A2T2XUN4"
+                     /product="IS3 family ISEc36 transposase"
+                     /locus_tag="MEGJMN_062"
+                     /protein_id="gnl|Baktfold|MEGJMN_062"
+                     /translation="MARRSKDWQDRRCKRKPDDTDALARIHTVIGDLPTYGYRRVWALL
+                     RRQSETDDMAVINAKRVYRIMRQNALLLERKPEIPPSKRAHTGKVAVGESNQRWCSDGF
+                     EFSCDNGEKLRVTFALDCCDREALYWAASNGGYDSETVQDVMLGAVERRFGNSLPTSPV
+                     EWLTDNGSAYRSYQTRQFARMVGLEPKHTAVRSPESNGMAESFVKTMKRDYISIMPKPD
+                     GLTAVKNLAEAFEHYNEWHPHSALGYRSPREYLRRRTSNGLSDKKCMEI"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef100_A0AB36B0N7"
+                     /gene="tnp"
+     gene            52927..53178
+                     /locus_tag="MEGJMN_063"
+                     /gene="alpA"
+     CDS             52927..53178
+                     /db_xref="RefSeq:WP_016162080.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032E55D8"
+                     /db_xref="UniRef:UniRef100_A0A6C0NCV1"
+                     /db_xref="UniRef:UniRef50_A0A6C0NCV1"
+                     /db_xref="UniRef:UniRef90_A0A6C0NCV1"
+                     /product="AlpA family phage regulatory protein"
+                     /locus_tag="MEGJMN_063"
+                     /protein_id="gnl|Baktfold|MEGJMN_063"
+                     /translation="MSENTQRKKARRNNDIQITTREFALMLGIPEHELGVAAATTNILR
+                     GMTLPAPVSLLKGKTRQFWLTDCLDFAEQLKGASAKNK"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_016162080.1"
+                     /gene="alpA"
+     gene            complement(53219..55147)
+                     /locus_tag="MEGJMN_064"
+                     /gene="traI"
+     CDS             complement(53219..55147)
+                     /db_xref="RefSeq:WP_015632446.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032968C9"
+                     /db_xref="UniRef:UniRef100_A0A6C0NCZ3"
+                     /db_xref="UniRef:UniRef50_A0A7G3L4G1"
+                     /db_xref="UniRef:UniRef90_A0A7G3L4G1"
+                     /product="TraI/MobA(P) family conjugative relaxase"
+                     /locus_tag="MEGJMN_064"
+                     /protein_id="gnl|Baktfold|MEGJMN_064"
+                     /translation="MNAIIPPKRRDRKSSFVQLVAYVSVRDDVPLKDELKEDQRFRRPS
+                     RSRQAIFDRLVDYMNRSEGTIIEQISDMTPEGDIRCSVDGVTCQHNLMSVETAAMEMNS
+                     IAMQNLHVKDAVYHYILSWQEDENPSDDQVFDSVKHSLKRLGMEEHQYVAAIHRDTDNL
+                     HVHIAANRVHPVSYRAANVWNDADKLQRTCRELELKHGFKVDNGSWVRDADNNLVRARK
+                     GYRNAPRSARQLEHFSDKESLHHFAVQHVRKPVNTMFREKNASWEKLHQVMNDAGLMLE
+                     PSGKGLVVRDVCGDEKLAVKSSRVHPGMTLSRLEPALGTFVPSSRSAEMVKQSVQTPYS
+                     DRLHVRDRGARAERRQARAEARIDLRERYEKYRNAWKKPDLHAAERFRAVSAAFKEQKT
+                     HIRDNEKDAHMRKLMYHIVEFEREKSMAALRIELKAERRKLYDEGRMRPLTYRAWTEQQ
+                     ALHGDQAALSQLRGWAYRQNRKNRTPQASDSIIFCAPADDTSLIKADGYDARLYRDGAV
+                     VYSRHGQDAIIDRGDRVEVINPYDNGDLNTRIAVDMVAWKSGERIEFSRDGSFAYAAGD
+                     AVAAHNLHHRDSILVPSNREQYDYTREKFNQLKGRYTDREREAVRQQYDNRYYDDVRHN
+                     DDNSYKP"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632446.1"
+                     /gene="traI"
+     gene            complement(55150..55341)
+                     /locus_tag="MEGJMN_065"
+                     /gene="mobA"
+     CDS             complement(55150..55341)
+                     /db_xref="GO:0006355"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000D20EA8B"
+                     /db_xref="UniRef:UniRef100_A0A6C0L5T3"
+                     /db_xref="UniRef:UniRef50_A0A6C0L5T3"
+                     /db_xref="UniRef:UniRef90_A0A6C0L5T3"
+                     /product="plasmid mobilization protein MobA"
+                     /locus_tag="MEGJMN_065"
+                     /protein_id="gnl|Baktfold|MEGJMN_065"
+                     /translation="MLRAALGRKIAPQTDHKLINELSRLGGLQKHLFKEGNGVGSKEYA
+                     EILQAIKAAIFRIEQKND"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef100_A0A6C0L5T3"
+                     /gene="mobA"
+     gene            55857..56189
+                     /locus_tag="MEGJMN_066"
+                     /gene="mobC"
+     CDS             55857..56189
+                     /db_xref="RefSeq:WP_015632448.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032968F6"
+                     /db_xref="UniRef:UniRef100_A0A0C5GSX3"
+                     /db_xref="UniRef:UniRef50_A0A486BCE1"
+                     /db_xref="UniRef:UniRef90_A0A0C5GSX3"
+                     /product="MobC"
+                     /locus_tag="MEGJMN_066"
+                     /protein_id="gnl|Baktfold|MEGJMN_066"
+                     /translation="MVAKKSNLYSATDIESIRGQLAKLPDVTQERLQKRDVLDSLKSDI
+                     ETLIRNKGYTLSEILEHLKNFGFHDVTLKDLKEITEGKRTRQRKRVSSSTEDKTPVHAA
+                     NSPAES"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632448.1"
+                     /gene="mobC"
+     gene            complement(56227..56358)
+                     /locus_tag="MEGJMN_067"
+     CDS             complement(56227..56358)
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032DD3F2"
+                     /db_xref="UniRef:UniRef100_A0A6C0L1U9"
+                     /db_xref="UniRef:UniRef50_A0A6C0L1U9"
+                     /db_xref="UniRef:UniRef90_A0A6C0L1U9"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_067"
+                     /protein_id="gnl|Baktfold|MEGJMN_067"
+                     /translation="MSLSILQLAEDLAKGKRMRVPPMNGPEWRYFCFWLEYYMGYSM"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef100_A0A6C0L1U9"
+     gene            complement(56460..56780)
+                     /locus_tag="MEGJMN_068"
+     CDS             complement(56460..56780)
+                     /db_xref="RefSeq:WP_015632449.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000329697B"
+                     /db_xref="UniRef:UniRef100_A0A6C0ND33"
+                     /db_xref="UniRef:UniRef50_A0AAN1A8B8"
+                     /db_xref="UniRef:UniRef90_A0AAN1A8B8"
+                     /product="Transposase"
+                     /locus_tag="MEGJMN_068"
+                     /protein_id="gnl|Baktfold|MEGJMN_068"
+                     /translation="MVLTGIETVKVAVICTGHVSHKDSEIIPEFLWNNWKESGEFWISS
+                     TAHGWLFRLCALPYEWEERLKNFGVSDGCISNLRMLECEGYDWVHFQADAPIIEELKHW
+                     DW"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632449.1"
+     gene            complement(56834..57067)
+                     /locus_tag="MEGJMN_069"
+     CDS             complement(56834..57067)
+                     /db_xref="RefSeq:WP_016162076.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032E941B"
+                     /db_xref="UniRef:UniRef100_A0A6C0L3P9"
+                     /db_xref="UniRef:UniRef50_A0A486BC99"
+                     /db_xref="UniRef:UniRef90_A0A7G3L5W7"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_069"
+                     /protein_id="gnl|Baktfold|MEGJMN_069"
+                     /translation="MELNDTAILPESDARKINAVASQAYPLGLLPNLKINFYSIDAIQL
+                     ELRDNSGDLIWRDFTFSRDFIKGFMPYIRTRN"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_016162076.1"
+     gene            complement(57211..57492)
+                     /locus_tag="MEGJMN_070"
+     CDS             complement(57211..57492)
+                     /db_xref="RefSeq:WP_049078430.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000461A81E"
+                     /db_xref="UniRef:UniRef100_A0A6C0NDG0"
+                     /db_xref="UniRef:UniRef50_A0A6C0NDG0"
+                     /db_xref="UniRef:UniRef90_A0A6C0NDG0"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_070"
+                     /protein_id="gnl|Baktfold|MEGJMN_070"
+                     /translation="MTNSNKMTKDYRASVTIIVCPVRGNTAIHFCAIPSLQGSDCELWW
+                     PVVAGTSLHEAVEAIMVTNGIAINVTRVDKVRMQGRSTDYQVTYNRMQ"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_049078430.1"
+     gene            complement(57759..57998)
+                     /locus_tag="MEGJMN_071"
+     CDS             complement(57759..57998)
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_071"
+                     /protein_id="gnl|Baktfold|MEGJMN_071"
+                     /translation="MPECAEYFNVSVPGNYFEGELSADATGIVLTLFTLNALIFLAWDK
+                     KWHNAQEELIKQSERLKGYASQHKEKVKIFAAID"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+     gene            complement(58366..59226)
+                     /locus_tag="MEGJMN_072"
+     CDS             complement(58366..59226)
+                     /db_xref="RefSeq:WP_015632451.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003296961"
+                     /db_xref="UniRef:UniRef100_A0A6C0L5Q4"
+                     /db_xref="UniRef:UniRef50_A0A088FSA3"
+                     /db_xref="UniRef:UniRef90_A0A6C0L5Q4"
+                     /product="DUF4942 domain-containing protein"
+                     /locus_tag="MEGJMN_072"
+                     /protein_id="gnl|Baktfold|MEGJMN_072"
+                     /translation="MSESKNVPSVEIILGQQSAEVVPSVAIERIISLRDEGIRLYLDAI
+                     GQIRKARDLMQEAGGCQYLYDFDKAVENAIRWKDTPSDRAVTAIARVIDGKIWDRLMSE
+                     TGMYTLMSNKQRQEWDRQVAGSEMPPITLDNVMSTFRHLNASKADTFTQGLIDIFKSLS
+                     WDYKTNNPCMFGKRIIIAPLLDVWRSGWVRFSSDGHTKIDDLARPFYVLDGRNVPDHRV
+                     SDGAKLDAFFSENQFNGKVFECDYFSVRYYKKGSAHITFKRLDLVEKINDMVASHYPDM
+                     LPPRQ"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632451.1"
+     gene            complement(59300..59482)
+                     /locus_tag="MEGJMN_073"
+                     /gene="cbiX"
+     CDS             complement(59300..59482)
+                     /db_xref="RefSeq:WP_223351475.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0006D2EBE2"
+                     /db_xref="UniRef:UniRef100_A0A6C0L2V3"
+                     /db_xref="UniRef:UniRef50_A0A6C0L2V3"
+                     /db_xref="UniRef:UniRef90_A0A6C0L2V3"
+                     /product="Cobalamin biosynthesis protein CbiX"
+                     /locus_tag="MEGJMN_073"
+                     /protein_id="gnl|Baktfold|MEGJMN_073"
+                     /translation="MMSKALTPSQLKAEFAAEKDFLLKACLSALNQIPNQRISGPFPST
+                     YALAAQISKLLPSRR"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_223351475.1"
+                     /gene="cbiX"
+     gene            complement(59623..59982)
+                     /locus_tag="MEGJMN_074"
+     CDS             complement(59623..59982)
+                     /db_xref="RefSeq:WP_016162075.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032E55A7"
+                     /db_xref="UniRef:UniRef100_A0A0C5HDG0"
+                     /db_xref="UniRef:UniRef50_A0A0C5HDG0"
+                     /db_xref="UniRef:UniRef90_A0A0C5HDG0"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_074"
+                     /protein_id="gnl|Baktfold|MEGJMN_074"
+                     /translation="MASEKGIKNPQSDLCDKAEGIATYTDLVFLDAEQFRNCGDDLFVS
+                     NAERAQMAATGLIEFAKISGQHQHGTEPVRGIVISMLASTMHACHLLGVTEAEPFLSLV
+                     NIAAGHFEAEIRDEY"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_016162075.1"
+     gene            complement(60576..60872)
+                     /locus_tag="MEGJMN_075"
+     CDS             complement(60576..60872)
+                     /db_xref="KEGG:K03630"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00039EE66B"
+                     /db_xref="UniRef:UniRef100_A0A6C0NCY8"
+                     /db_xref="UniRef:UniRef50_A0A6C0NCY8"
+                     /db_xref="UniRef:UniRef90_A0A6C0NCY8"
+                     /product="MPN domain-containing protein"
+                     /locus_tag="MEGJMN_075"
+                     /protein_id="gnl|Baktfold|MEGJMN_075"
+                     /translation="MLFLDSQNGVIAFEELFQGSINTCSIYVRIIVQKAMQYNASSVIL
+                     AHNHPSSNPVPSAADKALTLRIKAALLLVEVNTHDHMIVTGNTLTSFAESGLL"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef100_A0A6C0NCY8"
+     gene            complement(60832..61026)
+                     /locus_tag="MEGJMN_076"
+     CDS             complement(60832..61026)
+                     /db_xref="RefSeq:WP_227665541.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00071FBE6A"
+                     /db_xref="UniRef:UniRef100_A0A6C0L480"
+                     /db_xref="UniRef:UniRef50_A0A6C0L480"
+                     /db_xref="UniRef:UniRef90_A0A6C0L480"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_076"
+                     /protein_id="gnl|Baktfold|MEGJMN_076"
+                     /translation="MKFTDEEQQIIRRAEAIISAKLPGTDYLTSPDMVRSFLRLHFASA
+                     DRELFWGAVSGQPEWCNCF"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_227665541.1"
+     gene            complement(61141..61629)
+                     /locus_tag="MEGJMN_077"
+     CDS             complement(61141..61629)
+                     /db_xref="RefSeq:WP_015632454.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003296933"
+                     /db_xref="UniRef:UniRef100_A0A6C0L1U3"
+                     /db_xref="UniRef:UniRef50_A0A6C0L1U3"
+                     /db_xref="UniRef:UniRef90_A0A6C0L1U3"
+                     /product="Transcriptional regulator"
+                     /locus_tag="MEGJMN_077"
+                     /protein_id="gnl|Baktfold|MEGJMN_077"
+                     /translation="MKDGTVKTPLEPAQVAAIRQRMGLTQTELADLMGVDLRTWMRKEA
+                     DPEKVGSKYDSSLLNIGETNFLLLIADEHPAWRIKNYRLDRLFSEVIRSQPSAEEVKEL
+                     RVALGMKQQEIADLLGYTLAAWKSKQSKANAGTLKPGEYNFLMLLADEHPGLNLIRRS"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632454.1"
+     gene            complement(61626..62084)
+                     /locus_tag="MEGJMN_078"
+     CDS             complement(61626..62084)
+                     /db_xref="RefSeq:WP_015632455.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003296929"
+                     /db_xref="UniRef:UniRef100_A0A0C5H2X1"
+                     /db_xref="UniRef:UniRef50_A0A0C5H2X1"
+                     /db_xref="UniRef:UniRef90_A0A0C5H2X1"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_078"
+                     /protein_id="gnl|Baktfold|MEGJMN_078"
+                     /translation="MNTNLLLTADDVHISMPAGAYLPVTCRFYSHIPHRRHAVRPVTER
+                     QRTGTSLFRLTQCCHRRPAVHRTYFMTETAPLYYDEGVNGSTKFTFEVYRDSAQYVVYV
+                     RRWNAKKNTILEETRYTSPDKAGLREIKYTNSRQAKAFFSSDFWSQSV"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632455.1"
+     gene            complement(62237..62665)
+                     /locus_tag="MEGJMN_079"
+     CDS             complement(62237..62665)
+                     /db_xref="RefSeq:WP_015632456.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000329695E"
+                     /db_xref="UniRef:UniRef100_A0A6C0ND45"
+                     /db_xref="UniRef:UniRef50_A0AAU0KQB0"
+                     /db_xref="UniRef:UniRef90_A0A6C0ND45"
+                     /product="Partitioning protein"
+                     /locus_tag="MEGJMN_079"
+                     /protein_id="gnl|Baktfold|MEGJMN_079"
+                     /translation="MSDETKPRKIAFNLYPEEHAGDRLASDLLDNIRLKERGRAMRAFL
+                     LTGAALAAIDPRLPNLIAELANEDVTLKDIQRIISSVIPDAFAPDDAMVRALLSRLMAP
+                     GVEGETPPVKAPDATPENKDLVETRNNALKMFQSDDDD"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632456.1"
+     gene            complement(62658..63638)
+                     /locus_tag="MEGJMN_080"
+     CDS             complement(62658..63638)
+                     /db_xref="KEGG:K18640"
+                     /db_xref="RefSeq:WP_015632457.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003296905"
+                     /db_xref="UniRef:UniRef100_A0A6C0L1U0"
+                     /db_xref="UniRef:UniRef50_C7SA10"
+                     /db_xref="UniRef:UniRef90_A0A6C0L1U0"
+                     /product="Partitioning protein"
+                     /locus_tag="MEGJMN_080"
+                     /protein_id="gnl|Baktfold|MEGJMN_080"
+                     /translation="MRIYVDDGSTNIKLAWKDENGEVKTFISPNSFKPEWSLNLFGDGQ
+                     SSNYVIEGEKFSFDPGSADAIVTTETRYQYSQVNTVAIHHALLHSGIKPGEVDVVVTLP
+                     LSEYLDADFQPNTVNISRKKNSVKREVTLQGKKPGFTIGKVSVLPESIPAGFNILTSLK
+                     DDDSLLIVDLGGTTLDVSHVRSKMSGITNTWCDPKIGVSIVTNGIKNAMASDTRISSLQ
+                     ADNMIIHRQDKDWIEHRLPDDKLRKAFSEAFAEKERILINRVIDALDRFTGFTHVMCVG
+                     GGAKLISEAVKKATNVPSDRFYTSKEPQFDLVLGMLEMKEGSANE"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632457.1"
+     gene            64207..64650
+                     /locus_tag="MEGJMN_081"
+                     /gene="copG"
+     CDS             64207..64650
+                     /db_xref="RefSeq:WP_015632459.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000329694F"
+                     /db_xref="UniRef:UniRef100_A0A6C0ND78"
+                     /db_xref="UniRef:UniRef50_I2B5J4"
+                     /db_xref="UniRef:UniRef90_A0A6C0ND78"
+                     /product="CopG family transcriptional regulator"
+                     /locus_tag="MEGJMN_081"
+                     /protein_id="gnl|Baktfold|MEGJMN_081"
+                     /translation="MFFSVGIESPVNSDTAYGISVPAFDRFDYGCVSAADEQSDIPVMA
+                     REAILMVVEEMLLSGKHSVEDITDAGFMVYSANADYAHCDYWVMIDVDLSQFEGKQQRL
+                     NITLPDVLVKRIDGFIQGNKAVYRDRSHFLAQAARHELTQKNT"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632459.1"
+                     /gene="copG"
+     gene            64647..64886
+                     /locus_tag="MEGJMN_082"
+     CDS             64647..64886
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_082"
+                     /protein_id="gnl|Baktfold|MEGJMN_082"
+                     /translation="MSDGQSLKVTASLLVFHPQRKEDRSAESLVGFLHLYAGRYNVLPD
+                     PYINLSRLSSQSWSVNCDLSIFPSNGSVWKVLWR"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+     gene            64941..65360
+                     /locus_tag="MEGJMN_083"
+     CDS             64941..65360
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032968EC"
+                     /db_xref="UniRef:UniRef100_A0A0C5H2X4"
+                     /db_xref="UniRef:UniRef50_A0A0C5H2X4"
+                     /db_xref="UniRef:UniRef90_A0A0C5H2X4"
+                     /product="hypothetical protein"
+                     /locus_tag="MEGJMN_083"
+                     /protein_id="gnl|Baktfold|MEGJMN_083"
+                     /translation="MLLIRTSKSSLSINFSFSRCYTLVPGVGVWAVFAGTDTGHILCIA
+                     IAGERAAHLIDNPRFMVRGFPAAVSGRSLKRRLDGRCQFFWCSDVGKHERLLACIVFVN
+                     IFPRSSCVAQVSRPLDDLPATFELTVARLLAIRTR"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef100_A0A0C5H2X4"
+     gene            65649..65906
+                     /locus_tag="MEGJMN_084"
+     CDS             65649..65906
+                     /db_xref="RefSeq:WP_016162071.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032EE7B6"
+                     /db_xref="UniRef:UniRef100_A0A0C5H1V1"
+                     /db_xref="UniRef:UniRef50_A0A0C5H1V1"
+                     /db_xref="UniRef:UniRef90_A0A0C5H1V1"
+                     /product="HTH cro/C1-type domain-containing protein"
+                     /locus_tag="MEGJMN_084"
+                     /protein_id="gnl|Baktfold|MEGJMN_084"
+                     /translation="MLGYELRLWRKGCGWTQERAAEEFDVSLRTYQMYEKNQRDIPLLA
+                     ERATRELQLRLMLREFESLTKEQILQRLQTLLNTDNPCLA"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_016162071.1"
+     gene            complement(66110..66676)
+                     /locus_tag="MEGJMN_085"
+                     /gene="insA"
+     CDS             complement(66110..66676)
+                     /db_xref="RefSeq:WP_015632462.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032968EA"
+                     /db_xref="UniRef:UniRef100_A0A6C0NCW1"
+                     /db_xref="UniRef:UniRef50_A0A6C0NCW1"
+                     /db_xref="UniRef:UniRef90_A0A6C0NCW1"
+                     /product="InsA N-terminal domain-containing protein"
+                     /locus_tag="MEGJMN_085"
+                     /protein_id="gnl|Baktfold|MEGJMN_085"
+                     /translation="MDEEIRRHIISLYYQYTSVREIARVTGITVKQVTRIVAPFMDERP
+                     PETGPVCPACGDTRKKHRIGQVNDRQRLKCLSCGRRFCPSATSGTNTALPPETVSSVVA
+                     KYHAFMPRKEIAVRCGLTVKAVSEILKPYRHTRIHVMCPRCSGLKIYRWGKVSGGLQKY
+                     RCRECGRVFSQNPDRLTSGFTVSES"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632462.1"
+                     /gene="insA"
+     gene            complement(66718..67062)
+                     /locus_tag="MEGJMN_086"
+     CDS             complement(66718..67062)
+                     /db_xref="RefSeq:WP_015632463.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0003296966"
+                     /db_xref="UniRef:UniRef100_A0A6C0NCY1"
+                     /db_xref="UniRef:UniRef50_A0A6C0NCY1"
+                     /db_xref="UniRef:UniRef90_A0A6C0NCY1"
+                     /product="Lipoprotein"
+                     /locus_tag="MEGJMN_086"
+                     /protein_id="gnl|Baktfold|MEGJMN_086"
+                     /translation="MFLTGCDMASYFPDGPQPVPVISPGYQVSIDGHTVTISGFDNCPQ
+                     KNVDGNLSADTDRKSCIALEKARTEVKVIVAWPDNVVIETWRIIREKDTHDNEAIRLQR
+                     PNGEFVKSFN"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632463.1"
+     gene            complement(67207..67512)
+                     /locus_tag="MEGJMN_087"
+                     /gene="ccdB"
+     CDS             complement(67207..67512)
+                     /db_xref="KEGG:K19163"
+                     /db_xref="RefSeq:WP_015632464.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI000329691A"
+                     /db_xref="UniRef:UniRef100_A0A6C0ND19"
+                     /db_xref="UniRef:UniRef50_Q46996"
+                     /db_xref="UniRef:UniRef90_A0A6C0ND19"
+                     /product="type II toxin-antitoxin system toxin CcdB"
+                     /locus_tag="MEGJMN_087"
+                     /protein_id="gnl|Baktfold|MEGJMN_087"
+                     /translation="MQFTVYEYTRESHYRLFVDVQSDIVETPGRRIVIPLLESHHLSEK
+                     VNQQLFPVVSVNGKEYRAVTSELSGVSVSVIGDAVADLSHEANAIKNALNLMFWGI"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632464.1"
+                     /gene="ccdB"
+     gene            complement(67512..67730)
+                     /locus_tag="MEGJMN_088"
+                     /gene="ccdA"
+     CDS             complement(67512..67730)
+                     /db_xref="RefSeq:WP_015632465.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032968F7"
+                     /db_xref="UniRef:UniRef100_A0A6C0L1T7"
+                     /db_xref="UniRef:UniRef50_Q46995"
+                     /db_xref="UniRef:UniRef90_A0A6C0L1T7"
+                     /product="type II toxin-antitoxin system antitoxin CcdA"
+                     /locus_tag="MEGJMN_088"
+                     /protein_id="gnl|Baktfold|MEGJMN_088"
+                     /translation="MKHRASVTVDKEHYLELLAAGVNISGLVNEAIGREARRIQAERWK
+                     AENREGMEEVANFIAQHGSFADENRSW"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_015632465.1"
+                     /gene="ccdA"
+     gene            68292..68942
+                     /locus_tag="MEGJMN_089"
+     CDS             68292..68942
+                     /db_xref="SO:0001217"
+                     /db_xref="UniRef:UniRef50_A0A0A5MNX7"
+                     /product="Translesion error-prone DNA polymerase V
+                     autoproteolytic subunit"
+                     /locus_tag="MEGJMN_089"
+                     /protein_id="gnl|Baktfold|MEGJMN_089"
+                     /translation="MKASGKSKNTAKNAVVSGEINASPHTSRYATHDSGTLWIAGPSMV
+                     GDFHPLISTGLPAHTVCITSKIRVSGGKMKLQLFSTGKELPPQALPLFADLASCGFPSP
+                     AADYVESDLDLHDYCIRHPSATYYLRASGDSMADGSLYNGDLLVVDSAEKPRHGDIVVA
+                     SVQGEFTVKRLLLTPRLTLQPMNASWSPIYPDPDELDIFGVVTHIIHRPREMY"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA
+                     sequence:UniRef:UniRef50_A0A0A5MNX7"
+     gene            68942..70213
+                     /locus_tag="MEGJMN_090"
+                     /gene="dinP"
+     CDS             68942..70213
+                     /db_xref="COG:COG0389"
+                     /db_xref="COG:L"
+                     /db_xref="KEGG:K03502"
+                     /db_xref="RefSeq:WP_016162068.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00032D98C0"
+                     /db_xref="UniRef:UniRef100_A0A6C0ND75"
+                     /db_xref="UniRef:UniRef50_A0A155JVW9"
+                     /db_xref="UniRef:UniRef90_A0A2P9E5E6"
+                     /product="DNA polymerase V subunit UmuC"
+                     /locus_tag="MEGJMN_090"
+                     /protein_id="gnl|Baktfold|MEGJMN_090"
+                     /translation="MFALADVNSFYASCERVFRPDLKGKPIVVLSNNDGNVIARSAEAK
+                     PWIKMGTPWFQIKNERYPEKIYAFSSNYELYASMSARVMNCLEELAPRVEQYSIDEMFL
+                     DLTGVEHCMELEDFGRQLRQHVYDCTRLTIGVGAGPTKTLAKSAQWASKEWKQFRGVLA
+                     LTRGNPQRTRKLLSLQPVEEIWGVGNRIARKLHVLGIRTALDLALTNPAFIRKNFSVVL
+                     ERTVRELNGESCMSLEEAPPTKQQIVCSRSFGEKITEYDSLRQAVCQYAERASEKLRKE
+                     RQYCRHISVFIKTSPFAVKEPYYGNVATEKLLTPTQDTRDIIAAATMALERIWKDGHRY
+                     AKAGVMLNDFTGSGVSQLQLFDERPPRPHSAELMRVLDGINNSGLGKVWFAGRGIAPSW
+                     QMKRDMLSPAYTTRWRDIPVARIG"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_016162068.1"
+                     /gene="dinP"
