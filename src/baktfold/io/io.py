@@ -36,22 +36,36 @@ def write_foldseek_tophit(tophit_df: pl.DataFrame, pdb_tophit_path: Path):
     tophit_df.write_csv(pdb_tophit_path, separator="\t")
 
 def write_summary_txt_file(output, prefix, features):
-    
+
     summary_path: Path = Path(output) / f"{prefix}.summary.txt"
 
-    end_hyps = len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in str(feat).lower()])
-    baktfold_function = len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'baktfold' in str(feat).lower() and 'hypothetical' not in str(feat).lower() ])
+    # Count from the authoritative feature keys, not str(feat) substring matches.
+    # mark_as_baktfold sets feature['baktfold'] = True on any PSTC hit;
+    # mark_as_hypothetical sets feature['hypothetical'] = True and
+    # unmark_as_hypothetical pops the key once a real product is assigned.
+    # The old str(feat) heuristic miscounted any feature whose retained pstc
+    # list held a secondary hit described "hypothetical protein" (e.g. an AFDB
+    # entry), reporting "Baktfold function: 0" even for real annotations.
+    cds = [feat for feat in features if feat['type'] == bc.FEATURE_CDS]
+
+    cds_count = len(cds)
+    baktfold_hit = len([feat for feat in cds if feat.get('baktfold')])
+    end_hyps = len([feat for feat in cds if feat.get('hypothetical')])
+    # got a hit that resolved to a real (non-hypothetical) function
+    baktfold_function = len(
+        [feat for feat in cds if feat.get('baktfold') and not feat.get('hypothetical')]
+    )
     begin_hyps = end_hyps + baktfold_function
 
-    logger.info(f'Baktfold annotation summary {summary_path}') 
+    logger.info(f'Baktfold annotation summary {summary_path}')
     with summary_path.open('w') as fh_out:
         fh_out.write('Annotation:\n')
-        fh_out.write(f"CDS count: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS])}\n")
+        fh_out.write(f"CDS count: {cds_count}\n")
         fh_out.write(
             f"CDS beginning hypotheticals: {begin_hyps}\n"
         )
         fh_out.write(
-            f"CDS annotated with Baktfold database hit: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'baktfold' in str(feat).lower()])}\n"
+            f"CDS annotated with Baktfold database hit: {baktfold_hit}\n"
         )
         fh_out.write(
             f"CDS annotated with Baktfold function: {baktfold_function}\n"
