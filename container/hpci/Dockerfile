@@ -22,15 +22,17 @@ ENV PATH="/opt/foldseek/bin:${PATH}"
 RUN pip install --ignore-installed PyYAML
 RUN python3 -c "import torch; print(torch.__version__)" || echo "PyTorch is not installed before installing the project. "
 ARG BAKTFOLD_REF
-RUN pip install git+https://github.com/gbouras13/baktfold.git@${BAKTFOLD_REF}
-# Install the test extras (kept in lockstep with the ``test`` group in
-# pyproject.toml). ``pytest`` alone is insufficient — the snapshot tests
-# in tests/unit/ rely on the ``snapshot`` fixture provided by
-# ``pytest-snapshot``, so without it every snapshot test errors at setup
-# with `fixture 'snapshot' not found`.
-RUN pip install pytest pytest-cov pytest-snapshot
+# Install baktfold together with its ``test`` extra so the test dependencies
+# (pytest, pytest-cov, pytest-snapshot) stay in lockstep with pyproject.toml
+# instead of being duplicated here. pytest-snapshot is mandatory: the unit
+# snapshot tests AND the golden output regression tests
+# (tests/unit/test_json_golden.py) rely on the ``snapshot`` fixture it provides
+# — without it every snapshot/golden test errors at setup with
+# `fixture 'snapshot' not found`.
+RUN pip install "baktfold[test] @ git+https://github.com/gbouras13/baktfold.git@${BAKTFOLD_REF}"
 
-# tests
+# smoke tests that the container is wired up correctly
 RUN foldseek --help
 RUN baktfold -h
 RUN baktfold run -h
+RUN python3 -c "import pytest, pytest_snapshot, click.testing"  # test harness present

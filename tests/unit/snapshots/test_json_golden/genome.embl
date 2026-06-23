@@ -1958,3 +1958,117 @@ FT                   /inference="ab initio prediction:Prodigal:2.6"
 FT                   /inference="similar to AA sequence:RefSeq:WP_016162068.1"
 FT                   /gene="dinP"
 XX
+//
+ID   contig_2; ; circular; DNA; ; PRO; 2473 BP.
+XX
+AC   contig_2;
+XX
+DE   plasmid unnamed2, complete sequence
+XX
+OS   .
+OC   .
+XX
+CC   Annotated with Baktfold
+CC   Software: v<VERSION>
+CC   Database: v<VERSION>
+CC   DOI: https://github.com/gbouras13/baktfold
+CC   URL: https://github.com/gbouras13/baktfold
+CC   
+CC   ##Genome Annotation Summary:##
+CC   CDSs                           ::     3
+CC   tRNAs                          ::     0
+CC   tmRNAs                         ::     0
+CC   rRNAs                          ::     0
+CC   ncRNAs                         ::     0
+CC   regulatory ncRNAs              ::     0
+CC   CRISPR Arrays                  ::     0
+CC   oriCs/oriVs                    ::     0
+CC   oriTs                          ::     0
+CC   gaps                           ::     0
+CC   pseudogenes                    ::     0
+XX
+FH   Key             Location/Qualifiers
+FH
+FT   source          1..2473
+FT                   /mol_type="genomic DNA"
+FT                   /plasmid="unnamed2"
+FT   gene            complement(<3..725)
+FT                   /locus_tag="MEGJMN_091"
+FT                   /gene="erm(C)"
+FT                   /pseudo
+FT   CDS             complement(<3..725)
+FT                   /note="(3' truncated)"
+FT                   /db_xref="COG:COG0030"
+FT                   /db_xref="COG:J"
+FT                   /db_xref="EC:2.1.1.184"
+FT                   /db_xref="GO:0000179"
+FT                   /db_xref="GO:0003723"
+FT                   /db_xref="GO:0005829"
+FT                   /db_xref="GO:0046677"
+FT                   /db_xref="GO:0052910"
+FT                   /db_xref="NCBIProtein:WP_001003263.1"
+FT                   /db_xref="SO:0001217"
+FT                   /db_xref="UniRef:UniRef50_P13956"
+FT                   /db_xref="UniRef:UniRef90_P13956"
+FT                   /product="23S rRNA (adenine(2058)-N(6))-methyltransferase
+FT                   Erm(C)"
+FT                   /locus_tag="MEGJMN_091"
+FT                   /protein_id="gnl|Baktfold|MEGJMN_091"
+FT                   /translation="MNEKNIKHSQNFITSKHNIDKIMTNIRLNEHDNIFEIGSGKGHFT
+FT                   LELVQRCNFVTAIEIDHKLCKTTENKLVDHDNFQVLNKDILQFKFPKNQSYKIFGNIPY
+FT                   NISTDIIRKIVFDSIADEIYLIVEYGFAKRLLNTKRSLALFLMAEVDISILSMVPREYF
+FT                   HPKPKVNSSLIRLNRKKSRISHKDKQKYNYFVMKWVNKEYKKIFTKNQFNNSLKHAGID
+FT                   DLNNISFEQFLSLFNSYKL"
+FT                   /codon_start=1
+FT                   /transl_table=11
+FT                   /inference="ab initio prediction:Prodigal:2.6"
+FT                   /inference="similar to AA sequence:UniRef:UniRef90_P13956"
+FT                   /pseudo
+FT                   /gene="erm(C)"
+FT   gene            complement(786..845)
+FT                   /locus_tag="MEGJMN_092"
+FT                   /gene="ermC"
+FT   CDS             complement(786..845)
+FT                   /db_xref="GO:0046677"
+FT                   /db_xref="RefSeq:WP_002497446.1"
+FT                   /db_xref="SO:0001217"
+FT                   /db_xref="UniParc:UPI00000003A9"
+FT                   /db_xref="UniRef:UniRef100_P03063"
+FT                   /db_xref="UniRef:UniRef50_P03063"
+FT                   /db_xref="UniRef:UniRef90_P03063"
+FT                   /product="23S rRNA methylase leader peptide"
+FT                   /locus_tag="MEGJMN_092"
+FT                   /protein_id="gnl|Baktfold|MEGJMN_092"
+FT                   /translation="MGIFSIFVISTVHYQPNKK"
+FT                   /codon_start=1
+FT                   /transl_table=11
+FT                   /inference="ab initio prediction:Bakta:<VERSION>"
+FT                   /inference="similar to AA sequence:RefSeq:WP_002497446.1"
+FT                   /gene="ermC"
+FT   gene            complement(1540..2016)
+FT                   /locus_tag="MEGJMN_093"
+FT                   /gene="repL"
+FT   CDS             complement(1540..2016)
+FT                   /db_xref="GO:0003677"
+FT                   /db_xref="GO:0006260"
+FT                   /db_xref="GO:0006276"
+FT                   /db_xref="GO:0006355"
+FT                   /db_xref="RefSeq:WP_000664727.1"
+FT                   /db_xref="SO:0001217"
+FT                   /db_xref="UniParc:UPI0000000442"
+FT                   /db_xref="UniRef:UniRef100_P0A0C8"
+FT                   /db_xref="UniRef:UniRef50_P0A0C8"
+FT                   /db_xref="UniRef:UniRef90_P0A0C8"
+FT                   /product="Replication and maintenance protein"
+FT                   /locus_tag="MEGJMN_093"
+FT                   /protein_id="gnl|Baktfold|MEGJMN_093"
+FT                   /translation="MKERYGTVYKGSQRLIDEESGEVIEVDKLYRKQTSGNFVKAYIVQ
+FT                   LISMLDMIGGKKLKIVNYILDNVHLSNNTMIATTREIAKATGTSLQTVITTLKILEEGN
+FT                   IIKRKTGVLMLNPELLMRGDDQKQKYLLLEFGNFEQEANEKQENALSDYYSFKD"
+FT                   /codon_start=1
+FT                   /transl_table=11
+FT                   /inference="ab initio prediction:Prodigal:2.6"
+FT                   /inference="similar to AA sequence:RefSeq:WP_000664727.1"
+FT                   /gene="repL"
+XX
+//

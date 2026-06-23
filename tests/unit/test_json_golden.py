@@ -32,6 +32,7 @@ import pytest
 from click.testing import CliRunner
 
 from baktfold import main_cli
+from baktfold.utils.util import get_version
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 TEST_DATA = REPO_ROOT / "tests" / "test_data"
@@ -41,19 +42,48 @@ SUBDIR = "test_json_golden"
 GENOME_JSON = TEST_DATA / "assembly_bakta_output" / "assembly.json"
 PROTEINS_JSON = TEST_DATA / "assembly_bakta_proteins_output" / "assembly.hypotheticals.json"
 
-# baktfold version is the only volatile content in these formats (the GenBank
-# LOCUS date is the fixed 01-JAN-1980 placeholder).
-_VERSION_RE = re.compile(r"((?:Software|Database): v)\S+")
+# The baktfold version is the only volatile content in these formats (the
+# GenBank LOCUS date is the fixed 01-JAN-1980 placeholder). Normalise every
+# context it appears in so the goldens stay version-independent and do NOT need
+# refreshing on a version bump:
+#   - "# Software: v<x>" / "Database: v<x>" headers (gff/gbff/embl/tsv/summary)
+#   - "#Annotated with Baktfold (v<x>)" (inference.tsv / proteins.tsv)
+#   - "ab initio prediction:Bakta:<major.minor>" (sORF inference, gbff/embl)
+_SOFTWARE_DB_RE = re.compile(r"((?:Software|Database): v)\S+")
+_VERSION = get_version().strip()
+_VERSION_MM = ".".join(_VERSION.split(".")[:2]) if _VERSION else ""
 
 
 def _normalize_version(text: str) -> str:
-    return _VERSION_RE.sub(r"\1<VERSION>", text)
+    text = _SOFTWARE_DB_RE.sub(r"\1<VERSION>", text)
+    if _VERSION:
+        text = text.replace(f"(v{_VERSION})", "(v<VERSION>)")
+        text = text.replace(f"Bakta:{_VERSION_MM}", "Bakta:<VERSION>")
+    return text
 
 
 def _strip_after(text: str, marker: str) -> str:
-    """Drop everything from the first occurrence of ``marker`` onward."""
+    """Drop everything from the first occurrence of ``marker`` onward.
+
+    Used for GFF3, which emits a single trailing ``##FASTA`` block after the
+    features of *all* sequences.
+    """
     idx = text.find(marker)
     return text if idx == -1 else text[:idx] + "\n"
+
+
+def _strip_genbank_sequence(text: str) -> str:
+    """Replace each record's ``ORIGIN..//`` nucleotide block with a stub.
+
+    Operates per record so the feature tables of *every* contig are retained
+    (a multi-record GenBank file has one ``ORIGIN`` per sequence).
+    """
+    return re.sub(r"(?ms)^ORIGIN.*?^//\s*$", "ORIGIN\n//", text)
+
+
+def _strip_embl_sequence(text: str) -> str:
+    """Replace each record's ``SQ..//`` nucleotide block with a stub (per record)."""
+    return re.sub(r"(?ms)^SQ   .*?^//\s*$", "//", text)
 
 
 def _headers_only(text: str) -> str:
@@ -64,8 +94,8 @@ def _headers_only(text: str) -> str:
 # ext -> function turning the raw file body into the snapshotted text
 _GENOME_PROCESSORS = {
     "gff3": lambda t: _normalize_version(_strip_after(t, "\n##FASTA")),
-    "gbff": lambda t: _normalize_version(_strip_after(t, "\nORIGIN")),
-    "embl": lambda t: _normalize_version(_strip_after(t, "\nSQ   ")),
+    "gbff": lambda t: _normalize_version(_strip_genbank_sequence(t)),
+    "embl": lambda t: _normalize_version(_strip_embl_sequence(t)),
     "tsv": _normalize_version,
     "inference.tsv": _normalize_version,
     "faa": _normalize_version,

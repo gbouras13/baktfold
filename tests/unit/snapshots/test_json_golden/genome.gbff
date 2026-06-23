@@ -1954,3 +1954,115 @@ FEATURES             Location/Qualifiers
                      /inference="ab initio prediction:Prodigal:2.6"
                      /inference="similar to AA sequence:RefSeq:WP_016162068.1"
                      /gene="dinP"
+ORIGIN
+//
+LOCUS       contig_2                2473 bp    DNA     circular BCT 01-JAN-1980
+DEFINITION  plasmid unnamed2, complete sequence.
+ACCESSION   contig_2
+VERSION     contig_2
+KEYWORDS    .
+SOURCE      None
+  ORGANISM  .
+            .
+COMMENT     Annotated with Baktfold
+            Software: v<VERSION>
+            Database: v<VERSION>
+            DOI: https://github.com/gbouras13/baktfold
+            URL: https://github.com/gbouras13/baktfold
+            
+            ##Genome Annotation Summary:##
+            CDSs                           ::     3
+            tRNAs                          ::     0
+            tmRNAs                         ::     0
+            rRNAs                          ::     0
+            ncRNAs                         ::     0
+            regulatory ncRNAs              ::     0
+            CRISPR Arrays                  ::     0
+            oriCs/oriVs                    ::     0
+            oriTs                          ::     0
+            gaps                           ::     0
+            pseudogenes                    ::     0
+FEATURES             Location/Qualifiers
+     source          1..2473
+                     /mol_type="genomic DNA"
+                     /plasmid="unnamed2"
+     gene            complement(<3..725)
+                     /locus_tag="MEGJMN_091"
+                     /gene="erm(C)"
+                     /pseudo
+     CDS             complement(<3..725)
+                     /note="(3' truncated)"
+                     /db_xref="COG:COG0030"
+                     /db_xref="COG:J"
+                     /db_xref="EC:2.1.1.184"
+                     /db_xref="GO:0000179"
+                     /db_xref="GO:0003723"
+                     /db_xref="GO:0005829"
+                     /db_xref="GO:0046677"
+                     /db_xref="GO:0052910"
+                     /db_xref="NCBIProtein:WP_001003263.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniRef:UniRef50_P13956"
+                     /db_xref="UniRef:UniRef90_P13956"
+                     /product="23S rRNA (adenine(2058)-N(6))-methyltransferase
+                     Erm(C)"
+                     /locus_tag="MEGJMN_091"
+                     /protein_id="gnl|Baktfold|MEGJMN_091"
+                     /translation="MNEKNIKHSQNFITSKHNIDKIMTNIRLNEHDNIFEIGSGKGHFT
+                     LELVQRCNFVTAIEIDHKLCKTTENKLVDHDNFQVLNKDILQFKFPKNQSYKIFGNIPY
+                     NISTDIIRKIVFDSIADEIYLIVEYGFAKRLLNTKRSLALFLMAEVDISILSMVPREYF
+                     HPKPKVNSSLIRLNRKKSRISHKDKQKYNYFVMKWVNKEYKKIFTKNQFNNSLKHAGID
+                     DLNNISFEQFLSLFNSYKL"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:UniRef:UniRef90_P13956"
+                     /pseudo
+                     /gene="erm(C)"
+     gene            complement(786..845)
+                     /locus_tag="MEGJMN_092"
+                     /gene="ermC"
+     CDS             complement(786..845)
+                     /db_xref="GO:0046677"
+                     /db_xref="RefSeq:WP_002497446.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI00000003A9"
+                     /db_xref="UniRef:UniRef100_P03063"
+                     /db_xref="UniRef:UniRef50_P03063"
+                     /db_xref="UniRef:UniRef90_P03063"
+                     /product="23S rRNA methylase leader peptide"
+                     /locus_tag="MEGJMN_092"
+                     /protein_id="gnl|Baktfold|MEGJMN_092"
+                     /translation="MGIFSIFVISTVHYQPNKK"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Bakta:<VERSION>"
+                     /inference="similar to AA sequence:RefSeq:WP_002497446.1"
+                     /gene="ermC"
+     gene            complement(1540..2016)
+                     /locus_tag="MEGJMN_093"
+                     /gene="repL"
+     CDS             complement(1540..2016)
+                     /db_xref="GO:0003677"
+                     /db_xref="GO:0006260"
+                     /db_xref="GO:0006276"
+                     /db_xref="GO:0006355"
+                     /db_xref="RefSeq:WP_000664727.1"
+                     /db_xref="SO:0001217"
+                     /db_xref="UniParc:UPI0000000442"
+                     /db_xref="UniRef:UniRef100_P0A0C8"
+                     /db_xref="UniRef:UniRef50_P0A0C8"
+                     /db_xref="UniRef:UniRef90_P0A0C8"
+                     /product="Replication and maintenance protein"
+                     /locus_tag="MEGJMN_093"
+                     /protein_id="gnl|Baktfold|MEGJMN_093"
+                     /translation="MKERYGTVYKGSQRLIDEESGEVIEVDKLYRKQTSGNFVKAYIVQ
+                     LISMLDMIGGKKLKIVNYILDNVHLSNNTMIATTREIAKATGTSLQTVITTLKILEEGN
+                     IIKRKTGVLMLNPELLMRGDDQKQKYLLLEFGNFEQEANEKQENALSDYYSFKD"
+                     /codon_start=1
+                     /transl_table=11
+                     /inference="ab initio prediction:Prodigal:2.6"
+                     /inference="similar to AA sequence:RefSeq:WP_000664727.1"
+                     /gene="repL"
+ORIGIN
+//
