@@ -43,5 +43,5 @@ singularity exec "$containerImage" pytest tests/unit/test_json_golden.py -v
 
 cd ..
 
-rm -rf $TARGET_DIR
+# rm -rf $TARGET_DIR
 
