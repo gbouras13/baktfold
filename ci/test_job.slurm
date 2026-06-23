@@ -10,7 +10,7 @@ set -eu -o pipefail
 mkdir -p "$BASEDIR"
 cd "$BASEDIR"
 
-# # pull the sif 
+# pull the sif 
 
 containerImage="$BASEDIR/baktfold_${COMMIT_SHA}.sif"
 module load singularity/3.11.4-slurm
@@ -20,6 +20,7 @@ export SINGULARITY_CACHEDIR=$PWD
 if [ ! -f "$containerImage" ]; then
     echo "Container not found. Pulling image..."
     singularity pull --dir "$PWD" "docker://quay.io/gbouras13/baktfold:$COMMIT_SHA"
+    echo "Container pull done"
 else
     echo "Container already exists. Skipping pull."
 fi
