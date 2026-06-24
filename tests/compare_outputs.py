@@ -159,25 +159,25 @@ def _fasta_3di_differ(lines_dev: list, lines_ref: list, min_identity: float) -> 
 
 
 def _tophit_differ(lines_dev: list, lines_ref: list) -> list:
-    """Compare two Foldseek *_tophit.tsv files ignoring the non-reproducible
-    alignment-quality columns.
+    """Compare two Foldseek *_tophit.tsv files by hit identity only.
 
     Columns: query target bitscore fident evalue qStart qEnd qLen qCov tStart
-    tEnd tLen tCov. The three alignment-quality scores — ``bitscore`` (col 2),
-    ``fident`` (col 3) and ``evalue`` (col 4) — all wobble run-to-run on GPU.
-    Everything else (which query hit which target, alignment coordinates,
-    lengths and coverage) is deterministic. Drop those three columns and compare
-    the rest exactly (sorted), so a changed/added/dropped hit, or a shifted
-    alignment region/coverage, is still caught.
+    tEnd tLen tCov. Because the 3Di input is itself non-deterministic, every
+    per-alignment number wobbles run-to-run on GPU — not only the quality scores
+    (bitscore/fident/evalue) but also the alignment extent (qEnd/tEnd) and the
+    coverage derived from it (qCov/tCov). The only reproducible facts are which
+    query hit which target and the intrinsic lengths. Keep query/target/qLen/
+    tLen and drop the rest, so a changed/added/dropped hit is still caught while
+    alignment-numeric noise is ignored.
     """
-    _DROP = (2, 3, 4)  # bitscore, fident, evalue
+    _KEEP = (0, 1, 7, 11)  # query, target, qLen, tLen
 
     def _scrub(lines):
         out = []
         for line in lines:
             parts = line.split("\t")
-            if len(parts) >= 5:
-                parts = [p for i, p in enumerate(parts) if i not in _DROP]
+            if len(parts) >= 13:
+                parts = [parts[i] for i in _KEEP]
             out.append("\t".join(parts))
         return sorted(out)
 
@@ -332,7 +332,7 @@ def compare_dirs(dir_dev: Path, dir_ref: Path, strict: bool = False) -> list:
         elif rel.suffix == ".tsv" and "_tophit" in rel.name:
             row_diffs = _tophit_differ(ld, lr)
             if row_diffs:
-                diffs.append(f"  DIFFER (tophit, bitscore/evalue ignored) : {rel}")
+                diffs.append(f"  DIFFER (tophit, alignment numerics ignored) : {rel}")
                 diffs.extend(row_diffs[:22])
 
         # ── TSV/CSV/TXT (exact, sorted) ────────────────────────────────────
