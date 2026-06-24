@@ -160,20 +160,24 @@ def _fasta_3di_differ(lines_dev: list, lines_ref: list, min_identity: float) -> 
 
 def _tophit_differ(lines_dev: list, lines_ref: list) -> list:
     """Compare two Foldseek *_tophit.tsv files ignoring the non-reproducible
-    score columns.
+    alignment-quality columns.
 
     Columns: query target bitscore fident evalue qStart qEnd qLen qCov tStart
-    tEnd tLen tCov. ``bitscore`` (col 2) and ``evalue`` (col 4) wobble run-to-run
-    on GPU; everything else (which query hit which target, where, coverage,
-    fraction-identity) is deterministic. Drop those two columns and compare the
-    rest exactly (sorted), so a changed/added/dropped hit is still caught.
+    tEnd tLen tCov. The three alignment-quality scores — ``bitscore`` (col 2),
+    ``fident`` (col 3) and ``evalue`` (col 4) — all wobble run-to-run on GPU.
+    Everything else (which query hit which target, alignment coordinates,
+    lengths and coverage) is deterministic. Drop those three columns and compare
+    the rest exactly (sorted), so a changed/added/dropped hit, or a shifted
+    alignment region/coverage, is still caught.
     """
+    _DROP = (2, 3, 4)  # bitscore, fident, evalue
+
     def _scrub(lines):
         out = []
         for line in lines:
             parts = line.split("\t")
             if len(parts) >= 5:
-                parts = [p for i, p in enumerate(parts) if i not in (2, 4)]
+                parts = [p for i, p in enumerate(parts) if i not in _DROP]
             out.append("\t".join(parts))
         return sorted(out)
 
