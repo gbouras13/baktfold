@@ -106,6 +106,58 @@ def _jsonl_float_differ(lines_dev: list, lines_ref: list, tol: float = 0.01) -> 
     return row_diffs
 
 
+def _parse_fasta(lines: list) -> dict:
+    """Parse FASTA lines into an ordered {id: sequence} dict (id = first token)."""
+    records = {}
+    current = None
+    for line in lines:
+        if line.startswith(">"):
+            current = line[1:].split()[0]
+            records[current] = []
+        elif current is not None:
+            records[current].append(line.strip())
+    return {k: "".join(v) for k, v in records.items()}
+
+
+def _fasta_3di_differ(lines_dev: list, lines_ref: list, min_identity: float) -> list:
+    """Compare two 3Di FASTA files tolerantly.
+
+    ProstT5 3Di predictions are not bit-identical across hardware / driver /
+    torch versions, so each sequence is compared by per-residue identity and
+    only flagged when it falls below *min_identity*. Missing/extra sequences and
+    length mismatches are always reported (those indicate a real change, since
+    the 3Di length equals the protein length).
+    """
+    dev = _parse_fasta(lines_dev)
+    ref = _parse_fasta(lines_ref)
+    diffs = []
+
+    only_dev = sorted(set(dev) - set(ref))
+    only_ref = sorted(set(ref) - set(dev))
+    if only_dev:
+        diffs.append(f"    seq ids only in dev: {only_dev[:10]}")
+    if only_ref:
+        diffs.append(f"    seq ids only in ref: {only_ref[:10]}")
+
+    low = []
+    for sid in sorted(set(dev) & set(ref)):
+        a, b = dev[sid], ref[sid]
+        if len(a) != len(b):
+            diffs.append(f"    length mismatch {sid}: dev={len(a)} ref={len(b)}")
+            continue
+        if not a:
+            continue
+        identity = sum(1 for x, y in zip(a, b) if x == y) / len(a)
+        if identity < min_identity:
+            low.append((sid, identity))
+
+    if low:
+        low.sort(key=lambda t: t[1])
+        worst = ", ".join(f"{sid}={ident:.0%}" for sid, ident in low[:10])
+        diffs.append(f"    {len(low)} seq(s) below {min_identity:.0%} 3Di identity (worst: {worst})")
+    return diffs
+
+
 def _strip_volatile_fields(obj) -> None:
     """Recursively strip run-specific fields from bakta annotation objects.
 
@@ -237,6 +289,14 @@ def compare_dirs(dir_dev: Path, dir_ref: Path, strict: bool = False) -> list:
                             break
                 if len(sd) != len(sr):
                     diffs.append(f"    line count: dev={len(sd)} ref={len(sr)}")
+
+        # ── 3Di FASTA (ProstT5 prediction; per-residue identity tolerance) ──
+        elif rel.suffix == ".fasta" and "_3di" in rel.name:
+            min_identity = 1.0 if strict else 0.99
+            row_diffs = _fasta_3di_differ(ld, lr, min_identity)
+            if row_diffs:
+                diffs.append(f"  DIFFER (3Di identity < {min_identity:.0%}) : {rel}")
+                diffs.extend(row_diffs[:22])
 
         # ── FASTA and everything else (exact) ──────────────────────────────
         else:
