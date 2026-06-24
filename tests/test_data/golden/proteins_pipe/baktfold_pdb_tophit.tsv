@@ -1,0 +1,4 @@
+query	target	bitscore	fident	evalue	qStart	qEnd	qLen	qCov	tStart	tEnd	tLen	tCov
+lcl|NC_002516.2_prot_NP_064721.1_1|NC_002516.2_prot_NP_064721.1_1	1l8q-assembly1.cif.gz_A	1226	0.378	1.156e-24	177	514	514	0.66	1	318	321	0.99
+lcl|NC_002516.2_prot_NP_064723.1_3|NC_002516.2_prot_NP_064723.1_3	5z69-assembly1.cif.gz_B	1288	0.241	5.037e-28	2	360	360	0.99	8	368	371	0.97
+lcl|NC_002516.2_prot_NP_064722.1_2|NC_002516.2_prot_NP_064722.1_2	6ams-assembly2.cif.gz_D	2752	0.994	5.518e-62	1	367	367	1.0	1	366	366	1.0

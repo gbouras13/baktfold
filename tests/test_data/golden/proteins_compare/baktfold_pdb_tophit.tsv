@@ -1,0 +1,2 @@
+query	target	bitscore	fident	evalue	qStart	qEnd	qLen	qCov	tStart	tEnd	tLen	tCov
+MEGJMN_027	5l09-assembly1.cif.gz_B	318	0.171	6.923e-07	13	161	161	0.92	2	154	164	0.93

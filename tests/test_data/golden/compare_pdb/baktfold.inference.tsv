@@ -1,0 +1,19 @@
+#Annotated with Baktfold (v0.3.0): https://github.com/gbouras13/baktfold
+Locus	Length	Product	Swissprot	AFDBClusters	PDB	CATH
+MEGJMN_003	39	hypothetical protein				
+MEGJMN_005	48	hypothetical protein				
+MEGJMN_010	79	hypothetical protein				
+MEGJMN_024	51	hypothetical protein				
+MEGJMN_027	162	Transcriptional activator protein LuxR	swissprot_P12746	afdbclusters_A0A849I020	pdb_5l09	
+MEGJMN_030	68	hypothetical protein				
+MEGJMN_042	136	TraO-like protein		afdbclusters_A0A379VZR9		
+MEGJMN_060	47	hypothetical protein				
+MEGJMN_067	44	hypothetical protein				
+MEGJMN_069	78	hypothetical protein				
+MEGJMN_070	94	hypothetical protein		afdbclusters_A0A1I3V7E0		
+MEGJMN_071	80	Antirestriction protein KlcA	swissprot_P52603	afdbclusters_A0A0N9DZD6	pdb_2kmg	cath_2kmgA00
+MEGJMN_074	120	hypothetical protein				
+MEGJMN_076	65	hypothetical protein				
+MEGJMN_078	153	Sugar ABC transporter substrate-binding protein		afdbclusters_A0A6Y0VYQ0		
+MEGJMN_082	80	hypothetical protein				
+MEGJMN_083	140	hypothetical protein				

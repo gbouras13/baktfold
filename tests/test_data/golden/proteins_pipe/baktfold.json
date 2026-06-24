@@ -1,0 +1,223 @@
+{
+    "features": [
+        {
+            "id": "lcl|NC_002516.2_prot_NP_064721.1_1|NC_002516.2_prot_NP_064721.1_1",
+            "description": "",
+            "aa": "MSVELWQQCVDLLRDELPSQQFNTWIRPLQVEAEGDELRVYAPNRFVLDWVNEKYLGRLLELLGERGEGQLPALSLLIGSKRSRTPRAAIVPSQTHVAPPPPVAPPPAPVQPVSAAPVVVPREELPPVTTAPSVSSDPYEPEEPSIDPLAAAMPAGAAPAVRTERNVQVEGALKHTSYLNRTFTFENFVEGKSNQLARAAAWQVADNLKHGYNPLFLYGGVGLGKTHLMHAVGNHLLKKNPNAKVVYLHSERFVADMVKALQLNAINEFKRFYRSVDALLIDDIQFFARKERSQEEFFHTFNALLEGGQQVILTSDRYPKEIEGLEERLKSRFGWGLTVAVEPPELETRVAILMKKAEQAKIELPHDAAFFIAQRIRSNVRELEGALKRVIAHSHFMGRPITIELIRESLKDLLALQDKLVSIDNIQRTVAEYYKIKISDLLSKRRSRSVARPRQVAMALSKELTNHSLPEIGVAFGGRDHTTVLHACRKIAQLRESDADIREDYKNLLRTLTT",
+            "length": 514,
+            "type": "cds",
+            "locus": "lcl|NC_002516.2_prot_NP_064721.1_1|NC_002516.2_prot_NP_064721.1_1",
+            "3di": "DFQVLLVVLLVVVVVVDDPVCSVVQRVQWDWDDDDQEIEIEDQDPVSQVVCVVPCVVVSQVSCVVVDPDDGHHYDYDHDDPPDDDDDDDPDDDDPDDDDDDPDDDDDDDDDDPPDDDPDDDDDDDDDPPDDDDPDDDPDDDDDDPDDLVXDDDDPDDDDPPPPPPPVVLVVXLPVPAPADPVQALVLDFDDPQCVVVSVVLVVCLVPVDDPAFQEEEEAAPQLCLSSSLSNSVNSNCVVPVPFREHEDELVVLVVVLVVCVVVVNVVVSLCSLLPGQEYEYEAPLVQAPPVVSLVSVVVSSVSNVVSSHYYYYYYHDQLVPRPNHDPVSSVSSVVHHYDYRDFDDLVSLLSSLVSLCVVVVHDADSVLSSVLSVQDRGGSVVSVVLSVQLVVVCVVVVHDRDPVSSCVSCVVVSVVVVLQQDLVLLLVLLCVVLVHDSVLLQDPDDDPSNVLSNLLSLLLSVVRYPDDLCVSCVSSNNDDSVSSVVSNVVLVVCLVVDVVSVVVSVVSVVVSSV",
+            "pstc": [
+                {
+                    "source": "swissprot",
+                    "id": "B7V0N6",
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
+                    "identity": 0.996,
+                    "score": 3373.0,
+                    "evalue": 1.065e-70,
+                    "description": "Chromosomal replication initiator protein DnaA"
+                },
+                {
+                    "source": "afdb",
+                    "id": "A0A2U8GRR8",
+                    "query_cov": 1.0,
+                    "subject_cov": 0.97,
+                    "identity": 0.478,
+                    "score": 2293.0,
+                    "evalue": 3.019e-47,
+                    "description": "Chromosomal replication initiator protein DnaA"
+                },
+                {
+                    "source": "pdb",
+                    "id": "1l8q",
+                    "query_cov": 0.66,
+                    "subject_cov": 0.99,
+                    "identity": 0.378,
+                    "score": 1226.0,
+                    "evalue": 1.156e-24,
+                    "description": "CRYSTAL STRUCTURE OF DNA REPLICATION INITIATION FACTOR"
+                },
+                {
+                    "source": "cath",
+                    "id": "1l8qA01",
+                    "query_cov": 0.32,
+                    "subject_cov": 0.99,
+                    "identity": 0.463,
+                    "score": 765.0,
+                    "evalue": 7.588e-15,
+                    "description": "P-loop containing nucleotide triphosphate hydrolases"
+                },
+                {
+                    "source": "cath",
+                    "id": "af_P03004_374_467_1.10.1750.10",
+                    "query_cov": 0.18,
+                    "subject_cov": 0.98,
+                    "identity": 0.827,
+                    "score": 532.0,
+                    "evalue": 7.835e-10,
+                    "description": "DnaA protein, C-terminal DNA-binding domain"
+                },
+                {
+                    "source": "cath",
+                    "id": "2e0gA00",
+                    "query_cov": 0.19,
+                    "subject_cov": 0.91,
+                    "identity": 0.475,
+                    "score": 326.0,
+                    "evalue": 2.123e-05,
+                    "description": "DnaA, N-terminal domain"
+                }
+            ],
+            "baktfold": true,
+            "product": "Chromosomal replication initiator protein DnaA",
+            "db_xrefs": [
+                "afdb_v6:afdbclusters_A0A2U8GRR8",
+                "afdb_v6:swissprot_B7V0N6",
+                "cath:cath_1l8qA01",
+                "cath:cath_2e0gA00",
+                "cath:cath_af_P03004_374_467_1.10.1750.10",
+                "pdb:pdb_1l8q"
+            ]
+        },
+        {
+            "id": "lcl|NC_002516.2_prot_NP_064722.1_2|NC_002516.2_prot_NP_064722.1_2",
+            "description": "",
+            "aa": "MHFTIQREALLKPLQLVAGVVERRQTLPVLSNVLLVVEGQQLSLTGTDLEVELVGRVVLEDAAEPGEITVPARKLMDICKSLPNDVLIDIRVEEQKLLVKAGRSRFTLSTLPANDFPTVEEGPGSLNFSIAQSKLRRLIDRTSFAMAQQDVRYYLNGMLLEVNGGTLRSVATDGHRLAMCSLDAQIPSQDRHQVIVPRKGILELARLLTEQDGEVGIVLGQHHIRATTGEFTFTSKLVDGKFPDYERVLPRGGDKLVVGDRQQLREAFSRTAILSNEKYRGIRLQLSNGLLKIQANNPEQEEAEEEVQVEYNGGNLEIGFNVSYLLDVLGVIGTEQVRFILSDSNSSALVHEADNDDSAYVVMPMRL",
+            "length": 367,
+            "type": "cds",
+            "locus": "lcl|NC_002516.2_prot_NP_064722.1_2|NC_002516.2_prot_NP_064722.1_2",
+            "3di": "DKFKDFLVQVLLLLVLQLLQADPDDPDPLQQKWKWWDDDQKIWTWGDSVFKIKIFIDGTPDDPDTDMWIFRSVVVNVVSVVDDRRWMWMWDDDPQWIWIDGDPDIDITGIDDRVVDDDDDDDDFWDKFKDFLVVVLLQLLQAVVQADPPDPPVLQQAWKWKDAPQKIKIWGDNPFKIKIDIDGTDGPDDDIDMFTAGSSLSVSVSVSXDPDDFMWMWGDHDFKIWIDGPRMIIMGGTDDDDDDPCVVQDDPDAFKKKKDFLVVVLVQLVVQLVQADPVQQKWKWKDDPQKTKIWGADPVDDIDIDIGGIDGDDDIAIFMFRSVVVNSVSVSDPDRMWMWGHHHRQAWIWIAHPPDRRMIMIGGTDDD",
+            "pstc": [
+                {
+                    "source": "swissprot",
+                    "id": "Q9I7C4",
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
+                    "identity": 0.997,
+                    "score": 2792.0,
+                    "evalue": 9.579e-63,
+                    "description": "Beta sliding clamp"
+                },
+                {
+                    "source": "afdb",
+                    "id": "A0AAJ4S5X6",
+                    "query_cov": 1.0,
+                    "subject_cov": 0.69,
+                    "identity": 0.312,
+                    "score": 1635.0,
+                    "evalue": 9.458e-36,
+                    "description": "Beta sliding clamp"
+                },
+                {
+                    "source": "pdb",
+                    "id": "6ams",
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
+                    "identity": 0.994,
+                    "score": 2752.0,
+                    "evalue": 5.518e-62,
+                    "description": "Crystal structure of the DNA polymerase III subunit beta from Pseudomonas aeruginosa"
+                },
+                {
+                    "source": "cath",
+                    "id": "af_Q2G2H4_2_244_3.10.150.10",
+                    "query_cov": 0.64,
+                    "subject_cov": 1.0,
+                    "identity": 0.26,
+                    "score": 992.0,
+                    "evalue": 2.397e-21,
+                    "description": "DNA Polymerase III, subunit A, domain 2"
+                },
+                {
+                    "source": "cath",
+                    "id": "1jqlA03",
+                    "query_cov": 0.32,
+                    "subject_cov": 0.99,
+                    "identity": 0.546,
+                    "score": 532.0,
+                    "evalue": 1.066e-10,
+                    "description": "DNA Polymerase III, subunit A, domain 2"
+                }
+            ],
+            "baktfold": true,
+            "product": "Beta sliding clamp",
+            "db_xrefs": [
+                "afdb_v6:afdbclusters_A0AAJ4S5X6",
+                "afdb_v6:swissprot_Q9I7C4",
+                "cath:cath_1jqlA03",
+                "cath:cath_af_Q2G2H4_2_244_3.10.150.10",
+                "pdb:pdb_6ams"
+            ]
+        },
+        {
+            "id": "lcl|NC_002516.2_prot_NP_064723.1_3|NC_002516.2_prot_NP_064723.1_3",
+            "description": "",
+            "aa": "MSLTRVSVTAVRNLHPVTLSPSPRINILYGDNGSGKTSVLEAIHLLGLARSFRSARLQPVIQYEEAACTVFGQVMLANGIASNLGISRERQGEFTIRIDGQNARSAAQLAETLPLQLINPDSFRLLEGAPKIRRQFLDWGVFHVEPRFLPVWQRLQKALRQRNSWLRHGKLDPASQAAWDRELSLASDEIDAYRRSYIQALKPVFEETLAELVSLDDLTLSYYRGWDKDRDLLEVLASSLLRDQQMGHTQAGPQRADLRIRLAGHNAAEILSRGQQKLVVCALRIAQGHLINRAKRGQCVYLVDDLPSELDEQHRMALCRLLEDLGCQVFITCVDPQLLKDGWRTDTPVSMFHVEHGKVS",
+            "length": 360,
+            "type": "cds",
+            "locus": "lcl|NC_002516.2_prot_NP_064723.1_3|NC_002516.2_prot_NP_064723.1_3",
+            "3di": "DAWAKKWKAQFXLADTAIDGFDLFAEEEAEDPPLCLVSVVQLLCCQQVLDGPPDPDCVRRGHPPDQKMKMKTWDQFPVGDIKIWMWIDHDVGDIWIDIPNDTDDGSLVSLLRFQEQEDDPVLLCLQQPDFVVLVVSLLSLLCNLPVVXVVLVVQLVVLQVVLLVCLLVVDDDPVVNLVSLVSNLVSLVVSVVSSVVVLVVLQVLLQVLLCLLVVDXQKDKDKDFQDDPPDRPSVVQVVCSVVCSNVSHRRGTRVRIGIFMDGPNDGCNVPDDPLSSLSNSVSSSLSSQVSSCVSXVHAHEYEYEAXXVPDDLSSLLSSLVSSVVSSHHYYYYYNDPVSNVPPXDDPDHYHYWYGDSNYID",
+            "pstc": [
+                {
+                    "source": "swissprot",
+                    "id": "A6UX64",
+                    "query_cov": 1.0,
+                    "subject_cov": 0.97,
+                    "identity": 0.972,
+                    "score": 2554.0,
+                    "evalue": 4.306e-57,
+                    "description": "DNA replication and repair protein RecF"
+                },
+                {
+                    "source": "afdb",
+                    "id": "A0A9E5T4R8",
+                    "query_cov": 0.94,
+                    "subject_cov": 0.8,
+                    "identity": 0.39,
+                    "score": 1636.0,
+                    "evalue": 1.107e-35,
+                    "description": "DNA replication and repair protein RecF"
+                },
+                {
+                    "source": "pdb",
+                    "id": "5z69",
+                    "query_cov": 0.99,
+                    "subject_cov": 0.97,
+                    "identity": 0.241,
+                    "score": 1288.0,
+                    "evalue": 5.037e-28,
+                    "description": "Structure of the recombination mediator protein RecF-ATPrS in RecFOR pathway"
+                },
+                {
+                    "source": "cath",
+                    "id": "5h68A00",
+                    "query_cov": 1.0,
+                    "subject_cov": 0.95,
+                    "identity": 0.16,
+                    "score": 707.0,
+                    "evalue": 1.036e-14,
+                    "description": "P-loop containing nucleotide triphosphate hydrolases"
+                }
+            ],
+            "baktfold": true,
+            "product": "DNA replication and repair protein RecF",
+            "db_xrefs": [
+                "afdb_v6:afdbclusters_A0A9E5T4R8",
+                "afdb_v6:swissprot_A6UX64",
+                "cath:cath_5h68A00",
+                "pdb:pdb_5z69"
+            ]
+        }
+    ],
+    "version": {
+        "baktfold": "0.3.0",
+        "baktfold_db": "0.1.0"
+    },
+    "baktfold_run": {
+        "mode": "proteins",
+        "custom_db": null,
+        "fast": false
+    }
+}

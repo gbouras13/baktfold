@@ -1,0 +1,97 @@
+# Annotated with Baktfold
+# Software: v0.3.0
+# Database: v0.3.0
+# DOI: https://github.com/gbouras13/baktfold
+# URL: https://github.com/gbouras13/baktfold
+#Sequence Id	Type	Start	Stop	Strand	Locus Tag	Gene	Product	DbXrefs
+fake_chromosome	cds	19	894	+	FLLLIEBD_00001	repA	Replication protein RepA	SO:0000316
+fake_chromosome	cds	1519	1935	+	FLLLIEBD_00002		Protein ParA	SO:0000316, afdb_v6:afdbclusters_A0AB36KDH3, afdb_v6:swissprot_P07175, cath:cath_4e07A00, pdb:pdb_4e03
+fake_chromosome	cds	1932	2048	-	FLLLIEBD_00003		hypothetical protein	SO:0000316
+fake_chromosome	cds	2875	3669	-	FLLLIEBD_00004	xerC	Tyrosine recombinase XerC	SO:0000316
+fake_chromosome	cds	3729	3872	+	FLLLIEBD_00005		hypothetical protein	SO:0000316
+fake_chromosome	cds	3905	4870	-	FLLLIEBD_00006		N-acetyltransferase domain-containing protein	SO:0000316, afdb_v6:afdbclusters_A0A0F6NT92
+fake_chromosome	cds	4935	5246	-	FLLLIEBD_00007		hypothetical protein	SO:0000316
+fake_chromosome	cds	5280	5609	-	FLLLIEBD_00008		hypothetical protein	SO:0000316
+fake_chromosome	cds	6169	9288	-	FLLLIEBD_00009		hypothetical protein	SO:0000316, afdb_v6:afdbclusters_A0A2S0NSF5
+fake_chromosome	cds	9604	9840	+	FLLLIEBD_00010		hypothetical protein	SO:0000316
+fake_chromosome	cds	9837	10412	+	FLLLIEBD_00011		Heat-inducible transcription repressor HrcA	SO:0000316, afdb_v6:afdbclusters_A0A291E612, afdb_v6:swissprot_B0TAD4, pdb:pdb_3eco
+fake_chromosome	cds	10446	11063	+	FLLLIEBD_00012		DNA-binding protein	SO:0000316, afdb_v6:afdbclusters_A0A2K0YZQ3
+fake_chromosome	cds	10954	11658	-	FLLLIEBD_00013		IS6 family transposase IS26	SO:0000316
+fake_chromosome	cds	11670	11942	-	FLLLIEBD_00014	glgA	Glycogen synthase	COG:COG0297
+fake_chromosome	cds	12031	12678	-	FLLLIEBD_00015	glgC	Glucose-1-phosphate adenylyltransferase	COG:COG0448
+fake_chromosome	cds	12811	13515	+	FLLLIEBD_00016		IS6 family transposase IS26	SO:0000316
+fake_chromosome	cds	13906	14517	-	FLLLIEBD_00017		DUF2913 domain-containing protein	SO:0000316, afdb_v6:afdbclusters_A0AB34CDA8
+fake_chromosome	cds	14571	14852	-	FLLLIEBD_00018		hypothetical protein	SO:0000316
+fake_chromosome	cds	15025	15267	-	FLLLIEBD_00019		IS3 family transposase ISLad1	SO:0000316
+fake_chromosome	cds	15350	16426	-	FLLLIEBD_00020		IS110 family transposase ISEc21	SO:0000316
+fake_chromosome	cds	16645	17052	-	FLLLIEBD_00021		Putative transposase InsO for insertion sequence element IS911B	SO:0000316, afdb_v6:afdbclusters_C1J8E4, afdb_v6:swissprot_Q47718, cath:cath_af_Q47718_102_174_3.30.420.10, pdb:pdb_7svw
+fake_chromosome	cds	17265	17567	-	FLLLIEBD_00022		IS3 family transposase ISEc52	SO:0000316
+fake_chromosome	cds	17651	17986	+	FLLLIEBD_00023		hypothetical protein	SO:0000316
+fake_chromosome	cds	18169	18321	+	FLLLIEBD_00024		hypothetical protein	SO:0000316
+fake_chromosome	cds	18933	19565	-	FLLLIEBD_00025		Replication initiation protein	SO:0000316, afdb_v6:afdbclusters_A0A2X1LVU3, afdb_v6:swissprot_P03066
+fake_chromosome	cds	20018	20404	-	FLLLIEBD_00026		Putative esterase aq_1494	SO:0000316, afdb_v6:afdbclusters_A0A318UMQ5, afdb_v6:swissprot_O67466, cath:cath_5v10B00, pdb:pdb_5v10
+fake_chromosome	cds	20404	20889	-	FLLLIEBD_00027		HTH-type quorum-sensing regulator RhlR	SO:0000316, afdb_v6:afdbclusters_A0A9E1VSB0, afdb_v6:swissprot_P54292, cath:cath_3sztB01, pdb:pdb_5l09
+fake_chromosome	cds	20856	21434	-	FLLLIEBD_00028		HTH-type transcriptional regulator PrtR	SO:0000316, afdb_v6:afdbclusters_I1VYM4, afdb_v6:swissprot_Q06553, cath:cath_af_Q2FYU1_84_206_2.10.109.10, pdb:pdb_7jvt
+fake_chromosome	cds	21702	22235	+	FLLLIEBD_00029	rfaH	Transcription antitermination protein RfaH	SO:0000316
+fake_chromosome	cds	22253	22456	+	FLLLIEBD_00030		hypothetical protein	SO:0000316
+fake_chromosome	cds	22490	22801	+	FLLLIEBD_00031		DUF1496 domain-containing protein	SO:0000316, afdb_v6:afdbclusters_A0AAX3AIG3
+fake_chromosome	cds	22881	23486	+	FLLLIEBD_00032		Lipoprotein	SO:0000316, afdb_v6:afdbclusters_A0A7G3L4A4
+fake_chromosome	cds	23499	23978	+	FLLLIEBD_00033		Peptidoglycan-binding-like protein	SO:0000316, afdb_v6:afdbclusters_A0A5U9VSH8, afdb_v6:swissprot_Q8X6H3, cath:cath_af_Q46790_25_155_1.10.530.10, pdb:pdb_4xp8
+fake_chromosome	cds	24001	24468	+	FLLLIEBD_00034		Type IV pilus biogenesis and competence protein PilQ	SO:0000316, afdb_v6:afdbclusters_A0A0P0ZGT3, afdb_v6:swissprot_Q9ZHF3, cath:cath_3adyA00, pdb:pdb_6x62
+fake_chromosome	cds	24465	25283	+	FLLLIEBD_00035		DotC protein	SO:0000316, afdb_v6:afdbclusters_A0A484UHH3, pdb:pdb_7muq
+fake_chromosome	cds	25261	26448	+	FLLLIEBD_00036		hypothetical protein	SO:0000316, afdb_v6:afdbclusters_A0A7X4CW99, afdb_v6:swissprot_P52052, cath:cath_3jvvC02, cath:cath_5fl3A01, pdb:pdb_6geb
+fake_chromosome	cds	26445	26711	+	FLLLIEBD_00037		TraK protein	SO:0000316, afdb_v6:afdbclusters_A0A3M3JC81
+fake_chromosome	cds	26729	30052	+	FLLLIEBD_00038		DNA primase TraC	SO:0000316, afdb_v6:afdbclusters_A0A0T9MTE6, afdb_v6:swissprot_P27189, pdb:pdb_6n9x
+fake_chromosome	cds	30086	30439	+	FLLLIEBD_00039		hypothetical protein	SO:0000316
+fake_chromosome	cds	30475	31179	+	FLLLIEBD_00040		Type IV secretion system protein virB8	SO:0000316, afdb_v6:afdbclusters_A0A350YK85, afdb_v6:swissprot_P0C532, cath:cath_af_O07422_62_244_3.40.630.30, pdb:pdb_3wz3
+fake_chromosome	cds	31190	32293	+	FLLLIEBD_00041		putative conjugal transfer protein TrbG	SO:0000316, afdb_v6:afdbclusters_A0A077ZKE5, afdb_v6:swissprot_P55404, pdb:pdb_7mus
+fake_chromosome	cds	32297	32704	+	FLLLIEBD_00042		hypothetical protein	SO:0000316
+fake_chromosome	cds	32722	33636	+	FLLLIEBD_00043		Type IV secretion system protein virB10	SO:0000316, afdb_v6:afdbclusters_A0A1G0INH6, afdb_v6:swissprot_Q6FYW1, pdb:pdb_7mus
+fake_chromosome	cds	33642	34361	+	FLLLIEBD_00044		TraP protein	SO:0000316, afdb_v6:afdbclusters_A0AB38EMS0
+fake_chromosome	cds	34371	34904	+	FLLLIEBD_00045		Conjugal transfer protein TraQ	SO:0000316, afdb_v6:afdbclusters_A0AAW9CFL3
+fake_chromosome	cds	34958	35359	+	FLLLIEBD_00046		hypothetical protein	SO:0000316
+fake_chromosome	cds	35403	35966	+	FLLLIEBD_00047		Conjugal transfer protein	SO:0000316, afdb_v6:afdbclusters_R4WMQ0
+fake_chromosome	cds	35976	39023	+	FLLLIEBD_00048		Protein TraC	SO:0000316, afdb_v6:afdbclusters_A0A0W0YDQ9, afdb_v6:swissprot_P18004, pdb:pdb_7o43
+fake_chromosome	cds	39034	40230	+	FLLLIEBD_00049		hypothetical protein	SO:0000316
+fake_chromosome	cds	40227	40808	+	FLLLIEBD_00050		hypothetical protein	SO:0000316
+fake_chromosome	cds	40850	42994	+	FLLLIEBD_00051		Conjugal transfer integral membrane domain protein	SO:0000316, afdb_v6:afdbclusters_I6E438
+fake_chromosome	cds	43060	43683	+	FLLLIEBD_00052		Exclusion-determining protein	SO:0000316, afdb_v6:afdbclusters_A0AAP6CTH1, afdb_v6:swissprot_P05839, pdb:pdb_8cit
+fake_chromosome	cds	43785	45203	+	FLLLIEBD_00053		hypothetical protein	SO:0000316
+fake_chromosome	cds	45178	46305	+	FLLLIEBD_00054		Thiol:disulfide interchange protein DsbG	SO:0000316, afdb_v6:afdbclusters_A0AAX3AI07, afdb_v6:swissprot_Q9I106, cath:cath_4xvwC01, pdb:pdb_6mhh
+fake_chromosome	cds	46307	48499	+	FLLLIEBD_00055		Type 4 coupling protein DotL	SO:0000316, afdb_v6:afdbclusters_A0A379SFQ2, afdb_v6:swissprot_Q5ZYC6, cath:cath_1e9sG01, pdb:pdb_6sz9
+fake_chromosome	cds	48545	48850	+	FLLLIEBD_00056		Phospholipase D	SO:0000316, afdb_v6:afdbclusters_V5RP04, afdb_v6:swissprot_Q68VT0, cath:cath_1bysA00, pdb:pdb_1byr
+fake_chromosome	cds	48873	50462	-	FLLLIEBD_00057		IS66 family transposase ISKox1	SO:0000316
+fake_chromosome	cds	50492	50842	-	FLLLIEBD_00058		hypothetical protein	SO:0000316, afdb_v6:afdbclusters_A0AAJ1YJK2, afdb_v6:swissprot_P50359
+fake_chromosome	cds	50839	51246	-	FLLLIEBD_00059		hypothetical protein	SO:0000316, afdb_v6:afdbclusters_A0A291E5E4, afdb_v6:swissprot_P55502
+fake_chromosome	cds	51322	51462	+	FLLLIEBD_00060		hypothetical protein	SO:0000316
+fake_chromosome	cds	51538	51903	+	FLLLIEBD_00061		Transposase InsC for insertion element IS2-9	SO:0000316, afdb_v6:afdbclusters_G2IZT0, afdb_v6:swissprot_P0CF48, cath:cath_af_P0CF43_8_88_1.10.10.60
+fake_chromosome	cds	51951	52766	+	FLLLIEBD_00062		IS3 family transposase ISEc27	SO:0000316
+fake_chromosome	cds	52927	53178	+	FLLLIEBD_00063		hypothetical protein	SO:0000316
+fake_chromosome	cds	53219	55147	-	FLLLIEBD_00064	traI	Protein TraI	SO:0000316
+fake_chromosome	cds	55150	55341	-	FLLLIEBD_00065		hypothetical protein	SO:0000316
+fake_chromosome	cds	55857	56189	+	FLLLIEBD_00066		Mobilization protein MobC	SO:0000316, afdb_v6:afdbclusters_A0A7D5NNU8
+fake_chromosome	cds	56227	56358	-	FLLLIEBD_00067		hypothetical protein	SO:0000316
+fake_chromosome	cds	56460	56780	-	FLLLIEBD_00068		hypothetical protein	SO:0000316
+fake_chromosome	cds	56834	57067	-	FLLLIEBD_00069		hypothetical protein	SO:0000316
+fake_chromosome	cds	57211	57492	-	FLLLIEBD_00070		hypothetical protein	SO:0000316, afdb_v6:afdbclusters_A0A1I3V7E0
+fake_chromosome	cds	57759	57998	-	FLLLIEBD_00071	klcA	Antirestriction protein KlcA	SO:0000316
+fake_chromosome	cds	58366	59226	-	FLLLIEBD_00072		DUF4942 domain-containing protein	SO:0000316, afdb_v6:afdbclusters_A0AA42LS79
+fake_chromosome	cds	59300	59482	-	FLLLIEBD_00073		hypothetical protein	SO:0000316
+fake_chromosome	cds	59623	59982	-	FLLLIEBD_00074		hypothetical protein	SO:0000316
+fake_chromosome	cds	60576	60872	-	FLLLIEBD_00075		UPF0758 protein Mpe_A2695	SO:0000316, afdb_v6:afdbclusters_A0A916J5U4, afdb_v6:swissprot_A2SJB0, cath:cath_af_Q47685_35_158_3.40.140.10, pdb:pdb_2qlc
+fake_chromosome	cds	60832	61026	-	FLLLIEBD_00076		hypothetical protein	SO:0000316
+fake_chromosome	cds	61141	61629	-	FLLLIEBD_00077		HTH cro/C1-type domain-containing protein	SO:0000316, afdb_v6:afdbclusters_A0A0N6WZP2
+fake_chromosome	cds	61626	62084	-	FLLLIEBD_00078		hypothetical protein	SO:0000316, afdb_v6:afdbclusters_A0A9Q6N187
+fake_chromosome	cds	62237	62665	-	FLLLIEBD_00079		Protein StbB	SO:0000316, afdb_v6:afdbclusters_A0A4P7L671, afdb_v6:swissprot_P11906
+fake_chromosome	cds	62658	63638	-	FLLLIEBD_00080	parM	Plasmid segregation protein ParM	SO:0000316
+fake_chromosome	cds	64207	64650	+	FLLLIEBD_00081		CopG family transcriptional regulator	SO:0000316, afdb_v6:afdbclusters_A0A2M8S3H7, cath:cath_4p78B00, pdb:pdb_6g26
+fake_chromosome	cds	64647	64886	+	FLLLIEBD_00082		hypothetical protein	SO:0000316
+fake_chromosome	cds	64941	65360	+	FLLLIEBD_00083		hypothetical protein	SO:0000316
+fake_chromosome	cds	65649	65906	+	FLLLIEBD_00084		hypothetical protein	SO:0000316
+fake_chromosome	cds	66110	66676	-	FLLLIEBD_00085		Insertion element IS1 7 protein InsA	SO:0000316, afdb_v6:afdbclusters_A0A0B7IUN1, afdb_v6:swissprot_P19767
+fake_chromosome	cds	66718	67062	-	FLLLIEBD_00086		hypothetical protein	SO:0000316
+fake_chromosome	cds	67207	67512	-	FLLLIEBD_00087	ccdB	Toxin CcdB	SO:0000316
+fake_chromosome	cds	67512	67730	-	FLLLIEBD_00088	ccdA	Antitoxin CcdA	COG:COG5302
+fake_chromosome	cds	68292	68942	+	FLLLIEBD_00089	lexA	LexA repressor	SO:0000316
+fake_chromosome	cds	68942	70213	+	FLLLIEBD_00090	umuC	Protein UmuC	COG:COG0389
+small_plasmid	cds	1540	2016	-	FLLLIEBD_00091		Replication and maintenance protein	SO:0000316, afdb_v6:afdbclusters_P06735, afdb_v6:swissprot_P0A0C8

@@ -1,0 +1,2 @@
+query	target	bitscore	fident	evalue	qStart	qEnd	qLen	qCov	tStart	tEnd	tLen	tCov
+MEGJMN_027	3sztB01	302	0.129	1.48e-06	13	161	161	0.92	11	149	153	0.9

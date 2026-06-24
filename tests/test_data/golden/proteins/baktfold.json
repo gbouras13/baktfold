@@ -1,0 +1,326 @@
+{
+    "features": [
+        {
+            "id": "MEGJMN_003",
+            "description": "hypothetical protein",
+            "aa": "MRFSITNSGTSQTHFRIILEYVSCLICFIDKHVRGRHV",
+            "length": 38,
+            "type": "cds",
+            "locus": "MEGJMN_003",
+            "3di": "DDDDPDPPPVVVVVVVVVVVVVVVVVVVVVVVVVVVDD",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_005",
+            "description": "hypothetical protein",
+            "aa": "MTNQPATASQKTDEVANKTTPSMTVDTIFSATGFTPLQWVAMEREHS",
+            "length": 47,
+            "type": "cds",
+            "locus": "MEGJMN_005",
+            "3di": "DDPDPPDPPPPVVVVVPPPDPPDDPVVVCVVVVDGPVVVVVVVVVVV",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_010",
+            "description": "hypothetical protein",
+            "aa": "MDEKEVNFSLSYEQLAATTTEVIEAIKKRQDQTTAAKISSVEAVIFLWSELAKAGASDFSPVQADLRRFQERVAGMKE",
+            "length": 78,
+            "type": "cds",
+            "locus": "MEGJMN_010",
+            "3di": "DPPPPDPDDDDLVVVVVVLVVVLVVLVVVVVVDLVVVVVVVVVVLVVVVVVVVVVDDDCVVVVVVSVVSSVVSVVVDV",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_024",
+            "description": "hypothetical protein",
+            "aa": "MRRRPPQRSEDEKSITASAVIIPHTAKPRTNPLKTIQKLLCAVGVVTTRR",
+            "length": 50,
+            "type": "cds",
+            "locus": "MEGJMN_024",
+            "3di": "DDDDDPPDPPVPVDPPPDDDDDDPPDDDPDDVVVVVVVVCVVVVNDDDDD",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_027",
+            "description": "hypothetical protein",
+            "aa": "MQESEVDKKSIKINFHRYSNEAINFLNSFEKVTYVSTLLVEDNILSAHQSNGYADWDKKFYYDGKYKDSLLIKLGLELTKIEGGDKKTVIWDDVLRNHPENEIDRQRRAHNIYHGVSFIYGLTDNISMAINVCTDSATTKREFEDLILPHRLKLLTMFQDM",
+            "length": 161,
+            "type": "cds",
+            "locus": "MEGJMN_027",
+            "3di": "DPPDPXDXVXDVDDCVVLDVVLVVLLVVFPXWKKKKKWKDDPNDTXIXDIDXDVVVVVVCVVVVCCVPQLLSVVLVVVCVDPXXDKDKDFLVVSCVVPVPDPSLVVCVVRQFRTWIKGWHHPDPGMIMIMITTHNDPDDPVRVCVRCVVCRVVSVVSVVVR",
+            "pstc": [
+                {
+                    "source": "swissprot",
+                    "id": "P54292",
+                    "query_cov": 0.89,
+                    "subject_cov": 0.55,
+                    "identity": 0.145,
+                    "score": 316.0,
+                    "evalue": 1.148e-06,
+                    "description": "HTH-type quorum-sensing regulator RhlR"
+                },
+                {
+                    "source": "afdb",
+                    "id": "A0A9E1VSB0",
+                    "query_cov": 0.99,
+                    "subject_cov": 0.78,
+                    "identity": 0.218,
+                    "score": 297.0,
+                    "evalue": 6.108e-06,
+                    "description": "Transcription factor LuxR-like autoinducer-binding domain-containing protein"
+                },
+                {
+                    "source": "pdb",
+                    "id": "5l09",
+                    "query_cov": 0.92,
+                    "subject_cov": 0.93,
+                    "identity": 0.171,
+                    "score": 323.0,
+                    "evalue": 5.071e-07,
+                    "description": "Crystal Structure of Quorum-Sensing Transcriptional Activator from Yersinia enterocolitica in complex with 3-oxo-N-[(3S)-2-oxotetrahydrofuran-3-yl]hexanamide"
+                },
+                {
+                    "source": "cath",
+                    "id": "3sztB01",
+                    "query_cov": 0.92,
+                    "subject_cov": 0.9,
+                    "identity": 0.122,
+                    "score": 299.0,
+                    "evalue": 1.784e-06,
+                    "description": "Transcription factor LuxR-like, autoinducer-binding domain"
+                }
+            ],
+            "baktfold": true,
+            "product": "HTH-type quorum-sensing regulator RhlR",
+            "db_xrefs": [
+                "afdb_v6:afdbclusters_A0A9E1VSB0",
+                "afdb_v6:swissprot_P54292",
+                "cath:cath_3sztB01",
+                "pdb:pdb_5l09"
+            ]
+        },
+        {
+            "id": "MEGJMN_030",
+            "description": "hypothetical protein",
+            "aa": "MSSSAEKKTNVIYIGSTRRRKIEKAAISLSVHAGKPISAAKITQEVLDMYLESYIKDFIENTPPDDD",
+            "length": 67,
+            "type": "cds",
+            "locus": "MEGJMN_030",
+            "3di": "DPPPPPDPDDDDDDDPVVLVVLQVVQVVVCVVVVHRDGSVVVVVVVVVVVVVVVVVVVVVPDDDPPP",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_042",
+            "description": "hypothetical protein",
+            "aa": "MANENDASRDKKLLVGLIALVCAGAAGGGYLVWNHFFAPPPTPSRINVTNVTSAGKHQSTETEQYRQLLHEYNREGASAARADNSSFIASIPVGGGTPVHTVEAPRKRRSGNPHTRKNRRRRKRTRVSVSQIRQP",
+            "length": 135,
+            "type": "cds",
+            "locus": "MEGJMN_042",
+            "3di": "DPDPVVVVVVVVVVVVVVVVVVVCCVVVVVVVCCVVPDDDPDPPDDPPDPPVPVVVPVVVVVVVVVVVVVVVVVVVVVVVVVVPVVVXVDDDPDDDDDPDDDDDDDDDPPDDPPDPVPVVPDDDPDDDPVVVDDD",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_060",
+            "description": "hypothetical protein",
+            "aa": "MTLTNILVNAGVKVRLTDAYKIHHDKVIIIDRSTVETGSFNFRLAP",
+            "length": 46,
+            "type": "cds",
+            "locus": "MEGJMN_060",
+            "3di": "DDPVVVCVVVVDDDDDDPPDPDDQWDWDDDPNPDIDGDPDDPDDDD",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_067",
+            "description": "hypothetical protein",
+            "aa": "MSLSILQLAEDLAKGKRMRVPPMNGPEWRYFCFWLEYYMGYSM",
+            "length": 43,
+            "type": "cds",
+            "locus": "MEGJMN_067",
+            "3di": "DDDDLVVVLVCVVVVDDDDDDDDDDPVVVVSVVVSCVVVVDDD",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_069",
+            "description": "hypothetical protein",
+            "aa": "MELNDTAILPESDARKINAVASQAYPLGLLPNLKINFYSIDAIQLELRDNSGDLIWRDFTFSRDFIKGFMPYIRTRN",
+            "length": 77,
+            "type": "cds",
+            "locus": "MEGJMN_069",
+            "3di": "DDPPXDDDDDPVVVVVVVVVVVVCPVVVXDPPXDWDXDDDXKXKIWIADPVRDTDDDDDDDDPVVVVVXXVVXDXDD",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_070",
+            "description": "hypothetical protein",
+            "aa": "MTNSNKMTKDYRASVTIIVCPVRGNTAIHFCAIPSLQGSDCELWWPVVAGTSLHEAVEAIMVTNGIAINVTRVDKVRMQGRSTDYQVTYNRMQ",
+            "length": 93,
+            "type": "cds",
+            "locus": "MEGJMN_070",
+            "3di": "DPPPPPPPPXXKXKKKWKWDDDPPXDXWDIDTDPDPPDDXDIDIDTDDPPDDPVVVVVVVCVVVVHDKDWDDWDDWDDDPRMIMIMTMIGGDD",
+            "pstc": [
+                {
+                    "source": "afdb",
+                    "id": "A0A1I3V7E0",
+                    "query_cov": 0.97,
+                    "subject_cov": 0.95,
+                    "identity": 0.41,
+                    "score": 292.0,
+                    "evalue": 2.619e-06,
+                    "description": "hypothetical protein"
+                }
+            ],
+            "baktfold": true,
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "afdb_v6:afdbclusters_A0A1I3V7E0"
+            ]
+        },
+        {
+            "id": "MEGJMN_071",
+            "description": "hypothetical protein",
+            "aa": "MPECAEYFNVSVPGNYFEGELSADATGIVLTLFTLNALIFLAWDKKWHNAQEELIKQSERLKGYASQHKEKVKIFAAID",
+            "length": 79,
+            "type": "cds",
+            "locus": "MEGJMN_071",
+            "3di": "DPVPCVVXVDDDDPDPDPDDDDPVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCVVVVVVDVVVVVDV",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_074",
+            "description": "hypothetical protein",
+            "aa": "MASEKGIKNPQSDLCDKAEGIATYTDLVFLDAEQFRNCGDDLFVSNAERAQMAATGLIEFAKISGQHQHGTEPVRGIVISMLASTMHACHLLGVTEAEPFLSLVNIAAGHFEAEIRDEY",
+            "length": 119,
+            "type": "cds",
+            "locus": "MEGJMN_074",
+            "3di": "DPPPPPDDDLLVVLLVLLVVXVVLLVVLXVDLVVCVVVDPVVLVVLVVVLVVLVVVLVVVVVVVVVDPPDDPVVVVVVLVSVSSVLSVCVSVVXVVSVVVSVSSVVSVVVSVVVVVVVV",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_076",
+            "description": "hypothetical protein",
+            "aa": "MKFTDEEQQIIRRAEAIISAKLPGTDYLTSPDMVRSFLRLHFASADRELFWGAVSGQPEWCNCF",
+            "length": 64,
+            "type": "cds",
+            "locus": "MEGJMN_076",
+            "3di": "DDDDPVLVVLLVVLVVVLCVDDPPDDDDPDPVSVVVVVCVVCVPPPDVXDVDDDVPDDPVVVVD",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_078",
+            "description": "hypothetical protein",
+            "aa": "MNTNLLLTADDVHISMPAGAYLPVTCRFYSHIPHRRHAVRPVTERQRTGTSLFRLTQCCHRRPAVHRTYFMTETAPLYYDEGVNGSTKFTFEVYRDSAQYVVYVRRWNAKKNTILEETRYTSPDKAGLREIKYTNSRQAKAFFSSDFWSQSV",
+            "length": 152,
+            "type": "cds",
+            "locus": "MEGJMN_078",
+            "3di": "DDPDDXDDPDXDDDDDDPPDDDXDXXXXDXPDPDDDDDXDXPDDDDDPDDDXDDXDDDPPPDPPDDDXDDDDXDDFPDWDWDDDXXKIKMWTWTDDPVXXKIWIWIAGPVVRDTDKIWIAGDPVXXXIIIIXDDDDVVSVVVXDPVVVVPPD",
+            "pstc": [
+                {
+                    "source": "afdb",
+                    "id": "A0A9Q6N187",
+                    "query_cov": 0.98,
+                    "subject_cov": 0.92,
+                    "identity": 0.216,
+                    "score": 274.0,
+                    "evalue": 6.954e-05,
+                    "description": "hypothetical protein"
+                }
+            ],
+            "baktfold": true,
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": [
+                "afdb_v6:afdbclusters_A0A9Q6N187"
+            ]
+        },
+        {
+            "id": "MEGJMN_082",
+            "description": "hypothetical protein",
+            "aa": "MSDGQSLKVTASLLVFHPQRKEDRSAESLVGFLHLYAGRYNVLPDPYINLSRLSSQSWSVNCDLSIFPSNGSVWKVLWR",
+            "length": 79,
+            "type": "cds",
+            "locus": "MEGJMN_082",
+            "3di": "DPPXDKKKKKKKKWKWDDPDPVDDDXVDXXXXXXVDXDXDDDDDDPDDDXVVDDPXXXDDXXDXDXDDPPXDIXDTPDD",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        },
+        {
+            "id": "MEGJMN_083",
+            "description": "hypothetical protein",
+            "aa": "MLLIRTSKSSLSINFSFSRCYTLVPGVGVWAVFAGTDTGHILCIAIAGERAAHLIDNPRFMVRGFPAAVSGRSLKRRLDGRCQFFWCSDVGKHERLLACIVFVNIFPRSSCVAQVSRPLDDLPATFELTVARLLAIRTR",
+            "length": 139,
+            "type": "cds",
+            "locus": "MEGJMN_083",
+            "3di": "DDWDDDDPDXDDDDFDWDFDDDDDFAFFKKFKAADDPXXATQEIDTADXVVVVCXVDXCXXXPXDDPDXXSVVSCVVXVXRMIMITGPDDDPVVSLVSSVVSCVVPXPXXXXDDDDDDPVPDDVVSVVVSVVVVVVVVV",
+            "hypothetical": true,
+            "gene": null,
+            "genes": [],
+            "product": "hypothetical protein",
+            "db_xrefs": []
+        }
+    ],
+    "version": {
+        "baktfold": "0.3.0",
+        "baktfold_db": "0.1.0"
+    },
+    "baktfold_run": {
+        "mode": "proteins",
+        "custom_db": null,
+        "fast": false
+    }
+}
