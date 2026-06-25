@@ -30,6 +30,24 @@ SKIP_FILENAMES = set()
 SKIP_DIRS = {"logs", "logdir"}
 
 
+# Foldseek hit accessions are non-deterministic: for near-tied structural hits
+# (same function, different accession) GPU score wobble flips which accession
+# wins the tophit, and that flip propagates into the db_xref / hit columns of
+# every output (gff/gbff/embl/tsv/inference.tsv/json). In tolerant (non-strict)
+# mode the *category* of hit (swissprot/afdbclusters/pdb/cath/custom) is kept but
+# the specific accession is normalised away, so the comparison still flags a
+# changed product, a missing DB category, a coordinate change, etc. — just not
+# which of two equivalent accessions won the tie. Bakta's own db_xrefs (SO:,
+# UniRef:, ...) are deterministic and are NOT touched.
+_FOLDSEEK_ACCESSION_RE = re.compile(
+    r"\b(swissprot|afdbclusters|pdb|cath|custom)_[A-Za-z0-9._-]+"
+)
+
+
+def _normalize_accessions(text: str) -> str:
+    return _FOLDSEEK_ACCESSION_RE.sub(r"\1_<X>", text)
+
+
 def filter_lines(path: Path) -> list:
     """Read a file and return lines with timestamp-like content removed."""
     try:
@@ -158,28 +176,32 @@ def _fasta_3di_differ(lines_dev: list, lines_ref: list, min_identity: float) -> 
     return diffs
 
 
-def _tophit_differ(lines_dev: list, lines_ref: list) -> list:
-    """Compare two Foldseek *_tophit.tsv files by hit identity only.
+def _tophit_differ(lines_dev: list, lines_ref: list, strict: bool = False) -> list:
+    """Compare two Foldseek *_tophit.tsv files.
 
     Columns: query target bitscore fident evalue qStart qEnd qLen qCov tStart
     tEnd tLen tCov. Because the 3Di input is itself non-deterministic, every
-    per-alignment number wobbles run-to-run on GPU — not only the quality scores
-    (bitscore/fident/evalue) but also the alignment extent (qEnd/tEnd) and the
-    coverage derived from it (qCov/tCov). The only reproducible facts are which
-    query hit which target and the intrinsic lengths. Keep query/target/qLen/
-    tLen and drop the rest, so a changed/added/dropped hit is still caught while
-    alignment-numeric noise is ignored.
+    per-alignment number wobbles run-to-run on GPU (scores, identity, alignment
+    extent, coverage), and the *target accession* itself flips between near-tied
+    structural homologs. So in tolerant (non-strict) mode only the deterministic
+    facts are kept — which query proteins got a hit, and their length — as a
+    deduplicated set; a protein gaining/losing a hit in a DB is still caught.
+    In strict mode (run_comparison, deterministic CPU) only the three wobbly
+    quality scores are dropped.
     """
-    _KEEP = (0, 1, 7, 11)  # query, target, qLen, tLen
+    if strict:
+        keep, dedupe = (0, 1, 5, 6, 7, 8, 9, 10, 11, 12), False  # drop bitscore/fident/evalue
+    else:
+        keep, dedupe = (0, 7), True  # query, qLen
 
     def _scrub(lines):
         out = []
         for line in lines:
             parts = line.split("\t")
             if len(parts) >= 13:
-                parts = [parts[i] for i in _KEEP]
+                parts = [parts[i] for i in keep]
             out.append("\t".join(parts))
-        return sorted(out)
+        return sorted(set(out)) if dedupe else sorted(out)
 
     sd, sr = _scrub(lines_dev), _scrub(lines_ref)
     diffs = []
@@ -228,9 +250,10 @@ def _strip_volatile_fields(obj) -> None:
             _strip_volatile_fields(v)
 
 
-def _compare_annotation_json(fd: Path, fr: Path) -> list:
-    """Compare two bakta annotation JSON files, ignoring the 'run' key (timestamps)
-    and randomly-generated feature 'id' values.
+def _compare_annotation_json(fd: Path, fr: Path, normalize: bool = False) -> list:
+    """Compare two bakta annotation JSON files, ignoring the 'run' key (timestamps),
+    randomly-generated feature 'id' values and the non-reproducible ProstT5/Foldseek
+    fields. With *normalize*, Foldseek hit accessions are also normalised away.
 
     Returns a list of diff messages (empty = identical modulo timestamps).
     """
@@ -249,6 +272,9 @@ def _compare_annotation_json(fd: Path, fr: Path) -> list:
 
     dev_str = json.dumps(dev_obj, sort_keys=True, separators=(",", ":"))
     ref_str = json.dumps(ref_obj, sort_keys=True, separators=(",", ":"))
+    if normalize:
+        dev_str = _normalize_accessions(dev_str)
+        ref_str = _normalize_accessions(ref_str)
     if dev_str != ref_str:
         for i, (a, b) in enumerate(zip(dev_str, ref_str)):
             if a != b:
@@ -293,6 +319,9 @@ def compare_dirs(dir_dev: Path, dir_ref: Path, strict: bool = False) -> list:
 
         ld = filter_lines(fd)
         lr = filter_lines(fr)
+        if not strict:  # ignore non-deterministic Foldseek hit accessions
+            ld = [_normalize_accessions(line) for line in ld]
+            lr = [_normalize_accessions(line) for line in lr]
 
         # ── mean_probabilities.csv ─────────────────────────────────────────
         if "mean_probabilities" in rel.name and rel.suffix == ".csv":
@@ -323,16 +352,16 @@ def compare_dirs(dir_dev: Path, dir_ref: Path, strict: bool = False) -> list:
         # ── bakta annotation JSON (single large JSON, not JSONL) ───────────
         # Strip run.start/run.end timestamps before comparing.
         elif rel.suffix == ".json":
-            ann_diffs = _compare_annotation_json(fd, fr)
+            ann_diffs = _compare_annotation_json(fd, fr, normalize=not strict)
             if ann_diffs:
                 diffs.append(f"  DIFFER (annotation JSON, 'run' key stripped) : {rel}")
                 diffs.extend(ann_diffs[:22])
 
-        # ── Foldseek tophit TSV (ignore non-deterministic bitscore/evalue) ─
+        # ── Foldseek tophit TSV (non-deterministic accession/scores ignored) ─
         elif rel.suffix == ".tsv" and "_tophit" in rel.name:
-            row_diffs = _tophit_differ(ld, lr)
+            row_diffs = _tophit_differ(ld, lr, strict)
             if row_diffs:
-                diffs.append(f"  DIFFER (tophit, alignment numerics ignored) : {rel}")
+                diffs.append(f"  DIFFER (tophit, hit set) : {rel}")
                 diffs.extend(row_diffs[:22])
 
         # ── TSV/CSV/TXT (exact, sorted) ────────────────────────────────────
