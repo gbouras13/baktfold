@@ -74,6 +74,12 @@ def parse(features: Sequence[dict], foldseek_df: pl.DataFrame, db_name: str = 's
                     'score': bitscore,
                     'evalue': evalue,
                 }
+                # structure-based Foldseek also reports TM-score and LDDT
+                # (get_tophit adds these columns only when structures=True)
+                if 'alntmscore' in row and row['alntmscore'] is not None:
+                    new_pstc['tmscore'] = float(row['alntmscore'])
+                if 'lddt' in row and row['lddt'] is not None:
+                    new_pstc['lddt'] = float(row['lddt'])
 
                 # Append or initialize 'pstc'
                 if 'pstc' in cds:

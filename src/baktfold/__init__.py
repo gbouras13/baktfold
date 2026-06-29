@@ -532,8 +532,13 @@ def run(
     # update the hypotheticals 
     #####
 
+    anno.attach_prostt5_confidence(
+        hypotheticals,
+        Path(output) / f"{prefix}_prostT5_3di_mean_probabilities.csv",
+        has_duplicate_locus=has_duplicate_locus,
+    )
     for cds in hypotheticals:
-        anno.combine_annotation(cds, fast)  # add on PSTC annotations and mark hypotheticals
+        anno.combine_annotation(cds, fast, structures=False)  # add on PSTC annotations and mark hypotheticals
 
     # recombine updated and existing features
     combined_features = non_hypothetical_features + hypotheticals  # recombine
@@ -805,8 +810,12 @@ def proteins(
     # update the hypotheticals 
     #####
 
+    anno.attach_prostt5_confidence(
+        aas,
+        Path(output) / f"{prefix}_prostT5_3di_mean_probabilities.csv",
+    )
     for aa in aas:
-        anno.combine_annotation(aa, fast)  # add on PSTC annotations and mark hypotheticals
+        anno.combine_annotation(aa, fast, structures=False)  # add on PSTC annotations and mark hypotheticals
 
 
     ####
@@ -1220,8 +1229,14 @@ def compare(
     )
 
 
+    if not structures:
+        anno.attach_prostt5_confidence(
+            hypotheticals,
+            Path(predictions_dir) / f"{prefix}_prostT5_3di_mean_probabilities.csv",
+            has_duplicate_locus=has_duplicate_locus,
+        )
     for cds in hypotheticals:
-        anno.combine_annotation(cds, fast)  # add on PSTC annotations and mark hypotheticals
+        anno.combine_annotation(cds, fast, structures=structures)  # add on PSTC annotations and mark hypotheticals
 
     # recombine updated and existing features
     combined_features = non_hypothetical_features + hypotheticals  # recombine
@@ -1584,8 +1599,13 @@ def proteins_compare(
     # update the hypotheticals 
     #####
 
+    if not structures:
+        anno.attach_prostt5_confidence(
+            aas,
+            Path(predictions_dir) / f"{prefix}_prostT5_3di_mean_probabilities.csv",
+        )
     for aa in aas:
-        anno.combine_annotation(aa, fast)  # add on PSTC annotations and mark hypotheticals
+        anno.combine_annotation(aa, fast, structures=structures)  # add on PSTC annotations and mark hypotheticals
 
 
 

@@ -155,6 +155,10 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
     if fast:
         header_columns = [col for col in header_columns if col != 'AFDBClusters']
 
+    # annotation confidence column goes right after Product
+    prod_idx = header_columns.index('Product')
+    header_columns = header_columns[:prod_idx + 1] + ['Annotation_Confidence'] + header_columns[prod_idx + 1:]
+
     # flatten all features across sequences
     all_features = [
         feat
@@ -173,7 +177,12 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
             if 'hypothetical' in feat or 'baktfold' in feat:
                 selected_features.append(feat)
 
-    tsv.write_protein_features(selected_features, header_columns, annotations_path, custom_db, has_duplicate_locus, fast=fast)
+    # structure input carries Foldseek TM-score/LDDT on its hits -> extra columns
+    structures = any('tmscore' in feat for feat in selected_features)
+    if structures:
+        header_columns = header_columns + ['TMscore', 'LDDT']
+
+    tsv.write_protein_features(selected_features, header_columns, annotations_path, custom_db, has_duplicate_locus, fast=fast, structures=structures)
 
     # write summary file
 
@@ -237,9 +246,17 @@ def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str,
     if fast:
         header_columns = [col for col in header_columns if col != 'AFDBClusters']
 
+    # annotation confidence column goes right after Product
+    prod_idx = header_columns.index('Product')
+    header_columns = header_columns[:prod_idx + 1] + ['Annotation_Confidence'] + header_columns[prod_idx + 1:]
+
+    # structure input carries Foldseek TM-score/LDDT on its hits -> extra columns
+    structures = any('tmscore' in aa for aa in aas)
+    if structures:
+        header_columns = header_columns + ['TMscore', 'LDDT']
 
     logger.info(f'Exporting annotations (TSV) to: {annotations_path}')
-    tsv.write_protein_features(aas, header_columns, annotations_path, custom_db, has_duplicate_locus=False, fast=fast)
+    tsv.write_protein_features(aas, header_columns, annotations_path, custom_db, has_duplicate_locus=False, fast=fast, structures=structures)
 
 
     # do i combine the tophits tsvs, sort by column, add a column for db and put out as one tsv

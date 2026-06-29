@@ -48,6 +48,36 @@ def _normalize_accessions(text: str) -> str:
     return _FOLDSEEK_ACCESSION_RE.sub(r"\1_<X>", text)
 
 
+# Columns of the per-protein TSV (inference.tsv / proteins .tsv) derived from
+# the non-deterministic ProstT5/Foldseek numerics — dropped before comparison.
+_CONFIDENCE_COLUMNS = {"Annotation_Confidence", "TMscore", "LDDT"}
+
+
+def _drop_confidence_columns(lines: list) -> list:
+    """Header-aware drop of the confidence/TM-score/LDDT columns from a TSV.
+
+    Finds the header row (first non-``#`` line); if it carries any of
+    ``_CONFIDENCE_COLUMNS``, drops those columns from the header and every data
+    row. Files without those columns (e.g. the human-readable feature TSV, or a
+    reference produced before the feature existed) are returned unchanged, so
+    the two sides still align.
+    """
+    header_idx = next((i for i, l in enumerate(lines) if not l.startswith("#")), None)
+    if header_idx is None:
+        return lines
+    header = lines[header_idx].split("\t")
+    drop = {i for i, col in enumerate(header) if col in _CONFIDENCE_COLUMNS}
+    if not drop:
+        return lines
+    out = []
+    for i, line in enumerate(lines):
+        if i < header_idx or line.startswith("#"):
+            out.append(line)
+        else:
+            out.append("\t".join(p for j, p in enumerate(line.split("\t")) if j not in drop))
+    return out
+
+
 def filter_lines(path: Path) -> list:
     """Read a file and return lines with timestamp-like content removed."""
     try:
@@ -230,6 +260,10 @@ _VOLATILE_JSON_KEYS = (
     "query_cov",     # Foldseek query coverage
     "subject_cov",   # Foldseek subject coverage
     "identity",      # Foldseek fraction-identity
+    "prostt5_confidence",     # mean ProstT5 confidence (wobbles run-to-run)
+    "annotation_confidence",  # derived from the above non-deterministic metrics
+    "tmscore",       # Foldseek TM-score (structure input)
+    "lddt",          # Foldseek LDDT (structure input)
 )
 
 
@@ -366,6 +400,10 @@ def compare_dirs(dir_dev: Path, dir_ref: Path, strict: bool = False) -> list:
 
         # ── TSV/CSV/TXT (exact, sorted) ────────────────────────────────────
         elif rel.suffix in {".tsv", ".csv", ".txt"}:
+            # drop the confidence/TM-score/LDDT columns (derived from the
+            # non-deterministic ProstT5/Foldseek metrics) where present
+            ld = _drop_confidence_columns(ld)
+            lr = _drop_confidence_columns(lr)
             sd, sr = sorted(ld), sorted(lr)
             if sd != sr:
                 diffs.append(f"  DIFFER (sorted) : {rel}")
