@@ -57,21 +57,24 @@ def write_summary_txt_file(output, prefix, features):
     )
     begin_hyps = end_hyps + baktfold_function
 
+    def pct(n):
+        return round(n / cds_count * 100, 1) if cds_count else 0
+
     logger.info(f'Baktfold annotation summary {summary_path}')
     with summary_path.open('w') as fh_out:
         fh_out.write('Annotation:\n')
-        fh_out.write(f"CDS count: {cds_count}\n")
+        fh_out.write(f"CDS count: {cds_count} ({pct(cds_count)}%)\n")
         fh_out.write(
-            f"CDS beginning hypotheticals: {begin_hyps}\n"
+            f"CDS beginning hypotheticals: {begin_hyps} ({pct(begin_hyps)}%)\n"
         )
         fh_out.write(
-            f"CDS annotated with Baktfold database hit: {baktfold_hit}\n"
+            f"CDS annotated with Baktfold database hit: {baktfold_hit} ({pct(baktfold_hit)}%)\n"
         )
         fh_out.write(
-            f"CDS annotated with Baktfold function: {baktfold_function}\n"
+            f"CDS annotated with Baktfold function: {baktfold_function} ({pct(baktfold_function)}%)\n"
         )
         fh_out.write(
-            f"CDS remaining hypotheticals: {end_hyps}\n"
+            f"CDS remaining hypotheticals: {end_hyps} ({pct(end_hyps)}%)\n"
         )
         fh_out.write('\nBaktfold:\n')
         fh_out.write(f'Software: v{cfg.version}\n')
