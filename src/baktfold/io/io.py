@@ -35,6 +35,26 @@ def write_foldseek_tophit(tophit_df: pl.DataFrame, pdb_tophit_path: Path):
     logger.info(f"Saving foldseek tophits to {pdb_tophit_path}")
     tophit_df.write_csv(pdb_tophit_path, separator="\t")
 
+def _pct(n: int, denom: int) -> str:
+    """
+    Formats n as a one-decimal percentage of denom.
+
+    Args:
+      n (int): The numerator (a CDS count).
+      denom (int): The denominator (a CDS count). May be 0.
+
+    Returns:
+      str: The percentage to one decimal place, or '0.0' when denom is 0.
+
+    Examples:
+      >>> _pct(12, 55)
+      '21.8'
+      >>> _pct(0, 0)
+      '0.0'
+    """
+    return f"{n / denom * 100:.1f}" if denom else "0.0"
+
+
 def write_summary_txt_file(output, prefix, features):
 
     summary_path: Path = Path(output) / f"{prefix}.summary.txt"
@@ -57,24 +77,32 @@ def write_summary_txt_file(output, prefix, features):
     )
     begin_hyps = end_hyps + baktfold_function
 
-    def pct(n):
-        return round(n / cds_count * 100, 1) if cds_count else 0
-
+    # Percentages are reported against both denominators: every count as a
+    # share of all CDS, and — for the counts that describe what baktfold did —
+    # as a share of the beginning hypotheticals, which is the set baktfold is
+    # actually given (only hypotheticals, unless --all-proteins is used).
     logger.info(f'Baktfold annotation summary {summary_path}')
     with summary_path.open('w') as fh_out:
         fh_out.write('Annotation:\n')
-        fh_out.write(f"CDS count: {cds_count} ({pct(cds_count)}%)\n")
+        fh_out.write(f"CDS count: {cds_count}\n")
         fh_out.write(
-            f"CDS beginning hypotheticals: {begin_hyps} ({pct(begin_hyps)}%)\n"
+            f"CDS beginning hypotheticals: {begin_hyps}"
+            f" ({_pct(begin_hyps, cds_count)}% of CDS)\n"
         )
         fh_out.write(
-            f"CDS annotated with Baktfold database hit: {baktfold_hit} ({pct(baktfold_hit)}%)\n"
+            f"CDS annotated with Baktfold database hit: {baktfold_hit}"
+            f" ({_pct(baktfold_hit, cds_count)}% of CDS;"
+            f" {_pct(baktfold_hit, begin_hyps)}% of beginning hypotheticals)\n"
         )
         fh_out.write(
-            f"CDS annotated with Baktfold function: {baktfold_function} ({pct(baktfold_function)}%)\n"
+            f"CDS annotated with Baktfold function: {baktfold_function}"
+            f" ({_pct(baktfold_function, cds_count)}% of CDS;"
+            f" {_pct(baktfold_function, begin_hyps)}% of beginning hypotheticals)\n"
         )
         fh_out.write(
-            f"CDS remaining hypotheticals: {end_hyps} ({pct(end_hyps)}%)\n"
+            f"CDS remaining hypotheticals: {end_hyps}"
+            f" ({_pct(end_hyps, cds_count)}% of CDS;"
+            f" {_pct(end_hyps, begin_hyps)}% of beginning hypotheticals)\n"
         )
         fh_out.write('\nBaktfold:\n')
         fh_out.write(f'Software: v{cfg.version}\n')

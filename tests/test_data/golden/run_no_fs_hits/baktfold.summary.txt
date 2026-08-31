@@ -1,9 +1,9 @@
 Annotation:
 CDS count: 2014
-CDS beginning hypotheticals: 44
-CDS annotated with Baktfold database hit: 0
-CDS annotated with Baktfold function: 0
-CDS remaining hypotheticals: 44
+CDS beginning hypotheticals: 44 (2.2% of CDS)
+CDS annotated with Baktfold database hit: 0 (0.0% of CDS; 0.0% of beginning hypotheticals)
+CDS annotated with Baktfold function: 0 (0.0% of CDS; 0.0% of beginning hypotheticals)
+CDS remaining hypotheticals: 44 (2.2% of CDS; 100.0% of beginning hypotheticals)
 
 Baktfold:
 Software: v0.3.0
