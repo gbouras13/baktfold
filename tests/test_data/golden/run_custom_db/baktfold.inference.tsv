@@ -1,19 +1,19 @@
 #Annotated with Baktfold (v0.3.0): https://github.com/gbouras13/baktfold
-Locus	Length	Product	Swissprot	AFDBClusters	PDB	CATH	Custom_DB
-MEGJMN_003	39	hypothetical protein					
-MEGJMN_005	48	hypothetical protein					
-MEGJMN_010	79	MEGJMN_010					MEGJMN_010
-MEGJMN_024	51	hypothetical protein					
-MEGJMN_027	162	MEGJMN_027	swissprot_P54292	afdbclusters_A0A9E1VSB0	pdb_5l09	cath_3sztB01	MEGJMN_027
-MEGJMN_030	68	MEGJMN_030					MEGJMN_030
-MEGJMN_042	136	hypothetical protein					
-MEGJMN_060	47	MEGJMN_060					MEGJMN_060
-MEGJMN_067	44	MEGJMN_067					MEGJMN_067
-MEGJMN_069	78	MEGJMN_069					MEGJMN_069
-MEGJMN_070	94	MEGJMN_070		afdbclusters_A0A1I3V7E0			MEGJMN_070
-MEGJMN_071	80	hypothetical protein					
-MEGJMN_074	120	hypothetical protein					
-MEGJMN_076	65	MEGJMN_076					MEGJMN_076
-MEGJMN_078	153	MEGJMN_078		afdbclusters_A0A9Q6N187			MEGJMN_078
-MEGJMN_082	80	hypothetical protein					
-MEGJMN_083	140	hypothetical protein					
+Locus	Length	Product	Annotation_Confidence	Swissprot	AFDBClusters	PDB	CATH	Custom_DB
+MEGJMN_003	39	hypothetical protein						
+MEGJMN_005	48	hypothetical protein						
+MEGJMN_010	79	MEGJMN_010	high					MEGJMN_010
+MEGJMN_024	51	hypothetical protein						
+MEGJMN_027	162	MEGJMN_027	high	swissprot_P54292	afdbclusters_A0A9E1VSB0	pdb_5l09	cath_3sztB01	MEGJMN_027
+MEGJMN_030	68	MEGJMN_030	high					MEGJMN_030
+MEGJMN_042	136	hypothetical protein						
+MEGJMN_060	47	MEGJMN_060	high					MEGJMN_060
+MEGJMN_067	44	MEGJMN_067	high					MEGJMN_067
+MEGJMN_069	78	MEGJMN_069	high					MEGJMN_069
+MEGJMN_070	94	MEGJMN_070	high		afdbclusters_A0A1I3V7E0			MEGJMN_070
+MEGJMN_071	80	hypothetical protein						
+MEGJMN_074	120	hypothetical protein						
+MEGJMN_076	65	MEGJMN_076	high					MEGJMN_076
+MEGJMN_078	153	MEGJMN_078	high		afdbclusters_A0A9Q6N187			MEGJMN_078
+MEGJMN_082	80	hypothetical protein						
+MEGJMN_083	140	hypothetical protein						

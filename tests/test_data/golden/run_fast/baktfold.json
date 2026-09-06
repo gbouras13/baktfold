@@ -138,6 +138,7 @@
             "id": "MEGJMNBEGN_3",
             "locus": "MEGJMN_003",
             "3di": "DDDDPDPPPVVVVVVVVVVVVVVVVVVVVVVVVVVVDD",
+            "prostt5_confidence": 77.0,
             "length": 39
         },
         {
@@ -253,6 +254,7 @@
             "id": "MEGJMNBEGN_5",
             "locus": "MEGJMN_005",
             "3di": "DDPDPPDPPPPVVVVVPPPDPPDDPVVVCVVVVDGPVVVVVVVVVVV",
+            "prostt5_confidence": 68.8,
             "length": 48
         },
         {
@@ -513,6 +515,7 @@
             "id": "MEGJMNBEGN_10",
             "locus": "MEGJMN_010",
             "3di": "DPPPPDPDDDDLVVVVVVLVVVLVVLVVVVVVDLVVVVVVVVVVLVVVVVVVVVVDDDCVVVVVVSVVSSVVSVVVDV",
+            "prostt5_confidence": 66.8,
             "length": 79
         },
         {
@@ -1377,6 +1380,7 @@
             "id": "MEGJMNBEGN_24",
             "locus": "MEGJMN_024",
             "3di": "DDDDDPPDPPVPVDPPPDDDDDDPPDDDPDDVVVVVVVVCVVVVNDDDDD",
+            "prostt5_confidence": 64.4,
             "length": 51
         },
         {
@@ -1596,7 +1600,9 @@
                     "description": "Transcription factor LuxR-like, autoinducer-binding domain"
                 }
             ],
+            "prostt5_confidence": 57.18,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 162
         },
         {
@@ -1766,6 +1772,7 @@
             "id": "MEGJMNBEGN_30",
             "locus": "MEGJMN_030",
             "3di": "DPPPPPDPDDDDDDDPVVLVVLQVVQVVVCVVVVHRDGSVVVVVVVVVVVVVVVVVVVVVPDDDPPP",
+            "prostt5_confidence": 82.81,
             "length": 68
         },
         {
@@ -2445,6 +2452,7 @@
             "id": "MEGJMNBEGN_42",
             "locus": "MEGJMN_042",
             "3di": "DPDPVVVVVVVVVVVVVVVVVVVCCVVVVVVVCCVVPDDDPDPPDDPPDPPVPVVVPVVVVVVVVVVVVVVVVVVVVVVVVVVPVVVXVDDDPDDDDDPDDDDDDDDDPPDDPPDPVPVVPDDDPDDDPVVVDDD",
+            "prostt5_confidence": 62.99,
             "length": 136
         },
         {
@@ -3454,6 +3462,7 @@
             "id": "MEGJMNBEGN_60",
             "locus": "MEGJMN_060",
             "3di": "DDPVVVCVVVVDDDDDDPPDPDDQWDWDDDPNPDIDGDPDDPDDDD",
+            "prostt5_confidence": 75.68,
             "length": 47
         },
         {
@@ -3851,6 +3860,7 @@
             "id": "MEGJMNBEGN_67",
             "locus": "MEGJMN_067",
             "3di": "DDDDLVVVLVCVVVVDDDDDDDDDDPVVVVSVVVSCVVVVDDD",
+            "prostt5_confidence": 71.04,
             "length": 44
         },
         {
@@ -3964,6 +3974,7 @@
             "id": "MEGJMNBEGN_69",
             "locus": "MEGJMN_069",
             "3di": "DDPPXDDDDDPVVVVVVVVVVVVCPVVVXDPPXDWDXDDDXKXKIWIADPVRDTDDDDDDDDPVVVVVXXVVXDXDD",
+            "prostt5_confidence": 45.92,
             "length": 78
         },
         {
@@ -4023,6 +4034,7 @@
             "id": "MEGJMNBEGN_70",
             "locus": "MEGJMN_070",
             "3di": "DPPPPPPPPXXKXKKKWKWDDDPPXDXWDIDTDPDPPDDXDIDIDTDDPPDDPVVVVVVVCVVVVHDKDWDDWDDWDDDPRMIMIMTMIGGDD",
+            "prostt5_confidence": 52.39,
             "length": 94
         },
         {
@@ -4049,6 +4061,7 @@
             "id": "MEGJMNBEGN_71",
             "locus": "MEGJMN_071",
             "3di": "DPVPCVVXVDDDDPDPDPDDDDPVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCVVVVVVDVVVVVDV",
+            "prostt5_confidence": 61.87,
             "length": 80
         },
         {
@@ -4218,6 +4231,7 @@
             "id": "MEGJMNBEGN_74",
             "locus": "MEGJMN_074",
             "3di": "DPPPPPDDDLLVVLLVLLVVXVVLLVVLXVDLVVCVVVDPVVLVVLVVVLVVLVVVLVVVVVVVVVDPPDDPVVVVVVLVSVSSVLSVCVSVVXVVSVVVSVSSVVSVVVSVVVVVVVV",
+            "prostt5_confidence": 52.39,
             "length": 120
         },
         {
@@ -4330,6 +4344,7 @@
             "id": "MEGJMNBEGN_76",
             "locus": "MEGJMN_076",
             "3di": "DDDDPVLVVLLVVLVVVLCVDDPPDDDDPDPVSVVVVVCVVCVPPPDVXDVDDDVPDDPVVVVD",
+            "prostt5_confidence": 58.69,
             "length": 65
         },
         {
@@ -4443,6 +4458,7 @@
             "id": "MEGJMNBEGN_78",
             "locus": "MEGJMN_078",
             "3di": "DDPDDXDDPDXDDDDDDPPDDDXDXXXXDXPDPDDDDDXDXPDDDDDPDDDXDDXDDDPPPDPPDDDXDDDDXDDFPDWDWDDDXXKIKMWTWTDDPVXXKIWIWIAGPVVRDTDKIWIAGDPVXXXIIIIXDDDDVVSVVVXDPVVVVPPD",
+            "prostt5_confidence": 44.14,
             "length": 153
         },
         {
@@ -4635,6 +4651,7 @@
             "id": "MEGJMNBEGN_82",
             "locus": "MEGJMN_082",
             "3di": "DPPXDKKKKKKKKWKWDDPDPVDDDXVDXXXXXXVDXDXDDDDDDPDDDXVVDDPXXXDDXXDXDXDDPPXDIXDTPDD",
+            "prostt5_confidence": 35.67,
             "length": 80
         },
         {
@@ -4691,6 +4708,7 @@
             "id": "MEGJMNBEGN_83",
             "locus": "MEGJMN_083",
             "3di": "DDWDDDDPDXDDDDFDWDFDDDDDFAFFKKFKAADDPXXATQEIDTADXVVVVCXVDXCXXXPXDDPDXXSVVSCVVXVXRMIMITGPDDDPVVSLVSSVVSCVVPXPXXXXDDDDDDPVPDDVVSVVVSVVVVVVVVV",
+            "prostt5_confidence": 45.12,
             "length": 140
         },
         {

@@ -1,19 +1,19 @@
 #Annotated with Baktfold (v0.3.0): https://github.com/gbouras13/baktfold
-ID	Length	Product	Swissprot	AFDBClusters	PDB	CATH
-MEGJMN_003	38	hypothetical protein				
-MEGJMN_005	47	hypothetical protein				
-MEGJMN_010	78	hypothetical protein				
-MEGJMN_024	50	hypothetical protein				
-MEGJMN_027	161	Transcriptional activator protein EchR	swissprot_Q46967	afdbclusters_A0A951VBP6	pdb_5l09	cath_3sztB01
-MEGJMN_030	67	hypothetical protein				
-MEGJMN_042	135	hypothetical protein				
-MEGJMN_060	46	hypothetical protein				
-MEGJMN_067	43	hypothetical protein				
-MEGJMN_069	77	hypothetical protein				
-MEGJMN_070	93	hypothetical protein		afdbclusters_A0A1I3V7E0		
-MEGJMN_071	79	Antirestriction protein KlcA	swissprot_P52602	afdbclusters_A0A0N9DZD6		
-MEGJMN_074	119	hypothetical protein				
-MEGJMN_076	64	hypothetical protein				
-MEGJMN_078	152	Sugar ABC transporter substrate-binding protein		afdbclusters_A0A6Y0VYQ0		
-MEGJMN_082	79	hypothetical protein				
-MEGJMN_083	139	hypothetical protein				
+ID	Length	Product	Annotation_Confidence	Swissprot	AFDBClusters	PDB	CATH	TMscore	LDDT
+MEGJMN_003	38	hypothetical protein							
+MEGJMN_005	47	hypothetical protein							
+MEGJMN_010	78	hypothetical protein							
+MEGJMN_024	50	hypothetical protein							
+MEGJMN_027	161	Transcriptional activator protein EchR	low	swissprot_Q46967	afdbclusters_A0A951VBP6	pdb_5l09	cath_3sztB01	0.6928	0.5095
+MEGJMN_030	67	hypothetical protein							
+MEGJMN_042	135	hypothetical protein							
+MEGJMN_060	46	hypothetical protein							
+MEGJMN_067	43	hypothetical protein							
+MEGJMN_069	77	hypothetical protein							
+MEGJMN_070	93	hypothetical protein	high		afdbclusters_A0A1I3V7E0			0.8918	0.8471
+MEGJMN_071	79	Antirestriction protein KlcA	medium	swissprot_P52602	afdbclusters_A0A0N9DZD6			0.9149	0.8528
+MEGJMN_074	119	hypothetical protein							
+MEGJMN_076	64	hypothetical protein							
+MEGJMN_078	152	Sugar ABC transporter substrate-binding protein	medium		afdbclusters_A0A6Y0VYQ0			0.9162	0.7081
+MEGJMN_082	79	hypothetical protein							
+MEGJMN_083	139	hypothetical protein							

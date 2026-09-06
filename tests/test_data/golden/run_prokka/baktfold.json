@@ -39,7 +39,7 @@
                 "molecular_weight": 32998.6605,
                 "isoelectric_point": 9.650224113464354
             },
-            "id": "FLLLIEBDPW_1",
+            "id": "FLLLIEBDSM_1",
             "locus": "FLLLIEBD_00001"
         },
         {
@@ -68,7 +68,7 @@
                 "molecular_weight": 14988.992199999999,
                 "isoelectric_point": 5.028454780578613
             },
-            "id": "FLLLIEBDPW_2",
+            "id": "FLLLIEBDSM_2",
             "locus": "FLLLIEBD_00002",
             "3di": "DEEEEDFQDPPLCLLVVLVVVQVVCVVVVFAEEEEEAAPVCVVVVVLVPDDPPDDHHHYDYDDDQLLVVCVVCVVVGPYYYYRYHSDDDPSLLSSLLRGQEYEYRADPDPVSVVCVVVSVVSNVVSCVVPVNHDYDYD",
             "pstc": [
@@ -113,7 +113,9 @@
                     "description": "P-loop containing nucleotide triphosphate hydrolases"
                 }
             ],
+            "prostt5_confidence": 74.41,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 139
         },
         {
@@ -138,10 +140,11 @@
                 "molecular_weight": 4466.1776,
                 "isoelectric_point": 9.495048713684085
             },
-            "id": "FLLLIEBDPW_3",
+            "id": "FLLLIEBDSM_3",
             "locus": "FLLLIEBD_00003",
             "hypothetical": true,
             "3di": "DDDDPDPPPVVVVVVVVVVVVVVVVVVVVVVVVVVVDD",
+            "prostt5_confidence": 77.0,
             "length": 39
         },
         {
@@ -166,7 +169,7 @@
                 "molecular_weight": 29184.7169,
                 "isoelectric_point": 9.900619316101071
             },
-            "id": "FLLLIEBDPW_4",
+            "id": "FLLLIEBDSM_4",
             "locus": "FLLLIEBD_00004"
         },
         {
@@ -191,10 +194,11 @@
                 "molecular_weight": 5157.6789,
                 "isoelectric_point": 4.895906257629394
             },
-            "id": "FLLLIEBDPW_5",
+            "id": "FLLLIEBDSM_5",
             "locus": "FLLLIEBD_00005",
             "hypothetical": true,
             "3di": "DDPDPPDPPPPVVVVVPPPDPPDDPVVVCVVVVDGPVVVVVVVVVVV",
+            "prostt5_confidence": 68.8,
             "length": 48
         },
         {
@@ -220,22 +224,24 @@
                 "molecular_weight": 35992.8773,
                 "isoelectric_point": 6.863672065734863
             },
-            "id": "FLLLIEBDPW_6",
+            "id": "FLLLIEBDSM_6",
             "locus": "FLLLIEBD_00006",
-            "3di": "DPPDXDDDDDDDADPQFKKKWWFDXDDPDXXIKIKIKXKDKWWXADDPPDXXXXXKIKIKIDXDDPDDDDIXIWIWIXGXPAXAEXEIDXDDPDDDDPPXCVVLVVVLVVLVVLLVDDPQXXKYDDDXDPDDPVDVVVLVVVLVVVVVQQWDDDPPDDXDXIDGSVPGDGDPDDMXXMDMDXVVVVVVVVVVVVVVLVVVLVVLVVVLVVLVVVLVVLVPDPLVVVVPVPPDDDDDDDPPDDPDDPDPDDDDDPPDDPVVSVVVVVVVVVSSVVSVVVVVVSVVVVVVSVVVVVVVVVVVVVVVVVVCVVVVVVVVVVVVD",
+            "3di": "DPPDXDDDDDDDADPQFKKKWWFDXDDPDXXIKIKIKXKDKWWXADDPPDXXXXXKIKIKIDXDDPDDDDIXIWIWIXGXPAXAEXEIDXDDPDDDDPPXCVVLVVVLVVLVVLLVDDPQXXKYDDDXDPDDPVDVVVLVVVLVVVVVQQWDDDPPDDXDXIDGSVPGDGDPDDMDXMDMDXVVVVVVVVVVVVVVLVVVLVVLVVVLVVLVVVLVVLVPDPLVVVVPVPPDDDDDDDPPDDPDDPDPDDDDDPPDDPVVSVVVVVVVVVSSVVSVVVVVVSVVVVVVSVVVVVVVVVVVVVVVVVVCVVVVVVVVVVVVD",
             "pstc": [
                 {
                     "source": "afdb",
                     "id": "A0A0F6NT92",
                     "query_cov": 0.99,
                     "subject_cov": 0.95,
-                    "identity": 0.585,
-                    "score": 1090.0,
-                    "evalue": 1.344e-27,
+                    "identity": 0.588,
+                    "score": 1091.0,
+                    "evalue": 1.302e-27,
                     "description": "N-acetyltransferase domain-containing protein"
                 }
             ],
+            "prostt5_confidence": 55.22,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 322
         },
         {
@@ -260,10 +266,11 @@
                 "molecular_weight": 11742.2639,
                 "isoelectric_point": 4.512527275085449
             },
-            "id": "FLLLIEBDPW_7",
+            "id": "FLLLIEBDSM_7",
             "locus": "FLLLIEBD_00007",
             "hypothetical": true,
             "3di": "DDPVLDPDPVXDDDLVVLLVVLCVVDVWDWDDDPDDXPDXXIWIWTDDPVRKIKIWXXXDPXXXIXIWIXDDPVVDDDDDPVPDDIDDDDDPVVVVVVSVVVV",
+            "prostt5_confidence": 42.36,
             "length": 104
         },
         {
@@ -288,10 +295,11 @@
                 "molecular_weight": 12738.466799999998,
                 "isoelectric_point": 7.721145057678222
             },
-            "id": "FLLLIEBDPW_8",
+            "id": "FLLLIEBDSM_8",
             "locus": "FLLLIEBD_00008",
             "hypothetical": true,
             "3di": "DDDDDDDFPVVVLVVVCVVVVFXXKWKXXDDXDDDPVVVVCVVXXPDXWDWDDDPXXTDWXDDDPDRDIDTDDXDDDPPDDPDDDPVXVXXDXDXXMXMXXXXXDDPPD",
+            "prostt5_confidence": 40.16,
             "length": 110
         },
         {
@@ -317,23 +325,25 @@
                 "molecular_weight": 120147.3145,
                 "isoelectric_point": 6.589651298522949
             },
-            "id": "FLLLIEBDPW_9",
+            "id": "FLLLIEBDSM_9",
             "locus": "FLLLIEBD_00009",
             "hypothetical": true,
-            "3di": "DVVVVVVVVVVVLLVVLVVVLVVXPVNVVLVCVVVLVVLLVCLVVVVVVLVVVLVVLLVVLVVCVVCVVVCVVVCVVVDVDLVVLLVVLVVLLVVLVVLLVPVLVVLVVVLVVLXVDPLLXVLLSLLLCVLLVLSSLSVLLSVLSVLSVVLSVVVVVDDSSSSVSSSVSSVVSSVSSVVSVVSNVVSSVVSVDPVSSLLSSLVSLLVXLLVQLLLLLLLLLXLXAPPDXXXXDXXXXXDXDXWDXDDDQXXKFFXDXDAFFDFXXXXXXXXVVVXXVVXDDDPPDXKXKDWXXXXXDGGPXMTMIGTDPXDXDDDVSSVVSSVCXXPXDXDDXDXXXVSLSVLLVQLLVCLVVVVVVSNLSSLVSLLVSLLSSXVSXVXDDDPVXVVVCVVXXXXXXXXVVSLVVVLVSLVVQXVDXXXXXVXXXVXXXDXVVSXVVXXXVXXVSLLSSLLSSLSSLVSSVVVXVVXDDDDDPSSVVSSLSSLVSSLVSLLVXLXXXXXDDXPDXXSLLVSLVSLLVSLLVXLLVXXVVDPVSLVSSLVSLLSSLVSXXXXVXXVVVXVXXXXXXDXVXXVXVVDDVVSVVXXVXXXXDVDSSSSLSSLVSLLSSLSSLLLSCLVXXDXVXDDDSLVSLVSSXXXXXXDDPVXXXXXXSSNVSLLVSLVLLLVXVVSVXDDPDXXXVXLVVSSVSLVVXXXDDDDXXXXXXXDDXXXXXSSVSLLVSLVSSXDDSVVSXVVSSVVSSVVSXVXDDPVVVVVSLVVXVVDPPDDXPXXXDDPVXSVVXXVSXVVSSVVSVVSVVVXVXLVVVVVVDVVVVVVVDPVVXXVXDDXXDDPVSXVVXXVXDXPDPDDSVXXXXXDDPDDDSVVXXVVXVXXXXDDDDXPVVSLVVSSVVSSVVVVVVVXVDXDDDVXLVVSVVVSLVVCVVVVXXXXXXXXXVXDVVSSVXXXDXDDDXXXKXXKDXDDDDDDDDXXDXXXXIKXWXXDPVRXIXIXXDXXXXXXXXWXXDPVRDTDXXXDDDPDDXVVVVVVVVVVVVDDDDPDXXXDXDDD",
+            "3di": "DVVVVVVVVVVVLLVVLVVVLVVXPVNVVLVCVVVLVVLLVCLVVVVVVLVVVLVVLLVVLVVCVVCVVVCVVVCVVVDVDLVVLLVVLVVLLVVLVVLLVPLLVVLVVVLVVLXVDPLLXVLLSLLLCVLLVLSSLSVLLSVLSVLSVVLSVVVVVDDSSSSVSSSVSSVVSSVSSVVSVVSNVVSSVVSVDPVSSLLSSLVSLLVXLLVQLLLLLLLLLXLXAPPDXXXXXXXXXXDXDXWDXDDDQXXKFFXDXDAFFDFXXXXXXXXVXVXXVVXDDDPPDXKXKDKXXXXXDGGPXMTMIGTDPXDXDDDVSSVVSVVCXXPXDXDDXDXXXVSLXVLLVQLLVCLVVVVVVSNLSSLVSLLVSLVSSXVSXVXDDDPVXVVVCVVXXXXXXXXVVSLVVVLVSLVVQXVDXXXDXVXXXVXXXDXVVSXVVXXXVXXVSLLSSLLSSLSSLVSSVVVXVVXDDDDDPSSVVSSLSSLVSSLVSLLVXXXXXXXDDXPDXXSLLVSLVSLLVSLLVXLLVXXVVDPVSLVSSLVSLLSSLVSXXXXVXXVVVXVXXXXXXDXVXXVXVVDDVVSVVXXVXXXXDVDSSSSLSSLVSLLSSLSSLLLSCLVXXDXVXDDDSLVSLVSSXXXXXXDDPVXXXXXXSSNVSLLVSLVLLLVXVVSVXDDPDXXXVXLVVSSVSLVVXXXDDDDXXXXXXXDDXXXXXSSVSLLVSLVSSXDDSVVSXVVSSVVSSVVSXVXDDPVVVVVSLVVXVVDPPDDXPXXXDDPVXSVVXXVSXVVSSVVSVVSVVVXVXLVVVVVVDVVVVVVVDPVVXXVXDDXXDDPVSXVVXXVXDXPDPDDSVXXXXXDDPDDDSVVXXVVXVXXXXDDDDXPVVSLVVSSVVSSVVVVVVVXVDXDDDVXLVVSVVVSLVVCVVVVXXXXXXXXXVXDVVSSVXXXDXDDDXXXKXXKDXDDDDDDDDXXDXXXXIKXWXXDPVRXIXIXXDXXXXXXXXWXXDPVRDTDXXXDDDPDDXVVVVVVVVVVVVDDDDPDXXXDXDDD",
             "pstc": [
                 {
                     "source": "afdb",
                     "id": "A0A2S0NSF5",
                     "query_cov": 0.73,
                     "subject_cov": 0.96,
-                    "identity": 0.649,
-                    "score": 2049.0,
-                    "evalue": 5.61e-43,
+                    "identity": 0.647,
+                    "score": 2031.0,
+                    "evalue": 1.29e-42,
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 40.97,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 1040
         },
         {
@@ -358,10 +368,11 @@
                 "molecular_weight": 8710.7261,
                 "isoelectric_point": 4.947629737854004
             },
-            "id": "FLLLIEBDPW_10",
+            "id": "FLLLIEBDSM_10",
             "locus": "FLLLIEBD_00010",
             "hypothetical": true,
             "3di": "DPPPPDPDDDDLVVVVVVLVVVLVVLVVVVVVDLVVVVVVVVVVLVVVVVVVVVVDDDCVVVVVVSVVSSVVSVVVDV",
+            "prostt5_confidence": 66.8,
             "length": 79
         },
         {
@@ -389,7 +400,7 @@
                 "molecular_weight": 21066.6992,
                 "isoelectric_point": 8.548717308044434
             },
-            "id": "FLLLIEBDPW_11",
+            "id": "FLLLIEBDSM_11",
             "locus": "FLLLIEBD_00011",
             "3di": "DPPPPPPDDDDPLLLLLLLLQLVVVVVDVDWDFLVSSQVVVVVVPDDXDDDVVSVVSLVVCVVVVQWDWDDDPVRTITIHGDPVNSVVNVVSNVVVVVVVVLVVVVVVKXXDDWDDDDVXXWKWXDDPPDIWTWXXWXWXQDPVRFIWIWTDGPVDIDTDDIDDPVVVVVVVVVCVVVVHDMDMDXDDDPD",
             "pstc": [
@@ -424,7 +435,9 @@
                     "description": "Crystal structure of MepR, a transcription regulator of the Staphylococcus aureus multidrug efflux pump MepA"
                 }
             ],
+            "prostt5_confidence": 61.87,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 192
         },
         {
@@ -450,7 +463,7 @@
                 "molecular_weight": 23075.555699999997,
                 "isoelectric_point": 8.306509590148927
             },
-            "id": "FLLLIEBDPW_12",
+            "id": "FLLLIEBDSM_12",
             "locus": "FLLLIEBD_00012",
             "3di": "DDDDLVVLVVVLVVLLVVLVPDDPDDPVVSVVSVVVSVVSVVVSVVVVVVVPDDDPPPPPPPPPPDDDADPQQVCAPDDDDPVLLVVLVVVLVPDDPVCSLVCLSVSCVVVSHDSLVSLLSVVVSVPDDPVVNVVSVVXVVVCVVVVDDDDPVVXVVVVVPDXXDXDXPDDXXXXPDXPDDDPPDPPDDXPDXPXXXXDXDPVPD",
             "pstc": [
@@ -465,7 +478,9 @@
                     "description": "DNA-binding protein"
                 }
             ],
+            "prostt5_confidence": 60.11,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 206
         },
         {
@@ -490,7 +505,7 @@
                 "molecular_weight": 27895.019099999998,
                 "isoelectric_point": 10.07803630828857
             },
-            "id": "FLLLIEBDPW_13",
+            "id": "FLLLIEBDSM_13",
             "locus": "FLLLIEBD_00013"
         },
         {
@@ -515,7 +530,7 @@
                 "molecular_weight": 9465.0951,
                 "isoelectric_point": 6.00915470123291
             },
-            "id": "FLLLIEBDPW_14",
+            "id": "FLLLIEBDSM_14",
             "locus": "FLLLIEBD_00014"
         },
         {
@@ -540,7 +555,7 @@
                 "molecular_weight": 24174.0322,
                 "isoelectric_point": 4.87965030670166
             },
-            "id": "FLLLIEBDPW_15",
+            "id": "FLLLIEBDSM_15",
             "locus": "FLLLIEBD_00015"
         },
         {
@@ -565,7 +580,7 @@
                 "molecular_weight": 27895.019099999998,
                 "isoelectric_point": 10.07803630828857
             },
-            "id": "FLLLIEBDPW_16",
+            "id": "FLLLIEBDSM_16",
             "locus": "FLLLIEBD_00016"
         },
         {
@@ -591,7 +606,7 @@
                 "molecular_weight": 22713.6605,
                 "isoelectric_point": 8.473998451232912
             },
-            "id": "FLLLIEBDPW_17",
+            "id": "FLLLIEBDSM_17",
             "locus": "FLLLIEBD_00017",
             "3di": "DDPDVVLLLLLLLLLLLLLVVCVVVVXDDPVXSLVLLLVVLVVCVVVVXDDPVSLVVLVVSVVVCVVVVVXVVSCVVSVVSCVVSVVDXDXVXLVVLVVVLVVVCVVVVXDKDXDDPVVDXXXKXWYWDXPDQXIKIXTXXXDWDADPVRDTDDXXIDXXDDDXVVSQVSSVVSQKDWDWDDDPVDXXMIXIXGDXDDPDPPD",
             "pstc": [
@@ -606,7 +621,9 @@
                     "description": "DUF2913 family protein"
                 }
             ],
+            "prostt5_confidence": 49.32,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 204
         },
         {
@@ -631,10 +648,11 @@
                 "molecular_weight": 10412.721,
                 "isoelectric_point": 5.371534919738769
             },
-            "id": "FLLLIEBDPW_18",
+            "id": "FLLLIEBDSM_18",
             "locus": "FLLLIEBD_00018",
             "hypothetical": true,
             "3di": "DDDDLVLLVVXXVVVXXXXKKXKDXDPVXVVVXXDDDPQKDWDDPDDDDIDIDDPVSVVVVVVVVVVVVXXDXDXXDDXDPXXMIXIDGDPPD",
+            "prostt5_confidence": 40.77,
             "length": 94
         },
         {
@@ -659,7 +677,7 @@
                 "molecular_weight": 9201.0409,
                 "isoelectric_point": 6.706114387512207
             },
-            "id": "FLLLIEBDPW_19",
+            "id": "FLLLIEBDSM_19",
             "locus": "FLLLIEBD_00019"
         },
         {
@@ -684,7 +702,7 @@
                 "molecular_weight": 40003.5055,
                 "isoelectric_point": 9.94768123626709
             },
-            "id": "FLLLIEBDPW_20",
+            "id": "FLLLIEBDSM_20",
             "locus": "FLLLIEBD_00020"
         },
         {
@@ -713,7 +731,7 @@
                 "molecular_weight": 15519.8434,
                 "isoelectric_point": 9.551136207580566
             },
-            "id": "FLLLIEBDPW_21",
+            "id": "FLLLIEBDSM_21",
             "locus": "FLLLIEBD_00021",
             "3di": "DDPCVVVVVCVVVVDDDPDDDPDDDDDDDDDDPPDDPPCPVVLDDDDWLQEKEKDWDWDDPPPDIKIKIFIATSNVRDTQFMDIDNDPALVRRVSRVVSSCVVVVLDANHEYDYDPDDVXVVVVVVVVVVVVVYD",
             "pstc": [
@@ -758,7 +776,9 @@
                     "description": "Ribonuclease H-like superfamily/Ribonuclease H"
                 }
             ],
+            "prostt5_confidence": 70.51,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 136
         },
         {
@@ -783,7 +803,7 @@
                 "molecular_weight": 11483.0987,
                 "isoelectric_point": 9.748667335510252
             },
-            "id": "FLLLIEBDPW_22",
+            "id": "FLLLIEBDSM_22",
             "locus": "FLLLIEBD_00022"
         },
         {
@@ -808,10 +828,11 @@
                 "molecular_weight": 12860.878700000001,
                 "isoelectric_point": 10.290910911560058
             },
-            "id": "FLLLIEBDPW_23",
+            "id": "FLLLIEBDSM_23",
             "locus": "FLLLIEBD_00023",
             "hypothetical": true,
             "3di": "DPPPPQWDAAPPPRDTDNDPVVSVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCVVVVDXDPDPVSVVVVVVVVCVVPVDDDPPDPVVVVVVVVPVVVPVPDDPPPD",
+            "prostt5_confidence": 69.68,
             "length": 112
         },
         {
@@ -836,10 +857,11 @@
                 "molecular_weight": 5622.5804,
                 "isoelectric_point": 11.630241584777831
             },
-            "id": "FLLLIEBDPW_24",
+            "id": "FLLLIEBDSM_24",
             "locus": "FLLLIEBD_00024",
             "hypothetical": true,
             "3di": "DDDDDPPDPPVPVDPPPDDDDDDPPDDDPDDVVVVVVVVCVVVVNDDDDD",
+            "prostt5_confidence": 64.4,
             "length": 51
         },
         {
@@ -866,7 +888,7 @@
                 "molecular_weight": 24418.887499999997,
                 "isoelectric_point": 10.550589561462402
             },
-            "id": "FLLLIEBDPW_25",
+            "id": "FLLLIEBDSM_25",
             "locus": "FLLLIEBD_00025",
             "3di": "DXDPVLVVLLVVLLVLLVDPVNLVLLVVLLVVLCVVPPLNVDPVDSVXSSLLSLLLSLQSVQADLLARWGDDFLQSSCVSSVXDDDPPPDDGDSVSSVVSVVSCVVSVQKDWDDDDDDPVDXXDXXIIIGGDLSSCVSSVHDXVVSLVVSCVSVVHDSVDXDDPVDSXVXXVVXVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVPDPPPP",
             "pstc": [
@@ -891,7 +913,9 @@
                     "description": "Replication initiation protein"
                 }
             ],
+            "prostt5_confidence": 63.04,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 211
         },
         {
@@ -920,7 +944,7 @@
                 "molecular_weight": 14896.085199999998,
                 "isoelectric_point": 6.086171531677246
             },
-            "id": "FLLLIEBDPW_26",
+            "id": "FLLLIEBDSM_26",
             "locus": "FLLLIEBD_00026",
             "3di": "DDKDKDFDAPVQADPVQWGDPVCVVVVVVVRVQVCCCPQLVDDVVVCVVVQKDKDWPDKDKDFDATHGHPFMKMKDKAWDADPQFQKIKIWIFIDGPRDTGMIMITIIFMDDPNDTDDDPVSVVSRDD",
             "pstc": [
@@ -965,7 +989,9 @@
                     "description": "Hotdog Thioesterase "
                 }
             ],
+            "prostt5_confidence": 73.83,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 129
         },
         {
@@ -994,7 +1020,7 @@
                 "molecular_weight": 18826.0958,
                 "isoelectric_point": 5.854382133483886
             },
-            "id": "FLLLIEBDPW_27",
+            "id": "FLLLIEBDSM_27",
             "locus": "FLLLIEBD_00027",
             "3di": "DPPDPXDXVXDVDDCVVLDVVLVVLLVVFPXWKKKKKWKDDPNDTXIXDIDXDVVVVVVCVVVVCCVPQLLSVVLVVVCVDPXXDKDKDFLVVSCVVPVPDPSLVVCVVRQFRTWIKGWHHPDPGMIMIMITTHNDPDDPVRVCVRCVVCRVVSVVSVVVR",
             "pstc": [
@@ -1039,7 +1065,9 @@
                     "description": "Transcription factor LuxR-like, autoinducer-binding domain"
                 }
             ],
+            "prostt5_confidence": 57.18,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 162
         },
         {
@@ -1068,7 +1096,7 @@
                 "molecular_weight": 21483.4536,
                 "isoelectric_point": 6.330181312561035
             },
-            "id": "FLLLIEBDPW_28",
+            "id": "FLLLIEBDSM_28",
             "locus": "FLLLIEBD_00028",
             "3di": "DQDFLLVLLVLLCVVLVDDLVVLQVVLVVVVDDDDSVVSVCSNVSNDDDDPVCLVSLVSSQVSSVVSQWNDHSCCSHPSDDDGXXXDDDDDDDPVVVVVVXVVVDDQKDWDFDADDQCPVPDHHQKIFIWGPDDDLVVQAQFWKWFDFPVGIDIFGWHDPDPFWTWGGDXDTDIDGPVRTPGMITTDDMDDD",
             "pstc": [
@@ -1113,7 +1141,9 @@
                     "description": "Umud Fragment, subunit A"
                 }
             ],
+            "prostt5_confidence": 64.5,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 193
         },
         {
@@ -1138,7 +1168,7 @@
                 "molecular_weight": 20390.1655,
                 "isoelectric_point": 7.703240776062012
             },
-            "id": "FLLLIEBDPW_29",
+            "id": "FLLLIEBDSM_29",
             "locus": "FLLLIEBD_00029"
         },
         {
@@ -1163,10 +1193,11 @@
                 "molecular_weight": 7472.4208,
                 "isoelectric_point": 6.561857032775879
             },
-            "id": "FLLLIEBDPW_30",
+            "id": "FLLLIEBDSM_30",
             "locus": "FLLLIEBD_00030",
             "hypothetical": true,
             "3di": "DPPPPPDPDDDDDDDPVVLVVLQVVQVVVCVVVVHRDGSVVVVVVVVVVVVVVVVVVVVVPDDDPPP",
+            "prostt5_confidence": 82.81,
             "length": 68
         },
         {
@@ -1192,7 +1223,7 @@
                 "molecular_weight": 11541.8519,
                 "isoelectric_point": 5.837103080749511
             },
-            "id": "FLLLIEBDPW_31",
+            "id": "FLLLIEBDSM_31",
             "locus": "FLLLIEBD_00031",
             "3di": "DPPVVVDDVDPPDDDPPDDPPPDPVVVVVPVVVVVVVVVVVVVVVVVVVVVVVVVVVVQQWDDDPRDTDDAQDWDDDPQWIWGWHDDPNHTDIDTDDPVPDPD",
             "pstc": [
@@ -1207,7 +1238,9 @@
                     "description": "DUF1496 domain-containing protein"
                 }
             ],
+            "prostt5_confidence": 72.8,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 104
         },
         {
@@ -1233,9 +1266,9 @@
                 "molecular_weight": 21903.7361,
                 "isoelectric_point": 10.755792427062985
             },
-            "id": "FLLLIEBDPW_32",
+            "id": "FLLLIEBDSM_32",
             "locus": "FLLLIEBD_00032",
-            "3di": "DPPDPPDDDDDDDPPDPPPPPPPPPDDPVVVVVVVVVVVVVVVVVVVVVVVVPDDDDDDDDDPPDDDDDDDPPDDDDPDDDDDPDDDDDDPDPPPDDXDXDDDDDPDDDDDPDDDFDKDKDFFAFLVVSLVRLDDPPADEDEDPPCVVLRRDTDGDTDGDGSVVVSCVSCVVSQKDWDWDRVRRYIYIYGDDDDDPPPPPD",
+            "3di": "DPPDPPDDDDDDDPPDPPPPPPPPPDDPVVVVVVVVVVVVVVVVVVVVVVVVPDDDDDDDDDPPDDDDDDDPPDDDDPDDDDDPDDDDDDPDPPPDDXDXDDDDDPDDDDDPDDDFDKDKDFFAFLVVSLVRLDDPPADEDEDPPCVVLRRDTDGDTDGDGSVVVSCVSCVVSQWDWDWDRVRRYIYIYGDDDDDPPPPPD",
             "pstc": [
                 {
                     "source": "afdb",
@@ -1243,12 +1276,14 @@
                     "query_cov": 1.0,
                     "subject_cov": 1.0,
                     "identity": 0.9,
-                    "score": 1039.0,
-                    "evalue": 8.002e-28,
+                    "score": 1037.0,
+                    "evalue": 1.326e-27,
                     "description": "Lipoprotein"
                 }
             ],
+            "prostt5_confidence": 62.35,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 202
         },
         {
@@ -1277,9 +1312,9 @@
                 "molecular_weight": 17868.3318,
                 "isoelectric_point": 9.197978401184084
             },
-            "id": "FLLLIEBDPW_33",
+            "id": "FLLLIEBDSM_33",
             "locus": "FLLLIEBD_00033",
-            "3di": "DDDDPDPPPPPPPDPVVLVVLLCVLCVVLVHDSLLLVLLLCVQPVQQQQDKDFDADPVRDTPWIFGGSRTDIPVCQVVCCVVVQDPDSVCSRRPVSSVSSVSSVLLSVQCVVQPPDLLSQLCSVQNDDPDPVSSVVSNVVSVVSVVSSVVVVVVVVVVV",
+            "3di": "DDDDPDPPPDPPPDPVVLVVLLVVLCVVLVHDSLLLVLLLCVQPVQQQQDKDFDADPVRDTPWIFGGSRTDIPVCQVVCCVVVQDPDSVCSRRPVSSVSSVSSVLLSVQCVVQPPDLLSQLCSVQNDDPDPVSSVVSNVVSVVSVVSSVVVVVVVVVVV",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -1287,8 +1322,8 @@
                     "query_cov": 0.99,
                     "subject_cov": 0.95,
                     "identity": 0.385,
-                    "score": 709.0,
-                    "evalue": 9.021e-15,
+                    "score": 714.0,
+                    "evalue": 4.954e-15,
                     "description": "Peptidoglycan-binding-like protein"
                 },
                 {
@@ -1297,8 +1332,8 @@
                     "query_cov": 0.99,
                     "subject_cov": 0.97,
                     "identity": 0.348,
-                    "score": 606.0,
-                    "evalue": 3.861e-12,
+                    "score": 605.0,
+                    "evalue": 3.084e-12,
                     "description": "Transglycosylase SLT domain-containing protein"
                 },
                 {
@@ -1307,8 +1342,8 @@
                     "query_cov": 0.54,
                     "subject_cov": 0.91,
                     "identity": 0.298,
-                    "score": 308.0,
-                    "evalue": 1.617e-05,
+                    "score": 310.0,
+                    "evalue": 1.258e-05,
                     "description": "Structure of EtgA D60N mutant"
                 },
                 {
@@ -1317,12 +1352,14 @@
                     "query_cov": 0.8,
                     "subject_cov": 0.95,
                     "identity": 0.398,
-                    "score": 563.0,
-                    "evalue": 1.307e-11,
+                    "score": 565.0,
+                    "evalue": 9.042e-12,
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 75.39,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 160
         },
         {
@@ -1351,7 +1388,7 @@
                 "molecular_weight": 17551.1362,
                 "isoelectric_point": 9.604967308044433
             },
-            "id": "FLLLIEBDPW_34",
+            "id": "FLLLIEBDSM_34",
             "locus": "FLLLIEBD_00034",
             "3di": "DVVVVVVVVVVVVVVPPPPDPPPPPPDDDDDPVVVVVVVVVVVVVVVVVVVVVXVPPPDDDDPDDVXXQPAFDFDFDWDFLVVVVCVVCVVVVAHEDEDDDDDTDTDGDTDGGDGPVVVVVVSCVRCVQFWDWDDDPRYIYIYGDGDDDDPPDDD",
             "pstc": [
@@ -1396,7 +1433,9 @@
                     "description": "DotD protein"
                 }
             ],
+            "prostt5_confidence": 67.19,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 156
         },
         {
@@ -1423,9 +1462,9 @@
                 "molecular_weight": 30659.841800000002,
                 "isoelectric_point": 7.140023231506347
             },
-            "id": "FLLLIEBDPW_35",
+            "id": "FLLLIEBDSM_35",
             "locus": "FLLLIEBD_00035",
-            "3di": "DPDDPDDPPDDDPDDPPPPPPPDDDDDPDLVVLLPDDPDDDDPDDPVLLVLLLVLLLQLLLLLLLLVLLVVLLVVCVVCVVVLCVVQVLVVQCVVQQWFAWDKDWWWWDWDDDPPDIDDDIXIXDTXDDPXXDPDDDGSCVQXVPDXDDDDDDPDDPXDDDDDPVSVVSSSVSSVVSSVCSNVVSVVSSVVSSVVSVVVSVSSVVVVVCVVVQKKDDWDKDWDWWDDDDXDIDITPDIIIIDIDIDXDGDPVVXDIDGDDDXVXXXVXXDDD",
+            "3di": "DPDDPDDPPDDDPDDPPPPPPPDDDDDPDLVVLLPDDPDDDDPDDPVLLVVLLVLLLQLLLLLLLLVLLVVLLVVCVVCVVVLCVVQVLVVQCVVQQWFAWDKDWWWWDWDDDPPDIDDDIXIXDTXDDPXXDPDDDGSCVXXVPDXDDDDDDPDDPXDDDDDPVSVVSSSVSSVVSSVCSNVVSVVSSVVSSVVSVVVSVSSVVVVVCVVVQKKDDWDKDWDWWDDDDXDIDITPDIIIIDIDIDXDGDPVVXDIDGDDDXVXXXVXXDDD",
             "pstc": [
                 {
                     "source": "afdb",
@@ -1433,22 +1472,24 @@
                     "query_cov": 0.95,
                     "subject_cov": 0.52,
                     "identity": 0.369,
-                    "score": 766.0,
-                    "evalue": 9.345e-17,
+                    "score": 751.0,
+                    "evalue": 1.307e-16,
                     "description": "DotC protein"
                 },
                 {
                     "source": "pdb",
                     "id": "7muq",
-                    "query_cov": 0.77,
-                    "subject_cov": 0.86,
-                    "identity": 0.266,
-                    "score": 562.0,
-                    "evalue": 4.102e-12,
+                    "query_cov": 0.79,
+                    "subject_cov": 0.88,
+                    "identity": 0.264,
+                    "score": 553.0,
+                    "evalue": 4.677e-12,
                     "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 1"
                 }
             ],
+            "prostt5_confidence": 54.2,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 273
         },
         {
@@ -1478,7 +1519,7 @@
                 "molecular_weight": 43962.060099999995,
                 "isoelectric_point": 5.588546180725097
             },
-            "id": "FLLLIEBDPW_36",
+            "id": "FLLLIEBDSM_36",
             "locus": "FLLLIEBD_00036",
             "3di": "DDFFDPDDPPDDDDDXDDDPDDDDDVDLLSVVLSCLVVVFFKWKDFAQAFIWTDDQNDTDGRDPDGDDLVRVVSNVVVQDDPVVSVCVVVQDKDKDKDWDADVSCVVRVHDXRDIWMWIKIWGWDDDPVRGITIMIMIGTADQDQDALVVQPDDPVVLVLLDDQFFEEEEEADPPLCRLSVLLNSVLVCLQVVLPFAEEEEEPDDRHDSDDDPPRGHYDYDYDPPRAPDLLVSLVVVVVVVGREYEYEADDALSNLVSQLVSRVVRHYYYYYDYDQDPLVVLVVSLVSDDPVCSLVSLLSSLVRYFKYKYWHWFQFPVRDTDIDIFIDGDDPVLSVVSSPDDSVCSSVVVVVVVVVVVRXSLNVLLVCVVVVRDDPVSSVVRDDPVSVVVSVVVV",
             "pstc": [
@@ -1533,7 +1574,9 @@
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 66.6,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 396
         },
         {
@@ -1559,7 +1602,7 @@
                 "molecular_weight": 10638.6095,
                 "isoelectric_point": 10.567931556701659
             },
-            "id": "FLLLIEBDPW_37",
+            "id": "FLLLIEBDSM_37",
             "locus": "FLLLIEBD_00037",
             "3di": "DPPPVVVVVVVVDFDDDLLARPVLVVVLVVCVVDVDPVSVVVSVVVSVVSVVCSVVVDVPVVVVVVVVVVVVVVPDPPDDPVCVVVPD",
             "pstc": [
@@ -1574,7 +1617,9 @@
                     "description": "TraK protein"
                 }
             ],
+            "prostt5_confidence": 69.34,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 89
         },
         {
@@ -1602,18 +1647,18 @@
                 "molecular_weight": 119527.23770000001,
                 "isoelectric_point": 5.457191276550293
             },
-            "id": "FLLLIEBDPW_38",
+            "id": "FLLLIEBDSM_38",
             "locus": "FLLLIEBD_00038",
-            "3di": "DPXXPVQQQDKFFFQDDPVCQVVLQVLXQADPVRHGQWDQDPVVRTIIGTPPXDCVSSCVXDDPXXDDDDDPDDLQVVVQVVVVVVQFDDPDDDDAPQDKDFGDGDDDPVPDDDDDGQKIWHAXSLXWIKMWIAGPVDDPPXDIDIDGDDDDDDDPSSSSVSVVSSVVSVVVSVVVLVVLLVVQQVVLVVVLVPFAFDDCQQLLCVVLVFHDDRQWTADPVRWIKDFWAFLVRGTAWIWIAHSVGDIDTGXSHDLALIKGKGADDDDPQAAAEEEEASSLQRLVCVLAVHIYIYRXDLVCLLSNLVSVCVVRVPHAYEYEFFLDDDDDPDLVVLXVXLVXVVDDDPDPPDDDDPVSSSVDTSLSSSLVSLVVHPXYKYKYDDDDPVSVVVVDGGSSVVCVVPNSVSVLVSXVVDPPXSQWMADPVVRDIDDDPDPDDDDDDDDPDDDDDDXXXXDDDPPXVVVVVVVVVVVVVVVPDDDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDPDDDDDDPDDDDDDDDDDPVXXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDPDDDDPXXXKKKKADDDPPDDXXDXXXXXXXXXDPXVVLVVQWDWDDDXQWIFTDDVNHTQWTDSRGMIDGDDPDLVSSLSSLVSVVSVCCVRRNQEMEYDYDPVSLLSNLLSCLLSVXRHHYPDPVSSVSSVVSNVVVCVPDPPSVXVXPDDDDDDPDDDPDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDDPVACVQKDKAAWADKDWAQPVVDDPGDIWIWTWGQDPVGIDIDIDNQVVVQCVVQVDDHGFIKGKHWDAWDWDWDWDFDDDPNDTPGTDIDIDTDTDMDMDGDDPPPDDDDDDPDPXXXXVVVXVVVLVVLLVVLVVXXXVVVXDXDPPDXQXKWXXXXXXXDXDDXDDXXKDWDDDDPPDDXXIXIWXXDPVXIWIWGXXXDXDXWIWTWTDDPNXTWIKIWGXDXDXXXXXIWIWTQDPVGIDIDXXXVXXCVXPXDGDDXXXXXXDGXPDDDPXXXXXXGDXDSVVDDVVSCVVSVHDDDDDDDDPDDDDDDDDDXXDDDDPDDDDDD",
+            "3di": "DPXXPVQQQDKFFFQDDPVCQVVLQVLXQADPVRDGQWDQDPVVRTIIGTPPXDCVSSCVXDDPXXDDDDDPDDLQVVVQVVVVVVQFDDPDDDDAPQDKDFGDGDADPVPDDDDDGQKIWHAXSLXKIKMWIAGPVDDPPXDIDIDGDDDDDDDPSSSSVSVVSSVVSVVVSVVVLVVLLVVQQVVLVVVLVPFAFDDCQQLLCVVLVFHDDRQWTADPVRWIKDFWAFLVRGTAWIWIAHSVGDIDTTXSHDLALIKTKGADDDDPQAAAEEEEASSLQRLVCVLFVHIYIYRXDLVCLLSNLVSVCVVRVPHAYEYEFFLDDDDDPDXVVLXVXLVXVXDDDPDPXDDDDPVSSSVDTSLSSSLVSLVVHPXYKYKYDDDDPVSVVVVDGGSSVVCVVPNSVSVLVSXVVDPPSSQWMADPVVRDIDDDPDPDDDDDDDDPDDDDDDXXXXDDDPPXVVVVVVVVVVVVVVVPDDDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDPDDDDDDPDDDDDDDDDDPVXXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDPDDDDPXXXKKKKADDDPPDDXXDXXXXXXXXXDPXVVLVVQWDWDDPXQWIFTDDVNHTQWTDSRGMIDGDDPDLVSSLSSLVSVVSVCCVRRNQEMEYDYDPVSLLSNLLSCLLSVXRHHYPDPVSSVSSVVSNVVVCVPDPPSVXVXPDDDDDDPDDDPDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDDPVACVQKDKAAWADKDWAQPVVDDPGDIWIWTWGQDPVGIDIDIDNQVVVQCVVQVDDHGFIKGKHWDAWDWDWDWDFDDDPNDTPGTDIDIDTDTDMDMDGDDPPPDDDDDDPDPXXXXVVVXVVVLVVLLVVLLVXXXVVVXDXDPPDXQXKWXXXXXXXDXDDXDDXXKDWDDDDPPDDXXIXIWXXDPVXIWIWGXXXDXDXWIWTWTDDPNXTWIKIWGXDXDXXXXXIWIWTQDPVGIDIDXXXVXXCVXPXDGDDXXXXXXDGXPDDDPXXXXXXGDXDSVVDDVVSCVVSVHDDDDDDDDPDDDDDDDDDXXDDDDPDDDDDD",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "P27189",
-                    "query_cov": 0.38,
-                    "subject_cov": 0.54,
-                    "identity": 0.253,
-                    "score": 1141.0,
-                    "evalue": 1.144e-23,
+                    "query_cov": 0.35,
+                    "subject_cov": 0.47,
+                    "identity": 0.277,
+                    "score": 1125.0,
+                    "evalue": 2.4e-23,
                     "description": "DNA primase TraC"
                 },
                 {
@@ -1621,9 +1666,9 @@
                     "id": "A0A0T9MTE6",
                     "query_cov": 0.99,
                     "subject_cov": 1.0,
-                    "identity": 0.3,
-                    "score": 3000.0,
-                    "evalue": 4.35e-65,
+                    "identity": 0.298,
+                    "score": 2990.0,
+                    "evalue": 5.825e-65,
                     "description": "DNA primase TraC"
                 },
                 {
@@ -1631,13 +1676,15 @@
                     "id": "6n9x",
                     "query_cov": 0.2,
                     "subject_cov": 0.37,
-                    "identity": 0.147,
-                    "score": 297.0,
-                    "evalue": 6.228e-05,
+                    "identity": 0.143,
+                    "score": 299.0,
+                    "evalue": 5.493e-05,
                     "description": "Structure of bacteriophage T7 lagging-strand DNA polymerase (D5A/E7A) and gp4 (helicase/primase) bound to DNA including RNA/DNA hybrid, and an incoming dTTP (LagS3)"
                 }
             ],
+            "prostt5_confidence": 53.96,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 1108
         },
         {
@@ -1662,10 +1709,11 @@
                 "molecular_weight": 12564.031299999999,
                 "isoelectric_point": 4.397883033752441
             },
-            "id": "FLLLIEBDPW_39",
+            "id": "FLLLIEBDSM_39",
             "locus": "FLLLIEBD_00039",
             "hypothetical": true,
             "3di": "DPPVVDPDDPVVVVVPPPDPVPVXVDXDXDVCVVVVDPVLLVVLVVLLVVVVVVVVVLXVQLVVLLVVLVVDDDDDDDCVVVVVVSSVVSVVVSVVSSVVVVVSDDPPDDSVVVVVV",
+            "prostt5_confidence": 48.66,
             "length": 118
         },
         {
@@ -1694,7 +1742,7 @@
                 "molecular_weight": 26101.3216,
                 "isoelectric_point": 9.070008659362792
             },
-            "id": "FLLLIEBDPW_40",
+            "id": "FLLLIEBDSM_40",
             "locus": "FLLLIEBD_00040",
             "3di": "DDDDDPDDPPPPDDPPPDDDDPVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCVVPDPDDWWDDPPNDTDTDDDPPDDPDDLVNVQVLVQVLVQLLQWDFLVCVVVSLVVSLLQADPQLSVVVVVVCVVVVVSVVCNVVVKGKGKDWDXKDWDDDDDDPQKTKIKTKIWMWMDTPNDIDTDDIWIKIKIWIKGQDDCVVPVSRIHTRHMDIDIDD",
             "pstc": [
@@ -1739,7 +1787,9 @@
                     "description": "Gcn5-related N-acetyltransferase (GNAT)"
                 }
             ],
+            "prostt5_confidence": 74.46,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 235
         },
         {
@@ -1767,7 +1817,7 @@
                 "molecular_weight": 39171.89109999999,
                 "isoelectric_point": 5.322880744934082
             },
-            "id": "FLLLIEBDPW_41",
+            "id": "FLLLIEBDSM_41",
             "locus": "FLLLIEBD_00041",
             "3di": "DDPDPDDDPDDDPDDDPDPDDPPPPPDDDDPDDPPPPDDDPVPVVVVVPVPDDDDDPDDDPDDDPDDPDDPDDDDDDDPPDDDDDDDDDPPDDDDDPPDPPDDDDDDPVVVVVVCVPDPDDPVVVVVVVVVVVVVVVVVPDDQAEEDAEEDEDEDDPDPPDDAHEAEAEAPDKAKEFEAELVRHGWAWPDFKDWPXDPQWDWDDDGPGRMIMIGGNDAFDWTKIWTDIPPDPGIHIYIYHYDDDDPPDXYIYGHRYYYYYYHHDDPPDDXPDDDPXXXPDDDVQLVCVVVVNGDPPWDWKDKDFDDPQWTWIDRDQKIKIKGQWDFPDDFDWWWDDDXRIIITIDGDDQWTWTDDPNDIDIMIMGTD",
             "pstc": [
@@ -1802,7 +1852,9 @@
                     "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 2"
                 }
             ],
+            "prostt5_confidence": 62.55,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 368
         },
         {
@@ -1827,10 +1879,11 @@
                 "molecular_weight": 14824.5005,
                 "isoelectric_point": 11.26186923980713
             },
-            "id": "FLLLIEBDPW_42",
+            "id": "FLLLIEBDSM_42",
             "locus": "FLLLIEBD_00042",
             "hypothetical": true,
             "3di": "DPDPVVVVVVVVVVVVVVVVVVVCCVVVVVVVCCVVPDDDPDPPDDPPDPPVPVVVPVVVVVVVVVVVVVVVVVVVVVVVVVVPVVVXVDDDPDDDDDPDDDDDDDDDPPDDPPDPVPVVPDDDPDDDPVVVDDD",
+            "prostt5_confidence": 62.99,
             "length": 136
         },
         {
@@ -1858,7 +1911,7 @@
                 "molecular_weight": 31489.4868,
                 "isoelectric_point": 4.946208763122558
             },
-            "id": "FLLLIEBDPW_43",
+            "id": "FLLLIEBDSM_43",
             "locus": "FLLLIEBD_00043",
             "3di": "DDPPDDDPDPDDDDDDDDPDPPDPPPPPVVVVVVVVVVVVPDDDPPDDDPDDDPPDPDDDFDKDFFFDKFKWFWQAKDKLPDQXDWTWIFTCDDPRHQKIWIKTGWDDDPQFIWIWTQWIDDPNDIDGFGKTKDDPPDRTXXXDFDKDACCVVQPVLLVVLLVLLVVLQVQLVVQWDDDDDPDDIDDDDGDDDDPSSVVSNVRSVVSNVVSVVSNVVSVVDDIIMDMDHGGDMIMMGTNDMDGXPDXDDDPDPPDPDDPPDDPPPPPDPPPDDPPDPPDPDPVVVVVVVVVVVVVVPDDPPPDD",
             "pstc": [
@@ -1893,7 +1946,9 @@
                     "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 2"
                 }
             ],
+            "prostt5_confidence": 59.28,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 305
         },
         {
@@ -1919,7 +1974,7 @@
                 "molecular_weight": 26178.212499999998,
                 "isoelectric_point": 6.434765052795409
             },
-            "id": "FLLLIEBDPW_44",
+            "id": "FLLLIEBDSM_44",
             "locus": "FLLLIEBD_00044",
             "3di": "DDDPDDDDDDPPPDPPPVPPPPPPDDDPVVQVPPXDDDPNDGPVVVVVVVVVVVVVVCVVVVPPDDPPPPVVVVVPPDDDDDPPPDDDPPPDPDDPDDDPPVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVPPPPADDDXVQKAWDADDPQWTWIDDPNDIDIDHQQDADPVRPKGFHGADRVVRWTDIPVHIDG",
             "pstc": [
@@ -1934,7 +1989,9 @@
                     "description": "TraP protein"
                 }
             ],
+            "prostt5_confidence": 71.68,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 240
         },
         {
@@ -1960,7 +2017,7 @@
                 "molecular_weight": 18233.0834,
                 "isoelectric_point": 6.246627998352051
             },
-            "id": "FLLLIEBDPW_45",
+            "id": "FLLLIEBDSM_45",
             "locus": "FLLLIEBD_00045",
             "3di": "DVVVLVVVLVVLVVVLVVLLVVLLVVLLVLLVVLLVVLVVVQVCVVVVDPPDDXNVLSVLSNVLSVCSNVVQVVLQVVCVVVVNDPDDDDFDDXDDCVVCVSCSSNVRSVLSNLLVVLSVLLVVLSVLLSVLSVCVXXDPXSPDSNVVSVVSNVVSSCSNCVSVVVVVVCVVVVTDD",
             "pstc": [
@@ -1975,7 +2032,9 @@
                     "description": "Conjugal transfer protein TraQ"
                 }
             ],
+            "prostt5_confidence": 72.85,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 178
         },
         {
@@ -2000,10 +2059,11 @@
                 "molecular_weight": 13847.0509,
                 "isoelectric_point": 6.82894344329834
             },
-            "id": "FLLLIEBDPW_46",
+            "id": "FLLLIEBDSM_46",
             "locus": "FLLLIEBD_00046",
             "hypothetical": true,
             "3di": "DVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVPDVVVVVVPVVPVVVVVVVVVVVVVVLVVVLVVLLVVLVVLLVVLVVCVVVVVPDPPDDPVNSVVSNVVSVVSNVVSVVVVVVCVVVPDDDPDPPPPD",
+            "prostt5_confidence": 80.13,
             "length": 134
         },
         {
@@ -2029,9 +2089,9 @@
                 "molecular_weight": 20836.6976,
                 "isoelectric_point": 7.619062232971192
             },
-            "id": "FLLLIEBDPW_47",
+            "id": "FLLLIEBDSM_47",
             "locus": "FLLLIEBD_00047",
-            "3di": "DDPPDDPQXDXDDPDPDDDDDDDDDDDXQAAPPXRHGAGIWIDDPPDDRGTHGLLVVLVVXXVXXXVXVXXXXXXXPDDSVVLSVLLXLLLVCVVVPDPVSNVLSLVSLVVCVVVVVVSVVXXDXVDLVVLVVVLVPDDPVSSVVVLVVXVVXXXDDDPVSXVVXVVSDDPPDHSVVVSVVRDDDDD",
+            "3di": "DDPPDDPQXDXDDPDPDDDDDDDDDDDXQAAPPXRHGAGIWIDDPPDDRGTHHLLVVLVVXXVXXXVXVXXXXXXXPDDSVVLSVLLXLLLVCVVVPDPVSNVLSLVSLVVCVVVVVVSVVXXDXVDLVVLVVVLVPDDPVSSVVVLVVXVVXXXDDDPVSXVVXVVSDDPPDHSVVVSVVRDDDDD",
             "pstc": [
                 {
                     "source": "afdb",
@@ -2040,11 +2100,13 @@
                     "subject_cov": 0.99,
                     "identity": 0.852,
                     "score": 701.0,
-                    "evalue": 8.165e-17,
+                    "evalue": 9.034e-17,
                     "description": "Conjugal transfer protein"
                 }
             ],
+            "prostt5_confidence": 45.61,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 188
         },
         {
@@ -2072,9 +2134,9 @@
                 "molecular_weight": 113682.56449999998,
                 "isoelectric_point": 6.667463874816895
             },
-            "id": "FLLLIEBDPW_48",
+            "id": "FLLLIEBDSM_48",
             "locus": "FLLLIEBD_00048",
-            "3di": "DVVVVVVVVVVVVVVXDDPFDDLLVQLQFQFWAFFDDPXCDXDPXDTATQWTAGLQQKIKWKKWFFAAAFADDQPDDPVVVXDLVLLLVLLLVLCFPXQADFQKKKKKKKFKALXXLLVLLLVLLVLLLVLLLXFLXXLSVLLSVVSVLCSVLXIDITMMMMIMGGDDDDDPVVSVVVVVVVVVVLVPDDPDXXXDDDDPVVVVVVVVVVVVSVVSSCVSSDVSDPXIXMDTDGXQVVLQVLLCLQXXPXDPDDDDDDDPVXXDDDPDDDDDPPDDPXDXDXSSSSSDDWDWDDFQFWIDGNQKIKWKKFFLDADLDDDALCLLQFLQXXSFIKMKMKIKHXXDLVVVDVVLVVLVVVCVDPVSVVVVVVSVVSVVVVNVFTKIWIWMMMMGMDSDPVRRVVSVVSSQVSCVVVVRTDMDXXXXCSVQSVVSSDXSSDDDDDPRIDIDGSSSSSSSDSNYDXDDPXDSQALQWFAFSSRDIHGAHLXDXPDXAAEEEEEAAPQQCRLVVVLSSVSSQLSXDDXDGAAEEEEEAPLLCVLSLVSSLVSDDPVCNVQEEEAEQDLXDLAAFALLQADLLAQADDPVSLVLVLLLLLLLLADLVLGDDPPDPLLSVLSSVLSVVLSVVLDPXDPQXXDQADDPVLVVLLVVLVDDDDDDPPVSRRDGSVVSLVSCVVVVNDVSSVSSXXSSGDFLLSSLVSLVDPVSCVVSVVXDDPPVPDGSSVSSSVSSVVCCVRPVNRHDGXXRDDDLSRRYYYYYCVVQDDDPDSSSLSSLSSSLSVSVVSSVVLLCLLVCLVVSLVRDDPVCNVVSVVVNVVSLXHAYEYEYEACLSNVPRPCSVVVVLVCLVPVVVSRYHYYYYYNAPVSDDLSSLVSHQKYKYAAHDPVCVVSCCVSVVDDPVXSVVSVPQDXDDDPVRQXXWIWIWIDDPVGIDIGIDIDDDALLSLCSSDPDPLLVLLLSLLSVVDNDXVSVVLSSVVDVXSXSVVSSVVSCVVVVXVXXXXDXSVSSVVSCVVVVDDD",
+            "3di": "DVVVVVVVVVVVVVVXDDPFDDLLVQLQFQFWAFFDDPXCDXDPXDTATQWTAGLQQKIKWKKWFFAAAFADDQPDDPVVVXDLVLLLVLLLVLCFPXQADFQKKKKKKKFKALXXLLVLLLVLLVLLLVLLLXFLXXLSVLLSVVSVLCSVLXIDITMMMMIMGGDDDDDPVVSVVVVVVVVVVLVPDDPDXXXDDDDPVVVVVVVVVVVVSVVSSCVSSDVSDPXIXMDTDGXQVVLQVLLCLQXXPXDPDDDDDDDPVXXDDDPDDDDDPPDDPXDXDXSSSSSDDWDWDDFQFWIDGNQKIKWKKFFXDADLDDDALCLLQFLQXXSFIKMKMKIKHXXDLVVVDVVLVVLVVVCVDPVSVVVVVVSVVSVVVVNVFTKIWIWMMMMGMDSDPVRRVVSVVSSQVSCVVVVRTDMDXXXXCSVQSVVSSDXSSDDDDDPRIDIDGSSSSSSSDSNYDXDDPXDSQALQWFAFSSRDIHGAHLXDXPDXAAEEEEEAAPQQCRLVVVLSSVSSQLSXDDXDGAAEEEEEAPLLCQLSLVSSLVSDDPVCNVQEEEAEQDLXDLAAFALLQADLLDQADDPVSLVLVLLLLLLLLADLVLGDDPPDPLLSVLSSVLSVVLSVVLDPPDPQXXDQADDPVLVVLLVVLVDDDDDDPPVSRRDGSVVSLVSCVVVVNDVSSVSSXXSSGDFLLSSLVSLVDPVSCVVSVVXDDPPVPDGSSVSSSVSSVVCCVRPVNRHDGXXRDDDLSRRYYYYYCVVQDDDPDSSSLSSLSSSLSVSVVSSVVLLCLLVCLVVSLVRDDPVCNVVSVVVNVVSLXHAYEYEYEACLSNVPRPCSVVVVLVCLVPVVVSRYHYYYYYNAPVSDDLSSLVSHQKYKYAAHDPVCVVSCCVSVVDDPVXSVVSVPQDXDDDPVRQXXWIWIWIDDPVGIDIGIDIDDDALLSLCSSDPDPLLVLLLSLLSVVDXDXVSVVLSSVVXVXSXSVVSSVVSCVVVVXVXXXXDXSVSSVVSCVVVVDDD",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -2082,8 +2144,8 @@
                     "query_cov": 0.97,
                     "subject_cov": 0.98,
                     "identity": 0.118,
-                    "score": 1540.0,
-                    "evalue": 4.46e-30,
+                    "score": 1535.0,
+                    "evalue": 4.906e-30,
                     "description": "Protein TraC"
                 },
                 {
@@ -2091,9 +2153,9 @@
                     "id": "A0A0W0YDQ9",
                     "query_cov": 0.92,
                     "subject_cov": 0.99,
-                    "identity": 0.235,
-                    "score": 2742.0,
-                    "evalue": 8.212e-55,
+                    "identity": 0.233,
+                    "score": 2736.0,
+                    "evalue": 8.468e-55,
                     "description": "Protein IcmB (DotO)"
                 },
                 {
@@ -2101,13 +2163,15 @@
                     "id": "7o43",
                     "query_cov": 0.93,
                     "subject_cov": 0.97,
-                    "identity": 0.1,
-                    "score": 1117.0,
-                    "evalue": 1.832e-21,
+                    "identity": 0.102,
+                    "score": 1130.0,
+                    "evalue": 8.857e-22,
                     "description": "TrwK/VirB4unbound dimer complex from R388 type IV secretion system determined by cryo-EM."
                 }
             ],
+            "prostt5_confidence": 55.37,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 1016
         },
         {
@@ -2132,10 +2196,11 @@
                 "molecular_weight": 42644.8975,
                 "isoelectric_point": 4.902670097351074
             },
-            "id": "FLLLIEBDPW_49",
+            "id": "FLLLIEBDSM_49",
             "locus": "FLLLIEBD_00049",
             "hypothetical": true,
             "3di": "DPPDDDDDDDDDPPDDDPPDDDPDPPPDDDCVPPPVVVLVVVVVVLVVVVVVVVVLVVVLVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVLVVLLVDDDDDLVLXVPXLVVLLVVLLVLLLVLLVVLLVVXDDDLVSLLVLLVPADDDDDDVXLVVXXXXXWADDPVXCVVVVHDXSXXXDDXPDXXDXXXXXXLXVXXXXXPDDDDXDDDPVSLVSLLVXLVVXXVXDPXDXDDXXDXXDXSXVVSVVSVVLVVVSVVVSPDDXXVXXXPDDDDDPSLVVVVVSSVVVXVXVVXDVPDDVVSVVVSVDDSVSVVVVVVSVVVVXVVVVVVSVVDDPVVVVVVVSVSVSSSVSSVVSSVVSSVVSSSSSSVSSSVVSCVVCVVVVVVVVCVVVVVVPD",
+            "prostt5_confidence": 46.88,
             "length": 399
         },
         {
@@ -2160,10 +2225,11 @@
                 "molecular_weight": 22182.7911,
                 "isoelectric_point": 10.787124061584475
             },
-            "id": "FLLLIEBDPW_50",
+            "id": "FLLLIEBDSM_50",
             "locus": "FLLLIEBD_00050",
             "hypothetical": true,
             "3di": "DDDDDPPPPPDDPDDPPPVVVVVVVVVVVVVVVVVVDVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVDDLVVLCVVVVDDLSVLLVLLVVLLVVLVVLLVVLVVVLVVVLVVLVVVVVPDDPPVNVVSVVVSVVSSVSSVVSVVSSLVSVVSSVVSVVVVVVVVVVDVVVVVVVVVVVSVCSVPPD",
+            "prostt5_confidence": 70.07,
             "length": 194
         },
         {
@@ -2189,9 +2255,9 @@
                 "molecular_weight": 75815.20360000001,
                 "isoelectric_point": 4.515141868591309
             },
-            "id": "FLLLIEBDPW_51",
+            "id": "FLLLIEBDSM_51",
             "locus": "FLLLIEBD_00051",
-            "3di": "DVVPVVVVVVVVVVVVPDXVPXDPDDLVLLLVLLVDLLQVLLVVVCVVVNCCLXDLDDXXDXDPVLVVLLVVLVVLLVVLVVLLVVLVVVQVVQCVVVVDRXXFPFDPVLSVLLVLLSQQQDADSSRAGPLLVVLLSLLRNXLQNLLLNLLLVLLVCLQVXXFFFFDFDDLLLLVLLLLLLQLLLLQLLVXVVVVVXXVPXDDDDXWDWDDDDPPQWIDTDXXXXTSKMFTXGXDDDDDPXDVVDDDDFDSVVLSVLLVVLSVVLSVLSSVLSNVLSVVLVVCVDVPVDDDVXSSVSSVVSSVVSSVSSVVSSVXDDXDVVLSVQLSVQCSRRNSSSXNSSSVSXXVVXXDXDDXXDDDDDDDDXXXXXXXDDDVSSVVLVVSSVVXSVDXXXXXXXXDXDDSVCSVVVXDDDPSVVVVVLXVPSLVVVLVVLVVVXXXDDDDPXXSXXXLSSLSSVLLVVLVVVLVVLLVVLVVVVVVVVPDPDPVVVVVVVDDPVSVVSSVVSVVVXPVVSVVSLLLSLLSLLLSPCLSVLLSVLLSVLSVVLSSVSSSLSSCSSLLSSLSXHHDPDSCVSNVVSVLSSVLSSCLSVLLSVLSSLLSVLSSVLSVVLVVVLVVVSVVDDDXDSVSSSVSSVVSSVSSVVSSVSSLVSSLVSNVVSVVVSCVVVXDXXDVVVVVVSVVVVVVSVVVPDDPDDDDDPPDVPDXVPVVDVVPDVD",
+            "3di": "DVVPVVVVVVVVVVVVPDXVPXDPDDLVLLLVLLVDLLQVLLVVVCVVVNCCLXDLDDXXDXDPVLVVLLVVLVVLLVVLVVLLVVLVVVQVVQCVVVVDRXXFPFDPVLSVLLVLLSQQQDADSSRAGPLLVVLLSLLRNXLQNLLLNLLLVLLVCLQVXXFFFFDFDDLLLLVLLLLLLQLLLLQLLVXVVVVVXXVPXDDDDXWDWDDDDPPQWIDTDXXXXTSKMFTXGXDDDDDPXDVVDDDDFDSVVLSVLLVVLSVVLSVLSSVLSNVLSVVLVVCVDVPVDDDVXSSVSSVVSSVVSSVSSVVSSVVDDXDVVLSVQLSVQCSRRNSSSXNSSSVSXXVVXXDXDDXXDDDDDDDDXXXXXXXDDDVSSVVLVVSSVVXSVDXXXXXXXXDXDDSVCSVVVXDDDPSVVVVVLXVPSLVVVLVVLVVVXXXDDDDPXXSXXXLSSLSSVLLVVLVVVLVVLLVVLVVVVVVVVPDPDPVVVVVVVDDPVSVVSSVVSVVVXPVVSVVSLLLSLLSLLLSPCLSVLLSVLLSVLSVVLSSVSSSLSSCSSLLSSLSXHHDPDSCVSNVVSVLSSVLSSCLSVLLSVLSSLLSVLSSVLSVVLVVVLVVVSVVDDDXDSVSSSVSSVVSSVSSVVSSVSSLVSSLVSNVVSVVVSCVVVXDXXDVVVVVVSVVVVVVSVVVPDDPDDDDDPPDVPDXVPVVDVVPDVD",
             "pstc": [
                 {
                     "source": "afdb",
@@ -2200,11 +2266,13 @@
                     "subject_cov": 0.97,
                     "identity": 0.372,
                     "score": 1144.0,
-                    "evalue": 2.193e-21,
+                    "evalue": 2.143e-21,
                     "description": "Conjugal transfer integral membrane domain protein"
                 }
             ],
+            "prostt5_confidence": 51.76,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 715
         },
         {
@@ -2232,7 +2300,7 @@
                 "molecular_weight": 23570.0903,
                 "isoelectric_point": 9.377716255187988
             },
-            "id": "FLLLIEBDPW_52",
+            "id": "FLLLIEBDSM_52",
             "locus": "FLLLIEBD_00052",
             "3di": "DPPPVDDDVVVVVLVVLVVVVVVVLVVVLLVLLVVLVVVVVVVDVVVSVVSCVVPVVVVVVVVVVVVVVVVVVQVLLCLLXXDDDDFDXXDWDDDPXXWIWTADLVQQKIWIWGDDDPQKIKIKIDGLVQWDDWDDDQQKIWTDGPDPVDDIDIDGDPPGDVVSVVVVVSVVCSVVVVCVPXDDXVVSVVSSVVVCVVPVDDMDXXD",
             "pstc": [
@@ -2267,7 +2335,9 @@
                     "description": "The FERM domain of human moesin mutant L281R"
                 }
             ],
+            "prostt5_confidence": 57.86,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 208
         },
         {
@@ -2292,10 +2362,11 @@
                 "molecular_weight": 53280.123100000004,
                 "isoelectric_point": 6.196837043762207
             },
-            "id": "FLLLIEBDPW_53",
+            "id": "FLLLIEBDSM_53",
             "locus": "FLLLIEBD_00053",
             "hypothetical": true,
-            "3di": "DDPDPDVPPVVVVVVVVVVVVVVVLVLVVVVVVPVVLVVLLVVLVVVVVDDVVPVVVVLVVVLVVCVVVVDPVDDDDPVSVVVSCVVVVVVVCSVVVSSVVSVVVVVVPDPPDDPDDDDXDFLXXLLVLLVVXDXXXXVLLXXDDDXVXXXDPPDLXXXLVDDLVVVCVVVVXDVPVXDDLVVSLVVLLVVLXVVXVDDPXXXVSSLLLLLSLLLLCLLVVNLVVSVVSLVVSXVXXDDPDPVVVVVVVXXDDDDSVVSVVSSVVSCVDVXXVVXVVXXVVSQVSVCVXXVDDDDDDPXXXXXWDXXDVVSXXXXXXDXXXXWXWXXXXXXXXIXIMIXGGPVDDDXDXVVSVVSVVVSVVVSVVSVXDXDDDDDDXXDDVDDDPSDDDDPPDPPPPVPPPPDDDDPDDDDDDPDPDPPDDDPDDPPDDPDDDDDDDDDDPDDDPDDPDDDDDPDDPPPPDDDPPPPDPPDD",
+            "3di": "DDPDPDVPPVVVVVVVVVVVVVVVLVLVVVVVVPVVLVVLLVVLVVVVVDDVVPVVVVLVVVLVVCVVVVDPVDDDDPVSVVVSCVVVVVVVCSVVVSSVVSVVVVVVPDPPDDPDDDDXDFLXXLLVLLVVXDXXXXVLLXXDDDXVXXXDPPDLXXXLVDDLVVVCVVVVXDVPVXDDLVVSLVVLLVVLXVVXVDDPXXXVSSLLLLLSLLLLCLLVVNLVVSVVSLVVSXVXXDDPDPVVVVVVVXXDDDDSVVSVVSSVVSCVDVXXVVXVVXXVVSQVSVCVXXVDDDDDDPXXXXXWDXXDVVSXXXXXXDXXXXWXWXXXXXXXXIXIMIXGGPVDDDXDXVVSVVSVVVSVVVVVVSVXDXDDDDDDVXDDVDDDPSDDDDPPDPPPPPPPPPDDDDPDDDDDDPDPDPPDDDPDDPPDDPDDDDDDDDDDPDDDPDDPDDDDDPDDPPPPDDDPPPPDPPDD",
+            "prostt5_confidence": 43.53,
             "length": 473
         },
         {
@@ -2324,7 +2395,7 @@
                 "molecular_weight": 41371.630099999995,
                 "isoelectric_point": 8.550651359558106
             },
-            "id": "FLLLIEBDPW_54",
+            "id": "FLLLIEBDSM_54",
             "locus": "FLLLIEBD_00054",
             "3di": "DKDKFWKWFDDPPDDXXWIWDDDAQWIFTDGPVRDTPDIDGLDDDWDWDDDPQFIWTDXPDPDPDTITGXDDPVSSVVVVVVSCVSNVVDDDPDDPDDPCVVVVVVVVVVVVCVVPDDDDDPPPDDDPDDDDDPDPDPDDDDDDDPDDDPDPDDDDDDPPPDDDPDDDPDPPDDDDDDDPPDDPDPDDPDPXPXDFDDPVLLVLVVVLVVVLLDKDWLAPPAQFEKEWEAFLQDPVQLVCVVLVVVVSVRHTYIYQYAYDPXXPLSLLLSLLLSPDDSVCSNVSSVQSSPDDPXXXDXDDDDPDPPPDDDPVVVVVVSSVSSVVSNVSSVVSCVSSVDPDDTWIATSVGHTDDSVLSNDSVVVVVVSVVXDPVVV",
             "pstc": [
@@ -2369,7 +2440,9 @@
                     "description": "Glutaredoxin"
                 }
             ],
+            "prostt5_confidence": 56.59,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 376
         },
         {
@@ -2398,18 +2471,18 @@
                 "molecular_weight": 82687.7773,
                 "isoelectric_point": 5.746842765808106
             },
-            "id": "FLLLIEBDPW_55",
+            "id": "FLLLIEBDSM_55",
             "locus": "FLLLIEBD_00055",
-            "3di": "DPPPPDDPDLVVXDDDDDDDPVLVVLLDPVNVVVLVVQLVVCCVVPVVSVVVSVVVCVVSVVSSVVXXDDADADDDXXQQDDDPVXXDDDXDDVPVVDXXDTXDXXXGGXXALFWFFWFXPPXXTDTDTDGLLLLLLFEEEEAAPQLCVLVSVLRNVLSCLVVVFAEEEEEQPPDPVSVLSNLLSCVVSVNNVQEAEAALDDXPDDLVVCVVVDPVXLXXHFAAFLLQPDDLVLLLLLLCLLQDDDDPDVVLSVLLSVLSSLLSVLQNVVCVVVVHFAFLVVSLVCLDLLSLLVSLVVCVVVVHDPVSNVSSLVSCVVQQPPDDSVCDDDSVPGDPVSSVSSCSSNVSSVVLSVLCXPRXVSRRNDSPGXDDLLCCRLVSHYYYYYQNCVVDDLSSSLSVLSSVLSVVLVSLVVLLVCLVVDDPVSLVSXVVXXPDAAHEYEYEACLSNDDPSVLVSLVRCSSSRYHYYHYHXALVSNCVRNNPCSVSSVVSRQKYKYAAHDDCPPVLVVVQVVQAKDWDWWDWDWDDDDDDPDIDIDXDIDIDIDIDGPDDSVCSNPDDRQWMWMDGPNDTDITGGXXXDDDXXXDDVXXXXXXXDDDDXDDSVVCVVSDDPDXDXPDDDDPDLVXXXWXXXXVVXDDDXXQWDDDPNXIWGDDDXXDDDDDDDDDDPVSVVSSVVSLVVSVVVXVVXXXXXDDDDDDDDXDDDDPVVVVVXVVXXVXXXDDDDVXXXD",
+            "3di": "DPPPPDDPDLVVXDDDDDDDPVLVVLLDPVNVVVLVVQLVVCCVVPVVSVVVSVVVCVVSVVSSVVXXDDADADDDXXQQDDDPVXXDDDXDDVPVVDXXDTXDXXXGGXXALFWFFWFXPPXXTDTDTDGLLLLLLFEEEEAAPQLCVLVSVLRNVLSCLVVVFAEEEEEQPPDPVSVLSNLLSCVVSVNNVQEAEAALDDXPDDLVVCVVVDPVXLXXHFAAFLLQPDDLVLLLLLLCLLQDDDDPDVVLSVLLSVLSSLLSVLQNVVCVVVVHFAFLVVSLVCLDLLSLLVSLVVCVVVVHDPVSNVSSLVSCVVQQPPDDSVCDDDSVPGDPVSSVSSCSSNVSSVVLSVLCXPRXVSRRNDSPGXDDLLCCRLVSHYYYYYQNCVVDDLSSSLSVLSSVLSVVLVSLVVLLVCLVVDDPVSLVSXVVXXPDAAHEYEYEACLSNDDPSVLVSLVRCSSSRYHYYHYHXAXVSNCVRNNPCSVSSVVSRQKYKYAAHDDCPPVLVVVQVVQAKDWDWWDWDWDDDDDDPDIDIDXDIDIDIDIDGPDDSVCSNPDDRQWMWMDGPNDTDITGGXXXDDDXXXDDVXXXXXXXDDDDXDDSVVCVVSDDPDXDXPDDDDPDLVXXXWXXXXVVXDDDXXQWDDDPNXIWGDDDXXDDDDDDDDDDPVSVVSSVVSLVVSVVVXVVXXXXXDDDDDDDDXDDDDPVVVVVXVVXXVXXXDDDDVXXXD",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "Q5ZYC6",
                     "query_cov": 0.98,
                     "subject_cov": 0.81,
-                    "identity": 0.221,
-                    "score": 1788.0,
-                    "evalue": 2.889e-36,
+                    "identity": 0.22,
+                    "score": 1778.0,
+                    "evalue": 4.046e-36,
                     "description": "Type 4 coupling protein DotL"
                 },
                 {
@@ -2418,8 +2491,8 @@
                     "query_cov": 0.72,
                     "subject_cov": 0.99,
                     "identity": 0.364,
-                    "score": 1872.0,
-                    "evalue": 7.594e-38,
+                    "score": 1864.0,
+                    "evalue": 9.571e-38,
                     "description": "TrbC-like protein"
                 },
                 {
@@ -2427,9 +2500,9 @@
                     "id": "6sz9",
                     "query_cov": 0.68,
                     "subject_cov": 0.88,
-                    "identity": 0.238,
-                    "score": 1016.0,
-                    "evalue": 5.849e-20,
+                    "identity": 0.236,
+                    "score": 1006.0,
+                    "evalue": 8.762e-20,
                     "description": "Type IV Coupling Complex (T4CC) from L. pneumophila."
                 },
                 {
@@ -2438,12 +2511,14 @@
                     "query_cov": 0.62,
                     "subject_cov": 0.83,
                     "identity": 0.115,
-                    "score": 428.0,
-                    "evalue": 1.623e-07,
+                    "score": 422.0,
+                    "evalue": 2.101e-07,
                     "description": "P-loop containing nucleotide triphosphate hydrolases"
                 }
             ],
+            "prostt5_confidence": 56.1,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 731
         },
         {
@@ -2472,7 +2547,7 @@
                 "molecular_weight": 10778.4512,
                 "isoelectric_point": 10.397348213195798
             },
-            "id": "FLLLIEBDPW_56",
+            "id": "FLLLIEBDSM_56",
             "locus": "FLLLIEBD_00056",
             "3di": "DVVVVVVVVVVVVVPPPPPPPPPPDDDDDDDPPVCCVVVVLLVVLQPDAAEDEDEDAADQDQSNLVSLLVSVVVVHHYHYHYDPVRCPDPRRVSVVSSVVV",
             "pstc": [
@@ -2517,7 +2592,9 @@
                     "description": "Endonuclease Chain A"
                 }
             ],
+            "prostt5_confidence": 74.56,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 102
         },
         {
@@ -2542,7 +2619,7 @@
                 "molecular_weight": 59741.4758,
                 "isoelectric_point": 8.123806190490722
             },
-            "id": "FLLLIEBDPW_57",
+            "id": "FLLLIEBDSM_57",
             "locus": "FLLLIEBD_00057"
         },
         {
@@ -2569,7 +2646,7 @@
                 "molecular_weight": 13167.1816,
                 "isoelectric_point": 9.732614707946777
             },
-            "id": "FLLLIEBDPW_58",
+            "id": "FLLLIEBDSM_58",
             "locus": "FLLLIEBD_00058",
             "3di": "DDDDDPPAWEKEFAAADDPVDDQVVVQVCCCPQVVDHQQPRHWYWYAHPVQQKIKIWGDDPPDIDIDIDGDPDDGADHDHDDPRMDIDDPVLVVCRVVVHDSVDDDDDDDDPPPPD",
             "pstc": [
@@ -2594,7 +2671,9 @@
                     "description": "IS66 family insertion sequence element accessory protein TnpB"
                 }
             ],
+            "prostt5_confidence": 72.41,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 117
         },
         {
@@ -2621,7 +2700,7 @@
                 "molecular_weight": 15021.958,
                 "isoelectric_point": 7.848268318176269
             },
-            "id": "FLLLIEBDPW_59",
+            "id": "FLLLIEBDSM_59",
             "locus": "FLLLIEBD_00059",
             "3di": "DPPPPPPPDDDDDDDPVVLVVLLVVCLDPPDDLVVSCVVVVHDSVVSVVSCVVVLVVDDPVSVVVVPDPPDDDDDDDDPPPPPDPDDDDDDPPDPPPPXWDWMWDDDPPDIDIDTDDDDPVVVVVVVCVVVVPPD",
             "pstc": [
@@ -2646,7 +2725,9 @@
                     "description": "Transposase"
                 }
             ],
+            "prostt5_confidence": 73.34,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 136
         },
         {
@@ -2671,10 +2752,11 @@
                 "molecular_weight": 5168.9677,
                 "isoelectric_point": 9.51922435760498
             },
-            "id": "FLLLIEBDPW_60",
+            "id": "FLLLIEBDSM_60",
             "locus": "FLLLIEBD_00060",
             "hypothetical": true,
             "3di": "DDPVVVCVVVVDDDDDDPPDPDDQWDWDDDPNPDIDGDPDDPDDDD",
+            "prostt5_confidence": 75.63,
             "length": 47
         },
         {
@@ -2702,7 +2784,7 @@
                 "molecular_weight": 13608.6327,
                 "isoelectric_point": 9.298484611511231
             },
-            "id": "FLLLIEBDPW_61",
+            "id": "FLLLIEBDSM_61",
             "locus": "FLLLIEBD_00061",
             "3di": "DPPPPDPPPPDDDDLVVLVVLLVVCPDPPHDLVVSCVVVVHDSVVSVVSNVCVVVVQSVCVVVPDDDDGPVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCVVVVVDDDDDDDDPPPD",
             "pstc": [
@@ -2737,7 +2819,9 @@
                     "description": "Homeodomain-like"
                 }
             ],
+            "prostt5_confidence": 82.71,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 122
         },
         {
@@ -2762,7 +2846,7 @@
                 "molecular_weight": 31176.920399999995,
                 "isoelectric_point": 9.267152976989745
             },
-            "id": "FLLLIEBDPW_62",
+            "id": "FLLLIEBDSM_62",
             "locus": "FLLLIEBD_00062"
         },
         {
@@ -2787,10 +2871,11 @@
                 "molecular_weight": 9256.6338,
                 "isoelectric_point": 9.892367362976074
             },
-            "id": "FLLLIEBDPW_63",
+            "id": "FLLLIEBDSM_63",
             "locus": "FLLLIEBD_00063",
             "hypothetical": true,
             "3di": "DPPVVVVVVVDVVPFDKDFLQVLCVVLVHDSVXDDDXVXDVCXVVVDHADDFPDPDDDPTTIDGPVSSVVSSVVSVVVVVVVV",
+            "prostt5_confidence": 60.89,
             "length": 84
         },
         {
@@ -2815,7 +2900,7 @@
                 "molecular_weight": 74630.7605,
                 "isoelectric_point": 9.059629249572755
             },
-            "id": "FLLLIEBDPW_64",
+            "id": "FLLLIEBDSM_64",
             "locus": "FLLLIEBD_00064"
         },
         {
@@ -2840,10 +2925,11 @@
                 "molecular_weight": 7029.0932,
                 "isoelectric_point": 9.773165321350096
             },
-            "id": "FLLLIEBDPW_65",
+            "id": "FLLLIEBDSM_65",
             "locus": "FLLLIEBD_00065",
             "hypothetical": true,
             "3di": "DVCVVVVVDPDPPDLVVLLVVLVVLVVVLVVCVVVVVDDPDPVVVVSVVVSVVSSVVSVVVVV",
+            "prostt5_confidence": 70.8,
             "length": 64
         },
         {
@@ -2869,7 +2955,7 @@
                 "molecular_weight": 12465.9552,
                 "isoelectric_point": 9.220477867126462
             },
-            "id": "FLLLIEBDPW_66",
+            "id": "FLLLIEBDSM_66",
             "locus": "FLLLIEBD_00066",
             "3di": "DPPPPPPPDDPVNVVVVVVVVVPDDPPVVVPDDLLVVCVVCLVVLLCCCPVVVDDLVVVQVVVVVVVNVPDDSVSSVCSNVVVDPVPVPPPPPDDDPPDPPPPPPDPPPD",
             "pstc": [
@@ -2884,7 +2970,9 @@
                     "description": "Mobilization protein MobC"
                 }
             ],
+            "prostt5_confidence": 71.44,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 111
         },
         {
@@ -2909,10 +2997,11 @@
                 "molecular_weight": 5210.1251,
                 "isoelectric_point": 7.883790397644043
             },
-            "id": "FLLLIEBDPW_67",
+            "id": "FLLLIEBDSM_67",
             "locus": "FLLLIEBD_00067",
             "hypothetical": true,
             "3di": "DDDDLVVVLVCVVVVDDDDDDDDDDPVVVVSVVVSCVVVVDDD",
+            "prostt5_confidence": 71.04,
             "length": 44
         },
         {
@@ -2937,10 +3026,11 @@
                 "molecular_weight": 12426.9803,
                 "isoelectric_point": 4.824345970153809
             },
-            "id": "FLLLIEBDPW_68",
+            "id": "FLLLIEBDSM_68",
             "locus": "FLLLIEBD_00068",
             "hypothetical": true,
-            "3di": "DDDPPDDXFKKEKEXXDDDDPVXXVXDDVVCVVVCVVVXWWWWDDDPXXIIXXXXDDDVCVLVVCVVVPHDPVXSVVXVVDVVVPXDMXMDDDPDVVVVVVVVDPX",
+            "3di": "DDDPPDDXFKKEKEXXDDDDPVXXVXDDVVCVVVCVVVXWWWWDDDPXXIIXXXXDDDVCVLVVCVVVPHDPVXSVVXVVDVVVPXDMXMDDDDDVVVVVVVVDPX",
+            "prostt5_confidence": 41.14,
             "length": 107
         },
         {
@@ -2965,10 +3055,11 @@
                 "molecular_weight": 8895.0552,
                 "isoelectric_point": 5.161571693420409
             },
-            "id": "FLLLIEBDPW_69",
+            "id": "FLLLIEBDSM_69",
             "locus": "FLLLIEBD_00069",
             "hypothetical": true,
             "3di": "DDPPXDDDDDPVVVVVVVVVVVVCPVVVXDPPXDWDXDDDXKXKIWIADPVRDTDDDDDDDDPVVVVVXXVVXDXDD",
+            "prostt5_confidence": 45.92,
             "length": 78
         },
         {
@@ -2994,7 +3085,7 @@
                 "molecular_weight": 10361.8342,
                 "isoelectric_point": 8.57095890045166
             },
-            "id": "FLLLIEBDPW_70",
+            "id": "FLLLIEBDSM_70",
             "locus": "FLLLIEBD_00070",
             "hypothetical": true,
             "3di": "DPPPPPPPPXXKXKKKWKWDDDPPXDXWDIDTDPDPPDDXDIDIDTDDPPDDPVVVVVVVCVVVVHDKDWDDWDDWDDDPRMIMIMTMIGGDD",
@@ -3010,7 +3101,9 @@
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 52.39,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 94
         },
         {
@@ -3035,7 +3128,7 @@
                 "molecular_weight": 8978.1356,
                 "isoelectric_point": 5.2808198928833
             },
-            "id": "FLLLIEBDPW_71",
+            "id": "FLLLIEBDSM_71",
             "locus": "FLLLIEBD_00071"
         },
         {
@@ -3061,7 +3154,7 @@
                 "molecular_weight": 32760.961700000003,
                 "isoelectric_point": 6.537302589416504
             },
-            "id": "FLLLIEBDPW_72",
+            "id": "FLLLIEBDSM_72",
             "locus": "FLLLIEBD_00072",
             "3di": "DPPPPPDDDDCLDXPDDPPPPDPVVVLVVLLVVLVVVVVVVLVVLVVLVVLLVVCVVVVXXVXXVVSVVSSCVXVVDPDDDDPVSSVLLSVXXXVVSVVVXXVPVVXLVVDDPVSVVVVCVVXVPDDDDXDDSVVLLVVVVVVXVVPXVVLLVVVVVLLVVLDXDXDDXXXDDXXXXXXXXXVXVXXVVXXWDDDPVXXDXXXVXXVXXXXDPXDDDDPSXDVDSVVVVVVCVVVVQAXDWDDDPFWIWHXHXDRMIMIGGRDVVSSVVSSVVCCVVPVVPDDDDD",
             "pstc": [
@@ -3076,7 +3169,9 @@
                     "description": "DUF4942 domain-containing protein"
                 }
             ],
+            "prostt5_confidence": 43.48,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 287
         },
         {
@@ -3101,10 +3196,11 @@
                 "molecular_weight": 6563.6693,
                 "isoelectric_point": 10.016791343688965
             },
-            "id": "FLLLIEBDPW_73",
+            "id": "FLLLIEBDSM_73",
             "locus": "FLLLIEBD_00073",
             "hypothetical": true,
             "3di": "DDPDDDDPVVVVVVVVVVLVVVLVVLVVVLVVDDPDDDDDPDPXSVVVSVVSVVVDDPPD",
+            "prostt5_confidence": 69.29,
             "length": 61
         },
         {
@@ -3129,10 +3225,11 @@
                 "molecular_weight": 12926.431,
                 "isoelectric_point": 4.705779838562011
             },
-            "id": "FLLLIEBDPW_74",
+            "id": "FLLLIEBDSM_74",
             "locus": "FLLLIEBD_00074",
             "hypothetical": true,
             "3di": "DPPPPPDDDLLVVLLVLLVVXVVLLVVLXVDLVVCVVVDPVVLVVLVVVLVVLVVVLVVVVVVVVVDPPDDPVVVVVVLVSVSSVLSVCVSVVXVVSVVVSVSSVVSVVVSVVVVVVVV",
+            "prostt5_confidence": 52.39,
             "length": 120
         },
         {
@@ -3161,7 +3258,7 @@
                 "molecular_weight": 10612.1127,
                 "isoelectric_point": 6.002845573425293
             },
-            "id": "FLLLIEBDPW_75",
+            "id": "FLLLIEBDSM_75",
             "locus": "FLLLIEBD_00075",
             "3di": "DFFAAPVRDTLDIDDQWDDDPPDDDDDLVVVLVVCVVSVHQEYEDEXEDPVQDQDDDPVNLVVVVVNCVSNVVVNHHYPWYWYDHPPDIDTCVVVVNX",
             "pstc": [
@@ -3206,7 +3303,9 @@
                     "description": "Cytidine Deaminase, domain 2"
                 }
             ],
+            "prostt5_confidence": 78.42,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 99
         },
         {
@@ -3231,10 +3330,11 @@
                 "molecular_weight": 7381.322800000001,
                 "isoelectric_point": 5.1528753280639625
             },
-            "id": "FLLLIEBDPW_76",
+            "id": "FLLLIEBDSM_76",
             "locus": "FLLLIEBD_00076",
             "hypothetical": true,
             "3di": "DDDDPVLVVLLVVLVVVLCVDDPPDDDDPDPVSVVVVVCVVCVPPPDVXDVDDDVPDDPVVVVD",
+            "prostt5_confidence": 58.69,
             "length": 65
         },
         {
@@ -3260,9 +3360,9 @@
                 "molecular_weight": 18281.8725,
                 "isoelectric_point": 7.924727821350098
             },
-            "id": "FLLLIEBDPW_77",
+            "id": "FLLLIEBDSM_77",
             "locus": "FLLLIEBD_00077",
-            "3di": "DPPXDDDDFDALVLLVVLCVLVVDDLVVLCVLLVHDSLLSVQQSDDPVDDPDPDXXSXDFLLSSLLSCVCSVVDPVVVXDPXDXVVVVVPXXDDWDFLVRLVVLCVVVVHDLCVVCVSSNHDSVVSVQQNDDPXXXGDDSSSSSSSCVVSVVDPVXXXDXDD",
+            "3di": "DPPXDDDDFDALVLLVVLCVLVVDDLVVLCVLLVHDSLLSVQQNDDPVDDPDPDXXSXDFLLSSLLSCVCSVVDPVVVXDPXDXVVVVVPXXDDWDFLVRLVVLCVVVVHDLCVVCVSSNHDSVVSVQQNDDPXXXGDDSSSSSSSCVVSVVDPVXXXDXDD",
             "pstc": [
                 {
                     "source": "afdb",
@@ -3270,12 +3370,14 @@
                     "query_cov": 0.99,
                     "subject_cov": 0.99,
                     "identity": 0.901,
-                    "score": 808.0,
-                    "evalue": 9.531e-18,
+                    "score": 810.0,
+                    "evalue": 8.742e-18,
                     "description": "HTH cro/C1-type domain-containing protein"
                 }
             ],
+            "prostt5_confidence": 58.54,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 163
         },
         {
@@ -3301,23 +3403,25 @@
                 "molecular_weight": 17796.921299999998,
                 "isoelectric_point": 9.708632469177246
             },
-            "id": "FLLLIEBDPW_78",
+            "id": "FLLLIEBDSM_78",
             "locus": "FLLLIEBD_00078",
             "hypothetical": true,
-            "3di": "DDPDDXDDPDXDDDDDDPPDDDXDXXXXDXPDPDDDDDXDXPDDDDDPDDDXDDXDDDPPPDPPDDDXDDDDXDDFPDWDWDDDXXKIKMWTWTDDPVXXKIWIWIAGPVVRDTDKIWIAGDPVXXXIIIIXDDDDVVSVVVXDPVVVVPPD",
+            "3di": "DDPDDXDDPDXDDDDDDPPDDDXDXXDXDXPDPDDDDDXDXPDDDDDPDDDXDDXDDDPPPDPPDDDXDDDDXDDFPDWDWDDDXXKIKMWTWTDDPVXXKIWIWIAGPVVRDTDKIWIAGDPVXXXIIIIXDDDDVVSVVVXDPVVVVPPD",
             "pstc": [
                 {
                     "source": "afdb",
                     "id": "A0A9Q6N187",
                     "query_cov": 0.98,
                     "subject_cov": 0.92,
-                    "identity": 0.216,
-                    "score": 274.0,
-                    "evalue": 6.954e-05,
+                    "identity": 0.222,
+                    "score": 279.0,
+                    "evalue": 5.041e-05,
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 44.14,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 153
         },
         {
@@ -3344,7 +3448,7 @@
                 "molecular_weight": 15622.5838,
                 "isoelectric_point": 4.690092277526855
             },
-            "id": "FLLLIEBDPW_79",
+            "id": "FLLLIEBDSM_79",
             "locus": "FLLLIEBD_00079",
             "3di": "DPPPPDDDDDDDDDDCPVALLSVLVVVVLVPDDPVCSVVVVVVVVVVLVLVCVVPVCSSVVSSVVVDDPDDPVNVVVSVCVRPVPVPDDDPVSSVVSVVVSPPPPDPDDDDDDDDDPPDPVPVVVVVVVVVVVVVVVVVPPD",
             "pstc": [
@@ -3369,7 +3473,9 @@
                     "description": "Plasmid stability protein"
                 }
             ],
+            "prostt5_confidence": 67.43,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 143
         },
         {
@@ -3394,7 +3500,7 @@
                 "molecular_weight": 36041.442299999995,
                 "isoelectric_point": 5.727346992492676
             },
-            "id": "FLLLIEBDPW_80",
+            "id": "FLLLIEBDSM_80",
             "locus": "FLLLIEBD_00080"
         },
         {
@@ -3422,7 +3528,7 @@
                 "molecular_weight": 16476.3906,
                 "isoelectric_point": 4.629956626892089
             },
-            "id": "FLLLIEBDPW_81",
+            "id": "FLLLIEBDSM_81",
             "locus": "FLLLIEBD_00081",
             "3di": "DKFKWFWADDPDDPFKIKIDTCLQVVDVXGFIDTDNDPVCRQVRSLVRVLVSLLVCVVVVPDDPVRRDDPDXVVXCVDPVNVVGPDMDMDDDDSVVXVDDDDDDDDDDDPVVVVVLVVVCVVPVVPAPDSVSVVVVVVVVVVVVVVV",
             "pstc": [
@@ -3457,7 +3563,9 @@
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 66.6,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 148
         },
         {
@@ -3482,10 +3590,11 @@
                 "molecular_weight": 8969.0988,
                 "isoelectric_point": 8.977754402160645
             },
-            "id": "FLLLIEBDPW_82",
+            "id": "FLLLIEBDSM_82",
             "locus": "FLLLIEBD_00082",
             "hypothetical": true,
             "3di": "DPPXDKKKKKKKKWKWDDPDPVDDDXVDXXXXXXVDXDXDDDDDDPDDDXVVDDPXXXDDXXDXDXDDPPXDIXDTPDD",
+            "prostt5_confidence": 35.67,
             "length": 80
         },
         {
@@ -3510,10 +3619,11 @@
                 "molecular_weight": 15399.923499999999,
                 "isoelectric_point": 10.107369422912598
             },
-            "id": "FLLLIEBDPW_83",
+            "id": "FLLLIEBDSM_83",
             "locus": "FLLLIEBD_00083",
             "hypothetical": true,
             "3di": "DDWDDDDPDXDDDDFDWDFDDDDDFAFFKKFKAADDPXXATQEIDTADXVVVVCXVDXCXXXPXDDPDXXSVVSCVVXVXRMIMITGPDDDPVVSLVSSVVSCVVPXPXXXXDDDDDDPVPDDVVSVVVSVVVVVVVVV",
+            "prostt5_confidence": 45.12,
             "length": 140
         },
         {
@@ -3538,10 +3648,11 @@
                 "molecular_weight": 10233.684,
                 "isoelectric_point": 6.280219841003418
             },
-            "id": "FLLLIEBDPW_84",
+            "id": "FLLLIEBDSM_84",
             "locus": "FLLLIEBD_00084",
             "hypothetical": true,
             "3di": "DALVVLVVLCVVVVDDLVVLCVQLVHDSVVSVCRNVVVDHDDPSSVVSSVVVVVVVVVVVVVVDDPVVVVVVVVVVVVVVDPSVV",
+            "prostt5_confidence": 79.49,
             "length": 86
         },
         {
@@ -3568,7 +3679,7 @@
                 "molecular_weight": 21277.523,
                 "isoelectric_point": 9.898298454284667
             },
-            "id": "FLLLIEBDPW_85",
+            "id": "FLLLIEBDSM_85",
             "locus": "FLLLIEBD_00085",
             "3di": "DDPVLLVVLLVCVLVPDDLVVSCVVVVDDSVVSCVSNVVVLVPDDDPPADADPVPRDSPQWDFDDDDPNFTWIAGPVPRDIDGSVPPPDDPDDDDPVLLVQLLVCVVVPDDLVVSCVVSVHDSVVSVVSCVVVVXPDDFDADPPPRHRQKDFDDADPVRFTWIAGPPPRDIDGNDPPVPPVPDDDDPD",
             "pstc": [
@@ -3593,7 +3704,9 @@
                     "description": "IS1 family transposase"
                 }
             ],
+            "prostt5_confidence": 69.14,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 189
         },
         {
@@ -3618,10 +3731,11 @@
                 "molecular_weight": 12723.1971,
                 "isoelectric_point": 5.033513450622559
             },
-            "id": "FLLLIEBDPW_86",
+            "id": "FLLLIEBDSM_86",
             "locus": "FLLLIEBD_00086",
             "hypothetical": true,
             "3di": "DDPPDPPPCVPDPPDDDDDDDDDXXKWWDDPNFIKDIXXXXPXDDDDPVXDTDPVVXXVXXDVDVVXDXKMKMWIDDPVRDDXWIWIWDWDADPVRDIWIWIDGPVGDTDDIDX",
+            "prostt5_confidence": 45.51,
             "length": 115
         },
         {
@@ -3646,7 +3760,7 @@
                 "molecular_weight": 11361.755299999999,
                 "isoelectric_point": 5.437070274353027
             },
-            "id": "FLLLIEBDPW_87",
+            "id": "FLLLIEBDSM_87",
             "locus": "FLLLIEBD_00087"
         },
         {
@@ -3671,7 +3785,7 @@
                 "molecular_weight": 8194.033200000002,
                 "isoelectric_point": 5.877515602111816
             },
-            "id": "FLLLIEBDPW_88",
+            "id": "FLLLIEBDSM_88",
             "locus": "FLLLIEBD_00088"
         },
         {
@@ -3696,7 +3810,7 @@
                 "molecular_weight": 23392.3649,
                 "isoelectric_point": 6.285051155090333
             },
-            "id": "FLLLIEBDPW_89",
+            "id": "FLLLIEBDSM_89",
             "locus": "FLLLIEBD_00089"
         },
         {
@@ -3721,7 +3835,7 @@
                 "molecular_weight": 48097.7709,
                 "isoelectric_point": 9.317309379577637
             },
-            "id": "FLLLIEBDPW_90",
+            "id": "FLLLIEBDSM_90",
             "locus": "FLLLIEBD_00090"
         },
         {
@@ -3748,7 +3862,7 @@
                 "molecular_weight": 18078.61,
                 "isoelectric_point": 6.6253461837768555
             },
-            "id": "FLLLIEBDPW_91",
+            "id": "FLLLIEBDSM_91",
             "locus": "FLLLIEBD_00091",
             "3di": "DPDDXDDDDPDWDWDADPVVRDTDTDTDDDDDDPDDXDKDADVVLVVVCCVVDDDLLVLLVVVQXVPADQLARKDADDLVVSCVVSVHDSVSSVVSVVSCVVVLQWDDDPRMIGGQLRGIHHDDDVSSVVSCVVVVVVVVVVVVVVVVVVVVVVVPVV",
             "pstc": [
@@ -3773,7 +3887,9 @@
                     "description": "Replication and maintenance protein"
                 }
             ],
+            "prostt5_confidence": 67.14,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 159
         }
     ],
@@ -3810,8 +3926,8 @@
         }
     ],
     "run": {
-        "start": "2026-06-24 09:32:36",
-        "end": "2026-06-24 09:32:36",
+        "start": "2026-09-06 15:26:31",
+        "end": "2026-09-06 15:26:31",
         "duration": "0.00 min"
     },
     "version": {

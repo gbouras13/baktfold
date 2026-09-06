@@ -71,6 +71,7 @@
                 }
             ],
             "baktfold": true,
+            "annotation_confidence": "high",
             "product": "Chromosomal replication initiator protein DnaA",
             "db_xrefs": [
                 "afdb_v6:afdbclusters_A0A2U8GRR8",
@@ -142,6 +143,7 @@
                 }
             ],
             "baktfold": true,
+            "annotation_confidence": "high",
             "product": "Beta sliding clamp",
             "db_xrefs": [
                 "afdb_v6:afdbclusters_A0AAJ4S5X6",
@@ -202,6 +204,7 @@
                 }
             ],
             "baktfold": true,
+            "annotation_confidence": "high",
             "product": "DNA replication and repair protein RecF",
             "db_xrefs": [
                 "afdb_v6:afdbclusters_A0A9E5T4R8",
