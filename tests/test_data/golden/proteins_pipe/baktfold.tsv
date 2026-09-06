@@ -1,0 +1,5 @@
+#Annotated with Baktfold (v0.3.0): https://github.com/gbouras13/baktfold
+ID	Length	Product	Annotation_Confidence	Swissprot	AFDBClusters	PDB	CATH
+lcl|NC_002516.2_prot_NP_064721.1_1|NC_002516.2_prot_NP_064721.1_1	514	Chromosomal replication initiator protein DnaA	high	swissprot_B7V0N6	afdbclusters_A0A2U8GRR8	pdb_1l8q	cath_1l8qA01,cath_2e0gA00,cath_af_P03004_374_467_1.10.1750.10
+lcl|NC_002516.2_prot_NP_064722.1_2|NC_002516.2_prot_NP_064722.1_2	367	Beta sliding clamp	high	swissprot_Q9I7C4	afdbclusters_A0AAJ4S5X6	pdb_6ams	cath_1jqlA03,cath_af_Q2G2H4_2_244_3.10.150.10
+lcl|NC_002516.2_prot_NP_064723.1_3|NC_002516.2_prot_NP_064723.1_3	360	DNA replication and repair protein RecF	high	swissprot_A6UX64	afdbclusters_A0A9E5T4R8	pdb_5z69	cath_5h68A00

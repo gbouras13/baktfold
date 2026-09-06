@@ -10,7 +10,7 @@ import baktfold.bakta.constants as bc
 import baktfold.bakta.config as cfg
 
 
-def write_json(data: dict, features: Sequence[dict], json_path: Path, bakta_version: dict):
+def write_json(data: dict, features: Sequence[dict], json_path: Path, bakta_version: dict, baktfold_run: dict = None):
     logger.info(f'write JSON: path={json_path}' )
 
     # clean feature attributes
@@ -38,6 +38,13 @@ def write_json(data: dict, features: Sequence[dict], json_path: Path, bakta_vers
     #     'type': cfg.db_info['type']
     # }
     data['version'] = version
+
+    # Persist a self-describing provenance block so that ``baktfold json`` can
+    # later reconstitute every non-Foldseek output without the user having to
+    # re-supply runtime flags (euk / custom_db / fast / inference tool strings).
+    # These flags are NOT otherwise recoverable from the feature data alone.
+    if baktfold_run is not None:
+        data['baktfold_run'] = baktfold_run
 
     with json_path.open('wt') as fh:
         json.dump(data, fh, indent=4)

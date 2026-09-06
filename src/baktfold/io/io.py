@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Sequence
 
-import pandas as pd
+import polars as pl
 from loguru import logger
 
 import baktfold.bakta.config as cfg
@@ -18,12 +18,12 @@ import baktfold.bakta.constants as bc
 wrapper script over all io output submodules
 """
 
-def write_foldseek_tophit(tophit_df: pd.DataFrame, pdb_tophit_path: Path):
+def write_foldseek_tophit(tophit_df: pl.DataFrame, pdb_tophit_path: Path):
     """
     Writes the foldseek tophits to a given path.
 
     Args:
-      tophit_df (pd.DataFrame): The dataframe containing the foldseek tophits.
+      tophit_df (pl.DataFrame): The dataframe containing the foldseek tophits.
       pdb_tophit_path (Path): The path to save the foldseek tophits to.
 
     Returns:
@@ -33,31 +33,76 @@ def write_foldseek_tophit(tophit_df: pd.DataFrame, pdb_tophit_path: Path):
       >>> write_foldseek_tophit(tophit_df, pdb_tophit_path)
     """
     logger.info(f"Saving foldseek tophits to {pdb_tophit_path}")
-    tophit_df.to_csv(pdb_tophit_path, sep="\t", index=False)
+    tophit_df.write_csv(pdb_tophit_path, separator="\t")
+
+def _pct(n: int, denom: int) -> str:
+    """
+    Formats n as a one-decimal percentage of denom.
+
+    Args:
+      n (int): The numerator (a CDS count).
+      denom (int): The denominator (a CDS count). May be 0.
+
+    Returns:
+      str: The percentage to one decimal place, or '0.0' when denom is 0.
+
+    Examples:
+      >>> _pct(12, 55)
+      '21.8'
+      >>> _pct(0, 0)
+      '0.0'
+    """
+    return f"{n / denom * 100:.1f}" if denom else "0.0"
+
 
 def write_summary_txt_file(output, prefix, features):
-    
+
     summary_path: Path = Path(output) / f"{prefix}.summary.txt"
 
-    end_hyps = len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'hypothetical' in str(feat).lower()])
-    baktfold_function = len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'baktfold' in str(feat).lower() and 'hypothetical' not in str(feat).lower() ])
+    # Count from the authoritative feature keys, not str(feat) substring matches.
+    # mark_as_baktfold sets feature['baktfold'] = True on any PSTC hit;
+    # mark_as_hypothetical sets feature['hypothetical'] = True and
+    # unmark_as_hypothetical pops the key once a real product is assigned.
+    # The old str(feat) heuristic miscounted any feature whose retained pstc
+    # list held a secondary hit described "hypothetical protein" (e.g. an AFDB
+    # entry), reporting "Baktfold function: 0" even for real annotations.
+    cds = [feat for feat in features if feat['type'] == bc.FEATURE_CDS]
+
+    cds_count = len(cds)
+    baktfold_hit = len([feat for feat in cds if feat.get('baktfold')])
+    end_hyps = len([feat for feat in cds if feat.get('hypothetical')])
+    # got a hit that resolved to a real (non-hypothetical) function
+    baktfold_function = len(
+        [feat for feat in cds if feat.get('baktfold') and not feat.get('hypothetical')]
+    )
     begin_hyps = end_hyps + baktfold_function
 
-    logger.info(f'Baktfold annotation summary {summary_path}') 
+    # Percentages are reported against both denominators: every count as a
+    # share of all CDS, and — for the counts that describe what baktfold did —
+    # as a share of the beginning hypotheticals, which is the set baktfold is
+    # actually given (only hypotheticals, unless --all-proteins is used).
+    logger.info(f'Baktfold annotation summary {summary_path}')
     with summary_path.open('w') as fh_out:
         fh_out.write('Annotation:\n')
-        fh_out.write(f"CDS count: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS])}\n")
+        fh_out.write(f"CDS count: {cds_count}\n")
         fh_out.write(
-            f"CDS beginning hypotheticals: {begin_hyps}\n"
+            f"CDS beginning hypotheticals: {begin_hyps}"
+            f" ({_pct(begin_hyps, cds_count)}% of CDS)\n"
         )
         fh_out.write(
-            f"CDS annotated with Baktfold database hit: {len([feat for feat in features if feat['type'] == bc.FEATURE_CDS and 'baktfold' in str(feat).lower()])}\n"
+            f"CDS annotated with Baktfold database hit: {baktfold_hit}"
+            f" ({_pct(baktfold_hit, cds_count)}% of CDS;"
+            f" {_pct(baktfold_hit, begin_hyps)}% of beginning hypotheticals)\n"
         )
         fh_out.write(
-            f"CDS annotated with Baktfold function: {baktfold_function}\n"
+            f"CDS annotated with Baktfold function: {baktfold_function}"
+            f" ({_pct(baktfold_function, cds_count)}% of CDS;"
+            f" {_pct(baktfold_function, begin_hyps)}% of beginning hypotheticals)\n"
         )
         fh_out.write(
-            f"CDS remaining hypotheticals: {end_hyps}\n"
+            f"CDS remaining hypotheticals: {end_hyps}"
+            f" ({_pct(end_hyps, cds_count)}% of CDS;"
+            f" {_pct(end_hyps, begin_hyps)}% of beginning hypotheticals)\n"
         )
         fh_out.write('\nBaktfold:\n')
         fh_out.write(f'Software: v{cfg.version}\n')
@@ -111,7 +156,8 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
     logger.info('writing INSDC GenBank & EMBL...')
     genbank_path: Path = Path(output) / f"{prefix}.gbff"
     embl_path: Path = Path(output) / f"{prefix}.embl"
-    insdc.write_features(data, features, genbank_path, embl_path, prokka, euk, other_genbank, translation_table, cds_program, trna_program, tmrna_program, rrna_program, ncrna_program)
+    # arg order must match write_features(...): translation_table BEFORE other_genbank.
+    insdc.write_features(data, features, genbank_path, embl_path, prokka, euk, translation_table, other_genbank, cds_program, trna_program, tmrna_program, rrna_program, ncrna_program)
 
     logger.info('writing genome sequences...')
     fna_path: Path = Path(output) / f"{prefix}.fna"
@@ -140,6 +186,10 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
     if fast:
         header_columns = [col for col in header_columns if col != 'AFDBClusters']
 
+    # annotation confidence column goes right after Product
+    prod_idx = header_columns.index('Product')
+    header_columns = header_columns[:prod_idx + 1] + ['Annotation_Confidence'] + header_columns[prod_idx + 1:]
+
     # flatten all features across sequences
     all_features = [
         feat
@@ -158,7 +208,12 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
             if 'hypothetical' in feat or 'baktfold' in feat:
                 selected_features.append(feat)
 
-    tsv.write_protein_features(selected_features, header_columns, annotations_path, custom_db, has_duplicate_locus, fast=fast)
+    # structure input carries Foldseek TM-score/LDDT on its hits -> extra columns
+    structures = any('tmscore' in feat for feat in selected_features)
+    if structures:
+        header_columns = header_columns + ['TMscore', 'LDDT']
+
+    tsv.write_protein_features(selected_features, header_columns, annotations_path, custom_db, has_duplicate_locus, fast=fast, structures=structures)
 
     # write summary file
 
@@ -166,7 +221,24 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
         
     logger.info('write machine readable JSON...')
     json_path: Path = Path(output) / f"{prefix}.json"
-    json.write_json(data, features, json_path, bakta_version)
+    # Provenance block: lets ``baktfold json`` reconstitute these outputs later
+    # without re-supplying runtime flags. See io/json.py:write_json.
+    baktfold_run = {
+        'mode': 'genome',
+        'euk': euk,
+        'custom_db': custom_db,
+        'fast': fast,
+        'has_duplicate_locus': has_duplicate_locus,
+        'translation_table': translation_table,
+        'prokka': prokka,
+        'other_genbank': other_genbank,
+        'cds_program': cds_program,
+        'trna_program': trna_program,
+        'rrna_program': rrna_program,
+        'tmrna_program': tmrna_program,
+        'ncrna_program': ncrna_program,
+    }
+    json.write_json(data, features, json_path, bakta_version, baktfold_run)
 
     
 
@@ -205,16 +277,30 @@ def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str,
     if fast:
         header_columns = [col for col in header_columns if col != 'AFDBClusters']
 
+    # annotation confidence column goes right after Product
+    prod_idx = header_columns.index('Product')
+    header_columns = header_columns[:prod_idx + 1] + ['Annotation_Confidence'] + header_columns[prod_idx + 1:]
+
+    # structure input carries Foldseek TM-score/LDDT on its hits -> extra columns
+    structures = any('tmscore' in aa for aa in aas)
+    if structures:
+        header_columns = header_columns + ['TMscore', 'LDDT']
 
     logger.info(f'Exporting annotations (TSV) to: {annotations_path}')
-    tsv.write_protein_features(aas, header_columns, annotations_path, custom_db, has_duplicate_locus=False, fast=fast)
+    tsv.write_protein_features(aas, header_columns, annotations_path, custom_db, has_duplicate_locus=False, fast=fast, structures=structures)
 
 
     # do i combine the tophits tsvs, sort by column, add a column for db and put out as one tsv
 
     full_annotations_path: Path = Path(output) / f"{prefix}.json"
     logger.info(f'Full annotations (JSON): {full_annotations_path}')
-    json.write_json({'features': aas}, aas, full_annotations_path, bakta_version)
+    # Provenance block for ``baktfold json`` (proteins mode). See io/json.py.
+    baktfold_run = {
+        'mode': 'proteins',
+        'custom_db': custom_db,
+        'fast': fast,
+    }
+    json.write_json({'features': aas}, aas, full_annotations_path, bakta_version, baktfold_run)
 
 
     #### don't write hyps I think as tsv

@@ -1,0 +1,74 @@
+#Annotated with Baktfold (v0.3.0): https://github.com/gbouras13/baktfold
+Locus	Length	Product	Annotation_Confidence	Swissprot	AFDBClusters	PDB	CATH
+FLLLIEBD_00002	139	Protein ParA	low	swissprot_P07175	afdbclusters_A0AB36KDH3	pdb_4e03	cath_4e07A00
+FLLLIEBD_00003	39	hypothetical protein					
+FLLLIEBD_00005	48	hypothetical protein					
+FLLLIEBD_00006	322	N-acetyltransferase domain-containing protein	high		afdbclusters_A0A0F6NT92		
+FLLLIEBD_00007	104	hypothetical protein					
+FLLLIEBD_00008	110	hypothetical protein					
+FLLLIEBD_00009	1040	hypothetical protein	medium		afdbclusters_A0A2S0NSF5		
+FLLLIEBD_00010	79	hypothetical protein					
+FLLLIEBD_00011	192	Heat-inducible transcription repressor HrcA	low	swissprot_B0TAD4	afdbclusters_A0A291E612	pdb_3eco	
+FLLLIEBD_00012	206	DNA-binding protein	medium		afdbclusters_A0A2K0YZQ3		
+FLLLIEBD_00017	204	DUF2913 domain-containing protein	high		afdbclusters_A0AB34CDA8		
+FLLLIEBD_00018	94	hypothetical protein					
+FLLLIEBD_00021	136	Putative transposase InsO for insertion sequence element IS911B	medium	swissprot_Q47718	afdbclusters_C1J8E4	pdb_7svw	cath_af_Q47718_102_174_3.30.420.10
+FLLLIEBD_00023	112	hypothetical protein					
+FLLLIEBD_00024	51	hypothetical protein					
+FLLLIEBD_00025	211	Replication initiation protein	low	swissprot_P03066	afdbclusters_A0A2X1LVU3		
+FLLLIEBD_00026	129	Putative esterase aq_1494	high	swissprot_O67466	afdbclusters_A0A318UMQ5	pdb_5v10	cath_5v10B00
+FLLLIEBD_00027	162	HTH-type quorum-sensing regulator RhlR	medium	swissprot_P54292	afdbclusters_A0A9E1VSB0	pdb_5l09	cath_3sztB01
+FLLLIEBD_00028	193	HTH-type transcriptional regulator PrtR	high	swissprot_Q06553	afdbclusters_I1VYM4	pdb_7jvt	cath_af_Q2FYU1_84_206_2.10.109.10
+FLLLIEBD_00030	68	hypothetical protein					
+FLLLIEBD_00031	104	DUF1496 domain-containing protein	high		afdbclusters_A0AAX3AIG3		
+FLLLIEBD_00032	202	Lipoprotein	high		afdbclusters_A0A7G3L4A4		
+FLLLIEBD_00033	160	Peptidoglycan-binding-like protein	high	swissprot_Q8X6H3	afdbclusters_A0A5U9VSH8	pdb_4xp8	cath_af_Q46790_25_155_1.10.530.10
+FLLLIEBD_00034	156	Type IV pilus biogenesis and competence protein PilQ	low	swissprot_Q9ZHF3	afdbclusters_A0A0P0ZGT3	pdb_6x62	cath_3adyA00
+FLLLIEBD_00035	273	DotC protein	medium		afdbclusters_A0A484UHH3	pdb_7muq	
+FLLLIEBD_00036	396	hypothetical protein	high	swissprot_P52052	afdbclusters_A0A7X4CW99	pdb_6geb	cath_3jvvC02,cath_5fl3A01
+FLLLIEBD_00037	89	TraK protein	high		afdbclusters_A0A3M3JC81		
+FLLLIEBD_00038	1108	DNA primase TraC	low	swissprot_P27189	afdbclusters_A0A0T9MTE6	pdb_6n9x	
+FLLLIEBD_00039	118	hypothetical protein					
+FLLLIEBD_00040	235	Type IV secretion system protein virB8	high	swissprot_P0C532	afdbclusters_A0A350YK85	pdb_3wz3	cath_af_O07422_62_244_3.40.630.30
+FLLLIEBD_00041	368	putative conjugal transfer protein TrbG	low	swissprot_P55404	afdbclusters_A0A077ZKE5	pdb_7mus	
+FLLLIEBD_00042	136	hypothetical protein					
+FLLLIEBD_00043	305	Type IV secretion system protein virB10	medium	swissprot_Q6FYW1	afdbclusters_A0A1G0INH6	pdb_7mus	
+FLLLIEBD_00044	240	TraP protein	high		afdbclusters_A0AB38EMS0		
+FLLLIEBD_00045	178	Conjugal transfer protein TraQ	high		afdbclusters_A0AAW9CFL3		
+FLLLIEBD_00046	134	hypothetical protein					
+FLLLIEBD_00047	188	Conjugal transfer protein	high		afdbclusters_R4WMQ0		
+FLLLIEBD_00048	1016	Protein TraC	high	swissprot_P18004	afdbclusters_A0A0W0YDQ9	pdb_7o43	
+FLLLIEBD_00049	399	hypothetical protein					
+FLLLIEBD_00050	194	hypothetical protein					
+FLLLIEBD_00051	715	Conjugal transfer integral membrane domain protein	medium		afdbclusters_I6E438		
+FLLLIEBD_00052	208	Exclusion-determining protein	medium	swissprot_P05839	afdbclusters_A0AAP6CTH1	pdb_8cit	
+FLLLIEBD_00053	473	hypothetical protein					
+FLLLIEBD_00054	376	Thiol:disulfide interchange protein DsbG	low	swissprot_Q9I106	afdbclusters_A0AAX3AI07	pdb_6mhh	cath_4xvwC01
+FLLLIEBD_00055	731	Type 4 coupling protein DotL	high	swissprot_Q5ZYC6	afdbclusters_A0A379SFQ2	pdb_6sz9	cath_1e9sG01
+FLLLIEBD_00056	102	Phospholipase D	low	swissprot_Q68VT0	afdbclusters_V5RP04	pdb_1byr	cath_1bysA00
+FLLLIEBD_00058	117	hypothetical protein	high	swissprot_P50359	afdbclusters_A0AAJ1YJK2		
+FLLLIEBD_00059	136	hypothetical protein	high	swissprot_P55502	afdbclusters_A0A291E5E4		
+FLLLIEBD_00060	47	hypothetical protein					
+FLLLIEBD_00061	122	Transposase InsC for insertion element IS2-9	high	swissprot_P0CF48	afdbclusters_G2IZT0		cath_af_P0CF43_8_88_1.10.10.60
+FLLLIEBD_00063	84	hypothetical protein					
+FLLLIEBD_00065	64	hypothetical protein					
+FLLLIEBD_00066	111	Mobilization protein MobC	high		afdbclusters_A0A7D5NNU8		
+FLLLIEBD_00067	44	hypothetical protein					
+FLLLIEBD_00068	107	hypothetical protein					
+FLLLIEBD_00069	78	hypothetical protein					
+FLLLIEBD_00070	94	hypothetical protein	high		afdbclusters_A0A1I3V7E0		
+FLLLIEBD_00072	287	DUF4942 domain-containing protein	low		afdbclusters_A0AA42LS79		
+FLLLIEBD_00073	61	hypothetical protein					
+FLLLIEBD_00074	120	hypothetical protein					
+FLLLIEBD_00075	99	UPF0758 protein Mpe_A2695	medium	swissprot_A2SJB0	afdbclusters_A0A916J5U4	pdb_2qlc	cath_af_Q47685_35_158_3.40.140.10
+FLLLIEBD_00076	65	hypothetical protein					
+FLLLIEBD_00077	163	HTH cro/C1-type domain-containing protein	high		afdbclusters_A0A0N6WZP2		
+FLLLIEBD_00078	153	hypothetical protein	low		afdbclusters_A0A9Q6N187		
+FLLLIEBD_00079	143	Protein StbB	high	swissprot_P11906	afdbclusters_A0A4P7L671		
+FLLLIEBD_00081	148	CopG family transcriptional regulator	high		afdbclusters_A0A2M8S3H7	pdb_6g26	cath_4p78B00
+FLLLIEBD_00082	80	hypothetical protein					
+FLLLIEBD_00083	140	hypothetical protein					
+FLLLIEBD_00084	86	hypothetical protein					
+FLLLIEBD_00085	189	Insertion element IS1 7 protein InsA	low	swissprot_P19767	afdbclusters_A0A0B7IUN1		
+FLLLIEBD_00086	115	hypothetical protein					
+FLLLIEBD_00091	159	Replication and maintenance protein	high	swissprot_P0A0C8	afdbclusters_P06735		

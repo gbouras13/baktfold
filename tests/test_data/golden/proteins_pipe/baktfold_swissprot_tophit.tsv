@@ -1,0 +1,4 @@
+query	target	bitscore	fident	evalue	qStart	qEnd	qLen	qCov	tStart	tEnd	tLen	tCov
+lcl|NC_002516.2_prot_NP_064723.1_3|NC_002516.2_prot_NP_064723.1_3	AF-A6UX64-F1-model_v6	2554	0.972	4.306e-57	1	360	360	1.0	1	360	369	0.97
+lcl|NC_002516.2_prot_NP_064722.1_2|NC_002516.2_prot_NP_064722.1_2	AF-Q9I7C4-F1-model_v6	2792	0.997	9.579e-63	1	367	367	1.0	1	367	367	1.0
+lcl|NC_002516.2_prot_NP_064721.1_1|NC_002516.2_prot_NP_064721.1_1	AF-B7V0N6-F1-model_v6	3373	0.996	1.065e-70	1	513	514	1.0	1	513	514	1.0

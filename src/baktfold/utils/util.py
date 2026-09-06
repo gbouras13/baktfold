@@ -1,9 +1,11 @@
 import os
 import shutil
 import sys
+import tempfile
 import time
+from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, Iterator, List, Union
 
 from loguru import logger
 from datetime import datetime
@@ -13,6 +15,34 @@ import baktfold.bakta.constants as bc
 import click
 
 from Bio import SeqIO
+
+
+@contextmanager
+def atomic_write_path(target: Union[str, Path]) -> Iterator[Path]:
+    """Yield a sibling temp path that is renamed over ``target`` on success.
+
+    On any exception (including KeyboardInterrupt), the temp is removed and
+    ``target`` is left exactly as it was before the with-block.
+    """
+    target = Path(target)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp_name = tempfile.mkstemp(
+        prefix=f".{target.name}.",
+        suffix=".tmp",
+        dir=str(target.parent),
+    )
+    os.close(fd)
+    tmp_path = Path(tmp_name)
+    try:
+        yield tmp_path
+    except BaseException:
+        try:
+            tmp_path.unlink()
+        except FileNotFoundError:
+            pass
+        raise
+    else:
+        os.replace(tmp_path, target)
 
 
 class OrderedCommands(click.Group):
@@ -90,6 +120,23 @@ log_fmt = (
     "<level>{message}</level>"
 )
 
+# Module-level register of every loguru sink that ``begin_baktfold`` installed.
+# loguru's logger is a process-wide singleton — without tracking, every
+# re-invocation stacks a new file handler and a new ``sys.exit``-on-error
+# handler on top of the previous ones, multiplying log output unboundedly.
+_BAKTFOLD_SINK_IDS: List[int] = []
+
+
+def _remove_baktfold_sinks() -> None:
+    """Idempotently remove every sink installed by a prior begin_baktfold."""
+    while _BAKTFOLD_SINK_IDS:
+        sink_id = _BAKTFOLD_SINK_IDS.pop()
+        try:
+            logger.remove(sink_id)
+        except ValueError:
+            pass  # already removed elsewhere
+
+
 """
 begin and end functions
 """
@@ -107,17 +154,19 @@ def begin_baktfold(params: Dict[str, Any], subcommand: str, no_log: bool = False
     Returns:
         int: Start time of the baktfold process.
     """
+    # Tear down any sinks from a prior call before installing fresh ones.
+    _remove_baktfold_sinks()
+
     # get start time
     start_time = time.time()
 
     cfg.run_start = datetime.now()
 
-    # initial logging stuff
+    # initial logging stuff — track ids so they can be removed in end_baktfold.
     if not no_log:
         log_file = os.path.join(params["--output"], f"baktfold_{subcommand}_{start_time}.log")
-        # adds log file
-        logger.add(log_file)
-    logger.add(lambda _: sys.exit(1), level="ERROR")
+        _BAKTFOLD_SINK_IDS.append(logger.add(log_file))
+    _BAKTFOLD_SINK_IDS.append(logger.add(lambda _: sys.exit(1), level="ERROR"))
 
     print_splash()
     logger.info("baktfold: rapid & standardized annotation of bacterial genomes, MAGs & plasmids using protein structural information")
@@ -158,6 +207,9 @@ def end_baktfold(start_time: float, subcommand: str) -> None:
     # Show elapsed time for the process
     logger.info(f"baktfold {subcommand} has finished")
     logger.info("Elapsed time: " + str(elapsed_time) + " seconds")
+
+    # Clean up sinks so a subsequent call (or test) starts with a clean logger.
+    _remove_baktfold_sinks()
 
 
 # need the logo here eventually
@@ -208,7 +260,7 @@ def remove_directory(dir_path: Path) -> None:
         None
     """
     if dir_path.exists():
-        shutil.rmtree(dir_path)
+        shutil.rmtree(dir_path, ignore_errors=True)
 
 
 def touch_file(path: Path) -> None:
@@ -307,14 +359,14 @@ def sort_euk_feature_key(f):
         return (start, 1, '', 99, stop)
 
 def replace_pipe_in_fasta(input_path):
+    """Replace '~PIPE~' with '|' in FASTA headers, writing atomically.
+
+    Streams line-by-line to a sibling temp file and renames it onto
+    ``input_path`` on success.  A kill mid-write leaves the original intact.
     """
-    Reads a FASTA with Biopython, replace '~PIPE~' with '|' in headers, and write the result.
-    """
-    records = []
-    for record in SeqIO.parse(input_path, "fasta"):
-        record.id = record.id.replace("~PIPE~", "|")
-        record.description = record.description.replace("~PIPE~", "|")
-        records.append(record)
-    
-    # overwrites
-    SeqIO.write(records, input_path, "fasta")
+    with atomic_write_path(input_path) as tmp:
+        with open(input_path, "r") as in_f, open(tmp, "w") as out_f:
+            for line in in_f:
+                if line.startswith(">") and "~PIPE~" in line:
+                    line = line.replace("~PIPE~", "|")
+                out_f.write(line)

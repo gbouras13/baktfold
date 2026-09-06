@@ -1,0 +1,4 @@
+query	target	bitscore	fident	evalue	qStart	qEnd	qLen	qCov	tStart	tEnd	tLen	tCov
+query_0001	1abcA00	300.0	0.6	1e-20	1	60	200	0.3	1	60	60	0.98
+query_0001	2defB01	250.0	0.55	1e-18	70	140	200	0.35	1	70	72	0.96
+query_0002	3ghiC00	280.0	0.58	1e-19	1	90	90	0.99	1	90	90	0.99

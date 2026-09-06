@@ -104,7 +104,7 @@ def setup(args):
         genome_path = Path(args.genome).resolve()
         check_readability('genome', genome_path)
         check_content_size('genome', genome_path)
-    except:
+    except Exception:
         log.error('provided genome file not valid! path=%s', args.genome)
         sys.exit(f'ERROR: genome file ({args.genome}) not valid!')
     log.info('genome-path=%s', genome_path)
@@ -177,7 +177,7 @@ def setup(args):
             check_readability('prodigal training', prodigal_tf_path)
             check_content_size('prodigal training', prodigal_tf_path)
             prodigal_tf = prodigal_tf_path
-        except:
+        except Exception:
             log.error('provided prodigal training file not valid! path=%s', prodigal_tf)
             sys.exit(f'ERROR: Prodigal training file ({prodigal_tf}) not valid!')
     log.info('prodigal_tf=%s', prodigal_tf)
@@ -234,7 +234,7 @@ def setup(args):
             check_readability('replicon table', replicon_table_path)
             check_content_size('replicon table', replicon_table_path)
             replicons = replicon_table_path
-        except:
+        except Exception:
             log.error('provided replicon file not valid! path=%s', replicons)
             sys.exit(f'ERROR: replicon table file ({replicons}) not valid!')
     log.info('replicon-table=%s', replicons)
@@ -248,7 +248,7 @@ def setup(args):
             check_readability('HMM', user_hmms_path)
             check_content_size('HMM', user_hmms_path)
             user_hmms = user_hmms_path
-        except:
+        except Exception:
             log.error('provided HMM file not valid! path=%s', user_hmms)
             sys.exit(f'ERROR: HMM file ({user_hmms}) not valid!')
 
@@ -261,7 +261,7 @@ def setup(args):
             check_readability('regions', regions_path)
             check_content_size('regions', regions_path)
             regions = regions_path
-        except:
+        except Exception:
             log.error('provided regions file not valid! path=%s', regions)
             sys.exit(f'ERROR: regions file ({regions}) not valid!')
     log.info('regions=%s', regions)
@@ -385,7 +385,7 @@ def check_output_path(output: str, force_override: bool) -> Path:
     if(not output_path.exists()):
         try:
             output_path.mkdir(parents=True, exist_ok=True)
-        except:
+        except Exception:
             sys.exit(f'ERROR: could not resolve or create output directory ({output})!')
     else:
         if(output_path == Path(os.getcwd())):
@@ -427,7 +427,7 @@ def check_db_path(args: Namespace) -> Path:
             else:
                 log.error('unvalid database path: type=parameter, path=%s', db_tmp_path)
                 raise IOError()
-        except:
+        except Exception:
             sys.exit(f'ERROR: wrong database path! --db={db_dir}')
     elif('BAKTA_DB' in env):
         db_dir = env['BAKTA_DB']
@@ -440,7 +440,7 @@ def check_db_path(args: Namespace) -> Path:
             else:
                 log.error('unvalid database path: type=environment, path=%s', db_tmp_path)
                 raise IOError()
-        except:
+        except Exception:
             sys.exit(f'ERROR: wrong database path! BAKTA_DB={db_dir}')
     else:
         base_dir = Path(__file__).parent
@@ -481,7 +481,7 @@ def check_user_proteins(args: Namespace):
             user_proteins = user_proteins_path
             log.info('user-proteins=%s', user_proteins)
             return user_proteins
-        except:
+        except Exception:
             log.error('provided user proteins file not valid! path=%s', user_proteins)
             sys.exit(f'ERROR: user proteins file ({user_proteins}) not valid!')
     else:

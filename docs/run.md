@@ -507,6 +507,58 @@ Options:
                                  Prokka input
 ```
 
+### `baktfold json`
+
+`baktfold json` reconstitutes all of `baktfold`'s standard output formats from a `baktfold` (or `bakta`) output `.json` file. It re-emits the `.gff3`, `.gbff`, `.embl`, `.tsv`, `.inference.tsv`, `.faa`, `.ffn`, `.fna`, `.summary.txt` and a fresh `.json` by running the very same output writers used by `baktfold run`/`compare` — so the reconstructed files are identical to the original run. It needs no database, ProstT5 model, GPU or Foldseek run.
+
+This is useful for regenerating a deleted/lost output, or for producing the human-readable formats from a `.json` you received from someone else.
+
+**Note:** the Foldseek-derived outputs (`*_tophit.tsv`, `foldseek_results_*.tsv`, `_3di.fasta` and the embedding `.h5` files) **cannot** be reconstituted from the `.json` — they are only produced by an actual `baktfold compare`/`run`.
+
+`baktfold` records a `baktfold_run` provenance block inside every `.json` it writes (the `--euk`, `--custom-db`, `--fast` flags and the inference tool strings), so reconstruction of newly produced JSONs requires no extra flags. For JSONs produced by older `baktfold` versions that predate this block, `--euk`/`--custom-db` are auto-detected from the feature content; `--fast` defaults to off and can be set explicitly. All three can be overridden with `--euk/--no-euk`, `--custom-db/--no-custom-db` and `--fast/--no-fast`.
+
+Example usage
+
+```bash
+baktfold json -i baktfold.json -o baktfold_reconstructed_output
+```
+
+```bash
+Usage: baktfold json [OPTIONS]
+
+  Reconstitute all outputs (GFF3/GenBank/EMBL/TSV/FASTA) from a baktfold JSON
+  (no Foldseek TSVs)
+
+Options:
+  -h, --help                    Show this message and exit.
+  -V, --version                 Show the version and exit.
+  -i, --input PATH              Path to a baktfold (or bakta) JSON output file
+                                [required]
+  -o, --output PATH             Output directory  [default:
+                                output_baktfold_json]
+  -p, --prefix TEXT             Output files' prefix  [default: baktfold]
+  -f, --force                   Force overwrites output directory
+  --euk / --no-euk              Override eukaryotic mode (default: read from
+                                JSON provenance, else auto-detect from
+                                features)
+  --custom-db / --no-custom-db  Override custom-DB column (default: read from
+                                JSON provenance, else auto-detect)
+  --fast / --no-fast            Override fast mode i.e. whether the
+                                AFDBClusters column is omitted (default: read
+                                from JSON provenance, else off)
+  --cds-program TEXT            CDS prediction tool string for compliant
+                                outputs (non-Bakta/Prokka input only).
+                                Default: Prodigal:2.6
+  --trna-program TEXT           tRNA prediction tool string (non-Bakta/Prokka
+                                input only). Default: tRNAscan-SE:2.0.12
+  --tmrna-program TEXT          tmRNA prediction tool string (non-Bakta/Prokka
+                                input only). Default: INFERNAL:1.1.5
+  --rrna-program TEXT           rRNA prediction tool string (non-Bakta/Prokka
+                                input only). Default: INFERNAL:1.1.5
+  --ncrna-program TEXT          ncRNA prediction tool string (non-Bakta/Prokka
+                                input only). Default: INFERNAL:1.1.5
+```
+
 ### `baktfold createdb`
 
 This in an auxillary command that allows you to create a Foldseek compatible database from AA and 3Di protein sequences (such as those created by `baktfold predict`). 

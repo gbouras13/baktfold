@@ -4,10 +4,6 @@ import shutil
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 
-# import numpy as np
-# import pandas as pd
-# from Bio.SeqFeature import SeqFeature
-# from Bio.SeqRecord import SeqRecord
 from loguru import logger
 
 import baktfold.io.io as io
@@ -15,7 +11,7 @@ import baktfold.bakta.pstc as pstc
 from baktfold.features.create_foldseek_db import generate_foldseek_db_from_aa_3di, generate_foldseek_db_from_structures
 from baktfold.features.run_foldseek import create_result_tsv, run_foldseek_search, summarise_hits
 from baktfold.results.tophit import get_tophit
-from baktfold.utils.util import remove_file, replace_pipe_in_fasta
+from baktfold.utils.util import atomic_write_path, remove_file, replace_pipe_in_fasta
 
 def subcommand_compare(
     hypotheticals: Dict,
@@ -36,8 +32,9 @@ def subcommand_compare(
     custom_db: str,
     foldseek_gpu: bool,
     custom_annotations: Optional[Path],
-    has_duplicate_locus: bool, 
-    fast: bool
+    has_duplicate_locus: bool,
+    fast: bool,
+    gpus: Optional[str] = None,
 ) -> bool:
     """
     Compare 3Di or PDB structures to the baktfold DB
@@ -88,7 +85,8 @@ def subcommand_compare(
                 f"Checked that the 3Di CDS file {fasta_3di_input} exists from baktfold predict"
             )
             if fasta_3di.exists() is False:
-                shutil.copyfile(fasta_3di_input, fasta_3di)
+                with atomic_write_path(fasta_3di) as tmp:
+                    shutil.copyfile(fasta_3di_input, tmp)
         else:
             logger.error(
                 f"The 3Di CDS file {fasta_3di_input} does not exist. Please run baktfold predict and/or check the prediction directory {predictions_dir}"
@@ -99,7 +97,8 @@ def subcommand_compare(
                 f"Checked that the AA CDS file {fasta_aa_input} exists from baktfold predict."
             )
             if fasta_aa.exists() is False:
-                shutil.copyfile(fasta_aa_input, fasta_aa)
+                with atomic_write_path(fasta_aa) as tmp:
+                    shutil.copyfile(fasta_aa_input, tmp)
         else:
             logger.error(
                 f"The AA CDS file {fasta_aa_input} does not exist. Please run baktfold predict and/or check the prediction directory {predictions_dir}"
@@ -110,15 +109,10 @@ def subcommand_compare(
         ## write the CDS to file
         logger.info(f"Writing the AAs to file {fasta_aa}.")
 
-        with open(fasta_aa, "w+") as out_f:
+        with atomic_write_path(fasta_aa) as tmp_fasta, open(tmp_fasta, "w") as out_f:
             for entry in hypotheticals:
-                if has_duplicate_locus:
-                    header = f">{entry['id']}\n"
-                else:
-                    header = f">{entry['locus']}\n"
-                seq = f"{entry['aa']}\n"
-                out_f.write(header)
-                out_f.write(seq)
+                seq_id = entry['id'] if has_duplicate_locus else entry['locus']
+                out_f.write(f">{seq_id}\n{entry['aa']}\n")
 
 
     ############
@@ -187,7 +181,8 @@ def subcommand_compare(
         ultra_sensitive,
         extra_foldseek_params,
         foldseek_gpu,
-        structures
+        structures,
+        gpus=gpus,
     )
 
        
@@ -240,7 +235,8 @@ def subcommand_compare(
             ultra_sensitive,
             extra_foldseek_params,
             foldseek_gpu,
-            structures
+            structures,
+            gpus=gpus,
         )
 
         
@@ -291,7 +287,8 @@ def subcommand_compare(
         ultra_sensitive,
         extra_foldseek_params,
         foldseek_gpu,
-        structures
+        structures,
+        gpus=gpus,
     )
 
        
@@ -342,7 +339,8 @@ def subcommand_compare(
         ultra_sensitive,
         extra_foldseek_params,
         foldseek_gpu,
-        structures
+        structures,
+        gpus=gpus,
     )
 
     # this keeps the greedy best hits for cath
@@ -403,7 +401,8 @@ def subcommand_compare(
             ultra_sensitive,
             extra_foldseek_params,
             foldseek_gpu,
-            structures
+            structures,
+            gpus=gpus,
         )
 
             create_result_tsv(query_db, Path(custom_db),
@@ -415,8 +414,8 @@ def subcommand_compare(
             custom_db_tophit_path: Path = Path(output) / "baktfold_custom_db_tophit.tsv"
             io.write_foldseek_tophit(custom_df, custom_db_tophit_path)
         
-        except:
-            logger.error(f"Foldseek failed to run against your custom database {custom_db}. Please check that it is formatted correctly as a Foldseek database")
+        except Exception as e:
+            logger.error(f"Foldseek failed to run against your custom database {custom_db}. Please check that it is formatted correctly as a Foldseek database: {e}")
 
 
     ####

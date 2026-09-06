@@ -1,0 +1,2 @@
+query	target	bitscore	fident	evalue	qStart	qEnd	qLen	qCov	tStart	tEnd	tLen	tCov
+MEGJMN_027	AF-P54292-F1-model_v6	317	0.152	1.079e-06	15	159	161	0.89	28	160	241	0.55

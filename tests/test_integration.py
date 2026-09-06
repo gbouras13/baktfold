@@ -20,8 +20,11 @@ pytest --gpu-available --nvidia --euks --threads 8 .
 """
 
 # import
+import importlib.util
+import json
 import os
 import shutil
+import tempfile
 # import functions
 import subprocess
 import sys
@@ -71,6 +74,9 @@ dummy_custom_db = Path(f"{test_data}/custom_db/dummy_custom_db")
 dummy_custom_db_annotations = Path(f"{test_data}/custom_db/dummy_custom_db_annotations.tsv")
 
 run_dir: Path = f"{output_dir}/run_json"
+json_recon_dir: Path = f"{output_dir}/json_reconstruct"
+json_recon_trna_dir: Path = f"{output_dir}/json_reconstruct_trna"
+json_recon_proteins_dir: Path = f"{output_dir}/json_reconstruct_proteins"
 run_prok_dir: Path = f"{output_dir}/run_prok_json"
 run_euk_dir: Path = f"{output_dir}/run_protist_json"
 run_funannotate_dir: Path = f"{output_dir}/run_funannotate_json"
@@ -140,6 +146,66 @@ def exec_command(cmnd, stdout=subprocess.PIPE, stderr=subprocess.PIPE):
         raise RuntimeError(f"FAILED: {cmnd}\n{err}")
     return out.decode("utf8") if out is not None else None
 
+
+# ── golden output regression ────────────────────────────────────────────────
+# Each main test below calls assert_golden() on the output it just produced to
+# compare it against a committed golden reference under
+# tests/test_data/golden/<case>, using the same float-tolerant /
+# timestamp-ignoring engine as run_comparison.sh (tests/compare_outputs.py).
+# This adds golden regression coverage to every functionality with NO extra
+# baktfold command runtime (it reuses the output the integration test already
+# produced, after `baktfold install` has populated the database).
+#
+# Goldens are platform-sensitive (ProstT5 3Di prediction differs across
+# hardware), so bootstrap / refresh them on the CI platform itself, then commit
+# tests/test_data/golden/:
+#
+#     BAKTFOLD_UPDATE_GOLDEN=1 pytest tests/test_integration.py --gpu-available --threads 8
+#
+# Until a case's golden exists the comparison is skipped, so a not-yet-
+# bootstrapped case never fails.
+_co_spec = importlib.util.spec_from_file_location(
+    "_baktfold_compare_outputs", Path(__file__).parent / "compare_outputs.py"
+)
+_compare_outputs = importlib.util.module_from_spec(_co_spec)
+_co_spec.loader.exec_module(_compare_outputs)
+
+GOLDEN_DIR = Path(test_data) / "golden"
+UPDATE_GOLDEN = bool(os.environ.get("BAKTFOLD_UPDATE_GOLDEN"))
+
+
+def assert_golden(produced, case, strict=False):
+    """Compare a produced output dir (or single file) against the golden for ``case``.
+
+    With BAKTFOLD_UPDATE_GOLDEN set, (re)writes the golden instead of comparing.
+    Skips when the golden has not yet been bootstrapped.
+    """
+    produced = Path(produced)
+    golden = GOLDEN_DIR / case
+
+    if UPDATE_GOLDEN:
+        if golden.exists():
+            shutil.rmtree(golden)
+        golden.mkdir(parents=True, exist_ok=True)
+        if produced.is_dir():
+            shutil.copytree(produced, golden, dirs_exist_ok=True)
+        else:
+            shutil.copy(produced, golden / produced.name)
+        return
+
+    if not golden.exists():
+        pytest.skip(f"golden '{case}' not bootstrapped (set BAKTFOLD_UPDATE_GOLDEN=1 to create)")
+
+    if produced.is_dir():
+        diffs = _compare_outputs.compare_dirs(produced, golden, strict=strict)
+    else:  # single-file output (e.g. convert-prokka): wrap for dir comparison
+        with tempfile.TemporaryDirectory() as td:
+            shutil.copy(produced, Path(td) / produced.name)
+            diffs = _compare_outputs.compare_dirs(Path(td), golden, strict=strict)
+
+    assert not diffs, f"golden mismatch for '{case}':\n" + "\n".join(diffs[:80])
+
+
 """
 install tests
 """
@@ -163,6 +229,7 @@ def test_run(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(run_dir, "run")
 
 def test_run_no_fs_hits(gpu_available, threads, nvidia):
     """test baktfold run on a genome with no foldseek hits for all dbs"""
@@ -172,6 +239,7 @@ def test_run_no_fs_hits(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(run_dir, "run_no_fs_hits")
 
 def test_run_autotune(gpu_available, threads):
     """test baktfold run with --autotune"""
@@ -188,6 +256,7 @@ def test_run_all(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(run_all_dir, "run_all")
 
 def test_run_fasta(gpu_available, threads, nvidia):
     """test baktfold run on all proteins just --fast"""
@@ -197,6 +266,7 @@ def test_run_fasta(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(run_fast_dir, "run_fast")
 
 def test_run_extra_foldseek_params(gpu_available, threads, nvidia):
     """test baktfold run on all proteins not just hyps with -a"""
@@ -206,6 +276,7 @@ def test_run_extra_foldseek_params(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(run_dir_extra, "run_extra_foldseek_params")
 
 
 def test_run_custom_db(gpu_available, threads, nvidia):
@@ -216,6 +287,7 @@ def test_run_custom_db(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(run_dir_custom_db, "run_custom_db")
 
 def test_run_custom_db_custom_annotations(gpu_available, threads, nvidia):
     """test baktfold run with custom db and custom db annotation tsv"""
@@ -225,6 +297,7 @@ def test_run_custom_db_custom_annotations(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(run_dir_custom_db_custom_annotations, "run_custom_db_custom_annotations")
 
 
 
@@ -238,6 +311,7 @@ def test_predict(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(predict_dir, "predict")
 
 
 def test_predict_save_embeddings(gpu_available, threads, nvidia):
@@ -246,6 +320,7 @@ def test_predict_save_embeddings(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(predict_embeddings_dir, "predict_embeddings")
 
 
 
@@ -259,6 +334,7 @@ def test_compare(gpu_available, threads, nvidia):
     if nvidia:
         cmd = f"{cmd} --foldseek-gpu" 
     exec_command(cmd)
+    assert_golden(compare_dir, "compare")
 
 
 def test_compare_pdb(gpu_available, threads, nvidia):
@@ -267,6 +343,7 @@ def test_compare_pdb(gpu_available, threads, nvidia):
     if nvidia:
         cmd = f"{cmd} --foldseek-gpu" 
     exec_command(cmd)
+    assert_golden(compare_pdb_dir, "compare_pdb")
 
 def test_compare_cif(gpu_available, threads, nvidia):
     """test baktfold compare with cifs input"""
@@ -274,6 +351,7 @@ def test_compare_cif(gpu_available, threads, nvidia):
     if nvidia:
         cmd = f"{cmd} --foldseek-gpu" 
     exec_command(cmd)
+    assert_golden(compare_cif_dir, "compare_cif")
 
 """
 proteins 
@@ -287,6 +365,7 @@ def test_proteins(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(proteins_dir, "proteins")
 
 def test_proteins_json(gpu_available, threads, nvidia):
     """test baktfold proteins with json input"""
@@ -296,6 +375,7 @@ def test_proteins_json(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(proteins_dir_from_json, "proteins_json")
 
 def test_proteins_pipe(gpu_available, threads, nvidia):
     """test baktfold proteins where some inputs have | in header"""
@@ -305,6 +385,7 @@ def test_proteins_pipe(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(proteins_pipe_dir, "proteins_pipe")
 
 """
 proteins-predict
@@ -316,6 +397,7 @@ def test_proteins_predict(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(proteins_predict_dir, "proteins_predict")
 
 
 """
@@ -328,6 +410,7 @@ def test_proteins_compare(gpu_available, threads, nvidia):
     if nvidia:
        cmd = f"{cmd} --foldseek-gpu" 
     exec_command(cmd)
+    assert_golden(proteins_compare_dir, "proteins_compare")
 
 def test_proteins_compare_pdb(gpu_available, threads, nvidia):
     """test baktfold proteins-compare with pdbs input"""
@@ -335,6 +418,7 @@ def test_proteins_compare_pdb(gpu_available, threads, nvidia):
     if nvidia:
         cmd = f"{cmd} --foldseek-gpu" 
     exec_command(cmd)
+    assert_golden(proteins_compare_pdb_dir, "proteins_compare_pdb")
 
 def test_proteins_compare_cif(gpu_available, threads, nvidia):
     """test baktfold proteins-compare with cifs input"""
@@ -342,6 +426,7 @@ def test_proteins_compare_cif(gpu_available, threads, nvidia):
     if nvidia:
         cmd = f"{cmd} --foldseek-gpu" 
     exec_command(cmd)
+    assert_golden(proteins_compare_cif_dir, "proteins_compare_cif")
 
 """
 autotune
@@ -376,6 +461,44 @@ def test_convert_prokka(gpu_available, threads, nvidia):
     """test baktfold convert-prokka"""
     cmd = f"baktfold convert-prokka -i {input_prok_gbk} -o {output_prok_json} "
     exec_command(cmd)
+    assert_golden(output_prok_json, "convert_prokka")
+
+def test_json(gpu_available, threads, nvidia):
+    """test baktfold json: reconstitute all genome outputs from a Bakta JSON (no database/foldseek required)"""
+    cmd = f"baktfold json -i {input_json} -o {json_recon_dir} -f"
+    exec_command(cmd)
+    # every reconstitutable genome output is produced
+    for ext in ("gff3", "gbff", "embl", "tsv", "inference.tsv", "faa", "ffn", "fna", "summary.txt", "json"):
+        assert Path(f"{json_recon_dir}/baktfold.{ext}").exists()
+    # the self-describing provenance block is persisted for faithful re-reconstruction
+    data = json.loads(Path(f"{json_recon_dir}/baktfold.json").read_text())
+    assert data.get("baktfold_run", {}).get("mode") == "genome"
+    # INSDC genetic-code qualifier regression: must be /transl_table=11, not the
+    # non-standard /translation_table or the boolean the old swapped args produced
+    gbff = Path(f"{json_recon_dir}/baktfold.gbff").read_text()
+    assert "/transl_table=11" in gbff
+    assert "/translation_table" not in gbff
+
+def test_json_trna_inference(gpu_available, threads, nvidia):
+    """test baktfold json: bakta tRNA /inference is profile:tRNAscan:2.0 (matches the GFF source column)"""
+    cmd = f"baktfold json -i {input_no_fs_hits_json} -o {json_recon_trna_dir} -f"
+    exec_command(cmd)
+    gbff = Path(f"{json_recon_trna_dir}/baktfold.gbff").read_text()
+    assert "profile:tRNAscan:2.0" in gbff            # bakta tRNA inference
+    assert "profile:tRNAscan-SE:2.0.12" not in gbff  # other_genbank program string must not leak
+
+def test_json_proteins(gpu_available, threads, nvidia):
+    """test baktfold json: reconstitute proteins outputs from a Bakta proteins JSON"""
+    cmd = f"baktfold json -i {input_proteins_json} -o {json_recon_proteins_dir} -f"
+    exec_command(cmd)
+    # proteins mode emits exactly these
+    for ext in ("tsv", "faa", "summary.txt", "json"):
+        assert Path(f"{json_recon_proteins_dir}/baktfold.{ext}").exists()
+    # and none of the genome-only formats
+    for ext in ("gff3", "gbff", "embl", "ffn", "fna"):
+        assert not Path(f"{json_recon_proteins_dir}/baktfold.{ext}").exists()
+    data = json.loads(Path(f"{json_recon_proteins_dir}/baktfold.json").read_text())
+    assert data.get("baktfold_run", {}).get("mode") == "proteins"
 
 def test_run_prokka(gpu_available, threads, nvidia):
     """test baktfold run with prokka input"""
@@ -385,6 +508,7 @@ def test_run_prokka(gpu_available, threads, nvidia):
     if gpu_available is False:
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
+    assert_golden(run_prok_dir, "run_prokka")
 
 
 """

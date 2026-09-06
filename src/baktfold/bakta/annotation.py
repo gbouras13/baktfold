@@ -34,13 +34,71 @@ RE_GENE_SUSPECT_CHARS = re.compile(r'[\?]', flags=re.DOTALL)
 RE_GENE_SYMBOL = re.compile(r'[a-z]{3}[A-Z][0-9]?')
 
 
-def combine_annotation(feature: dict, fast: bool):
+def assign_annotation_confidence(entry: dict, prostt5_confidence, structures: bool) -> str:
+    """Classify a Foldseek hit into a confidence tier: 'high', 'medium' or 'low'.
+
+    Mirrors phold's heuristic (phold.subcommands.compare.assign_annotation_confidence).
+    ``entry`` is the hierarchy-selected pstc hit carrying ``query_cov`` (qCov),
+    ``subject_cov`` (tCov), ``identity`` (fident) and ``evalue``.
+    ``prostt5_confidence`` is the protein's mean ProstT5 confidence (0-100), or
+    None for structure input. With ``structures`` (or no ProstT5 confidence
+    available) the ProstT5 criteria are dropped.
+    """
+    qcov = entry.get('query_cov', 0.0)
+    tcov = entry.get('subject_cov', 0.0)
+    fident = entry.get('identity', 0.0)
+    try:
+        evalue = float(entry.get('evalue', 1.0))
+    except (TypeError, ValueError):
+        evalue = 1.0
+
+    if structures or prostt5_confidence is None:
+        if qcov > 0.8 and tcov > 0.8 and (fident > 0.3 or evalue < 1e-10):
+            return 'high'
+        if (qcov > 0.8 or tcov > 0.8) and (fident > 0.3 or evalue < 1e-5):
+            return 'medium'
+        return 'low'
+
+    # ProstT5 path: mean 3Di confidence factors in
+    if qcov > 0.8 and tcov > 0.8 and (fident > 0.3 or prostt5_confidence > 60 or evalue < 1e-10):
+        return 'high'
+    if (qcov > 0.8 or tcov > 0.8) and (fident > 0.3 or 45 <= prostt5_confidence <= 60) and evalue < 1e-5:
+        return 'medium'
+    return 'low'
+
+
+def attach_prostt5_confidence(features: Sequence[dict], mean_probs_csv, has_duplicate_locus: bool = False) -> None:
+    """Attach each CDS's mean ProstT5 confidence (0-100) from the
+    ``{prefix}_prostT5_3di_mean_probabilities.csv`` file (``cds_id,mean_prob``,
+    no header) as ``feature['prostt5_confidence']``. No-op if the file is absent
+    (e.g. structure input)."""
+    confidence = {}
+    try:
+        with open(mean_probs_csv) as fh:
+            for line in fh:
+                parts = line.rstrip('\n').split(',')
+                if len(parts) >= 2:
+                    try:
+                        confidence[parts[0]] = float(parts[1])
+                    except ValueError:
+                        continue
+    except FileNotFoundError:
+        return
+
+    for feat in features:
+        key = feat.get('id') if has_duplicate_locus else feat.get('locus')
+        if key in confidence:
+            feat['prostt5_confidence'] = confidence[key]
+
+
+def combine_annotation(feature: dict, fast: bool, structures: bool = False):
     """
     Combines annotation information from different sources into a single feature.
 
     Args:
       feature (dict): The feature to combine annotation for.
       fast (bool): If True, skips AFDB
+      structures (bool): True for structure input (no ProstT5 confidence available)
     Returns:
       None
 
@@ -96,18 +154,9 @@ def combine_annotation(feature: dict, fast: bool):
         # 4. CATH
         ####
 
-        if custom_entry:
-            pstc_product = custom_entry['description'] 
-        elif swissprot_entry:
-            pstc_product = swissprot_entry['description']
-        elif afdb_entry:
-            pstc_product = afdb_entry['description'] 
-        elif pdb_entry:
-            pstc_product = pdb_entry['description'] 
-        elif cath_entry:
-            pstc_product = cath_entry['description'] 
-        else:
-            pstc_product = None
+        # winning hit by hierarchy: custom > swissprot > afdb > pdb > cath
+        selected_entry = custom_entry or swissprot_entry or afdb_entry or pdb_entry or cath_entry
+        pstc_product = selected_entry['description'] if selected_entry else None
 
         if(pstc_product):
             product = pstc_product
@@ -137,6 +186,19 @@ def combine_annotation(feature: dict, fast: bool):
 
         # mark as baktfold
         mark_as_baktfold(feature)
+
+        # annotation confidence (high/medium/low) from the hierarchy-selected
+        # hit. Surfaced in JSON + TSV only (not gff3/gbff/embl). For structure
+        # input also carry through the Foldseek TM-score and LDDT.
+        if selected_entry is not None:
+            feature['annotation_confidence'] = assign_annotation_confidence(
+                selected_entry, feature.get('prostt5_confidence'), structures
+            )
+            if structures:
+                if 'tmscore' in selected_entry:
+                    feature['tmscore'] = selected_entry['tmscore']
+                if 'lddt' in selected_entry:
+                    feature['lddt'] = selected_entry['lddt']
 
 
 

@@ -1,0 +1,79 @@
+#Annotated with Baktfold (v0.3.0): https://github.com/gbouras13/baktfold
+Locus	Length	Product	Annotation_Confidence	Swissprot	AFDBClusters	PDB	CATH
+MEGJMN_001	298	Replication protein RepA	high	swissprot_P24042	afdbclusters_A0A5W3IPL1	pdb_5tbf	
+MEGJMN_002	139	Protein ParA	low	swissprot_P07175	afdbclusters_A0AB36KDH3	pdb_4e03	cath_4e07A00
+MEGJMN_003	39	hypothetical protein					
+MEGJMN_004	265	Resolvase	high	swissprot_P06615	afdbclusters_E6WNN4	pdb_5hxy	cath_af_P9WF33_119_304_1.10.443.10
+MEGJMN_005	48	hypothetical protein					
+MEGJMN_006	322	N-acetyltransferase domain-containing protein	high		afdbclusters_A0A0F6NT92		
+MEGJMN_009	1040	hypothetical protein	medium		afdbclusters_A0A2S0NSF5		
+MEGJMN_010	79	hypothetical protein					
+MEGJMN_011	192	Heat-inducible transcription repressor HrcA	low	swissprot_B0TAD4	afdbclusters_A0A291E612	pdb_3eco	
+MEGJMN_012	206	DNA-binding protein	medium		afdbclusters_A0A2K0YZQ3		
+MEGJMN_013	235	Transposase for insertion sequence-like element IS431mec	high	swissprot_P0C1L0	afdbclusters_A0A1M7CKI7	pdb_6xgw	cath_af_O06367_1_380_3.30.420.10
+MEGJMN_014	91	Glycogen synthase	medium	swissprot_B7N176	afdbclusters_A0A3S4FXP4	pdb_3d1j	cath_af_P0A6U8_3_389_3.40.367.20
+MEGJMN_015	216	Glucose-1-phosphate adenylyltransferase	medium	swissprot_A8A5P0	afdbclusters_A0A7H4NVB3	pdb_5mni	cath_5l6sB02
+MEGJMN_016	235	Transposase for insertion sequence-like element IS431mec	high	swissprot_P0C1L0	afdbclusters_A0A1M7CKI7	pdb_6xgw	cath_af_O06367_1_380_3.30.420.10
+MEGJMN_017	204	DUF2913 domain-containing protein	high		afdbclusters_A0AB34CDA8		
+MEGJMN_019	81	Transposase InsO for insertion sequence element IS911	medium		afdbclusters_A0A3B0WQ64		
+MEGJMN_020	359	Insertion element IS900 uncharacterized protein	high	swissprot_P14322	afdbclusters_A0A7W9G0T9	pdb_2nnw	cath_af_O07182_4_158_3.30.420.10
+MEGJMN_021	136	Putative transposase InsO for insertion sequence element IS911B	medium	swissprot_Q47718	afdbclusters_C1J8E4	pdb_7svw	cath_af_Q47718_102_174_3.30.420.10
+MEGJMN_022	101	Transposase InsN for insertion sequence element IS911	high	swissprot_P39213	afdbclusters_A0A6N3R4Y6		cath_af_P75679_19_102_1.10.10.60
+MEGJMN_024	51	hypothetical protein					
+MEGJMN_025	211	Replication initiation protein	low	swissprot_P03066	afdbclusters_A0A2X1LVU3		
+MEGJMN_026	129	Putative esterase aq_1494	high	swissprot_O67466	afdbclusters_A0A318UMQ5	pdb_5v10	cath_5v10B00
+MEGJMN_027	162	HTH-type quorum-sensing regulator RhlR	medium	swissprot_P54292	afdbclusters_A0A9E1VSB0	pdb_5l09	cath_3sztB01
+MEGJMN_028	193	HTH-type transcriptional regulator PrtR	high	swissprot_Q06553	afdbclusters_I1VYM4	pdb_7jvt	cath_af_Q2FYU1_84_206_2.10.109.10
+MEGJMN_029	178	Transcription antitermination protein RfaH	medium	swissprot_P0AFW0	afdbclusters_Q70W72	pdb_5ond	cath_af_P0AFW0_1_162_3.30.70.940
+MEGJMN_030	68	hypothetical protein					
+MEGJMN_031	104	DUF1496 domain-containing protein	high		afdbclusters_A0AAX3AIG3		
+MEGJMN_032	202	Lipoprotein	high		afdbclusters_A0A7G3L4A4		
+MEGJMN_033	160	Peptidoglycan-binding-like protein	high	swissprot_Q8X6H3	afdbclusters_A0A5U9VSH8	pdb_4xp8	cath_af_Q46790_25_155_1.10.530.10
+MEGJMN_034	156	Type IV pilus biogenesis and competence protein PilQ	low	swissprot_Q9ZHF3	afdbclusters_A0A0P0ZGT3	pdb_6x62	cath_3adyA00
+MEGJMN_035	273	DotC protein	medium		afdbclusters_A0A484UHH3	pdb_7muq	
+MEGJMN_036	396	hypothetical protein	high	swissprot_P52052	afdbclusters_A0A7X4CW99	pdb_6geb	cath_3jvvC02,cath_5fl3A01
+MEGJMN_037	89	TraK protein	high		afdbclusters_A0A3M3JC81		
+MEGJMN_038	1108	DNA primase TraC	low	swissprot_P27189	afdbclusters_A0A0T9MTE6	pdb_6n9x	
+MEGJMN_040	235	Type IV secretion system protein virB8	high	swissprot_P0C532	afdbclusters_A0A350YK85	pdb_3wz3	cath_af_O07422_62_244_3.40.630.30
+MEGJMN_041	368	putative conjugal transfer protein TrbG	low	swissprot_P55404	afdbclusters_A0A077ZKE5	pdb_7mus	
+MEGJMN_042	136	hypothetical protein					
+MEGJMN_043	305	Type IV secretion system protein virB10	medium	swissprot_Q6FYW1	afdbclusters_A0A1G0INH6	pdb_7mus	
+MEGJMN_044	240	TraP protein	high		afdbclusters_A0AB38EMS0		
+MEGJMN_045	178	Conjugal transfer protein TraQ	high		afdbclusters_A0AAW9CFL3		
+MEGJMN_047	188	Conjugal transfer protein	high		afdbclusters_R4WMQ0		
+MEGJMN_048	1016	Protein TraC	high	swissprot_P18004	afdbclusters_A0A0W0YDQ9	pdb_7o43	
+MEGJMN_051	715	Conjugal transfer integral membrane domain protein	medium		afdbclusters_I6E438		
+MEGJMN_052	208	Exclusion-determining protein	medium	swissprot_P05839	afdbclusters_A0AAP6CTH1	pdb_8cit	
+MEGJMN_054	376	Thiol:disulfide interchange protein DsbG	low	swissprot_Q9I106	afdbclusters_A0AAX3AI07	pdb_6mhh	cath_4xvwC01
+MEGJMN_055	731	Type 4 coupling protein DotL	high	swissprot_Q5ZYC6	afdbclusters_A0A379SFQ2	pdb_6sz9	cath_1e9sG01
+MEGJMN_056	102	Phospholipase D	low	swissprot_Q68VT0	afdbclusters_V5RP04	pdb_1byr	cath_1bysA00
+MEGJMN_057	530	hypothetical protein	high	swissprot_P50360	afdbclusters_A0A765BM01	pdb_6xgw	cath_af_P96354_1_380_3.30.420.10
+MEGJMN_058	117	hypothetical protein	high	swissprot_P50359	afdbclusters_A0AAJ1YJK2		
+MEGJMN_059	136	hypothetical protein	high	swissprot_P55502	afdbclusters_A0A291E5E4		
+MEGJMN_060	47	hypothetical protein					
+MEGJMN_061	122	Transposase InsC for insertion element IS2-9	high	swissprot_P0CF48	afdbclusters_G2IZT0		cath_af_P0CF43_8_88_1.10.10.60
+MEGJMN_062	272	Transposase InsD for insertion element IS2I	high	swissprot_P0CF57	afdbclusters_A0A379I7K9	pdb_8ea4	cath_af_P0CF56_119_291_3.30.420.10
+MEGJMN_064	643	Protein TraI	low	swissprot_Q00191	afdbclusters_A0AAD0GU93		
+MEGJMN_066	111	Mobilization protein MobC	high		afdbclusters_A0A7D5NNU8		
+MEGJMN_067	44	hypothetical protein					
+MEGJMN_069	78	hypothetical protein					
+MEGJMN_070	94	hypothetical protein	high		afdbclusters_A0A1I3V7E0		
+MEGJMN_071	80	hypothetical protein					
+MEGJMN_072	287	DUF4942 domain-containing protein	low		afdbclusters_A0AA42LS79		
+MEGJMN_074	120	hypothetical protein					
+MEGJMN_075	99	UPF0758 protein Mpe_A2695	medium	swissprot_A2SJB0	afdbclusters_A0A916J5U4	pdb_2qlc	cath_af_Q47685_35_158_3.40.140.10
+MEGJMN_076	65	hypothetical protein					
+MEGJMN_077	163	HTH cro/C1-type domain-containing protein	high		afdbclusters_A0A0N6WZP2		
+MEGJMN_078	153	hypothetical protein	low		afdbclusters_A0A9Q6N187		
+MEGJMN_079	143	Protein StbB	high	swissprot_P11906	afdbclusters_A0A4P7L671		
+MEGJMN_080	327	Plasmid segregation protein ParM	high	swissprot_P11904	afdbclusters_A0AAX2KLT6	pdb_4a61	cath_1mwmA01,cath_4a61A02
+MEGJMN_081	148	CopG family transcriptional regulator	high		afdbclusters_A0A2M8S3H7	pdb_6g26	cath_4p78B00
+MEGJMN_082	80	hypothetical protein					
+MEGJMN_083	140	hypothetical protein					
+MEGJMN_085	189	Insertion element IS1 7 protein InsA	low	swissprot_P19767	afdbclusters_A0A0B7IUN1		
+MEGJMN_087	102	Toxin CcdB	high	swissprot_P62555	afdbclusters_A0A7T8TIZ4	pdb_4vub	cath_1x75D00
+MEGJMN_088	73	Antitoxin CcdA	high	swissprot_Q46995			
+MEGJMN_089	217	Protein ImpA	medium	swissprot_P18641	afdbclusters_W0FFK9	pdb_1ay9	cath_1umuA00
+MEGJMN_090	424	Protein SamB	high	swissprot_P23832	afdbclusters_A0A1S7SK38	pdb_6jum	cath_3gqcD01,cath_af_P04152_244_354_3.30.1490.100
+MEGJMN_091	241	rRNA adenine N-6-methyltransferase	high	swissprot_P06572	afdbclusters_A0AAX2KVD9	pdb_1qan	cath_1qanA01
+MEGJMN_093	159	Replication and maintenance protein	high	swissprot_P0A0C8	afdbclusters_P06735		

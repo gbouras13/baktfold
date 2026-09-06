@@ -1,26 +1,12 @@
 #!/usr/bin/env python3
 
 from pathlib import Path
+from typing import Optional
 
 from loguru import logger
 
 from baktfold.features.predict_3Di import get_embeddings
-
-
-def mask_low_confidence_aa(sequence, scores, threshold=0.5):
-    """
-    Masks all low confidence AA to X if their corresponding ProstT5 confidence score is below the given threshold.
-
-    Parameters:
-    sequence (str): The amino acid sequence.
-    scores (List[float]): A list of confidence scores for each amino acid.
-    threshold (float, optional): The confidence threshold below which amino acids are converted to lowercase. Default is 0.5.
-
-    Returns:
-    str: The modified amino acid sequence with low-confidence residues in lowercase.
-    """
-    return "".join('X' if float(score) < threshold else aa 
-                   for aa, score in zip(sequence, *scores))
+from pholdlib.prostt5.output import mask_low_confidence_aa
 
 def subcommand_predict(
     hypotheticals: dict,
@@ -37,7 +23,8 @@ def subcommand_predict(
     save_per_protein_embeddings: bool,
     threads: int,
     mask_threshold: float,
-    has_duplicate_locus: bool
+    has_duplicate_locus: bool,
+    gpus: Optional[str] = None,
 ) -> bool:
     """
     Wrapper command for baktfold predict. Predicts embeddings using ProstT5 encoder + CNN prediction head.
@@ -105,7 +92,8 @@ def subcommand_predict(
         save_per_protein_embeddings=save_per_protein_embeddings,
         threads=threads,
         mask_threshold=mask_threshold,
-        has_duplicate_locus=has_duplicate_locus
+        has_duplicate_locus=has_duplicate_locus,
+        gpus=gpus,
     )
 
     mask_prop_threshold = mask_threshold/100
@@ -126,21 +114,15 @@ def subcommand_predict(
             }
 
 
-    with open(fasta_aa, "w+") as out_f:
+    with open(fasta_aa, "w") as out_f:
         for cds_id, prot_seq in cds_dict.items():
-
-            out_f.write(f">{cds_id}\n")
-
-                # prediction_contig_dict[seq_id][2] these are teh ProstT5 confidence scores from 0-1 - need to convert to list
-
             try:
-                # this will fail if ProstT5 OOM fails (or fails for some other reason)
-                prot_seq = mask_low_confidence_aa(prot_seq, prediction_dict[cds_id][2].tolist(), threshold=mask_prop_threshold)
+                # prediction_dict[cds_id][2]: ProstT5 confidence scores 0-1
+                prot_seq = mask_low_confidence_aa(prot_seq, prediction_dict[cds_id][2], threshold=mask_prop_threshold)
             except (KeyError, IndexError):
-                # in that case, just return 'X' aka masked proteins
                 prot_seq = "X" * len(prot_seq)
 
-            out_f.write(f"{prot_seq}\n")
+            out_f.write(f">{cds_id}\n{prot_seq}\n")
    
 
     return hypotheticals

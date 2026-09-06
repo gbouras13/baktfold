@@ -28,7 +28,6 @@ def instantiate_dirs(output_dir: Union[str, Path], force: bool) -> Path:
 
     # Checks the output directory
     # remove outdir on force
-    logger.add(lambda _: sys.exit(1), level="ERROR")
     logger.info(f"Checking the output directory {output_dir}")
     if force is True:
         if Path(output_dir).exists():
@@ -62,7 +61,6 @@ def validate_outfile(outfile: Union[str, Path], force: bool) -> Path:
 
     # Checks the output directory
     # remove outdir on force
-    logger.add(lambda _: sys.exit(1), level="ERROR")
     logger.info(f"Checking the output file {outfile}")
     if force is True:
         if Path(outfile).exists():
@@ -94,10 +92,18 @@ def check_dependencies() -> None:
     #############
     # foldseek
     #############
+    # Previously a bare ``except`` logged the error but fell through to
+    # ``process.communicate()`` on an unbound ``process`` → UnboundLocalError.
+    # Bare ``except`` also swallowed Ctrl-C. Narrowed to the errors Popen
+    # actually raises for a missing binary; exit cleanly on failure.
     try:
         process = sp.Popen(["foldseek", "version"], stdout=sp.PIPE, stderr=sp.STDOUT)
-    except:
-        logger.error("Foldseek not found. Please reinstall baktfold.")
+    except (FileNotFoundError, PermissionError, OSError) as e:
+        logger.error(
+            f"Foldseek not found on PATH ({type(e).__name__}: {e}). "
+            "Install foldseek and ensure it is on your PATH, then re-run baktfold."
+        )
+        sys.exit(1)
 
     foldseek_out, _ = process.communicate()
     foldseek_out = foldseek_out.decode()
@@ -105,18 +111,16 @@ def check_dependencies() -> None:
     foldseek_version = foldseek_out.strip()
 
     if "941cd33" in foldseek_version:
-        foldseek_major_version=10
-        foldseek_minor_version="941cd33"
+        foldseek_major_version = 10
+        foldseek_minor_version = "941cd33"
         logger.info(
-        f"Foldseek version found is v{foldseek_major_version}.{foldseek_minor_version}"
-    )
+            f"Foldseek version found is v{foldseek_major_version}.{foldseek_minor_version}"
+        )
+        logger.info("Foldseek version is ok")
     else:
         logger.warning(f"Foldseek version found is v{foldseek_version}")
         logger.warning(f"baktfold is recommended to be run with Foldseek v10.941cd33")
         logger.warning(f"Using a different Foldseek version is likely to work without issue, but this cannot be guaranteed.")
-
-
-    logger.info("Foldseek version is ok")
 
 def check_genbank_and_prokka(filepath, euk):
     """
@@ -144,8 +148,6 @@ def check_genbank_and_prokka(filepath, euk):
         A list of Biopython SeqRecord objects if parsing succeeds.
         Returns None if the file is not valid GenBank or cannot be parsed.
     """
-
-    logger.add(lambda _: sys.exit(1), level="ERROR")
 
     is_valid_genbank = False
     is_prokka = False

@@ -161,7 +161,7 @@ def write_feature_inferences(sequences: Sequence[dict], features_by_sequence: Di
                     fh.write('\n')
     return
 
-def map_aa_columns(feat: dict, custom_db: bool, has_duplicate_locus: bool, fast: bool) -> Sequence[str]:
+def map_aa_columns(feat: dict, custom_db: bool, has_duplicate_locus: bool, fast: bool, structures: bool = False) -> Sequence[str]:
     """
     Maps amino acid columns.
 
@@ -223,6 +223,7 @@ def map_aa_columns(feat: dict, custom_db: bool, has_duplicate_locus: bool, fast:
     row.extend([
         str(feat['length']),
         feat['product'],
+        feat.get('annotation_confidence', ''),
         swissprot,
     ])
 
@@ -239,12 +240,19 @@ def map_aa_columns(feat: dict, custom_db: bool, has_duplicate_locus: bool, fast:
     if custom_db:
         row.append(custom_refs)
 
+    # structure input also reports Foldseek TM-score and LDDT
+    if structures:
+        row.extend([
+            '' if feat.get('tmscore') is None else str(feat['tmscore']),
+            '' if feat.get('lddt') is None else str(feat['lddt']),
+        ])
+
     return row
 
 
 
 
-def write_protein_features(features: Sequence[dict], header_columns: Sequence[str], tsv_path: Path, custom_db: bool, has_duplicate_locus: bool, fast: bool):
+def write_protein_features(features: Sequence[dict], header_columns: Sequence[str], tsv_path: Path, custom_db: bool, has_duplicate_locus: bool, fast: bool, structures: bool = False):
     """Export protein features in TSV format."""
     logger.info(f'write protein feature tsv: path={tsv_path}')
 
@@ -254,7 +262,7 @@ def write_protein_features(features: Sequence[dict], header_columns: Sequence[st
         fh.write('\t'.join(header_columns))
         fh.write('\n')
         for feat in features:
-            columns = map_aa_columns(feat, custom_db, has_duplicate_locus, fast)
+            columns = map_aa_columns(feat, custom_db, has_duplicate_locus, fast, structures)
             fh.write('\t'.join(columns))
             fh.write('\n')
     return
