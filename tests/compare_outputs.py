@@ -284,6 +284,122 @@ def _strip_volatile_fields(obj) -> None:
             _strip_volatile_fields(v)
 
 
+# Residues whose ProstT5 confidence sits within float noise of --mask-threshold
+# flip between the real residue and 'X' from run to run: ProstT5 runs in fp16 on
+# the GPU, so probabilities move by ~0.5 (on the 0-100 scale) between otherwise
+# identical runs, and a position sitting on the cutoff lands either side of it.
+# An individual flip carries no information — the model was, by definition, not
+# confident there — but a systematic change in how much gets masked does. So
+# tolerate a few flips per record and report anything beyond that, plus every
+# substitution that is not a mask flip.
+MASK_FLIP_ABS_TOL = 2       # always allow this many flips per record
+MASK_FLIP_FRAC_TOL = 0.01   # ...or this fraction of the record's length
+
+# ProstT5 inference is not reproducible run-to-run on ROCm, and it is not the
+# masking threshold: the predicted state itself changes at a few positions
+# (e.g. pos 174 K vs W). Measured on Setonix, two identical runs over 2000
+# sequences (~200k residues) differed at 13 residues in fp16 and 9 in fp32 with
+# torch.use_deterministic_algorithms — i.e. ~0.005%, and forcing fp32 does not
+# fix it. Byte-exact 3Di comparison is therefore not achievable; budget the
+# substitutions instead, with a file-level guard so a systematic shift (which
+# moves orders of magnitude more residues) still fails.
+SUBST_ABS_TOL = 2            # per record
+SUBST_FRAC_TOL = 0.02        # ...or this fraction of the record
+SUBST_FILE_FRAC_TOL = 0.005  # 0.5% of all residues in the file (~100x noise)
+SUBST_FILE_ABS_FLOOR = 5     # ...but never trip on a handful in a small file
+
+# Foldseek scores derived from those 3Di strings wobble with them, so which of
+# two near-equal hits wins can flip. _normalize_accessions already tolerates the
+# accession itself; the pstc 'description' betrays the same flip (e.g. "MsDpo4-
+# DNA complex 1" vs "complex 2"), so allow a few of those and nothing else.
+PSTC_DESCRIPTION_TOL = 5
+
+
+def _parse_fasta(lines: list) -> list:
+    """[(header, sequence)] preserving file order."""
+    records, header, seq = [], None, []
+    for line in lines:
+        line = line.strip()
+        if line.startswith(">"):
+            if header is not None:
+                records.append((header, "".join(seq)))
+            header, seq = line, []
+        elif line:
+            seq.append(line)
+    if header is not None:
+        records.append((header, "".join(seq)))
+    return records
+
+
+def _fasta_differ(lines_dev: list, lines_ref: list) -> list:
+    """Compare masked AA/3Di FASTAs, tolerating borderline mask flips."""
+    dev, ref = _parse_fasta(lines_dev), _parse_fasta(lines_ref)
+    diffs = []
+    total_subs = total_len = 0
+    if [h for h, _ in dev] != [h for h, _ in ref]:
+        return [f"    header set/order differs: dev={len(dev)} ref={len(ref)} records"]
+
+    for (header, sd), (_, sr) in zip(dev, ref):
+        if len(sd) != len(sr):
+            diffs.append(f"    {header}: length dev={len(sd)} ref={len(sr)}")
+            continue
+        flips, subs = 0, []
+        for i, (a, b) in enumerate(zip(sd, sr)):
+            if a == b:
+                continue
+            if a == "X" or b == "X":
+                flips += 1          # borderline: one side masked, one not
+            else:
+                subs.append(f"pos {i}: dev={a} ref={b}")
+        sub_tol = max(SUBST_ABS_TOL, int(len(sd) * SUBST_FRAC_TOL))
+        if len(subs) > sub_tol:
+            diffs.append(
+                f"    {header}: {len(subs)} substitution(s) > per-record tolerance {sub_tol}: "
+                + "; ".join(subs[:5])
+            )
+        total_subs += len(subs)
+        total_len += len(sd)
+        tol = max(MASK_FLIP_ABS_TOL, int(len(sd) * MASK_FLIP_FRAC_TOL))
+        if flips > tol:
+            diffs.append(f"    {header}: {flips} mask flips (tolerance {tol})")
+
+    # File-level guard: individual residues wobble, but a systematic shift in
+    # predictions (a real dependency/model change) moves far more than noise.
+    file_tol = max(SUBST_FILE_ABS_FLOOR, total_len * SUBST_FILE_FRAC_TOL)
+    if total_len and total_subs > file_tol:
+        pct = 100 * total_subs / total_len
+        diffs.append(
+            f"    {total_subs}/{total_len} residues substituted ({pct:.3f}%) "
+            f"> file tolerance {file_tol:.1f}"
+        )
+    return diffs
+
+
+def _json_value_diffs(dev, ref, path="") -> list:
+    """Walk two parsed JSON objects in parallel, returning [(path, dev, ref)].
+
+    Structural rather than textual so a difference can be attributed to the
+    field it occurred in — which is what lets a pstc 'description' flip be
+    budgeted while everything else still fails.
+    """
+    out = []
+    if isinstance(dev, dict) and isinstance(ref, dict):
+        for key in sorted(set(dev) | set(ref)):
+            if key not in dev or key not in ref:
+                out.append((f"{path}.{key}", dev.get(key, "<missing>"), ref.get(key, "<missing>")))
+            else:
+                out.extend(_json_value_diffs(dev[key], ref[key], f"{path}.{key}"))
+    elif isinstance(dev, list) and isinstance(ref, list):
+        if len(dev) != len(ref):
+            out.append((f"{path}[]", f"{len(dev)} items", f"{len(ref)} items"))
+        else:
+            for i, (a, b) in enumerate(zip(dev, ref)):
+                out.extend(_json_value_diffs(a, b, f"{path}[{i}]"))
+    elif dev != ref:
+        out.append((path, dev, ref))
+    return out
+
+
 def _compare_annotation_json(fd: Path, fr: Path, normalize: bool = False) -> list:
     """Compare two bakta annotation JSON files, ignoring the 'run' key (timestamps),
     randomly-generated feature 'id' values and the non-reproducible ProstT5/Foldseek
@@ -309,16 +425,35 @@ def _compare_annotation_json(fd: Path, fr: Path, normalize: bool = False) -> lis
     if normalize:
         dev_str = _normalize_accessions(dev_str)
         ref_str = _normalize_accessions(ref_str)
-    if dev_str != ref_str:
-        for i, (a, b) in enumerate(zip(dev_str, ref_str)):
-            if a != b:
-                start = max(0, i - 50)
-                diffs.append(f"    first diff at char {i}:")
-                diffs.append(f"      dev: ...{dev_str[start:i+40]!r}...")
-                diffs.append(f"      ref: ...{ref_str[start:i+40]!r}...")
-                break
-        if len(dev_str) != len(ref_str):
-            diffs.append(f"    length: dev={len(dev_str)} ref={len(ref_str)}")
+    if dev_str == ref_str:
+        return diffs
+
+    # Differing: attribute each difference to its field. A pstc 'description'
+    # flip is the near-tied-hit wobble (the accession is already normalised
+    # away by _normalize_accessions) — budgeted. Anything else is real: a
+    # changed product, a missing DB category, a coordinate change.
+    dev_norm = json.loads(_normalize_accessions(dev_str)) if normalize else dev_obj
+    ref_norm = json.loads(_normalize_accessions(ref_str)) if normalize else ref_obj
+    value_diffs = _json_value_diffs(dev_norm, ref_norm)
+
+    tie_flips, real = [], []
+    for dpath, dval, rval in value_diffs:
+        if normalize and ".pstc" in dpath and dpath.endswith(".description"):
+            tie_flips.append((dpath, dval, rval))
+        else:
+            real.append((dpath, dval, rval))
+
+    for dpath, dval, rval in real[:8]:
+        diffs.append(f"    {dpath}: dev={dval!r} ref={rval!r}")
+    if len(real) > 8:
+        diffs.append(f"    ...and {len(real) - 8} more")
+
+    if len(tie_flips) > PSTC_DESCRIPTION_TOL:
+        diffs.append(
+            f"    {len(tie_flips)} pstc description changes > tolerance {PSTC_DESCRIPTION_TOL}"
+        )
+        for dpath, dval, rval in tie_flips[:5]:
+            diffs.append(f"      {dpath}: dev={dval!r} ref={rval!r}")
     return diffs
 
 
@@ -390,6 +525,13 @@ def compare_dirs(dir_dev: Path, dir_ref: Path, strict: bool = False) -> list:
             if ann_diffs:
                 diffs.append(f"  DIFFER (annotation JSON, 'run' key stripped) : {rel}")
                 diffs.extend(ann_diffs[:22])
+
+        # ── masked AA / 3Di FASTA (borderline mask flips tolerated) ────────
+        elif rel.suffix == ".fasta" and ("_aa" in rel.name or "_3di" in rel.name):
+            fasta_diffs = _fasta_differ(ld, lr)
+            if fasta_diffs:
+                diffs.append(f"  DIFFER (FASTA, borderline mask flips tolerated) : {rel}")
+                diffs.extend(fasta_diffs[:22])
 
         # ── Foldseek tophit TSV (non-deterministic accession/scores ignored) ─
         elif rel.suffix == ".tsv" and "_tophit" in rel.name:
