@@ -61,7 +61,9 @@ def write_features(sequences: Sequence[dict], features_by_sequence: Dict[str, di
                         s(feat.get('locus')), # handles None → ''
                         s(gene),        # handles None → ''
                         s(product),     # handles None → ''
-                        ', '.join(sorted(feat.get('db_xrefs', [])))
+                        # drop None/empty: a malformed db_xref from an input
+                        # converter must not take down the whole output (issue #40)
+                        ', '.join(sorted(x for x in feat.get('db_xrefs', []) or [] if x))
                     ])
                 )
                 fh.write('\n')
@@ -282,5 +284,5 @@ def write_hypotheticals(hypotheticals: Sequence[dict], tsv_path: Path):
             mol_weight = f"{(seq_stats['molecular_weight']/1000):.1f}" if seq_stats['molecular_weight'] else 'NA'
             iso_point = f"{seq_stats['isoelectric_point']:.1f}" if seq_stats['isoelectric_point'] else 'NA'
             seq_id = hypo['sequence'] if 'sequence' in hypo else hypo['contig']  # <1.10.0 compatibility
-            fh.write(f"{seq_id}\t{hypo['start']}\t{hypo['stop']}\t{hypo['strand']}\t{hypo.get('locus', '')}\t{mol_weight}\t{iso_point}\t{', '.join(sorted(pfams))}\t{', '.join(sorted(hypo.get('db_xrefs', [])))}\n")
+            fh.write(f"{seq_id}\t{hypo['start']}\t{hypo['stop']}\t{hypo['strand']}\t{hypo.get('locus', '')}\t{mol_weight}\t{iso_point}\t{', '.join(sorted(pfams))}\t{', '.join(sorted(x for x in hypo.get('db_xrefs', []) or [] if x))}\n")
     return

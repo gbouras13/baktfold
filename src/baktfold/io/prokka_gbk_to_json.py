@@ -249,7 +249,10 @@ def convert_rrna_feature(feature, rec, id):
         "5S ribosomal RNA": so.SO_RRNA_5S.id
     }
 
-    specific_so = so_map.get(product, None)
+    # barrnap suffixes partial predictions ("16S ribosomal RNA (partial)"),
+    # which are common in MAGs, so match on the product with that stripped.
+    lookup = re.sub(r"\s*\(partial\)\s*$", "", product or "", flags=re.IGNORECASE).strip()
+    specific_so = so_map.get(lookup, None)
 
     contig_seq = str(rec.seq)
     
@@ -269,7 +272,11 @@ def convert_rrna_feature(feature, rec, id):
         "coverage": None,  # Prokka does not provide
         "score": None,     # Prokka does not provide
         "evalue": None,    # Prokka does not provide
-        "db_xrefs": [so.SO_RRNA.id, specific_so], 
+        # Only the generic rRNA term when the product is not one we map (e.g.
+        # "5.8S ribosomal RNA", which barrnap emits in eukaryote mode and which
+        # turns up in MAGs). A None here used to reach the output writers and
+        # crash them sorting db_xrefs — see issue #40.
+        "db_xrefs": [x for x in (so.SO_RRNA.id, specific_so) if x is not None],
         "nt": nt_seq,
         "id": id,
         "locus": locus_tag
