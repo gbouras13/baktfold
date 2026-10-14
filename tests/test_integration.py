@@ -101,6 +101,7 @@ proteins_dir: Path = f"{output_dir}/proteins"
 proteins_dir_from_json = f"{output_dir}/proteins_json"
 proteins_pipe_dir: Path = f"{output_dir}/proteins_pipe"
 proteins_predict_dir: Path = f"{output_dir}/proteins_predict"
+proteins_predict_omit_probs_dir: Path = f"{output_dir}/proteins_predict_omit_probs"
 
 proteins_compare_dir: Path = f"{output_dir}/proteins_compare"
 proteins_compare_pdb_dir: Path = f"{output_dir}/proteins_compare_pdb_json"
@@ -398,6 +399,18 @@ def test_proteins_predict(gpu_available, threads, nvidia):
         cmd = f"{cmd} --cpu"
     exec_command(cmd)
     assert_golden(proteins_predict_dir, "proteins_predict")
+
+
+def test_proteins_predict_omit_probs(gpu_available, threads, nvidia):
+    """test baktfold proteins-predict --omit-probs: only the per-residue JSON is dropped"""
+    cmd = f"baktfold proteins-predict -i {input_fasta} -o {proteins_predict_omit_probs_dir} -t {threads} -d {database_dir} -f --omit-probs"
+    if gpu_available is False:
+        cmd = f"{cmd} --cpu"
+    exec_command(cmd)
+    out = Path(proteins_predict_omit_probs_dir)
+    assert not (out / "baktfold_prostT5_3di_all_probabilities.json").exists()
+    for f in ["baktfold_3di.fasta", "baktfold_aa.fasta", "baktfold_prostT5_3di_mean_probabilities.csv"]:
+        assert (out / f).stat().st_size > 0
 
 
 """

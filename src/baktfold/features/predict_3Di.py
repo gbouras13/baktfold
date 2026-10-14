@@ -147,7 +147,9 @@ def get_embeddings(
         max_seq_len: Sequences longer than this flush a batch immediately.
         max_batch: Max sequences per batch.
         cpu: Force CPU inference.
-        output_probs: Whether to write per-residue probability JSONL.
+        output_probs: Whether to write per-residue probability JSONL. The
+                      probabilities are computed regardless, as masking
+                      needs them.
         save_per_residue_embeddings: Save per-residue HDF5.
         save_per_protein_embeddings: Save per-protein HDF5.
         threads: Number of CPU threads for torch.
@@ -189,6 +191,9 @@ def get_embeddings(
     seq_dict.sort(key=lambda x: x[2], reverse=True)
 
     # ── run shared inference engine (single- or multi-GPU) ──────────────────
+    # Always request per-residue probabilities: with output_probs=False
+    # pholdlib returns all_prob=None, which the 3Di and AA masking cannot
+    # use (--omit-probs crashed). output_probs only gates the JSON below.
     predictions, emb_res, emb_prot, inf_fail_ids = run_prostt5_inference_multi_gpu(
         seq_dict,
         devices=devices,
@@ -202,7 +207,7 @@ def get_embeddings(
         max_residues=max_residues,
         max_seq_len=max_seq_len,
         max_batch=max_batch,
-        output_probs=output_probs,
+        output_probs=True,
         save_per_residue_embeddings=save_per_residue_embeddings,
         save_per_protein_embeddings=save_per_protein_embeddings,
         desc="Predicting 3Di",

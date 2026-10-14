@@ -35,7 +35,7 @@ def subcommand_predict(
         output (str): Output directory path.
         prefix (str): Prefix for output file names.
         cpu (bool): Flag indicating whether to use CPU for prediction.
-        omit_probs (bool): Flag indicating whether to omit prediction probabilities from ProstT5.
+        omit_probs (bool): Flag indicating whether to omit the per-residue ProstT5 probability JSON. Masking and the mean probability CSV are unaffected.
         model_dir (str): Directory containing the ProstT5 model.
         model_name (str): Name of the ProstT5 model.
         checkpoint_path (Path): Path to ProstT5 CNN checkpoint.
