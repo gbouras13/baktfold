@@ -32,6 +32,43 @@ RE_UNCHARACTERIZED_PROTEIN_FAMILY = re.compile(r'(UPF\d{3,4})', flags=re.IGNOREC
 RE_GENE_CAPITALIZED = re.compile(r'^[A-Z].+', flags=re.DOTALL)
 RE_GENE_SUSPECT_CHARS = re.compile(r'[\?]', flags=re.DOTALL)
 RE_GENE_SYMBOL = re.compile(r'[a-z]{3}[A-Z][0-9]?')
+# Hit descriptions treated as carrying no usable function: any mention of
+# "hypothetical" or "uncharacterised/uncharacterized", anywhere, any case.
+# Deliberately broad (decided 2026-11-03): it also skips family-bearing names
+# such as "Uncharacterized oxidoreductase YdgJ", in favour of the next
+# database in the hierarchy, because a label that says it is uncharacterised
+# should not be presented as a functional annotation.
+RE_UNINFORMATIVE_PRODUCT = re.compile(r'\b(hypothetical|uncharacteri[sz]ed)\b', flags=re.IGNORECASE)
+
+
+def is_informative_product(product) -> bool:
+    """True if ``product`` names a function, i.e. is not empty and not a
+    hypothetical/uncharacterised placeholder (before or after Bakta's product
+    revision)."""
+    if not product:
+        return False
+    if RE_UNINFORMATIVE_PRODUCT.search(product):
+        return False
+    # revise_cds_product can also blank out suspect products (contig names,
+    # no letters, pure tmRNA), which must fall through too. Run it quietly:
+    # the selected product is revised (and logged) once more by the caller.
+    logger.disable(__name__)
+    try:
+        revised = revise_cds_product(product)
+    finally:
+        logger.enable(__name__)
+    return bool(revised) and not RE_UNINFORMATIVE_PRODUCT.search(revised)
+
+
+def select_informative_entry(entries):
+    """Return the first entry, in hierarchy order, whose description names a
+    function. Uninformative hits ("hypothetical protein", "Uncharacterized
+    protein ...") are skipped so they cannot mask a functional hit from a
+    lower-precedence database. Returns None if no entry is informative."""
+    for entry in entries:
+        if entry is not None and is_informative_product(entry.get('description')):
+            return entry
+    return None
 
 
 def assign_annotation_confidence(entry: dict, prostt5_confidence, structures: bool) -> str:
@@ -120,6 +157,7 @@ def combine_annotation(feature: dict, fast: bool, structures: bool = False):
 
     product = feature.get('product', None)
     db_xrefs = feature.get('db_xrefs', [])
+    selected_entry = None  # the hit that supplies the label, if any
 
     if(pstc):
 
@@ -154,12 +192,17 @@ def combine_annotation(feature: dict, fast: bool, structures: bool = False):
         # 4. CATH
         ####
 
-        # winning hit by hierarchy: custom > swissprot > afdb > pdb > cath
-        selected_entry = custom_entry or swissprot_entry or afdb_entry or pdb_entry or cath_entry
-        pstc_product = selected_entry['description'] if selected_entry else None
-
-        if(pstc_product):
-            product = pstc_product
+        # winning hit by hierarchy: custom > swissprot > afdb > pdb > cath,
+        # taking the first hit whose description actually names a function.
+        # Previously the top hit was taken unconditionally and only renamed to
+        # "hypothetical protein" afterwards, which (i) discarded informative
+        # lower-precedence hits, (ii) left the CDS unmarked as hypothetical and
+        # (iii) still gave it an annotation confidence.
+        selected_entry = select_informative_entry(
+            [custom_entry, swissprot_entry, afdb_entry, pdb_entry, cath_entry]
+        )
+        if selected_entry is not None:
+            product = selected_entry['description']
 
         # Collect all db_xref IDs
         for entry in pstc:
@@ -214,7 +257,20 @@ def combine_annotation(feature: dict, fast: bool, structures: bool = False):
     #     for hit in expert_hits:
     #         db_xrefs.update(hit.get('db_xrefs', []))
 
-    if product and "hypothetical protein" not in product.lower():
+    if selected_entry is None and not feature.get('hypothetical') and product \
+            and "hypothetical protein" not in product.lower():
+        # No usable hit, and the input already had a real product (only
+        # possible with --all-proteins): keep the input annotation. The strict
+        # uninformative-hit rule applies to Foldseek hits, not to the labels
+        # the input annotation tool assigned.
+        product = revise_cds_product(product)
+        if(product):
+            if(cfg.compliant):
+                product = insdc.revise_product_insdc(product)
+            feature['product'] = product
+        else:
+            mark_as_hypothetical(feature)
+    elif selected_entry is not None:
         product = revise_cds_product(product)
         if(product):
             if(cfg.compliant):

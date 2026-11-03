@@ -1569,6 +1569,8 @@
                     "identity": 0.143,
                     "score": 146.0,
                     "evalue": 5.453e-05,
+                    "tmscore": 0.6928,
+                    "lddt": 0.5095,
                     "description": "Transcriptional activator protein EchR"
                 },
                 {
@@ -1579,6 +1581,8 @@
                     "identity": 0.089,
                     "score": 183.0,
                     "evalue": 5.527e-07,
+                    "tmscore": 0.5951,
+                    "lddt": 0.5362,
                     "description": "HTH luxR-type domain-containing protein"
                 },
                 {
@@ -1589,6 +1593,8 @@
                     "identity": 0.193,
                     "score": 164.0,
                     "evalue": 1.514e-05,
+                    "tmscore": 0.7366,
+                    "lddt": 0.5426,
                     "description": "Crystal Structure of Quorum-Sensing Transcriptional Activator from Yersinia enterocolitica in complex with 3-oxo-N-[(3S)-2-oxotetrahydrofuran-3-yl]hexanamide"
                 },
                 {
@@ -1599,10 +1605,15 @@
                     "identity": 0.151,
                     "score": 117.0,
                     "evalue": 0.0002158,
+                    "tmscore": 0.6262,
+                    "lddt": 0.4745,
                     "description": "Transcription factor LuxR-like, autoinducer-binding domain"
                 }
             ],
             "baktfold": true,
+            "annotation_confidence": "low",
+            "tmscore": 0.6928,
+            "lddt": 0.5095,
             "length": 162
         },
         {
@@ -4033,10 +4044,15 @@
                     "identity": 0.416,
                     "score": 396.0,
                     "evalue": 3.842e-09,
+                    "tmscore": 0.8918,
+                    "lddt": 0.8471,
                     "description": "hypothetical protein"
                 }
             ],
             "baktfold": true,
+            "annotation_confidence": "high",
+            "tmscore": 0.8918,
+            "lddt": 0.8471,
             "length": 94
         },
         {
@@ -4073,6 +4089,8 @@
                     "identity": 0.448,
                     "score": 205.0,
                     "evalue": 7.327e-05,
+                    "tmscore": 0.9149,
+                    "lddt": 0.8528,
                     "description": "Antirestriction protein KlcA"
                 },
                 {
@@ -4083,10 +4101,15 @@
                     "identity": 0.987,
                     "score": 419.0,
                     "evalue": 1.495e-10,
+                    "tmscore": 0.9627,
+                    "lddt": 0.9582,
                     "description": "Antirestriction protein klcA"
                 }
             ],
             "baktfold": true,
+            "annotation_confidence": "medium",
+            "tmscore": 0.9149,
+            "lddt": 0.8528,
             "length": 80
         },
         {
@@ -4487,10 +4510,15 @@
                     "identity": 0.397,
                     "score": 285.0,
                     "evalue": 1.868e-06,
+                    "tmscore": 0.9162,
+                    "lddt": 0.7081,
                     "description": "Sugar ABC transporter substrate-binding protein"
                 }
             ],
             "baktfold": true,
+            "annotation_confidence": "medium",
+            "tmscore": 0.9162,
+            "lddt": 0.7081,
             "length": 153
         },
         {

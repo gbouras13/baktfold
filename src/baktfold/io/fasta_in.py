@@ -57,6 +57,11 @@ def parse_protein_input(input_path, faa_path):
         aa['strand'] = bc.STRAND_UNKNOWN
         aa['frame'] = 1
         mock_start += 100
+        # A bare FASTA carries no annotation, so every protein is a candidate.
+        # A Bakta proteins JSON keeps Bakta's own 'hypothetical' flag: only
+        # those proteins are predicted and searched (see proteins_to_predict).
+        if fasta_flag:
+            aa['hypothetical'] = True
 
     
     if fasta_flag:
@@ -74,3 +79,15 @@ def parse_protein_input(input_path, faa_path):
 
 
    
+
+
+def proteins_to_predict(aas):
+    """Return ``{locus: aa_sequence}`` for the proteins baktfold should annotate.
+
+    Only proteins flagged hypothetical are returned: all of them for FASTA
+    input, and only Bakta's hypotheticals for a Bakta proteins JSON. Feeding
+    every JSON protein to ProstT5/Foldseek (the previous behaviour) cost the
+    extra compute and then overwrote Bakta's curated products wherever a
+    structural hit was found.
+    """
+    return {aa['locus']: aa['aa'] for aa in aas if aa.get('hypothetical')}

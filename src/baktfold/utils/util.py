@@ -82,7 +82,7 @@ def get_version():
       str: The version number.
     """
     with open(baktfold_base("VERSION"), "r") as f:
-        version = f.readline()
+        version = f.readline().strip()
     return version
 
 

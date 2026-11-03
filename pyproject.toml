@@ -5,16 +5,22 @@ requires = ["setuptools>=61.0", "wheel>=0.37.1"]
 [project]
 # https://packaging.python.org/en/latest/specifications/declaring-project-metadata/
 name = "baktfold"
-version = "0.4.0" # change VERSION too
+# Single source of truth for the version: src/baktfold/utils/VERSION, which
+# `baktfold --version` and every output header also read (see utils.get_version).
+dynamic = ["version"]
 description = "Rapid and standardized annotation of bacterial genomes, MAGs and plasmids using protein structural information"
 readme = "README.md"
-requires-python = ">=3.8, <4"
+requires-python = ">=3.10,<3.14"
 license = {file = "MIT"}
 authors = [
     {name = "George Bouras", email = "george.bouras@adelaide.edu.au"},
     {name = "Oliver Schwengers", email = "oliver.schwengers@cb.jlug.de"}
 ]
-keywords = ["keyword", "are", "cool"]
+keywords = [
+    "genome annotation", "bacteria", "archaea", "plasmids",
+    "protein structure", "Foldseek", "ProstT5", "protein language model",
+    "hypothetical proteins", "bioinformatics"
+]
 
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -25,13 +31,10 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14"
+    "Programming Language :: Python :: 3.13"
 ]
 
 dependencies = [
@@ -90,5 +93,8 @@ exe = [
 include-package-data = true
 zip-safe = true  # This just means it's safe to zip up the bdist
 
+[tool.setuptools.dynamic]
+version = {file = "src/baktfold/utils/VERSION"}
+
 [tool.setuptools.package-data]
-baktfold = ["features/autotune_data/*.fasta.gz"]
+baktfold = ["features/autotune_data/*.fasta.gz", "utils/VERSION", "utils/CITATION"]

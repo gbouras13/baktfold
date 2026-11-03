@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Sequence
+from typing import Dict, Sequence
 
 import polars as pl
 from loguru import logger
@@ -35,6 +35,26 @@ def write_foldseek_tophit(tophit_df: pl.DataFrame, pdb_tophit_path: Path):
     logger.info(f"Saving foldseek tophits to {pdb_tophit_path}")
     tophit_df.write_csv(pdb_tophit_path, separator="\t")
 
+def _pct(n: int, denom: int) -> str:
+    """
+    Formats n as a one-decimal percentage of denom.
+
+    Args:
+      n (int): The numerator (a CDS count).
+      denom (int): The denominator (a CDS count). May be 0.
+
+    Returns:
+      str: The percentage to one decimal place, or '0.0' when denom is 0.
+
+    Examples:
+      >>> _pct(12, 55)
+      '21.8'
+      >>> _pct(0, 0)
+      '0.0'
+    """
+    return f"{n / denom * 100:.1f}" if denom else "0.0"
+
+
 def write_summary_txt_file(output, prefix, features):
 
     summary_path: Path = Path(output) / f"{prefix}.summary.txt"
@@ -57,21 +77,32 @@ def write_summary_txt_file(output, prefix, features):
     )
     begin_hyps = end_hyps + baktfold_function
 
+    # Percentages are reported against both denominators: every count as a
+    # share of all CDS, and — for the counts that describe what baktfold did —
+    # as a share of the beginning hypotheticals, which is the set baktfold is
+    # actually given (only hypotheticals, unless --all-proteins is used).
     logger.info(f'Baktfold annotation summary {summary_path}')
     with summary_path.open('w') as fh_out:
         fh_out.write('Annotation:\n')
         fh_out.write(f"CDS count: {cds_count}\n")
         fh_out.write(
-            f"CDS beginning hypotheticals: {begin_hyps}\n"
+            f"CDS beginning hypotheticals: {begin_hyps}"
+            f" ({_pct(begin_hyps, cds_count)}% of CDS)\n"
         )
         fh_out.write(
-            f"CDS annotated with Baktfold database hit: {baktfold_hit}\n"
+            f"CDS annotated with Baktfold database hit: {baktfold_hit}"
+            f" ({_pct(baktfold_hit, cds_count)}% of CDS;"
+            f" {_pct(baktfold_hit, begin_hyps)}% of beginning hypotheticals)\n"
         )
         fh_out.write(
-            f"CDS annotated with Baktfold function: {baktfold_function}\n"
+            f"CDS annotated with Baktfold function: {baktfold_function}"
+            f" ({_pct(baktfold_function, cds_count)}% of CDS;"
+            f" {_pct(baktfold_function, begin_hyps)}% of beginning hypotheticals)\n"
         )
         fh_out.write(
-            f"CDS remaining hypotheticals: {end_hyps}\n"
+            f"CDS remaining hypotheticals: {end_hyps}"
+            f" ({_pct(end_hyps, cds_count)}% of CDS;"
+            f" {_pct(end_hyps, begin_hyps)}% of beginning hypotheticals)\n"
         )
         fh_out.write('\nBaktfold:\n')
         fh_out.write(f'Software: v{cfg.version}\n')
@@ -80,6 +111,43 @@ def write_summary_txt_file(output, prefix, features):
         fh_out.write('URL: github.com/gbouras13/baktfold\n')
 
 
+
+
+def propagate_cds_products_to_mrna(features: Sequence[dict]) -> int:
+    """Copy each eukaryotic CDS's product onto its parent mRNA, in place.
+
+    Baktfold annotates CDS features. Eukaryotic inputs also carry mRNA
+    features whose ``product`` came from the input annotation (usually
+    "hypothetical protein"), and the GFF3/GBFF/TSV writers print that mRNA
+    product, so the Baktfold label was invisible there.
+
+    An mRNA is paired with the first not-yet-paired CDS that has the same
+    locus tag, sequence and strand and lies within the mRNA's span, in feature
+    order. That copes with genes carrying several transcripts under one locus
+    tag (``has_duplicate_locus``). Returns the number of mRNAs updated.
+    """
+    cds_by_key: Dict[tuple, list] = {}
+    for feat in features:
+        if feat.get('type') == bc.FEATURE_CDS:
+            key = (feat.get('locus'), feat.get('sequence'), feat.get('strand'))
+            cds_by_key.setdefault(key, []).append(feat)
+
+    used = set()
+    updated = 0
+    for mrna in features:
+        if mrna.get('type') != bc.FEATURE_MRNA:
+            continue
+        key = (mrna.get('locus'), mrna.get('sequence'), mrna.get('strand'))
+        for cds in cds_by_key.get(key, []):
+            if id(cds) in used:
+                continue
+            if mrna['start'] <= cds['start'] and cds['stop'] <= mrna['stop']:
+                used.add(id(cds))
+                if cds.get('product') and mrna.get('product') != cds['product']:
+                    mrna['product'] = cds['product']
+                    updated += 1
+                break
+    return updated
 
 
 def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequence: Sequence[dict] , 
@@ -113,6 +181,11 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
 
     #logger.info(f'selected features={len(features)}')
 
+    if euk:
+        # Baktfold labels the CDS; make every output show that label on its
+        # parent mRNA too (GFF3/GBFF/TSV/JSON), not the input's placeholder.
+        propagate_cds_products_to_mrna(features)
+
     logger.info('writing human readable TSV...')
     tsv_path: Path = Path(output) / f"{prefix}.tsv"
     tsv.write_features(data['sequences'], features_by_sequence, tsv_path)
@@ -142,23 +215,6 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
 
     # inference here is the different databases?
     annotations_path: Path = Path(output) / f"{prefix}.inference.tsv"
-    if custom_db:
-        header_columns = ['Locus', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB', 'CATH', 'Custom_DB']
-        if has_duplicate_locus:
-            header_columns = ['Locus', 'ID', 'Product', 'Swissprot', 'AFDBClusters', 'PDB', 'CATH', 'Custom_DB']
-    else:
-        header_columns = ['Locus', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB', 'CATH']
-        if has_duplicate_locus:
-            header_columns = ['Locus', 'ID', 'Product', 'Swissprot', 'AFDBClusters', 'PDB', 'CATH']
-
-    # Remove 'AFDBClusters' if fast is True
-    if fast:
-        header_columns = [col for col in header_columns if col != 'AFDBClusters']
-
-    # annotation confidence column goes right after Product
-    prod_idx = header_columns.index('Product')
-    header_columns = header_columns[:prod_idx + 1] + ['Annotation_Confidence'] + header_columns[prod_idx + 1:]
-
     # flatten all features across sequences
     all_features = [
         feat
@@ -179,8 +235,10 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
 
     # structure input carries Foldseek TM-score/LDDT on its hits -> extra columns
     structures = any('tmscore' in feat for feat in selected_features)
-    if structures:
-        header_columns = header_columns + ['TMscore', 'LDDT']
+
+    header_columns = tsv.build_inference_header(
+        'Locus', custom_db, has_duplicate_locus, fast, structures
+    )
 
     tsv.write_protein_features(selected_features, header_columns, annotations_path, custom_db, has_duplicate_locus, fast=fast, structures=structures)
 
@@ -238,22 +296,14 @@ def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str,
             aa.pop(f, None)
     
     annotations_path: Path = Path(output) / f"{prefix}.tsv"
-    if custom_db:
-        header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB', 'CATH', 'Custom_DB']
-    else:
-        header_columns = ['ID', 'Length', 'Product', 'Swissprot', 'AFDBClusters', 'PDB', 'CATH']
-
-    if fast:
-        header_columns = [col for col in header_columns if col != 'AFDBClusters']
-
-    # annotation confidence column goes right after Product
-    prod_idx = header_columns.index('Product')
-    header_columns = header_columns[:prod_idx + 1] + ['Annotation_Confidence'] + header_columns[prod_idx + 1:]
-
     # structure input carries Foldseek TM-score/LDDT on its hits -> extra columns
     structures = any('tmscore' in aa for aa in aas)
-    if structures:
-        header_columns = header_columns + ['TMscore', 'LDDT']
+
+    # proteins mode never has duplicate locus tags - write_protein_features is
+    # called with has_duplicate_locus=False below, so the row carries no ID field
+    header_columns = tsv.build_inference_header(
+        'ID', custom_db, has_duplicate_locus=False, fast=fast, structures=structures
+    )
 
     logger.info(f'Exporting annotations (TSV) to: {annotations_path}')
     tsv.write_protein_features(aas, header_columns, annotations_path, custom_db, has_duplicate_locus=False, fast=fast, structures=structures)

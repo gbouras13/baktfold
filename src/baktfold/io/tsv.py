@@ -1,6 +1,6 @@
 from pathlib import Path
 # from types import LambdaType
-from typing import Dict, Sequence
+from typing import Dict, List, Sequence
 # from datetime import datetime
 
 from loguru import logger
@@ -61,7 +61,9 @@ def write_features(sequences: Sequence[dict], features_by_sequence: Dict[str, di
                         s(feat.get('locus')), # handles None → ''
                         s(gene),        # handles None → ''
                         s(product),     # handles None → ''
-                        ', '.join(sorted(feat.get('db_xrefs', [])))
+                        # drop None/empty: a malformed db_xref from an input
+                        # converter must not take down the whole output (issue #40)
+                        ', '.join(sorted(x for x in feat.get('db_xrefs', []) or [] if x))
                     ])
                 )
                 fh.write('\n')
@@ -160,6 +162,60 @@ def write_feature_inferences(sequences: Sequence[dict], features_by_sequence: Di
                     )
                     fh.write('\n')
     return
+
+def build_inference_header(
+    first_column: str,
+    custom_db: bool,
+    has_duplicate_locus: bool,
+    fast: bool,
+    structures: bool = False,
+) -> List[str]:
+    """Build the header row for an inference TSV.
+
+    Deliberately mirrors :func:`map_aa_columns` line for line — every
+    conditional column here has its counterpart in the same position there.
+    Read the two side by side when changing either.
+
+    They used to drift. The duplicate-locus header *substituted* 'ID' for
+    'Length' while the row *appended* 'ID' and went on writing the length, so
+    the row carried one more field than the header named and every column from
+    Product rightwards was labelled with the value to its left — Product read
+    as the CDS length, which is non-empty and so scored as a real annotation.
+    Eukaryotic inputs were the ones affected, duplicate locus tags being common
+    in Ensembl eukaryotic GenBank.
+
+    Args:
+        first_column: 'Locus' for genome mode, 'ID' for proteins mode.
+        custom_db: A custom Foldseek database was searched.
+        has_duplicate_locus: The input repeats locus tags across CDS, so each
+            row carries an extra ID field straight after the locus.
+        fast: AFDB Clusters search was skipped.
+        structures: Input was structures, so hits carry TM-score and LDDT.
+
+    Returns:
+        The header column names, in the order map_aa_columns emits values.
+    """
+    header = [first_column]
+
+    # euk inputs repeat locus tags, so the row gains an ID field here
+    if has_duplicate_locus:
+        header.append('ID')
+
+    header.extend(['Length', 'Product', 'Annotation_Confidence', 'Swissprot'])
+
+    if not fast:
+        header.append('AFDBClusters')
+
+    header.extend(['PDB', 'CATH'])
+
+    if custom_db:
+        header.append('Custom_DB')
+
+    if structures:
+        header.extend(['TMscore', 'LDDT'])
+
+    return header
+
 
 def map_aa_columns(feat: dict, custom_db: bool, has_duplicate_locus: bool, fast: bool, structures: bool = False) -> Sequence[str]:
     """
@@ -282,5 +338,5 @@ def write_hypotheticals(hypotheticals: Sequence[dict], tsv_path: Path):
             mol_weight = f"{(seq_stats['molecular_weight']/1000):.1f}" if seq_stats['molecular_weight'] else 'NA'
             iso_point = f"{seq_stats['isoelectric_point']:.1f}" if seq_stats['isoelectric_point'] else 'NA'
             seq_id = hypo['sequence'] if 'sequence' in hypo else hypo['contig']  # <1.10.0 compatibility
-            fh.write(f"{seq_id}\t{hypo['start']}\t{hypo['stop']}\t{hypo['strand']}\t{hypo.get('locus', '')}\t{mol_weight}\t{iso_point}\t{', '.join(sorted(pfams))}\t{', '.join(sorted(hypo.get('db_xrefs', [])))}\n")
+            fh.write(f"{seq_id}\t{hypo['start']}\t{hypo['stop']}\t{hypo['strand']}\t{hypo.get('locus', '')}\t{mol_weight}\t{iso_point}\t{', '.join(sorted(pfams))}\t{', '.join(sorted(x for x in hypo.get('db_xrefs', []) or [] if x))}\n")
     return

@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import h5py
+import numpy as np
 from loguru import logger
 
 # ── pholdlib shared components ────────────────────────────────────────────────
@@ -31,6 +32,7 @@ from pholdlib.prostt5.output import (
 
 # ── baktfold-specific DB helpers ──────────────────────────────────────────────
 from baktfold.databases.db import check_prostT5_download, download_zenodo_prostT5
+from baktfold.utils.gpu import release_gpu_memory
 from baktfold.utils.util import atomic_write_path
 
 
@@ -50,6 +52,60 @@ def write_embeddings(embeddings: Dict[str, Any], out_path: Path) -> None:
         with h5py.File(str(tmp), "w") as hf:
             for sequence_id, embedding in embeddings.items():
                 hf.create_dataset(sequence_id, data=embedding)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Prediction sanity guard (shared with subcommands/predict.py)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def drop_unusable_predictions(predictions: Dict[str, Tuple], stage: str = "") -> Dict[str, Tuple]:
+    """Drop predictions whose 3Di index array cannot be written out.
+
+    Two unusable shapes reach us from the inference engine:
+
+    * a **zero-length** array — a CDS ProstT5 returned no residues for (#47);
+    * a **zero-dimensional** ("unsized") array, which numpy produces when the
+      ``.squeeze()`` in pholdlib's inference loop collapses a single-residue
+      prediction to a scalar. ``len()`` raises ``TypeError: len() of unsized
+      object`` on those rather than returning 0, so the plain
+      ``len(v[0]) > 0`` guard this replaces crashed on them — taking the whole
+      genome's annotation down over one bad CDS.
+
+    pholdlib is now fixed at source to drop such entries rather than return
+    them, but this guard stays: baktfold accepts pholdlib >=0.1.2, and the
+    released 0.1.2 still hands the broken entry back. Anything dropped is
+    reported either way — a silent drop plus a hard crash gave users nothing
+    to act on.
+
+    Args:
+        predictions: Flat ``{seq_id: (pred, mean_prob, all_prob)}`` dict.
+        stage: Short label naming the caller, used in the warning only.
+
+    Returns:
+        A new dict holding only the entries with at least one predicted residue.
+    """
+    kept: Dict[str, Tuple] = {}
+    dropped: List[str] = []
+
+    for seq_id, value in predictions.items():
+        pred = value[0]
+        # np.ndim() is total: 0 for a 0-d array, a scalar or None; >=1 otherwise.
+        if np.ndim(pred) == 0 or len(pred) == 0:
+            dropped.append(seq_id)
+        else:
+            kept[seq_id] = value
+
+    if dropped:
+        where = f" ({stage})" if stage else ""
+        shown = ", ".join(dropped[:10])
+        more = f" and {len(dropped) - 10} more" if len(dropped) > 10 else ""
+        logger.warning(
+            f"Dropping {len(dropped)} CDS with no usable ProstT5 3Di "
+            f"prediction{where}: {shown}{more}. These will not be annotated by "
+            "baktfold — see fails.tsv."
+        )
+
+    return kept
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -79,10 +135,11 @@ def write_predictions(
     """
     mask_prop = mask_threshold / 100
 
-    # drop zero-length predictions (issue #47)
-    predictions = {k: v for k, v in predictions.items() if len(v[0]) > 0}
+    # drop zero-length (#47) and unsized predictions
+    predictions = drop_unusable_predictions(predictions, "writing 3Di FASTA")
 
-    # apply confidence masking in-place on pred index arrays
+    # apply confidence masking in-place on pred index arrays. get_embeddings
+    # always requests per-residue probabilities, so all_prob is never None here.
     for seq_id, (pred, mean_prob, all_prob) in predictions.items():
         pred[all_prob[0] < mask_prop] = 20  # 'X'
 
@@ -190,29 +247,49 @@ def get_embeddings(
     # sort descending by length (minimises padding in each batch)
     seq_dict.sort(key=lambda x: x[2], reverse=True)
 
-    # ── run shared inference engine (single- or multi-GPU) ──────────────────
-    # Always request per-residue probabilities: with output_probs=False
-    # pholdlib returns all_prob=None, which the 3Di and AA masking cannot
-    # use (--omit-probs crashed). output_probs only gates the JSON below.
-    predictions, emb_res, emb_prot, inf_fail_ids = run_prostt5_inference_multi_gpu(
-        seq_dict,
-        devices=devices,
-        model_dir=model_dir,
-        model_name=model_name,
-        checkpoint_path=checkpoint_path,
-        half_precision=half_precision,
-        threads=threads,
-        check_fn=check_prostT5_download,
-        zenodo_fn=download_zenodo_prostT5,
-        max_residues=max_residues,
-        max_seq_len=max_seq_len,
-        max_batch=max_batch,
-        output_probs=True,
-        save_per_residue_embeddings=save_per_residue_embeddings,
-        save_per_protein_embeddings=save_per_protein_embeddings,
-        desc="Predicting 3Di",
-    )
-    fail_ids.extend(inf_fail_ids)
+    # ── nothing to predict: skip the model load entirely ────────────────────
+    # A genome whose CDS all already carry a product has zero hypothetical
+    # proteins, so seq_dict is empty. Pulling ProstT5 onto the GPU to predict
+    # nothing costs a model load and several GB of VRAM for no result. Fall
+    # through to the writers with empty results so every downstream file is
+    # still created (empty), exactly as the full path would leave them.
+    if not seq_dict:
+        logger.info("No sequences to predict 3Di for — skipping ProstT5 inference.")
+        predictions: Dict = {}
+        emb_res: Dict = {}
+        emb_prot: Dict = {}
+    else:
+        # ── run shared inference engine (single- or multi-GPU) ──────────────
+        # Always request per-residue probabilities: with output_probs=False
+        # pholdlib returns all_prob=None, which the 3Di and AA masking cannot
+        # use (--omit-probs crashed). output_probs only gates the JSON below.
+        predictions, emb_res, emb_prot, inf_fail_ids = run_prostt5_inference_multi_gpu(
+            seq_dict,
+            devices=devices,
+            model_dir=model_dir,
+            model_name=model_name,
+            checkpoint_path=checkpoint_path,
+            half_precision=half_precision,
+            threads=threads,
+            check_fn=check_prostT5_download,
+            zenodo_fn=download_zenodo_prostT5,
+            max_residues=max_residues,
+            max_seq_len=max_seq_len,
+            max_batch=max_batch,
+            output_probs=True,
+            save_per_residue_embeddings=save_per_residue_embeddings,
+            save_per_protein_embeddings=save_per_protein_embeddings,
+            desc="Predicting 3Di",
+        )
+        fail_ids.extend(inf_fail_ids)
+
+        # The model, tokenizer and CNN head only ever exist inside
+        # run_prostt5_inference_multi_gpu, so they are unreachable by the time
+        # it returns — but PyTorch's caching allocator keeps their blocks
+        # reserved against the device until told otherwise. Release them here:
+        # `baktfold run` goes straight on to launch `foldseek --gpu 1` as a
+        # subprocess, which can only use memory the driver has back.
+        release_gpu_memory("after ProstT5 3Di prediction")
 
     # restore original key order
     predictions = {k: predictions[k] for k in original_keys if k in predictions}

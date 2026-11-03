@@ -97,7 +97,9 @@
                     "description": "Crystal structure of SeMet derivatives of domain2 and domain 3 of RctB"
                 }
             ],
+            "prostt5_confidence": 56.54,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 298
         },
         {
@@ -198,7 +200,9 @@
                     "description": "P-loop containing nucleotide triphosphate hydrolases"
                 }
             ],
+            "prostt5_confidence": 74.41,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 139
         },
         {
@@ -225,6 +229,7 @@
             "id": "MEGJMNBEGN_3",
             "locus": "MEGJMN_003",
             "3di": "DDDDPDPPPVVVVVVVVVVVVVVVVVVVVVVVVVVVDD",
+            "prostt5_confidence": 77.0,
             "length": 39
         },
         {
@@ -329,7 +334,9 @@
                     "description": "Intergrase catalytic core"
                 }
             ],
+            "prostt5_confidence": 64.65,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 265
         },
         {
@@ -389,6 +396,7 @@
             "id": "MEGJMNBEGN_5",
             "locus": "MEGJMN_005",
             "3di": "DDPDPPDPPPPVVVVVPPPDPPDDPVVVCVVVVDGPVVVVVVVVVVV",
+            "prostt5_confidence": 68.8,
             "length": 48
         },
         {
@@ -432,20 +440,22 @@
             "genes": [],
             "id": "MEGJMNBEGN_6",
             "locus": "MEGJMN_006",
-            "3di": "DPPDXDDDDDDDADPQFKKKWWFDXDDPDXXIKIKIKXKDKWWXADDPPDXXXXXKIKIKIDXDDPDDDDIXIWIWIXGXPAXAEXEIDXDDPDDDDPPXCVVLVVVLVVLVVLLVDDPQXXKYDDDXDPDDPVDVVVLVVVLVVVVVQQWDDDPPDDXDXIDGSVPGDGDPDDMXXMDMDXVVVVVVVVVVVVVVLVVVLVVLVVVLVVLVVVLVVLVPDPLVVVVPVPPDDDDDDDPPDDPDDPDPDDDDDPPDDPVVSVVVVVVVVVSSVVSVVVVVVSVVVVVVSVVVVVVVVVVVVVVVVVVCVVVVVVVVVVVVD",
+            "3di": "DPPDXDDDDDDDADPQFKKKWWFDXDDPDXXIKIKIKXKDKWWXADDPPDXXXXXKIKIKIDXDDPDDDDIXIWIWIXGXPAXAEXEIDXDDPDDDDPPXCVVLVVVLVVLVVLLVDDPQXXKYDDDXDPDDPVDVVVLVVVLVVVVVQQWDDDPPDDXDXIDGSVPGDGDPDDMDXMDMDXVVVVVVVVVVVVVVLVVVLVVLVVVLVVLVVVLVVLVPDPLVVVVPVPPDDDDDDDPPDDPDDPDPDDDDDPPDDPVVSVVVVVVVVVSSVVSVVVVVVSVVVVVVSVVVVVVVVVVVVVVVVVVCVVVVVVVVVVVVD",
             "pstc": [
                 {
                     "source": "afdb",
                     "id": "A0A0F6NT92",
                     "query_cov": 0.99,
                     "subject_cov": 0.95,
-                    "identity": 0.585,
-                    "score": 1090.0,
-                    "evalue": 1.344e-27,
+                    "identity": 0.588,
+                    "score": 1091.0,
+                    "evalue": 1.302e-27,
                     "description": "N-acetyltransferase domain-containing protein"
                 }
             ],
+            "prostt5_confidence": 55.22,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 322
         },
         {
@@ -500,7 +510,8 @@
             "genes": [],
             "id": "MEGJMNBEGN_7",
             "locus": "MEGJMN_007",
-            "3di": "DDPVLDPDPVXDDDLVVLLVVLCVVDVWDWDDDPDDXPDXXIWIWTDDPVRKIKIWXXXDPXXXIXIWIXDDPVVDDDDDPVPDDIDDDDDPVVVVVVSVVVV"
+            "3di": "DDPVLDPDPVXDDDLVVLLVVLCVVDVWDWDDDPDDXPDXXIWIWTDDPVRKIKIWXXXDPXXXIXIWIXDDPVVDDDDDPVPDDIDDDDDPVVVVVVSVVVV",
+            "prostt5_confidence": 42.36
         },
         {
             "type": "cds",
@@ -554,7 +565,8 @@
             "genes": [],
             "id": "MEGJMNBEGN_8",
             "locus": "MEGJMN_008",
-            "3di": "DDDDDDDFPVVVLVVVCVVVVFXXKWKXXDDXDDDPVVVVCVVXXPDXWDWDDDPXXTDWXDDDPDRDIDTDDXDDDPPDDPDDDPVXVXXDXDXXMXMXXXXXDDPPD"
+            "3di": "DDDDDDDFPVVVLVVVCVVVVFXXKWKXXDDXDDDPVVVVCVVXXPDXWDWDDDPXXTDWXDDDPDRDIDTDDXDDDPPDDPDDDPVXVXXDXDXXMXMXXXXXDDPPD",
+            "prostt5_confidence": 40.14
         },
         {
             "type": "cds",
@@ -610,20 +622,22 @@
             "genes": [],
             "id": "MEGJMNBEGN_9",
             "locus": "MEGJMN_009",
-            "3di": "DVVVVVVVVVVVLLVVLVVVLVVXPVNVVLVCVVVLVVLLVCLVVVVVVLVVVLVVLLVVLVVCVVCVVVCVVVCVVVDVDLVVLLVVLVVLLVVLVVLLVPVLVVLVVVLVVLXVDPLLXVLLSLLLCVLLVLSSLSVLLSVLSVLSVVLSVVVVVDDSSSSVSSSVSSVVSSVSSVVSVVSNVVSSVVSVDPVSSLLSSLVSLLVXLLVQLLLLLLLLLXLXAPPDXXXXDXXXXXDXDXWDXDDDQXXKFFXDXDAFFDFXXXXXXXXVVVXXVVXDDDPPDXKXKDKXXXXXDGGPXMTMIGTDPXDXDDDVSSVVSSVCXXPXDXDDXDXXXVSLSVLLVQLLVCLVVVVVVSNLSSLVSLLVSLLSSXVSXVXDDDPVXVVVCVVXXXXXXXXVVSLVVVLVSLVVQXVDXXXXXVXXXVXXXDXVVSXVVXXXVXXVSLLSSLLSSLSSLVSSVVVXVVXDDDDDPSSVVSSLSSLVSSLVSLLVXLXXXXXDDXPDXXSLLVSLVSLLVSLLVXLLVXXVVDPVSLVSSLVSLLSSLVSXXXXVXXVVVXVXXXXXXDXVXXVXVVDDVVSVVXXVXXXXDVDSSSSLSSLVSLLSSLSSLLLSCLVXXDXVXDDDSLVSLVSSXXXXXXDDPVXXXXXXSSNVSLLVSLVLLLVXVVSVXDDPDXXXVXLVVSSVSLVVXXXDDDDXXXXXXXDDXXXXXSSVSLLVSLVSSXDDSVVSXVVSSVVSSVVSXVXDDPVVVVVSLVVXVVDPPDDXPXXXDDPVXSVVXXVSXVVSSVVSVVSVVVXVXLVVVVVVDVVVVVVVDPVVXXVXDDXXDDPVSXVVXXVXDXPDPDDSVXXXXXDDPDDDSVVXXVVXVXXXXDDDDXPVVSLVVSSVVSSVVVVVVVXVDXDDDVXLVVSVVVSLVVCVVVVXXXXXXXXXVXDVVSSVXXXDXDDDXXXKXXKDXDDDDDDDDXXDXXXXIKXWXXDPVRXIXIXXDXXXXXXXXWXXDPVRDTDXXXDDDPDDXVVVVVVVVVVVVDDDDPDXXXDXDDD",
+            "3di": "DVVVVVVVVVVVLLVVLVVVLVVXPVNVVLVCVVVLVVLLVCLVVVVVVLVVVLVVLLVVLVVCVVCVVVCVVVCVVVDVDLVVLLVVLVVLLVVLVVLLVPLLVVLVVVLVVLXVDPLLXVLLSLLLCVLLVLSSLSVLLSVLSVLSVVLSVVVVVDDSSSSVSSSVSSVVSSVSSVVSVVSNVVSSVVSVDPVSSLLSSLVSLLVXLLVQLLLLLLLLLXLXAPPDXXXXXXXXXXDXDXWDXDDDQXXKFFXDXDAFFDFXXXXXXXXVXVXXVVXDDDPPDXKXKDKXXXXXDGGPXMTMIGTDPXDXDDDVSSVVSSVCXXPXDXDDXDXXXVSLXVLLVQLLVCLVVVVVVSNLSSLVSLLVSLVSSXVSXVXDDDPVXVVVCVVXXXXXXXXVVSLVVVLVSLVVQXVDXXXDXVXXXVXXXDXVVSXVVXXXVXXVSLLSSLLSSLSSLVSSVVVXVVXDDDDDPSSVVSSLSSLVSSLVSLLVXXXXXXXDDXPDXXSLLVSLVSLLVSLLVXLLVXXVVDPVSLVSSLVSLLSSLVSXXXXVXXVVVXVXXXXXXDXVXXVXVVDDVVSVVXXVXXXXDVDSSSSLSSLVSLLSSLSSLLLSCLVXXDXVXDDDSLVSLVSSXXXXXXDDPVXXXXXXSSNVSLLVSLVLLLVXVVSVXDDPDXXXVXLVVSSVSLVVXXXDDDDXXXXXXXDDXXXXXSSVSLLVSLVSSXDDSVVSXVVSSVVSSVVSXVXDDPVVVVVSLVVXVVDPPDDXPXXXDDPVXSVVXXVSXVVSSVVSVVSVVVXVXLVVVVVVDVVVVVVVDPVVXXVXDDXXDDPVSXVVXXVXDXPDPDDSVXXXXXDDPDDDSVVXXVVXVXXXXDDDDXPVVSLVVSSVVSSVVVVVVVXVDXDDDVXLVVSVVVSLVVCVVVVXXXXXXXXXVXDVVSSVXXXDXDDDXXXKXXKDXDDDDDDDDXXDXXXXIKXWXXDPVRXIXIXXDXXXXXXXXWXXDPVRDTDXXXDDDPDDXVVVVVVVVVVVVDDDDPDXXXDXDDD",
             "pstc": [
                 {
                     "source": "afdb",
                     "id": "A0A2S0NSF5",
                     "query_cov": 0.73,
                     "subject_cov": 0.96,
-                    "identity": 0.649,
-                    "score": 2046.0,
-                    "evalue": 6.361e-43,
+                    "identity": 0.647,
+                    "score": 2029.0,
+                    "evalue": 1.452e-42,
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 40.97,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "hypothetical": true,
             "length": 1040
         },
@@ -684,6 +698,7 @@
             "id": "MEGJMNBEGN_10",
             "locus": "MEGJMN_010",
             "3di": "DPPPPDPDDDDLVVVVVVLVVVLVVLVVVVVVDLVVVVVVVVVVLVVVVVVVVVVDDDCVVVVVVSVVSSVVSVVVDV",
+            "prostt5_confidence": 66.8,
             "length": 79
         },
         {
@@ -777,7 +792,9 @@
                     "description": "Crystal structure of MepR, a transcription regulator of the Staphylococcus aureus multidrug efflux pump MepA"
                 }
             ],
+            "prostt5_confidence": 61.87,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 192
         },
         {
@@ -835,7 +852,9 @@
                     "description": "DNA-binding protein"
                 }
             ],
+            "prostt5_confidence": 60.11,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 206
         },
         {
@@ -968,7 +987,9 @@
                     "description": "Ribonuclease H-like superfamily/Ribonuclease H"
                 }
             ],
+            "prostt5_confidence": 74.27,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 235
         },
         {
@@ -1058,7 +1079,9 @@
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 65.23,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 91
         },
         {
@@ -1152,7 +1175,9 @@
                     "description": "Hexapeptide repeat proteins"
                 }
             ],
+            "prostt5_confidence": 72.71,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 216
         },
         {
@@ -1285,7 +1310,9 @@
                     "description": "Ribonuclease H-like superfamily/Ribonuclease H"
                 }
             ],
+            "prostt5_confidence": 74.27,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 235
         },
         {
@@ -1355,7 +1382,9 @@
                     "description": "DUF2913 family protein"
                 }
             ],
+            "prostt5_confidence": 49.32,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 204
         },
         {
@@ -1411,7 +1440,8 @@
             "genes": [],
             "id": "MEGJMNBEGN_18",
             "locus": "MEGJMN_018",
-            "3di": "DDDDLVLLVVXXVVVXXXXKKXKDXDPVXVVVXXDDDPQKDWDDPDDDDIDIDDPVSVVVVVVVVVVVVXXDXDXXDDXDPXXMIXIDGDPPD"
+            "3di": "DDDDLVLLVVXXVVVXXXXKKXKDXDPVXVVVXXDDDPQKDWDDPDDDDIDIDDPVSVVVVVVVVVVVVXXDXDXXDDXDPXXMIXIDGDPPD",
+            "prostt5_confidence": 40.77
         },
         {
             "type": "cds",
@@ -1480,7 +1510,9 @@
                     "description": "Transposase InsO for insertion sequence element IS911"
                 }
             ],
+            "prostt5_confidence": 78.17,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 81
         },
         {
@@ -1615,7 +1647,9 @@
                     "description": "Ribonuclease H-like superfamily/Ribonuclease H"
                 }
             ],
+            "prostt5_confidence": 76.37,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 359
         },
         {
@@ -1719,7 +1753,9 @@
                     "description": "Ribonuclease H-like superfamily/Ribonuclease H"
                 }
             ],
+            "prostt5_confidence": 70.56,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 136
         },
         {
@@ -1835,7 +1871,9 @@
                     "description": "Homeodomain-like"
                 }
             ],
+            "prostt5_confidence": 87.26,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 101
         },
         {
@@ -1891,7 +1929,8 @@
             "genes": [],
             "id": "MEGJMNBEGN_23",
             "locus": "MEGJMN_023",
-            "3di": "DPPPPQWDAAPPPRDTDNDPVVSVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCVVVVDXDPDPVSVVVVVVVVCVVPVDDDPPDPVVVVVVVVPVVVPVPDDPPPD"
+            "3di": "DPPPPQWDAAPPPRDTDNDPVVSVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCVVVVDXDPDPVSVVVVVVVVCVVPVDDDPPDPVVVVVVVVPVVVPVPDDPPPD",
+            "prostt5_confidence": 69.68
         },
         {
             "type": "cds",
@@ -1968,6 +2007,7 @@
             "id": "MEGJMNBEGN_24",
             "locus": "MEGJMN_024",
             "3di": "DDDDDPPDPPVPVDPPPDDDDDDPPDDDPDDVVVVVVVVCVVVVNDDDDD",
+            "prostt5_confidence": 64.4,
             "length": 51
         },
         {
@@ -2048,7 +2088,9 @@
                     "description": "Replication initiation protein"
                 }
             ],
+            "prostt5_confidence": 63.04,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 211
         },
         {
@@ -2169,7 +2211,9 @@
                     "description": "Hotdog Thioesterase "
                 }
             ],
+            "prostt5_confidence": 73.83,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 129
         },
         {
@@ -2274,7 +2318,9 @@
                     "description": "Transcription factor LuxR-like, autoinducer-binding domain"
                 }
             ],
+            "prostt5_confidence": 57.18,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 162
         },
         {
@@ -2377,7 +2423,9 @@
                     "description": "Umud Fragment, subunit A"
                 }
             ],
+            "prostt5_confidence": 64.5,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 193
         },
         {
@@ -2439,7 +2487,7 @@
             ],
             "id": "MEGJMNBEGN_29",
             "locus": "MEGJMN_029",
-            "3di": "DKWKWKWFFDPVCQVVLVVVCVVVVWDKDWQWDWDWDWDPDPVGIDIDIDGPDGRMIMIGDDPVVDDLVVNCVRPGTDGTDDDPNDGDTDDPLLVVLSVLVVVXXXDDPDXXXDXVPDDPVLSVLSSVLVVDPDPVVSVVSSVVSVVVDVXSVVCVVVVDDXDXXDDPPDPPPDPPD",
+            "3di": "DKWKWKWFFDPVCQVVLVVVCVVVVWDKDWQWDWDWDWDPDPVGIDIDIDGPDGRMIMIGDDPVVDDLVVXCVRPGTDGTDDDPNDGDTDDPLLVVLSVLVVVXXXDDPDXXXDXVPDDPVLSVLSSVLVVDPDPVVSVVSSVVSVVVDVXSVVCVVVVDDXDXXDDPPDPPPDPPD",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -2447,8 +2495,8 @@
                     "query_cov": 0.92,
                     "subject_cov": 0.99,
                     "identity": 0.26,
-                    "score": 473.0,
-                    "evalue": 1.647e-10,
+                    "score": 471.0,
+                    "evalue": 1.67e-10,
                     "description": "Transcription antitermination protein RfaH"
                 },
                 {
@@ -2457,8 +2505,8 @@
                     "query_cov": 0.84,
                     "subject_cov": 0.84,
                     "identity": 0.393,
-                    "score": 598.0,
-                    "evalue": 1.427e-13,
+                    "score": 596.0,
+                    "evalue": 1.407e-13,
                     "description": "NusG-like N-terminal domain-containing protein"
                 },
                 {
@@ -2467,8 +2515,8 @@
                     "query_cov": 0.9,
                     "subject_cov": 0.99,
                     "identity": 0.248,
-                    "score": 454.0,
-                    "evalue": 3.538e-10,
+                    "score": 452.0,
+                    "evalue": 3.604e-10,
                     "description": "RfaH from Escherichia coli in complex with ops DNA"
                 },
                 {
@@ -2477,12 +2525,14 @@
                     "query_cov": 0.92,
                     "subject_cov": 0.99,
                     "identity": 0.25,
-                    "score": 484.0,
-                    "evalue": 4.573e-11,
+                    "score": 482.0,
+                    "evalue": 4.626e-11,
                     "description": "NusG, N-terminal domain"
                 }
             ],
+            "prostt5_confidence": 59.81,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 178
         },
         {
@@ -2542,6 +2592,7 @@
             "id": "MEGJMNBEGN_30",
             "locus": "MEGJMN_030",
             "3di": "DPPPPPDPDDDDDDDPVVLVVLQVVQVVVCVVVVHRDGSVVVVVVVVVVVVVVVVVVVVVPDDDPPP",
+            "prostt5_confidence": 82.81,
             "length": 68
         },
         {
@@ -2611,7 +2662,9 @@
                     "description": "DUF1496 domain-containing protein"
                 }
             ],
+            "prostt5_confidence": 72.8,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 104
         },
         {
@@ -2681,7 +2734,9 @@
                     "description": "Lipoprotein"
                 }
             ],
+            "prostt5_confidence": 62.35,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 202
         },
         {
@@ -2741,7 +2796,7 @@
             "genes": [],
             "id": "MEGJMNBEGN_33",
             "locus": "MEGJMN_033",
-            "3di": "DDDDPDPPPPPPPDPVVLVVLLCVLCVVLVHDSLLLVLLLCVQPVQQQQDKDFDADPVRDTPWIFGGSRTDIPVCQVVCCVVVQDPDSVCSRRPVSSVSSVSSVLLSVQCVVQPPDLLSQLCSVQNDDPDPVSSVVSNVVSVVSVVSSVVVVVVVVVVV",
+            "3di": "DDDDPDPPPDPPPDPVVLVVLLCVLCVVLVHDSLLLVLLLCVQPVQQQQDKDFDADPVRDTPWIFGGSRTDIPVCQVVCCVVVQDPDSVCSRRPVSSVSSVSSVLLSVQCVVQPPDLLSQLCSVQNDDPDPVSSVVSNVVSVVSVVSSVVVVVVVVVVV",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -2749,8 +2804,8 @@
                     "query_cov": 0.99,
                     "subject_cov": 0.95,
                     "identity": 0.385,
-                    "score": 709.0,
-                    "evalue": 9.021e-15,
+                    "score": 712.0,
+                    "evalue": 8.159e-15,
                     "description": "Peptidoglycan-binding-like protein"
                 },
                 {
@@ -2759,8 +2814,8 @@
                     "query_cov": 0.99,
                     "subject_cov": 0.97,
                     "identity": 0.348,
-                    "score": 606.0,
-                    "evalue": 3.861e-12,
+                    "score": 603.0,
+                    "evalue": 4.785e-12,
                     "description": "Transglycosylase SLT domain-containing protein"
                 },
                 {
@@ -2770,7 +2825,7 @@
                     "subject_cov": 0.91,
                     "identity": 0.298,
                     "score": 308.0,
-                    "evalue": 1.617e-05,
+                    "evalue": 1.661e-05,
                     "description": "Structure of EtgA D60N mutant"
                 },
                 {
@@ -2780,11 +2835,13 @@
                     "subject_cov": 0.95,
                     "identity": 0.398,
                     "score": 563.0,
-                    "evalue": 1.307e-11,
+                    "evalue": 1.372e-11,
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 75.39,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 160
         },
         {
@@ -2887,7 +2944,9 @@
                     "description": "DotD protein"
                 }
             ],
+            "prostt5_confidence": 67.19,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 156
         },
         {
@@ -2947,7 +3006,7 @@
             "genes": [],
             "id": "MEGJMNBEGN_35",
             "locus": "MEGJMN_035",
-            "3di": "DPDDPDDPPDDDPDDPPPPPPPDDDDDPDLVVLLPDDPDDDDPDDPVLLVLLLVLLLQLLLLLLLLVLLVVLLVVCVVCVVVLCVVQVLVVQCVVQQWFAWDKDWWWWDWDDDPPDIDDDIXIXDTXDDPXXDPDDDGSCVQXVPDXDDDDDDPDDPXDDDDDPVSVVSSSVSSVVSSVCSNVVSVVSSVVSSVVSVVVSVSSVVVVVCVVVQKKDDWDKDWDWWDDDDXDIDITPDIIIIDIDIDXDGDPVVXDIDGDDDXVXXXVXXDDD",
+            "3di": "DPDDPDDPPDDDPDDPPPPPPPDDDDDPDLVVLLPDDPDDDDPDDPVLLVVLLVLLLQLLLLLLLLVLLVVLLVVCVVCVVVLCVVQVLVVQCVVQQWFAWDKDWWWWDWDDDPPDIDDDIXIXDTXDDPXXDPDDDGSCVXXVPDXDDDDDDPDDPXDDDDDPVSVVSSSVSSVVSSVCSNVVSVVSSVVSSVVSVVVSVSSVVVVVCVVVQKKDDWDKDWDWWDDDDXDIDITPDIIIIDIDIDXDGDPVVXDIDGDDDXVXXXVXXDDD",
             "pstc": [
                 {
                     "source": "afdb",
@@ -2955,22 +3014,24 @@
                     "query_cov": 0.95,
                     "subject_cov": 0.52,
                     "identity": 0.369,
-                    "score": 766.0,
-                    "evalue": 9.345e-17,
+                    "score": 751.0,
+                    "evalue": 1.307e-16,
                     "description": "DotC protein"
                 },
                 {
                     "source": "pdb",
                     "id": "7muq",
-                    "query_cov": 0.77,
-                    "subject_cov": 0.86,
-                    "identity": 0.266,
-                    "score": 562.0,
-                    "evalue": 4.102e-12,
+                    "query_cov": 0.79,
+                    "subject_cov": 0.88,
+                    "identity": 0.264,
+                    "score": 553.0,
+                    "evalue": 4.677e-12,
                     "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 1"
                 }
             ],
+            "prostt5_confidence": 54.2,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 273
         },
         {
@@ -3040,7 +3101,7 @@
             ],
             "id": "MEGJMNBEGN_36",
             "locus": "MEGJMN_036",
-            "3di": "DDFFDPDDPPDDDDDXDDDPDDDDDVDLLSVVLSCLVVVFFKWKDFAQAFIWTDDQNDTDGRDPDGDDLVRVVSNVVVQDDPVVSVCVVVQDKDKDKDWDADVSCVVRVHDXRDIWMWIKIWGWDDDPVRGITIMIMIGTADQDQDALVVQPDDPVVLVLLDDQFFEEEEEADPPLCRLSVLLNSVLVCLQVVLPFAEEEEEPDDRHDSDDDPPRGHYDYDYDPPRAPDLLVSLVVVVVVVGREYEYEADDALSNLVSQLVSRVVRHYYYYYDYDQDPLVVLVVSLVSDDPVCSLVSLLSSLVRYFKYKYWHWFQFPVRDTDIDIFIDGDDPVLSVVSSPDDSVCSSVVVVVVVVVVVRXSLNVLLVCVVVVRDDPVSSVVRDDPVSVVVSVVVV",
+            "3di": "DDFFDPDDPPDDDDDXXDDPDDDDDVDLLSVVLSCLVVVFFKWKDFAQAFIWTDDQNDTDGRDPDGDDLVRVVSNVVVQDDPVVSVCVVVQDKDKDKDWDADVSCVVRVHDXRDIWMWIKIWGWDDDPVRGITIMIMIGTADQDQDALVVQPDDPVVLVLLDDQFFEEEEEADPPLCRLSVLLNSVLVCLQVVLPFAEEEEEPDDRHDSDDDPPRGHYDYDYDPPRAPDLLVSLVVVVVVVGREYEYEADDALSNLVSQLVSRVVRHYYYYYDYDQDPLVVLVVSLVSDDPVCSLVSLLSSLVRYFKYKYWHWFQFPVRDTDIDIFIDGDDPVLSVVSSPDDSVCSSVVVVVVVVVVVRXSLNVLLVCVVVVRDDPVSSVVRDDPVSVVVSVVVV",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -3049,17 +3110,17 @@
                     "subject_cov": 0.99,
                     "identity": 0.294,
                     "score": 1297.0,
-                    "evalue": 9.101e-31,
+                    "evalue": 8.931e-31,
                     "description": "Uncharacterized protein YggR"
                 },
                 {
                     "source": "afdb",
                     "id": "A0A7X4CW99",
-                    "query_cov": 0.96,
-                    "subject_cov": 0.87,
-                    "identity": 0.296,
-                    "score": 1433.0,
-                    "evalue": 5.593e-34,
+                    "query_cov": 0.94,
+                    "subject_cov": 0.84,
+                    "identity": 0.293,
+                    "score": 1431.0,
+                    "evalue": 6.151e-34,
                     "description": "AAA+ ATPase domain-containing protein"
                 },
                 {
@@ -3069,7 +3130,7 @@
                     "subject_cov": 0.96,
                     "identity": 0.332,
                     "score": 1408.0,
-                    "evalue": 9.986e-34,
+                    "evalue": 9.782e-34,
                     "description": "X-ray structure of the Legionella pneumophila ATPase DotB"
                 },
                 {
@@ -3079,7 +3140,7 @@
                     "subject_cov": 0.98,
                     "identity": 0.311,
                     "score": 797.0,
-                    "evalue": 1.894e-18,
+                    "evalue": 1.872e-18,
                     "description": "P-loop containing nucleotide triphosphate hydrolases"
                 },
                 {
@@ -3089,11 +3150,13 @@
                     "subject_cov": 0.96,
                     "identity": 0.228,
                     "score": 341.0,
-                    "evalue": 5.705e-07,
+                    "evalue": 5.677e-07,
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 66.6,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 396
         },
         {
@@ -3168,7 +3231,9 @@
                     "description": "TraK protein"
                 }
             ],
+            "prostt5_confidence": 69.34,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 89
         },
         {
@@ -3229,16 +3294,16 @@
             ],
             "id": "MEGJMNBEGN_38",
             "locus": "MEGJMN_038",
-            "3di": "DPXXPVQQQDKFFFQDDPVCQVVLQVLXQADPVRHGQWDQDPVVRTIIGTPPXDCVSSCVXDDPXXDDDDDPDDLQVVVQVVVVVVQFDDPDDDDAPQDKDFGDGDDDPVPDDDDDGQKIWHAXSLXWIKMWIAGPVDDPPXDIDIDGDDDDDDDPSSSSVSVVSSVVSVVVSVVVLVVLLVVQQVVLVVVLVPFAFDDCQQLLCVVLVFHDDRQWTADPVRWIKDFWAFLVRGTAWIWIAHSVGDIDTGXSHDLALIKGKGADDDDPQAAAEEEEASSLQRLVCVLAVHIYIYRXDLVCLLSNLVSVCVVRVPHAYEYEFFLDDDDDPDLVVLXVXLVXVVDDDPDPPDDDDPVSSSVDTSLSSSLVSLVVHPXYKYKYDDDDPVSVVVVDGGSSVVCVVPNSVSVLVSXVVDPPXSQWMADPVVRDIDDDPDPDDDDDDDDPDDDDDDXXXXDDDPPXVVVVVVVVVVVVVVVPDDDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDPDDDDDDPDDDDDDDDDDPVXXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDPDDDDPXXXKKKKADDDPPDDXXDXXXXXXXXXDPXVVLVVQWDWDDDXQWIFTDDVNHTQWTDSRGMIDGDDPDLVSSLSSLVSVVSVCCVRRNQEMEYDYDPVSLLSNLLSCLLSVXRHHYPDPVSSVSSVVSNVVVCVPDPPSVXVXPDDDDDDPDDDPDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDDPVACVQKDKAAWADKDWAQPVVDDPGDIWIWTWGQDPVGIDIDIDNQVVVQCVVQVDDHGFIKGKHWDAWDWDWDWDFDDDPNDTPGTDIDIDTDTDMDMDGDDPPPDDDDDDPDPXXXXVVVXVVVLVVLLVVLVVXXXVVVXDXDPPDXQXKWXXXXXXXDXDDXDDXXKDWDDDDPPDDXXIXIWXXDPVXIWIWGXXXDXDXWIWTWTDDPNXTWIKIWGXDXDXXXXXIWIWTQDPVGIDIDXXXVXXCVXPXDGDDXXXXXXDGXPDDDPXXXXXXGDXDSVVDDVVSCVVSVHDDDDDDDDPDDDDDDDDDXXDDDDPDDDDDD",
+            "3di": "DPXXPVQQQDKFFFQDDPVCQVVLQVLXQADPVRDGQWDQDPVVRTIIGTPPXDCVSSCVXDDPXXDDDDDPDDLQVVVQVVVVVVQFDDPDDDDAPQDKDFGDGDADPVPDDDDDGQKIWHAXSLXKIKMWIAGPVDDPPXDIDIDGDDDDDDDPSSSSVSVVSSVVSVVVSVVVLVVLLVVQQVVLVVVLVPFAFDDCQQLLCVVLVFHDDRQWTADPVRWIKDFWAFLVRGTAWIWIAHSVGDIDTGXSHDLALIKTKGADDDDPQAAAEEEEASSLQRLVCVLFVHIYIYRXDLVCLLSNLVSVCVVRVPHAYEYEFFLDDDDDPDXVVLXVXLVXVXDDDPDPXDDDDPVSSSVDTSLSSSLVSLVVHPXYKYKYDDDDPVSVVVVDGGSSVVCVVPNSVSVLVSXVVDPPSSQWMADPVVRDIDDDPDPDDDDDDDDPDDDDDDXXXXDDDPPXVVVVVVVVVVVVVVVPDDDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDPDDDDDDPDDDDDDDDDDPVXXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDPDDDDPXXXKKKKADDDPPDDXXDXXXXXXXXXDPXVVLVVQWDWDDPXQWIFTDDVNHTQWTDSRGMIDGDDPDLVSSLSSLVSVVSVCCVRRNQEMEYDYDPVSLLSNLLSCLLSVXRHHYPDPVSSVSSVVSNVVVCVPDPPSVXVXPDDDDDDPDDDPDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDDPVACVQKDKAAWADKDWAQPVVDDPGDIWIWTWGQDPVGIDIDIDNQVVVQCVVQVDDHGFIKGKHWDAWDWDWDWDFDDDPNDTPGTDIDIDTDTDMDMDGDDPPPDDDDDDPDPXXXXVVVXVVVLVVLLVVLLVXXXVVVXDXDPPDXQXKWXXXXXXXDXDDXDDXXKDWDDDDPPDDXXIXIWXXDPVXIWIWGXXXDXDXWIWTWTDDPNXTWIKIWGXDXDXXXXXIWIWTQDPVGIDIDXXXVXXCVXPXDGDDXXXXXXDGXPDDDPXXXXXXGDXDSVVDDVVSCVVSVHDDDDDDDDPDDDDDDDDDXXDDDDPDDDDDD",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "P27189",
-                    "query_cov": 0.38,
-                    "subject_cov": 0.54,
-                    "identity": 0.253,
-                    "score": 1141.0,
-                    "evalue": 1.144e-23,
+                    "query_cov": 0.35,
+                    "subject_cov": 0.47,
+                    "identity": 0.277,
+                    "score": 1128.0,
+                    "evalue": 1.936e-23,
                     "description": "DNA primase TraC"
                 },
                 {
@@ -3246,9 +3311,9 @@
                     "id": "A0A0T9MTE6",
                     "query_cov": 0.99,
                     "subject_cov": 1.0,
-                    "identity": 0.3,
-                    "score": 3000.0,
-                    "evalue": 4.35e-65,
+                    "identity": 0.298,
+                    "score": 2993.0,
+                    "evalue": 4.252e-65,
                     "description": "DNA primase TraC"
                 },
                 {
@@ -3256,13 +3321,15 @@
                     "id": "6n9x",
                     "query_cov": 0.2,
                     "subject_cov": 0.37,
-                    "identity": 0.147,
-                    "score": 297.0,
-                    "evalue": 6.228e-05,
+                    "identity": 0.143,
+                    "score": 301.0,
+                    "evalue": 4.875e-05,
                     "description": "Structure of bacteriophage T7 lagging-strand DNA polymerase (D5A/E7A) and gp4 (helicase/primase) bound to DNA including RNA/DNA hybrid, and an incoming dTTP (LagS3)"
                 }
             ],
+            "prostt5_confidence": 53.96,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 1108
         },
         {
@@ -3320,7 +3387,8 @@
             "genes": [],
             "id": "MEGJMNBEGN_39",
             "locus": "MEGJMN_039",
-            "3di": "DPPVVDPDDPVVVVVPPPDPVPVXVDXDXDVCVVVVDPVLLVVLVVLLVVVVVVVVVLXVQLVVLLVVLVVDDDDDDDCVVVVVVSSVVSVVVSVVSSVVVVVSDDPPDDSVVVVVV"
+            "3di": "DPPVVDPDDPVVVVVPPPDPVPVXVDXDXDVCVVVVDPVLLVVLVVLLVVVVVVVVVLXVQLVVLLVVLVVDDDDDDDCVVVVVVSSVVSVVVSVVSSVVVVVSDDPPDDSVVVVVV",
+            "prostt5_confidence": 48.68
         },
         {
             "type": "cds",
@@ -3424,7 +3492,9 @@
                     "description": "Gcn5-related N-acetyltransferase (GNAT)"
                 }
             ],
+            "prostt5_confidence": 74.46,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 235
         },
         {
@@ -3520,7 +3590,9 @@
                     "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 2"
                 }
             ],
+            "prostt5_confidence": 62.55,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 368
         },
         {
@@ -3580,6 +3652,7 @@
             "id": "MEGJMNBEGN_42",
             "locus": "MEGJMN_042",
             "3di": "DPDPVVVVVVVVVVVVVVVVVVVCCVVVVVVVCCVVPDDDPDPPDDPPDPPVPVVVPVVVVVVVVVVVVVVVVVVVVVVVVVVPVVVXVDDDPDDDDDPDDDDDDDDDPPDDPPDPVPVVPDDDPDDDPVVVDDD",
+            "prostt5_confidence": 62.99,
             "length": 136
         },
         {
@@ -3664,7 +3737,9 @@
                     "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 2"
                 }
             ],
+            "prostt5_confidence": 59.28,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 305
         },
         {
@@ -3739,7 +3814,9 @@
                     "description": "TraP protein"
                 }
             ],
+            "prostt5_confidence": 71.68,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 240
         },
         {
@@ -3812,7 +3889,9 @@
                     "description": "Conjugal transfer protein TraQ"
                 }
             ],
+            "prostt5_confidence": 72.85,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 178
         },
         {
@@ -3868,7 +3947,8 @@
             "genes": [],
             "id": "MEGJMNBEGN_46",
             "locus": "MEGJMN_046",
-            "3di": "DVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVPDVVVVVVPVVPVVVVVVVVVVVVVVLVVVLVVLLVVLVVLLVVLVVCVVVVVPDPPDDPVNSVVSNVVSVVSNVVSVVVVVVCVVVPDDDPDPPPPD"
+            "3di": "DVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVPDVVVVVVPVVPVVVVVVVVVVVVVVLVVVLVVLLVVLVVLLVVLVVCVVVVVPDPPDDPVNSVVSNVVSVVSNVVSVVVVVVCVVVPDDDPDPPPPD",
+            "prostt5_confidence": 80.13
         },
         {
             "type": "cds",
@@ -3939,7 +4019,9 @@
                     "description": "Conjugal transfer protein"
                 }
             ],
+            "prostt5_confidence": 45.61,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 188
         },
         {
@@ -4004,7 +4086,7 @@
             "genes": [],
             "id": "MEGJMNBEGN_48",
             "locus": "MEGJMN_048",
-            "3di": "DVVVVVVVVVVVVVVXDDPFDDLLVQLQFQFWAFFDDPXCDXDPXDTATQWTAGLQQKIKWKKWFFAAAFADDQPDDPVVVXDLVLLLVLLLVLCFPXQADFQKKKKKKKFKALXXLLVLLLVLLVLLLVLLLXFLXXLSVLLSVVSVLCSVLXIDITMMMMIMGGDDDDDPVVSVVVVVVVVVVLVPDDPDXXXDDDDPVVVVVVVVVVVVSVVSSCVSSDVSDPXIXMDTDGXQVVLQVLLCLQXXPXDPDDDDDDDPVXXDDDPDDDDDPPDDPXDXDXSSSSSDDWDWDDFQFWIDGNQKIKWKKFFLDADLDDDALCLLQFLQXXSFIKMKMKIKHXXDLVVVDVVLVVLVVVCVDPVSVVVVVVSVVSVVVVNVFTKIWIWMMMMGMDSDPVRRVVSVVSSQVSCVVVVRTDMDXXXXCSVQSVVSSDXSSDDDDDPRIDIDGSSSSSSSDSNYDXDDPXDSQALQWFAFSSRDIHGAHLXDXPDXAAEEEEEAAPQQCRLVVVLSSVSSQLSXDDXDGAAEEEEEAPLLCVLSLVSSLVSDDPVCNVQEEEAEQDLXDLAAFALLQADLLAQADDPVSLVLVLLLLLLLLADLVLGDDPPDPLLSVLSSVLSVVLSVVLDPPDPQXXDQADDPVLVVLLVVLVDDDDDDPPVSRRDGSVVSLVSCVVVVNDVSSVSSXXSSGDFLLSSLVSLVDPVSCVVSVVXDDPPVPDGSSVSSSVSSVVCCVRPVNRHDGXXRDDDLSRRYYYYYCVVQDDDPDSSSLSSLSSSLSVSVVSSVVLLCLLVCLVVSLVRDDPVCNVVSVVVNVVSLXHAYEYEYEACLSNVPRPCSVVVVLVCLVPVVVSRYHYYYYYNAPVSDDLSSLVSHQKYKYAAHDPVCVVSCCVSVVDDPVXSVVSVPQDXDDDPVRQXXWIWIWIDDPVGIDIGIDIDDDALLSLCSSDPDPLLVLLLSLLSVVDNDXVSVVLSSVVDVXSXSVVSSVVSCVVVVXVXXXXDXSVSSVVSCVVVVDDD",
+            "3di": "DVVVVVVVVVVVVVVXDDPFDDLLVQLQFQFWAFFDDPXCDXDPXDTATQWTAGLQQKIKWKKWFFAAAFADDQPDDPVVVXDLVLLLVLLLVLCFPXQADFQKKKKKKKFKALXXLLVLLLVLLVLLLVLLLXXLXXLSVLLSVVSVLCSVLXIDITMMMMIMGGDDDDDPVVSVVVVVVVVVVLVPDDPDXXXDDDDPVVVVVVVVVVVVSVVSSCVSSDVSDPXIXMDTDGXQVVLQVLLCLQXXPXDPDDDDDDDPVXXDDDPDDDDDPPDDPXDXDXSSSSSDDWDWDDFQFWIDGNQKIKWKKFFLDADLDDDALCLLQFLQXXSFIKMKMKIKHXXDLVVVDVVLVVLVVVCVDPVSVVVVVVSVVSVVVVNVFTKIWIWMMMMGMDSDPVRRVVSVVSSQVSCVVVVRTDMDXXXXCSVQSVVSSDXSSDDDDDPRIDIDGSSSSSSSDSNYDXDDPXDSQALQWFAFSSRDIHGAHLXDXPDXAAEEEEEAAPQQCRLVVVLSSVSSQLSXDDXDGAAEEEEEAPLLCQLSLVSSLVSDDPVCNVQEEEAEQDLXDLAAFALLQADLLDQADDPVSLVLVLLLLLLLLADLVLGDDPPDPLLSVLSSVLSVVLSVVLDPPDPQXXDQADDPVLVVLLVVLVDDDDDDPPVSRRDGSVVSLVSCVVVVNDVSSVSSXXSSGDFLLSSLVSLVDPVSCVVSVVXDDPPVPDGSSVSSSVSSVVCCVRPVNRHDGXXRDDDLSRRYYYYYCVVQDDDPDSSSLSSLSSSLSVSVVSSVVLLCLLVCLVVSLVRDDPVCNVVSVVVNVVSLXHAYEYEYEACLSNVPRPCSVVVVLVCLVPVVVSRYHYYYYYNAPVSDDLSSLVSHQKYKYAAHDPVCVVSCCVSVVDDPVXSVVSVPQDXDDDPVRQXXWIWIWIDDPVGIDIGIDIDDDALLSLCSSDPDPLLVLLLSLLSVVDXDXVSVVLSSVVXVXSXSVVSSVVSCVVVVXVXXXXDXSVSSVVSCVVVVDDD",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -4012,8 +4094,8 @@
                     "query_cov": 0.97,
                     "subject_cov": 0.98,
                     "identity": 0.118,
-                    "score": 1541.0,
-                    "evalue": 4.292e-30,
+                    "score": 1534.0,
+                    "evalue": 6.217e-30,
                     "description": "Protein TraC"
                 },
                 {
@@ -4022,8 +4104,8 @@
                     "query_cov": 0.92,
                     "subject_cov": 0.99,
                     "identity": 0.233,
-                    "score": 2743.0,
-                    "evalue": 7.961e-55,
+                    "score": 2738.0,
+                    "evalue": 1.078e-54,
                     "description": "Protein IcmB (DotO)"
                 },
                 {
@@ -4031,13 +4113,15 @@
                     "id": "7o43",
                     "query_cov": 0.93,
                     "subject_cov": 0.97,
-                    "identity": 0.102,
-                    "score": 1122.0,
-                    "evalue": 1.453e-21,
+                    "identity": 0.101,
+                    "score": 1125.0,
+                    "evalue": 1.292e-21,
                     "description": "TrwK/VirB4unbound dimer complex from R388 type IV secretion system determined by cryo-EM."
                 }
             ],
+            "prostt5_confidence": 55.37,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 1016
         },
         {
@@ -4096,7 +4180,8 @@
             ],
             "id": "MEGJMNBEGN_49",
             "locus": "MEGJMN_049",
-            "3di": "DPPDDDDDDDDDPPDDDPPDDDPDPPPDDDCVPPPVVVLVVVVVVLVVVVVVVVVLVVVLVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVLVVLLVDDDDDLVLXVPXLVVLLVVLLVLLLVLLVVLLVVXDDDLVSLLVLLVPADDDDDDVXLVVXXXXXWADDPVXCVVVVHDXSXXXDDXPDXXDXXXXXXLXVXXXXXPDDDDXDDDPVSLVSLLVXLVVXXVXDPXDXDDXXDXXDXSXVVSVVSVVLVVVSVVVSPDDXXVXXXPDDDDDPSLVVVVVSSVVVXVXVVXDVPDDVVSVVVSVDDSVSVVVVVVSVVVVXVVVVVVSVPDDPVVVVVVVSVSVSSSVSSVVSSVVSSVVSSSSSSVSSSVVSCVVCVVVVVVVVCVVVVVVPD"
+            "3di": "DPPDDDDDDDDDPPDDDPPDDDPDPPPDDDCVPPPVVVLVVVVVVLVVVVVVVVVLVVVLVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVLVVLLVDDDDDLVLXVPXLVVLLVVLLVLLLVLLVVLLVVXDDDLVSLLVLLVPADDDDDDVXLVVXXXXXWADDPVXCVVVVHDXSXXXDDXPDXXDXXXXXXLXVXXXXXPDDDDXDDDPVSLVSLLVXLVVXXVXDPXDXDDXXDXXDXSXVVSVVSVVLVVVSVVVSPDDXXVXXXPDDDDDPSLVVVVVSSVVVXVXVVXDVPDDVVSVVVSVDDSVSVVVVVVSVVVVXVVVVVVSVVDDPVVVVVVVSVSVSSSVSSVVSSVVSSVVSSSSSSVSSSVVSCVVCVVVVVVVVCVVVVVVPD",
+            "prostt5_confidence": 46.88
         },
         {
             "type": "cds",
@@ -4154,7 +4239,8 @@
             ],
             "id": "MEGJMNBEGN_50",
             "locus": "MEGJMN_050",
-            "3di": "DDDDDPPPPPDDPDDPPPVVVVVVVVVVVVVVVVVVDVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVDDLVVLCVVVVDDLSVLLVLLVVLLVVLVVLLVVLVVVLVVVLVVLVVVVVPDDPPVNVVSVVVSVVSSVSSVVSVVSSLVSVVSSVVSVVVVVVVVVVDVVVVVVVVVVVSVCSVPPD"
+            "3di": "DDDDDPPPPPDDPDDPPPVVVVVVVVVVVVVVVVVVDVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVDDLVVLCVVVVDDLSVLLVLLVVLLVVLVVLLVVLVVVLVVVLVVLVVVVVPDDPPVNVVSVVVSVVSSVSSVVSVVSSLVSVVSSVVSVVVVVVVVVVDVVVVVVVVVVVSVCSVPPD",
+            "prostt5_confidence": 70.07
         },
         {
             "type": "cds",
@@ -4225,7 +4311,9 @@
                     "description": "Conjugal transfer integral membrane domain protein"
                 }
             ],
+            "prostt5_confidence": 51.76,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 715
         },
         {
@@ -4320,7 +4408,9 @@
                     "description": "The FERM domain of human moesin mutant L281R"
                 }
             ],
+            "prostt5_confidence": 57.86,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 208
         },
         {
@@ -4380,7 +4470,8 @@
             ],
             "id": "MEGJMNBEGN_53",
             "locus": "MEGJMN_053",
-            "3di": "DDPDPDVPPVVVVVVVVVVVVVVVLVLVVVVVVPVVLVVLLVVLVVVVVDDVVPVVVVLVVVLVVCVVVVDPVDDDDPVSVVVSCVVVVVVVCSVVVSSVVSVVVVVVPDPPDDPDDDDXDFLXXLLVLLVVXDXXXXVLLXXDDDXVXXXDPPDLXXXLVDDLVVVCVVVVXDVPVXDDLVVSLVVLLVVLXVVXVDDPXXXVSSLLLLLSLLLLCLLVVNLVVSVVSLVVSXVXXDDPDPVVVVVVVXXDDDDSVVSVVSSVVSCVDVXXVVXVVXXVVSQVSVCVXXVDDDDDDPXXXXXWDXXDVVSXXXXXXDXXXXWXWXXXXXXXXIXIMIXGGPVDDDXDXVVSVVSVVVSVVVSVVSVXDXDDDDDDXXDDVDDDPSDDDDPPDPPPPVPPPPDDDDPDDDDDDPDPDPPDDDPDDPPDDPDDDDDDDDDDPDDDPDDPDDDDDPDDPPPPDDDPPPPDPPDD"
+            "3di": "DDPDPDVPPVVVVVVVVVVVVVVVLVLVVVVVVPVVLVVLLVVLVVVVVDDVVPVVVVLVVVLVVCVVVVDPVDDDDPVSVVVSCVVVVVVVCSVVVSSVVSVVVVVVPDPPDDPDDDDXDFLXXLLVLLVVXDXXXXVLLXXDDDXVXXXDPPDLXXXLVDDLVVVCVVVVXDVPVXDDLVVSLVVLLVVLXVVXVDDPXXXVSSLLLLLSLLLLCLLVVNLVVSVVSLVVSXVXXDDPDPVVVVVVVXXDDDDSVVSVVSSVVSCVDVXXVVXVVXXVVSQVSVCVXXVDDDDDDPXXXXXWDXXDVVSXXXXXXDXXXXWXWXXXXXXXXIXIMIXGGPVDDDXDXVVSVVSVVVSVVVVVVSVXDXDDDDDDVXDDVDDDPSDDDDPPDPPPPPPPPPDDDDPDDDDDDPDPDPPDDDPDDPPDDPDDDDDDDDDDPDDDPDDPDDDDDPDDPPPPDDDPPPPDPPDD",
+            "prostt5_confidence": 43.53
         },
         {
             "type": "cds",
@@ -4443,7 +4534,7 @@
             ],
             "id": "MEGJMNBEGN_54",
             "locus": "MEGJMN_054",
-            "3di": "DKDKFWKWFDDPPDDXXWIWDDDAQWIFTDGPVRDTPDIDGLDDDWDWDDDPQFIWTDXPDPDPDTITGXDDPVSSVVVVVVSCVSNVVDDDPDDPDDPCVVVVVVVVVVVVCVVPDDDDDPPPDDDPDDDDDPDPDPDDDDDDDPDDDPDPDDDDDDPPPDDDPDDDPDPPDDDDDDDPPDDPDPDDPDPXPXDFDDPVLLVLVVVLVVVLLDKDWLAPPAQFEKEWEAFLQDPVQLVCVVLVVVVSVRHTYIYQYAYDPXXPLSLLLSLLLSPDDSVCSNVSSVQSSPDDPXXXDXDDDDPDPPPDDDPVVVVVVSSVSSVVSNVSSVVSCVSSVDPDDTWIATSVGHTDDSVLSNDSVVVVVVSVVXDPVVV",
+            "3di": "DKDKFWKWFDDPPDDXXWIWDDDAQWIFTDGPVRDTPDIDGLDDDWDWDDDPQFIWTDXPDPDPDTITGXDDPVSSVVVVVVSCVSNVVDDDPDDPDDPXVVVVVVVVVVVVCVVPDDDDDPPPDDDPDDDDDPDPDPDDDDDDDPDDDPDPDDDDDDPPPDDDPDDDPDPPDDDDDDDPPDDPDPDDPDPXPXDFDDPVLLVLVVVLVVVLLDKDWLAPPAQFEKEWEAFLQDPVQLVCVVLVVVVSVRHTYIYQYAYDPXXPLSLLLSLLLSPDDSVCSNVSSVQSSPDDPXXXDXDDDDPDPPPDDDPVVVVVVSSVSSVVSNVSSVVSCVSSVDPDDTWIATSVGHTDDSVLSNDSVVVVVVSVVXDPVVV",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -4452,7 +4543,7 @@
                     "subject_cov": 0.58,
                     "identity": 0.165,
                     "score": 304.0,
-                    "evalue": 9.337e-06,
+                    "evalue": 9.074e-06,
                     "description": "Thiol:disulfide interchange protein DsbG"
                 },
                 {
@@ -4460,9 +4551,9 @@
                     "id": "A0AAX3AI07",
                     "query_cov": 0.99,
                     "subject_cov": 0.97,
-                    "identity": 0.962,
-                    "score": 2071.0,
-                    "evalue": 6.181e-50,
+                    "identity": 0.959,
+                    "score": 2067.0,
+                    "evalue": 6.413e-50,
                     "description": "Conjugal transfer protein TrbB"
                 },
                 {
@@ -4472,7 +4563,7 @@
                     "subject_cov": 0.84,
                     "identity": 0.214,
                     "score": 316.0,
-                    "evalue": 3.186e-06,
+                    "evalue": 3.093e-06,
                     "description": "Proteus mirabilis ScsC linker (residues 39-49) deletion and N6K mutant"
                 },
                 {
@@ -4482,11 +4573,13 @@
                     "subject_cov": 0.94,
                     "identity": 0.201,
                     "score": 295.0,
-                    "evalue": 8.472e-06,
+                    "evalue": 8.24e-06,
                     "description": "Glutaredoxin"
                 }
             ],
+            "prostt5_confidence": 56.59,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 376
         },
         {
@@ -4555,16 +4648,16 @@
             ],
             "id": "MEGJMNBEGN_55",
             "locus": "MEGJMN_055",
-            "3di": "DPPPPDDPDLVVXDDDDDDDPVLVVLLDPVNVVVLVVQLVVCCVVPVVSVVVSVVVCVVSVVSSVVXXDDADADDDXXQQDDDPVXXDDDXDDVPVVDXXDTXDXXXGGXXALFWFFWFXPPXXTDTDTDGLLLLLLFEEEEAAPQLCVLVSVLRNVLSCLVVVFAEEEEEQPPDPVSVLSNLLSCVVSVNNVQEAEAALDDXPDDLVVCVVVDPVXLXXHFAAFLLQPDDLVLLLLLLCLLQDDDDPDVVLSVLLSVLSSLLSVLQNVVCVVVVHFAFLVVSLVCLDLLSLLVSLVVCVVVVHDPVSNVSSLVSCVVQQPPDDSVCDDDSVPGDPVSSVSSCSSNVSSVVLSVLCXPRXVSRRNDSPGXDDLLCCRLVSHYYYYYQNCVVDDLSSSLSVLSSVLSVVLVSLVVLLVCLVVDDPVSLVSXVVXXPDAAHEYEYEACLSNDDPSVLVSLVRCSSSRYHYYHYHXALVSNCVRNNPCSVSSVVSRQKYKYAAHDDCPPVLVVVQVVQAKDWDWWDWDWDDDDDDPDIDIDXDIDIDIDIDGPDDSVCSNPDDRQWMWMDGPNDTDITGGXXXDDDXXXDDVXXXXXXXDDDDXDDSVVCVVSDDPDXDXPDDDDPDLVXXXWXXXXVVXDDDXXQWDDDPNXIWGDDDXXDDDDDDDDDDPVSVVSSVVSLVVSVVVXVVXXXXXDDDDDDDDXDDDDPVVVVVXVVXXVXXXDDDDVXXXD",
+            "3di": "DPPPPDDPDLVVXDDDDDDDPVLVVLLDPVNVVVLVVQLVVCCVVPVVSVVVSVVVCVVSVVSSVVXXDDADADDDXXQQDDDPVXXDDDXDDVPVVDXXDTXDXXXGGXXALFWFFWFXPPXXTDTDTDGLLLLLLFEEEEAAPQLCVLVSVLRNVLSCLVVVFAEEEEEQPPDPVSVLSNLLSCVVSVNNVQEAEAALDDXPDDLVVCVVVDPVXLXXHFAAFLLQPDDLVLLLLLLCLLQDDDDPDVVLSVLLSVLSSLLSVLQNVVCVVVVHFAFLVVSLVCLDLLSLLVSLVVCVVVVHDPVSNVSSLVSCVVQQPPDDSVCDDDSVPGDPVSSVSSCSSNVSSVVLSVLCXPRXVSRRNDSPGXDDLLCCRLVSHYYYYYQNCVVDDLSSSLSVLSSVLSVVLVSLVVLLVCLVVDDPVSLVSXVVXXPDAAHEYEYEACLSNDDPSVLVSLVRCSSSRYHYYHYHXAXVSNCVRNNPCSVSSVVSRQKYKYAAHDDCPPVLVVVQVVQAKDWDWWDWDWDDDDDDPDIDIDXDIDIDIDIDGPDDSVCSNPDDRQWMWMDGPNDTDITGGXXXDDDXXXDDVXXXXXXXDDDDXDDSVVCVVSDDPDXDXPDDDDPDLVXXXWXXXXVVXDDDXXQWDDDPNXIWGDDDXXDDDDDDDDDDPVSVVSSVVSLVVSVVVXVVXXXXXDDDDDDDDXDDDDPVVVVVXVVXXVXXXDDDDVXXXD",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "Q5ZYC6",
                     "query_cov": 0.98,
                     "subject_cov": 0.81,
-                    "identity": 0.221,
-                    "score": 1788.0,
-                    "evalue": 2.889e-36,
+                    "identity": 0.22,
+                    "score": 1778.0,
+                    "evalue": 4.046e-36,
                     "description": "Type 4 coupling protein DotL"
                 },
                 {
@@ -4573,8 +4666,8 @@
                     "query_cov": 0.72,
                     "subject_cov": 0.99,
                     "identity": 0.364,
-                    "score": 1872.0,
-                    "evalue": 7.594e-38,
+                    "score": 1864.0,
+                    "evalue": 9.571e-38,
                     "description": "TrbC-like protein"
                 },
                 {
@@ -4582,9 +4675,9 @@
                     "id": "6sz9",
                     "query_cov": 0.68,
                     "subject_cov": 0.88,
-                    "identity": 0.238,
-                    "score": 1016.0,
-                    "evalue": 5.849e-20,
+                    "identity": 0.236,
+                    "score": 1006.0,
+                    "evalue": 8.762e-20,
                     "description": "Type IV Coupling Complex (T4CC) from L. pneumophila."
                 },
                 {
@@ -4593,12 +4686,14 @@
                     "query_cov": 0.62,
                     "subject_cov": 0.83,
                     "identity": 0.115,
-                    "score": 428.0,
-                    "evalue": 1.623e-07,
+                    "score": 422.0,
+                    "evalue": 2.101e-07,
                     "description": "P-loop containing nucleotide triphosphate hydrolases"
                 }
             ],
+            "prostt5_confidence": 56.1,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 731
         },
         {
@@ -4701,7 +4796,9 @@
                     "description": "Endonuclease Chain A"
                 }
             ],
+            "prostt5_confidence": 74.56,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 102
         },
         {
@@ -4811,7 +4908,9 @@
                     "description": "Ribonuclease H-like superfamily/Ribonuclease H"
                 }
             ],
+            "prostt5_confidence": 73.73,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 530
         },
         {
@@ -4895,7 +4994,9 @@
                     "description": "IS66 family insertion sequence element accessory protein TnpB"
                 }
             ],
+            "prostt5_confidence": 72.41,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 117
         },
         {
@@ -4979,7 +5080,9 @@
                     "description": "Transposase"
                 }
             ],
+            "prostt5_confidence": 73.34,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 136
         },
         {
@@ -5021,6 +5124,7 @@
             "id": "MEGJMNBEGN_60",
             "locus": "MEGJMN_060",
             "3di": "DDPVVVCVVVVDDDDDDPPDPDDQWDWDDDPNPDIDGDPDDPDDDD",
+            "prostt5_confidence": 75.63,
             "length": 47
         },
         {
@@ -5112,7 +5216,9 @@
                     "description": "Homeodomain-like"
                 }
             ],
+            "prostt5_confidence": 82.76,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 122
         },
         {
@@ -5178,7 +5284,7 @@
             ],
             "id": "MEGJMNBEGN_62",
             "locus": "MEGJMN_062",
-            "3di": "DDPDDPVVDDPVVPDDDDCVVLLVLLCVVCVQQVPDALVLSLLVSQVVCVVVVHDRDDSVSSVVSCVVVVSHDDDDDPDDPDPDDDPDDQADQAFLQEKEKDKDWDAAPVGFIKIKIWIATRNLRATQDMDIDRDDDALVRVLVSLVSSLCVVPNLDADPDAHEYEYAPDPSLPDPVSQVSCVVRRYHYDYDDPPPPSSSVSRVVVVVCLVRRQVVPDDRNHDVVVVVSVVVSSVSQQQQRQRVSLVRHGSVVSVVVVVVVVVPVVVVVPD",
+            "3di": "DDPDDPVVDDPVVPDDDDCVVLLVLLCVVCVQQVPDALVLSLLVSQVVCVVVVHDRDDSVSSVVSCVVVVSHDDDDDPDDPDPDDDPDDQADQAFLQEKEKDKDWDAAPVGFIKIKIWIATRNLRATQDMDIDRDDDALVRVLVSLVSSLCVVPNLDADPDAHEYEYAPDPSCPDPVSQVSCVVRRYHYDYDDPPDPSSSVSRVVVVVCLVRRQVVPDDRNHDVVVVVSVVVSSVSQQQQRQRVSLVRHGSVVSVVVVVVVVVPVVVVVPD",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -5186,8 +5292,8 @@
                     "query_cov": 0.99,
                     "subject_cov": 0.89,
                     "identity": 0.828,
-                    "score": 1807.0,
-                    "evalue": 3.94e-44,
+                    "score": 1797.0,
+                    "evalue": 6.384e-44,
                     "description": "Transposase InsD for insertion element IS2I"
                 },
                 {
@@ -5196,8 +5302,8 @@
                     "query_cov": 0.97,
                     "subject_cov": 0.86,
                     "identity": 0.996,
-                    "score": 1892.0,
-                    "evalue": 4.397e-46,
+                    "score": 1898.0,
+                    "evalue": 2.772e-46,
                     "description": "Insertion element IS2 transposase InsD"
                 },
                 {
@@ -5206,8 +5312,8 @@
                     "query_cov": 0.9,
                     "subject_cov": 0.57,
                     "identity": 0.17,
-                    "score": 474.0,
-                    "evalue": 2.357e-10,
+                    "score": 471.0,
+                    "evalue": 2.734e-10,
                     "description": "V-K CAST Transpososome from Scytonema hofmanni, minor configuration"
                 },
                 {
@@ -5216,12 +5322,14 @@
                     "query_cov": 0.63,
                     "subject_cov": 0.99,
                     "identity": 0.86,
-                    "score": 1236.0,
-                    "evalue": 7.355e-30,
+                    "score": 1234.0,
+                    "evalue": 7.702e-30,
                     "description": "Ribonuclease H-like superfamily/Ribonuclease H"
                 }
             ],
+            "prostt5_confidence": 71.48,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 272
         },
         {
@@ -5279,7 +5387,8 @@
             ],
             "id": "MEGJMNBEGN_63",
             "locus": "MEGJMN_063",
-            "3di": "DPPVVVVVVVDVVPFDKDFLQVLCVVLVHDSVXDDDXVXDVCXVVVDHADDFPDPDDDPTTIDGPVSSVVSSVVSVVVVVVVV"
+            "3di": "DPPVVVVVVVDVVPFDKDFLQVLCVVLVHDSVXDDDXVXDVCXVVVDHADDFPDPDDDPTTIDGPVSSVVSSVVSVVVVVVVV",
+            "prostt5_confidence": 60.89
         },
         {
             "type": "cds",
@@ -5339,16 +5448,16 @@
             ],
             "id": "MEGJMNBEGN_64",
             "locus": "MEGJMN_064",
-            "3di": "DAKDFDDDDPPXFDALLVLLLVQFDDPPDDDDPVDDPDPXDDDDDPDSVVSLVVSVVVVVVDPXXXXDWDDDADPVRXIXXXXXXKDKDXXDDDSVCLSVVLVVLLVLDVPDRRQKTKMKDWDALPDDDDPVLVVVLVVLLCVLLVNRQWTKMWTWGPRDNTIMMIMITHQARNPPRDGRDRPPSSLSSQVSVLVSCVVVVHDHDDXQWDADPVRDTDGDDDDDDDDDPVQVVVCQFFLFDDPLNLCLVQPVVLLVVLVVDLQDALQSSQVSSVQSQWDWADDDQFIWIFGLPDDDXDIDTPCSSDVCSGCVNXCVRHNDHDHHPDSSVSSVVXDXDHDDPVXVDVDVVVVVVVVVVLVVLVVVLVVVVVVLVVVLVDLVVVLVVVLVVLVVVLVVVLVVCVVPDDDPVVSVVSNVVSVVVSVVSSVVSVVVSVVVSVVSVVVVVDDDDDSLSVLLVVLVVPNPSSVLSNVVVVVVVVVVPDDDDDXQXKKKFFDXDXXXXDDXPQWDWDADDSQWIWTDDPRDTQWTDSRRMIXGXDLXDXXLSSLLVVLVVCVVRXHAEMEYDDDPSSLLSNLLSQLVVCVVDVXRHHYDHDVVSSVVSVVVSVVVVVVDDPVVSVVVVVVVVVVXVVPVVPPPDPDDDD",
+            "3di": "DAKDFDDDDPPXFDALLVLLLVQFDDPPDDDDPVDDPDPXDDDDDPDSVVSLVVSVVVVVVDPXXXXDWDDDADPVRXIXXXXXXKDKDXXDDDSVCLSVVLVVLLVLDVPDRRQKTKMKDWDALPDDDDPVLVVVLVVLLCVLLVNNQWTKMWTWGPRDNTIMMIMITHQARNPPRDGRDRPPSSLSSQVSVLVSCVVVVHDHDDXQWDADPVRDTDGDDDDDDDDDPVQVVVCQFFLFDDPLNLCLVQPVVLLVVLVVDLQDALQSSQVSSVQSQWDWADDDQFIWIFGLPDDDXDIDTPCSSDVCSGCVNXCVRHNDHDHHPDSSVSSVVXDXDHXDPVXVDVDVVVVVVVVVVLVVLVVVLVVVVVVLVVVLVDLVVVLVVVLVVLVVVLVVVLVVLVVPDDDPVVSVVSNVVSVVVSVVSSVVSVVVSVVVSVVSVVVVVDDDDDSLSVLLVVLVVPNPSSVLSNVVVVVVVVVVPDDDDDXQXKKKFFDXDXXXXDDXPQWDWDADDSQWIWTDDPRDTQWTDSRRMIXGXDLXDXXLSSLLVVLVVCVVRXHAEMEYDDDPSSLLSNLLSQLVVCVVDVXRHHYDHDVVSSVVSVVVSVVVVVVDDPVVSVVVVVVVVVVXVVPVVDPPDPDDDD",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "Q00191",
-                    "query_cov": 0.95,
-                    "subject_cov": 0.7,
-                    "identity": 0.186,
-                    "score": 1266.0,
-                    "evalue": 1.058e-27,
+                    "query_cov": 1.0,
+                    "subject_cov": 0.72,
+                    "identity": 0.181,
+                    "score": 1272.0,
+                    "evalue": 2.046e-27,
                     "description": "Protein TraI"
                 },
                 {
@@ -5357,12 +5466,14 @@
                     "query_cov": 0.8,
                     "subject_cov": 0.7,
                     "identity": 0.414,
-                    "score": 1936.0,
-                    "evalue": 3.801e-43,
+                    "score": 1935.0,
+                    "evalue": 1.787e-42,
                     "description": "Relaxase"
                 }
             ],
+            "prostt5_confidence": 60.99,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 643
         },
         {
@@ -5422,7 +5533,8 @@
             ],
             "id": "MEGJMNBEGN_65",
             "locus": "MEGJMN_065",
-            "3di": "DVCVVVVVDDDPPDLVVLLVVLVVLVVVLVVCVVVVVDDPDPVVVVSVVVSVVSSVVSVVVVV"
+            "3di": "DVCVVVVVDPDPPDLVVLLVVLVVLVVVLVVCVVVVVDDPDPVVVVSVVVSVVSSVVSVVVVV",
+            "prostt5_confidence": 70.75
         },
         {
             "type": "cds",
@@ -5493,7 +5605,9 @@
                     "description": "Mobilization protein MobC"
                 }
             ],
+            "prostt5_confidence": 71.44,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 111
         },
         {
@@ -5550,6 +5664,7 @@
             "id": "MEGJMNBEGN_67",
             "locus": "MEGJMN_067",
             "3di": "DDDDLVVVLVCVVVVDDDDDDDDDDPVVVVSVVVSCVVVVDDD",
+            "prostt5_confidence": 71.04,
             "length": 44
         },
         {
@@ -5605,7 +5720,8 @@
             "genes": [],
             "id": "MEGJMNBEGN_68",
             "locus": "MEGJMN_068",
-            "3di": "DDDPPDDXFKKEKEXXDDDDPVXXVXDDVVCVVVCVVVXWWWWDDDPXXIIXXXXDDDVCVLVVCVVVPHDPVXSVVXVVDVVVPXDMXMDDDDDVVVVVVVVDPX"
+            "3di": "DDDPPDDXFKKEKEXXDDDDPVXXVXDDVVCVVVCVVVXWWWWDDDPXXIIXXXXDDDVCVLVVCVVVPHDPVXSVVXVVDVVVPXDMXMDDDPDVVVVVVVVDPX",
+            "prostt5_confidence": 41.14
         },
         {
             "type": "cds",
@@ -5664,6 +5780,7 @@
             "id": "MEGJMNBEGN_69",
             "locus": "MEGJMN_069",
             "3di": "DDPPXDDDDDPVVVVVVVVVVVVCPVVVXDPPXDWDXDDDXKXKIWIADPVRDTDDDDDDDDPVVVVVXXVVXDXDD",
+            "prostt5_confidence": 45.92,
             "length": 78
         },
         {
@@ -5736,7 +5853,9 @@
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 52.39,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 94
         },
         {
@@ -5763,6 +5882,7 @@
             "id": "MEGJMNBEGN_71",
             "locus": "MEGJMN_071",
             "3di": "DPVPCVVXVDDDDPDPDPDDDDPVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCVVVVVVDVVVVVDV",
+            "prostt5_confidence": 61.87,
             "length": 80
         },
         {
@@ -5819,7 +5939,7 @@
             "genes": [],
             "id": "MEGJMNBEGN_72",
             "locus": "MEGJMN_072",
-            "3di": "DPPPPPDDDDCLDPPDDPPPPDPVVVLVVLLVVLVVVVVVVLVVLVVLVVLLVVCVVVVXXVXXVVSVVSSCVXVVDPDDDDPVSSVLLSVXXXVVSVVVXXVPVVXLVVDDPVSVVVVCVVXVPDDDDXDDSVVLLVVVVVVXVVPXVVLLVVVVVLLVVLDXDXDDXXXDDXXXXXXXXXVXVXXVVXXWDDDPVXXDXXXVXXVXXXXDPXDDDDPSXDVDSVVVVVVCVVVVQAXDWDDDPFWIWHXHXDRMIMIGGRDVVSSVVSSVVCCVVPVVPDDDDD",
+            "3di": "DPPPPPDDDDCLDXPDDPPPPDPVVVLVVLLVVLVVVVVVVLVVLVVLVVLLVVCVVVVXXVXXVVSVVSSCVXVVDPDDDDPVSSVLLSVXXXVVSVVVXXVPVVXLVVDDPVSVVVVCVVXVPDDDDXDDSVVLLVVVVVVXVVPXVVLLVVVVVLLVVLDXDXDDXXXDDXXXXXXXXXVXVXXVVXXWDDDPVXXDXXXVXXVXXXXDPXDDDDPSXDVDSVVVVVVCVVVVQAXDWDDDPFWIWHXHXDRMIMIGGRDVVSSVVSSVVCCVVPVVPDDDDD",
             "pstc": [
                 {
                     "source": "afdb",
@@ -5828,11 +5948,13 @@
                     "subject_cov": 0.99,
                     "identity": 0.262,
                     "score": 417.0,
-                    "evalue": 2.505e-09,
+                    "evalue": 2.517e-09,
                     "description": "DUF4942 domain-containing protein"
                 }
             ],
+            "prostt5_confidence": 43.48,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 287
         },
         {
@@ -5890,7 +6012,8 @@
             ],
             "id": "MEGJMNBEGN_73",
             "locus": "MEGJMN_073",
-            "3di": "DDPDDDDPVVVVVVVVVVLVVVLVVLVVVLVVDDPDDDDDPDPXSVVVSVVSVVVDDPPD"
+            "3di": "DDPDDDDPVVVVVVVVVVLVVVLVVLVVVLVVDDPDDDDDPDPXSVVVSVVSVVVDDPPD",
+            "prostt5_confidence": 69.29
         },
         {
             "type": "cds",
@@ -5949,6 +6072,7 @@
             "id": "MEGJMNBEGN_74",
             "locus": "MEGJMN_074",
             "3di": "DPPPPPDDDLLVVLLVLLVVXVVLLVVLXVDLVVCVVVDPVVLVVLVVVLVVLVVVLVVVVVVVVVDPPDDPVVVVVVLVSVSSVLSVCVSVVXVVSVVVSVSSVVSVVVSVVVVVVVV",
+            "prostt5_confidence": 52.39,
             "length": 120
         },
         {
@@ -6050,7 +6174,9 @@
                     "description": "Cytidine Deaminase, domain 2"
                 }
             ],
+            "prostt5_confidence": 78.37,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 99
         },
         {
@@ -6110,6 +6236,7 @@
             "id": "MEGJMNBEGN_76",
             "locus": "MEGJMN_076",
             "3di": "DDDDPVLVVLLVVLVVVLCVDDPPDDDDPDPVSVVVVVCVVCVPPPDVXDVDDDVPDDPVVVVD",
+            "prostt5_confidence": 58.69,
             "length": 65
         },
         {
@@ -6166,7 +6293,7 @@
             "genes": [],
             "id": "MEGJMNBEGN_77",
             "locus": "MEGJMN_077",
-            "3di": "DPPXDDDDFDALVLLVVLCVLVVDDLVVLCVLLVHDSLLSVQQSDDPVDDPDPDXXSXDFLLSSLLSCVCSVVDPVVVXDPXDXVVVVVPXXDDWDFLVRLVVLCVVVVHDLCVVCVSSNHDSVVSVQQNDDPXXXGDDSSSSSSSCVVSVVDPVXXXDXDD",
+            "3di": "DPPXDDDDFDALVLLVVLCVLVVDDLVVLCVLLVHDSLLSVQQNDDPVDDPDPDXXSXDFLLSSLLSCVCSVVDPVVVXDPXDXVVVVVPXXDDWDFLVRLVVLCVVVVHDLCVVCVSSNHDSVVSVQQNDDPXXXGDDSSSSSSSCVVSVVDPVXXXDXDD",
             "pstc": [
                 {
                     "source": "afdb",
@@ -6174,12 +6301,14 @@
                     "query_cov": 0.99,
                     "subject_cov": 0.99,
                     "identity": 0.901,
-                    "score": 808.0,
-                    "evalue": 9.531e-18,
+                    "score": 810.0,
+                    "evalue": 8.742e-18,
                     "description": "HTH cro/C1-type domain-containing protein"
                 }
             ],
+            "prostt5_confidence": 58.54,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 163
         },
         {
@@ -6252,7 +6381,9 @@
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 44.17,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 153
         },
         {
@@ -6333,7 +6464,9 @@
                     "description": "Plasmid stability protein"
                 }
             ],
+            "prostt5_confidence": 67.43,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 143
         },
         {
@@ -6396,16 +6529,16 @@
             "genes": [],
             "id": "MEGJMNBEGN_80",
             "locus": "MEGJMN_080",
-            "3di": "DEKEWELAQFWIKIWDQDPVRDIDIDIFGLFKDFDDDDDPPDPXDWKWKDFPNTIIIXXPPDPPXDDDDDXXXLLDPSNLVVVLVVVVVVPDDAAEXEYEYEDALVQQADPVLHGPVVSQVSSQVSSXDFMDIPNDGXXYGYDYYHYDYPQQLLCLVVLVVDDQQAWEWEWEAEQFKTWIWIXGHNPVHTDDIDIDRRQHLVQLLVLLLVLXVVPXXDGSVVSVVCLVPXVPVVCXVVVDDDPVSVVSSVVSNVVSLVVSLVVVLVVCVVDDDHQAYEYAEPCCVSCVVSNCVSHVHDSVRYDYDPPRNCSNRVSSVVVVVVVVVV",
+            "3di": "DEKEWELAQFWIKIWDQDPVRDIDIDIFGLFKDFDDDDDPPDPXDWKWKDFPNTIIIXXXPDPPXDDDDDXXXLLDPSNLVVVLVVVVVVPDDAAEXEYEYEDALVQQADPVLHGPVVSQVSSQVSSXDFMDIPNDGXXYGYDYYHYDYPQQLLCLVVLVVDDQQAWEWEWEAEQFKTWIWIXGHNPVHTDDIDIDRRQHLVQLLVLLLVLXVVPXXDGSVVSVVCLVPXVPVVCXVVVDDDPVSVVSSVVSNVVSLVVSLVVVLVVCVVDDDHQAYEYAEPCCVSCVVSNCVSHVHDSVRYDYDPPRNCSNRVSSVVVVVVVVVV",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "P11904",
                     "query_cov": 0.98,
                     "subject_cov": 0.99,
-                    "identity": 0.479,
-                    "score": 1581.0,
-                    "evalue": 6.406e-39,
+                    "identity": 0.476,
+                    "score": 1580.0,
+                    "evalue": 6.549e-39,
                     "description": "Plasmid segregation protein ParM"
                 },
                 {
@@ -6414,8 +6547,8 @@
                     "query_cov": 0.58,
                     "subject_cov": 0.85,
                     "identity": 0.523,
-                    "score": 905.0,
-                    "evalue": 2.914e-21,
+                    "score": 908.0,
+                    "evalue": 2.386e-21,
                     "description": "Plasmid segregation protein"
                 },
                 {
@@ -6423,9 +6556,9 @@
                     "id": "4a61",
                     "query_cov": 0.97,
                     "subject_cov": 0.98,
-                    "identity": 0.481,
-                    "score": 1637.0,
-                    "evalue": 1.57e-40,
+                    "identity": 0.477,
+                    "score": 1630.0,
+                    "evalue": 2.29e-40,
                     "description": "ParM from plasmid R1 in complex with AMPPNP"
                 },
                 {
@@ -6433,9 +6566,9 @@
                     "id": "1mwmA01",
                     "query_cov": 0.5,
                     "subject_cov": 0.89,
-                    "identity": 0.505,
-                    "score": 824.0,
-                    "evalue": 1.187e-19,
+                    "identity": 0.5,
+                    "score": 820.0,
+                    "evalue": 1.477e-19,
                     "description": "ATPase, nucleotide binding domain"
                 },
                 {
@@ -6445,11 +6578,13 @@
                     "subject_cov": 0.99,
                     "identity": 0.442,
                     "score": 601.0,
-                    "evalue": 6.754e-14,
+                    "evalue": 6.658e-14,
                     "description": "ATPase, nucleotide binding domain"
                 }
             ],
+            "prostt5_confidence": 64.84,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 327
         },
         {
@@ -6543,7 +6678,9 @@
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 66.6,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 148
         },
         {
@@ -6570,6 +6707,7 @@
             "id": "MEGJMNBEGN_82",
             "locus": "MEGJMN_082",
             "3di": "DPPXDKKKKKKKKWKWDDPDPVDDDXVDXXXXXXVDXDXDDDDDDPDDDXVVDDPXXXDDXXDXDXDDPPXDIXDTPDD",
+            "prostt5_confidence": 35.67,
             "length": 80
         },
         {
@@ -6626,6 +6764,7 @@
             "id": "MEGJMNBEGN_83",
             "locus": "MEGJMN_083",
             "3di": "DDWDDDDPDXDDDDFDWDFDDDDDFAFFKKFKAADDPXXATQEIDTADXVVVVCXVDXCXXXPXDDPDXXSVVSCVVXVXRMIMITGPDDDPVVSLVSSVVSCVVPXPXXXXDDDDDDPVPDDVVSVVVSVVVVVVVVV",
+            "prostt5_confidence": 45.12,
             "length": 140
         },
         {
@@ -6681,7 +6820,8 @@
             "genes": [],
             "id": "MEGJMNBEGN_84",
             "locus": "MEGJMN_084",
-            "3di": "DALVVLVVLCVVVVDDLVVLCVQLVHDSVVSVCRNVVVDHDDPSSVVSSVVVVVVVVVVVVVVDDPVVVVVVVVVVVVVVDPSVV"
+            "3di": "DALVVLVVLCVVVVDDLVVLCVQLVHDSVVSVCRNVVVDHDDPSSVVSSVVVVVVVVVVVVVVDDPVVVVVVVVVVVVVVDPSVV",
+            "prostt5_confidence": 79.49
         },
         {
             "type": "cds",
@@ -6763,7 +6903,9 @@
                     "description": "IS1 family transposase"
                 }
             ],
+            "prostt5_confidence": 69.14,
             "baktfold": true,
+            "annotation_confidence": "low",
             "length": 189
         },
         {
@@ -6819,7 +6961,8 @@
             "genes": [],
             "id": "MEGJMNBEGN_86",
             "locus": "MEGJMN_086",
-            "3di": "DDPPDPPPCVPDPPDDDDDDDDDXXKWWDDPNFIKDIXXXXPXDDDDPVXDTDPVVXXVXXDVDVVXDXKMKMWIDDPVRDDXWIWIWDWDADPVRDIWIWIDGPVGDTDDIDX"
+            "3di": "DDPPDPPPCVPDPPDDDDDDDDDXXKWWDDPNFIKDIXXXXPXDDDDPVXDTDPVVXXVXXDVDVVXDXKMKMWIDDPVRDDXWIWIWDWDADPVRDIWIWIDGPVGDTDDIDX",
+            "prostt5_confidence": 45.51
         },
         {
             "type": "cds",
@@ -6926,7 +7069,9 @@
                     "description": "hypothetical protein"
                 }
             ],
+            "prostt5_confidence": 67.43,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 102
         },
         {
@@ -6999,7 +7144,9 @@
                     "description": "Antitoxin CcdA"
                 }
             ],
+            "prostt5_confidence": 87.6,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 73
         },
         {
@@ -7096,7 +7243,9 @@
                     "description": "Umud Fragment, subunit A"
                 }
             ],
+            "prostt5_confidence": 57.96,
             "baktfold": true,
+            "annotation_confidence": "medium",
             "length": 217
         },
         {
@@ -7122,7 +7271,7 @@
                 "afdb_v6:swissprot_P23832",
                 "cath:cath_3gqcD01",
                 "cath:cath_af_P04152_244_354_3.30.1490.100",
-                "pdb:pdb_6jul"
+                "pdb:pdb_6jum"
             ],
             "nt": "ATGTTTGCCCTGGCCGATGTGAACAGCTTCTATGCCAGCTGTGAACGTGTTTTCCGCCCGGATTTGAAAGGAAAGCCGATAGTCGTCCTGAGCAACAACGACGGGAACGTAATCGCTCGCAGTGCCGAGGCGAAGCCCTGGATCAAAATGGGAACTCCGTGGTTTCAGATAAAAAACGAAAGATACCCGGAAAAAATATATGCGTTTTCAAGTAATTATGAACTTTACGCCTCGATGTCGGCGCGCGTGATGAACTGCCTGGAGGAACTGGCCCCCAGGGTGGAACAGTATTCAATTGATGAGATGTTCCTCGACCTGACCGGCGTGGAGCACTGTATGGAGCTTGAGGACTTCGGCCGGCAGCTGCGTCAGCACGTGTATGACTGTACCCGCCTGACCATTGGCGTGGGCGCCGGGCCAACGAAAACCCTCGCAAAATCAGCCCAGTGGGCCTCAAAAGAGTGGAAACAGTTCCGTGGTGTGCTCGCACTGACCCGGGGGAATCCTCAGCGAACGCGGAAACTGCTTTCACTGCAGCCGGTCGAAGAGATCTGGGGCGTGGGAAACCGTATTGCACGCAAGCTCCATGTACTGGGTATCAGGACCGCGCTCGATCTGGCCCTGACGAACCCGGCCTTCATCCGGAAAAATTTCTCCGTCGTTCTCGAGCGAACAGTACGCGAACTGAACGGGGAAAGCTGCATGTCGCTTGAGGAAGCCCCACCAACGAAACAGCAGATTGTCTGCAGCCGCAGTTTTGGAGAGAAAATCACGGAGTACGATTCGCTCCGCCAGGCTGTTTGTCAGTACGCAGAGCGGGCCTCTGAAAAGCTGCGTAAAGAGCGCCAGTATTGCCGGCATATTTCCGTATTCATCAAAACGTCTCCGTTCGCCGTCAAAGAGCCTTACTACGGCAACGTGGCCACGGAGAAACTGCTTACACCCACTCAGGACACCCGGGACATTATTGCGGCCGCCACAATGGCTCTGGAGCGTATCTGGAAGGACGGGCACCGGTATGCCAAAGCCGGAGTTATGCTGAATGACTTCACCGGCTCTGGCGTTTCGCAGCTGCAGCTGTTTGACGAACGCCCGCCACGCCCTCACAGTGCTGAGCTGATGAGGGTTCTGGACGGGATCAACAACTCAGGGCTGGGTAAAGTATGGTTTGCCGGTAGAGGAATTGCGCCATCCTGGCAAATGAAACGCGATATGCTCTCCCCTGCGTACACCACTCGCTGGAGAGATATCCCCGTTGCGAGGATCGGTTAA",
             "aa": "MFALADVNSFYASCERVFRPDLKGKPIVVLSNNDGNVIARSAEAKPWIKMGTPWFQIKNERYPEKIYAFSSNYELYASMSARVMNCLEELAPRVEQYSIDEMFLDLTGVEHCMELEDFGRQLRQHVYDCTRLTIGVGAGPTKTLAKSAQWASKEWKQFRGVLALTRGNPQRTRKLLSLQPVEEIWGVGNRIARKLHVLGIRTALDLALTNPAFIRKNFSVVLERTVRELNGESCMSLEEAPPTKQQIVCSRSFGEKITEYDSLRQAVCQYAERASEKLRKERQYCRHISVFIKTSPFAVKEPYYGNVATEKLLTPTQDTRDIIAAATMALERIWKDGHRYAKAGVMLNDFTGSGVSQLQLFDERPPRPHSAELMRVLDGINNSGLGKVWFAGRGIAPSWQMKRDMLSPAYTTRWRDIPVARIG",
@@ -7167,7 +7316,7 @@
             ],
             "id": "MEGJMNBEGN_90",
             "locus": "MEGJMN_090",
-            "3di": "DKKKKFWAQLQQLLVCLVPVVCPPAAEFEAELLQQFTQGTHPNCPVPDDGGDGPVVCDCVPPVVRHHYFYDDLLSLLVLLVQLVVLLVVQAPFWADDDSGMIMGDCPPVCVVDDPQVSQVVSQVSSCVRRVTGMFMFDDQAPLLRVLRRVCLVPPVVRVRYHYDYPVDLVVLLVSLQVDFLCSGPPCDPVNSVVCVVVVHGGLNRLLPDDLVVCCVPPHPVSNVSSCVSVRNHPDDRDPDDDDDQKFKDKDWFQAWDQDLLLVLLQLLLRLLVSLLVCVVSQKWFQKKKKWWWADPPPPPFDTDIDMDMDGDPATDRFSVVSSVRSVVRSVVRDDGPGTTGMMMMMTGRIDGPPDTDDDPPDPDDDDPCRVVVSVVQSVLCVVVVHHDGTCSSPDDDPRDGDPPSHQACCSPDPVSHDDDDDD",
+            "3di": "DKKKKFWAQLQQLLVCLVPVVCPPAAEFEAELLQQFTQGTHPNCPVPDDGGDGPVVCDCVPPVVRHHYFYDDLLSLLVLLVQLVVLLVVQAPFWADDDSGMIMGDCPPVCVVDDPQVSQVVSQVSSCVRRVTGMFMFDDQAPLLRVLRRVCLVPPVVRVRYHYDYPVDLVVLLVSLQVDFLCSGPPCDPVNSVVCVVVVHGGLNRLLPDDLVVCCVPPHPVSNVSSCVSVRNHPDDRDPDDDDDQKFKDKDWFQAWDQDLLLVLLQLLLRLLVSLLVCVVSQKWFQKKKKWWWADPPPPPFDDDIDMDMDGDPATDRFSVVSSVRSVVRSVVRDDGPGTTGMMMMMTGRIDGPPDTDDDPPDPDDDDPCRVVVSVVQSVLCVVVVHHDGTCSSPDDDPRDGDPPSHQACCSPDPVSHDDDDDD",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -7175,8 +7324,8 @@
                     "query_cov": 1.0,
                     "subject_cov": 1.0,
                     "identity": 0.757,
-                    "score": 2660.0,
-                    "evalue": 2.182e-64,
+                    "score": 2646.0,
+                    "evalue": 5.449e-64,
                     "description": "Protein SamB"
                 },
                 {
@@ -7185,19 +7334,19 @@
                     "query_cov": 0.98,
                     "subject_cov": 0.73,
                     "identity": 0.418,
-                    "score": 1876.0,
-                    "evalue": 1.211e-44,
+                    "score": 1861.0,
+                    "evalue": 3.097e-44,
                     "description": "Protein UmuC (Modular protein)"
                 },
                 {
                     "source": "pdb",
-                    "id": "6jul",
+                    "id": "6jum",
                     "query_cov": 0.83,
                     "subject_cov": 0.99,
-                    "identity": 0.239,
-                    "score": 1129.0,
-                    "evalue": 2.068e-26,
-                    "description": "MsDpo4-DNA complex 1"
+                    "identity": 0.242,
+                    "score": 1127.0,
+                    "evalue": 2.433e-26,
+                    "description": "MsDpo4-DNA complex 2"
                 },
                 {
                     "source": "cath",
@@ -7205,8 +7354,8 @@
                     "query_cov": 0.26,
                     "subject_cov": 0.99,
                     "identity": 0.711,
-                    "score": 701.0,
-                    "evalue": 7.509e-16,
+                    "score": 690.0,
+                    "evalue": 1.453e-15,
                     "description": "DNA polymerase, Y-family, little finger domain"
                 },
                 {
@@ -7216,11 +7365,13 @@
                     "subject_cov": 0.79,
                     "identity": 0.145,
                     "score": 259.0,
-                    "evalue": 7.713e-05,
+                    "evalue": 7.798e-05,
                     "description": "Reverse transcriptase/Diguanylate cyclase domain"
                 }
             ],
+            "prostt5_confidence": 70.7,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 424
         },
         {
@@ -7309,7 +7460,7 @@
             ],
             "id": "MEGJMNBEGN_93",
             "locus": "MEGJMN_091",
-            "3di": "DPPVCVVQQDWDFQDPVVLVLVVVVDDAAAAEEEEEEACQLVSVVVVSLVRYQAYEYEHQDPVSLVNNCVVCVPRPRYDYDNDDLLPDDDDPPDAYEYEYADRAVCVVSNVVCCLPXHRHQKYKYKYFPVVLVVLVPLQALSNLLSLLFWDKDFSDWDAQVSTVVRDPGIITIIMIGGDDGPDDPVCSVVLSVLSVCVSVVVVCVVDDPVVVVVLCVVLVHNDSRRDDSVSSVSSSVVDDX",
+            "3di": "DPPVCVVQQDWDFQDPVVLVLVVVVDDAAAAEEEEEEACQLVSVVVVSLVRYQAYEYEHQDPVSLVNNCVVCVPRPRYDYDNDDLLPDDDDPPDAYEYEYADRAVCVVSNVVCCLPXHRHQKYKYKYFPVVLVVLVPLQALSNLLSLLFWDKDFSDWDAQVSTVVRDPGIITIIMIGGDDGPDDPVCSVVLSVLSVCVSVVVVCVVDDPVVVVVLCVVLVHNDSRRDDSVSSVSSSVVVDX",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -7317,8 +7468,8 @@
                     "query_cov": 0.99,
                     "subject_cov": 0.98,
                     "identity": 0.991,
-                    "score": 1710.0,
-                    "evalue": 1.573e-42,
+                    "score": 1713.0,
+                    "evalue": 1.322e-42,
                     "description": "rRNA adenine N-6-methyltransferase"
                 },
                 {
@@ -7327,8 +7478,8 @@
                     "query_cov": 0.98,
                     "subject_cov": 0.82,
                     "identity": 0.487,
-                    "score": 1199.0,
-                    "evalue": 4.787e-29,
+                    "score": 1198.0,
+                    "evalue": 5.103e-29,
                     "description": "rRNA adenine N-6-methyltransferase"
                 },
                 {
@@ -7337,8 +7488,8 @@
                     "query_cov": 0.95,
                     "subject_cov": 0.97,
                     "identity": 0.995,
-                    "score": 1616.0,
-                    "evalue": 2.968e-40,
+                    "score": 1619.0,
+                    "evalue": 2.495e-40,
                     "description": "THE STRUCTURE OF THE RRNA METHYLTRANSFERASE ERMC': IMPLICATIONS FOR THE REACTION MECHANISM"
                 },
                 {
@@ -7348,11 +7499,13 @@
                     "subject_cov": 0.99,
                     "identity": 0.906,
                     "score": 1139.0,
-                    "evalue": 5.727e-28,
+                    "evalue": 5.749e-28,
                     "description": "Vaccinia Virus protein VP39"
                 }
             ],
+            "prostt5_confidence": 69.14,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 241
         },
         {
@@ -7505,7 +7658,9 @@
                     "description": "Replication and maintenance protein"
                 }
             ],
+            "prostt5_confidence": 67.14,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 159
         }
     ],

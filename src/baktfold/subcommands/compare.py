@@ -13,6 +13,31 @@ from baktfold.features.run_foldseek import create_result_tsv, run_foldseek_searc
 from baktfold.results.tophit import get_tophit
 from baktfold.utils.util import atomic_write_path, remove_file, replace_pipe_in_fasta
 
+
+def fasta_is_empty(fasta_path: Path) -> bool:
+    """True if *fasta_path* is missing or holds no bytes (i.e. no records).
+
+    ``baktfold predict`` writes one header + sequence line pair per
+    hypothetical protein, so "zero hypothetical proteins" and "zero bytes"
+    are the same condition.
+    """
+    try:
+        return Path(fasta_path).stat().st_size == 0
+    except (FileNotFoundError, NotADirectoryError):
+        return True
+
+
+def _copy_prediction(src: Path, dst: Path) -> None:
+    """Copy a ``baktfold predict`` output into the compare output directory,
+    overwriting whatever is there. A no-op when they are the same file, which
+    is the case for ``baktfold run``/``proteins`` (predictions are written
+    straight into the output directory)."""
+    if dst.exists() and Path(src).resolve() == Path(dst).resolve():
+        return
+    with atomic_write_path(dst) as tmp:
+        shutil.copyfile(src, tmp)
+
+
 def subcommand_compare(
     hypotheticals: Dict,
     output: Path,
@@ -35,6 +60,7 @@ def subcommand_compare(
     has_duplicate_locus: bool,
     fast: bool,
     gpus: Optional[str] = None,
+    report_prob: bool = False,
 ) -> bool:
     """
     Compare 3Di or PDB structures to the baktfold DB
@@ -60,6 +86,8 @@ def subcommand_compare(
         foldseek_gpu (bool): Use Foldseek-GPU acceleration and ungappedprefilter
         custom_annotations (Optional[Path]): Path to the tsv containing the custom_db annotations, 2 columns 
         has_duplicate_locus (bool): If same locus tag has multiple annots (can happen in some euks)
+        report_prob (bool): Emit Foldseek's homology probability (`prob`) in the
+            per-database tophit TSVs. Forces `-a 1` on every Foldseek search.
         fast (bool): If true, skips AFDB search
     Returns:
         bool: True if sub-databases are created successfully, False otherwise.
@@ -84,9 +112,7 @@ def subcommand_compare(
             logger.info(
                 f"Checked that the 3Di CDS file {fasta_3di_input} exists from baktfold predict"
             )
-            if fasta_3di.exists() is False:
-                with atomic_write_path(fasta_3di) as tmp:
-                    shutil.copyfile(fasta_3di_input, tmp)
+            _copy_prediction(fasta_3di_input, fasta_3di)
         else:
             logger.error(
                 f"The 3Di CDS file {fasta_3di_input} does not exist. Please run baktfold predict and/or check the prediction directory {predictions_dir}"
@@ -96,9 +122,13 @@ def subcommand_compare(
             logger.info(
                 f"Checked that the AA CDS file {fasta_aa_input} exists from baktfold predict."
             )
-            if fasta_aa.exists() is False:
-                with atomic_write_path(fasta_aa) as tmp:
-                    shutil.copyfile(fasta_aa_input, tmp)
+            # Always take the AA FASTA from the predictions: `baktfold predict`
+            # writes it *masked* (low-confidence residues -> X, matching the 3Di).
+            # The input parser has already written an unmasked copy to
+            # `output`, and skipping the copy when that existed made
+            # compare/proteins-compare search unmasked AA where run/proteins
+            # search masked AA - different hits from the same predictions.
+            _copy_prediction(fasta_aa_input, fasta_aa)
         else:
             logger.error(
                 f"The AA CDS file {fasta_aa_input} does not exist. Please run baktfold predict and/or check the prediction directory {predictions_dir}"
@@ -114,6 +144,38 @@ def subcommand_compare(
                 seq_id = entry['id'] if has_duplicate_locus else entry['locus']
                 out_f.write(f">{seq_id}\n{entry['aa']}\n")
 
+
+    ############
+    # nothing to search against?
+    ############
+
+    # A genome whose CDS all already carry a product has zero hypothetical
+    # proteins, so predict writes a 0-byte AA and 3Di FASTA. Foldseek then
+    # builds an empty query DB and the search dies on a zero-dimension kernel
+    # launch, which is reported as a thoroughly misleading CUDA error:
+    #
+    #     CUDA error: invalid configuration argument : .../libmarv/src/pssm.cuh, line 346
+    #     Error: Ungapped prefilter matching step died
+    #
+    # The CPU path does not crash but still spends the whole search on an empty
+    # database. Either way there is genuinely nothing to annotate, so return the
+    # features untouched — the caller goes on to write the normal outputs for
+    # the (already fully annotated) genome.
+
+    if fasta_is_empty(fasta_aa):
+        logger.info(
+            "No hypothetical proteins to annotate — nothing for Foldseek to do. "
+            "Skipping the Foldseek search and writing the annotations as they are."
+        )
+        return hypotheticals
+
+    if structures is False and fasta_is_empty(fasta_3di):
+        logger.warning(
+            f"The 3Di CDS file {fasta_3di} is empty, so ProstT5 predicted no 3Di "
+            "sequences for this input. Skipping the Foldseek search — check "
+            f"{Path(output) / 'fails.tsv'} if you expected predictions."
+        )
+        return hypotheticals
 
     ############
     # create foldseek db
@@ -182,13 +244,14 @@ def subcommand_compare(
         extra_foldseek_params,
         foldseek_gpu,
         structures,
+        report_prob=report_prob,
         gpus=gpus,
     )
 
        
-    create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads)
+    create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads, report_prob=report_prob)
 
-    swissprot_df = get_tophit(result_tsv, structures, cath=False)
+    swissprot_df = get_tophit(result_tsv, structures, cath=False, report_prob=report_prob)
 
 
 
@@ -236,13 +299,14 @@ def subcommand_compare(
             extra_foldseek_params,
             foldseek_gpu,
             structures,
+            report_prob=report_prob,
             gpus=gpus,
         )
 
         
-        create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads)
+        create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads, report_prob=report_prob)
 
-        afdbclusters_df = get_tophit(result_tsv,structures, cath=False)
+        afdbclusters_df = get_tophit(result_tsv, structures, cath=False, report_prob=report_prob)
 
     else:
         logger.info("Skipping AFDB Clusters search as --fast specified.")
@@ -288,13 +352,14 @@ def subcommand_compare(
         extra_foldseek_params,
         foldseek_gpu,
         structures,
+        report_prob=report_prob,
         gpus=gpus,
     )
 
        
-    create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads)
+    create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads, report_prob=report_prob)
 
-    pdb_df = get_tophit(result_tsv,structures, cath=False)
+    pdb_df = get_tophit(result_tsv, structures, cath=False, report_prob=report_prob)
 
 
     #####
@@ -340,6 +405,7 @@ def subcommand_compare(
         extra_foldseek_params,
         foldseek_gpu,
         structures,
+        report_prob=report_prob,
         gpus=gpus,
     )
 
@@ -349,12 +415,12 @@ def subcommand_compare(
     summarise_hits(result_db, result_db_greedy_best_hits, logdir, threads)
 
     # saves all CATH hits first
-    create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads)
+    create_result_tsv(query_db, target_db, result_db, result_tsv, logdir, foldseek_gpu, structures, threads, report_prob=report_prob)
     # save greedy CATH tophits
-    create_result_tsv(query_db, target_db, result_db_greedy_best_hits, result_greedy_tsv, logdir, foldseek_gpu, structures, threads)
+    create_result_tsv(query_db, target_db, result_db_greedy_best_hits, result_greedy_tsv, logdir, foldseek_gpu, structures, threads, report_prob=report_prob)
 
     # this just reads it in with appropriate headers
-    cath_df = get_tophit(result_greedy_tsv, structures, cath=True)
+    cath_df = get_tophit(result_greedy_tsv, structures, cath=True, report_prob=report_prob)
 
     # write tophits
     swissprot_tophit_path: Path = Path(output) / "baktfold_swissprot_tophit.tsv"
@@ -402,14 +468,15 @@ def subcommand_compare(
             extra_foldseek_params,
             foldseek_gpu,
             structures,
+            report_prob=report_prob,
             gpus=gpus,
         )
 
             create_result_tsv(query_db, Path(custom_db),
                 result_db_custom,
-                result_tsv_custom, logdir, foldseek_gpu, structures, threads)
+                result_tsv_custom, logdir, foldseek_gpu, structures, threads, report_prob=report_prob)
 
-            custom_df = get_tophit(result_tsv_custom,structures, cath=False)
+            custom_df = get_tophit(result_tsv_custom, structures, cath=False, report_prob=report_prob)
 
             custom_db_tophit_path: Path = Path(output) / "baktfold_custom_db_tophit.tsv"
             io.write_foldseek_tophit(custom_df, custom_db_tophit_path)

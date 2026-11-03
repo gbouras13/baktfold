@@ -80,6 +80,9 @@ def parse(features: Sequence[dict], foldseek_df: pl.DataFrame, db_name: str = 's
                     new_pstc['tmscore'] = float(row['alntmscore'])
                 if 'lddt' in row and row['lddt'] is not None:
                     new_pstc['lddt'] = float(row['lddt'])
+                # Foldseek homology probability, present only with --report-prob
+                if 'prob' in row and row['prob'] is not None:
+                    new_pstc['prob'] = float(row['prob'])
 
                 # Append or initialize 'pstc'
                 if 'pstc' in cds:

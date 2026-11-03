@@ -57,14 +57,7 @@ def write_mrna_feature(fh, seq_id, feat):
 
     if product:
 
-        key = "product"         
-        if isinstance(product, list):
-            if len(product) == 1:
-                attrs[key] = str(product[0])
-            else:
-                attrs[key] = ",".join(str(v) for v in product)
-        else:
-            attrs[key] = str(product)
+        attrs["product"] = [str(v) for v in product] if isinstance(product, list) else str(product)
 
 
     # Ensure db_xrefs exists and is a list
@@ -76,30 +69,14 @@ def write_mrna_feature(fh, seq_id, feat):
 
     if db_xrefs:
 
-        key = "Dbxref"         
-        if isinstance(db_xrefs, list):
-            if len(db_xrefs) == 1:
-                attrs[key] = str(db_xrefs[0])
-            else:
-                attrs[key] = ",".join(str(v) for v in db_xrefs)
-        else:
-            # if somehow not a list, just convert to string
-            attrs[key] = str(db_xrefs)
+        attrs["Dbxref"] = [str(v) for v in db_xrefs] if isinstance(db_xrefs, list) else str(db_xrefs)
 
     if note:
+        # previously filled from db_xrefs by mistake
+        attrs["Note"] = [str(v) for v in note] if isinstance(note, list) else str(note)
 
-        key = "note"         # <-- you must define this
-        if isinstance(db_xrefs, list):
-            if len(db_xrefs) == 1:
-                attrs[key] = str(db_xrefs[0])
-            else:
-                attrs[key] = ",".join(str(v) for v in db_xrefs)
-        else:
-            # if somehow not a list, just convert to string
-            attrs[key] = str(db_xrefs)
-
-    
-    attr_str = ";".join(f"{k}={v}" for k, v in attrs.items())
+    # product/note text can contain ';', ',', '=' -> must be GFF3-escaped
+    attr_str = encode_annotations(attrs)
 
     fh.write(f"{seq_id}\tbaktfold\tmRNA\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
 
@@ -196,7 +173,18 @@ def write_euk_cds_feature(fh, seq_id, feat):
         phase = offset % 3
         offset += length
 
-        attr = f"ID={cds_id}-{i};Parent={transcript_id}"
+        attrs = {"ID": f"{cds_id}-{i}", "Parent": transcript_id}
+        # Baktfold's label lives on the CDS: without these attributes every
+        # Baktfold annotation was lost from eukaryotic GFF3.
+        if feat.get("product"):
+            attrs["Name"] = feat["product"]
+            attrs["product"] = feat["product"]
+        if feat.get("locus"):
+            attrs["locus_tag"] = feat["locus"]
+        db_xrefs = feat.get("db_xrefs") or []
+        if isinstance(db_xrefs, list) and db_xrefs:
+            attrs["Dbxref"] = [str(x) for x in db_xrefs]
+        attr = encode_annotations(attrs)
 
         fh.write(
             f"{seq_id}\tbaktfold\tCDS\t{cds_start}\t{cds_stop}"

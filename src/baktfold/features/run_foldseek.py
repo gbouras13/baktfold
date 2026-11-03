@@ -22,6 +22,7 @@ def run_foldseek_search(
     foldseek_gpu: bool,
     structures: bool,
     gpus: Optional[str] = None,
+    report_prob: bool = False,
 ) -> None:
     """
     Run a Foldseek search using given parameters.
@@ -40,6 +41,10 @@ def run_foldseek_search(
         extra_foldseek_params (str): Extra foldseek search params
         foldseek_gpu (bool): Run Foldseek-GPU with accelerate ungapped prefilter
         structures (bool): Run Foldseek with structures, not ProstT5 3Dis
+        report_prob (bool): Emit Foldseek's homology probability. Requires the
+            backtrace CIGAR (``-a 1``); without it convertalis aborts with
+            "Backtrace cigar is missing in the alignment result". Costs extra
+            alignment time and result-DB size, so it is opt-in.
         gpus (Optional[str]): Comma-separated CUDA indices (e.g. "0,2") to
             restrict foldseek's GPU prefilter to a subset of devices. When
             ``foldseek_gpu`` is True and this resolves to ≥1 CUDA device,
@@ -63,8 +68,9 @@ def run_foldseek_search(
     if extra_foldseek_params:
         cmd += f" {extra_foldseek_params}"
 
-    # need -a 1 to compute the alignment so tmscore and lddt can be output (if using --structures)
-    if structures:
+    # need -a 1 to compute the alignment so tmscore and lddt can be output (if using --structures).
+    # `prob` also needs the backtrace, so --report-prob requires it on the ProstT5 path too.
+    if structures or report_prob:
         cmd += f" -a 1"
 
     # Build optional env for multi-GPU foldseek. Only applies when GPU mode is
@@ -91,7 +97,7 @@ def run_foldseek_search(
 
 
 def create_result_tsv(
-    query_db: Path, target_db: Path, result_db: Path, result_tsv: Path, logdir: Path, foldseek_gpu: bool, structures: bool, threads: int
+    query_db: Path, target_db: Path, result_db: Path, result_tsv: Path, logdir: Path, foldseek_gpu: bool, structures: bool, threads: int, report_prob: bool = False
 ) -> None:
     """
     Create a TSV file containing the results of a Foldseek search.
@@ -105,14 +111,19 @@ def create_result_tsv(
         foldseek_gpu (bool): Run Foldseek-GPU with accelerate ungapped prefilter
         structures (bool): Whether structures were input (not ProstT5)
         threads (int): Number of threads to use.
+        report_prob (bool): Append Foldseek's homology probability column. The
+            search must have been run with ``-a 1`` (see run_foldseek_search).
 
     Returns:
         None
     """
+    columns = "query,target,bits,fident,evalue,qstart,qend,qlen,tstart,tend,tlen"
     if structures:
-        format_string= "--format-output query,target,bits,fident,evalue,qstart,qend,qlen,tstart,tend,tlen,alntmscore,lddt"
-    else:
-        format_string = "--format-output query,target,bits,fident,evalue,qstart,qend,qlen,tstart,tend,tlen"
+        columns += ",alntmscore,lddt"
+    if report_prob:
+        # kept last so tophit.get_tophit's column reorder leaves it in the tail
+        columns += ",prob"
+    format_string = f"--format-output {columns}"
     if foldseek_gpu:
         target_db = f"{target_db}_gpu"
 

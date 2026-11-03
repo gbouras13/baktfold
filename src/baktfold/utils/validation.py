@@ -42,6 +42,10 @@ def instantiate_dirs(output_dir: Union[str, Path], force: bool) -> Path:
             logger.error(
                 "Output directory already exists and force was not specified. Please specify -f or --force to overwrite the output directory"
             )
+            # These checks run before begin_baktfold installs the exit-on-ERROR
+            # log sink, so logging alone does not stop the run: exit here, or
+            # new results get written alongside stale ones from an earlier run.
+            sys.exit(1)
 
     # instantiate outdir
     if Path(output_dir).exists() is False:
@@ -75,6 +79,7 @@ def validate_outfile(outfile: Union[str, Path], force: bool) -> Path:
             logger.error(
                 f"Output file {outfile} already exists and force was not specified. Please specify -f or --force to overwrite the output file"
             )
+            sys.exit(1)  # see instantiate_dirs: no exit-on-ERROR sink yet
 
 
 def check_dependencies() -> None:
@@ -144,9 +149,9 @@ def check_genbank_and_prokka(filepath, euk):
 
     Returns
     -------
-    list[SeqRecord] or None
-        A list of Biopython SeqRecord objects if parsing succeeds.
-        Returns None if the file is not valid GenBank or cannot be parsed.
+    list[SeqRecord]
+        A list of Biopython SeqRecord objects. Exits with status 1 if the file
+        is not valid GenBank or cannot be parsed.
     """
 
     is_valid_genbank = False
@@ -164,7 +169,7 @@ def check_genbank_and_prokka(filepath, euk):
 
         if not records:
             logger.error(f"Input file {filepath} is not GenBank format. Please check your input")
-            return None
+            sys.exit(1)
         else:
             is_valid_genbank = True
 
@@ -184,7 +189,7 @@ def check_genbank_and_prokka(filepath, euk):
 
     except Exception:
         logger.error(f"There was an error parsing {filepath}. Please check your input")
-        return None
+        sys.exit(1)
 
     return records
 

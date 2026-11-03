@@ -19,6 +19,8 @@ MEGJMN_070	AF-A0A1I3V7E0-F1-model_v6	292	0.41	2.619e-06	1	91	93	0.97	1	95	99	0.9
 
 * There will also be a `custom_database_tophit.tsv` if you have used `--custom-db`
 
+* If you ran with `--report-prob`, each `*_tophit.tsv` gains a trailing `prob` column — Foldseek's estimated probability that the query and target are homologous. This is not emitted by default because it requires Foldseek to compute full alignments (`-a 1`).
+
 * `baktfold.inference.tsv` which contains the new annotated funciton (`Product` column), an `Annotation_Confidence` column and all annotated tophits (if they exist) for all proteins that were attempted to be annotated by Baktfold
 * Note: This will contain an extra column `Custom_DB` if you have used `--custom-db` with a custom database, and extra `TMscore` and `LDDT` columns if you ran with user-provided structures (`--structure-dir`)
     * For example:
@@ -46,16 +48,17 @@ A `low` annotation is **not** necessarily wrong — only that it should be trust
 * `CDS beginning hypotheticals` is the amount of hypotheticals parsed from the input JSON
 * `CDS annotated with Baktfold database hit` is the number of CDS that have at least 1 hit to a constituent Baktfold DB
 * `CDS annotated with Baktfold function` is the number of CDS whose Baktfold tophit has a non-hypothetical function transferred
-* `CDS remaining hypotheticals` is the number of CDS remaining hypothetical most `baktfold`
+* `CDS remaining hypotheticals` is the number of CDS remaining hypothetical post `baktfold`
+* Every count is also given as a percentage of the total CDS count. The three counts that describe what `baktfold` did are additionally given as a percentage of the `CDS beginning hypotheticals`, as by default these are the only CDS `baktfold` is given (unless you use `--all-proteins`) — so this is usually the more informative denominator
     * For example
 
 ```bash
 Annotation:
 CDS count: 2635
-CDS beginning hypotheticals: 55
-CDS annotated with Baktfold database hit: 12
-CDS annotated with Baktfold function: 7
-CDS remaining hypotheticals: 48
+CDS beginning hypotheticals: 55 (2.1% of CDS)
+CDS annotated with Baktfold database hit: 12 (0.5% of CDS; 21.8% of beginning hypotheticals)
+CDS annotated with Baktfold function: 7 (0.3% of CDS; 12.7% of beginning hypotheticals)
+CDS remaining hypotheticals: 48 (1.8% of CDS; 87.3% of beginning hypotheticals)
 
 Baktfold:
 Software: v0.2.0

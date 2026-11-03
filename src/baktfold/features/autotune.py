@@ -11,6 +11,7 @@ from tqdm import tqdm
 from loguru import logger
 
 from baktfold.io.handle_genbank import open_protein_fasta_file
+from baktfold.utils.gpu import release_gpu_memory
 from pholdlib.prostt5.model import get_T5_model, device_synchronize
 from pholdlib.prostt5.device import parse_gpus
 
@@ -154,7 +155,12 @@ def autotune_batching_real_data(
                 torch.cuda.empty_cache()
             break
 
-    
+    # The probe model has done its job. Drop it and hand its cached blocks back
+    # to the driver, so the real ProstT5 run — and the `foldseek --gpu 1`
+    # subprocess after it — start on a card that is actually free.
+    del model, tokenizer
+    release_gpu_memory("after batch-size autotuning")
+
     if not results:
         raise RuntimeError("No batch size fits on this GPU")
 

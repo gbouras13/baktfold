@@ -9,7 +9,7 @@ from loguru import logger
 import baktfold.bakta.constants as bc
 import baktfold.bakta.annotation as anno
 from baktfold.io.json_in import parse_json_input, log_for_other_genbank_tools
-from baktfold.io.fasta_in import parse_protein_input
+from baktfold.io.fasta_in import parse_protein_input, proteins_to_predict
 from baktfold.databases.db import install_database, validate_db, check_prostT5_download, download_zenodo_prostT5
 from baktfold.features.create_foldseek_db import generate_foldseek_db_from_aa_3di
 from baktfold.utils.constants import DB_DIR, CNN_DIR
@@ -224,6 +224,11 @@ def compare_options(func):
             help="Skips Foldseek search against AFDB Clusters."
         ),
         click.option(
+            "--report-prob",
+            is_flag=True,
+            help="Report Foldseek's homology probability ('prob') in the per-database tophit TSVs. Requires Foldseek to compute full alignments (-a 1), so searches are slower and use more disk."
+        ),
+        click.option(
             "--cds-program",
             type=str,
             default="Prodigal:2.6",
@@ -346,6 +351,7 @@ def run(
     all_proteins,
     euk,
     fast,
+    report_prob,
     cds_program,
     trna_program,
     tmrna_program,
@@ -388,6 +394,7 @@ def run(
         "--all-proteins": all_proteins,
         "--euk": euk,
         "--fast": fast,
+        "--report-prob": report_prob,
         "--cds-program": cds_program,
         "--trna-program": trna_program,
         "--tmrna-program": tmrna_program,
@@ -526,6 +533,7 @@ def run(
         has_duplicate_locus=has_duplicate_locus,
         fast=fast,
         gpus=gpus,
+        report_prob=report_prob,
     )
 
     #####
@@ -666,6 +674,7 @@ def proteins(
     foldseek_gpu,
     custom_annotations,
     fast,
+    report_prob,
     **kwargs,
 ):
     """baktfold proteins-predict then comapare all in one - GPU recommended"""
@@ -700,7 +709,8 @@ def proteins(
         "--custom-db": custom_db,
         "--foldseek-gpu": foldseek_gpu,
         "--custom-annotations": custom_annotations,
-        "--fast": fast
+        "--fast": fast,
+        "--report-prob": report_prob
     }
 
     from baktfold.subcommands.predict import subcommand_predict
@@ -725,10 +735,8 @@ def proteins(
     # puts the CDS AA in a simple dictionary for ProstT5 code
     aas, bakta_version = parse_protein_input(input, fasta_aa)
 
-    # put the CDS AA in a simple dictionary for ProstT5 code
-    cds_dict = {}
-    for feat in aas:
-        cds_dict[feat['locus']] = feat['aa']
+    # put the hypothetical CDS AA in a simple dictionary for ProstT5 code
+    cds_dict = proteins_to_predict(aas)
 
     # baktfold predict
     model_dir = database
@@ -804,6 +812,7 @@ def proteins(
         has_duplicate_locus=False,
         fast=fast,
         gpus=gpus,
+        report_prob=report_prob,
     )
 
     #####
@@ -1091,6 +1100,7 @@ def compare(
     all_proteins,
     euk,
     fast,
+    report_prob,
     cds_program,
     trna_program,
     tmrna_program,
@@ -1129,6 +1139,7 @@ def compare(
         "--all-proteins": all_proteins,
         "--euk": euk,
         "--fast": fast,
+        "--report-prob": report_prob,
         "--cds-program": cds_program,
         "--trna-program": trna_program,
         "--tmrna-program": tmrna_program,
@@ -1226,6 +1237,7 @@ def compare(
         has_duplicate_locus=has_duplicate_locus,
         fast=fast,
         gpus=gpus,
+        report_prob=report_prob,
     )
 
 
@@ -1384,10 +1396,8 @@ def proteins_predict(
     # puts the CDS AA in a simple dictionary for ProstT5 code
     aas, bakta_version = parse_protein_input(input, fasta_aa)
 
-    # put the CDS AA in a simple dictionary for ProstT5 code
-    cds_dict = {}
-    for feat in aas:
-        cds_dict[feat['locus']] = feat['aa']
+    # put the hypothetical CDS AA in a simple dictionary for ProstT5 code
+    cds_dict = proteins_to_predict(aas)
 
     # baktfold predict
     model_dir = database
@@ -1496,6 +1506,7 @@ def proteins_compare(
     custom_annotations,
     foldseek_gpu,
     fast,
+    report_prob,
     **kwargs,
 ):
     """Runs Foldseek vs baktfold db on proteins input"""
@@ -1526,7 +1537,8 @@ def proteins_compare(
         "--custom-annotations": custom_annotations,
         "--foldseek-gpu": foldseek_gpu,
         "--gpus": gpus,
-        "--fast": fast
+        "--fast": fast,
+        "--report-prob": report_prob
     }
 
 
@@ -1593,6 +1605,7 @@ def proteins_compare(
         has_duplicate_locus=False,
         fast=fast,
         gpus=gpus,
+        report_prob=report_prob,
     )
 
     #####

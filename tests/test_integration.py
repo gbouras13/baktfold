@@ -472,7 +472,7 @@ prokka
 
 def test_convert_prokka(gpu_available, threads, nvidia):
     """test baktfold convert-prokka"""
-    cmd = f"baktfold convert-prokka -i {input_prok_gbk} -o {output_prok_json} "
+    cmd = f"baktfold convert-prokka -i {input_prok_gbk} -o {output_prok_json} -f"
     exec_command(cmd)
     assert_golden(output_prok_json, "convert_prokka")
 

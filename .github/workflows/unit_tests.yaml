@@ -1,0 +1,62 @@
+name: Unit tests
+
+# Fast, publicly visible CI. Runs the database-free unit suite across every
+# Python version baktfold claims to support, plus the documentation flag check.
+#
+# The database-backed, GPU and golden end-to-end tests run separately on HPC
+# via hpci_pipeline.yml -> ci/test_job.slurm; they need the ~100 GB Baktfold
+# database and a GPU, neither of which a GitHub runner has.
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit:
+    name: "Unit tests — Python ${{ matrix.python-version }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install CPU-only torch
+        # The default PyPI torch wheel pulls the full CUDA stack (~2.5 GB) and
+        # overruns the runner's disk. The unit suite never touches a GPU, so
+        # install the CPU wheel first and let the package install reuse it.
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Install baktfold
+        run: pip install -e ".[test]"
+
+      - name: Show resolved environment
+        run: pip list
+
+      - name: Run unit tests
+        run: pytest tests/unit -v
+
+  docs:
+    name: "Documentation flag check"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check documented CLI flags exist
+        # No install needed: the checker parses the click declarations directly.
+        run: python ci/check_docs_flags.py

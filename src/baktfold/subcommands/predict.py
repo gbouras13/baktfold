@@ -5,7 +5,7 @@ from typing import Optional
 
 from loguru import logger
 
-from baktfold.features.predict_3Di import get_embeddings
+from baktfold.features.predict_3Di import drop_unusable_predictions, get_embeddings
 from pholdlib.prostt5.output import mask_low_confidence_aa
 
 def subcommand_predict(
@@ -108,10 +108,10 @@ def subcommand_predict(
     ######
 
 
-    # check all the lengths of the predictions are >0 in case of OOMs and filter out those that arent
-    prediction_dict = {
-                k: v for k, v in prediction_dict.items() if len(v[0]) > 0
-            }
+    # Drop predictions with no usable residues (OOM skips, zero-length #47, and
+    # unsized single-residue arrays that len() cannot measure). Their CDS fall
+    # through to the "X" * len masking below.
+    prediction_dict = drop_unusable_predictions(prediction_dict, "writing AA FASTA")
 
 
     with open(fasta_aa, "w") as out_f:

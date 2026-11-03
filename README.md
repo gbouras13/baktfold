@@ -57,6 +57,7 @@ Baktfold's documentation, including a quick tutorial, is available [here](https:
   - [Usage](#usage)
   - [Output](#output)
     - [Conceptual terms](#conceptual-terms)
+  - [Reproducing the manuscript](#reproducing-the-manuscript)
   - [Citations](#citations)
 
 ## Install
@@ -320,6 +321,17 @@ As Baktfold inherits annotations and related conceptual terms from Bakta. Hence,
 In addition, Baktfold introduces one conceptual term:
 
 - `PSTC`: protein structure clusters. These comprise of structure-based annotations to any of Baktfold's databases
+
+## Reproducing the manuscript
+
+All code, data and instructions needed to reproduce the analyses in the Baktfold manuscript
+live in the companion **[baktfold-analysis](https://github.com/gbouras13/baktfold-analysis)**
+repository:
+
+- **[REPRODUCIBILITY.md](https://github.com/gbouras13/baktfold-analysis/blob/main/REPRODUCIBILITY.md)**
+  — the single entry point: exact software and database versions, input datasets, commands,
+  hardware, and a figure-by-figure map of which analysis produces what.
+- Large files (>50 MB) are archived on Zenodo: [doi:10.5281/zenodo.19333697](https://doi.org/10.5281/zenodo.19333697)
 
 ## Citations
 

@@ -138,6 +138,7 @@
             "id": "MEGJMNBEGN_3",
             "locus": "MEGJMN_003",
             "3di": "DDDDPDPPPVVVVVVVVVVVVVVVVVVVVVVVVVVVDD",
+            "prostt5_confidence": 77.0,
             "length": 39
         },
         {
@@ -253,6 +254,7 @@
             "id": "MEGJMNBEGN_5",
             "locus": "MEGJMN_005",
             "3di": "DDPDPPDPPPPVVVVVPPPDPPDDPVVVCVVVVDGPVVVVVVVVVVV",
+            "prostt5_confidence": 68.85,
             "length": 48
         },
         {
@@ -525,7 +527,9 @@
                     "description": "dummy annotation"
                 }
             ],
+            "prostt5_confidence": 66.8,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 79
         },
         {
@@ -1390,6 +1394,7 @@
             "id": "MEGJMNBEGN_24",
             "locus": "MEGJMN_024",
             "3di": "DDDDDPPDPPVPVDPPPDDDDDDPPDDDPDDVVVVVVVVCVVVVNDDDDD",
+            "prostt5_confidence": 64.4,
             "length": 51
         },
         {
@@ -1631,7 +1636,9 @@
                     "description": "dummy annotation"
                 }
             ],
+            "prostt5_confidence": 57.18,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 162
         },
         {
@@ -1813,7 +1820,9 @@
                     "description": "dummy annotation"
                 }
             ],
+            "prostt5_confidence": 82.81,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 68
         },
         {
@@ -2493,6 +2502,7 @@
             "id": "MEGJMNBEGN_42",
             "locus": "MEGJMN_042",
             "3di": "DPDPVVVVVVVVVVVVVVVVVVVCCVVVVVVVCCVVPDDDPDPPDDPPDPPVPVVVPVVVVVVVVVVVVVVVVVVVVVVVVVVPVVVXVDDDPDDDDDPDDDDDDDDDPPDDPPDPVPVVPDDDPDDDPVVVDDD",
+            "prostt5_confidence": 62.99,
             "length": 136
         },
         {
@@ -3514,7 +3524,9 @@
                     "description": "dummy annotation"
                 }
             ],
+            "prostt5_confidence": 75.68,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 47
         },
         {
@@ -3924,7 +3936,9 @@
                     "description": "dummy annotation"
                 }
             ],
+            "prostt5_confidence": 71.04,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 44
         },
         {
@@ -4050,7 +4064,9 @@
                     "description": "dummy annotation"
                 }
             ],
+            "prostt5_confidence": 45.92,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 78
         },
         {
@@ -4133,7 +4149,9 @@
                     "description": "dummy annotation"
                 }
             ],
+            "prostt5_confidence": 52.39,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 94
         },
         {
@@ -4160,6 +4178,7 @@
             "id": "MEGJMNBEGN_71",
             "locus": "MEGJMN_071",
             "3di": "DPVPCVVXVDDDDPDPDPDDDDPVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCVVVVVVDVVVVVDV",
+            "prostt5_confidence": 61.87,
             "length": 80
         },
         {
@@ -4329,6 +4348,7 @@
             "id": "MEGJMNBEGN_74",
             "locus": "MEGJMN_074",
             "3di": "DPPPPPDDDLLVVLLVLLVVXVVLLVVLXVDLVVCVVVDPVVLVVLVVVLVVLVVVLVVVVVVVVVDPPDDPVVVVVVLVSVSSVLSVCVSVVXVVSVVVSVSSVVSVVVSVVVVVVVV",
+            "prostt5_confidence": 52.39,
             "length": 120
         },
         {
@@ -4440,7 +4460,7 @@
             },
             "id": "MEGJMNBEGN_76",
             "locus": "MEGJMN_076",
-            "3di": "DDDDPVLVVLLVVLVVVLCVDDPPDDDDPDPVSVVVVVCVVCVPPPDVXDVDDDVPDDPVVVVD",
+            "3di": "DDDDPVLVVLLVVLVVVLCVDDPPDDDDPDPVSVVVVVCVVCVPVPDVXDVDDDVPDDPVVVVD",
             "pstc": [
                 {
                     "source": "custom_db",
@@ -4448,12 +4468,14 @@
                     "query_cov": 0.98,
                     "subject_cov": 0.98,
                     "identity": 0.984,
-                    "score": 312.0,
-                    "evalue": 2.048e-09,
+                    "score": 302.0,
+                    "evalue": 4.159e-09,
                     "description": "dummy annotation"
                 }
             ],
+            "prostt5_confidence": 58.69,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 65
         },
         {
@@ -4590,7 +4612,9 @@
                     "description": "dummy annotation"
                 }
             ],
+            "prostt5_confidence": 44.17,
             "baktfold": true,
+            "annotation_confidence": "high",
             "length": 153
         },
         {
@@ -4783,6 +4807,7 @@
             "id": "MEGJMNBEGN_82",
             "locus": "MEGJMN_082",
             "3di": "DPPXDKKKKKKKKWKWDDPDPVDDDXVDXXXXXXVDXDXDDDDDDPDDDXVVDDPXXXDDXXDXDXDDPPXDIXDTPDD",
+            "prostt5_confidence": 35.67,
             "length": 80
         },
         {
@@ -4839,6 +4864,7 @@
             "id": "MEGJMNBEGN_83",
             "locus": "MEGJMN_083",
             "3di": "DDWDDDDPDXDDDDFDWDFDDDDDFAFFKKFKAADDPXXATQEIDTADXVVVVCXVDXCXXXPXDDPDXXSVVSCVVXVXRMIMITGPDDDPVVSLVSSVVSCVVPXPXXXXDDDDDDPVPDDVVSVVVSVVVVVVVVV",
+            "prostt5_confidence": 45.12,
             "length": 140
         },
         {
