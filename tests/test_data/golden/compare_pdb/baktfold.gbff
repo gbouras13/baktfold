@@ -7,8 +7,8 @@ SOURCE      None
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -584,7 +584,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="UniRef:UniRef90_A0A0C5H1S2"
                      /db_xref="afdb_v6:afdbclusters_A0A849I020"
                      /db_xref="afdb_v6:swissprot_P12746"
-                     /db_xref="pdb:pdb_5l09"
+                     /db_xref="pdb:pdb_5l09_A"
                      /product="Transcriptional activator protein LuxR"
                      /locus_tag="MEGJMN_027"
                      /protein_id="gnl|Baktfold|MEGJMN_027"
@@ -1578,7 +1578,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_A0A0N9DZD6"
                      /db_xref="afdb_v6:swissprot_P52603"
                      /db_xref="cath:cath_2kmgA00"
-                     /db_xref="pdb:pdb_2kmg"
+                     /db_xref="pdb:pdb_2kmg_A"
                      /product="Antirestriction protein KlcA"
                      /locus_tag="MEGJMN_071"
                      /protein_id="gnl|Baktfold|MEGJMN_071"
@@ -3152,8 +3152,8 @@ SOURCE      None
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -3223,7 +3223,7 @@ FEATURES             Location/Qualifiers
                      /translation="MGIFSIFVISTVHYQPNKK"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.11"
                      /inference="similar to AA sequence:RefSeq:WP_002497446.1"
                      /gene="ermC"
      gene            complement(1540..2016)

@@ -1527,7 +1527,7 @@
                 "UniRef:UniRef90_A0A0C5H1S2",
                 "afdb_v6:swissprot_P54292",
                 "cath:cath_3sztB01",
-                "pdb:pdb_5l09"
+                "pdb:pdb_5l09_B"
             ],
             "nt": "ATGCAGGAAAGTGAAGTGGATAAAAAAAGTATAAAAATTAATTTTCATCGCTATAGTAACGAGGCTATTAACTTTCTCAATAGTTTTGAGAAAGTTACCTATGTCTCAACTTTACTAGTCGAAGATAATATCTTGTCTGCACACCAAAGCAATGGTTATGCTGACTGGGATAAAAAGTTCTATTACGATGGGAAGTATAAAGATAGTCTCCTGATAAAACTGGGACTGGAGCTGACAAAAATTGAAGGTGGGGATAAAAAAACTGTCATCTGGGATGACGTTTTAAGAAATCACCCCGAAAACGAGATCGACAGGCAGAGACGTGCCCATAATATCTATCATGGTGTCAGCTTTATTTATGGATTGACTGATAATATCAGTATGGCAATCAATGTGTGCACCGACTCTGCCACTACAAAGAGGGAGTTTGAGGATCTTATCCTTCCCCACAGACTTAAACTTTTAACTATGTTTCAGGATATGTAA",
             "aa": "MQESEVDKKSIKINFHRYSNEAINFLNSFEKVTYVSTLLVEDNILSAHQSNGYADWDKKFYYDGKYKDSLLIKLGLELTKIEGGDKKTVIWDDVLRNHPENEIDRQRRAHNIYHGVSFIYGLTDNISMAINVCTDSATTKREFEDLILPHRLKLLTMFQDM",
@@ -1572,7 +1572,7 @@
                 {
                     "source": "swissprot",
                     "id": "P54292",
-                    "query_cov": 0.89,
+                    "query_cov": 0.9,
                     "subject_cov": 0.55,
                     "identity": 0.145,
                     "score": 316.0,
@@ -1582,18 +1582,19 @@
                 {
                     "source": "pdb",
                     "id": "5l09",
-                    "query_cov": 0.92,
+                    "query_cov": 0.93,
                     "subject_cov": 0.93,
                     "identity": 0.171,
                     "score": 323.0,
                     "evalue": 5.071e-07,
+                    "chain": "B",
                     "description": "Crystal Structure of Quorum-Sensing Transcriptional Activator from Yersinia enterocolitica in complex with 3-oxo-N-[(3S)-2-oxotetrahydrofuran-3-yl]hexanamide"
                 },
                 {
                     "source": "cath",
                     "id": "3sztB01",
-                    "query_cov": 0.92,
-                    "subject_cov": 0.9,
+                    "query_cov": 0.93,
+                    "subject_cov": 0.91,
                     "identity": 0.122,
                     "score": 299.0,
                     "evalue": 1.784e-06,
@@ -4344,7 +4345,7 @@
             "id": "MEGJMNBEGN_76",
             "locus": "MEGJMN_076",
             "3di": "DDDDPVLVVLLVVLVVVLCVDDPPDDDDPDPVSVVVVVCVVCVPPPDVXDVDDDVPDDPVVVVD",
-            "prostt5_confidence": 58.69,
+            "prostt5_confidence": 58.74,
             "length": 65
         },
         {
@@ -4458,7 +4459,7 @@
             "id": "MEGJMNBEGN_78",
             "locus": "MEGJMN_078",
             "3di": "DDPDDXDDPDXDDDDDDPPDDDXDXXXXDXPDPDDDDDXDXPDDDDDPDDDXDDXDDDPPPDPPDDDXDDDDXDDFPDWDWDDDXXKIKMWTWTDDPVXXKIWIWIAGPVVRDTDKIWIAGDPVXXXIIIIXDDDDVVSVVVXDPVVVVPPD",
-            "prostt5_confidence": 44.14,
+            "prostt5_confidence": 44.17,
             "length": 153
         },
         {
@@ -5352,7 +5353,7 @@
             "version": "6.0",
             "type": "full"
         },
-        "baktfold": "0.3.0",
+        "baktfold": "0.4.0",
         "baktfold_db": "0.1.0"
     },
     "baktfold_run": {

@@ -1528,7 +1528,7 @@
                 "afdb_v6:afdbclusters_A0A9E1VSB0",
                 "afdb_v6:swissprot_P54292",
                 "cath:cath_3sztB01",
-                "pdb:pdb_5l09"
+                "pdb:pdb_5l09_B"
             ],
             "nt": "ATGCAGGAAAGTGAAGTGGATAAAAAAAGTATAAAAATTAATTTTCATCGCTATAGTAACGAGGCTATTAACTTTCTCAATAGTTTTGAGAAAGTTACCTATGTCTCAACTTTACTAGTCGAAGATAATATCTTGTCTGCACACCAAAGCAATGGTTATGCTGACTGGGATAAAAAGTTCTATTACGATGGGAAGTATAAAGATAGTCTCCTGATAAAACTGGGACTGGAGCTGACAAAAATTGAAGGTGGGGATAAAAAAACTGTCATCTGGGATGACGTTTTAAGAAATCACCCCGAAAACGAGATCGACAGGCAGAGACGTGCCCATAATATCTATCATGGTGTCAGCTTTATTTATGGATTGACTGATAATATCAGTATGGCAATCAATGTGTGCACCGACTCTGCCACTACAAAGAGGGAGTTTGAGGATCTTATCCTTCCCCACAGACTTAAACTTTTAACTATGTTTCAGGATATGTAA",
             "aa": "MQESEVDKKSIKINFHRYSNEAINFLNSFEKVTYVSTLLVEDNILSAHQSNGYADWDKKFYYDGKYKDSLLIKLGLELTKIEGGDKKTVIWDDVLRNHPENEIDRQRRAHNIYHGVSFIYGLTDNISMAINVCTDSATTKREFEDLILPHRLKLLTMFQDM",
@@ -1573,7 +1573,7 @@
                 {
                     "source": "swissprot",
                     "id": "P54292",
-                    "query_cov": 0.89,
+                    "query_cov": 0.9,
                     "subject_cov": 0.55,
                     "identity": 0.145,
                     "score": 316.0,
@@ -1583,8 +1583,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A9E1VSB0",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.78,
+                    "query_cov": 1.0,
+                    "subject_cov": 0.79,
                     "identity": 0.218,
                     "score": 297.0,
                     "evalue": 6.108e-06,
@@ -1593,18 +1593,19 @@
                 {
                     "source": "pdb",
                     "id": "5l09",
-                    "query_cov": 0.92,
+                    "query_cov": 0.93,
                     "subject_cov": 0.93,
                     "identity": 0.171,
                     "score": 323.0,
                     "evalue": 5.071e-07,
+                    "chain": "B",
                     "description": "Crystal Structure of Quorum-Sensing Transcriptional Activator from Yersinia enterocolitica in complex with 3-oxo-N-[(3S)-2-oxotetrahydrofuran-3-yl]hexanamide"
                 },
                 {
                     "source": "cath",
                     "id": "3sztB01",
-                    "query_cov": 0.92,
-                    "subject_cov": 0.9,
+                    "query_cov": 0.93,
+                    "subject_cov": 0.91,
                     "identity": 0.122,
                     "score": 299.0,
                     "evalue": 1.784e-06,
@@ -4050,8 +4051,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A1I3V7E0",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.95,
+                    "query_cov": 0.98,
+                    "subject_cov": 0.96,
                     "identity": 0.41,
                     "score": 292.0,
                     "evalue": 2.619e-06,
@@ -4060,7 +4061,6 @@
             ],
             "prostt5_confidence": 52.39,
             "baktfold": true,
-            "annotation_confidence": "high",
             "length": 94
         },
         {
@@ -4370,7 +4370,7 @@
             "id": "MEGJMNBEGN_76",
             "locus": "MEGJMN_076",
             "3di": "DDDDPVLVVLLVVLVVVLCVDDPPDDDDPDPVSVVVVVCVVCVPPPDVXDVDDDVPDDPVVVVD",
-            "prostt5_confidence": 58.69,
+            "prostt5_confidence": 58.74,
             "length": 65
         },
         {
@@ -4489,7 +4489,7 @@
                 {
                     "source": "afdb",
                     "id": "A0A9Q6N187",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.92,
                     "identity": 0.216,
                     "score": 274.0,
@@ -4497,9 +4497,8 @@
                     "description": "hypothetical protein"
                 }
             ],
-            "prostt5_confidence": 44.14,
+            "prostt5_confidence": 44.17,
             "baktfold": true,
-            "annotation_confidence": "low",
             "length": 153
         },
         {
@@ -5393,7 +5392,7 @@
             "version": "6.0",
             "type": "full"
         },
-        "baktfold": "0.3.0",
+        "baktfold": "0.4.0",
         "baktfold_db": "0.1.0"
     },
     "baktfold_run": {

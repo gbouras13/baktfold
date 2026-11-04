@@ -1,8 +1,8 @@
 ##gff-version 3
 ##feature-ontology https://github.com/The-Sequence-Ontology/SO-Ontologies/blob/v3.1/so.obo
 # Annotated with Baktfold
-# Software: v0.3.0
-# Database: v0.3.0
+# Software: v0.4.0
+# Database: v0.1.0
 # DOI: https://github.com/gbouras13/baktfold
 # URL: https://github.com/gbouras13/baktfold
 ##sequence-region contig_1 1 70606
@@ -35,7 +35,7 @@ contig_1	Pyrodigal	CDS	18169	18321	.	+	0	ID=MEGJMN_024;Name=hypothetical protein
 contig_1	Pyrodigal	CDS	18933	19565	.	-	0	ID=MEGJMN_025;Name=Replication initiation protein;locus_tag=MEGJMN_025;product=Replication initiation protein;Dbxref=RefSeq:WP_032495741.1,SO:0001217,UniParc:UPI0003D902F4,UniRef:UniRef100_A0A0C5GXS3,UniRef:UniRef50_B2CBC6,UniRef:UniRef90_A0A6C0ND82
 contig_1	Infernal	regulatory_region	19645	19769	6.7e-16	-	.	ID=MEGJMNBEGN_1;Name=Pseudoknot of the regulatory region of the repBA gene;product=Pseudoknot of the regulatory region of the repBA gene;Dbxref=RFAM:RF01089,SO:0005836
 contig_1	Pyrodigal	CDS	20018	20404	.	-	0	ID=MEGJMN_026;Name=Thioesterase;locus_tag=MEGJMN_026;product=Thioesterase;Dbxref=RefSeq:WP_015632417.1,SO:0001217,UniParc:UPI00032968CA,UniRef:UniRef100_A0A6C0NDI2,UniRef:UniRef50_C6CPI2,UniRef:UniRef90_A0A6C0NDI2
-contig_1	Pyrodigal	CDS	20404	20889	.	-	0	ID=MEGJMN_027;Name=HTH-type quorum-sensing regulator RhlR;locus_tag=MEGJMN_027;product=HTH-type quorum-sensing regulator RhlR;Dbxref=RefSeq:WP_015632418.1,SO:0001217,UniParc:UPI000329691F,UniRef:UniRef100_A0A6C0L1X5,UniRef:UniRef50_J2UQ18,UniRef:UniRef90_A0A0C5H1S2,afdb_v6:afdbclusters_A0A9E1VSB0,afdb_v6:swissprot_P54292,cath:cath_3sztB01,pdb:pdb_5l09
+contig_1	Pyrodigal	CDS	20404	20889	.	-	0	ID=MEGJMN_027;Name=HTH-type quorum-sensing regulator RhlR;locus_tag=MEGJMN_027;product=HTH-type quorum-sensing regulator RhlR;Dbxref=RefSeq:WP_015632418.1,SO:0001217,UniParc:UPI000329691F,UniRef:UniRef100_A0A6C0L1X5,UniRef:UniRef50_J2UQ18,UniRef:UniRef90_A0A0C5H1S2,afdb_v6:afdbclusters_A0A9E1VSB0,afdb_v6:swissprot_P54292,cath:cath_3sztB01,pdb:pdb_5l09_B
 contig_1	Pyrodigal	CDS	20856	21434	.	-	0	ID=MEGJMN_028;Name=XRE family transcriptional regulator;locus_tag=MEGJMN_028;product=XRE family transcriptional regulator;Dbxref=RefSeq:WP_015632419.1,SO:0001217,UniParc:UPI000329699F,UniRef:UniRef100_A0A6C0NDC2,UniRef:UniRef50_A0A0U5LAP5,UniRef:UniRef90_A0A6C0NDC2
 contig_1	Pyrodigal	CDS	21702	22235	.	+	0	ID=MEGJMN_029;Name=Transcription antitermination protein RfaH;locus_tag=MEGJMN_029;product=Transcription antitermination protein RfaH;Dbxref=RefSeq:WP_015632420.1,SO:0001217,UniParc:UPI0003296925,UniRef:UniRef100_A0A6C0NCZ7,UniRef:UniRef50_A0A6C0NCZ7,UniRef:UniRef90_A0A6C0NCZ7;gene=rfaH
 contig_1	Pyrodigal	CDS	22253	22456	.	+	0	ID=MEGJMN_030;Name=hypothetical protein;locus_tag=MEGJMN_030;product=hypothetical protein;Dbxref=RefSeq:WP_032495743.1,SO:0001217,UniParc:UPI0003D8E070,UniRef:UniRef100_A0A6C0L2Y1,UniRef:UniRef50_A0A6C0L2Y1,UniRef:UniRef90_A0A6C0L2Y1

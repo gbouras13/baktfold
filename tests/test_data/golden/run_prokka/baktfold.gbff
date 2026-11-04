@@ -7,8 +7,8 @@ SOURCE      None
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -52,7 +52,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_A0AB36KDH3"
                      /db_xref="afdb_v6:swissprot_P07175"
                      /db_xref="cath:cath_4e07A00"
-                     /db_xref="pdb:pdb_4e03"
+                     /db_xref="pdb:pdb_4e03_A"
                      /product="Protein ParA"
                      /locus_tag="FLLLIEBD_00002"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00002"
@@ -191,7 +191,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="SO:0000316"
                      /db_xref="afdb_v6:afdbclusters_A0A291E612"
                      /db_xref="afdb_v6:swissprot_B0TAD4"
-                     /db_xref="pdb:pdb_3eco"
+                     /db_xref="pdb:pdb_3eco_A"
                      /product="Heat-inducible transcription repressor HrcA"
                      /locus_tag="FLLLIEBD_00011"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00011"
@@ -340,7 +340,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_C1J8E4"
                      /db_xref="afdb_v6:swissprot_Q47718"
                      /db_xref="cath:cath_af_Q47718_102_174_3.30.420.10"
-                     /db_xref="pdb:pdb_7svw"
+                     /db_xref="pdb:pdb_7svw_B"
                      /product="Putative transposase InsO for insertion sequence
                      element IS911B"
                      /locus_tag="FLLLIEBD_00021"
@@ -411,7 +411,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_A0A318UMQ5"
                      /db_xref="afdb_v6:swissprot_O67466"
                      /db_xref="cath:cath_5v10B00"
-                     /db_xref="pdb:pdb_5v10"
+                     /db_xref="pdb:pdb_5v10_B"
                      /product="Putative esterase aq_1494"
                      /locus_tag="FLLLIEBD_00026"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00026"
@@ -428,7 +428,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_A0A9E1VSB0"
                      /db_xref="afdb_v6:swissprot_P54292"
                      /db_xref="cath:cath_3sztB01"
-                     /db_xref="pdb:pdb_5l09"
+                     /db_xref="pdb:pdb_5l09_B"
                      /product="HTH-type quorum-sensing regulator RhlR"
                      /locus_tag="FLLLIEBD_00027"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00027"
@@ -445,7 +445,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_I1VYM4"
                      /db_xref="afdb_v6:swissprot_Q06553"
                      /db_xref="cath:cath_af_Q2FYU1_84_206_2.10.109.10"
-                     /db_xref="pdb:pdb_7jvt"
+                     /db_xref="pdb:pdb_7jvt_D"
                      /product="HTH-type transcriptional regulator PrtR"
                      /locus_tag="FLLLIEBD_00028"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00028"
@@ -519,7 +519,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_A0A5U9VSH8"
                      /db_xref="afdb_v6:swissprot_Q8X6H3"
                      /db_xref="cath:cath_af_Q46790_25_155_1.10.530.10"
-                     /db_xref="pdb:pdb_4xp8"
+                     /db_xref="pdb:pdb_4xp8_A"
                      /product="Peptidoglycan-binding-like protein"
                      /locus_tag="FLLLIEBD_00033"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00033"
@@ -536,7 +536,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_A0A0P0ZGT3"
                      /db_xref="afdb_v6:swissprot_Q9ZHF3"
                      /db_xref="cath:cath_3adyA00"
-                     /db_xref="pdb:pdb_6x62"
+                     /db_xref="pdb:pdb_6x62_Bd"
                      /product="Type IV pilus biogenesis and competence protein
                      PilQ"
                      /locus_tag="FLLLIEBD_00034"
@@ -552,7 +552,7 @@ FEATURES             Location/Qualifiers
      CDS             24465..25283
                      /db_xref="SO:0000316"
                      /db_xref="afdb_v6:afdbclusters_A0A484UHH3"
-                     /db_xref="pdb:pdb_7muq"
+                     /db_xref="pdb:pdb_7muq_IC"
                      /product="DotC protein"
                      /locus_tag="FLLLIEBD_00035"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00035"
@@ -572,8 +572,8 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:swissprot_P52052"
                      /db_xref="cath:cath_3jvvC02"
                      /db_xref="cath:cath_5fl3A01"
-                     /db_xref="pdb:pdb_6geb"
-                     /product="hypothetical protein"
+                     /db_xref="pdb:pdb_6geb_B"
+                     /product="AAA+ ATPase domain-containing protein"
                      /locus_tag="FLLLIEBD_00036"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00036"
                      /translation="MKPVKLSDPTTPDIELFNFDGPVNASNYKEFLVWAAKNAVSDIHV
@@ -605,7 +605,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="SO:0000316"
                      /db_xref="afdb_v6:afdbclusters_A0A0T9MTE6"
                      /db_xref="afdb_v6:swissprot_P27189"
-                     /db_xref="pdb:pdb_6n9x"
+                     /db_xref="pdb:pdb_6n9x_C"
                      /product="DNA primase TraC"
                      /locus_tag="FLLLIEBD_00038"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00038"
@@ -652,7 +652,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_A0A350YK85"
                      /db_xref="afdb_v6:swissprot_P0C532"
                      /db_xref="cath:cath_af_O07422_62_244_3.40.630.30"
-                     /db_xref="pdb:pdb_3wz3"
+                     /db_xref="pdb:pdb_3wz3_A"
                      /product="Type IV secretion system protein virB8"
                      /locus_tag="FLLLIEBD_00040"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00040"
@@ -670,7 +670,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="SO:0000316"
                      /db_xref="afdb_v6:afdbclusters_A0A077ZKE5"
                      /db_xref="afdb_v6:swissprot_P55404"
-                     /db_xref="pdb:pdb_7mus"
+                     /db_xref="pdb:pdb_7mus_AH"
                      /product="putative conjugal transfer protein TrbG"
                      /locus_tag="FLLLIEBD_00041"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00041"
@@ -703,7 +703,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="SO:0000316"
                      /db_xref="afdb_v6:afdbclusters_A0A1G0INH6"
                      /db_xref="afdb_v6:swissprot_Q6FYW1"
-                     /db_xref="pdb:pdb_7mus"
+                     /db_xref="pdb:pdb_7mus_HG"
                      /product="Type IV secretion system protein virB10"
                      /locus_tag="FLLLIEBD_00043"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00043"
@@ -781,7 +781,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="SO:0000316"
                      /db_xref="afdb_v6:afdbclusters_A0A0W0YDQ9"
                      /db_xref="afdb_v6:swissprot_P18004"
-                     /db_xref="pdb:pdb_7o43"
+                     /db_xref="pdb:pdb_7o43_B"
                      /product="Protein TraC"
                      /locus_tag="FLLLIEBD_00048"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00048"
@@ -868,7 +868,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="SO:0000316"
                      /db_xref="afdb_v6:afdbclusters_A0AAP6CTH1"
                      /db_xref="afdb_v6:swissprot_P05839"
-                     /db_xref="pdb:pdb_8cit"
+                     /db_xref="pdb:pdb_8cit_C"
                      /product="Exclusion-determining protein"
                      /locus_tag="FLLLIEBD_00052"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00052"
@@ -905,7 +905,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_A0AAX3AI07"
                      /db_xref="afdb_v6:swissprot_Q9I106"
                      /db_xref="cath:cath_4xvwC01"
-                     /db_xref="pdb:pdb_6mhh"
+                     /db_xref="pdb:pdb_6mhh_A"
                      /product="Thiol:disulfide interchange protein DsbG"
                      /locus_tag="FLLLIEBD_00054"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00054"
@@ -926,7 +926,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_A0A379SFQ2"
                      /db_xref="afdb_v6:swissprot_Q5ZYC6"
                      /db_xref="cath:cath_1e9sG01"
-                     /db_xref="pdb:pdb_6sz9"
+                     /db_xref="pdb:pdb_6sz9_A"
                      /product="Type 4 coupling protein DotL"
                      /locus_tag="FLLLIEBD_00055"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00055"
@@ -953,7 +953,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_V5RP04"
                      /db_xref="afdb_v6:swissprot_Q68VT0"
                      /db_xref="cath:cath_1bysA00"
-                     /db_xref="pdb:pdb_1byr"
+                     /db_xref="pdb:pdb_1byr_A"
                      /product="Phospholipase D"
                      /locus_tag="FLLLIEBD_00056"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00056"
@@ -988,7 +988,8 @@ FEATURES             Location/Qualifiers
                      /db_xref="SO:0000316"
                      /db_xref="afdb_v6:afdbclusters_A0AAJ1YJK2"
                      /db_xref="afdb_v6:swissprot_P50359"
-                     /product="hypothetical protein"
+                     /product="IS66 family insertion sequence element accessory
+                     protein TnpB"
                      /locus_tag="FLLLIEBD_00058"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00058"
                      /translation="MISLPSGTRIWLVAGATDMRKSFNGLGEQIQHVLDENPFSGHLFI
@@ -1003,7 +1004,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="SO:0000316"
                      /db_xref="afdb_v6:afdbclusters_A0A291E5E4"
                      /db_xref="afdb_v6:swissprot_P55502"
-                     /product="hypothetical protein"
+                     /product="Transposase"
                      /locus_tag="FLLLIEBD_00059"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00059"
                      /translation="MSDSLRPRRVRASYSMDFKLELVEKSYQPGACVAQLAREHGINDN
@@ -1229,7 +1230,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:afdbclusters_A0A916J5U4"
                      /db_xref="afdb_v6:swissprot_A2SJB0"
                      /db_xref="cath:cath_af_Q47685_35_158_3.40.140.10"
-                     /db_xref="pdb:pdb_2qlc"
+                     /db_xref="pdb:pdb_2qlc_E"
                      /product="UPF0758 protein Mpe_A2695"
                      /locus_tag="FLLLIEBD_00075"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00075"
@@ -1317,7 +1318,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="SO:0000316"
                      /db_xref="afdb_v6:afdbclusters_A0A2M8S3H7"
                      /db_xref="cath:cath_4p78B00"
-                     /db_xref="pdb:pdb_6g26"
+                     /db_xref="pdb:pdb_6g26_D"
                      /product="CopG family transcriptional regulator"
                      /locus_tag="FLLLIEBD_00081"
                      /protein_id="gnl|Baktfold|FLLLIEBD_00081"
@@ -2645,8 +2646,8 @@ SOURCE      None
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             

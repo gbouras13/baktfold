@@ -6,7 +6,7 @@ CDS annotated with Baktfold function: 1 (5.9% of CDS; 5.9% of beginning hypothet
 CDS remaining hypotheticals: 16 (94.1% of CDS; 94.1% of beginning hypotheticals)
 
 Baktfold:
-Software: v0.3.0
+Software: v0.4.0
 Database: v0.1.0
 DOI: https://doi.org/10.64898/2026.03.31.715528
 URL: github.com/gbouras13/baktfold

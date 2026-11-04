@@ -7,8 +7,8 @@ SOURCE      None
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -587,7 +587,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="afdb_v6:swissprot_P54292"
                      /db_xref="cath:cath_3sztB01"
                      /db_xref="custom:custom_MEGJMN_027"
-                     /db_xref="pdb:pdb_5l09"
+                     /db_xref="pdb:pdb_5l09_B"
                      /product="MEGJMN_027"
                      /locus_tag="MEGJMN_027"
                      /protein_id="gnl|Baktfold|MEGJMN_027"
@@ -3157,8 +3157,8 @@ SOURCE      None
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -3228,7 +3228,7 @@ FEATURES             Location/Qualifiers
                      /translation="MGIFSIFVISTVHYQPNKK"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.11"
                      /inference="similar to AA sequence:RefSeq:WP_002497446.1"
                      /gene="ermC"
      gene            complement(1540..2016)

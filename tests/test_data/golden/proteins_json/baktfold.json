@@ -34,7 +34,7 @@
                 ],
                 "product": "Initiator Rep protein WH1 domain-containing protein"
             },
-            "product": "Replication protein RepA",
+            "product": "Initiator Rep protein WH1 domain-containing protein",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -42,47 +42,9 @@
                 "UniParc:UPI0000DAD751",
                 "UniRef:UniRef100_A0A142EBD3",
                 "UniRef:UniRef50_A0A6M3HH18",
-                "UniRef:UniRef90_A0A6M3HH18",
-                "afdb_v6:afdbclusters_A0A5W3IPL1",
-                "afdb_v6:swissprot_P24042",
-                "pdb:pdb_5tbf"
+                "UniRef:UniRef90_A0A6M3HH18"
             ],
-            "3di": "DPPDPPPDPXXDXDDDDDDXXDDXPXXXXXDXQWFKDFLLVLQDQQAFFDPDDDPPDKDKDXXXDXXVVXVXDVDPPXXIKIKDFGGHHXLLLVLLLSLVLSQCSVXNLVDQKGKDFLCSSCVSLVDDDPDDDPVSLVSNVVSLVRQQRMKMWTWGADPVGDIDIDIXGQWPDWDADPVRRMIMTGGDSVVSVSSVVVRIFMDGSVLSSLCDPLSLLSSVLSVVVSDDQFKDWDFLVSSCSSNVDDDDPVVSVVSVVVSVVSCVVVPQWDWDWDDDDNTIIIITGGDDPPPDPPDPD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P24042",
-                    "query_cov": 0.88,
-                    "subject_cov": 0.91,
-                    "identity": 0.538,
-                    "score": 1206.0,
-                    "evalue": 4.635e-28,
-                    "description": "Replication protein RepA"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A5W3IPL1",
-                    "query_cov": 0.88,
-                    "subject_cov": 0.91,
-                    "identity": 0.358,
-                    "score": 1066.0,
-                    "evalue": 2.259e-24,
-                    "description": "RepB family plasmid replication initiator protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "5tbf",
-                    "query_cov": 0.84,
-                    "subject_cov": 0.98,
-                    "identity": 0.112,
-                    "score": 460.0,
-                    "evalue": 1.051e-09,
-                    "description": "Crystal structure of SeMet derivatives of domain2 and domain 3 of RctB"
-                }
-            ],
-            "prostt5_confidence": 56.54,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_002",
@@ -111,64 +73,15 @@
                 ],
                 "product": "CobQ/CobB/MinD/ParA nucleotide binding domain-containing protein"
             },
-            "product": "Protein ParA",
+            "product": "CobQ/CobB/MinD/ParA nucleotide binding domain-containing protein",
             "gene": null,
             "genes": [],
             "db_xrefs": [
                 "SO:0001217",
                 "UniRef:UniRef50_A0A811ARZ9",
-                "UniRef:UniRef90_A0A811ARZ9",
-                "afdb_v6:afdbclusters_A0AB36KDH3",
-                "afdb_v6:swissprot_P07175",
-                "cath:cath_4e07A00",
-                "pdb:pdb_4e03"
+                "UniRef:UniRef90_A0A811ARZ9"
             ],
-            "3di": "DEEEEDFQDPPLCLLVVLVVVQVVCVVVVFAEEEEEAAPVCVVVVVLVPDDPPDDHHHYDYDDDQLLVVCVVCVVVGPYYYYRYHSDDDPSLLSSLLRGQEYEYRADPDPVSVVCVVVSVVSNVVSCVVPVNHDYDYD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P07175",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.62,
-                    "identity": 0.255,
-                    "score": 414.0,
-                    "evalue": 1.12e-09,
-                    "description": "Protein ParA"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0AB36KDH3",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.8,
-                    "identity": 0.304,
-                    "score": 550.0,
-                    "evalue": 2.916e-13,
-                    "description": "Chromosome partitioning protein ParA"
-                },
-                {
-                    "source": "pdb",
-                    "id": "4e03",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.66,
-                    "identity": 0.271,
-                    "score": 439.0,
-                    "evalue": 1.534e-10,
-                    "description": "Structure of ParF-ADP form 2"
-                },
-                {
-                    "source": "cath",
-                    "id": "4e07A00",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.65,
-                    "identity": 0.271,
-                    "score": 437.0,
-                    "evalue": 1.376e-10,
-                    "description": "P-loop containing nucleotide triphosphate hydrolases"
-                }
-            ],
-            "prostt5_confidence": 74.41,
-            "baktfold": true,
-            "annotation_confidence": "low"
+            "3di": null
         },
         {
             "id": "MEGJMN_003",
@@ -226,7 +139,7 @@
                 ],
                 "product": "Resolvase"
             },
-            "product": "Resolvase",
+            "product": "ResA resolvase",
             "gene": "resA",
             "genes": [
                 "resA"
@@ -237,58 +150,9 @@
                 "UniParc:UPI00032969B4",
                 "UniRef:UniRef100_A0A0C5H1Q2",
                 "UniRef:UniRef50_P06615",
-                "UniRef:UniRef90_A0A377YP69",
-                "afdb_v6:afdbclusters_E6WNN4",
-                "afdb_v6:swissprot_P06615",
-                "cath:cath_af_P9WF33_119_304_1.10.443.10",
-                "pdb:pdb_5hxy"
+                "UniRef:UniRef90_A0A377YP69"
             ],
-            "3di": "DDDPDDPDDDDDPPDPDDPDDPPVVVVVVVVVVVLVPDDXQADAPVLLVLLLVLQPDLLLSLLSLVLLFFLDDSVQSQQDFLVQWDLDDPWTWTWGQDPVVVVVVVCVVVVDDDPPDTDIFITGRPDPVSSVSSVVLCVVVVADQWDADPVPRDTDGGGSDPDDPVVSQVSLVVSQVVSVVVVRDDPDDDGSVNSSLNSLLVCVVVVDDLVVSCSSVPDPDSVVSVVNVVVVVVVVCVVPPDDDDDDPVVVVVVVVVSPVPPPD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P06615",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.95,
-                    "identity": 0.871,
-                    "score": 1443.0,
-                    "evalue": 8.065e-34,
-                    "description": "Resolvase"
-                },
-                {
-                    "source": "afdb",
-                    "id": "E6WNN4",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.89,
-                    "identity": 0.727,
-                    "score": 1270.0,
-                    "evalue": 2.506e-29,
-                    "description": "Integrase family protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "5hxy",
-                    "query_cov": 0.78,
-                    "subject_cov": 0.66,
-                    "identity": 0.193,
-                    "score": 400.0,
-                    "evalue": 3.516e-08,
-                    "description": "Crystal structure of XerA recombinase"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_P9WF33_119_304_1.10.443.10",
-                    "query_cov": 0.72,
-                    "subject_cov": 0.94,
-                    "identity": 0.267,
-                    "score": 439.0,
-                    "evalue": 3.008e-09,
-                    "description": "Intergrase catalytic core"
-                }
-            ],
-            "prostt5_confidence": 64.65,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_005",
@@ -375,25 +239,9 @@
             "db_xrefs": [
                 "SO:0001217",
                 "UniRef:UniRef50_A0A8D9MPV2",
-                "UniRef:UniRef90_A0A0C5HDB6",
-                "afdb_v6:afdbclusters_A0A0F6NT92"
+                "UniRef:UniRef90_A0A0C5HDB6"
             ],
-            "3di": "DPPDXDDDDDDDADPQFKKKWWFDXDDPDXXIKIKIKXKDKWWXADDPPDXXXXXKIKIKIDXDDPDDDDIXIWIWIXGXPAXAEXEIDXDDPDDDDPPXCVVLVVVLVVLVVLLVDDPQXXKYDDDXDPDDPVDVVVLVVVLVVVVVQQWDDDPPDDXDXIDGSVPGDGDPDDMDXMDMDXVVVVVVVVVVVVVVLVVVLVVLVVVLVVLVVVLVVLVPDPLVVVVPVPPDDDDDDDPPDDPDDPDPDDDDDPPDDPVVSVVVVVVVVVSSVVSVVVVVVSVVVVVVSVVVVVVVVVVVVVVVVVVCVVVVVVVVVVVVD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0A0F6NT92",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.95,
-                    "identity": 0.588,
-                    "score": 1091.0,
-                    "evalue": 1.302e-27,
-                    "description": "N-acetyltransferase domain-containing protein"
-                }
-            ],
-            "prostt5_confidence": 55.22,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_007",
@@ -441,8 +289,7 @@
                 "UniRef:UniRef50_A0A5W9DD28",
                 "UniRef:UniRef90_A0A3P2EIW4"
             ],
-            "3di": "DDPVLDPDPVXDDDLVVLLVVLCVVDVWDWDDDPDDXPDXXIWIWTDDPVRKIKIWXXXDPXXXIXIWIXDDPVVDDDDDPVPDDIDDDDDPVVVVVVSVVVV",
-            "prostt5_confidence": 42.36
+            "3di": null
         },
         {
             "id": "MEGJMN_008",
@@ -490,8 +337,7 @@
                 "UniRef:UniRef50_A0A837F5I3",
                 "UniRef:UniRef90_UPI00224511F9"
             ],
-            "3di": "DDDDDDDFPVVVLVVVCVVVVFXXKWKXXDDXDDDPVVVVCVVXXPDXWDWDDDPXXTDWXDDDPDRDIDTDDXDDDPPDDPDDDPVXVXXDXDXXMXMXXXXXDDPPD",
-            "prostt5_confidence": 40.14
+            "3di": null
         },
         {
             "id": "MEGJMN_009",
@@ -529,7 +375,7 @@
                 ],
                 "product": "Chromate transporter"
             },
-            "product": "hypothetical protein",
+            "product": "Chromate transporter",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -538,26 +384,9 @@
                 "UniParc:UPI0007CCE74C",
                 "UniRef:UniRef100_UPI0007CCE74C",
                 "UniRef:UniRef50_Q0QCC2",
-                "UniRef:UniRef90_A0AAE4EAU4",
-                "afdb_v6:afdbclusters_A0A2S0NSF5"
+                "UniRef:UniRef90_A0AAE4EAU4"
             ],
-            "3di": "DVVVVVVVVVVVLLVVLVVVLVVXPVNVVLVCVVVLVVLLVCLVVVVVVLVVVLVVLLVVLVVCVVCVVVCVVVCVVVDVDLVVLLVVLVVLLVVLVVLLVPLLVVLVVVLVVLXVDPLLXVLLSLLLCVLLVLSSLSVLLSVLSVLSVVLSVVVVVDDSSSSVSSSVSSVVSSVSSVVSVVSNVVSSVVSVDPVSSLLSSLVSLLVXLLVQLLLLLLLLLXLXAPPDXXXXXXXXXXDXDXWDXDDDQXXKFFXDXDAFFDFXXXXXXXXVXVXXVVXDDDPPDXKXKDKXXXXXDGGPXMTMIGTDPXDXDDDVSSVVSSVCXXPXDXDDXDXXXVSLXVLLVQLLVCLVVVVVVSNLSSLVSLLVSLVSSXVSXVXDDDPVXVVVCVVXXXXXXXXVVSLVVVLVSLVVQXVDXXXDXVXXXVXXXDXVVSXVVXXXVXXVSLLSSLLSSLSSLVSSVVVXVVXDDDDDPSSVVSSLSSLVSSLVSLLVXXXXXXXDDXPDXXSLLVSLVSLLVSLLVXLLVXXVVDPVSLVSSLVSLLSSLVSXXXXVXXVVVXVXXXXXXDXVXXVXVVDDVVSVVXXVXXXXDVDSSSSLSSLVSLLSSLSSLLLSCLVXXDXVXDDDSLVSLVSSXXXXXXDDPVXXXXXXSSNVSLLVSLVLLLVXVVSVXDDPDXXXVXLVVSSVSLVVXXXDDDDXXXXXXXDDXXXXXSSVSLLVSLVSSXDDSVVSXVVSSVVSSVVSXVXDDPVVVVVSLVVXVVDPPDDXPXXXDDPVXSVVXXVSXVVSSVVSVVSVVVXVXLVVVVVVDVVVVVVVDPVVXXVXDDXXDDPVSXVVXXVXDXPDPDDSVXXXXXDDPDDDSVVXXVVXVXXXXDDDDXPVVSLVVSSVVSSVVVVVVVXVDXDDDVXLVVSVVVSLVVCVVVVXXXXXXXXXVXDVVSSVXXXDXDDDXXXKXXKDXDDDDDDDDXXDXXXXIKXWXXDPVRXIXIXXDXXXXXXXXWXXDPVRDTDXXXDDDPDDXVVVVVVVVVVVVDDDDPDXXXDXDDD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0A2S0NSF5",
-                    "query_cov": 0.73,
-                    "subject_cov": 0.96,
-                    "identity": 0.647,
-                    "score": 2029.0,
-                    "evalue": 1.452e-42,
-                    "description": "hypothetical protein"
-                }
-            ],
-            "prostt5_confidence": 40.97,
-            "baktfold": true,
-            "annotation_confidence": "medium",
-            "hypothetical": true
+            "3di": null
         },
         {
             "id": "MEGJMN_010",
@@ -648,7 +477,7 @@
                 ],
                 "product": "YdeA"
             },
-            "product": "Heat-inducible transcription repressor HrcA",
+            "product": "YdeA protein",
             "gene": "ydeA",
             "genes": [
                 "ydeA"
@@ -659,47 +488,9 @@
                 "UniParc:UPI0007604B90",
                 "UniRef:UniRef100_A0A8B3M6V8",
                 "UniRef:UniRef50_A0A8B0ST96",
-                "UniRef:UniRef90_A0A2P9E0K7",
-                "afdb_v6:afdbclusters_A0A291E612",
-                "afdb_v6:swissprot_B0TAD4",
-                "pdb:pdb_3eco"
+                "UniRef:UniRef90_A0A2P9E0K7"
             ],
-            "3di": "DPPPPPPDDDDPLLLLLLLLQLVVVVVDVDWDFLVSSQVVVVVVPDDXDDDVVSVVSLVVCVVVVQWDWDDDPVRTITIHGDPVNSVVNVVSNVVVVVVVVLVVVVVVKXXDDWDDDDVXXWKWXDDPPDIWTWXXWXWXQDPVRFIWIWTDGPVDIDTDDIDDPVVVVVVVVVCVVVVHDMDMDXDDDPD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "B0TAD4",
-                    "query_cov": 0.88,
-                    "subject_cov": 0.53,
-                    "identity": 0.13,
-                    "score": 227.0,
-                    "evalue": 0.0006491,
-                    "description": "Heat-inducible transcription repressor HrcA"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A291E612",
-                    "query_cov": 0.93,
-                    "subject_cov": 0.87,
-                    "identity": 0.294,
-                    "score": 474.0,
-                    "evalue": 5.237e-10,
-                    "description": "hypothetical protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "3eco",
-                    "query_cov": 0.51,
-                    "subject_cov": 0.63,
-                    "identity": 0.193,
-                    "score": 232.0,
-                    "evalue": 0.0003305,
-                    "description": "Crystal structure of MepR, a transcription regulator of the Staphylococcus aureus multidrug efflux pump MepA"
-                }
-            ],
-            "prostt5_confidence": 61.87,
-            "baktfold": true,
-            "annotation_confidence": "low"
+            "3di": null
         },
         {
             "id": "MEGJMN_012",
@@ -734,25 +525,9 @@
             "db_xrefs": [
                 "SO:0001217",
                 "UniRef:UniRef50_A0A2P9E0J6",
-                "UniRef:UniRef90_A0A8B3M5V4",
-                "afdb_v6:afdbclusters_A0A2K0YZQ3"
+                "UniRef:UniRef90_A0A8B3M5V4"
             ],
-            "3di": "DDDDLVVLVVVLVVLLVVLVPDDPDDPVVSVVSVVVSVVSVVVSVVVVVVVPDDDPPPPPPPPPPDDDADPQQVCAPDDDDPVLLVVLVVVLVPDDPVCSLVCLSVSCVVVSHDSLVSLLSVVVSVPDDPVVNVVSVVXVVVCVVVVDDDDPVVXVVVVVPDXXDXDXPDDXXXXPDXPDDDPPDPPDDXPDXPXXXXDXDPVPD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0A2K0YZQ3",
-                    "query_cov": 0.79,
-                    "subject_cov": 0.99,
-                    "identity": 0.668,
-                    "score": 664.0,
-                    "evalue": 1.472e-15,
-                    "description": "DNA-binding protein"
-                }
-            ],
-            "prostt5_confidence": 60.11,
-            "baktfold": true,
-            "annotation_confidence": "medium"
+            "3di": null
         },
         {
             "id": "MEGJMN_013",
@@ -814,7 +589,7 @@
                     ]
                 }
             ],
-            "product": "Transposase for insertion sequence-like element IS431mec",
+            "product": "IS6 family IS15DIV transposase",
             "gene": "tnp",
             "genes": [
                 "tnp"
@@ -829,58 +604,9 @@
                 "UniParc:UPI0000003DD8",
                 "UniRef:UniRef100_A0A6H1PZP7",
                 "UniRef:UniRef50_Q573Q1",
-                "UniRef:UniRef90_A0A6H1PZP7",
-                "afdb_v6:afdbclusters_A0A1M7CKI7",
-                "afdb_v6:swissprot_P0C1L0",
-                "cath:cath_af_O06367_1_380_3.30.420.10",
-                "pdb:pdb_6xgw"
+                "UniRef:UniRef90_A0A6H1PZP7"
             ],
-            "3di": "DDLCPPDPDDPVLLLVLLLCLLFALDALVVSQVVCVVVVHHDDSVVSLVSLLRCLVLLCVLLVVLLFDQXQQFEKEKDWDWAAAQNDTWIKIWIATPVLATXDIDIDNDDALVRLLVVVLVSLVPDDPSSAHQEYEYAPDPSNVVSVVVCVVVVSHDPNYYYDHDPVSNVSVVVVVVVVCSNCVSHVHDNDPVSVVSSVSSSSLSSSVVVCSNVVQXPPDSVSSSVSSCVSSVN",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P0C1L0",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
-                    "identity": 0.37,
-                    "score": 906.0,
-                    "evalue": 6.172e-18,
-                    "description": "Transposase for insertion sequence-like element IS431mec"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A1M7CKI7",
-                    "query_cov": 1.0,
-                    "subject_cov": 0.64,
-                    "identity": 0.646,
-                    "score": 1311.0,
-                    "evalue": 1.389e-26,
-                    "description": "Transposase (Or an inactivated derivative)"
-                },
-                {
-                    "source": "pdb",
-                    "id": "6xgw",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.69,
-                    "identity": 0.175,
-                    "score": 374.0,
-                    "evalue": 1.832e-06,
-                    "description": "ISCth4 transposase, pre-reaction complex, PRC"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_O06367_1_380_3.30.420.10",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.73,
-                    "identity": 0.135,
-                    "score": 391.0,
-                    "evalue": 6.141e-07,
-                    "description": "Ribonuclease H-like superfamily/Ribonuclease H"
-                }
-            ],
-            "prostt5_confidence": 74.27,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_014",
@@ -909,63 +635,14 @@
                 ],
                 "product": "starch synthase"
             },
-            "product": "Glycogen synthase",
+            "product": "starch synthase",
             "gene": null,
             "genes": [],
             "db_xrefs": [
                 "SO:0001217",
-                "UniRef:UniRef50_A0A3P8IPK2",
-                "afdb_v6:afdbclusters_A0A3S4FXP4",
-                "afdb_v6:swissprot_B7N176",
-                "cath:cath_af_P0A6U8_3_389_3.40.367.20",
-                "pdb:pdb_3d1j"
+                "UniRef:UniRef50_A0A3P8IPK2"
             ],
-            "3di": "DEDEEEDAAAPPQDDDDPSNVCSVPVQLVVVVVVHQYEYEYEPDPSNVVQFDPWDFDDWDQDPVGITIWTWGDWDWDDDDPGXIYIYIDI",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "B7N176",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.17,
-                    "identity": 0.651,
-                    "score": 471.0,
-                    "evalue": 1.572e-11,
-                    "description": "Glycogen synthase"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A3S4FXP4",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.42,
-                    "identity": 0.629,
-                    "score": 513.0,
-                    "evalue": 1.632e-12,
-                    "description": "starch synthase"
-                },
-                {
-                    "source": "pdb",
-                    "id": "3d1j",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.17,
-                    "identity": 0.651,
-                    "score": 457.0,
-                    "evalue": 2.688e-11,
-                    "description": "Crystal Structure of E.coli GS mutant dmGS(C7S;C408S)"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_P0A6U8_3_389_3.40.367.20",
-                    "query_cov": 0.96,
-                    "subject_cov": 0.21,
-                    "identity": 0.643,
-                    "score": 465.0,
-                    "evalue": 1.256e-11,
-                    "description": "hypothetical protein"
-                }
-            ],
-            "prostt5_confidence": 65.23,
-            "baktfold": true,
-            "annotation_confidence": "medium"
+            "3di": null
         },
         {
             "id": "MEGJMN_015",
@@ -1003,58 +680,9 @@
             "genes": [],
             "db_xrefs": [
                 "SO:0001217",
-                "UniRef:UniRef50_A0A3S4G3I5",
-                "afdb_v6:afdbclusters_A0A7H4NVB3",
-                "afdb_v6:swissprot_A8A5P0",
-                "cath:cath_5l6sB02",
-                "pdb:pdb_5mni"
+                "UniRef:UniRef50_A0A3S4G3I5"
             ],
-            "3di": "DPDDDDDPVVVVVLLVVLVVDPPDPSDCPPRSVVVCVVVVVDDDDDQLVVDDDDPPPDGRDDFDCPDPVSVLVNVLLLLDPXRSDDQPDPVDDDDDDDDDFAAEEEDADPVPATEDEESEAEEHQEYXHLEYAESEYEYHQEYEYHQEYEESEYEYHQEYEEYNEYEYSEYEYHNEYDHHNDYADDDQVVLVVQFDDDPVRHTYDYNVSVVVVVD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "A8A5P0",
-                    "query_cov": 1.0,
-                    "subject_cov": 0.5,
-                    "identity": 0.86,
-                    "score": 1168.0,
-                    "evalue": 5.555e-27,
-                    "description": "Glucose-1-phosphate adenylyltransferase"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A7H4NVB3",
-                    "query_cov": 0.87,
-                    "subject_cov": 0.2,
-                    "identity": 0.834,
-                    "score": 963.0,
-                    "evalue": 1.055e-21,
-                    "description": "Multifunctional fusion protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "5mni",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.54,
-                    "identity": 0.864,
-                    "score": 1184.0,
-                    "evalue": 1.527e-27,
-                    "description": "Escherichia coli AGPase mutant R130A apo form"
-                },
-                {
-                    "source": "cath",
-                    "id": "5l6sB02",
-                    "query_cov": 0.58,
-                    "subject_cov": 0.95,
-                    "identity": 0.88,
-                    "score": 713.0,
-                    "evalue": 5.261e-16,
-                    "description": "Hexapeptide repeat proteins"
-                }
-            ],
-            "prostt5_confidence": 72.71,
-            "baktfold": true,
-            "annotation_confidence": "medium"
+            "3di": null
         },
         {
             "id": "MEGJMN_016",
@@ -1116,7 +744,7 @@
                     ]
                 }
             ],
-            "product": "Transposase for insertion sequence-like element IS431mec",
+            "product": "IS6 family IS15DIV transposase",
             "gene": "tnp",
             "genes": [
                 "tnp"
@@ -1131,58 +759,9 @@
                 "UniParc:UPI0000003DD8",
                 "UniRef:UniRef100_A0A6H1PZP7",
                 "UniRef:UniRef50_Q573Q1",
-                "UniRef:UniRef90_A0A6H1PZP7",
-                "afdb_v6:afdbclusters_A0A1M7CKI7",
-                "afdb_v6:swissprot_P0C1L0",
-                "cath:cath_af_O06367_1_380_3.30.420.10",
-                "pdb:pdb_6xgw"
+                "UniRef:UniRef90_A0A6H1PZP7"
             ],
-            "3di": "DDLCPPDPDDPVLLLVLLLCLLFALDALVVSQVVCVVVVHHDDSVVSLVSLLRCLVLLCVLLVVLLFDQXQQFEKEKDWDWAAAQNDTWIKIWIATPVLATXDIDIDNDDALVRLLVVVLVSLVPDDPSSAHQEYEYAPDPSNVVSVVVCVVVVSHDPNYYYDHDPVSNVSVVVVVVVVCSNCVSHVHDNDPVSVVSSVSSSSLSSSVVVCSNVVQXPPDSVSSSVSSCVSSVN",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P0C1L0",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
-                    "identity": 0.37,
-                    "score": 906.0,
-                    "evalue": 6.172e-18,
-                    "description": "Transposase for insertion sequence-like element IS431mec"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A1M7CKI7",
-                    "query_cov": 1.0,
-                    "subject_cov": 0.64,
-                    "identity": 0.646,
-                    "score": 1311.0,
-                    "evalue": 1.389e-26,
-                    "description": "Transposase (Or an inactivated derivative)"
-                },
-                {
-                    "source": "pdb",
-                    "id": "6xgw",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.69,
-                    "identity": 0.175,
-                    "score": 374.0,
-                    "evalue": 1.832e-06,
-                    "description": "ISCth4 transposase, pre-reaction complex, PRC"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_O06367_1_380_3.30.420.10",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.73,
-                    "identity": 0.135,
-                    "score": 391.0,
-                    "evalue": 6.141e-07,
-                    "description": "Ribonuclease H-like superfamily/Ribonuclease H"
-                }
-            ],
-            "prostt5_confidence": 74.27,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_017",
@@ -1229,25 +808,9 @@
                 "UniParc:UPI00015763D5",
                 "UniRef:UniRef100_A0A1U9SS67",
                 "UniRef:UniRef50_A0A636ILE6",
-                "UniRef:UniRef90_R9R7Y6",
-                "afdb_v6:afdbclusters_A0AB34CDA8"
+                "UniRef:UniRef90_R9R7Y6"
             ],
-            "3di": "DDPDVVLLLLLLLLLLLLLVVCVVVVXDDPVXSLVLLLVVLVVCVVVVXDDPVSLVVLVVSVVVCVVVVVXVVSCVVSVVSCVVSVVDXDXVXLVVLVVVLVVVCVVVVXDKDXDDPVVDXXXKXWYWDXPDQXIKIXTXXXDWDADPVRDTDDXXIDXXDDDXVVSQVSSVVSQKDWDWDDDPVDXXMIXIXGDXDDPDPPD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0AB34CDA8",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.9,
-                    "identity": 0.5,
-                    "score": 495.0,
-                    "evalue": 2.329e-11,
-                    "description": "DUF2913 family protein"
-                }
-            ],
-            "prostt5_confidence": 49.32,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_018",
@@ -1296,8 +859,7 @@
                 "UniRef:UniRef50_A0AAN1YBH3",
                 "UniRef:UniRef90_A0AAN1YBH3"
             ],
-            "3di": "DDDDLVLLVVXXVVVXXXXKKXKDXDPVXVVVXXDDDPQKDWDDPDDDDIDIDDPVSVVVVVVVVVVVVXXDXDXXDDXDPXXMIXIDGDPPD",
-            "prostt5_confidence": 40.77
+            "3di": null
         },
         {
             "id": "MEGJMN_019",
@@ -1331,7 +893,7 @@
                     "GO:0004803"
                 ]
             },
-            "product": "Transposase InsO for insertion sequence element IS911",
+            "product": "IS3 family transposase",
             "gene": "tnp",
             "genes": [
                 "tnp"
@@ -1344,25 +906,9 @@
                 "UniParc:UPI0002C4069D",
                 "UniRef:UniRef100_A0A2X7IQ80",
                 "UniRef:UniRef50_A0A653BZJ7",
-                "UniRef:UniRef90_A0A4P7TWT1",
-                "afdb_v6:afdbclusters_A0A3B0WQ64"
+                "UniRef:UniRef90_A0A4P7TWT1"
             ],
-            "3di": "DDDPPDPVVCVVVVVVVVCLVVPQQDPVDDPDPVSVVVSVVCSVVVCQQQPQQDVVLVRHRPVVSVVVVVVVVVVVVVVV",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0A3B0WQ64",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.37,
-                    "identity": 0.645,
-                    "score": 358.0,
-                    "evalue": 2.177e-08,
-                    "description": "Transposase InsO for insertion sequence element IS911"
-                }
-            ],
-            "prostt5_confidence": 78.17,
-            "baktfold": true,
-            "annotation_confidence": "medium"
+            "3di": null
         },
         {
             "id": "MEGJMN_020",
@@ -1426,7 +972,7 @@
                     ]
                 }
             ],
-            "product": "Insertion element IS900 uncharacterized protein",
+            "product": "IS110 family ISEc21 transposase",
             "gene": "tnp",
             "genes": [
                 "tnp"
@@ -1441,58 +987,9 @@
                 "UniParc:UPI0000332EC8",
                 "UniRef:UniRef100_A0A1M0GG24",
                 "UniRef:UniRef50_A0A6J5F9T1",
-                "UniRef:UniRef90_A0A348DKT0",
-                "afdb_v6:afdbclusters_A0A7W9G0T9",
-                "afdb_v6:swissprot_P14322",
-                "cath:cath_af_O07182_4_158_3.30.420.10",
-                "pdb:pdb_2nnw"
+                "UniRef:UniRef90_A0A348DKT0"
             ],
-            "3di": "DPPPPDXFAKEKFWEFDDFKIKIWIAGLVLDTLDIDIFGLDPVRLVVVVVVRVVRHDYDEYAYEPCVPRNVSNVVVCVVVVHHYWYQDDDDPVVCVVPDDDRRVSRSVRRVCRSVVPDTFGGDDCDDLLVVLVVLLVVLVVLVVLLVVLLVVLVVLLVPFDPVVNVVCVPDDPLVSLVVLLPDDDDPVCDDDPNSVSSVVSNVSSVSSVVSVVSNVVSLVVLQVSLCVQQVVLCVDFLDDSSLSSLLCSLCTSPLVSQPDLQSLLQQLQLHWDDPDDDPDRDTDGRPPHDPSNLVSLLRNLVVCVVPPPVSVVQLVVVVVVVDDSVVSSSVSSSVVSSVSSVSSVVSVVVVVPDPPPD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P14322",
-                    "query_cov": 0.95,
-                    "subject_cov": 0.96,
-                    "identity": 0.212,
-                    "score": 939.0,
-                    "evalue": 2.23e-19,
-                    "description": "Insertion element IS900 uncharacterized 42 kDa protein"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A7W9G0T9",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.74,
-                    "identity": 0.425,
-                    "score": 1570.0,
-                    "evalue": 1.877e-33,
-                    "description": "Transposase"
-                },
-                {
-                    "source": "pdb",
-                    "id": "2nnw",
-                    "query_cov": 0.94,
-                    "subject_cov": 0.99,
-                    "identity": 0.13,
-                    "score": 314.0,
-                    "evalue": 2.159e-05,
-                    "description": "Alternative conformations of Nop56/58-fibrillarin complex and implication for induced-fit assenly of box C/D RNPs"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_O07182_4_158_3.30.420.10",
-                    "query_cov": 0.39,
-                    "subject_cov": 0.94,
-                    "identity": 0.272,
-                    "score": 356.0,
-                    "evalue": 1.907e-06,
-                    "description": "Ribonuclease H-like superfamily/Ribonuclease H"
-                }
-            ],
-            "prostt5_confidence": 76.37,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_021",
@@ -1531,7 +1028,7 @@
                 ],
                 "product": "Putative transposase InsO for insertion sequence element IS911B"
             },
-            "product": "Putative transposase InsO for insertion sequence element IS911B",
+            "product": "IS3 family transposase",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -1540,58 +1037,9 @@
                 "UniParc:UPI00032DC2A9",
                 "UniRef:UniRef100_A0A345X0A4",
                 "UniRef:UniRef50_Q47718",
-                "UniRef:UniRef90_A0A455TK33",
-                "afdb_v6:afdbclusters_C1J8E4",
-                "afdb_v6:swissprot_Q47718",
-                "cath:cath_af_Q47718_102_174_3.30.420.10",
-                "pdb:pdb_7svw"
+                "UniRef:UniRef90_A0A455TK33"
             ],
-            "3di": "DDPCVVVVVCVVVVDDDPDDDPDDDDDDDDDDPPDDPPCPVVLDDDDWLQEKEKDWDWDDPPPDIKIKIFIATSNVRDTQFMDIDNDPALVRRVSRVVSSCVVVVLDANHEYDYDPDDVXVVVVVVVVVVVVVYD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "Q47718",
-                    "query_cov": 0.87,
-                    "subject_cov": 0.59,
-                    "identity": 0.94,
-                    "score": 811.0,
-                    "evalue": 6.632e-21,
-                    "description": "Putative transposase InsO for insertion sequence element IS911B"
-                },
-                {
-                    "source": "afdb",
-                    "id": "C1J8E4",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.76,
-                    "identity": 0.843,
-                    "score": 893.0,
-                    "evalue": 5.37e-23,
-                    "description": "Putative transposase protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "7svw",
-                    "query_cov": 0.84,
-                    "subject_cov": 0.29,
-                    "identity": 0.214,
-                    "score": 230.0,
-                    "evalue": 9.537e-05,
-                    "description": "Strand-transfer complex of TnsB from ShCAST"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_Q47718_102_174_3.30.420.10",
-                    "query_cov": 0.53,
-                    "subject_cov": 0.99,
-                    "identity": 0.986,
-                    "score": 568.0,
-                    "evalue": 2.401e-14,
-                    "description": "Ribonuclease H-like superfamily/Ribonuclease H"
-                }
-            ],
-            "prostt5_confidence": 70.56,
-            "baktfold": true,
-            "annotation_confidence": "medium"
+            "3di": null
         },
         {
             "id": "MEGJMN_022",
@@ -1650,7 +1098,7 @@
                     ]
                 }
             ],
-            "product": "Transposase InsN for insertion sequence element IS911",
+            "product": "IS3 family ISEc52 transposase ORF A",
             "gene": "tnp",
             "genes": [
                 "tnp"
@@ -1662,47 +1110,9 @@
                 "UniParc:UPI00000BFAFC",
                 "UniRef:UniRef100_Q8GJ18",
                 "UniRef:UniRef50_P39212",
-                "UniRef:UniRef90_Q8GJ18",
-                "afdb_v6:afdbclusters_A0A6N3R4Y6",
-                "afdb_v6:swissprot_P39213",
-                "cath:cath_af_P75679_19_102_1.10.10.60"
+                "UniRef:UniRef90_Q8GJ18"
             ],
-            "3di": "DDDDDDDLVVLQVLLCCCVVVVDDLVVSCVVVVDDSVVSVVSNVQNVCLVVVNDXPDDHSHPVNVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P39213",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.88,
-                    "identity": 0.979,
-                    "score": 503.0,
-                    "evalue": 6.745e-12,
-                    "description": "Transposase InsN for insertion sequence element IS911"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A6N3R4Y6",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.98,
-                    "identity": 0.909,
-                    "score": 468.0,
-                    "evalue": 9.993e-11,
-                    "description": "Transposase family protein"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_P75679_19_102_1.10.10.60",
-                    "query_cov": 0.82,
-                    "subject_cov": 0.98,
-                    "identity": 0.975,
-                    "score": 422.0,
-                    "evalue": 6.014e-10,
-                    "description": "Homeodomain-like"
-                }
-            ],
-            "prostt5_confidence": 87.26,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_023",
@@ -1751,8 +1161,7 @@
                 "UniRef:UniRef50_A0A6B2F389",
                 "UniRef:UniRef90_A0A6B2F389"
             ],
-            "3di": "DPPPPQWDAAPPPRDTDNDPVVSVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCVVVVDXDPDPVSVVVVVVVVCVVPVDDDPPDPVVVVVVVVPVVVPVPDDPPPD",
-            "prostt5_confidence": 69.68
+            "3di": null
         },
         {
             "id": "MEGJMN_024",
@@ -1819,36 +1228,9 @@
                 "UniParc:UPI0003D902F4",
                 "UniRef:UniRef100_A0A0C5GXS3",
                 "UniRef:UniRef50_B2CBC6",
-                "UniRef:UniRef90_A0A6C0ND82",
-                "afdb_v6:afdbclusters_A0A2X1LVU3",
-                "afdb_v6:swissprot_P03066"
+                "UniRef:UniRef90_A0A6C0ND82"
             ],
-            "3di": "DXDPVLVVLLVVLLVLLVDPVNLVLLVVLLVVLCVVPPLNVDPVDSVXSSLLSLLLSLQSVQADLLARWGDDFLQSSCVSSVXDDDPPPDDGDSVSSVVSVVSCVVSVQKDWDDDDDDPVDXXXXXIIIGGDLSSCVSSVHDXVVSLVVSCVSVVHDSVDXDDPVDSXVXXVVXVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVPDPPPP",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P03066",
-                    "query_cov": 0.94,
-                    "subject_cov": 0.7,
-                    "identity": 0.171,
-                    "score": 336.0,
-                    "evalue": 1.528e-06,
-                    "description": "Replication initiation protein"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A2X1LVU3",
-                    "query_cov": 0.62,
-                    "subject_cov": 0.78,
-                    "identity": 0.208,
-                    "score": 365.0,
-                    "evalue": 4.669e-07,
-                    "description": "Replication initiation protein"
-                }
-            ],
-            "prostt5_confidence": 63.04,
-            "baktfold": true,
-            "annotation_confidence": "low"
+            "3di": null
         },
         {
             "id": "MEGJMN_026",
@@ -1886,7 +1268,7 @@
                 ],
                 "product": "Thioesterase superfamily protein"
             },
-            "product": "Putative esterase aq_1494",
+            "product": "Thioesterase",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -1895,58 +1277,9 @@
                 "UniParc:UPI00032968CA",
                 "UniRef:UniRef100_A0A6C0NDI2",
                 "UniRef:UniRef50_C6CPI2",
-                "UniRef:UniRef90_A0A6C0NDI2",
-                "afdb_v6:afdbclusters_A0A318UMQ5",
-                "afdb_v6:swissprot_O67466",
-                "cath:cath_5v10B00",
-                "pdb:pdb_5v10"
+                "UniRef:UniRef90_A0A6C0NDI2"
             ],
-            "3di": "DDKDKDFDAPVQADPVQWGDPVCVVVVVVVRVQVCCCPQLVDDVVVCVVVQKDKDWPDKDKDFDATHGHPFMKMKDKAWDADPQFQKIKIWIFIDGPRDTGMIMITIIFMDDPNDTDDDPVSVVSRDD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "O67466",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.96,
-                    "identity": 0.222,
-                    "score": 511.0,
-                    "evalue": 1.208e-10,
-                    "description": "Putative esterase aq_1494"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A318UMQ5",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.66,
-                    "identity": 0.255,
-                    "score": 512.0,
-                    "evalue": 1.861e-10,
-                    "description": "YbgC/YbaW family acyl-CoA thioester hydrolase"
-                },
-                {
-                    "source": "pdb",
-                    "id": "5v10",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.99,
-                    "identity": 0.219,
-                    "score": 490.0,
-                    "evalue": 2.701e-10,
-                    "description": "Crystal structure of the putative tol-pal system-associated acyl-CoA thioesterase from Pseudomonas aeruginosa PAO1"
-                },
-                {
-                    "source": "cath",
-                    "id": "5v10B00",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.99,
-                    "identity": 0.219,
-                    "score": 490.0,
-                    "evalue": 2.131e-10,
-                    "description": "Hotdog Thioesterase "
-                }
-            ],
-            "prostt5_confidence": 73.83,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_027",
@@ -1995,7 +1328,7 @@
                 "afdb_v6:afdbclusters_A0A9E1VSB0",
                 "afdb_v6:swissprot_P54292",
                 "cath:cath_3sztB01",
-                "pdb:pdb_5l09"
+                "pdb:pdb_5l09_B"
             ],
             "seq_stats": {
                 "molecular_weight": 18826.0958,
@@ -2006,7 +1339,7 @@
                 {
                     "source": "swissprot",
                     "id": "P54292",
-                    "query_cov": 0.89,
+                    "query_cov": 0.9,
                     "subject_cov": 0.55,
                     "identity": 0.145,
                     "score": 316.0,
@@ -2016,8 +1349,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A9E1VSB0",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.78,
+                    "query_cov": 1.0,
+                    "subject_cov": 0.79,
                     "identity": 0.218,
                     "score": 297.0,
                     "evalue": 6.108e-06,
@@ -2026,18 +1359,19 @@
                 {
                     "source": "pdb",
                     "id": "5l09",
-                    "query_cov": 0.92,
+                    "query_cov": 0.93,
                     "subject_cov": 0.93,
                     "identity": 0.171,
                     "score": 323.0,
                     "evalue": 5.071e-07,
+                    "chain": "B",
                     "description": "Crystal Structure of Quorum-Sensing Transcriptional Activator from Yersinia enterocolitica in complex with 3-oxo-N-[(3S)-2-oxotetrahydrofuran-3-yl]hexanamide"
                 },
                 {
                     "source": "cath",
                     "id": "3sztB01",
-                    "query_cov": 0.92,
-                    "subject_cov": 0.9,
+                    "query_cov": 0.93,
+                    "subject_cov": 0.91,
                     "identity": 0.122,
                     "score": 299.0,
                     "evalue": 1.784e-06,
@@ -2084,7 +1418,7 @@
                 ],
                 "product": "Repressor"
             },
-            "product": "HTH-type transcriptional regulator PrtR",
+            "product": "XRE family transcriptional regulator",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -2093,58 +1427,9 @@
                 "UniParc:UPI000329699F",
                 "UniRef:UniRef100_A0A6C0NDC2",
                 "UniRef:UniRef50_A0A0U5LAP5",
-                "UniRef:UniRef90_A0A6C0NDC2",
-                "afdb_v6:afdbclusters_I1VYM4",
-                "afdb_v6:swissprot_Q06553",
-                "cath:cath_af_Q2FYU1_84_206_2.10.109.10",
-                "pdb:pdb_7jvt"
+                "UniRef:UniRef90_A0A6C0NDC2"
             ],
-            "3di": "DQDFLLVLLVLLCVVLVDDLVVLQVVLVVVVDDDDSVVSVCSNVSNDDDDPVCLVSLVSSQVSSVVSQWNDHSCCSHPSDDDGXXXDDDDDDDPVVVVVVXVVVDDQKDWDFDADDQCPVPDHHQKIFIWGPDDDLVVQAQFWKWFDFPVGIDIFGWHDPDPFWTWGGDXDTDIDGPVRTPGMITTDDMDDD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "Q06553",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.93,
-                    "identity": 0.14,
-                    "score": 360.0,
-                    "evalue": 1.689e-07,
-                    "description": "HTH-type transcriptional regulator PrtR"
-                },
-                {
-                    "source": "afdb",
-                    "id": "I1VYM4",
-                    "query_cov": 0.86,
-                    "subject_cov": 0.98,
-                    "identity": 0.514,
-                    "score": 773.0,
-                    "evalue": 4.779e-18,
-                    "description": "hypothetical protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "7jvt",
-                    "query_cov": 0.96,
-                    "subject_cov": 0.92,
-                    "identity": 0.102,
-                    "score": 266.0,
-                    "evalue": 3.245e-05,
-                    "description": "Crystal structure of a lambda-186 hybrid repressor"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_Q2FYU1_84_206_2.10.109.10",
-                    "query_cov": 0.54,
-                    "subject_cov": 0.82,
-                    "identity": 0.201,
-                    "score": 234.0,
-                    "evalue": 0.0001747,
-                    "description": "Umud Fragment, subunit A"
-                }
-            ],
-            "prostt5_confidence": 64.5,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_029",
@@ -2193,58 +1478,9 @@
                 "UniParc:UPI0003296925",
                 "UniRef:UniRef100_A0A6C0NCZ7",
                 "UniRef:UniRef50_A0A6C0NCZ7",
-                "UniRef:UniRef90_A0A6C0NCZ7",
-                "afdb_v6:afdbclusters_Q70W72",
-                "afdb_v6:swissprot_P0AFW0",
-                "cath:cath_af_P0AFW0_1_162_3.30.70.940",
-                "pdb:pdb_5ond"
+                "UniRef:UniRef90_A0A6C0NCZ7"
             ],
-            "3di": "DKWKWKWFFDPVCQVVLVVVCVVVVWDKDWQWDWDWDWDPDPVGIDIDIDGPDGRMIMIGDDPVVDDLVVXCVRPGTDGTDDDPNDGDTDDPLLVVLSVLVVVXXXDDPDXXXDXVPDDPVLSVLSSVLVVDPDPVVSVVSSVVSVVVDVXSVVCVVVVDDXDXXDDPPDPPPDPPD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P0AFW0",
-                    "query_cov": 0.92,
-                    "subject_cov": 0.99,
-                    "identity": 0.26,
-                    "score": 471.0,
-                    "evalue": 1.67e-10,
-                    "description": "Transcription antitermination protein RfaH"
-                },
-                {
-                    "source": "afdb",
-                    "id": "Q70W72",
-                    "query_cov": 0.84,
-                    "subject_cov": 0.84,
-                    "identity": 0.393,
-                    "score": 596.0,
-                    "evalue": 1.407e-13,
-                    "description": "NusG-like N-terminal domain-containing protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "5ond",
-                    "query_cov": 0.9,
-                    "subject_cov": 0.99,
-                    "identity": 0.248,
-                    "score": 452.0,
-                    "evalue": 3.604e-10,
-                    "description": "RfaH from Escherichia coli in complex with ops DNA"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_P0AFW0_1_162_3.30.70.940",
-                    "query_cov": 0.92,
-                    "subject_cov": 0.99,
-                    "identity": 0.25,
-                    "score": 482.0,
-                    "evalue": 4.626e-11,
-                    "description": "NusG, N-terminal domain"
-                }
-            ],
-            "prostt5_confidence": 59.81,
-            "baktfold": true,
-            "annotation_confidence": "medium"
+            "3di": null
         },
         {
             "id": "MEGJMN_030",
@@ -2344,25 +1580,9 @@
                 "UniParc:UPI00032968ED",
                 "UniRef:UniRef100_A0A6C0L6Y8",
                 "UniRef:UniRef50_A0A6C0L6Y8",
-                "UniRef:UniRef90_A0A6C0L6Y8",
-                "afdb_v6:afdbclusters_A0AAX3AIG3"
+                "UniRef:UniRef90_A0A6C0L6Y8"
             ],
-            "3di": "DPPVVVDDVDPPDDDPPDDPPPDPVVVVVPVVVVVVVVVVVVVVVVVVVVVVVVVVVVQQWDDDPRDTDDAQDWDDDPQWIWGWHDDPNHTDIDTDDPVPDPD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0AAX3AIG3",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
-                    "identity": 1.0,
-                    "score": 568.0,
-                    "evalue": 3.53e-13,
-                    "description": "DUF1496 domain-containing protein"
-                }
-            ],
-            "prostt5_confidence": 72.8,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_032",
@@ -2409,25 +1629,9 @@
                 "UniParc:UPI000329697F",
                 "UniRef:UniRef100_A0A6C0L5V6",
                 "UniRef:UniRef50_A0A7G3L4A4",
-                "UniRef:UniRef90_A0A7G3L4A4",
-                "afdb_v6:afdbclusters_A0A7G3L4A4"
+                "UniRef:UniRef90_A0A7G3L4A4"
             ],
-            "3di": "DPPDPPDDDDDDDPPDPPPPPPPPPDDPVVVVVVVVVVVVVVVVVVVVVVVVPDDDDDDDDDPPDDDDDDDPPDDDDPDDDDDPDDDDDDPDPPPDDXDXDDDDDPDDDDDPDDDFDKDKDFFAFLVVSLVRLDDPPADEDEDPPCVVLRRDTDGDTDGDGSVVVSCVSCVVSQWDWDWDRVRRYIYIYGDDDDDPPPPPD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0A7G3L4A4",
-                    "query_cov": 1.0,
-                    "subject_cov": 1.0,
-                    "identity": 0.9,
-                    "score": 1037.0,
-                    "evalue": 1.326e-27,
-                    "description": "Lipoprotein"
-                }
-            ],
-            "prostt5_confidence": 62.35,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_033",
@@ -2465,7 +1669,7 @@
                 ],
                 "product": "Transglycosylase SLT domain-containing protein"
             },
-            "product": "Peptidoglycan-binding-like protein",
+            "product": "Transglycosylase SLT domain-containing protein",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -2474,58 +1678,9 @@
                 "UniParc:UPI0003296919",
                 "UniRef:UniRef100_A0A6C0ND22",
                 "UniRef:UniRef50_A0A0P9RVK3",
-                "UniRef:UniRef90_A0A7G3L7G8",
-                "afdb_v6:afdbclusters_A0A5U9VSH8",
-                "afdb_v6:swissprot_Q8X6H3",
-                "cath:cath_af_Q46790_25_155_1.10.530.10",
-                "pdb:pdb_4xp8"
+                "UniRef:UniRef90_A0A7G3L7G8"
             ],
-            "3di": "DDDDPDPPPDPPPDPVVLVVLLCVLCVVLVHDSLLLVLLLCVQPVQQQQDKDFDADPVRDTPWIFGGSRTDIPVCQVVCCVVVQDPDSVCSRRPVSSVSSVSSVLLSVQCVVQPPDLLSQLCSVQNDDPDPVSSVVSNVVSVVSVVSSVVVVVVVVVVV",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "Q8X6H3",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.95,
-                    "identity": 0.385,
-                    "score": 712.0,
-                    "evalue": 8.159e-15,
-                    "description": "Peptidoglycan-binding-like protein"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A5U9VSH8",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.97,
-                    "identity": 0.348,
-                    "score": 603.0,
-                    "evalue": 4.785e-12,
-                    "description": "Transglycosylase SLT domain-containing protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "4xp8",
-                    "query_cov": 0.54,
-                    "subject_cov": 0.91,
-                    "identity": 0.298,
-                    "score": 308.0,
-                    "evalue": 1.661e-05,
-                    "description": "Structure of EtgA D60N mutant"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_Q46790_25_155_1.10.530.10",
-                    "query_cov": 0.8,
-                    "subject_cov": 0.95,
-                    "identity": 0.398,
-                    "score": 563.0,
-                    "evalue": 1.372e-11,
-                    "description": "hypothetical protein"
-                }
-            ],
-            "prostt5_confidence": 75.39,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_034",
@@ -2563,7 +1718,7 @@
                 ],
                 "product": "DotD/TraH family lipoprotein"
             },
-            "product": "Type IV pilus biogenesis and competence protein PilQ",
+            "product": "DotD/TraH family lipoprotein",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -2572,58 +1727,9 @@
                 "UniParc:UPI000329699B",
                 "UniRef:UniRef100_A0A6C0ND56",
                 "UniRef:UniRef50_A0A2J5Q4Q6",
-                "UniRef:UniRef90_A0A7G3L854",
-                "afdb_v6:afdbclusters_A0A0P0ZGT3",
-                "afdb_v6:swissprot_Q9ZHF3",
-                "cath:cath_3adyA00",
-                "pdb:pdb_6x62"
+                "UniRef:UniRef90_A0A7G3L854"
             ],
-            "3di": "DVVVVVVVVVVVVVVPPPPDPPPPPPDDDDDPVVVVVVVVVVVVVVVVVVVVVXVPPPDDDDPDDVXXQPAFDFDFDWDFLVVVVCVVCVVVVAHEDEDDDDDTDTDGDTDGGDGPVVVVVVSCVRCVQFWDWDDDPRYIYIYGDGDDDDPPDDD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "Q9ZHF3",
-                    "query_cov": 0.56,
-                    "subject_cov": 0.11,
-                    "identity": 0.166,
-                    "score": 232.0,
-                    "evalue": 0.0001214,
-                    "description": "Type IV pilus biogenesis and competence protein PilQ"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A0P0ZGT3",
-                    "query_cov": 0.64,
-                    "subject_cov": 0.98,
-                    "identity": 0.5,
-                    "score": 433.0,
-                    "evalue": 4.423e-10,
-                    "description": "Conjugal transfer protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "6x62",
-                    "query_cov": 0.83,
-                    "subject_cov": 0.99,
-                    "identity": 0.215,
-                    "score": 310.0,
-                    "evalue": 5.32e-07,
-                    "description": "Legionella pneumophila Dot T4SS OMC"
-                },
-                {
-                    "source": "cath",
-                    "id": "3adyA00",
-                    "query_cov": 0.54,
-                    "subject_cov": 0.85,
-                    "identity": 0.235,
-                    "score": 251.0,
-                    "evalue": 1.913e-05,
-                    "description": "DotD protein"
-                }
-            ],
-            "prostt5_confidence": 67.19,
-            "baktfold": true,
-            "annotation_confidence": "low"
+            "3di": null
         },
         {
             "id": "MEGJMN_035",
@@ -2662,7 +1768,7 @@
                 ],
                 "product": "Conjugal transfer protein"
             },
-            "product": "DotC protein",
+            "product": "Conjugal transfer protein",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -2672,36 +1778,9 @@
                 "UniParc:UPI000329691D",
                 "UniRef:UniRef100_A0A6C0ND76",
                 "UniRef:UniRef50_A0A7G3L7Q4",
-                "UniRef:UniRef90_A0A7G3L7Q4",
-                "afdb_v6:afdbclusters_A0A484UHH3",
-                "pdb:pdb_7muq"
+                "UniRef:UniRef90_A0A7G3L7Q4"
             ],
-            "3di": "DPDDPDDPPDDDPDDPPPPPPPDDDDDPDLVVLLPDDPDDDDPDDPVLLVVLLVLLLQLLLLLLLLVLLVVLLVVCVVCVVVLCVVQVLVVQCVVQQWFAWDKDWWWWDWDDDPPDIDDDIXIXDTXDDPXXDPDDDGSCVXXVPDXDDDDDDPDDPXDDDDDPVSVVSSSVSSVVSSVCSNVVSVVSSVVSSVVSVVVSVSSVVVVVCVVVQKKDDWDKDWDWWDDDDXDIDITPDIIIIDIDIDXDGDPVVXDIDGDDDXVXXXVXXDDD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0A484UHH3",
-                    "query_cov": 0.95,
-                    "subject_cov": 0.52,
-                    "identity": 0.369,
-                    "score": 751.0,
-                    "evalue": 1.307e-16,
-                    "description": "DotC protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "7muq",
-                    "query_cov": 0.79,
-                    "subject_cov": 0.88,
-                    "identity": 0.264,
-                    "score": 553.0,
-                    "evalue": 4.677e-12,
-                    "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 1"
-                }
-            ],
-            "prostt5_confidence": 54.2,
-            "baktfold": true,
-            "annotation_confidence": "medium"
+            "3di": null
         },
         {
             "id": "MEGJMN_036",
@@ -2744,7 +1823,7 @@
                 ],
                 "product": "TraJ"
             },
-            "product": "hypothetical protein",
+            "product": "plasmid transfer ATPase TraJ",
             "gene": "traJ",
             "genes": [
                 "traJ"
@@ -2757,69 +1836,9 @@
                 "UniParc:UPI0003D878FC",
                 "UniRef:UniRef100_A0A0C5H2U4",
                 "UniRef:UniRef50_A0A0C5H2U4",
-                "UniRef:UniRef90_A0A0C5H2U4",
-                "afdb_v6:afdbclusters_A0A7X4CW99",
-                "afdb_v6:swissprot_P52052",
-                "cath:cath_3jvvC02",
-                "cath:cath_5fl3A01",
-                "pdb:pdb_6geb"
+                "UniRef:UniRef90_A0A0C5H2U4"
             ],
-            "3di": "DDFFDPDDPPDDDDDXXDDPDDDDDVDLLSVVLSCLVVVFFKWKDFAQAFIWTDDQNDTDGRDPDGDDLVRVVSNVVVQDDPVVSVCQVVQDKDKDKDWDADVSCVVRVHDXRDIWMWIKIWGWDDDPVRGITIMIMIGTADQDQDALVVQPDDPVVLVLLDDQFFEEEEEADPPLCRLSVLLNSVLVCLQVVLPFAEEEEEPDDRHDSDDDPPRGHYDYDYDPPRAPDLLVSLVVVVVVVGREYEYEADDALSNLVSQLVSRVVRHYYYYYDYDQDPLVVLVVSLVSDDPVCSLVSLLSSLVRYFKYKYWHWFQFPVRDTDIDIFIDGDDPVLSVVSSPDDSVCSSVVVVVVVVVVVRXSLNVLLVCVVVVRDDPVSSVVRDDPVSVVVSVVVV",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P52052",
-                    "query_cov": 0.88,
-                    "subject_cov": 0.99,
-                    "identity": 0.294,
-                    "score": 1295.0,
-                    "evalue": 9.055e-31,
-                    "description": "Uncharacterized protein YggR"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A7X4CW99",
-                    "query_cov": 0.94,
-                    "subject_cov": 0.84,
-                    "identity": 0.293,
-                    "score": 1435.0,
-                    "evalue": 4.356e-34,
-                    "description": "AAA+ ATPase domain-containing protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "6geb",
-                    "query_cov": 0.92,
-                    "subject_cov": 0.96,
-                    "identity": 0.332,
-                    "score": 1412.0,
-                    "evalue": 6.94e-34,
-                    "description": "X-ray structure of the Legionella pneumophila ATPase DotB"
-                },
-                {
-                    "source": "cath",
-                    "id": "3jvvC02",
-                    "query_cov": 0.61,
-                    "subject_cov": 0.98,
-                    "identity": 0.311,
-                    "score": 797.0,
-                    "evalue": 1.758e-18,
-                    "description": "P-loop containing nucleotide triphosphate hydrolases"
-                },
-                {
-                    "source": "cath",
-                    "id": "5fl3A01",
-                    "query_cov": 0.29,
-                    "subject_cov": 0.96,
-                    "identity": 0.228,
-                    "score": 335.0,
-                    "evalue": 7.829e-07,
-                    "description": "hypothetical protein"
-                }
-            ],
-            "prostt5_confidence": 66.6,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_037",
@@ -2859,7 +1878,7 @@
                 ],
                 "product": "Conjugal transfer protein"
             },
-            "product": "TraK protein",
+            "product": "IcmT/TraK family protein",
             "gene": "icmT",
             "genes": [
                 "icmT"
@@ -2871,25 +1890,9 @@
                 "UniParc:UPI0003D7ED4E",
                 "UniRef:UniRef100_A0A6C0L1W9",
                 "UniRef:UniRef50_A0A7G3L622",
-                "UniRef:UniRef90_A0A7G3L622",
-                "afdb_v6:afdbclusters_A0A3M3JC81"
+                "UniRef:UniRef90_A0A7G3L622"
             ],
-            "3di": "DPPPVVVVVVVVDFDDDLLARPVLVVVLVVCVVDVDPVSVVVSVVVSVVSVVCSVVVDVPVVVVVVVVVVVVVVPDPPDDPVCVVVPD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0A3M3JC81",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.98,
-                    "identity": 0.352,
-                    "score": 234.0,
-                    "evalue": 4.164e-05,
-                    "description": "TraK protein"
-                }
-            ],
-            "prostt5_confidence": 69.34,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_038",
@@ -2938,47 +1941,9 @@
                 "UniParc:UPI0003D941A3",
                 "UniRef:UniRef100_A0A6C0L4D4",
                 "UniRef:UniRef50_A0A7G3L4B5",
-                "UniRef:UniRef90_A0A7G3L4B5",
-                "afdb_v6:afdbclusters_A0A0T9MTE6",
-                "afdb_v6:swissprot_P27189",
-                "pdb:pdb_6n9x"
+                "UniRef:UniRef90_A0A7G3L4B5"
             ],
-            "3di": "DPXXPVQQQDKFFFQDDPVCQVVLQVLXQADPVRDGQWDQDPVVRTIIGTPPXDCVSSCVXDDPXXDDDDDPDDLQVVVQVVVVVVQFDDPDDDDAPQDKDFGDGDADPVPDDDDDGQKIWHAXSLXKIKMWIAGPVDDPPXDIDIDGDDDDDDDPSSSSVSVVSSVVSVVVSVVVLVVLLVVQQVVLVVVLVPFAFDDCQQLLCVVLVFHDDRQWTADPVRWIKDFWAFLVRGTAWIWIAHSVGDIDTTXSHDLALIKTKGADDDDPQAAAEEEEASSLQRLVCVLFVHIYIYRXDLVCLLSNLVSVCVVRVPHAYEYEFFLDDDDDPDXVVLXVXLVXVXDDDPDPXDDDDPVSSSVDTSLSSSLVSLVVHPXYKYKYDDDDPVSVVVVDGGSSVVCVVPNSVSVLVSXVVDPPSSQWMADPVVRDIDDDPDPDDDDDDDDPDDDDDDXXXXDDDPPXVVVVVVVVVVVVVVVPDDDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDPDDDDDDPDDDDDDDDDDPVXXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDPDDDDPXXXKKKKADDDPPDDXXDXXXXXXXXXDPXVVLVVQWDWDDPXQWIFTDDVNHTQWTDSRGMIDGDDPDLVSSLSSLVSVVSVCCVRRNQEMEYDYDPVSLLSNLLSCLLSVXRHHYPDPVSSVSSVVSNVVVCVPDPPSVXVXPDDDDDDPDDDPDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDDPVACVQKDKAAWADKDWAQPVVDDPGDIWIWTWGQDPVGIDIDIDNQVVVQCVVQVDDHGFIKGKHWDAWDWDWDWDFDDDPNDTPGTDIDIDTDTDMDMDGDDPPPDDDDDDPDPXXXXVVVXVVVLVVLLVVLLVXXXVVVXDXDPPDXQXKWXXXXXXXDXDDXDDXXKDWDDDDPPDDXXIXIWXXDPVXIWIWGXXXDXDXWIWTWTDDPNXTWIKIWGXDXDXXXXXIWIWTQDPVGIDIDXXXVXXCVXPXDGDDXXXXXXDGXPDDDPXXXXXXGDXDSVVDDVVSCVVSVHDDDDDDDDPDDDDDDDDDXXDDDDPDDDDDD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P27189",
-                    "query_cov": 0.35,
-                    "subject_cov": 0.47,
-                    "identity": 0.277,
-                    "score": 1125.0,
-                    "evalue": 2.4e-23,
-                    "description": "DNA primase TraC"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A0T9MTE6",
-                    "query_cov": 0.99,
-                    "subject_cov": 1.0,
-                    "identity": 0.298,
-                    "score": 2990.0,
-                    "evalue": 5.825e-65,
-                    "description": "DNA primase TraC"
-                },
-                {
-                    "source": "pdb",
-                    "id": "6n9x",
-                    "query_cov": 0.2,
-                    "subject_cov": 0.37,
-                    "identity": 0.143,
-                    "score": 299.0,
-                    "evalue": 5.493e-05,
-                    "description": "Structure of bacteriophage T7 lagging-strand DNA polymerase (D5A/E7A) and gp4 (helicase/primase) bound to DNA including RNA/DNA hybrid, and an incoming dTTP (LagS3)"
-                }
-            ],
-            "prostt5_confidence": 53.96,
-            "baktfold": true,
-            "annotation_confidence": "low"
+            "3di": null
         },
         {
             "id": "MEGJMN_039",
@@ -3029,8 +1994,7 @@
                 "UniRef:UniRef50_A0A7G3LBI7",
                 "UniRef:UniRef90_A0A7G3LBI7"
             ],
-            "3di": "DPPVVDPDDPVVVVVPPPDPVPVXVDXDXDVCVVVVDPVLLVVLVVLLVVVVVVVVVLXVQLVVLLVVLVVDDDDDDDCVVVVVVSSVVSVVVSVVSSVVVVVSDDPPDDSVVVVVV",
-            "prostt5_confidence": 48.66
+            "3di": null
         },
         {
             "id": "MEGJMN_040",
@@ -3068,7 +2032,7 @@
                 ],
                 "product": "Conjugal transfer protein TraM"
             },
-            "product": "Type IV secretion system protein virB8",
+            "product": "Conjugal transfer protein TraM",
             "gene": "traM",
             "genes": [
                 "traM"
@@ -3079,58 +2043,9 @@
                 "UniParc:UPI0003296974",
                 "UniRef:UniRef100_A0A6C0L2X6",
                 "UniRef:UniRef50_A0A7G3L479",
-                "UniRef:UniRef90_A0A7G3L479",
-                "afdb_v6:afdbclusters_A0A350YK85",
-                "afdb_v6:swissprot_P0C532",
-                "cath:cath_af_O07422_62_244_3.40.630.30",
-                "pdb:pdb_3wz3"
+                "UniRef:UniRef90_A0A7G3L479"
             ],
-            "3di": "DDDDDPDDPPPPDDPPPDDDDPVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCVVPDPDDWWDDPPNDTDTDDDPPDDPDDLVNVQVLVQVLVQLLQWDFLVCVVVSLVVSLLQADPQLSVVVVVVCVVVVVSVVCNVVVKGKGKDWDXKDWDDDDDDPQKTKIKTKIWMWMDTPNDIDTDDIWIKIKIWIKGQDDCVVPVSRIHTRHMDIDIDD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P0C532",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.97,
-                    "identity": 0.16,
-                    "score": 396.0,
-                    "evalue": 3.582e-08,
-                    "description": "Type IV secretion system protein virB8"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A350YK85",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.99,
-                    "identity": 0.175,
-                    "score": 559.0,
-                    "evalue": 4.247e-12,
-                    "description": "Type IV secretion protein IcmL"
-                },
-                {
-                    "source": "pdb",
-                    "id": "3wz3",
-                    "query_cov": 0.57,
-                    "subject_cov": 0.99,
-                    "identity": 0.426,
-                    "score": 594.0,
-                    "evalue": 2.301e-13,
-                    "description": "Structure of a periplasmic fragment of TraM"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_O07422_62_244_3.40.630.30",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.96,
-                    "identity": 0.141,
-                    "score": 331.0,
-                    "evalue": 8.628e-07,
-                    "description": "Gcn5-related N-acetyltransferase (GNAT)"
-                }
-            ],
-            "prostt5_confidence": 74.46,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_041",
@@ -3169,7 +2084,7 @@
                 ],
                 "product": "Conjugal transfer protein TraN"
             },
-            "product": "putative conjugal transfer protein TrbG",
+            "product": "Conjugal transfer protein TraN",
             "gene": "traN",
             "genes": [
                 "traN"
@@ -3181,47 +2096,9 @@
                 "UniParc:UPI00032969A3",
                 "UniRef:UniRef100_A0A6C0L6Y2",
                 "UniRef:UniRef50_A0A7G3L550",
-                "UniRef:UniRef90_A0A7G3L550",
-                "afdb_v6:afdbclusters_A0A077ZKE5",
-                "afdb_v6:swissprot_P55404",
-                "pdb:pdb_7mus"
+                "UniRef:UniRef90_A0A7G3L550"
             ],
-            "3di": "DDPDPDDDPDDDPDDDPDPDDPPPPPDDDDPDDPPPPDDDPVPVVVVVPVPDDDDDPDDDPDDDPDDPDDPDDDDDDDPPDDDDDDDDDPPDDDDDPPDPPDDDDDDPVVVVVVCVPDPDDPVVVVVVVVVVVVVVVVVPDDQAEEDAEEDEDEDDPDPPDDAHEAEAEAPDKAKEFEAELVRHGWAWPDFKDWPXDPQWDWDDDGPGRMIMIGGNDAFDWTKIWTDIPPDPGIHIYIYHYDDDDPPDXYIYGHRYYYYYYHHDDPPDDXPDDDPXXXPDDDVQLVCVVVVNGDPPWDWKDKDFDDPQWTWIDRDQKIKIKGQWDFPDDFDWWWDDDXRIIITIDGDDQWTWTDDPNDIDIMIMGTD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P55404",
-                    "query_cov": 0.75,
-                    "subject_cov": 0.99,
-                    "identity": 0.112,
-                    "score": 467.0,
-                    "evalue": 2.006e-09,
-                    "description": "Probable conjugal transfer protein TrbG"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A077ZKE5",
-                    "query_cov": 1.0,
-                    "subject_cov": 0.69,
-                    "identity": 0.389,
-                    "score": 1471.0,
-                    "evalue": 1.606e-33,
-                    "description": "DUF3625 and IcmL domain containing protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "7mus",
-                    "query_cov": 0.69,
-                    "subject_cov": 0.96,
-                    "identity": 0.289,
-                    "score": 1048.0,
-                    "evalue": 1.174e-23,
-                    "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 2"
-                }
-            ],
-            "prostt5_confidence": 62.55,
-            "baktfold": true,
-            "annotation_confidence": "low"
+            "3di": null
         },
         {
             "id": "MEGJMN_042",
@@ -3305,7 +2182,7 @@
                 ],
                 "product": "conjugal transfer protein TraO"
             },
-            "product": "Type IV secretion system protein virB10",
+            "product": "conjugal transfer protein TraO",
             "gene": "traO",
             "genes": [
                 "traO"
@@ -3314,47 +2191,9 @@
                 "KEGG:K12209",
                 "SO:0001217",
                 "UniRef:UniRef50_UPI00215B38C2",
-                "UniRef:UniRef90_UPI00215B38C2",
-                "afdb_v6:afdbclusters_A0A1G0INH6",
-                "afdb_v6:swissprot_Q6FYW1",
-                "pdb:pdb_7mus"
+                "UniRef:UniRef90_UPI00215B38C2"
             ],
-            "3di": "DDPPDDDPDPDDDDDDDDPDPPDPPPPPVVVVVVVVVVVVPDDDPPDDDPDDDPPDPDDDFDKDFFFDKFKWFWQAKDKLPDQXDWTWIFTCDDPRHQKIWIKTGWDDDPQFIWIWTQWIDDPNDIDGFGKTKDDPPDRTXXXDFDKDACCVVQPVLLVVLLVLLVVLQVQLVVQWDDDDDPDDIDDDDGDDDDPSSVVSNVRSVVSNVVSVVSNVVSVVDDIIMDMDHGGDMIMMGTNDMDGXPDXDDDPDPPDPDDPPDDPPPPPDPPPDDPPDPPDPDPVVVVVVVVVVVVVVPDDPPPDD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "Q6FYW1",
-                    "query_cov": 0.91,
-                    "subject_cov": 0.68,
-                    "identity": 0.119,
-                    "score": 430.0,
-                    "evalue": 5.611e-09,
-                    "description": "Type IV secretion system protein virB10"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A1G0INH6",
-                    "query_cov": 0.85,
-                    "subject_cov": 0.22,
-                    "identity": 0.203,
-                    "score": 700.0,
-                    "evalue": 1.391e-15,
-                    "description": "Type IV secretion protein IcmE"
-                },
-                {
-                    "source": "pdb",
-                    "id": "7mus",
-                    "query_cov": 0.59,
-                    "subject_cov": 0.99,
-                    "identity": 0.216,
-                    "score": 396.0,
-                    "evalue": 2.767e-08,
-                    "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 2"
-                }
-            ],
-            "prostt5_confidence": 59.28,
-            "baktfold": true,
-            "annotation_confidence": "medium"
+            "3di": null
         },
         {
             "id": "MEGJMN_044",
@@ -3394,7 +2233,7 @@
                 ],
                 "product": "TraP"
             },
-            "product": "TraP protein",
+            "product": "conjugal transfer protein TraP",
             "gene": "traP",
             "genes": [
                 "traP"
@@ -3406,25 +2245,9 @@
                 "UniParc:UPI0003296995",
                 "UniRef:UniRef100_A0A6C0ND15",
                 "UniRef:UniRef50_A0A486BGK9",
-                "UniRef:UniRef90_A0A6C0ND15",
-                "afdb_v6:afdbclusters_A0AB38EMS0"
+                "UniRef:UniRef90_A0A6C0ND15"
             ],
-            "3di": "DDDPDDDDDDPPPDPPPVPPPPPPDDDPVVQVPPXDDDPNDGPVVVVVVVVVVVVVVCVVVVPPDDPPPPVVVVVPPDDDDDPPPDDDPPPDPDDPDDDPPVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVPPPPADDDXVQKAWDADDPQWTWIDDPNDIDIDHQQDADPVRPKGFHGADRVVRWTDIPVHIDG",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0AB38EMS0",
-                    "query_cov": 1.0,
-                    "subject_cov": 1.0,
-                    "identity": 0.319,
-                    "score": 410.0,
-                    "evalue": 6.496e-09,
-                    "description": "TraP protein"
-                }
-            ],
-            "prostt5_confidence": 71.68,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_045",
@@ -3463,7 +2286,7 @@
                 ],
                 "product": "Conjugal transfer protein"
             },
-            "product": "Conjugal transfer protein TraQ",
+            "product": "conjugal transfer protein TraQ",
             "gene": "traQ",
             "genes": [
                 "traQ"
@@ -3474,25 +2297,9 @@
                 "UniParc:UPI0003296963",
                 "UniRef:UniRef100_A0A6C0L1W3",
                 "UniRef:UniRef50_A0A7G3L862",
-                "UniRef:UniRef90_A0A7G3L862",
-                "afdb_v6:afdbclusters_A0AAW9CFL3"
+                "UniRef:UniRef90_A0A7G3L862"
             ],
-            "3di": "DVVVLVVVLVVLVVVLVVLLVVLLVVLLVLLVVLLVVLVVVQVCVVVVDPPDDXNVLSVLSNVLSVCSNVVQVVLQVVCVVVVNDPDDDDFDDXDDCVVCVSCSSNVRSVLSNLLVVLSVLLVVLSVLLSVLSVCVXXDPXSPDSNVVSVVSNVVSSCSNCVSVVVVVVCVVVVTDD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0AAW9CFL3",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.99,
-                    "identity": 0.344,
-                    "score": 527.0,
-                    "evalue": 1.337e-09,
-                    "description": "Conjugal transfer protein TraQ"
-                }
-            ],
-            "prostt5_confidence": 72.85,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_046",
@@ -3541,8 +2348,7 @@
                 "UniRef:UniRef50_A0A7G3L7P3",
                 "UniRef:UniRef90_A0A6C0L622"
             ],
-            "3di": "DVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVPDVVVVVVPVVPVVVVVVVVVVVVVVLVVVLVVLLVVLVVLLVVLVVCVVVVVPDPPDDPVNSVVSNVVSVVSNVVSVVVVVVCVVVPDDDPDPPPPD",
-            "prostt5_confidence": 80.13
+            "3di": null
         },
         {
             "id": "MEGJMN_047",
@@ -3580,7 +2386,7 @@
                 ],
                 "product": "Conjugal transfer protein TraT"
             },
-            "product": "Conjugal transfer protein",
+            "product": "Conjugal transfer protein TraT",
             "gene": "traT",
             "genes": [
                 "traT"
@@ -3591,25 +2397,9 @@
                 "UniParc:UPI0003D82576",
                 "UniRef:UniRef100_A0A6C0NDH2",
                 "UniRef:UniRef50_A0A7G3L4E4",
-                "UniRef:UniRef90_A0A7G3L4E4",
-                "afdb_v6:afdbclusters_R4WMQ0"
+                "UniRef:UniRef90_A0A7G3L4E4"
             ],
-            "3di": "DDPPDDPQXDXDDPDPDDDDDDDDDDDXQAAPPXRHGAGIWIDDPPDDRGTHHLLVVLVVXXVXXXVXVXXXXXXXPDDSVVLSVLLXLLLVCVVVPDPVSNVLSLVSLVVCVVVVVVSVVXXDXVDLVVLVVVLVPDDPVSSVVVLVVXVVXXXDDDPVSXVVXVVSDDPPDHSVVVSVVRDDDDD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "R4WMQ0",
-                    "query_cov": 0.9,
-                    "subject_cov": 0.99,
-                    "identity": 0.852,
-                    "score": 701.0,
-                    "evalue": 9.034e-17,
-                    "description": "Conjugal transfer protein"
-                }
-            ],
-            "prostt5_confidence": 45.61,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_048",
@@ -3651,7 +2441,7 @@
                 ],
                 "product": "TraU protein"
             },
-            "product": "Protein TraC",
+            "product": "Conjugal transfer protein",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -3662,47 +2452,9 @@
                 "UniParc:UPI00093847B4",
                 "UniRef:UniRef100_UPI00093847B4",
                 "UniRef:UniRef50_A0A0N8QU23",
-                "UniRef:UniRef90_A0A7G3L613",
-                "afdb_v6:afdbclusters_A0A0W0YDQ9",
-                "afdb_v6:swissprot_P18004",
-                "pdb:pdb_7o43"
+                "UniRef:UniRef90_A0A7G3L613"
             ],
-            "3di": "DVVVVVVVVVVVVVVXDDPFDDLLVQLQFQFWAFFDDPXCDXDPXDTATQWTAGLQQKIKWKKWFFAAAFADDQPDDPVVVXDLVLLLVLLLVLCFPXQADFQKKKKKKKFKALXXLLVLLLVLLVLLLVLLLXFLXXLSVLLSVVSVLCSVLXIDITMMMMIMGGDDDDDPVVSVVVVVVVVVVLVPDDPDXXXDDDDPVVVVVVVVVVVVSVVSSCVSSDVSDPXIXMDTDGXQVVLQVLLCLQXXPXDPDDDDDDDPVXXDDDPDDDDDPPDDPXDXDXSSSSSDDWDWDDFQFWIDGNQKIKWKKFFLDADLDDDALCLLQFLQXXSFIKMKMKIKHXXDLVVVDVVLVVLVVVCVDPVSVVVVVVSVVSVVVVNVFTKIWIWMMMMGMDSDPVRRVVSVVSSQVSCVVVVRTDMDXXXXCSVQSVVSSDXSSDDDDDPRIDIDGSSSSSSSDSNYDXDDPXDSQALQWFAFSSRDIHGAHLXDXPDXAAEEEEEAAPQQCRLVVVLSSVSSQLSXDDXDGAAEEEEEAPLLCQLSLVSSLVSDDPVCNVQEEEAEQDLXDLAAFALLQADLLDQADDPVSLVLVLLLLLLLLADLVLGDDPPDPLLSVLSSVLSVVLSVVLDPPDPQXXDQADDPVLVVLLVVLVDDDDDDPPVSRRDGSVVSLVSCVVVVNDVSSVSSXXSSGDFLLSSLVSLVDPVSCVVSVVXDDPPVPDGSSVSSSVSSVVCCVRPVNRHDGXXRDDDLSRRYYYYYCVVQDDDPDSSSLSSLSSSLSVSVVSSVVLLCLLVCLVVSLVRDDPVCNVVSVVVNVVSLXHAYEYEYEACLSNVPRPCSVVVVLVCLVPVVVSRYHYYYYYNAPVSDDLSSLVSHQKYKYAAHDPVCVVSCCVSVVDDPVXSVVSVPQDXDDDPVRQXXWIWIWIDDPVGIDIGIDIDDDALLSLCSSDPDPLLVLLLSLLSVVDXDXVSVVLSSVVXVXSXSVVSSVVSCVVVVXVXXXXDXSVSSVVSCVVVVDDD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P18004",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.98,
-                    "identity": 0.118,
-                    "score": 1536.0,
-                    "evalue": 4.99e-30,
-                    "description": "Protein TraC"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A0W0YDQ9",
-                    "query_cov": 0.92,
-                    "subject_cov": 0.99,
-                    "identity": 0.233,
-                    "score": 2740.0,
-                    "evalue": 7.851e-55,
-                    "description": "Protein IcmB (DotO)"
-                },
-                {
-                    "source": "pdb",
-                    "id": "7o43",
-                    "query_cov": 0.93,
-                    "subject_cov": 0.97,
-                    "identity": 0.102,
-                    "score": 1127.0,
-                    "evalue": 1.072e-21,
-                    "description": "TrwK/VirB4unbound dimer complex from R388 type IV secretion system determined by cryo-EM."
-                }
-            ],
-            "prostt5_confidence": 55.37,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_049",
@@ -3754,8 +2506,7 @@
                 "UniRef:UniRef50_A0AA46K2G6",
                 "UniRef:UniRef90_A0A7G3L4A8"
             ],
-            "3di": "DPPDDDDDDDDDPPDDDPPDDDPDPPPDDDCVPPPVVVLVVVVVVLVVVVVVVVVLVVVLVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVLVVLLVDDDDDLVLXVPXLVVLLVVLLVLLLVLLVVLLVVXDDDLVSLLVLLVPADDDDDDVXLVVXXXXXWADDPVXCVVVVHDXSXXXDDXPDXXDXXXXXXLXVXXXXXPDDDDXDDDPVSLVSLLVXLVVXXVXDPXDXDDXXDXXDXSXVVSVVSVVLVVVSVVVSPDDXXVXXXPDDDDDPSLVVVVVSSVVVXVXVVXDVPDDVVSVVVSVDDSVSVVVVVVSVVVVXVVVVVVSVVDDPVVVVVVVSVSVSSSVSSVVSSVVSSVVSSSSSSVSSSVVSCVVCVVVVVVVVCVVVVVVPD",
-            "prostt5_confidence": 46.88
+            "3di": null
         },
         {
             "id": "MEGJMN_050",
@@ -3807,8 +2558,7 @@
                 "UniRef:UniRef50_A0A7G3LBL1",
                 "UniRef:UniRef90_A0A7G3LBL1"
             ],
-            "3di": "DDDDDPPPPPDDPDDPPPVVVVVVVVVVVVVVVVVVDVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVDDLVVLCVVVVDDLSVLLVLLVVLLVVLVVLLVVLVVVLVVVLVVLVVVVVPDDPPVNVVSVVVSVVSSVSSVVSVVSSLVSVVSSVVSVVVVVVVVVVDVVVVVVVVVVVSVCSVPPD",
-            "prostt5_confidence": 70.07
+            "3di": null
         },
         {
             "id": "MEGJMN_051",
@@ -3846,7 +2596,7 @@
                 ],
                 "product": "TraY protein"
             },
-            "product": "Conjugal transfer integral membrane domain protein",
+            "product": "Conjugal transfer protein TraY",
             "gene": "traY",
             "genes": [
                 "traY"
@@ -3857,25 +2607,9 @@
                 "UniParc:UPI0009384037",
                 "UniRef:UniRef100_UPI0009384037",
                 "UniRef:UniRef50_A0A0P9SZQ3",
-                "UniRef:UniRef90_A0A7G3L488",
-                "afdb_v6:afdbclusters_I6E438"
+                "UniRef:UniRef90_A0A7G3L488"
             ],
-            "3di": "DVVPVVVVVVVVVVVVPDXVPXDPDDLVLLLVLLVDLLQVLLVVVCVVVNCCLXDLDDXXDXDPVLVVLLVVLVVLLVVLVVLLVVLVVVQVVQCVVVVDRXXFPFDPVLSVLLVLLSQQQDADSSRAGPLLVVLLSLLRNXLQNLLLNLLLVLLVCLQVXXFFFFDFDDLLLLVLLLLLLQLLLLQLLVXVVVVVXXVPXDDDDXWDWDDDDPPQWIDTDXXXXTSKMFTXGXDDDDDPXDVVDDDDFDSVVLSVLLVVLSVVLSVLSSVLSNVLSVVLVVCVDVPVDDDVXSSVSSVVSSVVSSVSSVVSSVVDDXDVVLSVQLSVQCSRRNSSSXNSSSVSXXVVXXDXDDXXDDDDDDDDXXXXXXXDDDVSSVVLVVSSVVXSVDXXXXXXXXDXDDSVCSVVVXDDDPSVVVVVLXVPSLVVVLVVLVVVXXXDDDDPXXSXXXLSSLSSVLLVVLVVVLVVLLVVLVVVVVVVVPDPDPVVVVVVVDDPVSVVSSVVSVVVXPVVSVVSLLLSLLSLLLSPCLSVLLSVLLSVLSVVLSSVSSSLSSCSSLLSSLSXHHDPDSCVSNVVSVLSSVLSSCLSVLLSVLSSLLSVLSSVLSVVLVVVLVVVSVVDDDXDSVSSSVSSVVSSVSSVVSSVSSLVSSLVSNVVSVVVSCVVVXDXXDVVVVVVSVVVVVVSVVVPDDPDDDDDPPDVPDXVPVVDVVPDVD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "I6E438",
-                    "query_cov": 0.69,
-                    "subject_cov": 0.97,
-                    "identity": 0.372,
-                    "score": 1144.0,
-                    "evalue": 2.143e-21,
-                    "description": "Conjugal transfer integral membrane domain protein"
-                }
-            ],
-            "prostt5_confidence": 51.76,
-            "baktfold": true,
-            "annotation_confidence": "medium"
+            "3di": null
         },
         {
             "id": "MEGJMN_052",
@@ -3914,7 +2648,7 @@
                 ],
                 "product": "Exclusion-determining protein"
             },
-            "product": "Exclusion-determining protein",
+            "product": "plasmid IncI1-type surface exclusion protein ExcA",
             "gene": "excA",
             "genes": [
                 "excA"
@@ -3925,47 +2659,9 @@
                 "UniParc:UPI000329693E",
                 "UniRef:UniRef100_A0A6C0L6X5",
                 "UniRef:UniRef50_A0A7G3L543",
-                "UniRef:UniRef90_A0A6C0L6X5",
-                "afdb_v6:afdbclusters_A0AAP6CTH1",
-                "afdb_v6:swissprot_P05839",
-                "pdb:pdb_8cit"
+                "UniRef:UniRef90_A0A6C0L6X5"
             ],
-            "3di": "DPPPVDDDVVVVVLVVLVVVVVVVLVVVLLVLLVVLVVVVVVVDVVVSVVSCVVPVVVVVVVVVVVVVVVVVVQVLLCLLXXDDDDFDXXDWDDDPXXWIWTADLVQQKIWIWGDDDPQKIKIKIDGLVQWDDWDDDQQKIWTDGPDPVDDIDIDGDPPGDVVSVVVVVSVVCSVVVVCVPXDDXVVSVVSSVVVCVVPVDDMDXXD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P05839",
-                    "query_cov": 0.98,
-                    "subject_cov": 1.0,
-                    "identity": 0.236,
-                    "score": 332.0,
-                    "evalue": 2.329e-07,
-                    "description": "Exclusion-determining protein"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0AAP6CTH1",
-                    "query_cov": 0.83,
-                    "subject_cov": 0.87,
-                    "identity": 0.216,
-                    "score": 394.0,
-                    "evalue": 7.153e-09,
-                    "description": "Plasmid IncI1-type surface exclusion protein ExcA"
-                },
-                {
-                    "source": "pdb",
-                    "id": "8cit",
-                    "query_cov": 0.53,
-                    "subject_cov": 0.34,
-                    "identity": 0.175,
-                    "score": 200.0,
-                    "evalue": 0.0007477,
-                    "description": "The FERM domain of human moesin mutant L281R"
-                }
-            ],
-            "prostt5_confidence": 57.86,
-            "baktfold": true,
-            "annotation_confidence": "medium"
+            "3di": null
         },
         {
             "id": "MEGJMN_053",
@@ -4018,8 +2714,7 @@
                 "UniRef:UniRef50_A0A6C0L5T9",
                 "UniRef:UniRef90_A0A6C0L5T9"
             ],
-            "3di": "DDPDPDVPPVVVVVVVVVVVVVVVLVLVVVVVVPVVLVVLLVVLVVVVVDDVVPVVVVLVVVLVVCVVVVDPVDDDDPVSVVVSCVVVVVVVCSVVVSSVVSVVVVVVPDPPDDPDDDDXDFLXXLLVLLVVXDXXXXVLLXXDDDXVXXXDPPDLXXXLVDDLVVVCVVVVXDVPVXDDLVVSLVVLLVVLXVVXVDDPXXXVSSLLLLLSLLLLCLLVVNLVVSVVSLVVSXVXXDDPDPVVVVVVVXXDDDDSVVSVVSSVVSCVDVXXVVXVVXXVVSQVSVCVXXVDDDDDDPXXXXXWDXXDVVSXXXXXXDXXXXWXWXXXXXXXXIXIMIXGGPVDDDXDXVVSVVSVVVSVVVVVVSVXDXDDDDDDVXDDVDDDPSDDDDPPDPPPPPPPPPDDDDPDDDDDDPDPDPPDDDPDDPPDDPDDDDDDDDDDPDDDPDDPDDDDDPDDPPPPDDDPPPPDPPDD",
-            "prostt5_confidence": 43.53
+            "3di": null
         },
         {
             "id": "MEGJMN_054",
@@ -4058,7 +2753,7 @@
                 ],
                 "product": "Thioredoxin-like fold domain-containing protein"
             },
-            "product": "Thiol:disulfide interchange protein DsbG",
+            "product": "TrbB",
             "gene": "trbB",
             "genes": [
                 "trbB"
@@ -4070,58 +2765,9 @@
                 "UniParc:UPI0013F14D80",
                 "UniRef:UniRef100_UPI0013F14D80",
                 "UniRef:UniRef50_A0A7G3L7E7",
-                "UniRef:UniRef90_A0A0C5H1T8",
-                "afdb_v6:afdbclusters_A0AAX3AI07",
-                "afdb_v6:swissprot_Q9I106",
-                "cath:cath_4xvwC01",
-                "pdb:pdb_6mhh"
+                "UniRef:UniRef90_A0A0C5H1T8"
             ],
-            "3di": "DKDKFWKWFDDPPDDXXWIWDDDAQWIFTDGPVRDTPDIDGLDDDWDWDDDPQFIWTDXPDPDPDTITGXDDPVSSVVVVVVSCVSNVVDDDPDDPDDPXVVVVVVVVVVVVCVVPDDDDDPPPDDDPDDDDDPDPDPDDDDDDDPDDDPDPDDDDDDPPPDDDPDDDPDPPDDDDDDDPPDDPDPDDPDPXPXDFDDPVLLVLVVVLVVVLLDKDWLAPPAQFEKEWEAFLQDPVQLVCVVLVVVVSVRHTYIYQYAYDPXXPLSLLLSLLLSPDDSVCSNVSSVQSSPDDPXXXDXDDDDPDPPPDDDPVVVVVVSSVSSVVSNVSSVVSCVSSVDPDDTWIATSVGHTDDSVLSNDSVVVVVVSVVXDPVVV",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "Q9I106",
-                    "query_cov": 0.44,
-                    "subject_cov": 0.58,
-                    "identity": 0.165,
-                    "score": 304.0,
-                    "evalue": 9.074e-06,
-                    "description": "Thiol:disulfide interchange protein DsbG"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0AAX3AI07",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.97,
-                    "identity": 0.959,
-                    "score": 2067.0,
-                    "evalue": 6.413e-50,
-                    "description": "Conjugal transfer protein TrbB"
-                },
-                {
-                    "source": "pdb",
-                    "id": "6mhh",
-                    "query_cov": 0.44,
-                    "subject_cov": 0.84,
-                    "identity": 0.214,
-                    "score": 316.0,
-                    "evalue": 3.093e-06,
-                    "description": "Proteus mirabilis ScsC linker (residues 39-49) deletion and N6K mutant"
-                },
-                {
-                    "source": "cath",
-                    "id": "4xvwC01",
-                    "query_cov": 0.45,
-                    "subject_cov": 0.94,
-                    "identity": 0.201,
-                    "score": 295.0,
-                    "evalue": 8.24e-06,
-                    "description": "Glutaredoxin"
-                }
-            ],
-            "prostt5_confidence": 56.59,
-            "baktfold": true,
-            "annotation_confidence": "low"
+            "3di": null
         },
         {
             "id": "MEGJMN_055",
@@ -4164,7 +2810,7 @@
                 ],
                 "product": "TraD/TraG TraM recognition site domain-containing protein"
             },
-            "product": "Type 4 coupling protein DotL",
+            "product": "F-type conjugative transfer protein TrbC",
             "gene": "trbC",
             "genes": [
                 "trbC"
@@ -4177,58 +2823,9 @@
                 "UniParc:UPI00032968D8",
                 "UniRef:UniRef100_A0A6C0L1V6",
                 "UniRef:UniRef50_A0A7G3L880",
-                "UniRef:UniRef90_A0A7G3L880",
-                "afdb_v6:afdbclusters_A0A379SFQ2",
-                "afdb_v6:swissprot_Q5ZYC6",
-                "cath:cath_1e9sG01",
-                "pdb:pdb_6sz9"
+                "UniRef:UniRef90_A0A7G3L880"
             ],
-            "3di": "DPPPPDDPDLVVXDDDDDDDPVLVVLLDPVNVVVLVVQLVVCCVVPVVSVVVSVVVCVVSVVSSVVXXDDADADDDXXQQDDDPVXXDDDXDDVPVVDXXDTXDXXXGGXXALFWFFWFXPPXXTDTDTDGLLLLLLFEEEEAAPQLCVLVSVLRNVLSCLVVVFAEEEEEQPPDPVSVLSNLLSCVVSVNNVQEAEAALDDXPDDLVVCVVVDPVXLXXHFAAFLLQPDDLVLLLLLLCLLQDDDDPDVVLSVLLSVLSSLLSVLQNVVCVVVVHFAFLVVSLVCLDLLSLLVSLVVCVVVVHDPVSNVSSLVSCVVQQPPDDSVCDDDSVPGDPVSSVSSCSSNVSSVVLSVLCXPRXVSRRNDSPGXDDLLCCRLVSHYYYYYQNCVVDDLSSSLSVLSSVLSVVLVSLVVLLVCLVVDDPVSLVSXVVXXPDAAHEYEYEACLSNDDPSVLVSLVRCSSSRYHYYHYHXAXVSNCVRNNPCSVSSVVSRQKYKYAAHDDCPPVLVVVQVVQAKDWDWWDWDWDDDDDDPDIDIDXDIDIDIDIDGPDDSVCSNPDDRQWMWMDGPNDTDITGGXXXDDDXXXDDVXXXXXXXDDDDXDDSVVCVVSDDPDXDXPDDDDPDLVXXXWXXXXVVXDDDXXQWDDDPNXIWGDDDXXDDDDDDDDDDPVSVVSSVVSLVVSVVVXVVXXXXXDDDDDDDDXDDDDPVVVVVXVVXXVXXXDDDDVXXXD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "Q5ZYC6",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.81,
-                    "identity": 0.22,
-                    "score": 1778.0,
-                    "evalue": 4.046e-36,
-                    "description": "Type 4 coupling protein DotL"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A379SFQ2",
-                    "query_cov": 0.72,
-                    "subject_cov": 0.99,
-                    "identity": 0.364,
-                    "score": 1864.0,
-                    "evalue": 9.571e-38,
-                    "description": "TrbC-like protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "6sz9",
-                    "query_cov": 0.68,
-                    "subject_cov": 0.88,
-                    "identity": 0.236,
-                    "score": 1006.0,
-                    "evalue": 8.762e-20,
-                    "description": "Type IV Coupling Complex (T4CC) from L. pneumophila."
-                },
-                {
-                    "source": "cath",
-                    "id": "1e9sG01",
-                    "query_cov": 0.62,
-                    "subject_cov": 0.83,
-                    "identity": 0.115,
-                    "score": 422.0,
-                    "evalue": 2.101e-07,
-                    "description": "P-loop containing nucleotide triphosphate hydrolases"
-                }
-            ],
-            "prostt5_confidence": 56.1,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_056",
@@ -4266,7 +2863,7 @@
                 ],
                 "product": "phospholipase D"
             },
-            "product": "Phospholipase D",
+            "product": "phospholipase D",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -4275,58 +2872,9 @@
                 "UniParc:UPI00032969B6",
                 "UniRef:UniRef100_A0A6C0L616",
                 "UniRef:UniRef50_A0A6C0L616",
-                "UniRef:UniRef90_A0A6C0L616",
-                "afdb_v6:afdbclusters_V5RP04",
-                "afdb_v6:swissprot_Q68VT0",
-                "cath:cath_1bysA00",
-                "pdb:pdb_1byr"
+                "UniRef:UniRef90_A0A6C0L616"
             ],
-            "3di": "DVVVVVVVVVVVVVPPPPPPPPPPDDDDDDDPPVCCVVVVLLVVLQPDAAEDEDEDAADQDQSNLVSLLVSVVVVHHYHYHYDPVRCPDPRRVSVVSSVVV",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "Q68VT0",
-                    "query_cov": 0.91,
-                    "subject_cov": 0.5,
-                    "identity": 0.203,
-                    "score": 218.0,
-                    "evalue": 0.0002928,
-                    "description": "Phospholipase D"
-                },
-                {
-                    "source": "afdb",
-                    "id": "V5RP04",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.98,
-                    "identity": 1.0,
-                    "score": 574.0,
-                    "evalue": 4.487e-14,
-                    "description": "phospholipase D"
-                },
-                {
-                    "source": "pdb",
-                    "id": "1byr",
-                    "query_cov": 0.72,
-                    "subject_cov": 0.48,
-                    "identity": 0.554,
-                    "score": 248.0,
-                    "evalue": 2.858e-05,
-                    "description": "CRYSTAL STRUCTURE OF A PHOSPHOLIPASE D FAMILY MEMBER, NUC FROM SALMONELLA TYPHIMURIUM"
-                },
-                {
-                    "source": "cath",
-                    "id": "1bysA00",
-                    "query_cov": 0.72,
-                    "subject_cov": 0.48,
-                    "identity": 0.554,
-                    "score": 240.0,
-                    "evalue": 3.789e-05,
-                    "description": "Endonuclease Chain A"
-                }
-            ],
-            "prostt5_confidence": 74.56,
-            "baktfold": true,
-            "annotation_confidence": "low"
+            "3di": null
         },
         {
             "id": "MEGJMN_057",
@@ -4368,7 +2916,7 @@
                 ],
                 "product": "IS66 family transposase"
             },
-            "product": "hypothetical protein",
+            "product": "IS66 family transposase",
             "gene": "tnpC",
             "genes": [
                 "tnpC"
@@ -4380,58 +2928,9 @@
                 "UniParc:UPI00032969B8",
                 "UniRef:UniRef100_A0A6C0L3Q4",
                 "UniRef:UniRef50_B7LBX6",
-                "UniRef:UniRef90_A0AAN1A8N4",
-                "afdb_v6:afdbclusters_A0A765BM01",
-                "afdb_v6:swissprot_P50360",
-                "cath:cath_af_P96354_1_380_3.30.420.10",
-                "pdb:pdb_6xgw"
+                "UniRef:UniRef90_A0AAN1A8N4"
             ],
-            "3di": "DVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVLVVLVLVLVLLVLVLLLLVCVVPPDVDVVSVVVSLVSVLVSLLSVLVSLVVVVDDPDPPDDPVPDPDPDDDDDDPPFAEDEDEDDFPDQADPPPRFGWDWDDDDDDWDWDDDPVDIHFYIYIWTWIADPVDRDIDIDDDDDALAPPHRHGLLVLLVLLCCCAVVLNQLVVVQVVVVVVVDHDDSVNSVSSLLSVLVLLVLLLVLLLVLQLPDQEKEKDKDWAWADDPPPPDTATKIKIKIKDDCLQQQDPGFIFIFIDIDRDDALVVVCVSCQQRAHEYEYCPDPSCVVQQDCPHHNHHYDYAYALVVLLVLLVSVCSVPVDPVSVVLNVLSVVLVVLSVVCGNHRFVVSLVSCLVRVVVSLVVSLVVLVVVLVVDDCPDSNNVSSVVCNVCSVRLCVCSRTSNDHSDNVVRVVLCVSVVSSCVSPVNXHHSSSRRSSRSSSRLQSSLVSLVHDSSVLSSVCSSCSSVDDSVCSVCSRSVNDDRDP",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P50360",
-                    "query_cov": 0.95,
-                    "subject_cov": 0.95,
-                    "identity": 0.37,
-                    "score": 2040.0,
-                    "evalue": 1.792e-39,
-                    "description": "Uncharacterized protein y4hP"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A765BM01",
-                    "query_cov": 0.88,
-                    "subject_cov": 0.54,
-                    "identity": 0.532,
-                    "score": 2263.0,
-                    "evalue": 8.8e-44,
-                    "description": "IS66 family transposase"
-                },
-                {
-                    "source": "pdb",
-                    "id": "6xgw",
-                    "query_cov": 0.69,
-                    "subject_cov": 0.81,
-                    "identity": 0.144,
-                    "score": 341.0,
-                    "evalue": 3.404e-05,
-                    "description": "ISCth4 transposase, pre-reaction complex, PRC"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_P96354_1_380_3.30.420.10",
-                    "query_cov": 0.66,
-                    "subject_cov": 0.83,
-                    "identity": 0.136,
-                    "score": 474.0,
-                    "evalue": 5.405e-08,
-                    "description": "Ribonuclease H-like superfamily/Ribonuclease H"
-                }
-            ],
-            "prostt5_confidence": 73.73,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_058",
@@ -4470,7 +2969,7 @@
                 ],
                 "product": "Transposase"
             },
-            "product": "hypothetical protein",
+            "product": "IS66 family insertion sequence element accessory protein TnpB",
             "gene": "tnpB",
             "genes": [
                 "tnpB"
@@ -4481,36 +2980,9 @@
                 "UniParc:UPI000461CC33",
                 "UniRef:UniRef100_A0A5U6TJF2",
                 "UniRef:UniRef50_B7MRH6",
-                "UniRef:UniRef90_A0A2U3ERJ0",
-                "afdb_v6:afdbclusters_A0AAJ1YJK2",
-                "afdb_v6:swissprot_P50359"
+                "UniRef:UniRef90_A0A2U3ERJ0"
             ],
-            "3di": "DDDDDPPAWEKEFAAADDPVDDQVVVQVCCCPQVVDHQQPRHWYWYAHPVQQKIKIWGDDPPDIDIDIDGDPDDGADHDHDDPRMDIDDPVLVVCRVVVHDSVDDDDDDDDPPPPD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P50359",
-                    "query_cov": 0.96,
-                    "subject_cov": 0.97,
-                    "identity": 0.446,
-                    "score": 581.0,
-                    "evalue": 2.316e-14,
-                    "description": "Uncharacterized protein y4hO"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0AAJ1YJK2",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.96,
-                    "identity": 0.608,
-                    "score": 639.0,
-                    "evalue": 9.027e-16,
-                    "description": "IS66 family insertion sequence element accessory protein TnpB"
-                }
-            ],
-            "prostt5_confidence": 72.41,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_059",
@@ -4549,7 +3021,7 @@
                 ],
                 "product": "Transposase"
             },
-            "product": "hypothetical protein",
+            "product": "IS66-like element accessory protein TnpA",
             "gene": "tnpA",
             "genes": [
                 "tnpA"
@@ -4560,36 +3032,9 @@
                 "UniParc:UPI000329699C",
                 "UniRef:UniRef100_A0A6C0L4C0",
                 "UniRef:UniRef50_A0A5R9LIB0",
-                "UniRef:UniRef90_A0A6C0L4C0",
-                "afdb_v6:afdbclusters_A0A291E5E4",
-                "afdb_v6:swissprot_P55502"
+                "UniRef:UniRef90_A0A6C0L4C0"
             ],
-            "3di": "DPPPPPPPDDDDDDDPVVLVVLLVVCLDPPDDLVVSCVVVVHDSVVSVVSCVVVLVVDDPVSVVVVPDPPDDDDDDDDPPPPPDPDDDDDDPPDPPPPXWDWMWDDDPPDIDIDTDDDDPVVVVVVVCVVVVPPD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P55502",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.81,
-                    "identity": 0.263,
-                    "score": 307.0,
-                    "evalue": 1.069e-06,
-                    "description": "Uncharacterized protein y4jB"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A291E5E4",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.78,
-                    "identity": 0.35,
-                    "score": 385.0,
-                    "evalue": 1.153e-08,
-                    "description": "Transposase"
-                }
-            ],
-            "prostt5_confidence": 73.34,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_060",
@@ -4662,7 +3107,7 @@
                 ],
                 "product": "Transposase"
             },
-            "product": "Transposase InsC for insertion element IS2-9",
+            "product": "Transposase",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -4671,47 +3116,9 @@
                 "UniParc:UPI00016024A5",
                 "UniRef:UniRef100_A0A377E910",
                 "UniRef:UniRef50_A0A377E910",
-                "UniRef:UniRef90_A0A377E910",
-                "afdb_v6:afdbclusters_G2IZT0",
-                "afdb_v6:swissprot_P0CF48",
-                "cath:cath_af_P0CF43_8_88_1.10.10.60"
+                "UniRef:UniRef90_A0A377E910"
             ],
-            "3di": "DPPPPDPPPPDDDDLVVLVVLLVVCPDPPHDLVVSCVVVVHDSVVSVVSNVCVVVVQSVCVVVPDDDDGPVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCVVVVVDDDDDDDDPPPD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P0CF48",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
-                    "identity": 0.95,
-                    "score": 637.0,
-                    "evalue": 2.383e-16,
-                    "description": "Transposase InsC for insertion element IS2-9"
-                },
-                {
-                    "source": "afdb",
-                    "id": "G2IZT0",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.94,
-                    "identity": 0.694,
-                    "score": 511.0,
-                    "evalue": 1.565e-12,
-                    "description": "Transposase IS3/IS911 family protein"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_P0CF43_8_88_1.10.10.60",
-                    "query_cov": 0.65,
-                    "subject_cov": 0.98,
-                    "identity": 0.962,
-                    "score": 451.0,
-                    "evalue": 2.696e-11,
-                    "description": "Homeodomain-like"
-                }
-            ],
-            "prostt5_confidence": 82.71,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_062",
@@ -4753,7 +3160,7 @@
                 ],
                 "product": "Putative transposase InsD for insertion element IS2E"
             },
-            "product": "Transposase InsD for insertion element IS2I",
+            "product": "IS3 family ISEc36 transposase",
             "gene": "tnp",
             "genes": [
                 "tnp"
@@ -4764,58 +3171,9 @@
                 "UniParc:UPI000272D796",
                 "UniRef:UniRef100_A0AB36B0N7",
                 "UniRef:UniRef50_P0CF60",
-                "UniRef:UniRef90_A0A2T2XUN4",
-                "afdb_v6:afdbclusters_A0A379I7K9",
-                "afdb_v6:swissprot_P0CF57",
-                "cath:cath_af_P0CF56_119_291_3.30.420.10",
-                "pdb:pdb_8ea4"
+                "UniRef:UniRef90_A0A2T2XUN4"
             ],
-            "3di": "DDPDDPVVDDPVVPDDDDCVVLLVLLCVVCVQQVPDALVLSLLVSQVVCVVVVHDRDDSVSSVVSCVVVVSHDDDDDPDDPDPDDDPDDQADQAFLQEKEKDKDWDAAPVGFIKIKIWIATRNLRATQDMDIDRDDDALVRVLVSLVSSLCVVPNLDADPDAHEYEYAPDPSCPDPVSQVSCVVRRYHYDYDDPPDPSSSVSRVVVVVCLVRRQVVPDDRNHDVVVVVSVVVSSVSQQQQRQRVSLVRHGSVVSVVVVVVVVVPVVVVVPD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P0CF57",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.89,
-                    "identity": 0.828,
-                    "score": 1797.0,
-                    "evalue": 6.384e-44,
-                    "description": "Transposase InsD for insertion element IS2I"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A379I7K9",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.86,
-                    "identity": 0.996,
-                    "score": 1898.0,
-                    "evalue": 2.772e-46,
-                    "description": "Insertion element IS2 transposase InsD"
-                },
-                {
-                    "source": "pdb",
-                    "id": "8ea4",
-                    "query_cov": 0.9,
-                    "subject_cov": 0.57,
-                    "identity": 0.17,
-                    "score": 471.0,
-                    "evalue": 2.734e-10,
-                    "description": "V-K CAST Transpososome from Scytonema hofmanni, minor configuration"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_P0CF56_119_291_3.30.420.10",
-                    "query_cov": 0.63,
-                    "subject_cov": 0.99,
-                    "identity": 0.86,
-                    "score": 1234.0,
-                    "evalue": 7.702e-30,
-                    "description": "Ribonuclease H-like superfamily/Ribonuclease H"
-                }
-            ],
-            "prostt5_confidence": 71.48,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_063",
@@ -4866,8 +3224,7 @@
                 "UniRef:UniRef50_A0A6C0NCV1",
                 "UniRef:UniRef90_A0A6C0NCV1"
             ],
-            "3di": "DPPVVVVVVVDVVPFDKDFLQVLCVVLVHDSVXDDDXVXDVCXVVVDHADDFPDPDDDPTTIDGPVSSVVSSVVSVVVVVVVV",
-            "prostt5_confidence": 60.89
+            "3di": null
         },
         {
             "id": "MEGJMN_064",
@@ -4906,7 +3263,7 @@
                 ],
                 "product": "MobA relaxase/mobilization protein"
             },
-            "product": "Protein TraI",
+            "product": "TraI/MobA(P) family conjugative relaxase",
             "gene": "traI",
             "genes": [
                 "traI"
@@ -4917,36 +3274,9 @@
                 "UniParc:UPI00032968C9",
                 "UniRef:UniRef100_A0A6C0NCZ3",
                 "UniRef:UniRef50_A0A7G3L4G1",
-                "UniRef:UniRef90_A0A7G3L4G1",
-                "afdb_v6:afdbclusters_A0AAD0GU93",
-                "afdb_v6:swissprot_Q00191"
+                "UniRef:UniRef90_A0A7G3L4G1"
             ],
-            "3di": "DAKDFDDDDPPXFDALLVLLLVQFDDPPDDDDPVDDPDPXDDDDDPDSVVSLVVSVVVVVVDPXXXXDWDDDADPVRXIXXXXXXKDKDXXDDDSVCLSVVLVVLLVLDVPDRRQKTKMKDWDALPDDDDPVLVVVLVVLLCVLLVNNQWTKMWTWGPRDNTIMMIMITHQARNPPRDGRDRPPSSLSSQVSVLVSCVVVVHDHDDXQWDADPVRDTDGDDDDDDDDDPVQVVVCQFFLFDDPLNLCLVQPVVLLVVLVVDLQDALQSSQVSSVQSQWDWADDDQFIWIFGLPDDDXDIDTPCSSDVCSGCVNXCVRHNDHDHHPDSSVSSVVXDXDHXDPVXVDVDVVVVVVVVVVLVVLVVVLVVVVVVLVVVLVDLVVVLVVVLVVLVVVLVVVLVVLVVPDDDPVVSVVSNVVSVVVSVVSSVVSVVVSVVVSVVSVVVVVDDDDDSLSVLLVVLVVPNPSSVLSNVVVVVVVVVVPDDDDDXQXKKKFFDXDXXXXDDXPQWDWDADDSQWIWTDDPRDTQWTDSRRMIXGXDLXDXXLSSLLVVLVVCVVRXHAEMEYDDDPSSLLSNLLSQLVVCVVDVXRHHYDHDVVSSVVSVVVSVVVVVVDDPVVSVVVVVVVVVVXVVPVVPPPDPDDDD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "Q00191",
-                    "query_cov": 0.95,
-                    "subject_cov": 0.7,
-                    "identity": 0.186,
-                    "score": 1271.0,
-                    "evalue": 2.425e-27,
-                    "description": "Protein TraI"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0AAD0GU93",
-                    "query_cov": 0.8,
-                    "subject_cov": 0.7,
-                    "identity": 0.414,
-                    "score": 1935.0,
-                    "evalue": 2.135e-42,
-                    "description": "Relaxase"
-                }
-            ],
-            "prostt5_confidence": 60.99,
-            "baktfold": true,
-            "annotation_confidence": "low"
+            "3di": null
         },
         {
             "id": "MEGJMN_065",
@@ -4999,8 +3329,7 @@
                 "UniRef:UniRef50_A0A6C0L5T3",
                 "UniRef:UniRef90_A0A6C0L5T3"
             ],
-            "3di": "DVCVVVVVDDDPPDLVVLLVVLVVLVVVLVVCVVVVVDDPDPVVVVSVVVSVVSSVVSVVVVV",
-            "prostt5_confidence": 70.75
+            "3di": null
         },
         {
             "id": "MEGJMN_066",
@@ -5038,7 +3367,7 @@
                 ],
                 "product": "CBS domain-containing protein"
             },
-            "product": "Mobilization protein MobC",
+            "product": "MobC",
             "gene": "mobC",
             "genes": [
                 "mobC"
@@ -5049,25 +3378,9 @@
                 "UniParc:UPI00032968F6",
                 "UniRef:UniRef100_A0A0C5GSX3",
                 "UniRef:UniRef50_A0A486BCE1",
-                "UniRef:UniRef90_A0A0C5GSX3",
-                "afdb_v6:afdbclusters_A0A7D5NNU8"
+                "UniRef:UniRef90_A0A0C5GSX3"
             ],
-            "3di": "DPPPPPPPDDPVNVVVVVVVVVPDDPPVVVPDDLLVVCVVCLVVLLCCCPVVVDDLVVVQVVVVVVVNVPDDSVSSVCSNVVVDPVPVPPPPPDDDPPDPPPPPPDPPPD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0A7D5NNU8",
-                    "query_cov": 0.86,
-                    "subject_cov": 0.96,
-                    "identity": 0.27,
-                    "score": 275.0,
-                    "evalue": 2.681e-05,
-                    "description": "Mobilization protein MobC"
-                }
-            ],
-            "prostt5_confidence": 71.44,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_067",
@@ -5166,8 +3479,7 @@
                 "UniRef:UniRef50_A0AAN1A8B8",
                 "UniRef:UniRef90_A0AAN1A8B8"
             ],
-            "3di": "DDDPPDDXFKKEKEXXDDDDPVXXVXDDVVCVVVCVVVXWWWWDDDPXXIIXXXXDDDVCVLVVCVVVPHDPVXSVVXVVDVVVPXDMXMDDDPDVVVVVVVVDPX",
-            "prostt5_confidence": 41.14
+            "3di": null
         },
         {
             "id": "MEGJMN_069",
@@ -5278,8 +3590,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A1I3V7E0",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.95,
+                    "query_cov": 0.98,
+                    "subject_cov": 0.96,
                     "identity": 0.41,
                     "score": 292.0,
                     "evalue": 2.619e-06,
@@ -5287,8 +3599,7 @@
                 }
             ],
             "prostt5_confidence": 52.39,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "baktfold": true
         },
         {
             "id": "MEGJMN_071",
@@ -5355,25 +3666,9 @@
                 "UniParc:UPI0003296961",
                 "UniRef:UniRef100_A0A6C0L5Q4",
                 "UniRef:UniRef50_A0A088FSA3",
-                "UniRef:UniRef90_A0A6C0L5Q4",
-                "afdb_v6:afdbclusters_A0AA42LS79"
+                "UniRef:UniRef90_A0A6C0L5Q4"
             ],
-            "3di": "DPPPPPDDDDCLDXPDDPPPPDPVVVLVVLLVVLVVVVVVVLVVLVVLVVLLVVCVVVVXXVXXVVSVVSSCVXVVDPDDDDPVSSVLLSVXXXVVSVVVXXVPVVXLVVDDPVSVVVVCVVXVPDDDDXDDSVVLLVVVVVVXVVPXVVLLVVVVVLLVVLDXDXDDXXXDDXXXXXXXXXVXVXXVVXXWDDDPVXXDXXXVXXVXXXXDPXDDDDPSXDVDSVVVVVVCVVVVQAXDWDDDPFWIWHXHXDRMIMIGGRDVVSSVVSSVVCCVVPVVPDDDDD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0AA42LS79",
-                    "query_cov": 0.93,
-                    "subject_cov": 0.99,
-                    "identity": 0.262,
-                    "score": 417.0,
-                    "evalue": 2.517e-09,
-                    "description": "DUF4942 domain-containing protein"
-                }
-            ],
-            "prostt5_confidence": 43.48,
-            "baktfold": true,
-            "annotation_confidence": "low"
+            "3di": null
         },
         {
             "id": "MEGJMN_073",
@@ -5424,8 +3719,7 @@
                 "UniRef:UniRef50_A0A6C0L2V3",
                 "UniRef:UniRef90_A0A6C0L2V3"
             ],
-            "3di": "DDPDDDDPVVVVVVVVVVLVVVLVVLVVVLVVDDPDDDDDPDPXSVVVSVVSVVVDDPPD",
-            "prostt5_confidence": 69.29
+            "3di": null
         },
         {
             "id": "MEGJMN_074",
@@ -5515,7 +3809,7 @@
                 ],
                 "product": "MPN domain-containing protein"
             },
-            "product": "UPF0758 protein Mpe_A2695",
+            "product": "MPN domain-containing protein",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -5524,58 +3818,9 @@
                 "UniParc:UPI00039EE66B",
                 "UniRef:UniRef100_A0A6C0NCY8",
                 "UniRef:UniRef50_A0A6C0NCY8",
-                "UniRef:UniRef90_A0A6C0NCY8",
-                "afdb_v6:afdbclusters_A0A916J5U4",
-                "afdb_v6:swissprot_A2SJB0",
-                "cath:cath_af_Q47685_35_158_3.40.140.10",
-                "pdb:pdb_2qlc"
+                "UniRef:UniRef90_A0A6C0NCY8"
             ],
-            "3di": "DFFAAPVRDTLDIDDQWDDDPPDDDDDLVVVLVVCVVSVHQEYEDEXEDPVQDQDDDPVNLVVVVVNCVSNVVVNHHYPWYWYDHPPDIDTCVVVVNX",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "A2SJB0",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.43,
-                    "identity": 0.52,
-                    "score": 484.0,
-                    "evalue": 2.592e-12,
-                    "description": "UPF0758 protein Mpe_A2695"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A916J5U4",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.42,
-                    "identity": 0.52,
-                    "score": 486.0,
-                    "evalue": 3.69e-12,
-                    "description": "DNA repair protein RadC"
-                },
-                {
-                    "source": "pdb",
-                    "id": "2qlc",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.77,
-                    "identity": 0.364,
-                    "score": 357.0,
-                    "evalue": 9.37e-09,
-                    "description": "The crystal structure of DNA repair protein RadC from Chlorobium tepidum TLS"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_Q47685_35_158_3.40.140.10",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.77,
-                    "identity": 0.5,
-                    "score": 457.0,
-                    "evalue": 8.648e-12,
-                    "description": "Cytidine Deaminase, domain 2"
-                }
-            ],
-            "prostt5_confidence": 78.42,
-            "baktfold": true,
-            "annotation_confidence": "medium"
+            "3di": null
         },
         {
             "id": "MEGJMN_076",
@@ -5627,8 +3872,8 @@
                 "molecular_weight": 7381.322800000001,
                 "isoelectric_point": 5.1528753280639625
             },
-            "3di": "DDDDPVLVVLLVVLVVVLCVDDPPDDDDPDPVSVVVVVCVVCVPVPDVXDVDDDVPDDPVVVVD",
-            "prostt5_confidence": 58.69
+            "3di": "DDDDPVLVVLLVVLVVVLCVDDPPDDDDPDPVSVVVVVCVVCVPPPDVXDVDDDVPDDPVVVVD",
+            "prostt5_confidence": 58.74
         },
         {
             "id": "MEGJMN_077",
@@ -5666,7 +3911,7 @@
                 ],
                 "product": "Transcriptional regulator"
             },
-            "product": "HTH cro/C1-type domain-containing protein",
+            "product": "Transcriptional regulator",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -5675,25 +3920,9 @@
                 "UniParc:UPI0003296933",
                 "UniRef:UniRef100_A0A6C0L1U3",
                 "UniRef:UniRef50_A0A6C0L1U3",
-                "UniRef:UniRef90_A0A6C0L1U3",
-                "afdb_v6:afdbclusters_A0A0N6WZP2"
+                "UniRef:UniRef90_A0A6C0L1U3"
             ],
-            "3di": "DPPXDDDDFDALVLLVVLCVLVVDDLVVLCVLLVHDSLLSVQQNDDPVDDPDPDXXSXDFLLSSLLSCVCSVVDPVVVXDPXDXVVVVVPXXDDWDFLVRLVVLCVVVVHDLCVVCVSSNHDSVVSVQQNDDPXXXGDDSSSSSSSCVVSVVDPVXXXDXDD",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0A0N6WZP2",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
-                    "identity": 0.901,
-                    "score": 810.0,
-                    "evalue": 8.742e-18,
-                    "description": "HTH cro/C1-type domain-containing protein"
-                }
-            ],
-            "prostt5_confidence": 58.54,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_078",
@@ -5751,7 +3980,7 @@
                 {
                     "source": "afdb",
                     "id": "A0A9Q6N187",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.92,
                     "identity": 0.216,
                     "score": 274.0,
@@ -5760,8 +3989,7 @@
                 }
             ],
             "prostt5_confidence": 44.17,
-            "baktfold": true,
-            "annotation_confidence": "low"
+            "baktfold": true
         },
         {
             "id": "MEGJMN_079",
@@ -5799,7 +4027,7 @@
                 ],
                 "product": "Plasmid partitioning/stability family protein"
             },
-            "product": "Protein StbB",
+            "product": "Partitioning protein",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -5808,36 +4036,9 @@
                 "UniParc:UPI000329695E",
                 "UniRef:UniRef100_A0A6C0ND45",
                 "UniRef:UniRef50_A0AAU0KQB0",
-                "UniRef:UniRef90_A0A6C0ND45",
-                "afdb_v6:afdbclusters_A0A4P7L671",
-                "afdb_v6:swissprot_P11906"
+                "UniRef:UniRef90_A0A6C0ND45"
             ],
-            "3di": "DPPPPDDDDDDDDDDCPVALLSVLVVVVLVPDDPVCSVVVVVVVVVVLVLVCVVPVCSSVVSSVVVDDPDDPVNVVVSVCVRPVPVPDDDPVSSVVSVVVSPPPPDPDDDDDDDDDPPDPVPVVVVVVVVVVVVVVVVVPPD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P11906",
-                    "query_cov": 0.92,
-                    "subject_cov": 0.96,
-                    "identity": 0.328,
-                    "score": 225.0,
-                    "evalue": 0.000411,
-                    "description": "Protein StbB"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A4P7L671",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.98,
-                    "identity": 0.39,
-                    "score": 314.0,
-                    "evalue": 2.859e-06,
-                    "description": "Plasmid stability protein"
-                }
-            ],
-            "prostt5_confidence": 67.43,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_080",
@@ -5876,7 +4077,7 @@
                 ],
                 "product": "ParA"
             },
-            "product": "Plasmid segregation protein ParM",
+            "product": "Partitioning protein",
             "gene": null,
             "genes": [],
             "db_xrefs": [
@@ -5886,69 +4087,9 @@
                 "UniParc:UPI0003296905",
                 "UniRef:UniRef100_A0A6C0L1U0",
                 "UniRef:UniRef50_C7SA10",
-                "UniRef:UniRef90_A0A6C0L1U0",
-                "afdb_v6:afdbclusters_A0AAX2KLT6",
-                "afdb_v6:swissprot_P11904",
-                "cath:cath_1mwmA01",
-                "cath:cath_4a61A02",
-                "pdb:pdb_4a61"
+                "UniRef:UniRef90_A0A6C0L1U0"
             ],
-            "3di": "DEKEWELAQFWIKIWDQDPVRDIDIDIFGLFKDFDDDDDPPDPXDWKWKDFPNTIIIXXXPDPPXDDDDDXXXLLDPSNLVVVLVVVVVVPDDAAEXEYEYEDALVQQADPVLHGPVVSQVSSQVSSXDFMDIPNDGXXYGYDYYHYDYPQQLLCLVVLVVDDQQAWEWEWEAEQFKTWIWIXGHNPVHTDDIDIDRRQHLVQLLVLLLVLXVVPXXDGSVVSVVCLVPXVPVVCXVVVDDDPVSVVSSVVSNVVSLVVSLVVVLVVCVVDDDHQAYEYAEPCCVSCVVSNCVSHVHDSVRYDYDPPRNCSNRVSSVVVVVVVVVV",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P11904",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.99,
-                    "identity": 0.476,
-                    "score": 1580.0,
-                    "evalue": 6.549e-39,
-                    "description": "Plasmid segregation protein ParM"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0AAX2KLT6",
-                    "query_cov": 0.58,
-                    "subject_cov": 0.85,
-                    "identity": 0.523,
-                    "score": 908.0,
-                    "evalue": 2.386e-21,
-                    "description": "Plasmid segregation protein"
-                },
-                {
-                    "source": "pdb",
-                    "id": "4a61",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.98,
-                    "identity": 0.477,
-                    "score": 1630.0,
-                    "evalue": 2.29e-40,
-                    "description": "ParM from plasmid R1 in complex with AMPPNP"
-                },
-                {
-                    "source": "cath",
-                    "id": "1mwmA01",
-                    "query_cov": 0.5,
-                    "subject_cov": 0.89,
-                    "identity": 0.5,
-                    "score": 820.0,
-                    "evalue": 1.477e-19,
-                    "description": "ATPase, nucleotide binding domain"
-                },
-                {
-                    "source": "cath",
-                    "id": "4a61A02",
-                    "query_cov": 0.43,
-                    "subject_cov": 0.99,
-                    "identity": 0.442,
-                    "score": 601.0,
-                    "evalue": 6.658e-14,
-                    "description": "ATPase, nucleotide binding domain"
-                }
-            ],
-            "prostt5_confidence": 64.84,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_081",
@@ -5997,47 +4138,9 @@
                 "UniParc:UPI000329694F",
                 "UniRef:UniRef100_A0A6C0ND78",
                 "UniRef:UniRef50_I2B5J4",
-                "UniRef:UniRef90_A0A6C0ND78",
-                "afdb_v6:afdbclusters_A0A2M8S3H7",
-                "cath:cath_4p78B00",
-                "pdb:pdb_6g26"
+                "UniRef:UniRef90_A0A6C0ND78"
             ],
-            "3di": "DKFKWFWADDPDDPFKIKIDTCLQVVDVXGFIDTDNDPVCRQVRSLVRVLVSLLVCVVVVPDDPVRRDDPDXVVXCVDPVNVVGPDMDMDDDDSVVXVDDDDDDDDDDDPVVVVVLVVVCVVPVVPAPDSVSVVVVVVVVVVVVVVV",
-            "pstc": [
-                {
-                    "source": "afdb",
-                    "id": "A0A2M8S3H7",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.98,
-                    "identity": 0.394,
-                    "score": 557.0,
-                    "evalue": 1.473e-13,
-                    "description": "CopG family transcriptional regulator"
-                },
-                {
-                    "source": "pdb",
-                    "id": "6g26",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.98,
-                    "identity": 0.28,
-                    "score": 394.0,
-                    "evalue": 2.347e-09,
-                    "description": "The crystal structure of the Burkholderia pseudomallei HicAB complex"
-                },
-                {
-                    "source": "cath",
-                    "id": "4p78B00",
-                    "query_cov": 0.63,
-                    "subject_cov": 0.98,
-                    "identity": 0.17,
-                    "score": 194.0,
-                    "evalue": 0.0007713,
-                    "description": "hypothetical protein"
-                }
-            ],
-            "prostt5_confidence": 66.55,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_082",
@@ -6156,8 +4259,7 @@
                 "UniRef:UniRef50_A0A0C5H1V1",
                 "UniRef:UniRef90_A0A0C5H1V1"
             ],
-            "3di": "DALVVLVVLCVVVVDDLVVLCVQLVHDSVVSVCRNVVVDHDDPSSVVSSVVVVVVVVVVVVVVDDPVVVVVVVVVVVVVVDPSVV",
-            "prostt5_confidence": 79.49
+            "3di": null
         },
         {
             "id": "MEGJMN_085",
@@ -6195,7 +4297,7 @@
                 ],
                 "product": "InsA N-terminal domain-containing protein"
             },
-            "product": "Insertion element IS1 7 protein InsA",
+            "product": "InsA N-terminal domain-containing protein",
             "gene": "insA",
             "genes": [
                 "insA"
@@ -6206,36 +4308,9 @@
                 "UniParc:UPI00032968EA",
                 "UniRef:UniRef100_A0A6C0NCW1",
                 "UniRef:UniRef50_A0A6C0NCW1",
-                "UniRef:UniRef90_A0A6C0NCW1",
-                "afdb_v6:afdbclusters_A0A0B7IUN1",
-                "afdb_v6:swissprot_P19767"
+                "UniRef:UniRef90_A0A6C0NCW1"
             ],
-            "3di": "DDPVLLVVLLVCVLVPDDLVVSCVVVVDDSVVSCVSNVVVLVPDDDPPADADPVPRDSPQWDFDDDDPNFTWIAGPVPRDIDGSVPPPDDPDDDDPVLLVQLLVCVVVPDDLVVSCVVSVHDSVVSVVSCVVVVXPDDFDADPPPRHRQKDFDDADPVRFTWIAGPPPRDIDGNDPPVPPVPDDDDPD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P19767",
-                    "query_cov": 0.49,
-                    "subject_cov": 0.99,
-                    "identity": 0.212,
-                    "score": 262.0,
-                    "evalue": 6.746e-05,
-                    "description": "Insertion element IS1 7 protein InsA"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A0B7IUN1",
-                    "query_cov": 0.67,
-                    "subject_cov": 0.87,
-                    "identity": 0.151,
-                    "score": 321.0,
-                    "evalue": 3.272e-06,
-                    "description": "IS1 family transposase"
-                }
-            ],
-            "prostt5_confidence": 69.14,
-            "baktfold": true,
-            "annotation_confidence": "low"
+            "3di": null
         },
         {
             "id": "MEGJMN_086",
@@ -6284,8 +4359,7 @@
                 "UniRef:UniRef50_A0A6C0NCY1",
                 "UniRef:UniRef90_A0A6C0NCY1"
             ],
-            "3di": "DDPPDPPPCVPDPPDDDDDDDDDXXKWWDDPNFIKDIXXXXPXDDDDPVXDTDPVVXXVXXDVDVVXDXKMKMWIDDPVRDDXWIWIWDWDADPVRDIWIWIDGPVGDTDDIDX",
-            "prostt5_confidence": 45.51
+            "3di": null
         },
         {
             "id": "MEGJMN_087",
@@ -6325,7 +4399,7 @@
                 ],
                 "product": "Toxin CcdB"
             },
-            "product": "Toxin CcdB",
+            "product": "type II toxin-antitoxin system toxin CcdB",
             "gene": "ccdB",
             "genes": [
                 "ccdB"
@@ -6337,58 +4411,9 @@
                 "UniParc:UPI000329691A",
                 "UniRef:UniRef100_A0A6C0ND19",
                 "UniRef:UniRef50_Q46996",
-                "UniRef:UniRef90_A0A6C0ND19",
-                "afdb_v6:afdbclusters_A0A7T8TIZ4",
-                "afdb_v6:swissprot_P62555",
-                "cath:cath_1x75D00",
-                "pdb:pdb_4vub"
+                "UniRef:UniRef90_A0A6C0ND19"
             ],
-            "3di": "DFQFWFFFDDPDDFFIWGWDDDPPDDDPQKTKTWTWDFDPDDDDDDDCLLWDWDDFPNTITTGRLVDIDIDGPVRTDDTDDGPVVCVVSNVVSVCCVVPVD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P62555",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
-                    "identity": 0.623,
-                    "score": 566.0,
-                    "evalue": 3.324e-12,
-                    "description": "Toxin CcdB"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A7T8TIZ4",
-                    "query_cov": 0.83,
-                    "subject_cov": 0.95,
-                    "identity": 0.588,
-                    "score": 443.0,
-                    "evalue": 6.239e-09,
-                    "description": "Toxin CcdB"
-                },
-                {
-                    "source": "pdb",
-                    "id": "4vub",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
-                    "identity": 0.623,
-                    "score": 554.0,
-                    "evalue": 4.517e-12,
-                    "description": "CCDB, A TOPOISOMERASE POISON FROM ESCHERICHIA COLI"
-                },
-                {
-                    "source": "cath",
-                    "id": "1x75D00",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
-                    "identity": 0.584,
-                    "score": 495.0,
-                    "evalue": 1.048e-10,
-                    "description": "hypothetical protein"
-                }
-            ],
-            "prostt5_confidence": 67.43,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_088",
@@ -6427,7 +4452,7 @@
                 ],
                 "product": "Antitoxin CcdA"
             },
-            "product": "Antitoxin CcdA",
+            "product": "type II toxin-antitoxin system antitoxin CcdA",
             "gene": "ccdA",
             "genes": [
                 "ccdA"
@@ -6438,25 +4463,9 @@
                 "UniParc:UPI00032968F7",
                 "UniRef:UniRef100_A0A6C0L1T7",
                 "UniRef:UniRef50_Q46995",
-                "UniRef:UniRef90_A0A6C0L1T7",
-                "afdb_v6:swissprot_Q46995"
+                "UniRef:UniRef90_A0A6C0L1T7"
             ],
-            "3di": "DDDDDDDDDDPVVVVVCVVVVDPVVVVVVVVVVVVVVVVVVVVVCVVCVVVVVVVVVVCVVPNDPVPVPDDD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "Q46995",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
-                    "identity": 0.569,
-                    "score": 232.0,
-                    "evalue": 2.439e-06,
-                    "description": "Antitoxin CcdA"
-                }
-            ],
-            "prostt5_confidence": 87.6,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_089",
@@ -6492,63 +4501,14 @@
                 ],
                 "product": "Translesion error-prone DNA polymerase V autoproteolytic subunit"
             },
-            "product": "Protein ImpA",
+            "product": "Translesion error-prone DNA polymerase V autoproteolytic subunit",
             "gene": null,
             "genes": [],
             "db_xrefs": [
                 "SO:0001217",
-                "UniRef:UniRef50_A0A0A5MNX7",
-                "afdb_v6:afdbclusters_W0FFK9",
-                "afdb_v6:swissprot_P18641",
-                "cath:cath_1umuA00",
-                "pdb:pdb_1ay9"
+                "UniRef:UniRef50_A0A0A5MNX7"
             ],
-            "3di": "DDDDDDDDDDDDDDDPDDDDPDDPPDDDWDDDDDDDXXDDDDDPPDDDDPPPPPDDDPPDDXXXDDDDDDPDDDDDDDDDPDDDDDFDFDFDDPDDPDPDDDDPPDPDDDDXDDPCSVQAPDRVQKDKDFDADCQQVLVVDHHGKIFIWGQPDDDDAQFWFWKDDPNDTDTFGWHDDPFTKGDGSDPVDDIDDDDPVRMDTGGTTGDIDDDDDDPD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P18641",
-                    "query_cov": 0.63,
-                    "subject_cov": 0.99,
-                    "identity": 0.537,
-                    "score": 642.0,
-                    "evalue": 1.479e-14,
-                    "description": "Protein ImpA"
-                },
-                {
-                    "source": "afdb",
-                    "id": "W0FFK9",
-                    "query_cov": 0.68,
-                    "subject_cov": 0.99,
-                    "identity": 0.509,
-                    "score": 631.0,
-                    "evalue": 4.611e-14,
-                    "description": "UmuD"
-                },
-                {
-                    "source": "pdb",
-                    "id": "1ay9",
-                    "query_cov": 0.49,
-                    "subject_cov": 0.99,
-                    "identity": 0.555,
-                    "score": 508.0,
-                    "evalue": 2.725e-11,
-                    "description": "WILD-TYPE UMUD' FROM E. COLI"
-                },
-                {
-                    "source": "cath",
-                    "id": "1umuA00",
-                    "query_cov": 0.48,
-                    "subject_cov": 0.99,
-                    "identity": 0.542,
-                    "score": 476.0,
-                    "evalue": 1.419e-10,
-                    "description": "Umud Fragment, subunit A"
-                }
-            ],
-            "prostt5_confidence": 57.96,
-            "baktfold": true,
-            "annotation_confidence": "medium"
+            "3di": null
         },
         {
             "id": "MEGJMN_090",
@@ -6590,7 +4550,7 @@
                 ],
                 "product": "DNA polymerase V subunit UmuC"
             },
-            "product": "Protein SamB",
+            "product": "DNA polymerase V subunit UmuC",
             "gene": "dinP",
             "genes": [
                 "dinP",
@@ -6605,69 +4565,9 @@
                 "UniParc:UPI00032D98C0",
                 "UniRef:UniRef100_A0A6C0ND75",
                 "UniRef:UniRef50_A0A155JVW9",
-                "UniRef:UniRef90_A0A2P9E5E6",
-                "afdb_v6:afdbclusters_A0A1S7SK38",
-                "afdb_v6:swissprot_P23832",
-                "cath:cath_3gqcD01",
-                "cath:cath_af_P04152_244_354_3.30.1490.100",
-                "pdb:pdb_6jul"
+                "UniRef:UniRef90_A0A2P9E5E6"
             ],
-            "3di": "DKKKKFWAQLQQLLVCLVPVVCPPAAEFEAELLQQFTQGTHPNCPVPDDGGDGPVVCDCVPPVVRHHYFYDDLLSLLVLLVQLVVLLVVQAPFWADDDSGMIMGDCPPVCVVDDPQVSQVVSQVSSCVRRVTGMFMFDDQAPLLRVLRRVCLVPPVVRVRYHYDYPVDLVVLLVSLQVDFLCSGPPCDPVNSVVCVVVVHGGLNRLLPDDLVVCCVPPHPVSNVSSCVSVRNHPDDRDPDDDDDQKFKDKDWFQAWDQDLLLVLLQLLLRLLVSLLVCVVSQKWFQKKKKWWWADPPPPPFDTDIDMDMDGDPATDRFSVVSSVRSVVRSVVRDDGPGTTGMMMMMTGRIDGPPDTDDDPPDPDDDDPCRVVVSVVQSVLCVVVVHHDGTCSSPDDDPRDGDPPSHQACCSPDPVSHDDDDDD",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P23832",
-                    "query_cov": 1.0,
-                    "subject_cov": 1.0,
-                    "identity": 0.757,
-                    "score": 2660.0,
-                    "evalue": 2.182e-64,
-                    "description": "Protein SamB"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0A1S7SK38",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.73,
-                    "identity": 0.418,
-                    "score": 1876.0,
-                    "evalue": 1.211e-44,
-                    "description": "Protein UmuC (Modular protein)"
-                },
-                {
-                    "source": "pdb",
-                    "id": "6jul",
-                    "query_cov": 0.83,
-                    "subject_cov": 0.99,
-                    "identity": 0.239,
-                    "score": 1129.0,
-                    "evalue": 2.068e-26,
-                    "description": "MsDpo4-DNA complex 1"
-                },
-                {
-                    "source": "cath",
-                    "id": "af_P04152_244_354_3.30.1490.100",
-                    "query_cov": 0.26,
-                    "subject_cov": 0.99,
-                    "identity": 0.711,
-                    "score": 701.0,
-                    "evalue": 7.509e-16,
-                    "description": "DNA polymerase, Y-family, little finger domain"
-                },
-                {
-                    "source": "cath",
-                    "id": "3gqcD01",
-                    "query_cov": 0.4,
-                    "subject_cov": 0.79,
-                    "identity": 0.145,
-                    "score": 259.0,
-                    "evalue": 7.713e-05,
-                    "description": "Reverse transcriptase/Diguanylate cyclase domain"
-                }
-            ],
-            "prostt5_confidence": 70.7,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_091",
@@ -6725,7 +4625,7 @@
                     ]
                 }
             ],
-            "product": "rRNA adenine N-6-methyltransferase",
+            "product": "23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(C)",
             "gene": "erm(C)",
             "genes": [
                 "erm(C)"
@@ -6742,58 +4642,9 @@
                 "NCBIProtein:WP_001003263.1",
                 "SO:0001217",
                 "UniRef:UniRef50_P13956",
-                "UniRef:UniRef90_P13956",
-                "afdb_v6:afdbclusters_A0AAX2KVD9",
-                "afdb_v6:swissprot_P06572",
-                "cath:cath_1qanA01",
-                "pdb:pdb_1qan"
+                "UniRef:UniRef90_P13956"
             ],
-            "3di": "DPPVCVVQQDWDFQDPVVLVLVVVVDDAAAAEEEEEEACQLVSVVVVSLVRYQAYEYEHQDPVSLVNNCVVCVPRPRYDYDNDDLLPDDDDPPDAYEYEYADRAVCVVSNVVCCLPXHRHQKYKYKYFPVVLVVLVPLQALSNLLSLLFWDKDFSDWDAQVSTVVRDPGIITIIMIGGDDGPDDPVCSVVLSVLSVCVSVVVVCVVDDPVVVVVLCVVLVHNDSRRDDSVSSVSSSVVVDX",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P06572",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.98,
-                    "identity": 0.991,
-                    "score": 1713.0,
-                    "evalue": 1.322e-42,
-                    "description": "rRNA adenine N-6-methyltransferase"
-                },
-                {
-                    "source": "afdb",
-                    "id": "A0AAX2KVD9",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.82,
-                    "identity": 0.487,
-                    "score": 1198.0,
-                    "evalue": 5.103e-29,
-                    "description": "rRNA adenine N-6-methyltransferase"
-                },
-                {
-                    "source": "pdb",
-                    "id": "1qan",
-                    "query_cov": 0.95,
-                    "subject_cov": 0.97,
-                    "identity": 0.995,
-                    "score": 1619.0,
-                    "evalue": 2.495e-40,
-                    "description": "THE STRUCTURE OF THE RRNA METHYLTRANSFERASE ERMC': IMPLICATIONS FOR THE REACTION MECHANISM"
-                },
-                {
-                    "source": "cath",
-                    "id": "1qanA01",
-                    "query_cov": 0.71,
-                    "subject_cov": 0.99,
-                    "identity": 0.906,
-                    "score": 1139.0,
-                    "evalue": 5.749e-28,
-                    "description": "Vaccinia Virus protein VP39"
-                }
-            ],
-            "prostt5_confidence": 69.14,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         },
         {
             "id": "MEGJMN_092",
@@ -6869,8 +4720,7 @@
                 "UniRef:UniRef50_P03063",
                 "UniRef:UniRef90_P03063"
             ],
-            "3di": "DDPVVVVVVVVVVPDPPPP",
-            "prostt5_confidence": 68.65
+            "3di": null
         },
         {
             "id": "MEGJMN_093",
@@ -6930,36 +4780,9 @@
                 "UniParc:UPI0000000442",
                 "UniRef:UniRef100_P0A0C8",
                 "UniRef:UniRef50_P0A0C8",
-                "UniRef:UniRef90_P0A0C8",
-                "afdb_v6:afdbclusters_P06735",
-                "afdb_v6:swissprot_P0A0C8"
+                "UniRef:UniRef90_P0A0C8"
             ],
-            "3di": "DPDDXDDDDPDWDWDADPVVRDTDTDTDDDDDDPDDXDKDADVVLVVVCCVVDDDLLVLLVVVQXVPADQLARKDADDLVVSCVVSVHDSVSSVVSVVSCVVVLQWDDDPRMIGGQLRGIHHDDDVSSVVSCVVVVVVVVVVVVVVVVVVVVVVVPVV",
-            "pstc": [
-                {
-                    "source": "swissprot",
-                    "id": "P0A0C8",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
-                    "identity": 0.98,
-                    "score": 904.0,
-                    "evalue": 3.768e-23,
-                    "description": "Replication and maintenance protein"
-                },
-                {
-                    "source": "afdb",
-                    "id": "P06735",
-                    "query_cov": 0.94,
-                    "subject_cov": 0.92,
-                    "identity": 0.98,
-                    "score": 827.0,
-                    "evalue": 8.322e-21,
-                    "description": "Replication and maintenance protein"
-                }
-            ],
-            "prostt5_confidence": 67.14,
-            "baktfold": true,
-            "annotation_confidence": "high"
+            "3di": null
         }
     ],
     "version": {
@@ -6968,7 +4791,7 @@
             "version": "6.0",
             "type": "full"
         },
-        "baktfold": "0.3.0",
+        "baktfold": "0.4.0",
         "baktfold_db": "0.1.0"
     },
     "baktfold_run": {

@@ -1,6 +1,6 @@
 # Annotated with Baktfold
-# Software: v0.3.0
-# Database: v0.3.0
+# Software: v0.4.0
+# Database: v0.1.0
 # DOI: https://github.com/gbouras13/baktfold
 # URL: https://github.com/gbouras13/baktfold
 #Sequence Id	Type	Start	Stop	Strand	Locus Tag	Gene	Product	DbXrefs
@@ -32,7 +32,7 @@ contig_1	cds	18169	18321	+	MEGJMN_024		(pseudo) hypothetical protein	SO:0001217,
 contig_1	cds	18933	19565	-	MEGJMN_025		Replication initiation protein	RefSeq:WP_032495741.1, SO:0001217, UniParc:UPI0003D902F4, UniRef:UniRef100_A0A0C5GXS3, UniRef:UniRef50_B2CBC6, UniRef:UniRef90_A0A6C0ND82
 contig_1	ncRNA-region	19645	19769	-			Pseudoknot of the regulatory region of the repBA gene	RFAM:RF01089, SO:0005836
 contig_1	cds	20018	20404	-	MEGJMN_026		Thioesterase	RefSeq:WP_015632417.1, SO:0001217, UniParc:UPI00032968CA, UniRef:UniRef100_A0A6C0NDI2, UniRef:UniRef50_C6CPI2, UniRef:UniRef90_A0A6C0NDI2
-contig_1	cds	20404	20889	-	MEGJMN_027		Transcriptional activator protein LuxR	RefSeq:WP_015632418.1, SO:0001217, UniParc:UPI000329691F, UniRef:UniRef100_A0A6C0L1X5, UniRef:UniRef50_J2UQ18, UniRef:UniRef90_A0A0C5H1S2, afdb_v6:afdbclusters_A0A849I020, afdb_v6:swissprot_P12746, pdb:pdb_5l09
+contig_1	cds	20404	20889	-	MEGJMN_027		Transcriptional activator protein LuxR	RefSeq:WP_015632418.1, SO:0001217, UniParc:UPI000329691F, UniRef:UniRef100_A0A6C0L1X5, UniRef:UniRef50_J2UQ18, UniRef:UniRef90_A0A0C5H1S2, afdb_v6:afdbclusters_A0A849I020, afdb_v6:swissprot_P12746, pdb:pdb_5l09_A
 contig_1	cds	20856	21434	-	MEGJMN_028		XRE family transcriptional regulator	RefSeq:WP_015632419.1, SO:0001217, UniParc:UPI000329699F, UniRef:UniRef100_A0A6C0NDC2, UniRef:UniRef50_A0A0U5LAP5, UniRef:UniRef90_A0A6C0NDC2
 contig_1	cds	21702	22235	+	MEGJMN_029	rfaH	Transcription antitermination protein RfaH	RefSeq:WP_015632420.1, SO:0001217, UniParc:UPI0003296925, UniRef:UniRef100_A0A6C0NCZ7, UniRef:UniRef50_A0A6C0NCZ7, UniRef:UniRef90_A0A6C0NCZ7
 contig_1	cds	22253	22456	+	MEGJMN_030		hypothetical protein	RefSeq:WP_032495743.1, SO:0001217, UniParc:UPI0003D8E070, UniRef:UniRef100_A0A6C0L2Y1, UniRef:UniRef50_A0A6C0L2Y1, UniRef:UniRef90_A0A6C0L2Y1
@@ -76,7 +76,7 @@ contig_1	cds	56227	56358	-	MEGJMN_067		hypothetical protein	SO:0001217, UniParc:
 contig_1	cds	56460	56780	-	MEGJMN_068		Transposase	RefSeq:WP_015632449.1, SO:0001217, UniParc:UPI000329697B, UniRef:UniRef100_A0A6C0ND33, UniRef:UniRef50_A0AAN1A8B8, UniRef:UniRef90_A0AAN1A8B8
 contig_1	cds	56834	57067	-	MEGJMN_069		hypothetical protein	RefSeq:WP_016162076.1, SO:0001217, UniParc:UPI00032E941B, UniRef:UniRef100_A0A6C0L3P9, UniRef:UniRef50_A0A486BC99, UniRef:UniRef90_A0A7G3L5W7
 contig_1	cds	57211	57492	-	MEGJMN_070		hypothetical protein	RefSeq:WP_049078430.1, SO:0001217, UniParc:UPI000461A81E, UniRef:UniRef100_A0A6C0NDG0, UniRef:UniRef50_A0A6C0NDG0, UniRef:UniRef90_A0A6C0NDG0, afdb_v6:afdbclusters_A0A1I3V7E0
-contig_1	cds	57759	57998	-	MEGJMN_071		Antirestriction protein KlcA	afdb_v6:afdbclusters_A0A0N9DZD6, afdb_v6:swissprot_P52603, cath:cath_2kmgA00, pdb:pdb_2kmg
+contig_1	cds	57759	57998	-	MEGJMN_071		Antirestriction protein KlcA	afdb_v6:afdbclusters_A0A0N9DZD6, afdb_v6:swissprot_P52603, cath:cath_2kmgA00, pdb:pdb_2kmg_A
 contig_1	cds	58366	59226	-	MEGJMN_072		DUF4942 domain-containing protein	RefSeq:WP_015632451.1, SO:0001217, UniParc:UPI0003296961, UniRef:UniRef100_A0A6C0L5Q4, UniRef:UniRef50_A0A088FSA3, UniRef:UniRef90_A0A6C0L5Q4
 contig_1	cds	59300	59482	-	MEGJMN_073	cbiX	Cobalamin biosynthesis protein CbiX	RefSeq:WP_223351475.1, SO:0001217, UniParc:UPI0006D2EBE2, UniRef:UniRef100_A0A6C0L2V3, UniRef:UniRef50_A0A6C0L2V3, UniRef:UniRef90_A0A6C0L2V3
 contig_1	cds	59623	59982	-	MEGJMN_074		hypothetical protein	RefSeq:WP_016162075.1, SO:0001217, UniParc:UPI00032E55A7, UniRef:UniRef100_A0A0C5HDG0, UniRef:UniRef50_A0A0C5HDG0, UniRef:UniRef90_A0A0C5HDG0

@@ -8,8 +8,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -588,7 +588,7 @@ FT                   /db_xref="UniRef:UniRef90_A0A0C5H1S2"
 FT                   /db_xref="afdb_v6:afdbclusters_A0A951VBP6"
 FT                   /db_xref="afdb_v6:swissprot_Q46967"
 FT                   /db_xref="cath:cath_3sztB01"
-FT                   /db_xref="pdb:pdb_5l09"
+FT                   /db_xref="pdb:pdb_5l09_A"
 FT                   /product="Transcriptional activator protein EchR"
 FT                   /locus_tag="MEGJMN_027"
 FT                   /protein_id="gnl|Baktfold|MEGJMN_027"
@@ -3155,8 +3155,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -3228,7 +3228,7 @@ FT                   /protein_id="gnl|Baktfold|MEGJMN_092"
 FT                   /translation="MGIFSIFVISTVHYQPNKK"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.11"
 FT                   /inference="similar to AA sequence:RefSeq:WP_002497446.1"
 FT                   /gene="ermC"
 FT   gene            complement(1540..2016)

@@ -519,8 +519,8 @@
                 {
                     "source": "custom_db",
                     "id": "MEGJMN_010",
-                    "query_cov": 0.96,
-                    "subject_cov": 0.96,
+                    "query_cov": 0.97,
+                    "subject_cov": 0.97,
                     "identity": 1.0,
                     "score": 346.0,
                     "evalue": 6.558e-11,
@@ -1543,7 +1543,7 @@
                 "afdb_v6:swissprot_P54292",
                 "cath:cath_3sztB01",
                 "custom:custom_MEGJMN_027",
-                "pdb:pdb_5l09"
+                "pdb:pdb_5l09_B"
             ],
             "nt": "ATGCAGGAAAGTGAAGTGGATAAAAAAAGTATAAAAATTAATTTTCATCGCTATAGTAACGAGGCTATTAACTTTCTCAATAGTTTTGAGAAAGTTACCTATGTCTCAACTTTACTAGTCGAAGATAATATCTTGTCTGCACACCAAAGCAATGGTTATGCTGACTGGGATAAAAAGTTCTATTACGATGGGAAGTATAAAGATAGTCTCCTGATAAAACTGGGACTGGAGCTGACAAAAATTGAAGGTGGGGATAAAAAAACTGTCATCTGGGATGACGTTTTAAGAAATCACCCCGAAAACGAGATCGACAGGCAGAGACGTGCCCATAATATCTATCATGGTGTCAGCTTTATTTATGGATTGACTGATAATATCAGTATGGCAATCAATGTGTGCACCGACTCTGCCACTACAAAGAGGGAGTTTGAGGATCTTATCCTTCCCCACAGACTTAAACTTTTAACTATGTTTCAGGATATGTAA",
             "aa": "MQESEVDKKSIKINFHRYSNEAINFLNSFEKVTYVSTLLVEDNILSAHQSNGYADWDKKFYYDGKYKDSLLIKLGLELTKIEGGDKKTVIWDDVLRNHPENEIDRQRRAHNIYHGVSFIYGLTDNISMAINVCTDSATTKREFEDLILPHRLKLLTMFQDM",
@@ -1588,7 +1588,7 @@
                 {
                     "source": "swissprot",
                     "id": "P54292",
-                    "query_cov": 0.89,
+                    "query_cov": 0.9,
                     "subject_cov": 0.55,
                     "identity": 0.145,
                     "score": 316.0,
@@ -1598,8 +1598,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A9E1VSB0",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.78,
+                    "query_cov": 1.0,
+                    "subject_cov": 0.79,
                     "identity": 0.218,
                     "score": 297.0,
                     "evalue": 6.108e-06,
@@ -1608,18 +1608,19 @@
                 {
                     "source": "pdb",
                     "id": "5l09",
-                    "query_cov": 0.92,
+                    "query_cov": 0.93,
                     "subject_cov": 0.93,
                     "identity": 0.171,
                     "score": 323.0,
                     "evalue": 5.071e-07,
+                    "chain": "B",
                     "description": "Crystal Structure of Quorum-Sensing Transcriptional Activator from Yersinia enterocolitica in complex with 3-oxo-N-[(3S)-2-oxotetrahydrofuran-3-yl]hexanamide"
                 },
                 {
                     "source": "cath",
                     "id": "3sztB01",
-                    "query_cov": 0.92,
-                    "subject_cov": 0.9,
+                    "query_cov": 0.93,
+                    "subject_cov": 0.91,
                     "identity": 0.122,
                     "score": 299.0,
                     "evalue": 1.784e-06,
@@ -1628,8 +1629,8 @@
                 {
                     "source": "custom_db",
                     "id": "MEGJMN_027",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.944,
                     "score": 821.0,
                     "evalue": 5.571e-22,
@@ -1812,8 +1813,8 @@
                 {
                     "source": "custom_db",
                     "id": "MEGJMN_030",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 1.0,
                     "score": 351.0,
                     "evalue": 2.912e-11,
@@ -3516,8 +3517,8 @@
                 {
                     "source": "custom_db",
                     "id": "MEGJMN_060",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.98,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 1.0,
                     "score": 272.0,
                     "evalue": 4.581e-08,
@@ -3928,8 +3929,8 @@
                 {
                     "source": "custom_db",
                     "id": "MEGJMN_067",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.98,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 1.0,
                     "score": 223.0,
                     "evalue": 1.554e-07,
@@ -4056,8 +4057,8 @@
                 {
                     "source": "custom_db",
                     "id": "MEGJMN_069",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.87,
                     "score": 346.0,
                     "evalue": 4.717e-10,
@@ -4131,8 +4132,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A1I3V7E0",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.95,
+                    "query_cov": 0.98,
+                    "subject_cov": 0.96,
                     "identity": 0.41,
                     "score": 292.0,
                     "evalue": 2.619e-06,
@@ -4141,8 +4142,8 @@
                 {
                     "source": "custom_db",
                     "id": "MEGJMN_070",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.935,
                     "score": 459.0,
                     "evalue": 5.614e-13,
@@ -4465,15 +4466,15 @@
                 {
                     "source": "custom_db",
                     "id": "MEGJMN_076",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.98,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.984,
                     "score": 312.0,
                     "evalue": 2.048e-09,
                     "description": "MEGJMN_076"
                 }
             ],
-            "prostt5_confidence": 58.69,
+            "prostt5_confidence": 58.74,
             "baktfold": true,
             "annotation_confidence": "high",
             "length": 65
@@ -4594,7 +4595,7 @@
                 {
                     "source": "afdb",
                     "id": "A0A9Q6N187",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.92,
                     "identity": 0.216,
                     "score": 274.0,
@@ -4604,8 +4605,8 @@
                 {
                     "source": "custom_db",
                     "id": "MEGJMN_078",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.848,
                     "score": 672.0,
                     "evalue": 6.968e-17,
@@ -5508,7 +5509,7 @@
             "version": "6.0",
             "type": "full"
         },
-        "baktfold": "0.3.0",
+        "baktfold": "0.4.0",
         "baktfold_db": "0.1.0"
     },
     "baktfold_run": {

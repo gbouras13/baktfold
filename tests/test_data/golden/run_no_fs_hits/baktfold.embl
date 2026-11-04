@@ -8,8 +8,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -1098,7 +1098,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_00170"
 FT                   /translation="MTGLLLHSQAKPDITREYW"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:UniRef:UniRef100_Q47079"
 FT                   /gene="bglC"
 FT   gene            35569..36405
@@ -1685,7 +1685,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_00270"
 FT                   /translation="MNILHICVTSKWFNIDNKIVDHRP"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_001364348.1"
 FT                   /gene="tnaC"
 FT   gene            complement(56406..57770)
@@ -1821,7 +1821,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_00295"
 FT                   /translation="MTIDKNWLNRSNKDPGRSLRFTHQPV"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_120795392.1"
 FT                   /gene="ysdD"
 FT   gene            60869..62272
@@ -2781,7 +2781,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_00465"
 FT                   /translation="MNVSQIYARNGELFSGRICKQKRQ"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_211180519.1"
 FT                   /gene="ysdE"
 FT   gene            complement(90951..91040)
@@ -4518,8 +4518,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -5167,7 +5167,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_00600"
 FT                   /translation="MENEHQYSGARCSGQAAYVAKRQECAK"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_120795393.1"
 FT                   /gene="iraD"
 FT   gene            23908..24300
@@ -8160,8 +8160,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -9770,7 +9770,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_01180"
 FT                   /translation="MKRISTTITTTITITTGNGAG"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_001386572.1"
 FT   gene            complement(57762..58448)
 FT                   /locus_tag="IPKCKG_01185"
@@ -11169,8 +11169,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -13715,8 +13715,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -14544,7 +14544,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_01645"
 FT                   /translation="MLYWLGILIAYADRRPDKVFTLIR"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_211180511.1"
 FT                   /gene="yriA"
 FT   gene            complement(31354..31788)
@@ -15673,8 +15673,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -17891,8 +17891,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -19980,8 +19980,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -21113,7 +21113,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_02400"
 FT                   /translation="MRWQLNKQQLHARLSMK"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_240812434.1"
 FT                   /gene="yrfJ"
 FT   gene            35516..36688
@@ -22107,8 +22107,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -24295,8 +24295,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -25170,7 +25170,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_02815"
 FT                   /translation="MIYRELNRALAIL"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_211180509.1"
 FT                   /gene="yhgO"
 FT   gene            complement(36244..37347)
@@ -26147,8 +26147,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -27443,7 +27443,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_03075"
 FT                   /translation="MHLQLIKDNIHSVVICYT"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_240812435.1"
 FT                   /gene="ytcB"
 FT   gene            38358..40316
@@ -28318,8 +28318,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -29085,7 +29085,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_03225"
 FT                   /translation="MIKSDQET"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_211180514.1"
 FT                   /gene="baxL"
 FT   gene            25344..26168
@@ -30119,8 +30119,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -31782,8 +31782,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -32842,7 +32842,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_03655"
 FT                   /translation="MGWSLCFWHVSVRMTHDVVCYY"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_211180522.1"
 FT                   /gene="ykiE"
 XX
@@ -33475,8 +33475,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -33566,7 +33566,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_03670"
 FT                   /translation="MYQTRRTYQNSNNIAVVHLLKPAWR"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:UniRef:UniRef50_P0DSG5"
 FT                   /gene="yqiM"
 FT   gene            2139..2801
@@ -35096,8 +35096,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -36708,8 +36708,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -38174,8 +38174,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -39811,8 +39811,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -41245,8 +41245,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -41391,7 +41391,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_04510"
 FT                   /translation="MFYLSDLLLHVIGFG"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_071892919.1"
 FT                   /gene="spfP"
 FT   gene            complement(5372..6004)
@@ -41457,7 +41457,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_04525"
 FT                   /translation="MTQDEGQERQEAKTEDCQEDKRPET"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA
 FT                   sequence:UniRef:UniRef100_A0A828BPW3"
 FT                   /gene="yihI"
@@ -42710,8 +42710,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -44091,8 +44091,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -45465,8 +45465,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -46374,7 +46374,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_05065"
 FT                   /translation="MEPDPTPLPRRRLKLFR"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_001387276.1"
 FT                   /gene="mgtL"
 XX
@@ -46905,8 +46905,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -47706,7 +47706,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_05200"
 FT                   /translation="MTCLFSCEQ"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:UniRef:UniRef100_Q47063"
 FT   gene            25572..26873
 FT                   /locus_tag="IPKCKG_05205"
@@ -48349,8 +48349,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -49815,8 +49815,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -51057,8 +51057,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -52320,8 +52320,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -53590,8 +53590,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -54698,8 +54698,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -55061,7 +55061,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_05940"
 FT                   /translation="MIIKTLKMSARKRN"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_120795372.1"
 FT                   /gene="yacM"
 FT   gene            9068..10111
@@ -55920,8 +55920,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -57080,8 +57080,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -58167,8 +58167,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -59112,8 +59112,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -60307,8 +60307,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -61431,8 +61431,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -62479,8 +62479,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -63530,8 +63530,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -64551,8 +64551,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -65536,8 +65536,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -66500,8 +66500,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -67852,8 +67852,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -68713,8 +68713,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -69663,8 +69663,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -70527,8 +70527,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -71349,8 +71349,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -72178,8 +72178,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -73043,8 +73043,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -73926,8 +73926,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -74777,8 +74777,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -75468,8 +75468,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -76052,8 +76052,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -76670,8 +76670,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -77484,8 +77484,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -77802,7 +77802,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_08335"
 FT                   /translation="MSKNTKSKNNGIRKYNAKTEVKLVYFK"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_120795391.1"
 FT                   /gene="yqfI"
 FT   gene            complement(10400..11602)
@@ -78166,8 +78166,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -78904,8 +78904,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -79553,8 +79553,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -79735,7 +79735,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_08535"
 FT                   /translation="MNNSTKFCFSRFRTGN"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_001387183.1"
 FT                   /gene="ilvX"
 FT   gene            3826..5472
@@ -80235,8 +80235,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -80751,8 +80751,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -80814,7 +80814,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_08630"
 FT                   /translation="MIERELGNWKDFIEVMLRK"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_001386977.1"
 FT                   /gene="ypfM"
 FT   gene            complement(1516..4629)
@@ -81287,8 +81287,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -81869,8 +81869,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -82388,8 +82388,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -82975,8 +82975,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -83316,7 +83316,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_08900"
 FT                   /translation="MHAISLHSLAYRRFARNVSLSMLLLMR"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_211180506.1"
 FT                   /gene="yqgH"
 XX
@@ -83524,8 +83524,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -83925,8 +83925,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -84403,8 +84403,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -84849,8 +84849,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -85271,8 +85271,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -85720,8 +85720,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -86184,8 +86184,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -86576,8 +86576,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -87054,8 +87054,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -87163,7 +87163,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_09255"
 FT                   /translation="MMKFVIILVVLLLLSFPTY"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_001387082.1"
 FT   gene            2871..3020
 FT                   /locus_tag="IPKCKG_09260"
@@ -87193,7 +87193,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_09265"
 FT                   /translation="MMKLVIILIVLLLVSFAAY"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_001387081.1"
 FT                   /gene="ibsD"
 FT   gene            complement(3245..4906)
@@ -87499,8 +87499,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -87904,8 +87904,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -88391,8 +88391,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -88782,8 +88782,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -88826,7 +88826,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_09445"
 FT                   /translation="MDDGLRFAIREGGRTVGAGVVAKVLS"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_000340868.1"
 FT                   /gene="tuf"
 FT   gene            345..728
@@ -89179,8 +89179,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -89593,8 +89593,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -89994,8 +89994,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -90411,8 +90411,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -90798,8 +90798,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -91200,8 +91200,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -91620,8 +91620,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -92008,8 +92008,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -92466,8 +92466,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -92856,8 +92856,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -93283,8 +93283,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -93614,8 +93614,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -94006,8 +94006,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -94307,8 +94307,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -94651,8 +94651,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -95001,8 +95001,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -95307,8 +95307,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -95637,8 +95637,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -95971,8 +95971,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -96307,8 +96307,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -96520,8 +96520,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -96758,8 +96758,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -97007,8 +97007,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -97263,8 +97263,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -97448,8 +97448,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -97747,8 +97747,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -97920,8 +97920,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -98211,8 +98211,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -98441,8 +98441,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -98700,8 +98700,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -98807,7 +98807,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_10505"
 FT                   /translation="MTHIVRFIGLLLLNASSLRGRRVSGIQH"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_001300467.1"
 FT                   /gene="leuL"
 XX
@@ -98891,8 +98891,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -99067,8 +99067,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -99258,8 +99258,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -99418,8 +99418,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -99567,8 +99567,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -99716,8 +99716,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -99908,8 +99908,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -99956,7 +99956,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_10620"
 FT                   /translation="MRFYFYSQAVDESGVTR"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_010723271.1"
 FT                   /gene="yjeV"
 FT   gene            complement(438..1577)
@@ -100063,8 +100063,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -100225,8 +100225,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -100371,8 +100371,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -100485,8 +100485,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -100598,8 +100598,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -100715,8 +100715,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -100837,8 +100837,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -100997,8 +100997,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -101103,8 +101103,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -101142,7 +101142,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_10740"
 FT                   /translation="MIRIISRANSVTSSNEVNRLVTGQIPHD"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA sequence:RefSeq:WP_001406816.1"
 FT                   /gene="uof"
 FT   gene            185..631
@@ -101262,8 +101262,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -101375,8 +101375,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -101462,8 +101462,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -101543,8 +101543,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -101602,8 +101602,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -101675,8 +101675,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -101751,8 +101751,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -101862,8 +101862,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -101947,8 +101947,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102026,8 +102026,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102105,8 +102105,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102217,8 +102217,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102269,8 +102269,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102350,8 +102350,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102401,8 +102401,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102452,8 +102452,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102542,8 +102542,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102603,8 +102603,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102701,8 +102701,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102750,8 +102750,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102820,8 +102820,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102891,8 +102891,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102953,8 +102953,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -102998,8 +102998,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103043,8 +103043,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103099,8 +103099,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103160,8 +103160,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103204,8 +103204,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103248,8 +103248,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103291,8 +103291,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103334,8 +103334,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103377,8 +103377,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103420,8 +103420,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103463,8 +103463,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103506,8 +103506,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103567,8 +103567,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103609,8 +103609,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103679,8 +103679,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103719,8 +103719,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103775,8 +103775,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103814,8 +103814,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   
@@ -103850,7 +103850,7 @@ FT                   /protein_id="gnl|Baktfold|IPKCKG_10910"
 FT                   /translation="MSGGAFAVTHHPVSS"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:0.3"
+FT                   /inference="ab initio prediction:Bakta:1.9"
 FT                   /inference="similar to AA
 FT                   sequence:UniRef:UniRef100_A0A649Z3Y5"
 XX
@@ -103870,8 +103870,8 @@ OS   .
 OC   .
 XX
 CC   Annotated with Baktfold
-CC   Software: v0.3.0
-CC   Database: v0.3.0
+CC   Software: v0.4.0
+CC   Database: v0.1.0
 CC   DOI: https://github.com/gbouras13/baktfold
 CC   URL: https://github.com/gbouras13/baktfold
 CC   

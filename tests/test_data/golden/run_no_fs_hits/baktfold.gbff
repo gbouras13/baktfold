@@ -7,8 +7,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -1095,7 +1095,7 @@ FEATURES             Location/Qualifiers
                      /translation="MTGLLLHSQAKPDITREYW"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:UniRef:UniRef100_Q47079"
                      /gene="bglC"
      gene            35569..36405
@@ -1682,7 +1682,7 @@ FEATURES             Location/Qualifiers
                      /translation="MNILHICVTSKWFNIDNKIVDHRP"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_001364348.1"
                      /gene="tnaC"
      gene            complement(56406..57770)
@@ -1818,7 +1818,7 @@ FEATURES             Location/Qualifiers
                      /translation="MTIDKNWLNRSNKDPGRSLRFTHQPV"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_120795392.1"
                      /gene="ysdD"
      gene            60869..62272
@@ -2778,7 +2778,7 @@ FEATURES             Location/Qualifiers
                      /translation="MNVSQIYARNGELFSGRICKQKRQ"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_211180519.1"
                      /gene="ysdE"
      gene            complement(90951..91040)
@@ -4513,8 +4513,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -5160,7 +5160,7 @@ FEATURES             Location/Qualifiers
                      /translation="MENEHQYSGARCSGQAAYVAKRQECAK"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_120795393.1"
                      /gene="iraD"
      gene            23908..24300
@@ -8151,8 +8151,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -9759,7 +9759,7 @@ FEATURES             Location/Qualifiers
                      /translation="MKRISTTITTTITITTGNGAG"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_001386572.1"
      gene            complement(57762..58448)
                      /locus_tag="IPKCKG_01185"
@@ -11156,8 +11156,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -13698,8 +13698,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -14525,7 +14525,7 @@ FEATURES             Location/Qualifiers
                      /translation="MLYWLGILIAYADRRPDKVFTLIR"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_211180511.1"
                      /gene="yriA"
      gene            complement(31354..31788)
@@ -15652,8 +15652,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -17866,8 +17866,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -19951,8 +19951,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -21082,7 +21082,7 @@ FEATURES             Location/Qualifiers
                      /translation="MRWQLNKQQLHARLSMK"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_240812434.1"
                      /gene="yrfJ"
      gene            35516..36688
@@ -22074,8 +22074,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -24258,8 +24258,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -25131,7 +25131,7 @@ FEATURES             Location/Qualifiers
                      /translation="MIYRELNRALAIL"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_211180509.1"
                      /gene="yhgO"
      gene            complement(36244..37347)
@@ -26106,8 +26106,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -27400,7 +27400,7 @@ FEATURES             Location/Qualifiers
                      /translation="MHLQLIKDNIHSVVICYT"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_240812435.1"
                      /gene="ytcB"
      gene            38358..40316
@@ -28273,8 +28273,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -29038,7 +29038,7 @@ FEATURES             Location/Qualifiers
                      /translation="MIKSDQET"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_211180514.1"
                      /gene="baxL"
      gene            25344..26168
@@ -30070,8 +30070,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -31729,8 +31729,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -32787,7 +32787,7 @@ FEATURES             Location/Qualifiers
                      /translation="MGWSLCFWHVSVRMTHDVVCYY"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_211180522.1"
                      /gene="ykiE"
 ORIGIN
@@ -33418,8 +33418,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -33507,7 +33507,7 @@ FEATURES             Location/Qualifiers
                      /translation="MYQTRRTYQNSNNIAVVHLLKPAWR"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:UniRef:UniRef50_P0DSG5"
                      /gene="yqiM"
      gene            2139..2801
@@ -35035,8 +35035,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -36643,8 +36643,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -38105,8 +38105,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -39738,8 +39738,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -41168,8 +41168,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -41312,7 +41312,7 @@ FEATURES             Location/Qualifiers
                      /translation="MFYLSDLLLHVIGFG"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_071892919.1"
                      /gene="spfP"
      gene            complement(5372..6004)
@@ -41378,7 +41378,7 @@ FEATURES             Location/Qualifiers
                      /translation="MTQDEGQERQEAKTEDCQEDKRPET"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA
                      sequence:UniRef:UniRef100_A0A828BPW3"
                      /gene="yihI"
@@ -42629,8 +42629,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -44006,8 +44006,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -45376,8 +45376,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -46283,7 +46283,7 @@ FEATURES             Location/Qualifiers
                      /translation="MEPDPTPLPRRRLKLFR"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_001387276.1"
                      /gene="mgtL"
 ORIGIN
@@ -46812,8 +46812,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -47611,7 +47611,7 @@ FEATURES             Location/Qualifiers
                      /translation="MTCLFSCEQ"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:UniRef:UniRef100_Q47063"
      gene            25572..26873
                      /locus_tag="IPKCKG_05205"
@@ -48252,8 +48252,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -49714,8 +49714,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -50952,8 +50952,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -52211,8 +52211,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -53477,8 +53477,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -54581,8 +54581,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -54942,7 +54942,7 @@ FEATURES             Location/Qualifiers
                      /translation="MIIKTLKMSARKRN"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_120795372.1"
                      /gene="yacM"
      gene            9068..10111
@@ -55799,8 +55799,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -56955,8 +56955,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -58038,8 +58038,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -58979,8 +58979,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -60170,8 +60170,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -61290,8 +61290,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -62334,8 +62334,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -63381,8 +63381,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -64398,8 +64398,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -65379,8 +65379,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -66339,8 +66339,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -67687,8 +67687,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -68544,8 +68544,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -69490,8 +69490,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -70350,8 +70350,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -71168,8 +71168,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -71993,8 +71993,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -72854,8 +72854,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -73733,8 +73733,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -74580,8 +74580,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -75267,8 +75267,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -75847,8 +75847,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -76461,8 +76461,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -77271,8 +77271,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -77587,7 +77587,7 @@ FEATURES             Location/Qualifiers
                      /translation="MSKNTKSKNNGIRKYNAKTEVKLVYFK"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_120795391.1"
                      /gene="yqfI"
      gene            complement(10400..11602)
@@ -77949,8 +77949,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -78683,8 +78683,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -79328,8 +79328,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -79508,7 +79508,7 @@ FEATURES             Location/Qualifiers
                      /translation="MNNSTKFCFSRFRTGN"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_001387183.1"
                      /gene="ilvX"
      gene            3826..5472
@@ -80006,8 +80006,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -80518,8 +80518,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -80579,7 +80579,7 @@ FEATURES             Location/Qualifiers
                      /translation="MIERELGNWKDFIEVMLRK"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_001386977.1"
                      /gene="ypfM"
      gene            complement(1516..4629)
@@ -81050,8 +81050,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -81628,8 +81628,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -82143,8 +82143,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -82726,8 +82726,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -83065,7 +83065,7 @@ FEATURES             Location/Qualifiers
                      /translation="MHAISLHSLAYRRFARNVSLSMLLLMR"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_211180506.1"
                      /gene="yqgH"
 ORIGIN
@@ -83271,8 +83271,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -83668,8 +83668,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -84142,8 +84142,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -84584,8 +84584,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -85002,8 +85002,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -85447,8 +85447,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -85907,8 +85907,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -86295,8 +86295,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -86769,8 +86769,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -86876,7 +86876,7 @@ FEATURES             Location/Qualifiers
                      /translation="MMKFVIILVVLLLLSFPTY"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_001387082.1"
      gene            2871..3020
                      /locus_tag="IPKCKG_09260"
@@ -86906,7 +86906,7 @@ FEATURES             Location/Qualifiers
                      /translation="MMKLVIILIVLLLVSFAAY"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_001387081.1"
                      /gene="ibsD"
      gene            complement(3245..4906)
@@ -87210,8 +87210,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -87611,8 +87611,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -88094,8 +88094,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -88481,8 +88481,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -88523,7 +88523,7 @@ FEATURES             Location/Qualifiers
                      /translation="MDDGLRFAIREGGRTVGAGVVAKVLS"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_000340868.1"
                      /gene="tuf"
      gene            345..728
@@ -88874,8 +88874,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -89284,8 +89284,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -89681,8 +89681,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -90094,8 +90094,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -90477,8 +90477,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -90875,8 +90875,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -91291,8 +91291,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -91675,8 +91675,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -92129,8 +92129,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -92515,8 +92515,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -92938,8 +92938,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -93265,8 +93265,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -93653,8 +93653,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -93950,8 +93950,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -94290,8 +94290,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -94636,8 +94636,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -94938,8 +94938,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -95264,8 +95264,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -95594,8 +95594,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -95926,8 +95926,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -96135,8 +96135,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -96369,8 +96369,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -96614,8 +96614,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -96866,8 +96866,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -97047,8 +97047,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -97342,8 +97342,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -97511,8 +97511,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -97798,8 +97798,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -98024,8 +98024,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -98279,8 +98279,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -98384,7 +98384,7 @@ FEATURES             Location/Qualifiers
                      /translation="MTHIVRFIGLLLLNASSLRGRRVSGIQH"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_001300467.1"
                      /gene="leuL"
 ORIGIN
@@ -98466,8 +98466,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -98638,8 +98638,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -98825,8 +98825,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -98981,8 +98981,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -99126,8 +99126,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -99271,8 +99271,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -99459,8 +99459,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -99505,7 +99505,7 @@ FEATURES             Location/Qualifiers
                      /translation="MRFYFYSQAVDESGVTR"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_010723271.1"
                      /gene="yjeV"
      gene            complement(438..1577)
@@ -99610,8 +99610,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -99768,8 +99768,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -99910,8 +99910,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -100020,8 +100020,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -100129,8 +100129,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -100242,8 +100242,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -100360,8 +100360,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -100516,8 +100516,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -100618,8 +100618,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -100655,7 +100655,7 @@ FEATURES             Location/Qualifiers
                      /translation="MIRIISRANSVTSSNEVNRLVTGQIPHD"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA sequence:RefSeq:WP_001406816.1"
                      /gene="uof"
      gene            185..631
@@ -100773,8 +100773,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -100882,8 +100882,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -100965,8 +100965,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101042,8 +101042,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101097,8 +101097,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101166,8 +101166,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101238,8 +101238,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101345,8 +101345,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101426,8 +101426,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101501,8 +101501,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101576,8 +101576,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101684,8 +101684,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101732,8 +101732,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101809,8 +101809,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101856,8 +101856,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101903,8 +101903,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -101989,8 +101989,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102046,8 +102046,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102140,8 +102140,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102185,8 +102185,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102251,8 +102251,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102318,8 +102318,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102376,8 +102376,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102417,8 +102417,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102458,8 +102458,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102510,8 +102510,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102567,8 +102567,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102607,8 +102607,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102647,8 +102647,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102686,8 +102686,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102725,8 +102725,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102764,8 +102764,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102803,8 +102803,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102842,8 +102842,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102881,8 +102881,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102938,8 +102938,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -102976,8 +102976,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -103042,8 +103042,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -103078,8 +103078,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -103130,8 +103130,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -103165,8 +103165,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             
@@ -103199,7 +103199,7 @@ FEATURES             Location/Qualifiers
                      /translation="MSGGAFAVTHHPVSS"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:0.3"
+                     /inference="ab initio prediction:Bakta:1.9"
                      /inference="similar to AA
                      sequence:UniRef:UniRef100_A0A649Z3Y5"
 ORIGIN
@@ -103217,8 +103217,8 @@ SOURCE
   ORGANISM  .
             .
 COMMENT     Annotated with Baktfold
-            Software: v0.3.0
-            Database: v0.3.0
+            Software: v0.4.0
+            Database: v0.1.0
             DOI: https://github.com/gbouras13/baktfold
             URL: https://github.com/gbouras13/baktfold
             

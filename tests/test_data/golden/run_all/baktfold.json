@@ -32,7 +32,7 @@
                 "UniRef:UniRef90_UPI003365312D",
                 "afdb_v6:afdbclusters_A0A5W3IPL1",
                 "afdb_v6:swissprot_P24042",
-                "pdb:pdb_5tbf"
+                "pdb:pdb_5tbf_A"
             ],
             "nt": "ATGAATGGATATAACTATATGAATGAGAATGTTTATATCGGCGAGGTTATAGGTCCAGATTGTGAAAGTGTTAACAATAAACTCACCGTCACAAGTAAGGCCACAGTTCAGCCTGTAGCCCTGATGAGATTAAATGTTTTTGTTCCTTCAAGCAGGCCTGCAAAGGGCACCAGAACATCAATCGATGCGACCTCTGTTCTCAAGGATCTGGAATTCTCAAGGCGGGAGGGGTACGACGATATTCGTATAACCGGTGAACGGTTGAGTATGGCCATCGACTTCAAGGTATGGGTCGGTATCATAGAAGCTTTCAGTAAGTACGGTTTAAAAACCAACAGCATTAAGCTTACTTTTCATGAGTTTGCTGGAATGTGCCGCTTTGAGTCTAAGAGATTCGATTCCCGTCTTAGAAAAAGTATTTCAGAAGCTTTGACCAGGATACGTGGCAAGACCATTACCTTTACCCGTAGCGACTCAGAGGGCCTTCAAAAAGTTTCCGTAACAGGTTTGCTTAAGACAGGTGAACTGGATTTTGCAAACGACCAGGTGGAACTTGAAGCTGATCAGCGACTATGGGAACTCTACCAAACTGATTACACTGTTCTGCTACGACATAAACCGATAAACGCTTTAACCCGAAAGGAAGCAGCTCAGGCCCTGTATACTTTCATCGAAAGCCTGCCTACGAACCCAGTCCCCATATCTTTCAAACGAATACGAGACAGGCTCTCATTGCTCTCTCCGGTAAAGGAACAGAACCGTATCATTAAACTGGCCCTCAAGCAGTTGCAGGATATTGGGTACCTTGACCACAGCATCACCAAAAAAGGTAAAGAGACTTTCATTCTGATCCACCGTCGCTCAGCAAACCTGAAACCAGGAACAGCTGTATAA",
             "aa": "MNGYNYMNENVYIGEVIGPDCESVNNKLTVTSKATVQPVALMRLNVFVPSSRPAKGTRTSIDATSVLKDLEFSRREGYDDIRITGERLSMAIDFKVWVGIIEAFSKYGLKTNSIKLTFHEFAGMCRFESKRFDSRLRKSISEALTRIRGKTITFTRSDSEGLQKVSVTGLLKTGELDFANDQVELEADQRLWELYQTDYTVLLRHKPINALTRKEAAQALYTFIESLPTNPVPISFKRIRDRLSLLSPVKEQNRIIKLALKQLQDIGYLDHSITKKGKETFILIHRRSANLKPGTAV",
@@ -94,10 +94,11 @@
                     "identity": 0.112,
                     "score": 460.0,
                     "evalue": 1.051e-09,
+                    "chain": "A",
                     "description": "Crystal structure of SeMet derivatives of domain2 and domain 3 of RctB"
                 }
             ],
-            "prostt5_confidence": 56.54,
+            "prostt5_confidence": 56.59,
             "baktfold": true,
             "annotation_confidence": "high",
             "length": 298
@@ -128,7 +129,7 @@
                 "afdb_v6:afdbclusters_A0AB36KDH3",
                 "afdb_v6:swissprot_P07175",
                 "cath:cath_4e07A00",
-                "pdb:pdb_4e03"
+                "pdb:pdb_4e03_A"
             ],
             "nt": "ATGATAATAGTATTGGGTAGTCAAAAGGGTGGGGTTGGTAAAAGTACACTGGCGGTATCTATAGCTGCGTATCTGATGTCACTGGGCAATAGAGTGATCATTGTCGACGCAGATGACCAGAAATCTGTATTGACCTGGTACAACAATCGTCCTGAAGATCTTCCCCATATTCCGGTTACTGGCGCAACAGGCAACATCAAAGCCATGCTAAAGGAACACGAGAAATCTTATGACTTTGTCATCGCAGACTGTGCTGGCCGCGACAGTGCAGAAATGCGTAGTGGGTTGATGGCCGCTGACGTATTCATTTCTCCGTTGCGGCCTTCTCAAATGGACTTGGATGTAGTGCCTCATACATGCTCTGTTTTTACAGCAGCAAAAGATTTTAATGAGGACGTCCGGGATATCTCGTTTTAA",
             "aa": "MIIVLGSQKGGVGKSTLAVSIAAYLMSLGNRVIIVDADDQKSVLTWYNNRPEDLPHIPVTGATGNIKAMLKEHEKSYDFVIADCAGRDSAEMRSGLMAADVFISPLRPSQMDLDVVPHTCSVFTAAKDFNEDVRDISF",
@@ -162,7 +163,7 @@
                 {
                     "source": "swissprot",
                     "id": "P07175",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.62,
                     "identity": 0.255,
                     "score": 414.0,
@@ -182,17 +183,18 @@
                 {
                     "source": "pdb",
                     "id": "4e03",
-                    "query_cov": 0.99,
+                    "query_cov": 1.0,
                     "subject_cov": 0.66,
                     "identity": 0.271,
                     "score": 439.0,
                     "evalue": 1.534e-10,
+                    "chain": "A",
                     "description": "Structure of ParF-ADP form 2"
                 },
                 {
                     "source": "cath",
                     "id": "4e07A00",
-                    "query_cov": 0.99,
+                    "query_cov": 1.0,
                     "subject_cov": 0.65,
                     "identity": 0.271,
                     "score": 437.0,
@@ -202,7 +204,7 @@
             ],
             "prostt5_confidence": 74.41,
             "baktfold": true,
-            "annotation_confidence": "low",
+            "annotation_confidence": "medium",
             "length": 139
         },
         {
@@ -251,7 +253,7 @@
                 "afdb_v6:afdbclusters_E6WNN4",
                 "afdb_v6:swissprot_P06615",
                 "cath:cath_af_P9WF33_119_304_1.10.443.10",
-                "pdb:pdb_5hxy"
+                "pdb:pdb_5hxy_B"
             ],
             "nt": "ATGAATAACCTGGTTCCAGTTGGATCTCCGGCATCTCCCGGAACATTGCTCCCGGTGGCCATCGATTACCCTGCCGCCCTCGCCCTGCGCCAGATGGCGCTCGTACAGGATGAACTCCCGAAATACCTGCTGGCGCCGGAAGTCAGCGCCCTGCTCCATTACGTGCCGGATCTTCACCGCAAGATGCTGCTGGCGACGCTGTGGAACACCGGCGCGCGCATTAATGAAGCGCTCGCGCTGACCCGGGGGGATTTTTCGCTGGCGCCGCCGTATCCGTTCGTGCAGCTGGCCACGCTCAAGCAGCGCACCGAGAAAGCGGCCAGGACGGCAGGTCGTGCCCCCGCAGGCAGTCAGGTCCATCGTCTGGTTCCCCTTTCCGATCACCACTACGTCAGTCAGCTGCAGATGATGGTGGCCACCCTGAAAATTCCGCTGGAAAGACGAAACAAGCGCACCGGCAGAATGGAGAAGGCGCGTATCTGGGAGATCACAGACCGTACCGTGCGCACCTGGCTTAGCGAAGCGGTGGAGGCCGCAGCGGCCGACGGGGTGACGTTCTCAGTACCGGTTACCCCCCATACGTTCCGTCACTCCTACGCGATGCATATGCTGTATGCCGGCATACCACTGAAGGTTTTGCAGAGCCTGATGGGCCACAAATCGATCAGTTCCACGGAGGTCTATACGAAGGTGTTTGCGCTCGATGTCGCGGCACGGCACCGGGTGCAGTTTGCTATGCCGGAAGCTGAAGCTGTTGCGTTGATAAAAAAGTTAACCCCAAACCAATCTACATAG",
             "aa": "MNNLVPVGSPASPGTLLPVAIDYPAALALRQMALVQDELPKYLLAPEVSALLHYVPDLHRKMLLATLWNTGARINEALALTRGDFSLAPPYPFVQLATLKQRTEKAARTAGRAPAGSQVHRLVPLSDHHYVSQLQMMVATLKIPLERRNKRTGRMEKARIWEITDRTVRTWLSEAVEAAAADGVTFSVPVTPHTFRHSYAMHMLYAGIPLKVLQSLMGHKSISSTEVYTKVFALDVAARHRVQFAMPEAEAVALIKKLTPNQST",
@@ -297,7 +299,7 @@
                     "source": "swissprot",
                     "id": "P06615",
                     "query_cov": 0.97,
-                    "subject_cov": 0.95,
+                    "subject_cov": 0.96,
                     "identity": 0.871,
                     "score": 1443.0,
                     "evalue": 8.065e-34,
@@ -316,18 +318,19 @@
                 {
                     "source": "pdb",
                     "id": "5hxy",
-                    "query_cov": 0.78,
+                    "query_cov": 0.79,
                     "subject_cov": 0.66,
                     "identity": 0.193,
                     "score": 400.0,
                     "evalue": 3.516e-08,
+                    "chain": "B",
                     "description": "Crystal structure of XerA recombinase"
                 },
                 {
                     "source": "cath",
                     "id": "af_P9WF33_119_304_1.10.443.10",
                     "query_cov": 0.72,
-                    "subject_cov": 0.94,
+                    "subject_cov": 0.95,
                     "identity": 0.267,
                     "score": 439.0,
                     "evalue": 3.008e-09,
@@ -440,16 +443,16 @@
             "genes": [],
             "id": "MEGJMNBEGN_6",
             "locus": "MEGJMN_006",
-            "3di": "DPPDXDDDDDDDADPQFKKKWWFDXDDPDXXIKIKIKXKDKWWXADDPPDXXXXXKIKIKIDXDDPDDDDIXIWIWIXGXPAXAEXEIDXDDPDDDDPPXCVVLVVVLVVLVVLLVDDPQXXKYDDDXDPDDPVDVVVLVVVLVVVVVQQWDDDPPDDXDXIDGSVPGDGDPDDMDXMDMDXVVVVVVVVVVVVVVLVVVLVVLVVVLVVLVVVLVVLVPDPLVVVVPVPPDDDDDDDPPDDPDDPDPDDDDDPPDDPVVSVVVVVVVVVSSVVSVVVVVVSVVVVVVSVVVVVVVVVVVVVVVVVVCVVVVVVVVVVVVD",
+            "3di": "DPPDXDDDDDDDADPQFKKKWWFDXDDPDXXIKIKIKXKDKWWXADDPPDXXXXXKIKIKIDXDDPDDDDIXIWIWIXGXPAXAEXEIDXDDPDDDDPPXCVVLVVVLVVLVVLLVDDPQKXKYDDDXDPDDPVDVVVLVVVLVVVVVQQWDDDPPDDXDXIDGSVPGDGDPDDMXXMDMDXVVVVVVVVVVVVVVLVVVLVVLVVVLVVLVVVLVVLVPDPLVVVVPVPPDDDDDDDPPDDPDDPDPDDDDDPPDDPVVSVVVVVVVVVSSVVSVVVVVVSVVVVVVSVVVVVVVVVVVVVVVVVVCVVVVVVVVVVVVD",
             "pstc": [
                 {
                     "source": "afdb",
                     "id": "A0A0F6NT92",
                     "query_cov": 0.99,
-                    "subject_cov": 0.95,
-                    "identity": 0.588,
-                    "score": 1091.0,
-                    "evalue": 1.302e-27,
+                    "subject_cov": 0.96,
+                    "identity": 0.585,
+                    "score": 1090.0,
+                    "evalue": 1.196e-27,
                     "description": "N-acetyltransferase domain-containing protein"
                 }
             ],
@@ -511,7 +514,7 @@
             "id": "MEGJMNBEGN_7",
             "locus": "MEGJMN_007",
             "3di": "DDPVLDPDPVXDDDLVVLLVVLCVVDVWDWDDDPDDXPDXXIWIWTDDPVRKIKIWXXXDPXXXIXIWIXDDPVVDDDDDPVPDDIDDDDDPVVVVVVSVVVV",
-            "prostt5_confidence": 42.36
+            "prostt5_confidence": 42.38
         },
         {
             "type": "cds",
@@ -566,7 +569,7 @@
             "id": "MEGJMNBEGN_8",
             "locus": "MEGJMN_008",
             "3di": "DDDDDDDFPVVVLVVVCVVVVFXXKWKXXDDXDDDPVVVVCVVXXPDXWDWDDDPXXTDWXDDDPDRDIDTDDXDDDPPDDPDDDPVXVXXDXDXXMXMXXXXXDDPPD",
-            "prostt5_confidence": 40.14
+            "prostt5_confidence": 40.16
         },
         {
             "type": "cds",
@@ -576,7 +579,7 @@
             "strand": "-",
             "frame": 2,
             "gene": null,
-            "product": "hypothetical protein",
+            "product": "Chromate transporter",
             "db_xrefs": [
                 "RefSeq:WP_064174377.1",
                 "SO:0001217",
@@ -622,23 +625,21 @@
             "genes": [],
             "id": "MEGJMNBEGN_9",
             "locus": "MEGJMN_009",
-            "3di": "DVVVVVVVVVVVLLVVLVVVLVVXPVNVVLVCVVVLVVLLVCLVVVVVVLVVVLVVLLVVLVVCVVCVVVCVVVCVVVDVDLVVLLVVLVVLLVVLVVLLVPLLVVLVVVLVVLXVDPLLXVLLSLLLCVLLVLSSLSVLLSVLSVLSVVLSVVVVVDDSSSSVSSSVSSVVSSVSSVVSVVSNVVSSVVSVDPVSSLLSSLVSLLVXLLVQLLLLLLLLLXLXAPPDXXXXXXXXXXDXDXWDXDDDQXXKFFXDXDAFFDFXXXXXXXXVXVXXVVXDDDPPDXKXKDKXXXXXDGGPXMTMIGTDPXDXDDDVSSVVSSVCXXPXDXDDXDXXXVSLXVLLVQLLVCLVVVVVVSNLSSLVSLLVSLVSSXVSXVXDDDPVXVVVCVVXXXXXXXXVVSLVVVLVSLVVQXVDXXXDXVXXXVXXXDXVVSXVVXXXVXXVSLLSSLLSSLSSLVSSVVVXVVXDDDDDPSSVVSSLSSLVSSLVSLLVXXXXXXXDDXPDXXSLLVSLVSLLVSLLVXLLVXXVVDPVSLVSSLVSLLSSLVSXXXXVXXVVVXVXXXXXXDXVXXVXVVDDVVSVVXXVXXXXDVDSSSSLSSLVSLLSSLSSLLLSCLVXXDXVXDDDSLVSLVSSXXXXXXDDPVXXXXXXSSNVSLLVSLVLLLVXVVSVXDDPDXXXVXLVVSSVSLVVXXXDDDDXXXXXXXDDXXXXXSSVSLLVSLVSSXDDSVVSXVVSSVVSSVVSXVXDDPVVVVVSLVVXVVDPPDDXPXXXDDPVXSVVXXVSXVVSSVVSVVSVVVXVXLVVVVVVDVVVVVVVDPVVXXVXDDXXDDPVSXVVXXVXDXPDPDDSVXXXXXDDPDDDSVVXXVVXVXXXXDDDDXPVVSLVVSSVVSSVVVVVVVXVDXDDDVXLVVSVVVSLVVCVVVVXXXXXXXXXVXDVVSSVXXXDXDDDXXXKXXKDXDDDDDDDDXXDXXXXIKXWXXDPVRXIXIXXDXXXXXXXXWXXDPVRDTDXXXDDDPDDXVVVVVVVVVVVVDDDDPDXXXDXDDD",
+            "3di": "DVVVVVVVVVVVLLVVLVVVLVVXPVNVVLVCVVVLVVLLVCLVVVVVVLVVVLVVLLVVLVVCVVCVVVCVVVCVVVDVDLVVLLVVLVVLLVVLVVLLVPLLVVLVVVLVVLXVDPLLXVLLSLLLCVLLVLSSLSVLLSVLSVLSVVLSVVVVVDDSSSSVSSSVSSVVSSVSSVVSVVSNVVSSVVSVDPVSSLLSSLVSLLVXLLVQLLLLLLLLLXLXAPPDXXXXDXXXXXDXDXWDXDDDQXXKFFXDXDAFFDFXXXXXXXXVVVXXVVXDDDPPDXKXKDKXXXXXDGGPXMTMIGTDPXDXDDDVSSVVSSVCXXPXDXDDXDXXXVSLXVLLVQLLVCLVVVVVVSNLSSLVSLLVSLLSSXVSXVXDDDPVXVVVCVVXXXXXXXXVVSLVVVLVSLVVQXVDXXXDXVXXXVXXXDXVVSXVVXXXVXXVSLLSSLLSSLSSLVSSVVVXVVXDDDDDPSSVVSSLSSLVSSLVSLLVXXXXXXXDDXPDXXSLLVSLVSLLVSLLVXLLVXXVVDPVSLVSSLVSLLSSLVSXXXXVXXVVVXVXXXXXXDXVXXVXVVDDVVSVVXXVXXXXDVDSSSSLSSLVSLLSSLSSLLLSCLVXXDXVXDDDSLVSLVSSXXXXXXDDPVXXXXXXSSNVSLLVSLVLLLVXVVSVXDDPDXXXVXLVVSSVSLVVXVXDDDDXXXXXXXDDXXXXXSSVSLLVSLVSSXDDSVVSXVVSSVVSSVVSXVXDDPVVVVVSLVVXVVDPPDDXPXXXDDPVXSVVXXVSXVVSSVVSVVSVVVXVXLVVVVVVDVVVVVVVDPVVXXVXDDXXDDPVSXVVXXVXDXPDPDDSVXXXXXDDPDDDSVVXXVVXVXXXXDDDDXPVVSLVVSSVVSSVVVVVVVXVDXDDDVXLVVSVVVSLVVCVVVVXXXXXXXXXVXDVVSSVXXXDXDDDXXXKXXKDXDDDDDDDDXXDXXXXIKXWXXDPVRXIXIXXDXXXXXXXXWXXDPVRDTDXXXDDDPDDXVVVVVVVVVVVVDDDDPDXXXDXDDD",
             "pstc": [
                 {
                     "source": "afdb",
                     "id": "A0A2S0NSF5",
                     "query_cov": 0.73,
-                    "subject_cov": 0.96,
-                    "identity": 0.647,
-                    "score": 2029.0,
-                    "evalue": 1.452e-42,
+                    "subject_cov": 0.97,
+                    "identity": 0.649,
+                    "score": 2049.0,
+                    "evalue": 5.37e-43,
                     "description": "hypothetical protein"
                 }
             ],
-            "prostt5_confidence": 40.97,
+            "prostt5_confidence": 41.02,
             "baktfold": true,
-            "annotation_confidence": "medium",
-            "hypothetical": true,
             "length": 1040
         },
         {
@@ -719,7 +720,7 @@
                 "UniRef:UniRef90_A0A2P9E0K7",
                 "afdb_v6:afdbclusters_A0A291E612",
                 "afdb_v6:swissprot_B0TAD4",
-                "pdb:pdb_3eco"
+                "pdb:pdb_3eco_A"
             ],
             "nt": "ATGAATGGAACGGTAAAAAGCCGACGTCCGTCACCGCTGCAGCGGCGGGTGCTGATTGTGCTGGCCGCCCTCGATGCGAAACGTCCGGGGCCGGTGGCGACGCGGGATATCGAGCGGGTGCTGGAGCAGGGCGGGGACGCCCCGGTGTACGGGCCGAACCTGCGCGCCTCCTGCCGGCGCATGGAAGCTGCGGGCTGGCTGCGCACCCTGCGCGCCCCGAACCTGCAGCTGGCCGTCGAGCTGACGGAGGCCGGTCGCGGCATTGCAGAACCGCTCTTCCAGGCAGAACGCGAGGCTGAAACGGCACGACAACGGCTGACAGACGTCCGGCGTCTGCCGTTACGCCAGACGGCTGCCGGTGATGCGGTGGCGCTGCAGCTGGATGACGACCATTACACCATCAGGGAAGCGGCCTACGTGATCCGTCCGGACGGGTCCACCTGCCTGCAGCTGACGGATGCCGGCGGCATACGCCGGATAAAAGAGGGCGATCCCCTGCAGGTGGCCAGCTGGTATCAGACCTGTTTTGATGCAGGACTGCCGGTCACCATCCAGGTGAATGAGAGCCGGGACTGA",
             "aa": "MNGTVKSRRPSPLQRRVLIVLAALDAKRPGPVATRDIERVLEQGGDAPVYGPNLRASCRRMEAAGWLRTLRAPNLQLAVELTEAGRGIAEPLFQAEREAETARQRLTDVRRLPLRQTAAGDAVALQLDDDHYTIREAAYVIRPDGSTCLQLTDAGGIRRIKEGDPLQVASWYQTCFDAGLPVTIQVNESRD",
@@ -764,7 +765,7 @@
                 {
                     "source": "swissprot",
                     "id": "B0TAD4",
-                    "query_cov": 0.88,
+                    "query_cov": 0.89,
                     "subject_cov": 0.53,
                     "identity": 0.13,
                     "score": 227.0,
@@ -775,7 +776,7 @@
                     "source": "afdb",
                     "id": "A0A291E612",
                     "query_cov": 0.93,
-                    "subject_cov": 0.87,
+                    "subject_cov": 0.88,
                     "identity": 0.294,
                     "score": 474.0,
                     "evalue": 5.237e-10,
@@ -785,10 +786,11 @@
                     "source": "pdb",
                     "id": "3eco",
                     "query_cov": 0.51,
-                    "subject_cov": 0.63,
+                    "subject_cov": 0.64,
                     "identity": 0.193,
                     "score": 232.0,
                     "evalue": 0.0003305,
+                    "chain": "A",
                     "description": "Crystal structure of MepR, a transcription regulator of the Staphylococcus aureus multidrug efflux pump MepA"
                 }
             ],
@@ -845,14 +847,14 @@
                     "source": "afdb",
                     "id": "A0A2K0YZQ3",
                     "query_cov": 0.79,
-                    "subject_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.668,
                     "score": 664.0,
                     "evalue": 1.472e-15,
                     "description": "DNA-binding protein"
                 }
             ],
-            "prostt5_confidence": 60.11,
+            "prostt5_confidence": 60.16,
             "baktfold": true,
             "annotation_confidence": "medium",
             "length": 206
@@ -880,7 +882,7 @@
                 "afdb_v6:afdbclusters_A0A1M7CKI7",
                 "afdb_v6:swissprot_P0C1L0",
                 "cath:cath_af_O06367_1_380_3.30.420.10",
-                "pdb:pdb_6xgw"
+                "pdb:pdb_6xgw_B"
             ],
             "nt": "ATGAACCCATTCAAAGGCCGGCATTTTCAGCGTGACATCATTCTGTGGGCCGTACGCTGGTACTGCAAATACGGCATCAGTTACCGTGAGCTGCAGGAGATGCTGGCTGAACGCGGAGTGAATGTCGATCACTCCACGATTTACCGCTGGGTTCAGCGTTATGCGCCTGAAATGGAAAAACGGCTGCGCTGGTACTGGCGTAACCCTTCCGATCTTTGCCCGTGGCACATGGATGAAACCTACGTGAAGGTCAATGGCCGCTGGGCGTATCTGTACCGGGCCGTCGACAGCCGGGGCCGCACTGTCGATTTTTATCTCTCCTCCCGTCGTAACAGCAAAGCTGCATACCGGTTTCTGGGTAAAATCCTCAACAACGTGAAGAAGTGGCAGATCCCGCGATTCATCAACACGGATAAAGCGCCCGCCTATGGTCGCGCGCTTGCTCTGCTCAAACGCGAAGGCCGGTGCCCGTCTGACGTTGAACACCGACAGATTAAGTACCGGAACAACGTGATTGAATGCGATCATGGCAAACTGAAACGGATAATCGGCGCCACGCTGGGATTTAAATCCATGAAGACGGCTTACGCCACCATCAAAGGTATTGAGGTGATGCGTGCACTACGCAAAGGCCAGGCCTCAGCATTTTATTATGGTGATCCCCTGGGCGAAATGCGCCTGGTAAGCAGAGTTTTTGAAATGTAA",
             "aa": "MNPFKGRHFQRDIILWAVRWYCKYGISYRELQEMLAERGVNVDHSTIYRWVQRYAPEMEKRLRWYWRNPSDLCPWHMDETYVKVNGRWAYLYRAVDSRGRTVDFYLSSRRNSKAAYRFLGKILNNVKKWQIPRFINTDKAPAYGRALALLKREGRCPSDVEHRQIKYRNNVIECDHGKLKRIIGATLGFKSMKTAYATIKGIEVMRALRKGQASAFYYGDPLGEMRLVSRVFEM",
@@ -949,8 +951,8 @@
                 {
                     "source": "swissprot",
                     "id": "P0C1L0",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.37,
                     "score": 906.0,
                     "evalue": 6.172e-18,
@@ -969,17 +971,18 @@
                 {
                     "source": "pdb",
                     "id": "6xgw",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.69,
                     "identity": 0.175,
                     "score": 374.0,
                     "evalue": 1.832e-06,
+                    "chain": "B",
                     "description": "ISCth4 transposase, pre-reaction complex, PRC"
                 },
                 {
                     "source": "cath",
                     "id": "af_O06367_1_380_3.30.420.10",
-                    "query_cov": 0.97,
+                    "query_cov": 0.98,
                     "subject_cov": 0.73,
                     "identity": 0.135,
                     "score": 391.0,
@@ -1007,7 +1010,7 @@
                 "afdb_v6:afdbclusters_A0A3S4FXP4",
                 "afdb_v6:swissprot_B7N176",
                 "cath:cath_af_P0A6U8_3_389_3.40.367.20",
-                "pdb:pdb_3d1j"
+                "pdb:pdb_3d1j_A"
             ],
             "nt": "ATGCAAGTTTTACATGTAGGAGCAGAGATGTTCCCGCTGTTAAAAACGGGCGGACTGGCCGACGTCACCGGCGCGCTCCCGGCGGCGCAAATTGCCGAGGGGCTGGATACCCGCGTGCTGCTGCCTGGGTTTCCGGCGATCCGCAACGGGGTTCAGGATCCGCAGGTGGTGGCCAGCAGGGAGACATTCGCCGGGCGGATGACGCTGCTGTTTGGCCATTTGGCACTGTTGCAAATAGTCGGTGGTGATAAACTTATCATCCCCTTTTGCTGA",
             "aa": "MQVLHVGAEMFPLLKTGGLADVTGALPAAQIAEGLDTRVLLPGFPAIRNGVQDPQVVASRETFAGRMTLLFGHLALLQIVGGDKLIIPFC",
@@ -1041,7 +1044,7 @@
                 {
                     "source": "swissprot",
                     "id": "B7N176",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.17,
                     "identity": 0.651,
                     "score": 471.0,
@@ -1051,7 +1054,7 @@
                 {
                     "source": "afdb",
                     "id": "A0A3S4FXP4",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.42,
                     "identity": 0.629,
                     "score": 513.0,
@@ -1061,17 +1064,18 @@
                 {
                     "source": "pdb",
                     "id": "3d1j",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.17,
                     "identity": 0.651,
                     "score": 457.0,
                     "evalue": 2.688e-11,
+                    "chain": "A",
                     "description": "Crystal Structure of E.coli GS mutant dmGS(C7S;C408S)"
                 },
                 {
                     "source": "cath",
                     "id": "af_P0A6U8_3_389_3.40.367.20",
-                    "query_cov": 0.96,
+                    "query_cov": 0.97,
                     "subject_cov": 0.21,
                     "identity": 0.643,
                     "score": 465.0,
@@ -1099,7 +1103,7 @@
                 "afdb_v6:afdbclusters_A0A7H4NVB3",
                 "afdb_v6:swissprot_A8A5P0",
                 "cath:cath_5l6sB02",
-                "pdb:pdb_5mni"
+                "pdb:pdb_5mni_H"
             ],
             "nt": "ATGGGCATTTATGTGTTTGATGCGGAATATCTCTACCAGCTGCTGGAAGACGACGATCGGGATGAACACTCCACCCATGATTTTGGCAAAGATATTATTCCCAGGATAACGGCGGCAGGTGAAGCGTATGCGCATCCGTTCCCGCGCTCCTGCGTTCAGTCGGATAATAATGCCGAGCCATACTGGCGCGATGTCGGAACCCTGGAGGCGTACTGGAAAGCGAATCTGGATTTAGCCTCAGTAGTGCCAGAGCTGGACGTTTATGACCGTAACTGGCCTATCCGTACCTATGTCGAATCGCTGCCCAGCGCCAAATTTGTTCAGGACCGTTCCGGCAGTCATGGCATGACCATGAATTCTCTGGTCTCCGGCGGCTGTATTATTTCTGGCTCGGTGGTGGTGCAGTCGGTTCTATTTTCCAGAGTTCGGATTAACTCGTTCTGTAATATTGATTCGTCGGTTTTATTACCGGGCGTCTGGGTCGGTCGCTCCTGCAGGATAAGACGCTGCGTGATCGACCGGGGATGCGTTATTCCGGAGGGGACGGTGATTGGCGAAAATGCCGTTGAGGATGCGCGACGCTTTTATCGTTCGGAAGAAGGCATCGTTCTGGTTACCAAAGAAATGCTGGACAAACTTGAGGTATGA",
             "aa": "MGIYVFDAEYLYQLLEDDDRDEHSTHDFGKDIIPRITAAGEAYAHPFPRSCVQSDNNAEPYWRDVGTLEAYWKANLDLASVVPELDVYDRNWPIRTYVESLPSAKFVQDRSGSHGMTMNSLVSGGCIISGSVVVQSVLFSRVRINSFCNIDSSVLLPGVWVGRSCRIRRCVIDRGCVIPEGTVIGENAVEDARRFYRSEEGIVLVTKEMLDKLEV",
@@ -1148,7 +1152,7 @@
                     "source": "afdb",
                     "id": "A0A7H4NVB3",
                     "query_cov": 0.87,
-                    "subject_cov": 0.2,
+                    "subject_cov": 0.21,
                     "identity": 0.834,
                     "score": 963.0,
                     "evalue": 1.055e-21,
@@ -1157,18 +1161,19 @@
                 {
                     "source": "pdb",
                     "id": "5mni",
-                    "query_cov": 0.99,
+                    "query_cov": 1.0,
                     "subject_cov": 0.54,
                     "identity": 0.864,
                     "score": 1184.0,
                     "evalue": 1.527e-27,
+                    "chain": "H",
                     "description": "Escherichia coli AGPase mutant R130A apo form"
                 },
                 {
                     "source": "cath",
                     "id": "5l6sB02",
-                    "query_cov": 0.58,
-                    "subject_cov": 0.95,
+                    "query_cov": 0.59,
+                    "subject_cov": 0.96,
                     "identity": 0.88,
                     "score": 713.0,
                     "evalue": 5.261e-16,
@@ -1203,7 +1208,7 @@
                 "afdb_v6:afdbclusters_A0A1M7CKI7",
                 "afdb_v6:swissprot_P0C1L0",
                 "cath:cath_af_O06367_1_380_3.30.420.10",
-                "pdb:pdb_6xgw"
+                "pdb:pdb_6xgw_B"
             ],
             "nt": "ATGAACCCATTCAAAGGCCGGCATTTTCAGCGTGACATCATTCTGTGGGCCGTACGCTGGTACTGCAAATACGGCATCAGTTACCGTGAGCTGCAGGAGATGCTGGCTGAACGCGGAGTGAATGTCGATCACTCCACGATTTACCGCTGGGTTCAGCGTTATGCGCCTGAAATGGAAAAACGGCTGCGCTGGTACTGGCGTAACCCTTCCGATCTTTGCCCGTGGCACATGGATGAAACCTACGTGAAGGTCAATGGCCGCTGGGCGTATCTGTACCGGGCCGTCGACAGCCGGGGCCGCACTGTCGATTTTTATCTCTCCTCCCGTCGTAACAGCAAAGCTGCATACCGGTTTCTGGGTAAAATCCTCAACAACGTGAAGAAGTGGCAGATCCCGCGATTCATCAACACGGATAAAGCGCCCGCCTATGGTCGCGCGCTTGCTCTGCTCAAACGCGAAGGCCGGTGCCCGTCTGACGTTGAACACCGACAGATTAAGTACCGGAACAACGTGATTGAATGCGATCATGGCAAACTGAAACGGATAATCGGCGCCACGCTGGGATTTAAATCCATGAAGACGGCTTACGCCACCATCAAAGGTATTGAGGTGATGCGTGCACTACGCAAAGGCCAGGCCTCAGCATTTTATTATGGTGATCCCCTGGGCGAAATGCGCCTGGTAAGCAGAGTTTTTGAAATGTAA",
             "aa": "MNPFKGRHFQRDIILWAVRWYCKYGISYRELQEMLAERGVNVDHSTIYRWVQRYAPEMEKRLRWYWRNPSDLCPWHMDETYVKVNGRWAYLYRAVDSRGRTVDFYLSSRRNSKAAYRFLGKILNNVKKWQIPRFINTDKAPAYGRALALLKREGRCPSDVEHRQIKYRNNVIECDHGKLKRIIGATLGFKSMKTAYATIKGIEVMRALRKGQASAFYYGDPLGEMRLVSRVFEM",
@@ -1272,8 +1277,8 @@
                 {
                     "source": "swissprot",
                     "id": "P0C1L0",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.37,
                     "score": 906.0,
                     "evalue": 6.172e-18,
@@ -1292,17 +1297,18 @@
                 {
                     "source": "pdb",
                     "id": "6xgw",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.69,
                     "identity": 0.175,
                     "score": 374.0,
                     "evalue": 1.832e-06,
+                    "chain": "B",
                     "description": "ISCth4 transposase, pre-reaction complex, PRC"
                 },
                 {
                     "source": "cath",
                     "id": "af_O06367_1_380_3.30.420.10",
-                    "query_cov": 0.97,
+                    "query_cov": 0.98,
                     "subject_cov": 0.73,
                     "identity": 0.135,
                     "score": 391.0,
@@ -1375,7 +1381,7 @@
                     "source": "afdb",
                     "id": "A0AB34CDA8",
                     "query_cov": 0.99,
-                    "subject_cov": 0.9,
+                    "subject_cov": 0.91,
                     "identity": 0.5,
                     "score": 495.0,
                     "evalue": 2.329e-11,
@@ -1502,8 +1508,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A3B0WQ64",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.37,
+                    "query_cov": 0.99,
+                    "subject_cov": 0.38,
                     "identity": 0.645,
                     "score": 358.0,
                     "evalue": 2.177e-08,
@@ -1523,7 +1529,7 @@
             "strand": "-",
             "frame": 1,
             "gene": "tnp",
-            "product": "Insertion element IS900 uncharacterized protein",
+            "product": "Transposase",
             "db_xrefs": [
                 "COG:COG3547",
                 "COG:X",
@@ -1538,7 +1544,7 @@
                 "afdb_v6:afdbclusters_A0A7W9G0T9",
                 "afdb_v6:swissprot_P14322",
                 "cath:cath_af_O07182_4_158_3.30.420.10",
-                "pdb:pdb_2nnw"
+                "pdb:pdb_2nnw_A"
             ],
             "nt": "ATGGTTGATAAAGTTACCGAAGCTGCCGTTGTGGGTGGCGTGGATACACATAAAGATTTGCACGTTGCCGCTGTCGTAGATCAGAACAATAAAGTCCTTGGGACTCAGTATTTCTCCACAACACGACAAGGTTACCGGCAGATGCTGGCATGGATGACCTCGTTTGGGACATTAAAGCGAATTGGTGTTGAGTGCACAGGTACCTATGGTTCCGGTTTGCTTCGTTATTTTCAGAACGCCGGGTTAGAAGTTCTTGAGGTGACTGCTCCAGACCGGATGGAGCGACGCAAACGGGGTAAAAGTGACACAATTGATGCTGAATGTGCCGCTCATGCAGCATTCTCAGGCATCAGGACAGTTACTCCCAAAACGCGTGATGGCATGATTGAGTCCCTGCGGGTATTAAAAACTTGCCGAAAAACAGCAATATCAGCCCGCAGAGTCGCTCTCCAGATTATCCATTCAAATATTATCTCTGCCCCGGATGAATTACGTGAACAGCTCAGAAATATGACGCGCATGCAGCTCATCAGGACCCTGGGTTCCTGGAGACCTGATGCCAGTGAATACCGCAATGTAACCAACGTTTATCGCATTTCATTAAAGTCCCTTGCCCGACGCTATCTCGAGTTACATGACGAAATCGCTGATCTGGATGTCATGATTGCGGCAATTGTCGACGAGTTGGCACCTGAGCTGATTAAACGTAATGCTATCGGATACGAAAGCGCTTCACAGTTGCTGATCACTGCCGGAGACAATCCTCAACGGTTAAGATCAGAATCAGGATTTGCGGCACTGTGTGGTGTCAGCCCGGTCCCCGTTTCTTCTGGAAAAACGAACCGTTACCGACTTAATCGTGGTGGAGATCGTGCTGCAAATAGTGCACTTCACATCATCGCCATCGGACGCTTACGAACTGACGCAAAAACAAAGGAATATGTCGCCAGGCGTGTAGCCGAAGGACATACAAAAATGGAAGCGATACGCTGTCTAAAGCGATATATCTCCCGCGAAGTTTACACGTTACTGCGCAATCAAAACAGGCGGATCAACAGTATCCCGATAACAGCTTGA",
             "aa": "MVDKVTEAAVVGGVDTHKDLHVAAVVDQNNKVLGTQYFSTTRQGYRQMLAWMTSFGTLKRIGVECTGTYGSGLLRYFQNAGLEVLEVTAPDRMERRKRGKSDTIDAECAAHAAFSGIRTVTPKTRDGMIESLRVLKTCRKTAISARRVALQIIHSNIISAPDELREQLRNMTRMQLIRTLGSWRPDASEYRNVTNVYRISLKSLARRYLELHDEIADLDVMIAAIVDELAPELIKRNAIGYESASQLLITAGDNPQRLRSESGFAALCGVSPVPVSSGKTNRYRLNRGGDRAANSALHIIAIGRLRTDAKTKEYVARRVAEGHTKMEAIRCLKRYISREVYTLLRNQNRRINSIPITA",
@@ -1610,7 +1616,7 @@
                     "source": "swissprot",
                     "id": "P14322",
                     "query_cov": 0.95,
-                    "subject_cov": 0.96,
+                    "subject_cov": 0.97,
                     "identity": 0.212,
                     "score": 939.0,
                     "evalue": 2.23e-19,
@@ -1619,7 +1625,7 @@
                 {
                     "source": "afdb",
                     "id": "A0A7W9G0T9",
-                    "query_cov": 0.99,
+                    "query_cov": 1.0,
                     "subject_cov": 0.74,
                     "identity": 0.425,
                     "score": 1570.0,
@@ -1629,17 +1635,18 @@
                 {
                     "source": "pdb",
                     "id": "2nnw",
-                    "query_cov": 0.94,
+                    "query_cov": 0.95,
                     "subject_cov": 0.99,
                     "identity": 0.13,
                     "score": 314.0,
                     "evalue": 2.159e-05,
+                    "chain": "A",
                     "description": "Alternative conformations of Nop56/58-fibrillarin complex and implication for induced-fit assenly of box C/D RNPs"
                 },
                 {
                     "source": "cath",
                     "id": "af_O07182_4_158_3.30.420.10",
-                    "query_cov": 0.39,
+                    "query_cov": 0.4,
                     "subject_cov": 0.94,
                     "identity": 0.272,
                     "score": 356.0,
@@ -1649,7 +1656,7 @@
             ],
             "prostt5_confidence": 76.37,
             "baktfold": true,
-            "annotation_confidence": "high",
+            "annotation_confidence": "medium",
             "length": 359
         },
         {
@@ -1671,7 +1678,7 @@
                 "afdb_v6:afdbclusters_C1J8E4",
                 "afdb_v6:swissprot_Q47718",
                 "cath:cath_af_Q47718_102_174_3.30.420.10",
-                "pdb:pdb_7svw"
+                "pdb:pdb_7svw_B"
             ],
             "nt": "ATGGGGCGCTGGCTTGCTGGCAGACTCATGAAAGAGCTGGGGCTGGTCAGTTGCCAGCAGCCGACTCACCGGTATAAGCGTGGCGGTCATGAGCACGTTGCTATCCCGAATCATCTTGAGCGACAGTTCGCCGTAACGGAACCAAATCAGGTGTGGTGCGGTGATGTGACCTATATCTGGACGGGTAAGCGCTGGGCGTACCTCGCCGTTGTTCTCGACCTGTTCGCAAGAAAACCAGTGGGCTGGGCCATGTCGTTCTCGCCGGACAGCAGGCTCACCATGAAAGCACTGGAAATGGCATGGGAAACCCGTGGTAAGCCCGTCGGGGTGATGTTCCACAGCGATAGTAATAATGCCGATGTCAGTCTTTACCACCACTTAGTTTGCCGTTTAACCAGATTGGTGTGA",
             "aa": "MGRWLAGRLMKELGLVSCQQPTHRYKRGGHEHVAIPNHLERQFAVTEPNQVWCGDVTYIWTGKRWAYLAVVLDLFARKPVGWAMSFSPDSRLTMKALEMAWETRGKPVGVMFHSDSNNADVSLYHHLVCRLTRLV",
@@ -1716,7 +1723,7 @@
                     "source": "swissprot",
                     "id": "Q47718",
                     "query_cov": 0.87,
-                    "subject_cov": 0.59,
+                    "subject_cov": 0.6,
                     "identity": 0.94,
                     "score": 811.0,
                     "evalue": 6.632e-21,
@@ -1735,18 +1742,19 @@
                 {
                     "source": "pdb",
                     "id": "7svw",
-                    "query_cov": 0.84,
-                    "subject_cov": 0.29,
+                    "query_cov": 0.85,
+                    "subject_cov": 0.3,
                     "identity": 0.214,
                     "score": 230.0,
                     "evalue": 9.537e-05,
+                    "chain": "B",
                     "description": "Strand-transfer complex of TnsB from ShCAST"
                 },
                 {
                     "source": "cath",
                     "id": "af_Q47718_102_174_3.30.420.10",
-                    "query_cov": 0.53,
-                    "subject_cov": 0.99,
+                    "query_cov": 0.54,
+                    "subject_cov": 1.0,
                     "identity": 0.986,
                     "score": 568.0,
                     "evalue": 2.401e-14,
@@ -1843,7 +1851,7 @@
                 {
                     "source": "swissprot",
                     "id": "P39213",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.88,
                     "identity": 0.979,
                     "score": 503.0,
@@ -1853,8 +1861,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A6N3R4Y6",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.98,
+                    "query_cov": 0.99,
+                    "subject_cov": 0.99,
                     "identity": 0.909,
                     "score": 468.0,
                     "evalue": 9.993e-11,
@@ -1863,8 +1871,8 @@
                 {
                     "source": "cath",
                     "id": "af_P75679_19_102_1.10.10.60",
-                    "query_cov": 0.82,
-                    "subject_cov": 0.98,
+                    "query_cov": 0.83,
+                    "subject_cov": 0.99,
                     "identity": 0.975,
                     "score": 422.0,
                     "evalue": 6.014e-10,
@@ -2065,7 +2073,7 @@
             "genes": [],
             "id": "MEGJMNBEGN_25",
             "locus": "MEGJMN_025",
-            "3di": "DXDPVLVVLLVVLLVLLVDPVNLVLLVVLLVVLCVVPPLNVDPVDSVXSSLLSLLLSLQSVQADLLARWGDDFLQSSCVSSVXDDDPPPDDGDSVSSVVSVVSCVVSVQKDWDDDDDDPVDXXDXXIIIGGDLSSCVSSVHDXVVSLVVSCVSVVHDSVDXDDPVDSXVXXVVXVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVPDPPPP",
+            "3di": "DXDPVLVVLLVVLLVLLVDPVNLVLLVVLLVVLCVVPPLNVDPVDSVXSSLLSLLLSLQSVQADLLARWGDDFLQSSCVSSVXDDDPPPDDGDSVSSVVSVVSCVVSVQKDWDDDDDDPVDXXXXXIIIGGDLSSCVSSVHDXVVSLVVSCVSVVHDSVDXDDPVDSXVXXVVXVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVPDPPPP",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -2073,24 +2081,24 @@
                     "query_cov": 0.94,
                     "subject_cov": 0.7,
                     "identity": 0.171,
-                    "score": 332.0,
-                    "evalue": 1.951e-06,
+                    "score": 336.0,
+                    "evalue": 1.528e-06,
                     "description": "Replication initiation protein"
                 },
                 {
                     "source": "afdb",
                     "id": "A0A2X1LVU3",
                     "query_cov": 0.62,
-                    "subject_cov": 0.78,
+                    "subject_cov": 0.79,
                     "identity": 0.208,
-                    "score": 361.0,
-                    "evalue": 5.967e-07,
+                    "score": 365.0,
+                    "evalue": 4.669e-07,
                     "description": "Replication initiation protein"
                 }
             ],
             "prostt5_confidence": 63.04,
             "baktfold": true,
-            "annotation_confidence": "low",
+            "annotation_confidence": "medium",
             "length": 211
         },
         {
@@ -2130,7 +2138,7 @@
                 "afdb_v6:afdbclusters_A0A318UMQ5",
                 "afdb_v6:swissprot_O67466",
                 "cath:cath_5v10B00",
-                "pdb:pdb_5v10"
+                "pdb:pdb_5v10_B"
             ],
             "nt": "ATGTTTACCAAGAAATTTGCTGTCGATGAAAAACACGTTGATTTTCAAGGGGTCGTTGATGGTCTTTACTACCCGTTTTACATGGAGTGGACCCGTCATGCCTATATGAAAGATGCGCTCGGACTTGATTTAGAAGCTGAGTTTAAAGAAGGTCGTCTTCATATGATTCTGGAATATTCCATGAAATTTAAGAAGAGTCTTCTTAAAGATCATAATATGGAAGTAACCTGTCAGCTTCAAAAGAATGAGAAGCGTAACCGTGTGAATTTTGTTCAACAGATTCTTGTCGATGGCGTTGTATTTGCTGAGGCCACATTTGTGGCAACCTGTCTTGTTAACGGACGGCCTTCGGTTCCAGAAGTTGTGCAAAATGCCATCGTTGAATAA",
             "aa": "MFTKKFAVDEKHVDFQGVVDGLYYPFYMEWTRHAYMKDALGLDLEAEFKEGRLHMILEYSMKFKKSLLKDHNMEVTCQLQKNEKRNRVNFVQQILVDGVVFAEATFVATCLVNGRPSVPEVVQNAIVE",
@@ -2173,8 +2181,8 @@
                 {
                     "source": "swissprot",
                     "id": "O67466",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.96,
+                    "query_cov": 0.98,
+                    "subject_cov": 0.97,
                     "identity": 0.222,
                     "score": 511.0,
                     "evalue": 1.208e-10,
@@ -2183,7 +2191,7 @@
                 {
                     "source": "afdb",
                     "id": "A0A318UMQ5",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.66,
                     "identity": 0.255,
                     "score": 512.0,
@@ -2193,18 +2201,19 @@
                 {
                     "source": "pdb",
                     "id": "5v10",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.99,
+                    "query_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.219,
                     "score": 490.0,
                     "evalue": 2.701e-10,
+                    "chain": "B",
                     "description": "Crystal structure of the putative tol-pal system-associated acyl-CoA thioesterase from Pseudomonas aeruginosa PAO1"
                 },
                 {
                     "source": "cath",
                     "id": "5v10B00",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.99,
+                    "query_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.219,
                     "score": 490.0,
                     "evalue": 2.131e-10,
@@ -2235,7 +2244,7 @@
                 "afdb_v6:afdbclusters_A0A9E1VSB0",
                 "afdb_v6:swissprot_P54292",
                 "cath:cath_3sztB01",
-                "pdb:pdb_5l09"
+                "pdb:pdb_5l09_B"
             ],
             "nt": "ATGCAGGAAAGTGAAGTGGATAAAAAAAGTATAAAAATTAATTTTCATCGCTATAGTAACGAGGCTATTAACTTTCTCAATAGTTTTGAGAAAGTTACCTATGTCTCAACTTTACTAGTCGAAGATAATATCTTGTCTGCACACCAAAGCAATGGTTATGCTGACTGGGATAAAAAGTTCTATTACGATGGGAAGTATAAAGATAGTCTCCTGATAAAACTGGGACTGGAGCTGACAAAAATTGAAGGTGGGGATAAAAAAACTGTCATCTGGGATGACGTTTTAAGAAATCACCCCGAAAACGAGATCGACAGGCAGAGACGTGCCCATAATATCTATCATGGTGTCAGCTTTATTTATGGATTGACTGATAATATCAGTATGGCAATCAATGTGTGCACCGACTCTGCCACTACAAAGAGGGAGTTTGAGGATCTTATCCTTCCCCACAGACTTAAACTTTTAACTATGTTTCAGGATATGTAA",
             "aa": "MQESEVDKKSIKINFHRYSNEAINFLNSFEKVTYVSTLLVEDNILSAHQSNGYADWDKKFYYDGKYKDSLLIKLGLELTKIEGGDKKTVIWDDVLRNHPENEIDRQRRAHNIYHGVSFIYGLTDNISMAINVCTDSATTKREFEDLILPHRLKLLTMFQDM",
@@ -2280,7 +2289,7 @@
                 {
                     "source": "swissprot",
                     "id": "P54292",
-                    "query_cov": 0.89,
+                    "query_cov": 0.9,
                     "subject_cov": 0.55,
                     "identity": 0.145,
                     "score": 316.0,
@@ -2290,8 +2299,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A9E1VSB0",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.78,
+                    "query_cov": 1.0,
+                    "subject_cov": 0.79,
                     "identity": 0.218,
                     "score": 297.0,
                     "evalue": 6.108e-06,
@@ -2300,18 +2309,19 @@
                 {
                     "source": "pdb",
                     "id": "5l09",
-                    "query_cov": 0.92,
+                    "query_cov": 0.93,
                     "subject_cov": 0.93,
                     "identity": 0.171,
                     "score": 323.0,
                     "evalue": 5.071e-07,
+                    "chain": "B",
                     "description": "Crystal Structure of Quorum-Sensing Transcriptional Activator from Yersinia enterocolitica in complex with 3-oxo-N-[(3S)-2-oxotetrahydrofuran-3-yl]hexanamide"
                 },
                 {
                     "source": "cath",
                     "id": "3sztB01",
-                    "query_cov": 0.92,
-                    "subject_cov": 0.9,
+                    "query_cov": 0.93,
+                    "subject_cov": 0.91,
                     "identity": 0.122,
                     "score": 299.0,
                     "evalue": 1.784e-06,
@@ -2342,7 +2352,7 @@
                 "afdb_v6:afdbclusters_I1VYM4",
                 "afdb_v6:swissprot_Q06553",
                 "cath:cath_af_Q2FYU1_84_206_2.10.109.10",
-                "pdb:pdb_7jvt"
+                "pdb:pdb_7jvt_D"
             ],
             "nt": "ATGCTAGACACCATTGGGAAGAGACTTAAATGTTGCAGGGCGGCTACGGGGACGACAACACATGAGGTTGTTGATTACATCCACTCTCAGGGTGAAGAACTCTCATACCCCACATACACCCGCTGGGAGGCCGGTAGCGCATTCCCGGGTAAAAAGACTGCTCACCTTATAGGTATCGTTTCTGATTTTTTTAAGAAGAATGGGCTGCAGGTTGAAGCGAACTGGATCCTTTCGGGGGAAGGGTTTCCGCCACAGTTTGCGGAGTATACGACCATGGATGAAGATACGTTGTTCATCCTTGCGAGCCGGACAATGCAGGACGTCGAACTGATTCAGGTCGGCGGAAAATACGGTGAGCCTTATGTTAATTTTGGCGAATTTGTGATCGTTTCGAACGAATCAGATATATATAAAAACAATGGTAAATTGTGCTATGTGAAAACAACTGAGGGGGTGAAAATAGGGATCGTATCTATATTAGACGAAAAATCAATCTTATTGGTTGGAATTGGTGAAAAAGAGATAAAAAAATCTGTTGTGCAGGAATGCAGGAAAGTGAAGTGGATAAAAAAAGTATAA",
             "aa": "MLDTIGKRLKCCRAATGTTTHEVVDYIHSQGEELSYPTYTRWEAGSAFPGKKTAHLIGIVSDFFKKNGLQVEANWILSGEGFPPQFAEYTTMDEDTLFILASRTMQDVELIQVGGKYGEPYVNFGEFVIVSNESDIYKNNGKLCYVKTTEGVKIGIVSILDEKSILLVGIGEKEIKKSVVQECRKVKWIKKV",
@@ -2385,7 +2395,7 @@
                 {
                     "source": "swissprot",
                     "id": "Q06553",
-                    "query_cov": 0.99,
+                    "query_cov": 1.0,
                     "subject_cov": 0.93,
                     "identity": 0.14,
                     "score": 360.0,
@@ -2395,8 +2405,8 @@
                 {
                     "source": "afdb",
                     "id": "I1VYM4",
-                    "query_cov": 0.86,
-                    "subject_cov": 0.98,
+                    "query_cov": 0.87,
+                    "subject_cov": 0.99,
                     "identity": 0.514,
                     "score": 773.0,
                     "evalue": 4.779e-18,
@@ -2405,18 +2415,19 @@
                 {
                     "source": "pdb",
                     "id": "7jvt",
-                    "query_cov": 0.96,
+                    "query_cov": 0.97,
                     "subject_cov": 0.92,
                     "identity": 0.102,
                     "score": 266.0,
                     "evalue": 3.245e-05,
+                    "chain": "D",
                     "description": "Crystal structure of a lambda-186 hybrid repressor"
                 },
                 {
                     "source": "cath",
                     "id": "af_Q2FYU1_84_206_2.10.109.10",
-                    "query_cov": 0.54,
-                    "subject_cov": 0.82,
+                    "query_cov": 0.55,
+                    "subject_cov": 0.83,
                     "identity": 0.201,
                     "score": 234.0,
                     "evalue": 0.0001747,
@@ -2447,7 +2458,7 @@
                 "afdb_v6:afdbclusters_Q70W72",
                 "afdb_v6:swissprot_P0AFW0",
                 "cath:cath_af_P0AFW0_1_162_3.30.70.940",
-                "pdb:pdb_5ond"
+                "pdb:pdb_5ond_A"
             ],
             "nt": "ATGCGAAACTGGTATCTACTGCAATGCCAGGTACAGAACTTTCAGAGGATTACTACCCGAATCCACATGCTCAACATCGAAAGTTTTGTACCCACAGAAGTAAAAATCTCACGACGCCGGGACTGTAACGGCTGCCGGACGACGGAAAAGCCGCTCTTTCCCGGGTATATTTTTCTGCGATTTGATCCGGAGGAAATCCATACCACAACTTTCACCGAGATCCCCGGAGCCAGACATTTCGTCAGTTTTGGTGGTCAGCCTGAAACAGTAAGCGACACGATAATTGCAGCACTGAAGTGCAGCGCCCATCTGTTGATATACCCGGAAGATAATGCGGTCGGGTTTAAGAACCTCCCGCCGGAATTAATTGAAAAAATCAGCCTCATCTTTTCAACAAAAAACGCGCTCGAACGACAGATTAGCTTTTTCAAATTACTCGAATCTGACAATGACATTGAACTCATGACGCGTAATGGCGGCAGGATATACTCACAGGTCCCGAGCAACCAGCCTCAAATACGGCCTTCTGTATAA",
             "aa": "MRNWYLLQCQVQNFQRITTRIHMLNIESFVPTEVKISRRRDCNGCRTTEKPLFPGYIFLRFDPEEIHTTTFTEIPGARHFVSFGGQPETVSDTIIAALKCSAHLLIYPEDNAVGFKNLPPELIEKISLIFSTKNALERQISFFKLLESDNDIELMTRNGGRIYSQVPSNQPQIRPSV",
@@ -2487,46 +2498,47 @@
             ],
             "id": "MEGJMNBEGN_29",
             "locus": "MEGJMN_029",
-            "3di": "DKWKWKWFFDPVCQVVLVVVCVVVVWDKDWQWDWDWDWDPDPVGIDIDIDGPDGRMIMIGDDPVVDDLVVXCVRPGTDGTDDDPNDGDTDDPLLVVLSVLVVVXXXDDPDXXXDXVPDDPVLSVLSSVLVVDPDPVVSVVSSVVSVVVDVXSVVCVVVVDDXDXXDDPPDPPPDPPD",
+            "3di": "DKWKWKWFFDPVCQVVLVVVCVVVVWDKDWQWDWDWDWDPDPVGIDIDIDGPDGRMIMIGDDPVVDDLVVNCVRPGTDGTDDDPNDGDTDDPLLVVLSVLVVVXXXDDPDXXXDXVPDDPVLSVLSSVLVVDPDPVVSVVSSVVSVVVDVXSVVCVVVVDDXDXXDDPPDPPPDPPD",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "P0AFW0",
                     "query_cov": 0.92,
-                    "subject_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.26,
-                    "score": 471.0,
-                    "evalue": 1.67e-10,
+                    "score": 473.0,
+                    "evalue": 1.647e-10,
                     "description": "Transcription antitermination protein RfaH"
                 },
                 {
                     "source": "afdb",
                     "id": "Q70W72",
-                    "query_cov": 0.84,
+                    "query_cov": 0.85,
                     "subject_cov": 0.84,
                     "identity": 0.393,
-                    "score": 596.0,
-                    "evalue": 1.407e-13,
+                    "score": 598.0,
+                    "evalue": 1.427e-13,
                     "description": "NusG-like N-terminal domain-containing protein"
                 },
                 {
                     "source": "pdb",
                     "id": "5ond",
-                    "query_cov": 0.9,
-                    "subject_cov": 0.99,
+                    "query_cov": 0.91,
+                    "subject_cov": 1.0,
                     "identity": 0.248,
-                    "score": 452.0,
-                    "evalue": 3.604e-10,
+                    "score": 454.0,
+                    "evalue": 3.538e-10,
+                    "chain": "A",
                     "description": "RfaH from Escherichia coli in complex with ops DNA"
                 },
                 {
                     "source": "cath",
                     "id": "af_P0AFW0_1_162_3.30.70.940",
                     "query_cov": 0.92,
-                    "subject_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.25,
-                    "score": 482.0,
-                    "evalue": 4.626e-11,
+                    "score": 484.0,
+                    "evalue": 4.573e-11,
                     "description": "NusG, N-terminal domain"
                 }
             ],
@@ -2654,8 +2666,8 @@
                 {
                     "source": "afdb",
                     "id": "A0AAX3AIG3",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 1.0,
                     "score": 568.0,
                     "evalue": 3.53e-13,
@@ -2734,7 +2746,7 @@
                     "description": "Lipoprotein"
                 }
             ],
-            "prostt5_confidence": 62.35,
+            "prostt5_confidence": 62.4,
             "baktfold": true,
             "annotation_confidence": "high",
             "length": 202
@@ -2758,7 +2770,7 @@
                 "afdb_v6:afdbclusters_A0A5U9VSH8",
                 "afdb_v6:swissprot_Q8X6H3",
                 "cath:cath_af_Q46790_25_155_1.10.530.10",
-                "pdb:pdb_4xp8"
+                "pdb:pdb_4xp8_A"
             ],
             "nt": "ATGAAACTGCCGGCAATTTTTCTCAGCACCCTGCTTTTTCTGCCCCAGGCTCAGGCCTACTGCTTTAACTACGCTGCGGCGAAATACAACCAGAACCCGCTCGTCGTGGAATCCATTGCAATCTGGGAAAGTAGCCTCCGCCCTGACGCTGTCGGACGTAATTACGATAAAGCCGGTCGGCTGCTCAGCTCTGATTACTGCCTCATGCAAATCAATACGGCAAACGTCCGGGCGCTGGTATCAATAGGCGTCATCTCTTCAGCTGATGACCTGTTAAAAGACCCCTGCTTATGTGTTCAGGCCGGCGCCTGGGTGCTTGCAAAACACCTGAGAAAATGTGGTAACACCTGGCGTTGTCTCGGCTCCTATAACGCCGGTTTCTCAGACGACCCGAAACAGGAACGGAAACGTCAGACCTACGCCGCAGAAATCCGCTCCATCTACGAACGCCTGTACGCCAGGCAGCACCGTGCCAGCTAA",
             "aa": "MKLPAIFLSTLLFLPQAQAYCFNYAAAKYNQNPLVVESIAIWESSLRPDAVGRNYDKAGRLLSSDYCLMQINTANVRALVSIGVISSADDLLKDPCLCVQAGAWVLAKHLRKCGNTWRCLGSYNAGFSDDPKQERKRQTYAAEIRSIYERLYARQHRAS",
@@ -2796,46 +2808,47 @@
             "genes": [],
             "id": "MEGJMNBEGN_33",
             "locus": "MEGJMN_033",
-            "3di": "DDDDPDPPPDPPPDPVVLVVLLCVLCVVLVHDSLLLVLLLCVQPVQQQQDKDFDADPVRDTPWIFGGSRTDIPVCQVVCCVVVQDPDSVCSRRPVSSVSSVSSVLLSVQCVVQPPDLLSQLCSVQNDDPDPVSSVVSNVVSVVSVVSSVVVVVVVVVVV",
+            "3di": "DDDDPDPPPDPPPDPVVLVVLLVVLCVVLVHDSLLLVLLLCVQPVQQQQDKDFDADPVRDTPWIFGGSRTDIPVCQVVCCVVVQDPDSVCSRRPVSSVSSVSSVLLSVQCVVQPPDLLSQLCSVQNDDPDPVSSVVSNVVSVVSVVSSVVVVVVVVVVV",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "Q8X6H3",
-                    "query_cov": 0.99,
+                    "query_cov": 1.0,
                     "subject_cov": 0.95,
                     "identity": 0.385,
-                    "score": 712.0,
-                    "evalue": 8.159e-15,
+                    "score": 714.0,
+                    "evalue": 4.954e-15,
                     "description": "Peptidoglycan-binding-like protein"
                 },
                 {
                     "source": "afdb",
                     "id": "A0A5U9VSH8",
                     "query_cov": 0.99,
-                    "subject_cov": 0.97,
+                    "subject_cov": 0.98,
                     "identity": 0.348,
-                    "score": 603.0,
-                    "evalue": 4.785e-12,
+                    "score": 605.0,
+                    "evalue": 3.084e-12,
                     "description": "Transglycosylase SLT domain-containing protein"
                 },
                 {
                     "source": "pdb",
                     "id": "4xp8",
-                    "query_cov": 0.54,
-                    "subject_cov": 0.91,
+                    "query_cov": 0.55,
+                    "subject_cov": 0.92,
                     "identity": 0.298,
-                    "score": 308.0,
-                    "evalue": 1.661e-05,
+                    "score": 310.0,
+                    "evalue": 1.258e-05,
+                    "chain": "A",
                     "description": "Structure of EtgA D60N mutant"
                 },
                 {
                     "source": "cath",
                     "id": "af_Q46790_25_155_1.10.530.10",
-                    "query_cov": 0.8,
-                    "subject_cov": 0.95,
+                    "query_cov": 0.81,
+                    "subject_cov": 0.96,
                     "identity": 0.398,
-                    "score": 563.0,
-                    "evalue": 1.372e-11,
+                    "score": 565.0,
+                    "evalue": 9.042e-12,
                     "description": "hypothetical protein"
                 }
             ],
@@ -2863,7 +2876,7 @@
                 "afdb_v6:afdbclusters_A0A0P0ZGT3",
                 "afdb_v6:swissprot_Q9ZHF3",
                 "cath:cath_3adyA00",
-                "pdb:pdb_6x62"
+                "pdb:pdb_6x62_Bd"
             ],
             "nt": "ATGAAAGAAAAGCTCCTGGCCACGGTAGTGGCTTCGTTCATGCTGGCCGGCTGCCAGCAACCGAAATCCGTCATTACGGCGCCGTATGTTCCGCCGGAAAAAACGTCACAGAACGTCTCGATAGTGCGTGCCCAGCAATACCAGCTCTGGGACGAGAAGGTCATCAATACCCGCACACCGCTACCGGCAGACACGATATATGCCAACAGCACGCGCCTTTCGCTCGACTGGGACGGCGATGCGATCGAGCTGCTGGCCCAGCTGGCCAGACAGCGCGGTCTCCAGTTTAACTACAGCGGTGTCCACCTGCCGCTGCCGCTGAACATTCATGTCCGCGATATGACGTTCCAGAATCTGCTGCGCATTGTCGAATCGCAAATCAGCTGGCGAGCCACGCTGCACCAGTACCCGGGCCTGCTGCGGGTTGAGTTTATGCCGGTGAAAGCACCACCTGGGGGCCGCCGATGA",
             "aa": "MKEKLLATVVASFMLAGCQQPKSVITAPYVPPEKTSQNVSIVRAQQYQLWDEKVINTRTPLPADTIYANSTRLSLDWDGDAIELLAQLARQRGLQFNYSGVHLPLPLNIHVRDMTFQNLLRIVESQISWRATLHQYPGLLRVEFMPVKAPPGGRR",
@@ -2906,7 +2919,7 @@
                 {
                     "source": "swissprot",
                     "id": "Q9ZHF3",
-                    "query_cov": 0.56,
+                    "query_cov": 0.57,
                     "subject_cov": 0.11,
                     "identity": 0.166,
                     "score": 232.0,
@@ -2916,8 +2929,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A0P0ZGT3",
-                    "query_cov": 0.64,
-                    "subject_cov": 0.98,
+                    "query_cov": 0.65,
+                    "subject_cov": 0.99,
                     "identity": 0.5,
                     "score": 433.0,
                     "evalue": 4.423e-10,
@@ -2927,17 +2940,18 @@
                     "source": "pdb",
                     "id": "6x62",
                     "query_cov": 0.83,
-                    "subject_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.215,
                     "score": 310.0,
                     "evalue": 5.32e-07,
+                    "chain": "Bd",
                     "description": "Legionella pneumophila Dot T4SS OMC"
                 },
                 {
                     "source": "cath",
                     "id": "3adyA00",
-                    "query_cov": 0.54,
-                    "subject_cov": 0.85,
+                    "query_cov": 0.55,
+                    "subject_cov": 0.86,
                     "identity": 0.235,
                     "score": 251.0,
                     "evalue": 1.913e-05,
@@ -2967,7 +2981,7 @@
                 "UniRef:UniRef50_A0A7G3L7Q4",
                 "UniRef:UniRef90_A0A7G3L7Q4",
                 "afdb_v6:afdbclusters_A0A484UHH3",
-                "pdb:pdb_7muq"
+                "pdb:pdb_7muq_IC"
             ],
             "nt": "ATGAAATATTCCGCTATCGCGCTGTTCTGTTTGTGTGTCGCCGGATATGCGACGGCAGACGACAGCGAACCGTCAACACCACAGGGTATGGAACACTATCTGGACATCAGCAATGACAGTAAGAGCGACATCACTGACGCCCGGGCCGCCATTATCCGCTCTGCGGGTCATACCATCGGTTTCAGGGGCGGGAAAGCTCAACGTGCATTTGAGCTGGTTAACGCGCTGAATGCCCGGGAAAGTACGCTGAATGCCCTGTATGACTTCAGAACGCTTGTCAGTCAGGAAGGCTGGTTACCCCCTGTCATCGACGAAGCACAGGATGTGGCACATATCACCGACAATCAGATCCGTACCGCAAGCCGCGTGTACCAAATCATTCTGCCGGAACGTTTTGTCAGCAACCCGCCGTCCTGGCGTCGCTGGTTACTGGCCGGATTAAGCACGACATCCCCTTCGGGTCAGGAAGGTGGCGTCATTCCCAAAAACAGCGATGAACGGAAAATCTGGCAGGAAGCGGTGGAAAAAGGCTGGCAGGACGGACGTGACGGCGCGGATCACACGCTGGAGGCCAACTTTAACCGCCTGACCCGGGATTACCGGGGCATGTTGCTCTACTCACGTCTGTTACGGGAAGGCTATATCTCTCGCCCGGAAATTACCGAGCAACAACAGAGCGTCAGCGGCGGCCATAAAAAACTGGTTACCGGCGATCGCGTCCGCAACCTGCGCAGGCATGCCGAGTTCAATCCGAACAAAGGCCACTGGAAACCGGTCATCAACACGGAGTCACACCATGAAGCCCGTCAAACTTTCTGA",
             "aa": "MKYSAIALFCLCVAGYATADDSEPSTPQGMEHYLDISNDSKSDITDARAAIIRSAGHTIGFRGGKAQRAFELVNALNARESTLNALYDFRTLVSQEGWLPPVIDEAQDVAHITDNQIRTASRVYQIILPERFVSNPPSWRRWLLAGLSTTSPSGQEGGVIPKNSDERKIWQEAVEKGWQDGRDGADHTLEANFNRLTRDYRGMLLYSRLLREGYISRPEITEQQQSVSGGHKKLVTGDRVRNLRRHAEFNPNKGHWKPVINTESHHEARQTF",
@@ -3006,7 +3020,7 @@
             "genes": [],
             "id": "MEGJMNBEGN_35",
             "locus": "MEGJMN_035",
-            "3di": "DPDDPDDPPDDDPDDPPPPPPPDDDDDPDLVVLLPDDPDDDDPDDPVLLVVLLVLLLQLLLLLLLLVLLVVLLVVCVVCVVVLCVVQVLVVQCVVQQWFAWDKDWWWWDWDDDPPDIDDDIXIXDTXDDPXXDPDDDGSCVXXVPDXDDDDDDPDDPXDDDDDPVSVVSSSVSSVVSSVCSNVVSVVSSVVSSVVSVVVSVSSVVVVVCVVVQKKDDWDKDWDWWDDDDXDIDITPDIIIIDIDIDXDGDPVVXDIDGDDDXVXXXVXXDDD",
+            "3di": "DPDDPDDPPDDDPDDPPPPPPPDDDDDPDLVVLLPDDPDDDDPDDPVLLVLLLVLLLQLLLLLLLLVLLVVLLVVCVVCVVVLCVVQVLVVQCVVQQWFAWDKDWWWWDWDDDPPDIDDDIXIXDTXDDPXXDPDDDGSCVXXVPDXDDDDDDPDDPXDDDDDPVSVVSSSVSSVVSSVCSNVVSVVSSVVSSVVSVVVSVSSVVVVVCVVVQKKDDWDKDWDWWDDDDXDIDITPDIIIIDIDIDXDGDPVVXDIDGDDDXVXXXVXXDDD",
             "pstc": [
                 {
                     "source": "afdb",
@@ -3014,18 +3028,19 @@
                     "query_cov": 0.95,
                     "subject_cov": 0.52,
                     "identity": 0.369,
-                    "score": 751.0,
-                    "evalue": 1.307e-16,
+                    "score": 760.0,
+                    "evalue": 1.042e-16,
                     "description": "DotC protein"
                 },
                 {
                     "source": "pdb",
                     "id": "7muq",
-                    "query_cov": 0.79,
-                    "subject_cov": 0.88,
-                    "identity": 0.264,
-                    "score": 553.0,
-                    "evalue": 4.677e-12,
+                    "query_cov": 0.77,
+                    "subject_cov": 0.86,
+                    "identity": 0.266,
+                    "score": 552.0,
+                    "evalue": 6.112e-12,
+                    "chain": "IC",
                     "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 1"
                 }
             ],
@@ -3042,7 +3057,7 @@
             "strand": "+",
             "frame": 1,
             "gene": "traJ",
-            "product": "hypothetical protein",
+            "product": "AAA+ ATPase domain-containing protein",
             "db_xrefs": [
                 "EC:7.2.4.8",
                 "KEGG:K12203",
@@ -3056,7 +3071,7 @@
                 "afdb_v6:swissprot_P52052",
                 "cath:cath_3jvvC02",
                 "cath:cath_5fl3A01",
-                "pdb:pdb_6geb"
+                "pdb:pdb_6geb_B"
             ],
             "nt": "ATGAAGCCCGTCAAACTTTCTGACCCCACCACGCCCGATATTGAATTGTTCAATTTCGATGGTCCTGTTAATGCCTCAAATTACAAAGAGTTTCTGGTATGGGCGGCCAAAAACGCCGTCAGCGATATTCACGTTCAGGGCGGCAACCCCATCGTCATCGAACGCTATGGCCGGATGGTACCGGTGACGACCTTTTCGTTACCGGACAATATCCTCTCGGACATTATTGACGGATTATTTGACCCGGAACTTCGCGCCAAGGTCCGGGGAGGAACCCCCCAGGACCGGGCCATACAGCTCGATGGCGATCAGAATAAACGCTATGGCCTCGATCGCGGTGAACGACTGCGCTTTCGCTGCAATGTTGTGCAGGCGACCGCTGCCAACATGCTGACCACCTGTGCGATGACACAACGCGTCATCCCGACAGAAATCCCTGAGCTGGAAAACATGGGGATCGAGCCGGACCTGTTTGAAGCACTGCTGCCCCATAAAGGTCTTGGTCTGGTCTGCGGTGAAACCGGATCCGGAAAAAGTACCCTGCTGGCCGCCATTTACCGTTACTGTGCGGACCACTACCCTGACCGTAAAATCACCACGGCAGAGGACCCAGTGGAGTACATCATTGGCCGTAAAGGCGATGTGCTGCCGGCGACCCAGCTGGAGCTCGGTCGGGATGTTGCCACCTTCGCCGAAGCCATCAGAGCGGCACTTCGCCGGGCTCCGTCCATTATCGGCGTCGGGGAAATGCGCGACACAGAAACCATTCTGGCCGCCGTGTTAAGCGCCTTACTGGGCCACCTGTGCCTGAGTACTCTCCACACGGATTCCGTTGGCGAAACCATCCCCCGCCTGTTAGCCGGTATCCCGATTGAAATCCGGGAAGCGACGGCACGCGATGTGATGGGCACGATGCAGTACATCATCGTGCAGCGCCTGCTCAGAACCACAGACGGCAAACGTCAGGCGGTACGCGAATACCTGGTCTTCGACCAGCCTCTGCGAAACGAAATGGCTCAGGTGCCTTATACCGAATGGGGCCACCTGCTGAACCGGAAAGTACGGGAGAAGAAAGGCCGAATCGCAGATAAAGCCTTCAGGCTGCTCCGGGAGGGCATCATCGAGCGCGATGAAATGCTCTCCGTTGTATCGCCTGCAGAACTTCGGGAAATGGAGGACAGCGTATGA",
             "aa": "MKPVKLSDPTTPDIELFNFDGPVNASNYKEFLVWAAKNAVSDIHVQGGNPIVIERYGRMVPVTTFSLPDNILSDIIDGLFDPELRAKVRGGTPQDRAIQLDGDQNKRYGLDRGERLRFRCNVVQATAANMLTTCAMTQRVIPTEIPELENMGIEPDLFEALLPHKGLGLVCGETGSGKSTLLAAIYRYCADHYPDRKITTAEDPVEYIIGRKGDVLPATQLELGRDVATFAEAIRAALRRAPSIIGVGEMRDTETILAAVLSALLGHLCLSTLHTDSVGETIPRLLAGIPIEIREATARDVMGTMQYIIVQRLLRTTDGKRQAVREYLVFDQPLRNEMAQVPYTEWGHLLNRKVREKKGRIADKAFRLLREGIIERDEMLSVVSPAELREMEDSV",
@@ -3101,26 +3116,26 @@
             ],
             "id": "MEGJMNBEGN_36",
             "locus": "MEGJMN_036",
-            "3di": "DDFFDPDDPPDDDDDXXDDPDDDDDVDLLSVVLSCLVVVFFKWKDFAQAFIWTDDQNDTDGRDPDGDDLVRVVSNVVVQDDPVVSVCVVVQDKDKDKDWDADVSCVVRVHDXRDIWMWIKIWGWDDDPVRGITIMIMIGTADQDQDALVVQPDDPVVLVLLDDQFFEEEEEADPPLCRLSVLLNSVLVCLQVVLPFAEEEEEPDDRHDSDDDPPRGHYDYDYDPPRAPDLLVSLVVVVVVVGREYEYEADDALSNLVSQLVSRVVRHYYYYYDYDQDPLVVLVVSLVSDDPVCSLVSLLSSLVRYFKYKYWHWFQFPVRDTDIDIFIDGDDPVLSVVSSPDDSVCSSVVVVVVVVVVVRXSLNVLLVCVVVVRDDPVSSVVRDDPVSVVVSVVVV",
+            "3di": "DDFFDPDDPPDDDDDXXDDPDDDDDVDLLSVVLSCLVVVFFKWKDFAQAFIWTDDQNDTDGRDPDGDDLVRVVSNVVVQDDPVVSVCQVVQDKDKDKDWDADVSCVVRVHDXRDIWMWIKIWGWDDDPVRGITIMIMIGTADQDQDALVVQPDDPVVLVLLDDQFFEEEEEADPPLCRLSVLLNSVLVCLQVVLPFAEEEEEPDDRHDSDDDPPRGHYDYDYDPPRAPDLLVSLVVVVVVVGREYEYEADDALSNLVSQLVSRVVRHYYYYYDYDQDPLVVLVVSLVSDDPVCSLVSLLSSLVRYFKYKYWHWFQFPVRDTDIDIFIDGDDPVLSVVSSPDDSVCSSVVVVVVVVVVVRXSLNVLLVCVVVVRDDPVSSVVRDDPVSVVVSVVVV",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "P52052",
                     "query_cov": 0.88,
-                    "subject_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.294,
-                    "score": 1297.0,
-                    "evalue": 8.931e-31,
+                    "score": 1295.0,
+                    "evalue": 9.055e-31,
                     "description": "Uncharacterized protein YggR"
                 },
                 {
                     "source": "afdb",
                     "id": "A0A7X4CW99",
                     "query_cov": 0.94,
-                    "subject_cov": 0.84,
+                    "subject_cov": 0.85,
                     "identity": 0.293,
-                    "score": 1431.0,
-                    "evalue": 6.151e-34,
+                    "score": 1435.0,
+                    "evalue": 4.356e-34,
                     "description": "AAA+ ATPase domain-containing protein"
                 },
                 {
@@ -3129,28 +3144,29 @@
                     "query_cov": 0.92,
                     "subject_cov": 0.96,
                     "identity": 0.332,
-                    "score": 1408.0,
-                    "evalue": 9.782e-34,
+                    "score": 1412.0,
+                    "evalue": 6.94e-34,
+                    "chain": "B",
                     "description": "X-ray structure of the Legionella pneumophila ATPase DotB"
                 },
                 {
                     "source": "cath",
                     "id": "3jvvC02",
                     "query_cov": 0.61,
-                    "subject_cov": 0.98,
+                    "subject_cov": 0.99,
                     "identity": 0.311,
                     "score": 797.0,
-                    "evalue": 1.872e-18,
+                    "evalue": 1.758e-18,
                     "description": "P-loop containing nucleotide triphosphate hydrolases"
                 },
                 {
                     "source": "cath",
                     "id": "5fl3A01",
                     "query_cov": 0.29,
-                    "subject_cov": 0.96,
+                    "subject_cov": 0.97,
                     "identity": 0.228,
-                    "score": 341.0,
-                    "evalue": 5.677e-07,
+                    "score": 335.0,
+                    "evalue": 7.829e-07,
                     "description": "hypothetical protein"
                 }
             ],
@@ -3223,8 +3239,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A3M3JC81",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.98,
+                    "query_cov": 1.0,
+                    "subject_cov": 0.99,
                     "identity": 0.352,
                     "score": 234.0,
                     "evalue": 4.164e-05,
@@ -3254,7 +3270,7 @@
                 "UniRef:UniRef90_A0A7G3L4B5",
                 "afdb_v6:afdbclusters_A0A0T9MTE6",
                 "afdb_v6:swissprot_P27189",
-                "pdb:pdb_6n9x"
+                "pdb:pdb_6n9x_C"
             ],
             "nt": "ATGGCTCAGAATGCTCAGGTCGCAGACCGACGTTTGTGGCTCGCAGTACCCCATGAAGAAAAAGACGAGGCCGTCGCAGCAGGCGGCCTCGCCAGTGACGGCAGACCCAATATCAGCTGGTCACCGGACGATAAGCTCTGGTATGCGCGGGAAGGCACCGCCTTAGCCGGCATCCGGTTATGGCTCCCTGATACCACCGCCCGGGCAACGGGCGATGCAGACCCCCTGGTGGAGTTTGCCGACAGGTTAAAGGAGGCCGGTTTCCTCCTGGAGGGCCTTCCCGTCATGGACGGGAAATGGCACCGGGCCAAAGTCGAAGAGGATAAAAAAGGTAAATCACACCGGGAAGGGGGCGGCGCCTATAAAGGTTTCTCTGACGGTCATCCCGCCGGCATCTTTGTGAATTACCACCGTTCGTCGGAAAAAGAGGTTTCGCGATGGCGGGCTCAGGGGGGAGAAACGGACCCGCTGACGCGTCTGCACATTCGCGCTGCAACCCGCCAGGCACAGGACGATAGCGAACGCGTCCGGCAACAGGCCTATGCGGAAAAAGCCTGGGCGGCCAGTCAGCTTTATGACAAGTTGGCCCCGGCGACAGACTCACATCCTTATCTGCTGCGTAAAGGCGTTTCAGCTGACCCGGCTCTCCGTGTTACACGAAACAACCGATTGGTTATTCCGTTTTATAACCATGATGACAAGTTCCAGTCCCTGCAGTACATCGCTGAAGATGGCGAAAAGAAGCTCTTTTTTGAAGCCCCGAAGGCAGGCAACTTTTACATTACAGGCGCTACGCCTGTTAATGGTAAACCGATCCTGTATGCCGAGGGCTATGCCACCGCCAAAAGCCTAAACGTGGCCACGGGATTGCCAGTCGTGATGACTATCGACGCCGGTAATATGCGAACGATCGCGGAATCATTCGGTAAGCGATTTCCTGACAGCCCTCATTTCTTCATGGCCGATATGGACCTGAAGAAAAACGATAACAAAGACGACCTTTACCTTTCCATTCAGTCCTCCCGTTTTGTCCCCAGCGATCCGGGTTTCTATATGGATGAAGAAAAACTGAAGGAAATTAAGGGATTGTACATGGCGTTACAGGCCGCCGATCGCGTACCTGACGGACATGTCGTAATACCGCCATTTACTGAGCAGGAAATGAAAGCTGGGCTGTCTGATTTCAACGATCTGCATTCAGCTCGCGGCCTGGATTCACTGAAAACCGTACTGGCGGAAACACCCGGCCTTGGTGCATATCTATATCACCCGGAGACGCAAACAATGACTGTTCCAGTTGAAAAGCAGACACCTGCGCAGCCCTACCCTGACTCGGCCCCCGCGTATGACAACGTATTATTGGAAGGATCTGACGATGCCAGCGCTGATATGGAGAGTTATGAAGCCATGATGGCTGCGGAGGCAATAGCGGCACCGGAAGCAGCAGCGGTACCGGAAGCAGCAGCAGCGCCAGAAGCAGCAGCAGCACCGGAAGCAGCAGCGGTACCGGAAGCAACAGCAGCGCCGGAAGCAGCAGCGGTACCGGAAGCAACAGCGGCGCCGGAAGCAGCAGCGGCCCCCACCATCGCCAGCCTTCTGAAAGTGACCTCAGCGCCTGCGGAACCGGAGGTGTCTGCAGATCCAGCGGCAAATGACAATCCGGCACCGGTAAAAGCAAAATCCACAGCTGAAAACGCGACGACCGCTGCGAATGAGCCGGATGATACTGAAAATGCCATCGTATGGGGGCCACGCGCGCCGGGCGAAGGTAACTTCACCCCGGAGACAGCGTCCGCATCGGCCTTAATTGATACCAATGCCCTGCTTCAGCGCATCACGCATGAAATGCAGAGTAACACGGTGCTGTACAAGCTCGATGGCCAGCCGGCATTTCGCGATCATGGCAACCGGATGACAATGGAAACCCCGGACGCCAGTAAGCAGGATGACATGGTGATGGCGGCATTGCTCACGGCAATGCAGCATTATGGCCGCAGGATCCAGATCACCGGCAGCGAGACCTTTCAGACCAAAGTTATCGGGCTGATTGCGTCACACGGACTGGATGTGCAGATGCGCGATCCGGTACAGCAGGCCATGTTAAACGAGGCGATCAAACAGCAGGCCGCTGACAGGCCGGATGCTCGCGACAGTATCAATGCCACGCCCGTGATGCCTGCGAACGCGCCCGTTCAGGCCAGTCCTGGCAAAAACACGTCCGGCCCGGCACCGGCAGGAGAACAACCTTCCCCGGCCCCGTCCGCTGGTACGGCCGTGCCGCCGGTTAAGTCCTCTGAACCGGCAGGGCAACAACCTTTCACCACGAAAGCCGAGGACTTTAAAGACGGCGTAAAAGGTCGCCTGCTGGAGCATGGCCGGGCGCATTACCAGTTCAATGAACAGAACAGCATGAACTATTACGTTCATCTCGAAACCCGCGAGGGGGTCCGGGAGGTCTGGGGAAAAGAGCTGGAACAGGCCATCAATCAGAGCCGCGTCAGTGAAGGTCAGGTCATCAGTCTGAAATTTGAAGGGAATAAACCTGTCACCGTCAATCAGCCCATCATGAAAGATGGAAAAATCCAGGGATACGAGCAGGTCACGGCGCACAGAAATTCATGGAGCATGACGCCGCTGGTGAATTCCCGCGTTCGCCCGCCGGCGTCGCCCACCACAGGGGAAACTCTTGCCGCGTATGATCTCCAGGAGTTCAGCAAAATACAGGCTCGTCTGTTACGTACCATTCGGGCTGAGAACGTTCCCCCGATCGCCGGGCAGAAAAACAACCTCCTGTGGATACGTCCCGACGGGCGGGGAACGGGCGATGCCGGCGACCCGGCCACGGTGAAACTACCGGCTAAAGATGGCCAGTCCACTACCCCGGTCGTCAGCGCCTGGCGTGATGACGGACAGCTGGCACTGCACCTGGTCAAAGGTCATGGCCCTTACCTGCAGGGCATTGCGCAGATTAACGGACAGTACCAGCACGTCCTCGCATCCATGACAGGGAACCAGAACAATGCCGGCCTGGTTATCAACGCGATAACGCCTGATGGCCTCAAAACCGTGGGATACGGGCAGGCCTTAAACAAGGTGGAAGGTAAGCCCGTTGCCCGGGATGCGATGGCCTTTCGTTTCGCGGGAGAGACCGACCCGGACAGGAAGCTGATTGGTAAGCTGGAAAACCCGGAAACCTTACCCCGGACTATCCACGCCAGACTCGGATTTGATGAGCCGTACCGTCCCGACACCGACTACCCAAAGTCGCAGCCCCGGGCAGAACATCATCACAAGGCCGCACCGGGAGCCGGACGCCCGGGGTAA",
             "aa": "MAQNAQVADRRLWLAVPHEEKDEAVAAGGLASDGRPNISWSPDDKLWYAREGTALAGIRLWLPDTTARATGDADPLVEFADRLKEAGFLLEGLPVMDGKWHRAKVEEDKKGKSHREGGGAYKGFSDGHPAGIFVNYHRSSEKEVSRWRAQGGETDPLTRLHIRAATRQAQDDSERVRQQAYAEKAWAASQLYDKLAPATDSHPYLLRKGVSADPALRVTRNNRLVIPFYNHDDKFQSLQYIAEDGEKKLFFEAPKAGNFYITGATPVNGKPILYAEGYATAKSLNVATGLPVVMTIDAGNMRTIAESFGKRFPDSPHFFMADMDLKKNDNKDDLYLSIQSSRFVPSDPGFYMDEEKLKEIKGLYMALQAADRVPDGHVVIPPFTEQEMKAGLSDFNDLHSARGLDSLKTVLAETPGLGAYLYHPETQTMTVPVEKQTPAQPYPDSAPAYDNVLLEGSDDASADMESYEAMMAAEAIAAPEAAAVPEAAAAPEAAAAPEAAAVPEATAAPEAAAVPEATAAPEAAAAPTIASLLKVTSAPAEPEVSADPAANDNPAPVKAKSTAENATTAANEPDDTENAIVWGPRAPGEGNFTPETASASALIDTNALLQRITHEMQSNTVLYKLDGQPAFRDHGNRMTMETPDASKQDDMVMAALLTAMQHYGRRIQITGSETFQTKVIGLIASHGLDVQMRDPVQQAMLNEAIKQQAADRPDARDSINATPVMPANAPVQASPGKNTSGPAPAGEQPSPAPSAGTAVPPVKSSEPAGQQPFTTKAEDFKDGVKGRLLEHGRAHYQFNEQNSMNYYVHLETREGVREVWGKELEQAINQSRVSEGQVISLKFEGNKPVTVNQPIMKDGKIQGYEQVTAHRNSWSMTPLVNSRVRPPASPTTGETLAAYDLQEFSKIQARLLRTIRAENVPPIAGQKNNLLWIRPDGRGTGDAGDPATVKLPAKDGQSTTPVVSAWRDDGQLALHLVKGHGPYLQGIAQINGQYQHVLASMTGNQNNAGLVINAITPDGLKTVGYGQALNKVEGKPVARDAMAFRFAGETDPDRKLIGKLENPETLPRTIHARLGFDEPYRPDTDYPKSQPRAEHHHKAAPGAGRPG",
@@ -3294,16 +3310,16 @@
             ],
             "id": "MEGJMNBEGN_38",
             "locus": "MEGJMN_038",
-            "3di": "DPXXPVQQQDKFFFQDDPVCQVVLQVLXQADPVRDGQWDQDPVVRTIIGTPPXDCVSSCVXDDPXXDDDDDPDDLQVVVQVVVVVVQFDDPDDDDAPQDKDFGDGDADPVPDDDDDGQKIWHAXSLXKIKMWIAGPVDDPPXDIDIDGDDDDDDDPSSSSVSVVSSVVSVVVSVVVLVVLLVVQQVVLVVVLVPFAFDDCQQLLCVVLVFHDDRQWTADPVRWIKDFWAFLVRGTAWIWIAHSVGDIDTGXSHDLALIKTKGADDDDPQAAAEEEEASSLQRLVCVLFVHIYIYRXDLVCLLSNLVSVCVVRVPHAYEYEFFLDDDDDPDXVVLXVXLVXVXDDDPDPXDDDDPVSSSVDTSLSSSLVSLVVHPXYKYKYDDDDPVSVVVVDGGSSVVCVVPNSVSVLVSXVVDPPSSQWMADPVVRDIDDDPDPDDDDDDDDPDDDDDDXXXXDDDPPXVVVVVVVVVVVVVVVPDDDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDPDDDDDDPDDDDDDDDDDPVXXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDPDDDDPXXXKKKKADDDPPDDXXDXXXXXXXXXDPXVVLVVQWDWDDPXQWIFTDDVNHTQWTDSRGMIDGDDPDLVSSLSSLVSVVSVCCVRRNQEMEYDYDPVSLLSNLLSCLLSVXRHHYPDPVSSVSSVVSNVVVCVPDPPSVXVXPDDDDDDPDDDPDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDDPVACVQKDKAAWADKDWAQPVVDDPGDIWIWTWGQDPVGIDIDIDNQVVVQCVVQVDDHGFIKGKHWDAWDWDWDWDFDDDPNDTPGTDIDIDTDTDMDMDGDDPPPDDDDDDPDPXXXXVVVXVVVLVVLLVVLLVXXXVVVXDXDPPDXQXKWXXXXXXXDXDDXDDXXKDWDDDDPPDDXXIXIWXXDPVXIWIWGXXXDXDXWIWTWTDDPNXTWIKIWGXDXDXXXXXIWIWTQDPVGIDIDXXXVXXCVXPXDGDDXXXXXXDGXPDDDPXXXXXXGDXDSVVDDVVSCVVSVHDDDDDDDDPDDDDDDDDDXXDDDDPDDDDDD",
+            "3di": "DPXXPVQQQDKFFFQDDPVCQVVLQVLXQADPVRHGQWDQDPVVRTIIGTPPXDCVSSCVRDDPXXDDDDDPDDLQVVVQVVVVVVQFDDPDDDDAPQDKDFGDGDADPVPDDDDDGQKIWHAXSLXKIKMWIAGPVDDPPXDIDIDGDDDDDDDPSSSSVSVVSSVVSVVVSVVVLVVLLVVQQVVLVVVLVPFAFDDCQQLLCVVLVFHDDRQWTADPVRWIKDFWAFLVRGTAWIWIAHSVGDIDTTXSHDLALIKTKGADDDDPQAAAEEEEASSLQRLVCVLFVHIYIYRXDLVCLLSNLVSVCVVRVPHAYEYEFFLDDDDDPDXVVLXVXLVXVXDDDPDPXDDDDPVSSSVDTSLSSSLVSLVVHPXYKYKYDDDDPVSVVVVDGGSSVVCVVPNSVSVLVSXVVDPPSSQWMADPVVRDIDDDPDPDDDDDDDDPDDDDDDXXXXDDDPPXVVVVVVVVVVVVVVVPDDDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDPDDDDDDPDDDDDDDDDDPVXXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDPDDDDPXXXKKKKADDDPPDDXXDXXXXXXXXXDPXVVLVVQWDWDDDXQWIFTDDVNHTQWTDSRGMIDGDDPDLVSSLSSLVSVVSVCCVRRNQEMEYDYDPVSLLSNLLSCLLSVXRHHYPDPVSSVSSVVSNVVVCVPDPPSVXVXPDDDDDDPDDDPDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDDPVACVQKDKAAWADKDWAQPVVDDPGDIWIWTWGQDPVGIDIDIDNQVVVQCVVQVDDHGFIKGKHWDAWDWDWDWDFDDDPNDTPGTDIDIDTDTDMDMDGDDPPPDDDDDDPDPXXXXVVVXVVVLVVLLVVLLVXXXVVVXDXDPPDXQXKWXXXXXXXDXDDXDDXXKDWDDDDPPDDXXIXIWXXDPVXIWIWGXXXDXDXWIWTWTDDPNXTWIKIWGXDXDXXXXXIWIWTQDPVGIDIDXXXVXXCVXPXDGDDXXXXXXDGXPDDDPXXXXXXGDXDSVVDDVVSCVVSVHDDDDDDDDPDDDDDDDDDXXDDDDPDDDDDD",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "P27189",
                     "query_cov": 0.35,
                     "subject_cov": 0.47,
-                    "identity": 0.277,
-                    "score": 1128.0,
-                    "evalue": 1.936e-23,
+                    "identity": 0.279,
+                    "score": 1139.0,
+                    "evalue": 1.277e-23,
                     "description": "DNA primase TraC"
                 },
                 {
@@ -3311,19 +3327,20 @@
                     "id": "A0A0T9MTE6",
                     "query_cov": 0.99,
                     "subject_cov": 1.0,
-                    "identity": 0.298,
-                    "score": 2993.0,
-                    "evalue": 4.252e-65,
+                    "identity": 0.299,
+                    "score": 3006.0,
+                    "evalue": 3.249e-65,
                     "description": "DNA primase TraC"
                 },
                 {
                     "source": "pdb",
                     "id": "6n9x",
                     "query_cov": 0.2,
-                    "subject_cov": 0.37,
+                    "subject_cov": 0.38,
                     "identity": 0.143,
-                    "score": 301.0,
-                    "evalue": 4.875e-05,
+                    "score": 299.0,
+                    "evalue": 5.627e-05,
+                    "chain": "C",
                     "description": "Structure of bacteriophage T7 lagging-strand DNA polymerase (D5A/E7A) and gp4 (helicase/primase) bound to DNA including RNA/DNA hybrid, and an incoming dTTP (LagS3)"
                 }
             ],
@@ -3409,7 +3426,7 @@
                 "afdb_v6:afdbclusters_A0A350YK85",
                 "afdb_v6:swissprot_P0C532",
                 "cath:cath_af_O07422_62_244_3.40.630.30",
-                "pdb:pdb_3wz3"
+                "pdb:pdb_3wz3_A"
             ],
             "nt": "ATGAATACACCCGCGACAGGGGGCACAGACTCGTCTGCGCCTCAGACAACGCGTTCCCTTTCAGCGCAGGAACAACTGGTCTACGACGAAGCCGTTCGTCTGCAGAATGAGCAGGCTCTGGGGGCGACCTTCGCCCGCAAGCTGCTGACATCAAACCTCATACTGGGCACCGCGTTCCTGCTCACCACTTCCCTCAGCGCCGTGACGCTGTGGAAAGTGTATCACCCGGATAATCACTACTTCGCCACGGAAAACGGCCGCGTCACACCGATTTATCCGCTGAACAAACCGGCCTGGTCGATGGAAGACATTGCCGGTTTCGGTGCCGACACCCTCCAGCGGGCTTTCACGATGGACTTCGTTCACTACCGTCAGCAGATGACGTCGGTCATGACGCGCTTTACCAATCAGGGATACGCCGATTATTACAAAGCGCTGACAAGCTCGAACGTGCTGAAGATGGTGCGCGATCAACGCATGAACCTGTCCACCACCGTCTCGCCGGGGGTCGTACACAGCCAGGGCATTATTAACGGGATCTATACCGTCAGGGTTCAGTATCCCGTCTCCCTGAAGCTTGATGGCCAGGAGCGTAGCCTGCCTGCAGCGAATTACATCATCGAGCTGACTATCCAGCAGACCGATCCACGGAAAAAGCCCCTCGGCCTTGAGGTCAGGCAGACCATCATGACTTCCAGTCATTAA",
             "aa": "MNTPATGGTDSSAPQTTRSLSAQEQLVYDEAVRLQNEQALGATFARKLLTSNLILGTAFLLTTSLSAVTLWKVYHPDNHYFATENGRVTPIYPLNKPAWSMEDIAGFGADTLQRAFTMDFVHYRQQMTSVMTRFTNQGYADYYKALTSSNVLKMVRDQRMNLSTTVSPGVVHSQGIINGIYTVRVQYPVSLKLDGQERSLPAANYIIELTIQQTDPRKKPLGLEVRQTIMTSSH",
@@ -3454,8 +3471,8 @@
                 {
                     "source": "swissprot",
                     "id": "P0C532",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.97,
+                    "query_cov": 1.0,
+                    "subject_cov": 0.98,
                     "identity": 0.16,
                     "score": 396.0,
                     "evalue": 3.582e-08,
@@ -3464,7 +3481,7 @@
                 {
                     "source": "afdb",
                     "id": "A0A350YK85",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.99,
                     "identity": 0.175,
                     "score": 559.0,
@@ -3474,18 +3491,19 @@
                 {
                     "source": "pdb",
                     "id": "3wz3",
-                    "query_cov": 0.57,
+                    "query_cov": 0.58,
                     "subject_cov": 0.99,
                     "identity": 0.426,
                     "score": 594.0,
                     "evalue": 2.301e-13,
+                    "chain": "A",
                     "description": "Structure of a periplasmic fragment of TraM"
                 },
                 {
                     "source": "cath",
                     "id": "af_O07422_62_244_3.40.630.30",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.96,
+                    "query_cov": 0.99,
+                    "subject_cov": 0.97,
                     "identity": 0.141,
                     "score": 331.0,
                     "evalue": 8.628e-07,
@@ -3516,7 +3534,7 @@
                 "UniRef:UniRef90_A0A7G3L550",
                 "afdb_v6:afdbclusters_A0A077ZKE5",
                 "afdb_v6:swissprot_P55404",
-                "pdb:pdb_7mus"
+                "pdb:pdb_7mus_AH"
             ],
             "nt": "ATGAAACCGTATTTTGCACTCTCTTTACTCGCCGTGATGTGCTGCAACGTCGGGGCGGCGGAGCCTCAACAGACAGTGGTCCCCCATTCCGCCGATCCGATACTGGTCACTGACGGCCCTCAACAGGATGCCGCGCTGATGAATAAAGCCGGATTACCGCCGCAGCCCGCTGAACAGCCACCGGCGCAGCCGGTGCAACCGCCTGAAACCACTCAGGCCACACCGCCGTCTGCACCAACGGCAGCCCCGCCGCAGGCCGGTTCGCAGACGGACCAGGCACCGTCGGCAACACAAAACAGCGACGAACTCCCGCCGCCTTCTCCGCTGTACAGTGCCGCTCAGAAGCAGGTTTCACCCCTGACGCCGGATGAAGTCCGGCAACTGCGGGGGCAGAAAGAGAATATCAACCGGGCGCTGGCTTCCCCGGCGATGACCGTGGTGCCCCGCATCAGTGCGCAGACGGTGAATCTGTCTCCGGGTTCCAGTCTGCCTCTGGTACGCACAGCGGTGAACCACCCCAGCAACCTGAGTTTTACCGATGCCACGGGCGCCCCCTGGCCTGTCGCAGGCAAGCCCACTAACCCGATGACGAAGGACTTTGATGTTTATTACATCCCTGACTCGCCCATCGTCACCATTGTGGCTAAACGACCCTATGCGAGCGGCAGCATTACCGTACTGCTGAAAGGCCTGTCCGTACCGATTTCGGTGGAAGTCACCAGTGGTGATACCGACAGCAAGTCCCGTGTGTGGACCGTCGATAACCGTCTGGATCTGCGTATTCCGCAGCGGGGACCATCAGCCCGACCGATGGCCGCGCCGGAATCGAAAATCGGCCTTTACGACAACACGCTACAGGCCTTCCTTGACGGTACGCCCCCCAGAGAGGCCCACCGCCTGAAAGCGACCGGACAGGTGCCTGATACCACTGTCTGGCAGCTGGGTGATGACCTCTTTATCCGGACGCGGGCTGAGATTGTGGATGAGTATGACCAGACTCTGTCATCAGCTGACGGGATGCACCTCTTTAAGCTCCCGGTAACGCCCTATGTGACGTTCTCCGTGATGGGGCGTTCTCAGGCACTGAACATTACTCTGGAGTGA",
             "aa": "MKPYFALSLLAVMCCNVGAAEPQQTVVPHSADPILVTDGPQQDAALMNKAGLPPQPAEQPPAQPVQPPETTQATPPSAPTAAPPQAGSQTDQAPSATQNSDELPPPSPLYSAAQKQVSPLTPDEVRQLRGQKENINRALASPAMTVVPRISAQTVNLSPGSSLPLVRTAVNHPSNLSFTDATGAPWPVAGKPTNPMTKDFDVYYIPDSPIVTIVAKRPYASGSITVLLKGLSVPISVEVTSGDTDSKSRVWTVDNRLDLRIPQRGPSARPMAAPESKIGLYDNTLQAFLDGTPPREAHRLKATGQVPDTTVWQLGDDLFIRTRAEIVDEYDQTLSSADGMHLFKLPVTPYVTFSVMGRSQALNITLE",
@@ -3582,17 +3600,18 @@
                 {
                     "source": "pdb",
                     "id": "7mus",
-                    "query_cov": 0.69,
+                    "query_cov": 0.7,
                     "subject_cov": 0.96,
                     "identity": 0.289,
                     "score": 1048.0,
                     "evalue": 1.174e-23,
+                    "chain": "AH",
                     "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 2"
                 }
             ],
             "prostt5_confidence": 62.55,
             "baktfold": true,
-            "annotation_confidence": "low",
+            "annotation_confidence": "medium",
             "length": 368
         },
         {
@@ -3671,7 +3690,7 @@
                 "UniRef:UniRef90_UPI00215B38C2",
                 "afdb_v6:afdbclusters_A0A1G0INH6",
                 "afdb_v6:swissprot_Q6FYW1",
-                "pdb:pdb_7mus"
+                "pdb:pdb_7mus_HG"
             ],
             "nt": "ATGGACACGTCGGCACAGTCGCCGGATCTACAGCAGGTCTCTCTGGCCGTGGCAACAGAGCCGGGAGCGGCCGCCGAAGGCAGTCAGGCCAAATCGGCTTACGCTGACTGGACATCGTCCATCATGCCCCGGTCAACCGGCGGGGGACTATCCGGCGGGGAGGGAAGCACGGCCCCGATCATTGAGCTTATCCCGGCTTATACGCGTGTGCCCGGCTCAGTGGATTTTGGTATTGATTCTGACAACAACAATTCACCGGCGGTTGTCAGGCTCTATACCGGCCCCTATAAGGGTGCGGTGCTGAAAGCCTCTCAGGCAAAACTTGGCGGGGATGGCGTGGTGATCCACATGACAACCATGTACTGGAACCGCAAAAACTACCGCGTTGACGCCTATGCGCTGAAAGATGACACGCTCATGGCCAACGTGGCCACCGACGTGAATCACCACTATATGTCCCGCATTCTGTTGCCGTCGATTGCCGCCGGTATCGGTAAAGCCGGTGACCTCTATGCGGATGCCAACACCGAGATCCTGACCAACGGCTACAGCACGGTAACCAGCCATGCCGGGATGCCGGATGGCGAGGCGGTGGCCGGCGTGGTGGCCGGGGGCGCCGCGTCCAATGCCGCTGACGTGCTCAAGTCGGACGCTGCCAAAATTTCGCCGACTCAGGTCACGGTGGATGCAGGTCAGGCCGTTTATGTCGAGTTTATGGCTGCCGTCACCACGGCCGATGAAATCAAGCCTCGCGGTCAGAACAGCCCCGGCAATACGGCCACCACGCCGGAGAACCTGCAGGACAGCCATACCGGCAACGCCCTTTCGCCGGTCAGCCCTACGCTCGCACAGTTACGGGAGCAAACGCAGTCCCGCATCCGGACCCAGTCAAAGCCTGAAAACACGTCGGAGTAA",
             "aa": "MDTSAQSPDLQQVSLAVATEPGAAAEGSQAKSAYADWTSSIMPRSTGGGLSGGEGSTAPIIELIPAYTRVPGSVDFGIDSDNNNSPAVVRLYTGPYKGAVLKASQAKLGGDGVVIHMTTMYWNRKNYRVDAYALKDDTLMANVATDVNHHYMSRILLPSIAAGIGKAGDLYADANTEILTNGYSTVTSHAGMPDGEAVAGVVAGGAASNAADVLKSDAAKISPTQVTVDAGQAVYVEFMAAVTTADEIKPRGQNSPGNTATTPENLQDSHTGNALSPVSPTLAQLREQTQSRIRTQSKPENTSE",
@@ -3709,7 +3728,7 @@
                 {
                     "source": "swissprot",
                     "id": "Q6FYW1",
-                    "query_cov": 0.91,
+                    "query_cov": 0.92,
                     "subject_cov": 0.68,
                     "identity": 0.119,
                     "score": 430.0,
@@ -3719,7 +3738,7 @@
                 {
                     "source": "afdb",
                     "id": "A0A1G0INH6",
-                    "query_cov": 0.85,
+                    "query_cov": 0.86,
                     "subject_cov": 0.22,
                     "identity": 0.203,
                     "score": 700.0,
@@ -3734,6 +3753,7 @@
                     "identity": 0.216,
                     "score": 396.0,
                     "evalue": 2.767e-08,
+                    "chain": "HG",
                     "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 2"
                 }
             ],
@@ -3881,7 +3901,7 @@
                 {
                     "source": "afdb",
                     "id": "A0AAW9CFL3",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.99,
                     "identity": 0.344,
                     "score": 527.0,
@@ -4012,7 +4032,7 @@
                     "source": "afdb",
                     "id": "R4WMQ0",
                     "query_cov": 0.9,
-                    "subject_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.852,
                     "score": 701.0,
                     "evalue": 8.165e-17,
@@ -4044,7 +4064,7 @@
                 "UniRef:UniRef90_A0A7G3L613",
                 "afdb_v6:afdbclusters_A0A0W0YDQ9",
                 "afdb_v6:swissprot_P18004",
-                "pdb:pdb_7o43"
+                "pdb:pdb_7o43_B"
             ],
             "nt": "ATGTCATTAATGAATGCGATTGAGGACTTCATCACCACAATCAGCCGGAACACCGTCTCTGATGCAATGCCGGACTACTGCGACCTGCGGACGATCGTCAATCTGACGGATTCAGATCGCAACTTCTATCCGGATATGCAGGTTCCCTTTATCGCCGTTACCGAGGCCGGTCATTATGCCTCTACCTTTGAGGTACAGGGTGGCTTTTGTGAAATGGACGAGGACGCCCCTGCCAGTCAGAAATTCAGTTTTGATGGATTTATCAATAAAGTGGCCACCGCAATGGCTACGGACTTCAAATCGCCCGGCCACAAAATATCGGTAGTGATCGAGAATGACCCCAGCCTGGGCAAATCGGAACTGAAGCGCCTCATGGCGCATCAGTTCCGCTCCATTGCACGCACCGGTGTGGGCATGGCGGATATTCTGGATGAAAAGATCGCCAAAATCTCCCCCTGGGTCAGCCGAGAACGCGTCTGGCTGACCTGCTGGACGGGACGCGAAACCCTTTCTCCCCAGGAGCTGAAGTCGGATATGCACCGTATCAGCAAGCTCGCCAGTAAGGCGCCCAAAACGCAGTTTGGCCAGGTCCCCGCGTTCTCCGAGCTGACGGGGTTGAAAATTCGTCATGACGCCTTTCTCAGCACGATAAAGACCGCCCTTTTTGACGGAGGAGATGGCCAGCTTATCGATTTGATTGATGTGCATCAGCTTGGTCGCGAAATTCGCCATCAGGTGGACAGAAAGGGCACCGATGAAGCCTACCGGCCGGTACTGGCATCCGATCGCGTCAGGCCTCACGGAAAACGTAACCGGGAAGATGCCTCACCCTTCTTCGCCCCCTGGCTGAACTACCAGCTCATGGGCATAGATGCCGACGCCGAAAATAACTTCATTAACATTAATGGCATGTGGCACGCCACGCTCTCCGTGTCGATGGGCCCTCAGCAGTTATTAACCTTCGCCCAGCTGAAAGCCCGCATCCCTCGCTCCGTACCGTACCGTATTCGCATGGACGTCATGCCGGGGGGGCTGAAAAGTCTGTCGTGGAAAGGCACCCTGCTCACGTACACGGCCTTTATCCCGCCTCTGCGCCCCATATGGGAAGCGGTCGAAGAACTGAAGAAGCGTAACCGTCACGATCCGGTCTGCGTGGTAACGATAGTAGCCTCAACCTGGGGAGAGACAAAGGAAGAAGCGACACTGAACCTCACCCTGCTGACTAAAGCGTTTCAGGGCTGGGGCGTCTGTGAGGTGACCAGTACGTTTGGTAACCCCTACCGCGCCTGGGCATCAACGTTACTGACGGCCCGGACCGGCGGTGGCCCGCACAACCTGCACCTGCCGCTGAAAGATGCGCTCAGTCTGCTCCCGTTAAGCCGTCCCGCGTCAGCCTGGTCCGATGATGCGTCGATTGTTTTCCCGACGCCTGACGGCAAAATCATTCCGGTGGGTCTGGCGTCATCAAAGCAGAATAAACACACCGAGGTTATTGTCGGTGAGCCCGGTTCAGGCAAGTCGCTCATTATGAACATGCTCAGCAATGCCATTGTGTGCAATGCCCAGCAAAAACTGCCCTTTATTGCGGTTGTCGATAAAGGTTACAGCGCACAGGGGCAAATCCAGCTTATCCGGGACAGCCTGCCGCCGGAACGTAAGGATGAAGCCATCGGCTGGGCACTGCGTAATCACAGCGATCACTGCCGTAATATGTTTGACATCCAGCTGGGCGCCCGTTATCCCGTCGCCCCGGAATTAACCTGGATGAAAAGCATGCTGACCGCAATGTGTATTGACTCCAATACGGGTCTGCCACCTAACTCCCGCGATATTGACGTTCTGCTGGAACGCATTATTTCGATGGCCTATCGCGATAAGGATGAAACCAGCCCGAATAAATTTTCAGATGGCGCGTCACCGGAGATCACCCGGGCGTTAAAAGCGTCAGGACTCTGGTTCCGACACGATGCGGAATGGTGGGACGAGTGTCCCTGGTATGACGTCCGCGACATGCTGTTCAGTGCCGGCTACGTGAAAGAAGCGCAGCTGGCACAGTTCCTCGCCGTGCCGGAACTCTCTGACATGAGTCAGTACATCAACAGCCCGGAGATCAAAGCGAGCTTCGGCAAAGTCTGTCGCGATAACTCCCAGGAACTCCTGACAGACTATATCGCCCGTGTGCTCAGTCAGGCCTGCAACACGTATAAAATGCTGGCCGGCCGCACCCGATTCATTATTAACCCGGCTACCCGCATTATTGCCATCGACCTGAATAATGTCGTCGGTGATAAAAGTGCCGAAGGGCAGTTACGCACCGGCATCATGTACCTCTTTGCAGGCCAGATTAGCGGCGGGGATTTCATTTTACCGCAGTACCGTAAAGAGCTGATGGAGGCGGTTCCGGACATGTACCGCGCCCTGCATGCGGAAAAAATCGATCAGCTTGACCAGGAAGTTAAGTCGAAATATTACGACGAACTCCACAATGCGAAAGATGTACCGTTCATCTTCCCGATGCTGGAAACCCAGGACCGTGAACAGCGAAAATTTGGTATCCGTACTGTACTGTGCTCGCAGTATGTGACCGATTTCCCTGACTCCGTCCTGAAATCGGCCAACTCGGTGTACGTCATGCACTGCCGCCCTGAAGATAAACAGGCCCTGATCGACCATTACCAGGTGCCGGAAGTCACGATCAAAAAGTTCATGCAGATACCCAAAGGCCCGGCAGCCGACGGCAGCGGAACGAGCCTCCTGGCCGTTTTCCGTACCAAAGCAGGCCGTATTGCCCACATTCTGAAAAACACCGCTGGCCCGAAAGAACTCTGGGCGCTGAGCTCAACGCAGGGTGACACCGCCCTTCGTGATTACCTGTATGACGAGCTGGATGGACCTACCGCGCGCGCCATCCTTGCGGAAAACTTTGAGCACGGTTCAGCGCAGCGCGTCATTGAATTCCGTCGCAAGAAGGCCGGCGAACAGGACGCCGGGAACGTCACCCGCCATCTCGCCCGGGAAATTATCGAAAAACGCGGTTACCGCCTCTGA",
             "aa": "MSLMNAIEDFITTISRNTVSDAMPDYCDLRTIVNLTDSDRNFYPDMQVPFIAVTEAGHYASTFEVQGGFCEMDEDAPASQKFSFDGFINKVATAMATDFKSPGHKISVVIENDPSLGKSELKRLMAHQFRSIARTGVGMADILDEKIAKISPWVSRERVWLTCWTGRETLSPQELKSDMHRISKLASKAPKTQFGQVPAFSELTGLKIRHDAFLSTIKTALFDGGDGQLIDLIDVHQLGREIRHQVDRKGTDEAYRPVLASDRVRPHGKRNREDASPFFAPWLNYQLMGIDADAENNFININGMWHATLSVSMGPQQLLTFAQLKARIPRSVPYRIRMDVMPGGLKSLSWKGTLLTYTAFIPPLRPIWEAVEELKKRNRHDPVCVVTIVASTWGETKEEATLNLTLLTKAFQGWGVCEVTSTFGNPYRAWASTLLTARTGGGPHNLHLPLKDALSLLPLSRPASAWSDDASIVFPTPDGKIIPVGLASSKQNKHTEVIVGEPGSGKSLIMNMLSNAIVCNAQQKLPFIAVVDKGYSAQGQIQLIRDSLPPERKDEAIGWALRNHSDHCRNMFDIQLGARYPVAPELTWMKSMLTAMCIDSNTGLPPNSRDIDVLLERIISMAYRDKDETSPNKFSDGASPEITRALKASGLWFRHDAEWWDECPWYDVRDMLFSAGYVKEAQLAQFLAVPELSDMSQYINSPEIKASFGKVCRDNSQELLTDYIARVLSQACNTYKMLAGRTRFIINPATRIIAIDLNNVVGDKSAEGQLRTGIMYLFAGQISGGDFILPQYRKELMEAVPDMYRALHAEKIDQLDQEVKSKYYDELHNAKDVPFIFPMLETQDREQRKFGIRTVLCSQYVTDFPDSVLKSANSVYVMHCRPEDKQALIDHYQVPEVTIKKFMQIPKGPAADGSGTSLLAVFRTKAGRIAHILKNTAGPKELWALSSTQGDTALRDYLYDELDGPTARAILAENFEHGSAQRVIEFRRKKAGEQDAGNVTRHLAREIIEKRGYRL",
@@ -4086,7 +4106,7 @@
             "genes": [],
             "id": "MEGJMNBEGN_48",
             "locus": "MEGJMN_048",
-            "3di": "DVVVVVVVVVVVVVVXDDPFDDLLVQLQFQFWAFFDDPXCDXDPXDTATQWTAGLQQKIKWKKWFFAAAFADDQPDDPVVVXDLVLLLVLLLVLCFPXQADFQKKKKKKKFKALXXLLVLLLVLLVLLLVLLLXXLXXLSVLLSVVSVLCSVLXIDITMMMMIMGGDDDDDPVVSVVVVVVVVVVLVPDDPDXXXDDDDPVVVVVVVVVVVVSVVSSCVSSDVSDPXIXMDTDGXQVVLQVLLCLQXXPXDPDDDDDDDPVXXDDDPDDDDDPPDDPXDXDXSSSSSDDWDWDDFQFWIDGNQKIKWKKFFLDADLDDDALCLLQFLQXXSFIKMKMKIKHXXDLVVVDVVLVVLVVVCVDPVSVVVVVVSVVSVVVVNVFTKIWIWMMMMGMDSDPVRRVVSVVSSQVSCVVVVRTDMDXXXXCSVQSVVSSDXSSDDDDDPRIDIDGSSSSSSSDSNYDXDDPXDSQALQWFAFSSRDIHGAHLXDXPDXAAEEEEEAAPQQCRLVVVLSSVSSQLSXDDXDGAAEEEEEAPLLCQLSLVSSLVSDDPVCNVQEEEAEQDLXDLAAFALLQADLLDQADDPVSLVLVLLLLLLLLADLVLGDDPPDPLLSVLSSVLSVVLSVVLDPPDPQXXDQADDPVLVVLLVVLVDDDDDDPPVSRRDGSVVSLVSCVVVVNDVSSVSSXXSSGDFLLSSLVSLVDPVSCVVSVVXDDPPVPDGSSVSSSVSSVVCCVRPVNRHDGXXRDDDLSRRYYYYYCVVQDDDPDSSSLSSLSSSLSVSVVSSVVLLCLLVCLVVSLVRDDPVCNVVSVVVNVVSLXHAYEYEYEACLSNVPRPCSVVVVLVCLVPVVVSRYHYYYYYNAPVSDDLSSLVSHQKYKYAAHDPVCVVSCCVSVVDDPVXSVVSVPQDXDDDPVRQXXWIWIWIDDPVGIDIGIDIDDDALLSLCSSDPDPLLVLLLSLLSVVDXDXVSVVLSSVVXVXSXSVVSSVVSCVVVVXVXXXXDXSVSSVVSCVVVVDDD",
+            "3di": "DVVVVVVVVVVVVVVXDDPFDDLLVQFQFQFWAFFDDPXCDXDPXDTATQWTAGLQQKIKWKKWFFAAAFADDQPDDPVVVXDLVLLLVLLLVLCFPXQADFQKKKKKKKFKALXXLLVLLLVLLVLLLVLLLXFLXXLSVLLSVVSVLCSVLXIDITMMMMIMGGDDDDDPVVSVVVVVVVVVVLVPDDPDXXXDDDDPVVVVVVVVVVVVSVVSSCVSSDVSDPXIXMDTDGXQVVLQVLLCLQXXPXDPDDDDDDDPVXXDDDPDDDDDPPDDPXDXDXSSSSSDDWDWDDFQFWIDGNQKIKWKKFFLDADLDDDALCLLQFLQXXSFIKMKMKIKHXXDLVVVDVVLVVLVVVCVDPVSVVVVVVSVVSVVVVNVFTKIWIWMMMMGMDSDPVRRVVSVVSSQVSCVVVVRTDMDXXXXCSVQSVVSSDXSSDDDDDPRIDIDGSSSSSSSDSNYDXDDPXDSQALQWFAFSSRDIHGAHLXDXPDXAAEEEEEAAPQQCRLVVVLSSVSSQLSXDDXDGAAEEEEEAPLLCQLSLVSSLVSDDPVCNVQEEEAEQDLXDLAAFALLQADLLDQADDPVSLVLVLLLLLLLLADLVLGDDPPDPLLSVLSSVLSVVLSVVLDPPDPQXXDQADDPVLVVLLVVLVDDDDDDPPVSRRDGSVVSLVSCVVVVNDVSSVSSXXSSGDFLLSSLVSLVDPVSCVVSVVXDDPPVPDGSSVSSSVSSVVCCVRPVNRHDGXXRDDDLSRRYYYYYCVVQDDDPDSSSLSSLSSSLSVSVVSSVVLLCLLVCLVVSLVRDDPVCNVVSVVVNVVSLXHAYEYEYEACLSNVPRPCSVVVVLVCLVPVVVSRYHYYYYYNAPVSDDLSSLVSHQKYKYAAHDPVCVVSCCVSVVDDPVXSVVSVPQDXDDDPVRQXXWIWIWIDDPVGIDIGIDIDDDALLSLCSSDPDPLLVLLLSLLSVVDXDXVSVVLSSVVXVXSXSVVSSVVSCVVVVXVXXXXDXSVSSVVSCVVVVDDD",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -4094,8 +4114,8 @@
                     "query_cov": 0.97,
                     "subject_cov": 0.98,
                     "identity": 0.118,
-                    "score": 1534.0,
-                    "evalue": 6.217e-30,
+                    "score": 1540.0,
+                    "evalue": 3.409e-30,
                     "description": "Protein TraC"
                 },
                 {
@@ -4104,8 +4124,8 @@
                     "query_cov": 0.92,
                     "subject_cov": 0.99,
                     "identity": 0.233,
-                    "score": 2738.0,
-                    "evalue": 1.078e-54,
+                    "score": 2750.0,
+                    "evalue": 3.468e-55,
                     "description": "Protein IcmB (DotO)"
                 },
                 {
@@ -4113,13 +4133,14 @@
                     "id": "7o43",
                     "query_cov": 0.93,
                     "subject_cov": 0.97,
-                    "identity": 0.101,
+                    "identity": 0.102,
                     "score": 1125.0,
-                    "evalue": 1.292e-21,
+                    "evalue": 1.027e-21,
+                    "chain": "B",
                     "description": "TrwK/VirB4unbound dimer complex from R388 type IV secretion system determined by cryo-EM."
                 }
             ],
-            "prostt5_confidence": 55.37,
+            "prostt5_confidence": 55.42,
             "baktfold": true,
             "annotation_confidence": "high",
             "length": 1016
@@ -4334,7 +4355,7 @@
                 "UniRef:UniRef90_A0A6C0L6X5",
                 "afdb_v6:afdbclusters_A0AAP6CTH1",
                 "afdb_v6:swissprot_P05839",
-                "pdb:pdb_8cit"
+                "pdb:pdb_8cit_C"
             ],
             "nt": "ATGGAAAGCCAGCGGGAACGTACAGGCATGGAGACTTTCGTGTTACTGGTGAAATTCTGGTCCGCCATTATTTATTTCCCAGTATGCCTGCTATTCGCCTTTGTCTGTACCATATCGTCTAGAAAAGGTTCTTTTGAGCTTGCAGTGCTGTTCTGGGCACTGTTCGTGACGCCATTCATCATTCGGCAGTTTACCCTACAAAAACGCCGCCGCGCCCTGAACAGCGTGGTGGCTGCCGTCAGTGGTGAGGAGTTTATGCCGCAGAAAGGGAACGTCATCATCTCGGGCAACCGGACCTATCTGGGCGTGGATGCCATCCGGGGAACCCTGCTCTACGTCAGTATGCGCCGCAAGGGTGAATACGATGTGATGGGGATGGATATGTCCAGCTGGACGCGCGTGGAGTATAAGGGGGATGTCATCACCCTCAAAACCAAAAACCCGGAACTCCCCAGCGTCAGCGTCGATGCACCGGGCGGTGAGAAGTATTCCGCTGCGCTGTATGACGTCATCTGCGCGATGGAACACCGGCAGTATGCCGACCTGCAGTTCCCTCAGAAGGCCCATGAGCGTGCCCGCAACGCCCGCAAAGAGACCGGCCTGACAGTGTTCAGCTACACCTGA",
             "aa": "MESQRERTGMETFVLLVKFWSAIIYFPVCLLFAFVCTISSRKGSFELAVLFWALFVTPFIIRQFTLQKRRRALNSVVAAVSGEEFMPQKGNVIISGNRTYLGVDAIRGTLLYVSMRRKGEYDVMGMDMSSWTRVEYKGDVITLKTKNPELPSVSVDAPGGEKYSAALYDVICAMEHRQYADLQFPQKAHERARNARKETGLTVFSYT",
@@ -4380,7 +4401,7 @@
                 {
                     "source": "swissprot",
                     "id": "P05839",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 1.0,
                     "identity": 0.236,
                     "score": 332.0,
@@ -4405,10 +4426,11 @@
                     "identity": 0.175,
                     "score": 200.0,
                     "evalue": 0.0007477,
+                    "chain": "C",
                     "description": "The FERM domain of human moesin mutant L281R"
                 }
             ],
-            "prostt5_confidence": 57.86,
+            "prostt5_confidence": 57.91,
             "baktfold": true,
             "annotation_confidence": "medium",
             "length": 208
@@ -4470,7 +4492,7 @@
             ],
             "id": "MEGJMNBEGN_53",
             "locus": "MEGJMN_053",
-            "3di": "DDPDPDVPPVVVVVVVVVVVVVVVLVLVVVVVVPVVLVVLLVVLVVVVVDDVVPVVVVLVVVLVVCVVVVDPVDDDDPVSVVVSCVVVVVVVCSVVVSSVVSVVVVVVPDPPDDPDDDDXDFLXXLLVLLVVXDXXXXVLLXXDDDXVXXXDPPDLXXXLVDDLVVVCVVVVXDVPVXDDLVVSLVVLLVVLXVVXVDDPXXXVSSLLLLLSLLLLCLLVVNLVVSVVSLVVSXVXXDDPDPVVVVVVVXXDDDDSVVSVVSSVVSCVDVXXVVXVVXXVVSQVSVCVXXVDDDDDDPXXXXXWDXXDVVSXXXXXXDXXXXWXWXXXXXXXXIXIMIXGGPVDDDXDXVVSVVSVVVSVVVVVVSVXDXDDDDDDVXDDVDDDPSDDDDPPDPPPPPPPPPDDDDPDDDDDDPDPDPPDDDPDDPPDDPDDDDDDDDDDPDDDPDDPDDDDDPDDPPPPDDDPPPPDPPDD",
+            "3di": "DDPDPDVPPVVVVVVVVVVVVVVVLVLVVVVVVPVVLVVLLVVLVVVVVDDVVPVVVVLVVVLVVCVVVVDPVDDDDPVSVVVSCVVVVVVVCSVVVSSVVSVVVVVVPDPPDDPDDDDXDFLXXLLVLLVVXDXXXXVLLXXDDDXVXXXDPPDLXXXLVDDLVVVCVVVVXDVPVXDDLVVSLVVLLVVLXVVXVDDPXXXVSSLLLLLSLLLLCLLVVNLVVSVVSLVVSXVXXDDPDPVVVVVVVXXDDDDSVVSVVSSVVSCVDVXXVVXVVXXVVSQVSVCVXXVDDDDDDPXXXXXWDXXDVVSXXXXXXDXXXXWXWXXXXXXXXIXIMIXGGPVDDDXDXVVSVVSVVVSVVVSVVSVXDXDDDDDDXXDDVDDDPSDDDDPPDPPPPPPPPPDDDDPDDDDDDPDPDPPDDDPDDPPDDPDDDDDDDDDDPDDDPDDPDDDDDPDDPPPPDDDPPPPDPPDD",
             "prostt5_confidence": 43.53
         },
         {
@@ -4493,7 +4515,7 @@
                 "afdb_v6:afdbclusters_A0AAX3AI07",
                 "afdb_v6:swissprot_Q9I106",
                 "cath:cath_4xvwC01",
-                "pdb:pdb_6mhh"
+                "pdb:pdb_6mhh_A"
             ],
             "nt": "ATGACGATGAACCTGCTTATATATAAGGCCACAGCGATGATGACTCCGACATTTAATGCCCGTATCTCAGGAAATAACCTGATTGCTTCACTGAATGACGACACACCGATTTTTTCCCTCAATGTGAGCGAGGACCCGAGTTTCTGGATCGAGGGAGGCACGCTGATGGTCAGCCTGAATACCGACAGCAGCCATCCGGTATATCGGGCCCTGGACTACAAAGAGGCCGAACAACTGCTGTCTGTCATTACCCTGGTTCTCTGCAATCGTAAGCCGAAAATGAAGTGGAAGAGCACCATCCTGCCCGCGGCTGCACTGCTGGTTACCTGTTTTGCCGTCTGGCGTTTTGCACCTGCCCCCCCCTCACCGGGCATGCCACCGTTCGGACAGGCAGAACCCCGGAATGCCACCGCAGAATCGGCTCCGCCACGTTTCCAGGGATTACCGCAGCTGCGCAACCCTGCGCCGCGGAACCCCTATTTTGGCCACAACACAACACGGAATGCCGATGATGGCCAGACGATGCCGGCAAGAGACCCAGCCCGGCCTTCTGCAGCCCGGCCGGCTTCCGTGGCCAGCCAGGAAACGCTGAGTCCGCATATTATGCAGAATCTGCAGAAAGCGGCCGGACGCGGCTATTTTACTGTCCCCCTGTCTTCTGGACACGAGCGCACGCTCTACATCTTTGCCGATCCGCAATGTCCGCACTGCCAGGACTTTGAGCCACTTTTTGAAGCCCTGAGCACACGTTACAACGTTGAAATTTTCCCGGTCACGTATGTCGGCGGCAAACAGTCTTCACAACAGATACAGCCTGTCCTGTATCTCAATAAGGACCAGCGCGCGGCCGCCTGGAAGAAACTGTTTTCGGTTGACGATGGCATGCTCACCATTGGCAAAAAGAAAACCGGTGACGATCAAAAAGAAGCCCCGGCACAACGCGATGATAAGCGCTGGAAAATCGCCGGCGAGGCGCTGGCCATCAATGATGTCGCGTTCAGCCAATACCATATCCCTGGCACGCCGTGGGTGGTTGCTGACGACGGCCGCCACGTACCACAGTCAATGATGAAAGATCCGGCCACCATGCAAGCCTTCATAGCAGGGCACAGCAAAGCGGAGAACTGA",
             "aa": "MTMNLLIYKATAMMTPTFNARISGNNLIASLNDDTPIFSLNVSEDPSFWIEGGTLMVSLNTDSSHPVYRALDYKEAEQLLSVITLVLCNRKPKMKWKSTILPAAALLVTCFAVWRFAPAPPSPGMPPFGQAEPRNATAESAPPRFQGLPQLRNPAPRNPYFGHNTTRNADDGQTMPARDPARPSAARPASVASQETLSPHIMQNLQKAAGRGYFTVPLSSGHERTLYIFADPQCPHCQDFEPLFEALSTRYNVEIFPVTYVGGKQSSQQIQPVLYLNKDQRAAAWKKLFSVDDGMLTIGKKKTGDDQKEAPAQRDDKRWKIAGEALAINDVAFSQYHIPGTPWVVADDGRHVPQSMMKDPATMQAFIAGHSKAEN",
@@ -4534,46 +4556,47 @@
             ],
             "id": "MEGJMNBEGN_54",
             "locus": "MEGJMN_054",
-            "3di": "DKDKFWKWFDDPPDDXXWIWDDDAQWIFTDGPVRDTPDIDGLDDDWDWDDDPQFIWTDXPDPDPDTITGXDDPVSSVVVVVVSCVSNVVDDDPDDPDDPXVVVVVVVVVVVVCVVPDDDDDPPPDDDPDDDDDPDPDPDDDDDDDPDDDPDPDDDDDDPPPDDDPDDDPDPPDDDDDDDPPDDPDPDDPDPXPXDFDDPVLLVLVVVLVVVLLDKDWLAPPAQFEKEWEAFLQDPVQLVCVVLVVVVSVRHTYIYQYAYDPXXPLSLLLSLLLSPDDSVCSNVSSVQSSPDDPXXXDXDDDDPDPPPDDDPVVVVVVSSVSSVVSNVSSVVSCVSSVDPDDTWIATSVGHTDDSVLSNDSVVVVVVSVVXDPVVV",
+            "3di": "DKDKFWKWFDDPPDDXXWIWDDDAQWIFTDGPVRDTPDIDGLDDDWDWDDDPQFIWTDXPDPDPDTITGXDDPVSSVVVVVVSCVSNVVDDDPDDPDDPCVVVVVVVVVVVVCVVPDDDDDPPPDDDPDDDDDPDPDPDDDDDDDPDDDPDPDDDDDDPPPDDDPDDDPDPPDDDDDDDPPDDPDPDDPDPXPXDFDDPVLLVLVVVLVVVLLDKDWLAPPAQFEKEWEAFLQDPVQLVCVVLVVVVSVRHTYIYQYAYDPXXPLSLLLSLLLSPDDSVCSNVSSVQSSPDDPXXXDXDDDDPDPPPDDDPVVVVVVSSVSSVVSNVSSVVSCVSSVDPDDTWIATSVGHTDDSVLSNDSVVVVVVSVVXDPVVV",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "Q9I106",
                     "query_cov": 0.44,
-                    "subject_cov": 0.58,
+                    "subject_cov": 0.59,
                     "identity": 0.165,
                     "score": 304.0,
-                    "evalue": 9.074e-06,
+                    "evalue": 9.337e-06,
                     "description": "Thiol:disulfide interchange protein DsbG"
                 },
                 {
                     "source": "afdb",
                     "id": "A0AAX3AI07",
-                    "query_cov": 0.99,
+                    "query_cov": 1.0,
                     "subject_cov": 0.97,
-                    "identity": 0.959,
-                    "score": 2067.0,
-                    "evalue": 6.413e-50,
+                    "identity": 0.962,
+                    "score": 2071.0,
+                    "evalue": 6.181e-50,
                     "description": "Conjugal transfer protein TrbB"
                 },
                 {
                     "source": "pdb",
                     "id": "6mhh",
-                    "query_cov": 0.44,
-                    "subject_cov": 0.84,
+                    "query_cov": 0.45,
+                    "subject_cov": 0.85,
                     "identity": 0.214,
                     "score": 316.0,
-                    "evalue": 3.093e-06,
+                    "evalue": 3.186e-06,
+                    "chain": "A",
                     "description": "Proteus mirabilis ScsC linker (residues 39-49) deletion and N6K mutant"
                 },
                 {
                     "source": "cath",
                     "id": "4xvwC01",
                     "query_cov": 0.45,
-                    "subject_cov": 0.94,
+                    "subject_cov": 0.95,
                     "identity": 0.201,
                     "score": 295.0,
-                    "evalue": 8.24e-06,
+                    "evalue": 8.472e-06,
                     "description": "Glutaredoxin"
                 }
             ],
@@ -4603,7 +4626,7 @@
                 "afdb_v6:afdbclusters_A0A379SFQ2",
                 "afdb_v6:swissprot_Q5ZYC6",
                 "cath:cath_1e9sG01",
-                "pdb:pdb_6sz9"
+                "pdb:pdb_6sz9_A"
             ],
             "nt": "ATGCAACAAAAGCAGAAACCAGTCGATGCCGCCCGGCTGCAGCGTCAGGTACATCAGGGCATGGTCGAAGAGATGGCGTATCGTACCGGCCCCCTGCTGCTCGCCATTATCGTCATATTTGGTGCTGCGATAGTCTGGCCTGTCCTTTTATGGGTGGCCATTCCGGTCATGCTGGTCTGGGTCCCGATGTTCATGCTGAATGAATTCAGAATGCCGGCGAGGATGCCAATGGACATGGACAGACTGGACCCGTCAACGGAAACCATGCGGCCCGGCAAATTGCTGGGCTTTCTTCCCGTTACAAAGCTGAGCCGCCATATGGATAATGCGGCGGGCGTTTTCTATACCGGGTATGAGCGCATGCTCGATGGCGGCCGGGAGATATGGCTGCGCATGGATGACCTGACACGCCATCTCATTCTCCTGGCCACTACCGGTGCCGGCAAAACGGAGATGTTACTCGGCTTTGTGTTAAATGCGCTGTGCTGGGCGAAAGGGCTGATCTTCTCTGACGGTAAGGCTCAGAATGACGTCTGGTTCGCTGTCGCCTCCCTGTCCCGCCGCTTTGGCCGTGAAGACGATCTTCGGTTACTGAATTACATCACCGGCGGCCAGAGCCGCTCTCAGCGCCTGCTGGAGAATGATAAATCACGCCAACAGTCCAATAACACGAACCCGTTTGCGTTGGCCCAGGAAACCTACATCACGCAGCTGATGGACTCCATGATGCCGGAGGCCGGCAACGACCGCACCTGGCAGGAGAAAGCTAAGGGGATGAACCAGGTCCTGACAAAGGCCCTGATTTACAAAAGCCGGAAAGAGCAAAAGGTGATGTCACAGCGGCTGATTCAGGAGTACCTCTCTCTGGATAAGTTCGCGGAACTCTATCTGCAGGCTGAAGCAGAGGAATGGCACGAAGAAATTCGTACCGGTCTGCGTAATTATCTGTCAACCAGCGTGCCGGGCTTTGATATGAGCCTGATCACCAAACCATCAGAGTGGTCGCAGGAAGCACGTAACCAGCATGGTTATCTGACGAGCCAGTACAACCGTATGTTGTCACTATTCAGCGATACCTATGGCCATGTTTTTTCGTCCGGCGCCGGCGATATTGACCTGCGGGATGTGGTTCACAATGATCGCATCCTCGTCATACTCATCCCGGCACTGGAACTCTCCGCGTCAGAAGCACTTACACTGGGGCGCCTGACGACCTCACAGCTGGCGATGATCCTGAGCCAGGACCTGGGCGAAAGGATGGAGGGGAAAGCGGAAGACATTCTGGTTATCAAGAAATTCAGGGACCGTTTCCCGTTTATATGGCTCGCTGATGAAGTGGGGTCCTACTATTCCGATACCATCGGCCAGCTGGCCACACAGGTCCGTTCCCTCGGTTATGCGCTCGTTCTGGCAGGTCAGGACCTGCAGAAACTCAAAACGGCAGTAGGGGACAAACTCTGGACGCTGCTCGGCAACATGTTCACCCGCATTTTCGGGACCATTACAGATCCAACTGAAACCGCTGAATTTGCCGCAAAATCAGCCGGGATGGAATATCAGGCCATCCAGGACAGTATGGAATACCGCCCCGGCGCAATCAGCGGGAGCTATGCCGATACCGGTCGCGTTACGGTCCAGGAGAAATCAAAACTTCCCTTTGATGAATTGCAGACCTTAAACCAGGGTGAACAGGCAACTATCTTCAAAGGAGCCGTCATCCGTAACAATGCCCTGTATATCGCTGATGACGACAAAATCACTGATAAGGACGTCCGCATCAACCGGTTTGTTGAGGTGGAATGGCCAACGTATGACAGCCTGGCTCACCTGCTGCCGGCAAAAGTCCGCCGTGACCGCCCTCGTCCGGCCAGTATCAACCGCATTATGGCTATCGTGAAAAATGACAAGATCAGACACGCCCCTGACAGCATGATCATTCAGGATGGCGTGCTGTATGCCATTGCCGATGAAGCCATGTATTTCGACGAAGTCGCCCCCACGCCACCCGATGCAGTCCAGCGCGCGACGCAACTGCTCAGCCTCGCCGCCTCGGTACTGACCGAGACCAGAGGCCGTTACAGCGTCGAATACCCGGAGCCAGAAAAACTGTCCGTCAAAAAGGATGAGTTTGAAAAATACCAGCACATTCACCAGTCGGCCGTTACTCAGCAGGCTGACGGTTTCGTTTACTGA",
             "aa": "MQQKQKPVDAARLQRQVHQGMVEEMAYRTGPLLLAIIVIFGAAIVWPVLLWVAIPVMLVWVPMFMLNEFRMPARMPMDMDRLDPSTETMRPGKLLGFLPVTKLSRHMDNAAGVFYTGYERMLDGGREIWLRMDDLTRHLILLATTGAGKTEMLLGFVLNALCWAKGLIFSDGKAQNDVWFAVASLSRRFGREDDLRLLNYITGGQSRSQRLLENDKSRQQSNNTNPFALAQETYITQLMDSMMPEAGNDRTWQEKAKGMNQVLTKALIYKSRKEQKVMSQRLIQEYLSLDKFAELYLQAEAEEWHEEIRTGLRNYLSTSVPGFDMSLITKPSEWSQEARNQHGYLTSQYNRMLSLFSDTYGHVFSSGAGDIDLRDVVHNDRILVILIPALELSASEALTLGRLTTSQLAMILSQDLGERMEGKAEDILVIKKFRDRFPFIWLADEVGSYYSDTIGQLATQVRSLGYALVLAGQDLQKLKTAVGDKLWTLLGNMFTRIFGTITDPTETAEFAAKSAGMEYQAIQDSMEYRPGAISGSYADTGRVTVQEKSKLPFDELQTLNQGEQATIFKGAVIRNNALYIADDDKITDKDVRINRFVEVEWPTYDSLAHLLPAKVRRDRPRPASINRIMAIVKNDKIRHAPDSMIIQDGVLYAIADEAMYFDEVAPTPPDAVQRATQLLSLAASVLTETRGRYSVEYPEPEKLSVKKDEFEKYQHIHQSAVTQQADGFVY",
@@ -4653,7 +4676,7 @@
                 {
                     "source": "swissprot",
                     "id": "Q5ZYC6",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.81,
                     "identity": 0.22,
                     "score": 1778.0,
@@ -4678,6 +4701,7 @@
                     "identity": 0.236,
                     "score": 1006.0,
                     "evalue": 8.762e-20,
+                    "chain": "A",
                     "description": "Type IV Coupling Complex (T4CC) from L. pneumophila."
                 },
                 {
@@ -4715,7 +4739,7 @@
                 "afdb_v6:afdbclusters_V5RP04",
                 "afdb_v6:swissprot_Q68VT0",
                 "cath:cath_1bysA00",
-                "pdb:pdb_1byr"
+                "pdb:pdb_1byr_A"
             ],
             "nt": "ATGTTTAAAAAAATACTGGTAGCAGCCGTGATGGCCACCACACTCTCTTCGTCCCTGTCCGCTATCGCCGCCCCTTCCGTGCAGGTCGGTTTCAGTCCGGAAGGGACCGCACAGGAACTGGTACTGAAGACCATTAACAACGCACAAAGCTCTGTGCGTATGTTGGGTTACAACTTAACCGCTGCGGATATTGCAAAAGCCCTGGCGTCGGCCAGCCGGCGTGGTGTGGATGTTAAAGTCATCCTGGATAAGAGAGAGAACCAGAACAAATATTCGAAAGCGGCACTCAATATACGTAAGCGTTAA",
             "aa": "MFKKILVAAVMATTLSSSLSAIAAPSVQVGFSPEGTAQELVLKTINNAQSSVRMLGYNLTAADIAKALASASRRGVDVKVILDKRENQNKYSKAALNIRKR",
@@ -4758,7 +4782,7 @@
                 {
                     "source": "swissprot",
                     "id": "Q68VT0",
-                    "query_cov": 0.91,
+                    "query_cov": 0.92,
                     "subject_cov": 0.5,
                     "identity": 0.203,
                     "score": 218.0,
@@ -4768,8 +4792,8 @@
                 {
                     "source": "afdb",
                     "id": "V5RP04",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.98,
+                    "query_cov": 0.99,
+                    "subject_cov": 0.99,
                     "identity": 1.0,
                     "score": 574.0,
                     "evalue": 4.487e-14,
@@ -4778,18 +4802,19 @@
                 {
                     "source": "pdb",
                     "id": "1byr",
-                    "query_cov": 0.72,
-                    "subject_cov": 0.48,
+                    "query_cov": 0.73,
+                    "subject_cov": 0.49,
                     "identity": 0.554,
                     "score": 248.0,
                     "evalue": 2.858e-05,
+                    "chain": "A",
                     "description": "CRYSTAL STRUCTURE OF A PHOSPHOLIPASE D FAMILY MEMBER, NUC FROM SALMONELLA TYPHIMURIUM"
                 },
                 {
                     "source": "cath",
                     "id": "1bysA00",
-                    "query_cov": 0.72,
-                    "subject_cov": 0.48,
+                    "query_cov": 0.73,
+                    "subject_cov": 0.49,
                     "identity": 0.554,
                     "score": 240.0,
                     "evalue": 3.789e-05,
@@ -4809,7 +4834,7 @@
             "strand": "-",
             "frame": 3,
             "gene": "tnpC",
-            "product": "hypothetical protein",
+            "product": "IS66 family transposase",
             "db_xrefs": [
                 "GO:0004803",
                 "RefSeq:WP_015632444.1",
@@ -4821,7 +4846,7 @@
                 "afdb_v6:afdbclusters_A0A765BM01",
                 "afdb_v6:swissprot_P50360",
                 "cath:cath_af_P96354_1_380_3.30.420.10",
-                "pdb:pdb_6xgw"
+                "pdb:pdb_6xgw_A"
             ],
             "nt": "ATGAGTCAGGACTATCTCGCCCGTATCACCGCGCTGGAAGAAGAACTTCGCCGGAAAGACAGCCAGCTCAGTCTCGTTGCCGAGACTGAGGCCTTCCTGCGCTCTGCGCTGACCCGCGCTGAAGAAAAGATCGAGGAAGACGAACGGGAGATAGAACACCTGAGGTCTCAGATAGAAAAACTGCGCCGTATGATGTTCGGCACCCGTTCTGAAAAACTGCGCCGCGAGGTGGCACAGGCCGAAGCGCTGCTGAAACAGCGCGAACAGGCGAGCGATCGTTACAGTGGGCGGGAAGACGACCCGCAGGTTCCCCGCCAGCTCCGTCAGTCCCGGCACCGTCGTCCGCTTCCGGAACATCTTCCCCGTGAGATACTCCGACTGGAGCCGGAAGAAACCTGCTGCCCGGCATGTGGCGGTGAAATGGCGTACCTCAGCGAAGTCAGCGCGGAGCAGCTGGAGCTGGTTGCCAGCGCCCTGAAAGTGATCCGCACAGTGCGGGTAAAAAAAGCCTGCACAAAATGTGACGGTATCGTGGAAGCTCCCGCGCCGTCACGTCCTGTCGAGCGGGGTATCGCCGGACCGGGTCTGCTGGCCCGTGTGTTAACAGCCAAATACTGTGAACATCTGCCGCTGTACCGCCAGACGGAAATCCTTGCCCGCCAGGGGGTGGAGCTGAGCCGCGCACTGCTCTCCAACTGGGTGGATGCGTGCTGCCGTTTAATGGCGCCGCTGGACGAAGCCCTTTATCACTACGTGATGAACTGCCGCAAACTGCATACAGATGATACTCCAGTGCCGGTGCTGGCGCCGGGCAGGAAAAAGACGAAAACCGGGCGTATCTGGACGTATGTCCGGGATGACCGGAATGCCGGTTCGTCAGATCCTCCGGCAGCGTGGTTCGCGTACTCACCGGACCGGCAGGGAAAACACCCGGAGCTGCACCTTCGCTCCTTCCGTGGCGTCCTGCAGGCAGATGCCTTCGCGGGGTATGACCGGCTGTTCAGTACATCGCGAGAAGGCGGCGTGCTGACAGAGGCGGCATGCTGGGCGCATGCCCGCCGAAAAATCCACGACGTGTACATCAGCAGCCAGAGCGCCACGGCGGAGGAAGCGCTGAAACGCATCGGCGAACTGTACGCCATCGAAGCGGAAATACGCGGCATGCCGGAGACAGAGCGTCTGGCGGCCAGACAGTCGCGGAGTGCGCCGCTGCTGGCGTCACTGCATGAGTGGATGGTGGAGAAAAGTGCGACACTGTCGAAAAAATCCCGGCTGGGAGAGGCGTTCACGTATGCCCTGAACCAGTGGGATGCCCTGTGTTACTACTGCCGTGACGGTCTGGCGGAACCCGACAATAACGCCGCGGAGCGGGCGCTTCGCGCCGTCTGCCTGGGAAAGAAAAACTACATCTTCTTCGGGAGCGATCATGGTGGCGAACGTGGTGCACTGCTGTACGGACTGATCGGAACGTGCCGTCTGAACGGTATCGATCCAGAAGCGTATCTGCGCCACATCCTGAGCGTTCTGCCTGAGTGGCCTTCCAACAGGGTTGGTGAACTTCTGCCGTGGAACGTGGCTATACCTGCCTGA",
             "aa": "MSQDYLARITALEEELRRKDSQLSLVAETEAFLRSALTRAEEKIEEDEREIEHLRSQIEKLRRMMFGTRSEKLRREVAQAEALLKQREQASDRYSGREDDPQVPRQLRQSRHRRPLPEHLPREILRLEPEETCCPACGGEMAYLSEVSAEQLELVASALKVIRTVRVKKACTKCDGIVEAPAPSRPVERGIAGPGLLARVLTAKYCEHLPLYRQTEILARQGVELSRALLSNWVDACCRLMAPLDEALYHYVMNCRKLHTDDTPVPVLAPGRKKTKTGRIWTYVRDDRNAGSSDPPAAWFAYSPDRQGKHPELHLRSFRGVLQADAFAGYDRLFSTSREGGVLTEAACWAHARRKIHDVYISSQSATAEEALKRIGELYAIEAEIRGMPETERLAARQSRSAPLLASLHEWMVEKSATLSKKSRLGEAFTYALNQWDALCYYCRDGLAEPDNNAAERALRAVCLGKKNYIFFGSDHGGERGALLYGLIGTCRLNGIDPEAYLRHILSVLPEWPSNRVGELLPWNVAIPA",
@@ -4890,18 +4915,19 @@
                 {
                     "source": "pdb",
                     "id": "6xgw",
-                    "query_cov": 0.69,
-                    "subject_cov": 0.81,
+                    "query_cov": 0.7,
+                    "subject_cov": 0.82,
                     "identity": 0.144,
                     "score": 341.0,
                     "evalue": 3.404e-05,
+                    "chain": "A",
                     "description": "ISCth4 transposase, pre-reaction complex, PRC"
                 },
                 {
                     "source": "cath",
                     "id": "af_P96354_1_380_3.30.420.10",
                     "query_cov": 0.66,
-                    "subject_cov": 0.83,
+                    "subject_cov": 0.84,
                     "identity": 0.136,
                     "score": 474.0,
                     "evalue": 5.405e-08,
@@ -4910,7 +4936,7 @@
             ],
             "prostt5_confidence": 73.73,
             "baktfold": true,
-            "annotation_confidence": "high",
+            "annotation_confidence": "medium",
             "length": 530
         },
         {
@@ -4921,7 +4947,7 @@
             "strand": "-",
             "frame": 1,
             "gene": "tnpB",
-            "product": "hypothetical protein",
+            "product": "IS66 family insertion sequence element accessory protein TnpB",
             "db_xrefs": [
                 "RefSeq:WP_032414478.1",
                 "SO:0001217",
@@ -4976,7 +5002,7 @@
                 {
                     "source": "swissprot",
                     "id": "P50359",
-                    "query_cov": 0.96,
+                    "query_cov": 0.97,
                     "subject_cov": 0.97,
                     "identity": 0.446,
                     "score": 581.0,
@@ -4986,8 +5012,8 @@
                 {
                     "source": "afdb",
                     "id": "A0AAJ1YJK2",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.96,
+                    "query_cov": 0.99,
+                    "subject_cov": 0.97,
                     "identity": 0.608,
                     "score": 639.0,
                     "evalue": 9.027e-16,
@@ -5007,7 +5033,7 @@
             "strand": "-",
             "frame": 2,
             "gene": "tnpA",
-            "product": "hypothetical protein",
+            "product": "Transposase",
             "db_xrefs": [
                 "RefSeq:WP_015632445.1",
                 "SO:0001217",
@@ -5062,8 +5088,8 @@
                 {
                     "source": "swissprot",
                     "id": "P55502",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.81,
+                    "query_cov": 0.99,
+                    "subject_cov": 0.82,
                     "identity": 0.263,
                     "score": 307.0,
                     "evalue": 1.069e-06,
@@ -5072,8 +5098,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A291E5E4",
-                    "query_cov": 0.98,
-                    "subject_cov": 0.78,
+                    "query_cov": 0.99,
+                    "subject_cov": 0.79,
                     "identity": 0.35,
                     "score": 385.0,
                     "evalue": 1.153e-08,
@@ -5082,7 +5108,7 @@
             ],
             "prostt5_confidence": 73.34,
             "baktfold": true,
-            "annotation_confidence": "high",
+            "annotation_confidence": "medium",
             "length": 136
         },
         {
@@ -5124,7 +5150,7 @@
             "id": "MEGJMNBEGN_60",
             "locus": "MEGJMN_060",
             "3di": "DDPVVVCVVVVDDDDDDPPDPDDQWDWDDDPNPDIDGDPDDPDDDD",
-            "prostt5_confidence": 75.63,
+            "prostt5_confidence": 75.68,
             "length": 47
         },
         {
@@ -5188,8 +5214,8 @@
                 {
                     "source": "swissprot",
                     "id": "P0CF48",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.95,
                     "score": 637.0,
                     "evalue": 2.383e-16,
@@ -5198,8 +5224,8 @@
                 {
                     "source": "afdb",
                     "id": "G2IZT0",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.94,
+                    "query_cov": 1.0,
+                    "subject_cov": 0.95,
                     "identity": 0.694,
                     "score": 511.0,
                     "evalue": 1.565e-12,
@@ -5208,15 +5234,15 @@
                 {
                     "source": "cath",
                     "id": "af_P0CF43_8_88_1.10.10.60",
-                    "query_cov": 0.65,
-                    "subject_cov": 0.98,
+                    "query_cov": 0.66,
+                    "subject_cov": 0.99,
                     "identity": 0.962,
                     "score": 451.0,
                     "evalue": 2.696e-11,
                     "description": "Homeodomain-like"
                 }
             ],
-            "prostt5_confidence": 82.76,
+            "prostt5_confidence": 82.71,
             "baktfold": true,
             "annotation_confidence": "high",
             "length": 122
@@ -5240,7 +5266,7 @@
                 "afdb_v6:afdbclusters_A0A379I7K9",
                 "afdb_v6:swissprot_P0CF57",
                 "cath:cath_af_P0CF56_119_291_3.30.420.10",
-                "pdb:pdb_8ea4"
+                "pdb:pdb_8ea4_X"
             ],
             "nt": "ATGGCCCGTCGGTCGAAGGACTGGCAGGATCGTCGGTGCAAGCGCAAGCCTGATGATACTGACGCGCTGGCCCGTATCCATACCGTTATCGGCGATCTGCCCACCTATGGTTATCGTCGGGTATGGGCACTGCTGCGCAGACAATCAGAAACTGACGACATGGCGGTGATCAATGCCAAACGCGTATACCGCATCATGCGTCAGAATGCGCTGCTGCTTGAGCGTAAACCGGAAATACCGCCATCGAAGCGGGCGCATACAGGGAAAGTGGCCGTTGGAGAAAGTAACCAGCGGTGGTGCTCTGACGGCTTCGAGTTCAGCTGTGATAACGGTGAAAAACTGCGGGTCACGTTCGCTCTGGACTGTTGCGATCGCGAGGCACTTTACTGGGCGGCCAGTAACGGTGGATATGACAGTGAAACCGTGCAGGACGTCATGCTGGGTGCCGTGGAGCGTCGCTTCGGTAACAGCCTGCCGACATCCCCAGTTGAGTGGCTGACAGACAACGGTTCGGCCTACCGTTCTTATCAGACGCGTCAGTTCGCCAGAATGGTAGGACTGGAGCCTAAACATACGGCGGTACGTAGCCCGGAAAGCAACGGGATGGCAGAGAGCTTCGTGAAAACGATGAAGCGCGATTACATCAGCATCATGCCGAAACCCGACGGGTTAACAGCGGTAAAGAACCTTGCGGAGGCCTTCGAACATTACAACGAATGGCATCCGCACAGTGCACTGGGGTATCGTTCGCCACGGGAATATCTGCGGCGGCGAACCAGTAATGGGTTAAGTGATAAAAAGTGTATGGAAATATAG",
             "aa": "MARRSKDWQDRRCKRKPDDTDALARIHTVIGDLPTYGYRRVWALLRRQSETDDMAVINAKRVYRIMRQNALLLERKPEIPPSKRAHTGKVAVGESNQRWCSDGFEFSCDNGEKLRVTFALDCCDREALYWAASNGGYDSETVQDVMLGAVERRFGNSLPTSPVEWLTDNGSAYRSYQTRQFARMVGLEPKHTAVRSPESNGMAESFVKTMKRDYISIMPKPDGLTAVKNLAEAFEHYNEWHPHSALGYRSPREYLRRRTSNGLSDKKCMEI",
@@ -5284,7 +5310,7 @@
             ],
             "id": "MEGJMNBEGN_62",
             "locus": "MEGJMN_062",
-            "3di": "DDPDDPVVDDPVVPDDDDCVVLLVLLCVVCVQQVPDALVLSLLVSQVVCVVVVHDRDDSVSSVVSCVVVVSHDDDDDPDDPDPDDDPDDQADQAFLQEKEKDKDWDAAPVGFIKIKIWIATRNLRATQDMDIDRDDDALVRVLVSLVSSLCVVPNLDADPDAHEYEYAPDPSCPDPVSQVSCVVRRYHYDYDDPPDPSSSVSRVVVVVCLVRRQVVPDDRNHDVVVVVSVVVSSVSQQQQRQRVSLVRHGSVVSVVVVVVVVVPVVVVVPD",
+            "3di": "DDPDDPVVDDPVVPDDDDCVVLLVLLCVVCVQQVPDALVLSLLVSQVVCVVVVHDRDDSVSSVVSCVVVVSHDDDDDPDDPDPDDDPDDQADQAFLQEKEKDKDWDAAPVGFIKIKIWIATRNLRATQDMDIDRDDDALVRVLVSLVSSLCVVPNLDADPDAHEYEYAPDPSLPDPVSQVSCVVRRYHYDYDDPPDPSSSVSRVVVVVCLVRRQVVPDDRNHDVVVVVSVVVSSVSQQQQRQRVSLVRHGSVVSVVVVVVVVVPVVVVVPD",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -5292,8 +5318,8 @@
                     "query_cov": 0.99,
                     "subject_cov": 0.89,
                     "identity": 0.828,
-                    "score": 1797.0,
-                    "evalue": 6.384e-44,
+                    "score": 1804.0,
+                    "evalue": 4.863e-44,
                     "description": "Transposase InsD for insertion element IS2I"
                 },
                 {
@@ -5302,18 +5328,19 @@
                     "query_cov": 0.97,
                     "subject_cov": 0.86,
                     "identity": 0.996,
-                    "score": 1898.0,
-                    "evalue": 2.772e-46,
+                    "score": 1895.0,
+                    "evalue": 3.825e-46,
                     "description": "Insertion element IS2 transposase InsD"
                 },
                 {
                     "source": "pdb",
                     "id": "8ea4",
-                    "query_cov": 0.9,
-                    "subject_cov": 0.57,
+                    "query_cov": 0.91,
+                    "subject_cov": 0.58,
                     "identity": 0.17,
-                    "score": 471.0,
-                    "evalue": 2.734e-10,
+                    "score": 476.0,
+                    "evalue": 2.115e-10,
+                    "chain": "X",
                     "description": "V-K CAST Transpososome from Scytonema hofmanni, minor configuration"
                 },
                 {
@@ -5322,8 +5349,8 @@
                     "query_cov": 0.63,
                     "subject_cov": 0.99,
                     "identity": 0.86,
-                    "score": 1234.0,
-                    "evalue": 7.702e-30,
+                    "score": 1239.0,
+                    "evalue": 6.317e-30,
                     "description": "Ribonuclease H-like superfamily/Ribonuclease H"
                 }
             ],
@@ -5448,32 +5475,32 @@
             ],
             "id": "MEGJMNBEGN_64",
             "locus": "MEGJMN_064",
-            "3di": "DAKDFDDDDPPXFDALLVLLLVQFDDPPDDDDPVDDPDPXDDDDDPDSVVSLVVSVVVVVVDPXXXXDWDDDADPVRXIXXXXXXKDKDXXDDDSVCLSVVLVVLLVLDVPDRRQKTKMKDWDALPDDDDPVLVVVLVVLLCVLLVNNQWTKMWTWGPRDNTIMMIMITHQARNPPRDGRDRPPSSLSSQVSVLVSCVVVVHDHDDXQWDADPVRDTDGDDDDDDDDDPVQVVVCQFFLFDDPLNLCLVQPVVLLVVLVVDLQDALQSSQVSSVQSQWDWADDDQFIWIFGLPDDDXDIDTPCSSDVCSGCVNXCVRHNDHDHHPDSSVSSVVXDXDHXDPVXVDVDVVVVVVVVVVLVVLVVVLVVVVVVLVVVLVDLVVVLVVVLVVLVVVLVVVLVVLVVPDDDPVVSVVSNVVSVVVSVVSSVVSVVVSVVVSVVSVVVVVDDDDDSLSVLLVVLVVPNPSSVLSNVVVVVVVVVVPDDDDDXQXKKKFFDXDXXXXDDXPQWDWDADDSQWIWTDDPRDTQWTDSRRMIXGXDLXDXXLSSLLVVLVVCVVRXHAEMEYDDDPSSLLSNLLSQLVVCVVDVXRHHYDHDVVSSVVSVVVSVVVVVVDDPVVSVVVVVVVVVVXVVPVVDPPDPDDDD",
+            "3di": "DAKDFDDDDPPXFDALLVLLLVQFDDPPDDDDPVDDPDPXDDDDDPDSVVSLVVSVVVVVVDPXXXXDWDDDADPVRXIXXXXXXKDKDXXDDDSVCLSVVLVVLLVLDVPDRRQKTKMKDWDALPDDDDPVLVVVLVVLLCVLLVNRQWTKMWTWGPRDNTIMMIMITHQARNPPRDGRDRPPSSLSSQVSVLVSCVVVVHDHDDXQWDADPVRDTDGDDDDDDDDDPVQVVVCQFFLFDDPLNLCLVQPVVLLVVLVVDLQDALQSSQVSSVQSQWDWADDDQFIWIFGLPDDDXDIDTPCSSDVCSGCVNXCVRHNDHDHHPDSSVSSVVXDXDHXDPVXVDVDVVVVVVVVVVLVVLVVVLVVVLVVLVVVLVDLVVVLVVVLVVLVVVLVVVLVVLVVPDDDPVVSVVSNVVSVVVSVVSSVVSVVVSVVVSVVSVVVVVDDDDDSLSVLLVVLVVPNPSSVLSNVVVVVVVVVVPDDDDDXQXKKKFFDXDXXXXDDXPQWDWDADDSQWIWTDDPRDTQWTDSRRMIXGXDLXDXXLSSLLVVLVVCVVRXHAEMEYDDDPSSLLSNLLSQLVVCVVDVXRHHYDHDVVSSVVSVVVSVVVVVVDDPVVSVVVVVVVVVVXVVPVVPPPDPDDDD",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "Q00191",
-                    "query_cov": 1.0,
-                    "subject_cov": 0.72,
-                    "identity": 0.181,
-                    "score": 1272.0,
-                    "evalue": 2.046e-27,
+                    "query_cov": 0.96,
+                    "subject_cov": 0.71,
+                    "identity": 0.188,
+                    "score": 1274.0,
+                    "evalue": 1.235e-27,
                     "description": "Protein TraI"
                 },
                 {
                     "source": "afdb",
                     "id": "A0AAD0GU93",
                     "query_cov": 0.8,
-                    "subject_cov": 0.7,
+                    "subject_cov": 0.71,
                     "identity": 0.414,
                     "score": 1935.0,
-                    "evalue": 1.787e-42,
+                    "evalue": 9.75e-43,
                     "description": "Relaxase"
                 }
             ],
             "prostt5_confidence": 60.99,
             "baktfold": true,
-            "annotation_confidence": "low",
+            "annotation_confidence": "medium",
             "length": 643
         },
         {
@@ -5534,7 +5561,7 @@
             "id": "MEGJMNBEGN_65",
             "locus": "MEGJMN_065",
             "3di": "DVCVVVVVDPDPPDLVVLLVVLVVLVVVLVVCVVVVVDDPDPVVVVSVVVSVVSSVVSVVVVV",
-            "prostt5_confidence": 70.75
+            "prostt5_confidence": 70.8
         },
         {
             "type": "cds",
@@ -5597,8 +5624,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A7D5NNU8",
-                    "query_cov": 0.86,
-                    "subject_cov": 0.96,
+                    "query_cov": 0.87,
+                    "subject_cov": 0.97,
                     "identity": 0.27,
                     "score": 275.0,
                     "evalue": 2.681e-05,
@@ -5720,8 +5747,8 @@
             "genes": [],
             "id": "MEGJMNBEGN_68",
             "locus": "MEGJMN_068",
-            "3di": "DDDPPDDXFKKEKEXXDDDDPVXXVXDDVVCVVVCVVVXWWWWDDDPXXIIXXXXDDDVCVLVVCVVVPHDPVXSVVXVVDVVVPXDMXMDDDPDVVVVVVVVDPX",
-            "prostt5_confidence": 41.14
+            "3di": "DDDPPDDXFKKEKEXXDDDDPVXXVXDDVVCVVVCVVVXWWWWDDDPXXIIXXXXDDDVCVLVVCVVVPHDPVXSVVXVVDVVVPXDMXMDDDDDVVVVVVVVDPX",
+            "prostt5_confidence": 41.16
         },
         {
             "type": "cds",
@@ -5845,8 +5872,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A1I3V7E0",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.95,
+                    "query_cov": 0.98,
+                    "subject_cov": 0.96,
                     "identity": 0.41,
                     "score": 292.0,
                     "evalue": 2.619e-06,
@@ -5855,7 +5882,6 @@
             ],
             "prostt5_confidence": 52.39,
             "baktfold": true,
-            "annotation_confidence": "high",
             "length": 94
         },
         {
@@ -5952,7 +5978,7 @@
                     "description": "DUF4942 domain-containing protein"
                 }
             ],
-            "prostt5_confidence": 43.48,
+            "prostt5_confidence": 43.46,
             "baktfold": true,
             "annotation_confidence": "low",
             "length": 287
@@ -6013,7 +6039,7 @@
             "id": "MEGJMNBEGN_73",
             "locus": "MEGJMN_073",
             "3di": "DDPDDDDPVVVVVVVVVVLVVVLVVLVVVLVVDDPDDDDDPDPXSVVVSVVSVVVDDPPD",
-            "prostt5_confidence": 69.29
+            "prostt5_confidence": 69.34
         },
         {
             "type": "cds",
@@ -6094,7 +6120,7 @@
                 "afdb_v6:afdbclusters_A0A916J5U4",
                 "afdb_v6:swissprot_A2SJB0",
                 "cath:cath_af_Q47685_35_158_3.40.140.10",
-                "pdb:pdb_2qlc"
+                "pdb:pdb_2qlc_E"
             ],
             "nt": "GTGCTGTTTCTGGACAGCCAGAATGGTGTAATTGCTTTTGAAGAACTGTTCCAGGGGAGCATTAATACCTGCTCAATATACGTCCGCATCATTGTCCAAAAAGCGATGCAGTATAACGCCAGCAGTGTCATTCTGGCCCATAATCATCCTTCATCTAATCCTGTGCCGAGCGCTGCTGATAAGGCGCTGACACTACGCATAAAGGCGGCGTTATTGCTCGTAGAAGTTAATACGCACGATCATATGATCGTAACGGGCAATACGTTAACCTCCTTTGCAGAAAGCGGTCTGCTGTAG",
             "aa": "MLFLDSQNGVIAFEELFQGSINTCSIYVRIIVQKAMQYNASSVILAHNHPSSNPVPSAADKALTLRIKAALLLVEVNTHDHMIVTGNTLTSFAESGLL",
@@ -6136,7 +6162,7 @@
                 {
                     "source": "swissprot",
                     "id": "A2SJB0",
-                    "query_cov": 0.97,
+                    "query_cov": 0.98,
                     "subject_cov": 0.43,
                     "identity": 0.52,
                     "score": 484.0,
@@ -6146,7 +6172,7 @@
                 {
                     "source": "afdb",
                     "id": "A0A916J5U4",
-                    "query_cov": 0.97,
+                    "query_cov": 0.98,
                     "subject_cov": 0.42,
                     "identity": 0.52,
                     "score": 486.0,
@@ -6156,17 +6182,18 @@
                 {
                     "source": "pdb",
                     "id": "2qlc",
-                    "query_cov": 0.97,
+                    "query_cov": 0.98,
                     "subject_cov": 0.77,
                     "identity": 0.364,
                     "score": 357.0,
                     "evalue": 9.37e-09,
+                    "chain": "E",
                     "description": "The crystal structure of DNA repair protein RadC from Chlorobium tepidum TLS"
                 },
                 {
                     "source": "cath",
                     "id": "af_Q47685_35_158_3.40.140.10",
-                    "query_cov": 0.97,
+                    "query_cov": 0.98,
                     "subject_cov": 0.77,
                     "identity": 0.5,
                     "score": 457.0,
@@ -6174,7 +6201,7 @@
                     "description": "Cytidine Deaminase, domain 2"
                 }
             ],
-            "prostt5_confidence": 78.37,
+            "prostt5_confidence": 78.42,
             "baktfold": true,
             "annotation_confidence": "medium",
             "length": 99
@@ -6236,7 +6263,7 @@
             "id": "MEGJMNBEGN_76",
             "locus": "MEGJMN_076",
             "3di": "DDDDPVLVVLLVVLVVVLCVDDPPDDDDPDPVSVVVVVCVVCVPPPDVXDVDDDVPDDPVVVVD",
-            "prostt5_confidence": 58.69,
+            "prostt5_confidence": 58.74,
             "length": 65
         },
         {
@@ -6298,8 +6325,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A0N6WZP2",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.901,
                     "score": 810.0,
                     "evalue": 8.742e-18,
@@ -6373,7 +6400,7 @@
                 {
                     "source": "afdb",
                     "id": "A0A9Q6N187",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.92,
                     "identity": 0.216,
                     "score": 274.0,
@@ -6383,7 +6410,6 @@
             ],
             "prostt5_confidence": 44.17,
             "baktfold": true,
-            "annotation_confidence": "low",
             "length": 153
         },
         {
@@ -6447,7 +6473,7 @@
                     "source": "swissprot",
                     "id": "P11906",
                     "query_cov": 0.92,
-                    "subject_cov": 0.96,
+                    "subject_cov": 0.97,
                     "identity": 0.328,
                     "score": 225.0,
                     "evalue": 0.000411,
@@ -6456,8 +6482,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A4P7L671",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.98,
+                    "query_cov": 1.0,
+                    "subject_cov": 0.99,
                     "identity": 0.39,
                     "score": 314.0,
                     "evalue": 2.859e-06,
@@ -6490,7 +6516,7 @@
                 "afdb_v6:swissprot_P11904",
                 "cath:cath_1mwmA01",
                 "cath:cath_4a61A02",
-                "pdb:pdb_4a61"
+                "pdb:pdb_4a61_A"
             ],
             "nt": "ATGCGTATTTATGTTGATGACGGCTCTACTAACATTAAGCTGGCCTGGAAAGATGAAAACGGTGAAGTGAAAACCTTCATCAGTCCGAACAGCTTCAAGCCAGAGTGGTCACTGAATCTTTTCGGGGACGGCCAGTCCTCAAACTATGTTATCGAGGGTGAAAAGTTTTCTTTCGATCCGGGCAGTGCCGATGCGATTGTGACGACTGAAACGCGCTATCAGTACAGCCAGGTGAATACTGTTGCCATTCATCATGCGCTGCTGCACTCCGGTATCAAGCCCGGCGAGGTGGATGTGGTGGTAACGCTGCCTCTCTCAGAGTATCTGGACGCGGATTTTCAGCCGAATACAGTGAATATTTCGCGCAAGAAAAACAGCGTGAAACGTGAAGTCACCTTACAGGGTAAGAAGCCGGGCTTTACGATTGGAAAAGTCTCTGTGCTGCCTGAAAGTATTCCGGCCGGTTTTAATATTCTCACCAGCCTGAAGGATGACGATTCACTGCTGATTGTTGACCTCGGAGGCACGACGCTTGATGTGTCACACGTCCGTAGCAAAATGTCCGGCATCACCAATACCTGGTGTGATCCAAAAATTGGGGTTTCTATCGTGACCAATGGCATCAAAAATGCAATGGCGTCAGATACCCGAATCAGCTCCCTGCAGGCGGATAACATGATTATCCACCGTCAGGATAAAGACTGGATCGAGCACCGCCTCCCGGATGACAAACTGCGTAAGGCATTCTCTGAGGCATTCGCCGAAAAGGAACGTATCCTGATAAACCGCGTTATTGATGCCCTCGATCGCTTCACTGGTTTCACGCATGTGATGTGTGTGGGCGGCGGCGCTAAACTCATTTCTGAGGCCGTAAAAAAGGCGACCAACGTGCCGTCAGACCGGTTCTATACGAGCAAGGAACCTCAGTTTGACCTCGTGCTTGGCATGCTCGAAATGAAAGAAGGCAGCGCTAATGAGTGA",
             "aa": "MRIYVDDGSTNIKLAWKDENGEVKTFISPNSFKPEWSLNLFGDGQSSNYVIEGEKFSFDPGSADAIVTTETRYQYSQVNTVAIHHALLHSGIKPGEVDVVVTLPLSEYLDADFQPNTVNISRKKNSVKREVTLQGKKPGFTIGKVSVLPESIPAGFNILTSLKDDDSLLIVDLGGTTLDVSHVRSKMSGITNTWCDPKIGVSIVTNGIKNAMASDTRISSLQADNMIIHRQDKDWIEHRLPDDKLRKAFSEAFAEKERILINRVIDALDRFTGFTHVMCVGGGAKLISEAVKKATNVPSDRFYTSKEPQFDLVLGMLEMKEGSANE",
@@ -6535,7 +6561,7 @@
                     "source": "swissprot",
                     "id": "P11904",
                     "query_cov": 0.98,
-                    "subject_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.476,
                     "score": 1580.0,
                     "evalue": 6.549e-39,
@@ -6544,7 +6570,7 @@
                 {
                     "source": "afdb",
                     "id": "A0AAX2KLT6",
-                    "query_cov": 0.58,
+                    "query_cov": 0.59,
                     "subject_cov": 0.85,
                     "identity": 0.523,
                     "score": 908.0,
@@ -6554,18 +6580,19 @@
                 {
                     "source": "pdb",
                     "id": "4a61",
-                    "query_cov": 0.97,
-                    "subject_cov": 0.98,
+                    "query_cov": 0.98,
+                    "subject_cov": 0.99,
                     "identity": 0.477,
                     "score": 1630.0,
                     "evalue": 2.29e-40,
+                    "chain": "A",
                     "description": "ParM from plasmid R1 in complex with AMPPNP"
                 },
                 {
                     "source": "cath",
                     "id": "1mwmA01",
                     "query_cov": 0.5,
-                    "subject_cov": 0.89,
+                    "subject_cov": 0.9,
                     "identity": 0.5,
                     "score": 820.0,
                     "evalue": 1.477e-19,
@@ -6575,7 +6602,7 @@
                     "source": "cath",
                     "id": "4a61A02",
                     "query_cov": 0.43,
-                    "subject_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.442,
                     "score": 601.0,
                     "evalue": 6.658e-14,
@@ -6605,7 +6632,7 @@
                 "UniRef:UniRef90_A0A6C0ND78",
                 "afdb_v6:afdbclusters_A0A2M8S3H7",
                 "cath:cath_4p78B00",
-                "pdb:pdb_6g26"
+                "pdb:pdb_6g26_D"
             ],
             "nt": "ATGTTTTTTTCAGTCGGTATTGAATCACCAGTAAACTCAGACACTGCTTACGGTATTTCTGTACCTGCTTTTGACCGTTTTGATTATGGGTGCGTGTCAGCCGCCGATGAACAATCAGATATTCCTGTCATGGCGAGAGAGGCGATCCTGATGGTCGTTGAGGAAATGCTGCTCAGTGGAAAGCACTCTGTCGAGGATATTACAGACGCCGGGTTCATGGTTTACAGCGCTAACGCTGACTACGCGCATTGTGATTACTGGGTCATGATTGATGTAGACCTGAGCCAGTTCGAAGGGAAGCAGCAGAGGCTCAATATCACACTCCCTGACGTTCTGGTGAAGCGCATTGATGGCTTTATTCAGGGAAACAAAGCCGTATACAGGGACAGAAGCCATTTCCTTGCACAGGCAGCCCGTCATGAGCTGACGCAAAAAAACACATGA",
             "aa": "MFFSVGIESPVNSDTAYGISVPAFDRFDYGCVSAADEQSDIPVMAREAILMVVEEMLLSGKHSVEDITDAGFMVYSANADYAHCDYWVMIDVDLSQFEGKQQRLNITLPDVLVKRIDGFIQGNKAVYRDRSHFLAQAARHELTQKNT",
@@ -6650,8 +6677,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A2M8S3H7",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.98,
+                    "query_cov": 1.0,
+                    "subject_cov": 0.99,
                     "identity": 0.394,
                     "score": 557.0,
                     "evalue": 1.473e-13,
@@ -6661,17 +6688,18 @@
                     "source": "pdb",
                     "id": "6g26",
                     "query_cov": 0.99,
-                    "subject_cov": 0.98,
+                    "subject_cov": 0.99,
                     "identity": 0.28,
                     "score": 394.0,
                     "evalue": 2.347e-09,
+                    "chain": "D",
                     "description": "The crystal structure of the Burkholderia pseudomallei HicAB complex"
                 },
                 {
                     "source": "cath",
                     "id": "4p78B00",
                     "query_cov": 0.63,
-                    "subject_cov": 0.98,
+                    "subject_cov": 0.99,
                     "identity": 0.17,
                     "score": 194.0,
                     "evalue": 0.0007713,
@@ -6886,7 +6914,7 @@
                     "source": "swissprot",
                     "id": "P19767",
                     "query_cov": 0.49,
-                    "subject_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.212,
                     "score": 262.0,
                     "evalue": 6.746e-05,
@@ -6895,8 +6923,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A0B7IUN1",
-                    "query_cov": 0.67,
-                    "subject_cov": 0.87,
+                    "query_cov": 0.68,
+                    "subject_cov": 0.88,
                     "identity": 0.151,
                     "score": 321.0,
                     "evalue": 3.272e-06,
@@ -6984,7 +7012,7 @@
                 "afdb_v6:afdbclusters_A0A7T8TIZ4",
                 "afdb_v6:swissprot_P62555",
                 "cath:cath_1x75D00",
-                "pdb:pdb_4vub"
+                "pdb:pdb_4vub_A"
             ],
             "nt": "ATGCAGTTCACCGTCTACGAATACACACGCGAGAGCCATTATCGTCTTTTTGTGGATGTGCAGAGCGACATTGTCGAGACGCCTGGGCGACGCATAGTGATCCCGTTGCTGGAATCGCACCACTTATCAGAAAAGGTTAATCAGCAGCTTTTCCCGGTGGTTAGCGTCAATGGGAAAGAATACCGTGCCGTGACTTCCGAATTATCCGGAGTCTCTGTCAGTGTCATCGGCGACGCTGTGGCCGATCTCAGCCATGAGGCAAATGCCATTAAAAATGCCCTGAACCTGATGTTCTGGGGCATTTAA",
             "aa": "MQFTVYEYTRESHYRLFVDVQSDIVETPGRRIVIPLLESHHLSEKVNQQLFPVVSVNGKEYRAVTSELSGVSVSVIGDAVADLSHEANAIKNALNLMFWGI",
@@ -7031,8 +7059,8 @@
                 {
                     "source": "swissprot",
                     "id": "P62555",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.623,
                     "score": 566.0,
                     "evalue": 3.324e-12,
@@ -7041,8 +7069,8 @@
                 {
                     "source": "afdb",
                     "id": "A0A7T8TIZ4",
-                    "query_cov": 0.83,
-                    "subject_cov": 0.95,
+                    "query_cov": 0.84,
+                    "subject_cov": 0.97,
                     "identity": 0.588,
                     "score": 443.0,
                     "evalue": 6.239e-09,
@@ -7051,18 +7079,19 @@
                 {
                     "source": "pdb",
                     "id": "4vub",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.623,
                     "score": 554.0,
                     "evalue": 4.517e-12,
+                    "chain": "A",
                     "description": "CCDB, A TOPOISOMERASE POISON FROM ESCHERICHIA COLI"
                 },
                 {
                     "source": "cath",
                     "id": "1x75D00",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.584,
                     "score": 495.0,
                     "evalue": 1.048e-10,
@@ -7136,8 +7165,8 @@
                 {
                     "source": "swissprot",
                     "id": "Q46995",
-                    "query_cov": 0.99,
-                    "subject_cov": 0.99,
+                    "query_cov": 1.0,
+                    "subject_cov": 1.0,
                     "identity": 0.569,
                     "score": 232.0,
                     "evalue": 2.439e-06,
@@ -7164,7 +7193,7 @@
                 "afdb_v6:afdbclusters_W0FFK9",
                 "afdb_v6:swissprot_P18641",
                 "cath:cath_1umuA00",
-                "pdb:pdb_1ay9"
+                "pdb:pdb_1ay9_A"
             ],
             "nt": "GTGAAGGCGAGTGGAAAGTCAAAAAACACGGCAAAGAACGCCGTCGTATCTGGCGAAATCAACGCTTCGCCCCATACCTCGCGGTATGCAACGCATGACTCGGGGACCTTGTGGATTGCTGGTCCTTCAATGGTCGGGGACTTTCACCCCTTGATCTCTACCGGTCTCCCGGCGCACACTGTATGCATAACCAGTAAAATTAGAGTGTCAGGAGGAAAGATGAAGCTACAACTTTTCAGCACCGGGAAAGAACTCCCGCCACAGGCCCTTCCATTGTTTGCCGATCTGGCCAGCTGCGGTTTTCCCAGCCCTGCTGCTGACTATGTCGAGTCCGATCTGGATCTCCATGATTACTGCATACGGCATCCGAGCGCGACGTACTACCTGCGTGCCAGCGGAGACAGCATGGCCGACGGCAGTCTGTACAATGGCGATCTGCTGGTTGTGGACAGTGCTGAAAAGCCGCGGCACGGCGATATCGTTGTCGCCAGCGTACAGGGGGAGTTTACGGTGAAACGGCTTCTGCTGACGCCGCGACTGACGCTGCAGCCCATGAATGCCTCCTGGTCGCCGATTTATCCTGATCCCGACGAGCTGGATATCTTTGGCGTCGTCACGCATATCATCCACCGCCCGAGGGAGATGTACTGA",
             "aa": "MKASGKSKNTAKNAVVSGEINASPHTSRYATHDSGTLWIAGPSMVGDFHPLISTGLPAHTVCITSKIRVSGGKMKLQLFSTGKELPPQALPLFADLASCGFPSPAADYVESDLDLHDYCIRHPSATYYLRASGDSMADGSLYNGDLLVVDSAEKPRHGDIVVASVQGEFTVKRLLLTPRLTLQPMNASWSPIYPDPDELDIFGVVTHIIHRPREMY",
@@ -7205,8 +7234,8 @@
                 {
                     "source": "swissprot",
                     "id": "P18641",
-                    "query_cov": 0.63,
-                    "subject_cov": 0.99,
+                    "query_cov": 0.64,
+                    "subject_cov": 1.0,
                     "identity": 0.537,
                     "score": 642.0,
                     "evalue": 1.479e-14,
@@ -7215,8 +7244,8 @@
                 {
                     "source": "afdb",
                     "id": "W0FFK9",
-                    "query_cov": 0.68,
-                    "subject_cov": 0.99,
+                    "query_cov": 0.69,
+                    "subject_cov": 1.0,
                     "identity": 0.509,
                     "score": 631.0,
                     "evalue": 4.611e-14,
@@ -7225,18 +7254,19 @@
                 {
                     "source": "pdb",
                     "id": "1ay9",
-                    "query_cov": 0.49,
-                    "subject_cov": 0.99,
+                    "query_cov": 0.5,
+                    "subject_cov": 1.0,
                     "identity": 0.555,
                     "score": 508.0,
                     "evalue": 2.725e-11,
+                    "chain": "A",
                     "description": "WILD-TYPE UMUD' FROM E. COLI"
                 },
                 {
                     "source": "cath",
                     "id": "1umuA00",
                     "query_cov": 0.48,
-                    "subject_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.542,
                     "score": 476.0,
                     "evalue": 1.419e-10,
@@ -7271,7 +7301,7 @@
                 "afdb_v6:swissprot_P23832",
                 "cath:cath_3gqcD01",
                 "cath:cath_af_P04152_244_354_3.30.1490.100",
-                "pdb:pdb_6jum"
+                "pdb:pdb_6jum_F"
             ],
             "nt": "ATGTTTGCCCTGGCCGATGTGAACAGCTTCTATGCCAGCTGTGAACGTGTTTTCCGCCCGGATTTGAAAGGAAAGCCGATAGTCGTCCTGAGCAACAACGACGGGAACGTAATCGCTCGCAGTGCCGAGGCGAAGCCCTGGATCAAAATGGGAACTCCGTGGTTTCAGATAAAAAACGAAAGATACCCGGAAAAAATATATGCGTTTTCAAGTAATTATGAACTTTACGCCTCGATGTCGGCGCGCGTGATGAACTGCCTGGAGGAACTGGCCCCCAGGGTGGAACAGTATTCAATTGATGAGATGTTCCTCGACCTGACCGGCGTGGAGCACTGTATGGAGCTTGAGGACTTCGGCCGGCAGCTGCGTCAGCACGTGTATGACTGTACCCGCCTGACCATTGGCGTGGGCGCCGGGCCAACGAAAACCCTCGCAAAATCAGCCCAGTGGGCCTCAAAAGAGTGGAAACAGTTCCGTGGTGTGCTCGCACTGACCCGGGGGAATCCTCAGCGAACGCGGAAACTGCTTTCACTGCAGCCGGTCGAAGAGATCTGGGGCGTGGGAAACCGTATTGCACGCAAGCTCCATGTACTGGGTATCAGGACCGCGCTCGATCTGGCCCTGACGAACCCGGCCTTCATCCGGAAAAATTTCTCCGTCGTTCTCGAGCGAACAGTACGCGAACTGAACGGGGAAAGCTGCATGTCGCTTGAGGAAGCCCCACCAACGAAACAGCAGATTGTCTGCAGCCGCAGTTTTGGAGAGAAAATCACGGAGTACGATTCGCTCCGCCAGGCTGTTTGTCAGTACGCAGAGCGGGCCTCTGAAAAGCTGCGTAAAGAGCGCCAGTATTGCCGGCATATTTCCGTATTCATCAAAACGTCTCCGTTCGCCGTCAAAGAGCCTTACTACGGCAACGTGGCCACGGAGAAACTGCTTACACCCACTCAGGACACCCGGGACATTATTGCGGCCGCCACAATGGCTCTGGAGCGTATCTGGAAGGACGGGCACCGGTATGCCAAAGCCGGAGTTATGCTGAATGACTTCACCGGCTCTGGCGTTTCGCAGCTGCAGCTGTTTGACGAACGCCCGCCACGCCCTCACAGTGCTGAGCTGATGAGGGTTCTGGACGGGATCAACAACTCAGGGCTGGGTAAAGTATGGTTTGCCGGTAGAGGAATTGCGCCATCCTGGCAAATGAAACGCGATATGCTCTCCCCTGCGTACACCACTCGCTGGAGAGATATCCCCGTTGCGAGGATCGGTTAA",
             "aa": "MFALADVNSFYASCERVFRPDLKGKPIVVLSNNDGNVIARSAEAKPWIKMGTPWFQIKNERYPEKIYAFSSNYELYASMSARVMNCLEELAPRVEQYSIDEMFLDLTGVEHCMELEDFGRQLRQHVYDCTRLTIGVGAGPTKTLAKSAQWASKEWKQFRGVLALTRGNPQRTRKLLSLQPVEEIWGVGNRIARKLHVLGIRTALDLALTNPAFIRKNFSVVLERTVRELNGESCMSLEEAPPTKQQIVCSRSFGEKITEYDSLRQAVCQYAERASEKLRKERQYCRHISVFIKTSPFAVKEPYYGNVATEKLLTPTQDTRDIIAAATMALERIWKDGHRYAKAGVMLNDFTGSGVSQLQLFDERPPRPHSAELMRVLDGINNSGLGKVWFAGRGIAPSWQMKRDMLSPAYTTRWRDIPVARIG",
@@ -7331,7 +7361,7 @@
                 {
                     "source": "afdb",
                     "id": "A0A1S7SK38",
-                    "query_cov": 0.98,
+                    "query_cov": 0.99,
                     "subject_cov": 0.73,
                     "identity": 0.418,
                     "score": 1861.0,
@@ -7341,18 +7371,19 @@
                 {
                     "source": "pdb",
                     "id": "6jum",
-                    "query_cov": 0.83,
+                    "query_cov": 0.84,
                     "subject_cov": 0.99,
                     "identity": 0.242,
                     "score": 1127.0,
                     "evalue": 2.433e-26,
+                    "chain": "F",
                     "description": "MsDpo4-DNA complex 2"
                 },
                 {
                     "source": "cath",
                     "id": "af_P04152_244_354_3.30.1490.100",
                     "query_cov": 0.26,
-                    "subject_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.711,
                     "score": 690.0,
                     "evalue": 1.453e-15,
@@ -7362,7 +7393,7 @@
                     "source": "cath",
                     "id": "3gqcD01",
                     "query_cov": 0.4,
-                    "subject_cov": 0.79,
+                    "subject_cov": 0.8,
                     "identity": 0.145,
                     "score": 259.0,
                     "evalue": 7.798e-05,
@@ -7399,7 +7430,7 @@
                 "afdb_v6:afdbclusters_A0AAX2KVD9",
                 "afdb_v6:swissprot_P06572",
                 "cath:cath_1qanA01",
-                "pdb:pdb_1qan"
+                "pdb:pdb_1qan_A"
             ],
             "nt": "ATGAACGAGAAAAATATAAAACACAGTCAAAACTTTATTACTTCAAAACATAATATAGATAAAATAATGACAAATATAAGATTAAATGAACATGATAATATCTTTGAAATCGGCTCAGGAAAAGGGCATTTTACCCTTGAATTAGTACAGAGGTGTAATTTCGTAACTGCCATTGAAATAGACCATAAATTATGCAAAACTACAGAAAATAAACTTGTTGATCACGATAATTTCCAAGTTTTAAACAAGGATATATTGCAGTTTAAATTTCCTAAAAACCAATCCTATAAAATATTTGGTAATATACCTTATAACATAAGTACGGATATAATACGCAAAATTGTTTTTGATAGTATAGCTGATGAGATTTATTTAATCGTGGAATACGGGTTTGCTAAAAGATTATTAAATACAAAACGCTCATTGGCATTATTTTTAATGGCAGAAGTTGATATTTCTATATTAAGTATGGTTCCAAGAGAATATTTTCATCCTAAACCTAAAGTGAATAGCTCACTTATCAGATTAAATAGAAAAAAATCAAGAATATCACACAAAGATAAACAGAAGTATAATTATTTCGTTATGAAATGGGTTAACAAAGAATACAAGAAAATATTTACAAAAAATCAATTTAACAATTCCTTAAAACATGCAGGAATTGACGATTTAAACAATATTAGCTTTGAACAATTCTTATCTCTTTTCAATAGCTATAAATTA",
             "aa": "MNEKNIKHSQNFITSKHNIDKIMTNIRLNEHDNIFEIGSGKGHFTLELVQRCNFVTAIEIDHKLCKTTENKLVDHDNFQVLNKDILQFKFPKNQSYKIFGNIPYNISTDIIRKIVFDSIADEIYLIVEYGFAKRLLNTKRSLALFLMAEVDISILSMVPREYFHPKPKVNSSLIRLNRKKSRISHKDKQKYNYFVMKWVNKEYKKIFTKNQFNNSLKHAGIDDLNNISFEQFLSLFNSYKL",
@@ -7460,7 +7491,7 @@
             ],
             "id": "MEGJMNBEGN_93",
             "locus": "MEGJMN_091",
-            "3di": "DPPVCVVQQDWDFQDPVVLVLVVVVDDAAAAEEEEEEACQLVSVVVVSLVRYQAYEYEHQDPVSLVNNCVVCVPRPRYDYDNDDLLPDDDDPPDAYEYEYADRAVCVVSNVVCCLPXHRHQKYKYKYFPVVLVVLVPLQALSNLLSLLFWDKDFSDWDAQVSTVVRDPGIITIIMIGGDDGPDDPVCSVVLSVLSVCVSVVVVCVVDDPVVVVVLCVVLVHNDSRRDDSVSSVSSSVVVDX",
+            "3di": "DPPVCVVQQDWDFQDPVVLVLVVVVDDAAAAEEEEEEACQLVSVVVVSLVRYQAYEYEHQDPVSLVNNCVVCVPRPRYDYDNDDLLPDDDDPPDAYEYEYADRAVCVVSNVVCCLPXHRHQKYKYKYFPVVLVVLVPLQDLSNLLSLLFWDKDFSDWDAQVSTVVRDPGIITIIMIGGDDGPDDPVCSVVLSVLSVCVSVVVVCVVDDPVVVVVLCVVLVHNDSRRDDSVSSVSSSVVVDX",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -7468,38 +7499,39 @@
                     "query_cov": 0.99,
                     "subject_cov": 0.98,
                     "identity": 0.991,
-                    "score": 1713.0,
-                    "evalue": 1.322e-42,
+                    "score": 1716.0,
+                    "evalue": 1.279e-42,
                     "description": "rRNA adenine N-6-methyltransferase"
                 },
                 {
                     "source": "afdb",
                     "id": "A0AAX2KVD9",
                     "query_cov": 0.98,
-                    "subject_cov": 0.82,
+                    "subject_cov": 0.83,
                     "identity": 0.487,
-                    "score": 1198.0,
-                    "evalue": 5.103e-29,
+                    "score": 1201.0,
+                    "evalue": 4.724e-29,
                     "description": "rRNA adenine N-6-methyltransferase"
                 },
                 {
                     "source": "pdb",
                     "id": "1qan",
-                    "query_cov": 0.95,
-                    "subject_cov": 0.97,
+                    "query_cov": 0.96,
+                    "subject_cov": 0.98,
                     "identity": 0.995,
-                    "score": 1619.0,
-                    "evalue": 2.495e-40,
+                    "score": 1622.0,
+                    "evalue": 2.394e-40,
+                    "chain": "A",
                     "description": "THE STRUCTURE OF THE RRNA METHYLTRANSFERASE ERMC': IMPLICATIONS FOR THE REACTION MECHANISM"
                 },
                 {
                     "source": "cath",
                     "id": "1qanA01",
                     "query_cov": 0.71,
-                    "subject_cov": 0.99,
+                    "subject_cov": 1.0,
                     "identity": 0.906,
                     "score": 1139.0,
-                    "evalue": 5.749e-28,
+                    "evalue": 6.335e-28,
                     "description": "Vaccinia Virus protein VP39"
                 }
             ],
@@ -7650,8 +7682,8 @@
                 {
                     "source": "afdb",
                     "id": "P06735",
-                    "query_cov": 0.94,
-                    "subject_cov": 0.92,
+                    "query_cov": 0.95,
+                    "subject_cov": 0.93,
                     "identity": 0.98,
                     "score": 827.0,
                     "evalue": 8.322e-21,
@@ -7703,7 +7735,7 @@
             "version": "6.0",
             "type": "full"
         },
-        "baktfold": "0.3.0",
+        "baktfold": "0.4.0",
         "baktfold_db": "0.1.0"
     },
     "baktfold_run": {
