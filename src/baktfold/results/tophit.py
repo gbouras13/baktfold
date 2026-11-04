@@ -79,8 +79,10 @@ def get_tophit(
     # not — e.g. '1.5e-08' vs '1.5e-8'). repr() round-trips losslessly so the
     # numeric value consumed downstream by pstc.parse is unchanged.
     foldseek_df = foldseek_df.with_columns(
-        ((pl.col("qEnd") - pl.col("qStart")) / pl.col("qLen")).round(2).alias("qCov"),
-        ((pl.col("tEnd") - pl.col("tStart")) / pl.col("tLen")).round(2).alias("tCov"),
+        # alignment coordinates are 1-based inclusive, hence the +1: a
+        # full-length alignment (1..L of L) has coverage 1.0, not (L-1)/L.
+        ((pl.col("qEnd") - pl.col("qStart") + 1) / pl.col("qLen")).round(2).alias("qCov"),
+        ((pl.col("tEnd") - pl.col("tStart") + 1) / pl.col("tLen")).round(2).alias("tCov"),
         pl.col("evalue").map_elements(lambda v: repr(float(v)), return_dtype=pl.Utf8),
     )
 

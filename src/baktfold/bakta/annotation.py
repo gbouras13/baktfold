@@ -89,17 +89,28 @@ def assign_annotation_confidence(entry: dict, prostt5_confidence, structures: bo
     except (TypeError, ValueError):
         evalue = 1.0
 
+    # Thresholds as documented in docs/output.md ("Annotation confidence"):
+    # coverage >= 0.8, identity > 0.3, ProstT5 >= 60 (high) / >= 45 (medium),
+    # E-value < 1e-10 (high) / < 1e-5 (medium, always required).
+    cov_both = qcov >= 0.8 and tcov >= 0.8
+    cov_any = qcov >= 0.8 or tcov >= 0.8
+    light_zone = fident > 0.3
+
     if structures or prostt5_confidence is None:
-        if qcov > 0.8 and tcov > 0.8 and (fident > 0.3 or evalue < 1e-10):
+        if cov_both and (light_zone or evalue < 1e-10):
             return 'high'
-        if (qcov > 0.8 or tcov > 0.8) and (fident > 0.3 or evalue < 1e-5):
+        # Medium needs E < 1e-5 on both paths (previously OR'd here, so a
+        # structure hit at E = 1e-4 could be 'medium' contrary to the docs).
+        if cov_any and light_zone and evalue < 1e-5:
             return 'medium'
         return 'low'
 
-    # ProstT5 path: mean 3Di confidence factors in
-    if qcov > 0.8 and tcov > 0.8 and (fident > 0.3 or prostt5_confidence > 60 or evalue < 1e-10):
+    # ProstT5 path: mean 3Di confidence factors in.
+    if cov_both and (light_zone or prostt5_confidence >= 60 or evalue < 1e-10):
         return 'high'
-    if (qcov > 0.8 or tcov > 0.8) and (fident > 0.3 or 45 <= prostt5_confidence <= 60) and evalue < 1e-5:
+    # '>= 45', not '45 <= x <= 60': confidence above 60 must not drop a hit
+    # from medium to low (the old band made the tier non-monotonic).
+    if cov_any and (light_zone or prostt5_confidence >= 45) and evalue < 1e-5:
         return 'medium'
     return 'low'
 

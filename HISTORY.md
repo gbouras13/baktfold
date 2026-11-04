@@ -26,6 +26,8 @@
 * Fixes `proteins` and `proteins-predict` with a Bakta proteins JSON predicting and searching every protein and overwriting Bakta's curated products; only Bakta's hypotheticals are annotated, as documented
 * Fixes an existing output directory/file without `-f` only logging an error and continuing (exit 0, new results mixed with stale ones); it now exits with status 1. Non-GenBank input to `convert-prokka`/`convert-euk` now exits cleanly instead of crashing
 * Fixes eukaryotic GFF3 output carrying no Baktfold labels: CDS lines now include `product`, `Name`, `locus_tag` and `Dbxref`, and each CDS label is copied to its parent mRNA in all outputs (GFF3/GBFF/TSV/JSON). Also fixes the mRNA `Note` being filled from db_xrefs and unescaped GFF3 mRNA attributes. Regenerate earlier eukaryotic outputs with `baktfold json`
+* Fixes `Annotation_Confidence` disagreeing with its documentation: thresholds documented as ≥ (80% coverage, 60% ProstT5 confidence) were applied as >, the ProstT5 "medium" band (45–60%) made the tier non-monotonic (confidence 61 scored lower than 50), and for structure input "medium" did not require E-value < 1e-5. The tiers now follow `docs/output.md` exactly and are monotonic in ProstT5 confidence
+* Fixes query/target coverage (`qCov`/`tCov`) being one residue short: Foldseek coordinates are 1-based inclusive, so a full-length alignment is now reported as 1.0 rather than 0.99. This affects the `*_tophit.tsv` columns, the JSON `query_cov`/`subject_cov`, and hits at the 80% confidence-tier boundary
 * The version is now defined once, in `src/baktfold/utils/VERSION`, and read by packaging, `--version` and output headers alike
 
 0.3.0 (2026-05-05)

@@ -44,12 +44,14 @@ def test_get_tophit_basic_dedup_keeps_top_hit(fixtures_dir):
 
 
 def test_get_tophit_qcov_tcov_math(fixtures_dir):
-    """qCov = round((qEnd - qStart) / qLen, 2); tCov analogous. No +1."""
+    """qCov = round((qEnd - qStart + 1) / qLen, 2); tCov analogous.
+    Foldseek coordinates are 1-based inclusive, so the +1 is required: a
+    full-length alignment has coverage 1.0 (previously reported as 0.99)."""
     df = get_tophit(fixtures_dir / "foldseek_basic.tsv", structures=False, cath=False)
     q3 = df.filter(pl.col("query") == "query_0003").row(0, named=True)
-    # (48 - 1) / 60 = 0.7833.. -> 0.78 ; (50 - 3) / 55 = 0.8545.. -> 0.85
-    assert q3["qCov"] == pytest.approx(0.78)
-    assert q3["tCov"] == pytest.approx(0.85)
+    # (48 - 1 + 1) / 60 = 0.80 ; (50 - 3 + 1) / 55 = 0.8727.. -> 0.87
+    assert q3["qCov"] == pytest.approx(0.80)
+    assert q3["tCov"] == pytest.approx(0.87)
 
 
 def test_get_tophit_column_order(fixtures_dir):

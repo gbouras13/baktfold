@@ -37,10 +37,12 @@ MEGJMNBEGN_70	94	hypothetical protein	low		afdbclusters_A0A1I3V7E0
 Each Baktfold annotation is labelled `high`, `medium` or `low` confidence (in the `Annotation_Confidence` column of the TSV and the `annotation_confidence` field of the JSON — it is intentionally *not* written to the GFF3/GenBank/EMBL outputs) to make the structural-alignment results more interpretable. The heuristics mirror [Phold](https://github.com/gbouras13/phold):
 
 * **High**: both query and target have ≥80% reciprocal alignment coverage, *and* one of (i) >30% amino acid identity (the "light zone" of sequence homology), (ii) mean ProstT5 confidence ≥60%, or (iii) alignment E-value < 1e-10.
-* **Medium**: either the query or target has ≥80% coverage, *and* one of (i) >30% amino acid identity or (ii) ProstT5 confidence between 45–60%, *and* E-value < 1e-5.
+* **Medium**: either the query or target has ≥80% coverage, *and* one of (i) >30% amino acid identity or (ii) mean ProstT5 confidence ≥45%, *and* alignment E-value < 1e-5.
 * **Low**: all other hits below the E-value threshold that do not meet the above (low coverage, low identity, low ProstT5 confidence, or an E-value near the 0.001 threshold).
 
-If Baktfold is run with user-provided structures (`--structure-dir`) instead of ProstT5, the ProstT5-confidence criteria are dropped and the output additionally includes Foldseek `TMscore` (template modeling score) and `LDDT` (local distance difference test) values to help assess quality.
+Coverage is the aligned fraction of the sequence, counting both alignment end positions (so a full-length alignment has coverage 1.0). Only the hit that supplied the product label is scored, and CDS that remain hypothetical have no confidence tier.
+
+If Baktfold is run with user-provided structures (`--structure-dir`) instead of ProstT5, the ProstT5-confidence criteria are dropped (so **medium** requires >30% identity and E-value < 1e-5) and the output additionally includes Foldseek `TMscore` (template modeling score) and `LDDT` (local distance difference test) values to help assess quality.
 
 A `low` annotation is **not** necessarily wrong — only that it should be trusted less than a `high` (extremely trustworthy) or `medium` (very trustworthy) annotation, and likely warrants a bit more manual curation.
 
