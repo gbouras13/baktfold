@@ -41,6 +41,35 @@ RE_GENE_SYMBOL = re.compile(r'[a-z]{3}[A-Z][0-9]?')
 RE_UNINFORMATIVE_PRODUCT = re.compile(r'\b(hypothetical|uncharacteri[sz]ed)\b', flags=re.IGNORECASE)
 
 
+RE_CATH_CHAIN_SUFFIX = re.compile(r'\s*;\s*chain\s+\w+\s*$', flags=re.IGNORECASE)
+RE_CATH_DOMAIN_NUMBER = re.compile(r'\s*[;,]?\s*domains?\s+\d+\s*$', flags=re.IGNORECASE)
+RE_CATH_FROM_SPECIES = re.compile(r'\s+from\s+[A-Z][a-z]+\s+[a-z]+.*$')
+
+
+def cath_domain_label(name: str) -> str:
+    """Turn a CATH superfamily name into a domain-level product name.
+
+    A CATH hit is evidence that the protein contains a domain of that
+    superfamily, not that the whole protein has the named function, so the
+    label says so explicitly (the NCBI/Bakta convention for domain-only
+    evidence): "SH2 domain" -> "SH2 domain-containing protein",
+    "Enoyl acyl carrier protein reductase" -> "Enoyl acyl carrier protein
+    reductase domain-containing protein". Representative-specific suffixes
+    ("; Chain A", ", domain 2", "from Thermus thermophilus HB27") are removed.
+    """
+    label = name.strip().rstrip('.').strip()
+    label = RE_CATH_CHAIN_SUFFIX.sub('', label)
+    label = RE_CATH_DOMAIN_NUMBER.sub('', label)
+    label = RE_CATH_FROM_SPECIES.sub('', label)
+    label = label.strip().rstrip(',;').strip()
+    if not label:
+        return label
+    if re.search(r'\bdomains?$', label, flags=re.IGNORECASE):
+        label = re.sub(r'\bdomains$', 'domain', label, flags=re.IGNORECASE)
+        return f"{label}-containing protein"
+    return f"{label} domain-containing protein"
+
+
 def is_informative_product(product) -> bool:
     """True if ``product`` names a function, i.e. is not empty and not a
     hypothetical/uncharacterised placeholder (before or after Bakta's product
@@ -214,6 +243,10 @@ def combine_annotation(feature: dict, fast: bool, structures: bool = False):
         )
         if selected_entry is not None:
             product = selected_entry['description']
+            if selected_entry.get('source') == 'cath':
+                # fold/domain-level evidence: never present it as the whole
+                # protein's function (reviewer concern R2 #6)
+                product = cath_domain_label(product)
 
         # Collect all db_xref IDs
         for entry in pstc:

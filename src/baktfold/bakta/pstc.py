@@ -1,3 +1,4 @@
+import re
 # import logging
 import csv
 import polars as pl
@@ -83,6 +84,12 @@ def parse(features: Sequence[dict], foldseek_df: pl.DataFrame, db_name: str = 's
                 # Foldseek homology probability, present only with --report-prob
                 if 'prob' in row and row['prob'] is not None:
                     new_pstc['prob'] = float(row['prob'])
+                # PDB hits are chains; keep which one, so the label can name
+                # that chain's protein rather than the whole entry's title.
+                if db_name == "pdb":
+                    chain = pdb_chain_from_target(target_id)
+                    if chain:
+                        new_pstc['chain'] = chain
 
                 # Append or initialize 'pstc'
                 if 'pstc' in cds:
@@ -220,6 +227,39 @@ def lookup_custom(features: Sequence[dict], baktfold_db: Path, custom_annotation
 
 
 
+def pdb_chain_from_target(target_id: str):
+    """Chain ID of a Foldseek PDB target, e.g. '6xgw-assembly1.cif.gz_A' -> 'A'.
+
+    Symmetry copies in biological assemblies carry a copy suffix
+    ('..._A-2'); they are the same molecule as the base chain, so the suffix
+    is dropped. Returns None if the target has no chain part.
+    """
+    if '_' not in target_id:
+        return None
+    chain = target_id.rsplit('_', 1)[1]
+    chain = re.sub(r'-\d+$', '', chain)
+    return chain or None
+
+
+def has_table(conn, name: str) -> bool:
+    return conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (name,)
+    ).fetchone() is not None
+
+
+def fetch_pdb_chain_description(conn, entry: str, chain):
+    """Chain-level PDB name from the ``pdb_chain`` table (UniProt name of the
+    chain via SIFTS, else the PDB entity name), or None if the chain is not
+    listed. Never falls back to the entry title: an unlisted chain is left
+    for the next database in the hierarchy."""
+    if not chain:
+        return None
+    row = conn.execute(
+        "SELECT product FROM pdb_chain WHERE id = ?", (f"{entry}_{chain}",)
+    ).fetchone()
+    return row[0] if row else None
+
+
 def fetch_sql_description(conn, source, accession):
     """
     Fetches the product description for a given source and accession from a sqlite3 database.
@@ -276,6 +316,13 @@ def lookup_sql(features: Sequence[dict], baktfold_db: Path, threads: int):
 
     db_path = baktfold_db.joinpath("baktfold.db")
     conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
+    chain_level_pdb = has_table(conn, "pdb_chain")
+    if not chain_level_pdb:
+        logger.warning(
+            "This Baktfold database has no chain-level PDB names (pdb_chain table); "
+            "PDB hits will be labelled with the PDB entry title. Update the database "
+            "for chain-level names."
+        )
     try:
         for feat in features:
             pstc = feat.get("pstc")
@@ -288,7 +335,10 @@ def lookup_sql(features: Sequence[dict], baktfold_db: Path, threads: int):
             for entry in pstc_entries:
                 accession = entry.get("id")
                 source = entry.get("source")
-                desc = fetch_sql_description(conn, source, accession)
+                if source == "pdb" and chain_level_pdb:
+                    desc = fetch_pdb_chain_description(conn, accession, entry.get("chain"))
+                else:
+                    desc = fetch_sql_description(conn, source, accession)
                 if desc:
                     entry["description"] = desc
                 elif source == "custom_db":
