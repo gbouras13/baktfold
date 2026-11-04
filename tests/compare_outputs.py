@@ -109,6 +109,7 @@ def _csv_float_differ(lines_dev: list, lines_ref: list, tol: float = 0.01) -> li
     row_diffs = []
     if len(lines_dev) != len(lines_ref):
         row_diffs.append(f"    line count: dev={len(lines_dev)} ref={len(lines_ref)}")
+    shown = 0  # differing lines printed so far (cap: 30)
     for i, (a, b) in enumerate(zip(lines_dev, lines_ref)):
         if a == b:
             continue
@@ -136,6 +137,7 @@ def _jsonl_float_differ(lines_dev: list, lines_ref: list, tol: float = 0.01) -> 
     row_diffs = []
     if len(lines_dev) != len(lines_ref):
         row_diffs.append(f"    line count: dev={len(lines_dev)} ref={len(lines_ref)}")
+    shown = 0  # differing lines printed so far (cap: 30)
     for i, (a, b) in enumerate(zip(lines_dev, lines_ref)):
         if a == b:
             continue
@@ -250,11 +252,13 @@ def _tophit_differ(lines_dev: list, lines_ref: list, strict: bool = False) -> li
     sd, sr = _scrub(lines_dev), _scrub(lines_ref)
     diffs = []
     if sd != sr:
+        shown = 0  # differing lines printed so far (cap: 30)
         for i, (a, b) in enumerate(zip(sd, sr)):
             if a != b:
                 diffs.append(f"    dev[{i}]: {a[:140]}")
                 diffs.append(f"    ref[{i}]: {b[:140]}")
-                if i > 10:
+                shown += 1
+                if shown >= 30:
                     diffs.append("    ... (truncated)")
                     break
         if len(sd) != len(sr):
@@ -358,6 +362,7 @@ def _fasta_differ(lines_dev: list, lines_ref: list) -> list:
             diffs.append(f"    {header}: length dev={len(sd)} ref={len(sr)}")
             continue
         flips, subs = 0, []
+        shown = 0  # differing lines printed so far (cap: 30)
         for i, (a, b) in enumerate(zip(sd, sr)):
             if a == b:
                 continue
@@ -407,6 +412,7 @@ def _json_value_diffs(dev, ref, path="") -> list:
         if len(dev) != len(ref):
             out.append((f"{path}[]", f"{len(dev)} items", f"{len(ref)} items"))
         else:
+            shown = 0  # differing lines printed so far (cap: 30)
             for i, (a, b) in enumerate(zip(dev, ref)):
                 out.extend(_json_value_diffs(a, b, f"{path}[{i}]"))
     elif dev != ref:
@@ -473,6 +479,33 @@ def _compare_annotation_json(fd: Path, fr: Path, normalize: bool = False) -> lis
     return diffs
 
 
+def _h5_differ(fd: Path, fr: Path, min_cosine: float) -> list:
+    """Compare two embedding HDF5 files dataset by dataset.
+
+    Same dataset names, same shapes, and cosine similarity >= *min_cosine*
+    per dataset (ProstT5 runs in fp16 on GPU, so values wobble run to run).
+    """
+    import h5py
+    import numpy as np
+
+    diffs = []
+    with h5py.File(fd, "r") as hd, h5py.File(fr, "r") as hr:
+        kd, kr = set(hd.keys()), set(hr.keys())
+        if kd != kr:
+            diffs.append(f"    datasets: dev-only={sorted(kd - kr)[:5]} ref-only={sorted(kr - kd)[:5]}")
+        for k in sorted(kd & kr):
+            a = np.asarray(hd[k], dtype=np.float64).ravel()
+            b = np.asarray(hr[k], dtype=np.float64).ravel()
+            if a.shape != b.shape:
+                diffs.append(f"    {k}: shape dev={hd[k].shape} ref={hr[k].shape}")
+                continue
+            na, nb = np.linalg.norm(a), np.linalg.norm(b)
+            cos = float(a @ b / (na * nb)) if na and nb else float(na == nb)
+            if cos < min_cosine:
+                diffs.append(f"    {k}: cosine similarity {cos:.5f} < {min_cosine}")
+    return diffs
+
+
 def compare_dirs(dir_dev: Path, dir_ref: Path, strict: bool = False) -> list:
     """Recursively compare two directories. Returns list of diff messages."""
     diffs = []
@@ -501,6 +534,17 @@ def compare_dirs(dir_dev: Path, dir_ref: Path, strict: bool = False) -> list:
 
         fd = dir_dev / rel
         fr = dir_ref / rel
+
+        # ── HDF5 embeddings: compare the arrays, never the bytes ───────────
+        # The byte layout depends on the h5py/HDF5 build, so a byte diff says
+        # nothing about the embeddings (it failed after a container rebuild
+        # with identical models).
+        if rel.suffix == ".h5":
+            row_diffs = _h5_differ(fd, fr, min_cosine=0.9999 if strict else 0.99)
+            if row_diffs:
+                diffs.append(f"  DIFFER (HDF5 arrays) : {rel}")
+                diffs.extend(row_diffs[:22])
+            continue
 
         ld = filter_lines(fd)
         lr = filter_lines(fr)
@@ -565,11 +609,13 @@ def compare_dirs(dir_dev: Path, dir_ref: Path, strict: bool = False) -> list:
             sd, sr = sorted(ld), sorted(lr)
             if sd != sr:
                 diffs.append(f"  DIFFER (sorted) : {rel}")
+                shown = 0  # differing lines printed so far (cap: 30)
                 for i, (a, b) in enumerate(zip(sd, sr)):
                     if a != b:
                         diffs.append(f"    dev[{i}]: {a[:140]}")
                         diffs.append(f"    ref[{i}]: {b[:140]}")
-                        if i > 10:
+                        shown += 1
+                        if shown >= 30:
                             diffs.append("    ... (truncated)")
                             break
                 if len(sd) != len(sr):
@@ -587,11 +633,13 @@ def compare_dirs(dir_dev: Path, dir_ref: Path, strict: bool = False) -> list:
         else:
             if ld != lr:
                 diffs.append(f"  DIFFER : {rel}")
+                shown = 0  # differing lines printed so far (cap: 30)
                 for i, (a, b) in enumerate(zip(ld, lr)):
                     if a != b:
                         diffs.append(f"    dev[{i}]: {a[:140]}")
                         diffs.append(f"    ref[{i}]: {b[:140]}")
-                        if i > 10:
+                        shown += 1
+                        if shown >= 30:
                             diffs.append("    ... (truncated)")
                             break
                 if len(ld) != len(lr):

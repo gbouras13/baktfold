@@ -56,18 +56,20 @@ def _safe_extractall(tar: tarfile.TarFile, dest: Path) -> None:
     tar.extractall(path=str(dest))
 
 
-# set this if changes
-CURRENT_DB_VERSION: str = "0.0.1"
+# set in baktfold/databases/version.py (single source)
+from baktfold.databases.version import DB_VERSION as CURRENT_DB_VERSION
 
 # to hold information about the different DBs
 VERSION_DICTIONARY = {
-    "0.0.1": {
+    # the Zenodo release published as the paper database (record 17347516),
+    # reported as 0.1.0 in outputs
+    "0.1.0": {
         "md5": [
             "b1eba2ac1a35e9c34b125887cb4aaf51",
         ],
         "major": 0,
-        "minor": 0,
-        "minorest": 1,
+        "minor": 1,
+        "minorest": 0,
         "db_url": "https://zenodo.org/records/17347516/files/baktfold_db.tar.gz?download=1",
         "dir_name": "baktfold_db",
         "tarball": "baktfold_db.tar.gz",

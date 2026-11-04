@@ -32,6 +32,8 @@
 * Fixes eukaryotic GFF3 CDS phase: phase was computed as bases consumed rather than bases to skip, ignored `/codon_start`, and minus-strand parts were reversed although they are already stored 5'→3' (exons were also numbered 3'→5'). Phases are now correct and partial CDS carry `partial=true`
 * CATH-sourced labels are now explicitly domain-level: "<superfamily> domain-containing protein" (e.g. "SH2 domain" -> "SH2 domain-containing protein"), instead of the superfamily name verbatim, which could present a fold-level match as the whole protein's function
 * PDB hits are labelled per chain when the database has the new `pdb_chain` table: the chain's UniProt name (via SIFTS), else its PDB entity name, instead of the PDB entry title ("Crystal structure of ... in complex with ..."). Unmapped chains fall through to the next database. Older databases keep entry titles (with a warning). Build scripts: `db-scripts/init-pdb-chains.py`, `db-scripts/fetch-uniprot-names.py`
+* Fixes the `Database:` line in the TSV/GFF3/GBFF/EMBL headers, which printed the Baktfold *software* version; it now prints the database version (0.1.0), defined once in `src/baktfold/databases/version.py` and used by the headers, `.summary.txt`, JSON provenance and downloads (previously 0.1.0, the software version and 0.0.1 in different places)
+* Fixes sORF `/inference` citing Baktfold's version as Bakta's (`ab initio prediction:Bakta:0.3`); it now uses the Bakta version recorded in the input JSON
 * The version is now defined once, in `src/baktfold/utils/VERSION`, and read by packaging, `--version` and output headers alike
 
 0.3.0 (2026-05-05)

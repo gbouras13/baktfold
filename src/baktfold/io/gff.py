@@ -381,7 +381,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
 
         fh.write('# Annotated with Baktfold\n')
         fh.write(f'# Software: v{cfg.version}\n')
-        fh.write(f"# Database: v{cfg.version}\n") # fix later
+        fh.write(f"# Database: v{cfg.db_version}\n")
         #fh.write(f"# Database: v{cfg.db_info['major']}.{cfg.db_info['minor']}, {cfg.db_info['type']}\n")
         fh.write(f'# DOI: {bc.BAKTFOLD_DOI}\n')
         fh.write(f'# URL: {bc.BAKTFOLD_URL}\n')

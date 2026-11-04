@@ -2042,7 +2042,7 @@ FT                   /protein_id="gnl|Baktfold|MEGJMN_092"
 FT                   /translation="MGIFSIFVISTVHYQPNKK"
 FT                   /codon_start=1
 FT                   /transl_table=11
-FT                   /inference="ab initio prediction:Bakta:<VERSION>"
+FT                   /inference="ab initio prediction:Bakta:1.11"
 FT                   /inference="similar to AA sequence:RefSeq:WP_002497446.1"
 FT                   /gene="ermC"
 FT   gene            complement(1540..2016)

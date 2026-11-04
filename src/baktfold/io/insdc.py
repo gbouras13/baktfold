@@ -61,7 +61,7 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
         comment = (
             'Annotated with Baktfold',
             f"Software: v{cfg.version}\n",
-            f"Database: v{cfg.version}\n", # fix later
+            f"Database: v{cfg.db_version}\n",
             #f"Database: v{cfg.db_info['major']}.{cfg.db_info['minor']}, {cfg.db_info['type']}\n",
             f'DOI: {bc.BAKTFOLD_DOI}\n',
             f'URL: {bc.BAKTFOLD_URL}\n',
@@ -233,7 +233,14 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                         if not euk: # if euk just dont have anything
                             inference.append('ab initio prediction:Prodigal:2.6') # bakta
                 else:
-                    inference.append(f"ab initio prediction:Bakta:{'.'.join(cfg.version.split('.')[0:2])}")
+                    # sORFs are predicted by Bakta itself: cite the Bakta version
+                    # recorded in the input JSON, not Baktfold's own version
+                    # (which this used to print, e.g. "Bakta:0.4").
+                    bakta_v = str((data.get('version') or {}).get('bakta') or '')
+                    inference.append(
+                        f"ab initio prediction:Bakta:{'.'.join(bakta_v.split('.')[0:2])}" if bakta_v
+                        else "ab initio prediction:Bakta"
+                    )
                 if('ncbi_nrp_id' in feature.get('ups', {})):
                     nrp_id = feature['ups']['ncbi_nrp_id']
                     inference.append(f'similar to AA sequence:{bc.DB_XREF_REFSEQ_NRP}:{nrp_id}')

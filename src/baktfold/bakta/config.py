@@ -11,6 +11,7 @@ from pathlib import Path
 
 import baktfold.bakta.constants as bc
 from baktfold.utils.util import get_version
+from baktfold.databases.version import DB_VERSION
 
 PLASMID_NAME_PATTERN = re.compile(r'p[a-zA-Z0-9\._]{1,19}')
 PLASMID_UNNAMED_PATTERN = re.compile(r'unnamed[0-9]{0,3}')
@@ -27,7 +28,7 @@ debug = None
 
 # input / output configuration
 version = get_version()
-db_version = "0.1.0" # hardcoded, don't anticipate a new DB for ages
+db_version = DB_VERSION  # baktfold/databases/version.py
 db_path = None
 db_info = None
 tmp_path = None

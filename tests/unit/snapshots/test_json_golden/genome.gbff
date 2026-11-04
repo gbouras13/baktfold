@@ -2036,7 +2036,7 @@ FEATURES             Location/Qualifiers
                      /translation="MGIFSIFVISTVHYQPNKK"
                      /codon_start=1
                      /transl_table=11
-                     /inference="ab initio prediction:Bakta:<VERSION>"
+                     /inference="ab initio prediction:Bakta:1.11"
                      /inference="similar to AA sequence:RefSeq:WP_002497446.1"
                      /gene="ermC"
      gene            complement(1540..2016)
