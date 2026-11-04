@@ -89,3 +89,43 @@ def test_parse_records_chain():
     pstc.parse(feats, df, "pdb")
     hit = feats[0]["pstc"][0]
     assert (hit["id"], hit["chain"]) == ("101m", "A")
+
+
+def test_uniprot_accession_recorded_when_column_present(tmp_path):
+    d = _db(tmp_path, False)
+    conn = sqlite3.connect(d / "baktfold.db")
+    conn.execute("CREATE TABLE pdb_chain (id TEXT PRIMARY KEY, product TEXT, source TEXT, uniprot TEXT)")
+    conn.execute("INSERT INTO pdb_chain VALUES ('101m_A', 'Myoglobin', 'uniprot', 'P02185')")
+    conn.commit(); conn.close()
+    feats = _feat("A")
+    pstc.lookup_sql(feats, d, threads=1)
+    hit = feats[0]["pstc"][0]
+    assert (hit["description"], hit["uniprot"]) == ("Myoglobin", "P02185")
+
+
+def test_labelling_pdb_hit_gets_chain_and_uniprot_xrefs():
+    import baktfold.bakta.annotation as anno
+    feat = {"type": "cds", "locus": "c1", "product": "hypothetical protein", "hypothetical": True,
+            "db_xrefs": [],
+            "pstc": [{"source": "pdb", "id": "101m", "chain": "A", "uniprot": "P02185",
+                      "description": "Myoglobin", "query_cov": 0.9, "subject_cov": 0.9,
+                      "identity": 0.4, "evalue": 1e-20}]}
+    anno.combine_annotation(feat, fast=False)
+    assert feat["product"] == "Myoglobin"
+    assert "pdb:pdb_101m_A" in feat["db_xrefs"]
+    assert "UniProtKB:P02185" in feat["db_xrefs"]
+
+
+def test_non_labelling_pdb_hit_gets_no_uniprot_xref():
+    import baktfold.bakta.annotation as anno
+    feat = {"type": "cds", "locus": "c1", "product": "hypothetical protein", "hypothetical": True,
+            "db_xrefs": [],
+            "pstc": [{"source": "swissprot", "id": "P1", "description": "DNA ligase",
+                      "query_cov": 0.9, "subject_cov": 0.9, "identity": 0.4, "evalue": 1e-20},
+                     {"source": "pdb", "id": "101m", "chain": "A", "uniprot": "P02185",
+                      "description": "Myoglobin", "query_cov": 0.9, "subject_cov": 0.9,
+                      "identity": 0.4, "evalue": 1e-20}]}
+    anno.combine_annotation(feat, fast=False)
+    assert feat["product"] == "DNA ligase"
+    assert "pdb:pdb_101m_A" in feat["db_xrefs"]
+    assert not any(x.startswith("UniProtKB:") for x in feat["db_xrefs"])

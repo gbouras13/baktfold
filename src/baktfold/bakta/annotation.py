@@ -260,7 +260,13 @@ def combine_annotation(feature: dict, fast: bool, structures: bool = False):
                     elif src == 'swissprot':
                         db_xrefs.append(f"afdb_v6:swissprot_{eid}")
                     elif src == 'pdb':
-                        db_xrefs.append(f"pdb:pdb_{eid}")
+                        # chain-level: the chain that was hit, not just the entry
+                        chain = entry.get('chain')
+                        db_xrefs.append(f"pdb:pdb_{eid}_{chain}" if chain else f"pdb:pdb_{eid}")
+                        # when this PDB hit supplied the label and its name came
+                        # from UniProt (via SIFTS), cite that UniProt entry too
+                        if entry is selected_entry and entry.get('uniprot'):
+                            db_xrefs.append(f"UniProtKB:{entry['uniprot']}")
                     elif src == 'cath':
                         db_xrefs.append(f"cath:cath_{eid}")
                     elif src == 'custom_db':

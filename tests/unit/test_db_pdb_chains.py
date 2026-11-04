@@ -37,9 +37,10 @@ def test_build_pdb_chain_table(tmp_path):
          "--lookup", str(FIX / "pdb.lookup"), "--uniprot-names", str(FIX / "names.tsv")],
         check=True, capture_output=True,
     )
-    rows = dict((r[0], (r[1], r[2])) for r in sqlite3.connect(db).execute("SELECT * FROM pdb_chain"))
+    rows = dict((r[0], tuple(r[1:])) for r in sqlite3.connect(db).execute(
+        "SELECT id, product, source, uniprot FROM pdb_chain"))
     assert rows == {
-        "101m_A": ("Myoglobin", "uniprot"),
-        "1abc_A": ("DNA polymerase III subunit beta", "pdb_entity"),
-        "1abc_B": ("Immunoglobulin heavy constant gamma 1", "uniprot"),
+        "101m_A": ("Myoglobin", "uniprot", "P02185"),
+        "1abc_A": ("DNA polymerase III subunit beta", "pdb_entity", None),
+        "1abc_B": ("Immunoglobulin heavy constant gamma 1", "uniprot", "Q00002"),
     }

@@ -247,13 +247,18 @@ def has_table(conn, name: str) -> bool:
     ).fetchone() is not None
 
 
-def fetch_pdb_chain_description(conn, entry: str, chain):
+def fetch_pdb_chain_description(conn, entry: str, chain, with_uniprot: bool = False):
     """Chain-level PDB name from the ``pdb_chain`` table (UniProt name of the
     chain via SIFTS, else the PDB entity name), or None if the chain is not
     listed. Never falls back to the entry title: an unlisted chain is left
     for the next database in the hierarchy."""
     if not chain:
-        return None
+        return (None, None) if with_uniprot else None
+    if with_uniprot:
+        row = conn.execute(
+            "SELECT product, uniprot FROM pdb_chain WHERE id = ?", (f"{entry}_{chain}",)
+        ).fetchone()
+        return (row[0], row[1]) if row else (None, None)
     row = conn.execute(
         "SELECT product FROM pdb_chain WHERE id = ?", (f"{entry}_{chain}",)
     ).fetchone()
@@ -317,6 +322,9 @@ def lookup_sql(features: Sequence[dict], baktfold_db: Path, threads: int):
     db_path = baktfold_db.joinpath("baktfold.db")
     conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
     chain_level_pdb = has_table(conn, "pdb_chain")
+    pdb_uniprot_column = chain_level_pdb and any(
+        r[1] == "uniprot" for r in conn.execute("PRAGMA table_info(pdb_chain)")
+    )
     if not chain_level_pdb:
         logger.warning(
             "This Baktfold database has no chain-level PDB names (pdb_chain table); "
@@ -336,7 +344,15 @@ def lookup_sql(features: Sequence[dict], baktfold_db: Path, threads: int):
                 accession = entry.get("id")
                 source = entry.get("source")
                 if source == "pdb" and chain_level_pdb:
-                    desc = fetch_pdb_chain_description(conn, accession, entry.get("chain"))
+                    if pdb_uniprot_column:
+                        desc, uniprot = fetch_pdb_chain_description(
+                            conn, accession, entry.get("chain"), with_uniprot=True
+                        )
+                        if uniprot:
+                            # the name came from this UniProt entry (via SIFTS)
+                            entry["uniprot"] = uniprot
+                    else:
+                        desc = fetch_pdb_chain_description(conn, accession, entry.get("chain"))
                 else:
                     desc = fetch_sql_description(conn, source, accession)
                 if desc:

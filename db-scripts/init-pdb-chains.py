@@ -7,6 +7,7 @@ complex with ..."), which is not a protein name. This table names each chain:
   1. UniProt name of the chain via SIFTS (pdb_chain_uniprot.tsv), taken from
      the swissprot / afdbclusters tables already in baktfold.db or, failing
      that, from --uniprot-names (see fetch-uniprot-names.py);          source=uniprot
+     (the UniProt accession is stored in the `uniprot` column)
   2. else the PDB entity (molecule) name from pdb_seqres.txt;          source=pdb_entity
   3. else no row: Baktfold then treats the hit as unlabelled and moves on
      to the next database (it never falls back to the entry title).
@@ -147,9 +148,9 @@ rows, tally = [], Counter()
 for k in sorted(keys):
     acc = sifts.get(k)
     if acc and informative(names.get(acc, "")):
-        rows.append((k, names[acc], "uniprot")); tally["uniprot"] += 1
+        rows.append((k, names[acc], "uniprot", acc)); tally["uniprot"] += 1
     elif informative(entity.get(k, "")):
-        rows.append((k, entity[k], "pdb_entity")); tally["pdb_entity"] += 1
+        rows.append((k, entity[k], "pdb_entity", None)); tally["pdb_entity"] += 1
     else:
         tally["no_name" if (k in entity or k in sifts) else "not_in_seqres_or_sifts"] += 1
 total = len(keys)
@@ -161,7 +162,7 @@ if args.dry_run:
 else:
     with sqlite3.connect(args.db) as conn:
         conn.execute("DROP TABLE IF EXISTS pdb_chain")
-        conn.execute("CREATE TABLE pdb_chain (id TEXT PRIMARY KEY, product TEXT, source TEXT)")
-        conn.executemany("INSERT INTO pdb_chain VALUES (?, ?, ?)", rows)
+        conn.execute("CREATE TABLE pdb_chain (id TEXT PRIMARY KEY, product TEXT, source TEXT, uniprot TEXT)")
+        conn.executemany("INSERT INTO pdb_chain VALUES (?, ?, ?, ?)", rows)
         conn.commit()
     print(f"wrote {len(rows):,} rows to pdb_chain in {args.db}")
