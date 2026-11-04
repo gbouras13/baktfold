@@ -1,10 +1,48 @@
 #!/usr/bin/env python3
+import os
 from pathlib import Path
 from typing import Optional
 
 from pholdlib.prostt5.device import cuda_visible_devices_value, parse_gpus
 
 from baktfold.utils.external_tools import ExternalTool
+from loguru import logger
+
+
+def gpu_target_db(target_db) -> str:
+    """The Foldseek-GPU (padded) version of a target database.
+
+    Baktfold's own databases ship a padded copy as '<db>_gpu'. A custom
+    database may instead already *be* the padded database (the docs build it
+    with makepaddedseqdb as 'custom_db/db_pad'); appending '_gpu' to that
+    pointed at a file that does not exist and the run died after the four
+    main searches. Use '<db>_gpu' when it exists, otherwise the path as given.
+    """
+    if Path(f"{target_db}_gpu.dbtype").exists():
+        return f"{target_db}_gpu"
+    logger.info(f"No {target_db}_gpu found; using {target_db} as the padded Foldseek-GPU database")
+    return str(target_db)
+
+
+def physical_cuda_visible_devices(cvd: Optional[str]) -> Optional[str]:
+    """Translate torch-relative CUDA indices to the ones to give a subprocess.
+
+    torch numbers GPUs within the CUDA_VISIBLE_DEVICES this process inherited
+    (e.g. SLURM sets '2,3', so cuda:1 is physical GPU 3). Writing '1' back for
+    the Foldseek subprocess would select physical GPU 1 instead, which may not
+    be allocated to the job. Map through the inherited list when there is one.
+    """
+    parent = os.environ.get("CUDA_VISIBLE_DEVICES", "")
+    visible = [x.strip() for x in parent.split(",") if x.strip()]
+    if cvd is None or not visible:
+        return cvd
+    mapped = []
+    for idx in cvd.split(","):
+        i = int(idx)
+        if i >= len(visible):
+            raise ValueError(f"--gpus index {i} is outside CUDA_VISIBLE_DEVICES={parent}")
+        mapped.append(visible[i])
+    return ",".join(mapped)
 
 
 def run_foldseek_search(
@@ -63,7 +101,14 @@ def run_foldseek_search(
 
     # support foldseek gpu only for the regular DB search for now
     if foldseek_gpu:
-        cmd = f"search {query_db} {target_db}_gpu {result_db} {temp_db} --threads {str(threads)} -e {evalue}  --gpu 1 --prefilter-mode 1 --max-seqs {max_seqs}"
+        if ultra_sensitive or float(sensitivity) != 9.5:
+            # GPU mode uses the ungapped prefilter; -s / --exhaustive-search do
+            # not apply. Say so rather than logging settings that were ignored.
+            logger.warning(
+                "--foldseek-gpu uses Foldseek's GPU ungapped prefilter: "
+                "-s/--sensitivity and --ultra-sensitive are not applied in this mode."
+            )
+        cmd = f"search {query_db} {gpu_target_db(target_db)} {result_db} {temp_db} --threads {str(threads)} -e {evalue}  --gpu 1 --prefilter-mode 1 --max-seqs {max_seqs}"
 
     if extra_foldseek_params:
         cmd += f" {extra_foldseek_params}"
@@ -78,7 +123,7 @@ def run_foldseek_search(
     env = None
     if foldseek_gpu and gpus is not None:
         devices = parse_gpus(cpu=False, gpus=gpus)
-        cvd = cuda_visible_devices_value(devices)
+        cvd = physical_cuda_visible_devices(cuda_visible_devices_value(devices))
         if cvd is not None:
             env = {"CUDA_VISIBLE_DEVICES": cvd}
 
@@ -125,7 +170,7 @@ def create_result_tsv(
         columns += ",prob"
     format_string = f"--format-output {columns}"
     if foldseek_gpu:
-        target_db = f"{target_db}_gpu"
+        target_db = gpu_target_db(target_db)
 
     
     cmd = f"convertalis {query_db} {target_db} {result_db} {result_tsv} {format_string} --threads {threads}"

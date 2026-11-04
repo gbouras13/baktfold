@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import sys
 
 from pathlib import Path
 from typing import Optional
@@ -112,6 +113,26 @@ def subcommand_predict(
     # unsized single-residue arrays that len() cannot measure). Their CDS fall
     # through to the "X" * len masking below.
     prediction_dict = drop_unusable_predictions(prediction_dict, "writing AA FASTA")
+
+    # A run where ProstT5 fails for every protein (GPU out of memory on a
+    # shared node, a broken CUDA context, ...) used to finish with exit code 0
+    # and simply annotate nothing; only fails.tsv showed it. Make that loud,
+    # and report partial failures with a count rather than only per batch.
+    n_requested = len(cds_dict)
+    n_predicted = sum(1 for k in cds_dict if k in prediction_dict)
+    if n_requested and n_predicted == 0:
+        logger.error(
+            f"ProstT5 produced no usable 3Di prediction for any of the {n_requested} "
+            "proteins (see fails.tsv). This usually means the GPU ran out of memory or "
+            "is unavailable: retry with a smaller --batch-size, on a free GPU, or with --cpu."
+        )
+        sys.exit(1)
+    if n_predicted < n_requested:
+        n_failed = n_requested - n_predicted
+        logger.warning(
+            f"{n_failed} of {n_requested} proteins ({n_failed / n_requested:.1%}) have no "
+            "3Di prediction and will not be annotated by Baktfold (listed in fails.tsv)."
+        )
 
 
     with open(fasta_aa, "w") as out_f:

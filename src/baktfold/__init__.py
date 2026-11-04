@@ -362,7 +362,7 @@ def run(
     """baktfold predict then comapare all in one - GPU recommended"""
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -680,7 +680,7 @@ def proteins(
     """baktfold proteins-predict then comapare all in one - GPU recommended"""
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -906,7 +906,7 @@ def predict(
 
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -1112,7 +1112,7 @@ def compare(
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
 
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input, predictions_dir, structure_dir])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -1352,7 +1352,7 @@ def proteins_predict(
     """Runs ProstT5 on a multi FASTA input - GPU recommended"""
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -1513,7 +1513,7 @@ def proteins_compare(
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
 
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input, predictions_dir, structure_dir])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -1549,6 +1549,11 @@ def proteins_compare(
 
     # check foldseek is installed
     check_dependencies()
+
+    # check the database is installed and return it (was missing here, so the
+    # documented command without -d crashed with Path(None) after building the
+    # query database)
+    database = validate_db(database, DB_DIR, foldseek_gpu)
 
     # bool for the subcommand
     if (structure_dir):
@@ -1714,7 +1719,7 @@ def createdb(
     """Creates foldseek DB from AA FASTA and 3Di FASTA input files"""
 
     # validates the directory  (need to before I start phold or else no log file is written)
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[fasta_aa, fasta_3di])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -2008,7 +2013,7 @@ def json_reconstruct(
     """Reconstitute all outputs (GFF3/GenBank/EMBL/TSV/FASTA) from a baktfold JSON (no Foldseek TSVs)"""
 
     # validates the directory (need to before baktfold starts or else no log file is written)
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input])
 
     output: Path = Path(output)
 

@@ -9,6 +9,8 @@ from argparse import Namespace
 from datetime import datetime
 from pathlib import Path
 
+from loguru import logger
+
 import baktfold.bakta.constants as bc
 from baktfold.utils.util import get_version
 from baktfold.databases.version import DB_VERSION
@@ -18,6 +20,31 @@ PLASMID_UNNAMED_PATTERN = re.compile(r'unnamed[0-9]{0,3}')
 
 
 #log = logging.getLogger('CONFIG')
+
+
+class _PercentStyleLog:
+    """The vendored Bakta code here logs with stdlib %-style arguments via an
+    undefined `log`, so e.g. a missing input file failed with "name 'log' is
+    not defined" instead of the real message. Route those calls to loguru."""
+
+    @staticmethod
+    def _fmt(msg, args):
+        return msg % args if args else msg
+
+    def debug(self, msg, *args):
+        logger.debug(self._fmt(msg, args))
+
+    def info(self, msg, *args):
+        logger.info(self._fmt(msg, args))
+
+    def warning(self, msg, *args):
+        logger.warning(self._fmt(msg, args))
+
+    def error(self, msg, *args):
+        logger.error(self._fmt(msg, args))
+
+
+log = _PercentStyleLog()
 
 
 # runtime configurations

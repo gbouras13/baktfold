@@ -14,7 +14,7 @@ from baktfold.io.handle_genbank import  get_genbank
 
 
 
-def instantiate_dirs(output_dir: Union[str, Path], force: bool) -> Path:
+def instantiate_dirs(output_dir: Union[str, Path], force: bool, protected=()) -> Path:
     """
     Checks and instantiates the output directory.
 
@@ -31,6 +31,20 @@ def instantiate_dirs(output_dir: Union[str, Path], force: bool) -> Path:
     logger.info(f"Checking the output directory {output_dir}")
     if force is True:
         if Path(output_dir).exists():
+            # -f deletes the output directory: refuse if an input lives in it
+            # (e.g. `json -i out/baktfold.json -o out -f` deleted its own
+            # input; `compare --predictions-dir X -o X -f` the predictions).
+            out = Path(output_dir).resolve()
+            for p in protected:
+                if not p:
+                    continue
+                rp = Path(p).resolve()
+                if rp == out or out in rp.parents:
+                    logger.error(
+                        f"Refusing to use --force: input {p} is inside the output directory "
+                        f"{output_dir} and would be deleted. Choose a different -o."
+                    )
+                    sys.exit(1)
             logger.info(f"Removing {output_dir} because --force was specified")
             shutil.rmtree(output_dir)
         else:

@@ -483,6 +483,10 @@ def subcommand_compare(
         
         except Exception as e:
             logger.error(f"Foldseek failed to run against your custom database {custom_db}. Please check that it is formatted correctly as a Foldseek database: {e}")
+            # never continue without custom-DB results (custom_df would be
+            # unbound below); the CLI's error sink already exits, library
+            # callers get the original exception
+            raise
 
 
     ####

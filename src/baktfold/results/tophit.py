@@ -56,6 +56,10 @@ def get_tophit(
             has_header=False,
             new_columns=col_list,
             infer_schema_length=None,
+            # IDs are names, never numbers: FASTA headers like '>1', '>2' (or
+            # numeric custom-DB targets) were inferred as i64, and the string
+            # ops below then crashed with InvalidOperationError.
+            schema_overrides={"query": pl.Utf8, "target": pl.Utf8},
         )
     except pl.exceptions.NoDataError:
         # empty Foldseek result (0-byte file) — mirror pandas' empty frame
