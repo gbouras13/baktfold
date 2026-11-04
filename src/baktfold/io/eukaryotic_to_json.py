@@ -19,6 +19,7 @@ from loguru import logger
 
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 from Bio.SeqUtils import gc_fraction
+from Bio.SeqFeature import AfterPosition, BeforePosition
 
 import baktfold.bakta.so as so
 
@@ -51,6 +52,29 @@ AMINO_ACID_DICT = {
 
 # global variable for the genome-level random string - backup if no locus_tags in input genbank
 GENOME_RANDOM_BACKUP_LOCUSTAG_STR = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+
+def add_partial_flags(entry: dict, location) -> dict:
+    """Record partial ('<'/'>') ends of a feature location on ``entry``.
+
+    Bakta-style JSON stores plain integer coordinates, which silently dropped
+    GenBank's partial markers: ``complement(join(<1..47,...,402..>1012))``
+    came back out as ``complement(join(1..47,...,402..1012))``. The flags are
+    in genomic (ascending) coordinates, like ``start``/``stop``:
+
+      * ``partial_start``: the lowest coordinate is open (``<``)
+      * ``partial_stop``:  the highest coordinate is open (``>``)
+
+    Only set when True, so complete features are unchanged.
+    """
+    parts = getattr(location, "parts", [location])
+    lowest = min(parts, key=lambda p: int(p.start))
+    highest = max(parts, key=lambda p: int(p.end))
+    if isinstance(lowest.start, BeforePosition):
+        entry["partial_start"] = True
+    if isinstance(highest.end, AfterPosition):
+        entry["partial_stop"] = True
+    return entry
+
 
 def add_optional_qualifiers(entry, qualifiers, single_valued=None, multi_valued=None):
     """
@@ -248,6 +272,13 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
 
     if hypothetical:
         bakta_cds["hypothetical"] = True
+
+    # Keep /codon_start (1 = complete 5' end; 2/3 = partial 5' codon) and the
+    # partial-end markers: both are needed to write a location that still
+    # matches /translation.
+    if codon_start != 1:
+        bakta_cds["codon_start"] = codon_start
+    add_partial_flags(bakta_cds, feature.location)
 
     return bakta_cds
 
@@ -493,6 +524,7 @@ def convert_gene_feature(feature, rec, id):
         if flag in qualifiers:
             gene_entry[flag] = flag in qualifiers
 
+    add_partial_flags(gene_entry, feature.location)
     return gene_entry
 
 def convert_mrna_feature(feature, rec, id):
@@ -599,6 +631,7 @@ def convert_mrna_feature(feature, rec, id):
         if flag in qualifiers:
             mrna_entry[flag] = flag in qualifiers
 
+    add_partial_flags(mrna_entry, feature.location)
     return mrna_entry
 
 

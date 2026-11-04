@@ -91,15 +91,9 @@ def write_mrna_feature(fh, seq_id, feat):
         and len(starts) == len(stops)
         and len(starts) > 0
     ):
-        # For minus strand, exons must be written in reverse order (5'→3')
-        if strand == "-":
-            exon_parts = list(zip(starts, stops))
-        else:
-            exon_parts = list(zip(starts, stops))
-
-        # Exons must be numbered in biological order (5' to 3')
-        if strand == "-":
-            exon_parts = exon_parts[::-1]   # reverse order
+        # starts/stops are stored 5'->3' already (Biopython location order,
+        # descending on the minus strand), so exon1 is the 5'-most exon.
+        exon_parts = list(zip(starts, stops))
 
         # Write each exon to GFF
         for idx, (ex_start, ex_stop) in enumerate(exon_parts, start=1):
@@ -157,21 +151,28 @@ def write_euk_cds_feature(fh, seq_id, feat):
         cds_coords = [(feat["start"], feat["stop"])]
 
     # -------------------------------
-    # 2. Reverse order for negative strand
+    # 2. Phase, walking the parts 5'->3'
     # -------------------------------
-    if strand == "-":
-        cds_coords.reverse()
-
-    # -------------------------------
-    # 3. Emit CDS lines with correct phase
-    # -------------------------------
-    offset = 0
+    # The converter stores starts/stops in Biopython's location order, which
+    # is already 5'->3' (descending coordinates on the minus strand), so no
+    # reversal here. GFF3 phase = bases to skip at the 5' end of this part to
+    # reach the next codon start. The first part starts at /codon_start
+    # (2 or 3 for a partial 5' end); later parts follow from the cumulative
+    # coding length. Previously the minus strand was reversed and phase was
+    # offset % 3, so every multi-exon CDS on '-' and every codon_start>1 CDS
+    # had wrong phases.
+    first_skip = int(feat.get("codon_start", 1)) - 1
+    consumed = 0  # coding bases upstream of this part, after first_skip
 
     for i, (cds_start, cds_stop) in enumerate(cds_coords, start=1):
 
         length = cds_stop - cds_start + 1
-        phase = offset % 3
-        offset += length
+        if i == 1:
+            phase = first_skip % 3
+            consumed = length - first_skip
+        else:
+            phase = (3 - consumed % 3) % 3
+            consumed += length
 
         attrs = {"ID": f"{cds_id}-{i}", "Parent": transcript_id}
         # Baktfold's label lives on the CDS: without these attributes every
@@ -181,6 +182,8 @@ def write_euk_cds_feature(fh, seq_id, feat):
             attrs["product"] = feat["product"]
         if feat.get("locus"):
             attrs["locus_tag"] = feat["locus"]
+        if feat.get("partial_start") or feat.get("partial_stop"):
+            attrs["partial"] = "true"  # GFF3 has no '<'/'>'; NCBI convention
         db_xrefs = feat.get("db_xrefs") or []
         if isinstance(db_xrefs, list) and db_xrefs:
             attrs["Dbxref"] = [str(x) for x in db_xrefs]

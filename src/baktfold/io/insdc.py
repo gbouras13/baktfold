@@ -212,7 +212,10 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                     else:
                         qualifiers['protein_id'] = f"gnl|Baktfold|{feature['locus']}"
                     qualifiers['translation'] = feature['aa']
-                qualifiers['codon_start'] = 1
+                # 1 for complete CDS; eukaryotic CDS with a partial 5' end
+                # keep the input's /codon_start (2 or 3), without which the
+                # location no longer matches /translation.
+                qualifiers['codon_start'] = feature.get('codon_start', 1)
 
                 # add translation table (INSDC qualifier is /transl_table, matching Bakta)
                 qualifiers['transl_table'] = translation_table
@@ -418,6 +421,7 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                     if len(parts) > 1
                     else parts[0]
                 )
+                feature_location = _apply_partial_ends(feature_location, feature)
 
 
             else:
@@ -454,6 +458,8 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                             start = BeforePosition(start)
                             stop = AfterPosition(stop)
                     feature_location = FeatureLocation(start, stop, strand=strand)
+                    if euk:
+                        feature_location = _apply_partial_ends(feature_location, feature)
             if(feature.get('locus', None)):
                 gene_qualifier = {
                     'locus_tag': feature['locus']
@@ -485,6 +491,29 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
         sequence_record.features = seq_feature_list
         sequence_list.append(sequence_record)
     return sequence_list
+
+
+def _apply_partial_ends(location, feature: dict):
+    """Re-apply partial ('<'/'>') ends recorded by the eukaryotic converter.
+
+    ``partial_start``/``partial_stop`` refer to the lowest/highest genomic
+    coordinate (see eukaryotic_to_json.add_partial_flags), whichever part of a
+    join() they fall in and whatever the strand.
+    """
+    if not (feature.get('partial_start') or feature.get('partial_stop')):
+        return location
+    parts = list(getattr(location, 'parts', [location]))
+    low = min(range(len(parts)), key=lambda i: int(parts[i].start))
+    high = max(range(len(parts)), key=lambda i: int(parts[i].end))
+    new_parts = []
+    for i, p in enumerate(parts):
+        start, end = p.start, p.end
+        if i == low and feature.get('partial_start'):
+            start = BeforePosition(int(start))
+        if i == high and feature.get('partial_stop'):
+            end = AfterPosition(int(end))
+        new_parts.append(FeatureLocation(start, end, strand=p.strand))
+    return CompoundLocation(new_parts) if len(new_parts) > 1 else new_parts[0]
 
 
 def write_features(data: dict, features: Sequence[dict], genbank_output_path: Path, embl_output_path: Path, prokka: bool = False, euk: bool = False, 

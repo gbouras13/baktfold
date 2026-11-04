@@ -1,0 +1,246 @@
+LOCUS       DS572647                1012 bp    DNA     linear   CON 26-JUL-2016
+DEFINITION  Entamoeba histolytica HM-1:IMSS scf_1104750517253 genomic scaffold,
+            whole genome shotgun sequence.
+ACCESSION   DS572647
+VERSION     DS572647.1
+DBLINK      BioProject: PRJNA142
+            BioSample: SAMN02953605
+KEYWORDS    WGS.
+SOURCE      Entamoeba histolytica HM-1:IMSS
+  ORGANISM  Entamoeba histolytica HM-1:IMSS
+            Eukaryota; Amoebozoa; Evosea; Archamoebae; Mastigamoebida;
+            Entamoebidae; Entamoeba.
+REFERENCE   1  (bases 1 to 1012)
+  AUTHORS   Loftus,B., Anderson,I., Davies,R., Alsmark,U.C., Samuelson,J.,
+            Amedeo,P., Roncaglia,P., Berriman,M., Hirt,R.P., Mann,B.J.,
+            Nozaki,T., Suh,B., Pop,M., Duchene,M., Ackers,J., Tannich,E.,
+            Leippe,M., Hofer,M., Bruchhaus,I., Willhoeft,U., Bhattacharya,A.,
+            Chillingworth,T., Churcher,C., Hance,Z., Harris,B., Harris,D.,
+            Jagels,K., Moule,S., Mungall,K., Ormond,D., Squares,R.,
+            Whitehead,S., Quail,M.A., Rabbinowitsch,E., Norbertczak,H.,
+            Price,C., Wang,Z., Guillen,N., Gilchrist,C., Stroup,S.E.,
+            Bhattacharya,S., Lohia,A., Foster,P.G., Sicheritz-Ponten,T.,
+            Weber,C., Singh,U., Mukherjee,C., El-Sayed,N.M., Petri,W.A. Jr.,
+            Clark,C.G., Embley,T.M., Barrell,B., Fraser,C.M. and Hall,N.
+  TITLE     The genome of the protist parasite Entamoeba histolytica
+  JOURNAL   Nature 433 (7028), 865-868 (2005)
+   PUBMED   15729342
+REFERENCE   2  (bases 1 to 1012)
+  AUTHORS   Lorenzi,H., Amedeo,P., Inman,J., Schobel,S. and Caler,E.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (01-MAR-2007) The Institute for Genomic Research, 9712
+            Medical Center Drive, Rockville, MD 20850, USA
+COMMENT     This version of the project, JCVI-ESG2-1.0, represents 8x coverage
+            of the genome.
+FEATURES             Location/Qualifiers
+     source          1..1012
+                     /organism="Entamoeba histolytica HM-1:IMSS"
+                     /mol_type="genomic DNA"
+                     /strain="HM-1:IMSS"
+                     /db_xref="taxon:294381"
+     gene            complement(<1..>1012)
+                     /locus_tag="EHI_065120"
+                     /db_xref="Pathema:EHI_065120"
+     mRNA            complement(join(<1..47,140..329,402..>1012))
+                     /locus_tag="EHI_065120"
+                     /product="hypothetical protein, conserved"
+                     /note="transcript EHI_065120A"
+                     /db_xref="Pathema:EHI_065120"
+     CDS             complement(join(<1..47,140..329,402..>1012))
+                     /locus_tag="EHI_065120"
+                     /note="encoded by transcript EHI_065120A; predicted by EVM"
+                     /codon_start=2
+                     /product="hypothetical protein, conserved"
+                     /protein_id="EDS88580.1"
+                     /db_xref="Pathema:EHI_065120"
+                     /translation="ISKALILEEINSGYVSTQVRKIFSTRQKFCQENIRRDVPLTYKEL
+                     VTEIITKSDLASAMQKIFIDLKTNGVAHTKMNKKYLPPISLKNYDDVFSQQLLPYHSIF
+                     LFKTSKEWISCLTNSDDLILLPEQFPHIQNKGFFEKVKKVLQVSTPQTSLQYLSMTTEI
+                     PLLEIYDVVRYLVYWGKAKVIEAVFLDDVYILSPSKETQPVKTLAMRFKEECGGDITKV
+                     LNSFIEKKTLDKILEPIPEGDQDSFVEAFTWLIAHDVLIRVRKYLCTSMEKQTERDSSK
+                     T"
+ORIGIN
+        1 ctgtcttcga ggaatctctt tcagtctgtt tttccatcga agtacatctc catcttcttt
+       61 ttattgcttc aagtcgtcgt ctaaagtact ttcttcgtgg agttgtaagt cattgaacca
+      121 cttcttgtca atacaataca aatactttct cactcgaatt aagacatcat gtgctatcaa
+      181 ccacgtaaat gcctcaacaa aagagtcttg atcgccttct ggtattggtt cgagtatttt
+      241 gtccaaagtc tttttctcaa tgaaactgtt taagacttta gtgatgtcgc ccccacactc
+      301 ttctttaaat ctcattgcca aagtcttcac ttttatatgt gaagatgtcc cgtcctgtat
+      361 tttttgtggg ctttcacaac actcctttgg caagaagtaa cccggctgcg tctcttttga
+      421 aggcgataag atgtagacgt catccaaaaa gactgcttcg atgactttag ccttccccca
+      481 atagaccaaa tacctcacaa catcatatat ttcgagtaat ggtatttccg tggtcatcga
+      541 taaatattgt aatgaagttt gcggtgttga gacttgaagg acttttttga ccttttcgaa
+      601 gaaccctttg ttttggatgt gagggaattg ttcggggagg aggattaagt cgtcgctatt
+      661 agtcaagcag gatatccact ccttcgacgt cttaaataaa aagatcgagt gataaggcaa
+      721 caactgttgt gagaagacgt cgtcgtaatt tttcaaagaa atgggtggga ggtatttctt
+      781 attcattttt gtgtgtgcga cgccgtttgt ttttaagtcg atgaagatct tttgcatagc
+      841 cgaggccaaa tcgctctttg tgatgatttc agtgaccaac tctttgtaag ttaaagggac
+      901 gtcccgtctt atattctctt ggcagaactt ttgtcgtgtt gaaaagatct ttcggacttg
+      961 tgtagagacg tagcccgagt taatctcttc gaggataagt gccttagaaa tc
+//
+LOCUS       DS572616                1026 bp    DNA     linear   CON 26-JUL-2016
+DEFINITION  Entamoeba histolytica HM-1:IMSS scf_1104750516781 genomic scaffold,
+            whole genome shotgun sequence.
+ACCESSION   DS572616
+VERSION     DS572616.1
+DBLINK      BioProject: PRJNA142
+            BioSample: SAMN02953605
+KEYWORDS    WGS.
+SOURCE      Entamoeba histolytica HM-1:IMSS
+  ORGANISM  Entamoeba histolytica HM-1:IMSS
+            Eukaryota; Amoebozoa; Evosea; Archamoebae; Mastigamoebida;
+            Entamoebidae; Entamoeba.
+REFERENCE   1  (bases 1 to 1026)
+  AUTHORS   Loftus,B., Anderson,I., Davies,R., Alsmark,U.C., Samuelson,J.,
+            Amedeo,P., Roncaglia,P., Berriman,M., Hirt,R.P., Mann,B.J.,
+            Nozaki,T., Suh,B., Pop,M., Duchene,M., Ackers,J., Tannich,E.,
+            Leippe,M., Hofer,M., Bruchhaus,I., Willhoeft,U., Bhattacharya,A.,
+            Chillingworth,T., Churcher,C., Hance,Z., Harris,B., Harris,D.,
+            Jagels,K., Moule,S., Mungall,K., Ormond,D., Squares,R.,
+            Whitehead,S., Quail,M.A., Rabbinowitsch,E., Norbertczak,H.,
+            Price,C., Wang,Z., Guillen,N., Gilchrist,C., Stroup,S.E.,
+            Bhattacharya,S., Lohia,A., Foster,P.G., Sicheritz-Ponten,T.,
+            Weber,C., Singh,U., Mukherjee,C., El-Sayed,N.M., Petri,W.A. Jr.,
+            Clark,C.G., Embley,T.M., Barrell,B., Fraser,C.M. and Hall,N.
+  TITLE     The genome of the protist parasite Entamoeba histolytica
+  JOURNAL   Nature 433 (7028), 865-868 (2005)
+   PUBMED   15729342
+REFERENCE   2  (bases 1 to 1026)
+  AUTHORS   Lorenzi,H., Amedeo,P., Inman,J., Schobel,S. and Caler,E.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (01-MAR-2007) The Institute for Genomic Research, 9712
+            Medical Center Drive, Rockville, MD 20850, USA
+COMMENT     This version of the project, JCVI-ESG2-1.0, represents 8x coverage
+            of the genome.
+FEATURES             Location/Qualifiers
+     source          1..1026
+                     /organism="Entamoeba histolytica HM-1:IMSS"
+                     /mol_type="genomic DNA"
+                     /strain="HM-1:IMSS"
+                     /db_xref="taxon:294381"
+     gene            <275..>1026
+                     /locus_tag="EHI_034110"
+                     /db_xref="Pathema:EHI_034110"
+     mRNA            <275..>1026
+                     /locus_tag="EHI_034110"
+                     /product="hypothetical protein"
+                     /note="transcript EHI_034110A"
+                     /db_xref="Pathema:EHI_034110"
+     CDS             275..>1026
+                     /locus_tag="EHI_034110"
+                     /note="encoded by transcript EHI_034110A"
+                     /codon_start=1
+                     /product="hypothetical protein"
+                     /protein_id="EDS88583.1"
+                     /db_xref="Pathema:EHI_034110"
+                     /translation="MIALGILSAVYFGIFGGVWAVTGEMTRWGGEFLELLGMNLDGYSY
+                     YQKQNLNGTPLTRTDGIMLIGMFIGCLVAALLANKVKFRLPASNIRIFQAIVGGILSGY
+                     GARLAFGCNLANFFTGLPYFSLHTWLFTVFMVLGIYLGVKICNTSFFKPKAKLERVNKE
+                     NLPLNKQSLRTKLYFNLGILLFIAFLVWVFYLVFTNGNISTQNKQSLLALALIFGFVFG
+                     FVISRGQICFTSCFRDLFLFGRDNAIKGA"
+ORIGIN
+        1 aatcgaactc cccaaagaat agtcaactat cctttcatct gatttgaagt cagtggcgat
+       61 caccagatac gctaatcttc caaagtgata attatagcga tttttaatga aaaacaaaat
+      121 aaatttatca atattctttt tgacttcata ttaaatttaa gctataatct cactcttttt
+      181 tagcatcaag ttttgatgat tacattttta ggatctttct ttgaattctt ttaaacaaaa
+      241 atatttaatc aatttttggg acaattcccg ttctatgatt gcacttggaa ttttaagtgc
+      301 agtgtatttt gggatttttg gtggcgtttg ggctgttact ggagaaatga cacgttgggg
+      361 tggcgagttt ttagagcttt taggtatgaa tttagatgga tattcttatt accaaaagca
+      421 aaatttaaat ggaacccctt taacaagaac tgatggtatt atgctcatag gtatgtttat
+      481 aggttgttta gtagccgcac ttttagctaa caaagtcaaa tttcgtctac ctgctagcaa
+      541 tataagaatt tttcaagcaa tagtaggtgg aattctttca ggatatggag caagacttgc
+      601 atttggatgc aatttagcta atttttttac aggtttacct tatttttctt tacacacttg
+      661 gctttttact gtttttatgg ttttaggaat ttatctagga gtgaaaattt gcaacacttc
+      721 cttttttaaa cctaaagcta aattagaacg tgtaaataaa gaaaacttgc cgttaaacaa
+      781 gcaaagtttg cgtacaaaat tatattttaa cttaggcata ttgcttttca tagccttttt
+      841 agtttgggtg ttttatcttg tttttacaaa tggcaatatc agcacacaaa acaaacaaag
+      901 tcttctagct ttagcactga tttttggttt tgtttttggc tttgttattt ctagagggca
+      961 aatttgtttt acttcttgct ttagagattt atttttattt ggtagagata atgctataaa
+     1021 aggcgc
+//
+LOCUS       DS572606                1032 bp    DNA     linear   CON 26-JUL-2016
+DEFINITION  Entamoeba histolytica HM-1:IMSS scf_1104750518427 genomic scaffold,
+            whole genome shotgun sequence.
+ACCESSION   DS572606
+VERSION     DS572606.1
+DBLINK      BioProject: PRJNA142
+            BioSample: SAMN02953605
+KEYWORDS    WGS.
+SOURCE      Entamoeba histolytica HM-1:IMSS
+  ORGANISM  Entamoeba histolytica HM-1:IMSS
+            Eukaryota; Amoebozoa; Evosea; Archamoebae; Mastigamoebida;
+            Entamoebidae; Entamoeba.
+REFERENCE   1  (bases 1 to 1032)
+  AUTHORS   Loftus,B., Anderson,I., Davies,R., Alsmark,U.C., Samuelson,J.,
+            Amedeo,P., Roncaglia,P., Berriman,M., Hirt,R.P., Mann,B.J.,
+            Nozaki,T., Suh,B., Pop,M., Duchene,M., Ackers,J., Tannich,E.,
+            Leippe,M., Hofer,M., Bruchhaus,I., Willhoeft,U., Bhattacharya,A.,
+            Chillingworth,T., Churcher,C., Hance,Z., Harris,B., Harris,D.,
+            Jagels,K., Moule,S., Mungall,K., Ormond,D., Squares,R.,
+            Whitehead,S., Quail,M.A., Rabbinowitsch,E., Norbertczak,H.,
+            Price,C., Wang,Z., Guillen,N., Gilchrist,C., Stroup,S.E.,
+            Bhattacharya,S., Lohia,A., Foster,P.G., Sicheritz-Ponten,T.,
+            Weber,C., Singh,U., Mukherjee,C., El-Sayed,N.M., Petri,W.A. Jr.,
+            Clark,C.G., Embley,T.M., Barrell,B., Fraser,C.M. and Hall,N.
+  TITLE     The genome of the protist parasite Entamoeba histolytica
+  JOURNAL   Nature 433 (7028), 865-868 (2005)
+   PUBMED   15729342
+REFERENCE   2  (bases 1 to 1032)
+  AUTHORS   Lorenzi,H., Amedeo,P., Inman,J., Schobel,S. and Caler,E.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (01-MAR-2007) The Institute for Genomic Research, 9712
+            Medical Center Drive, Rockville, MD 20850, USA
+COMMENT     This version of the project, JCVI-ESG2-1.0, represents 8x coverage
+            of the genome.
+FEATURES             Location/Qualifiers
+     source          1..1032
+                     /organism="Entamoeba histolytica HM-1:IMSS"
+                     /mol_type="genomic DNA"
+                     /strain="HM-1:IMSS"
+                     /db_xref="taxon:294381"
+     gene            complement(<412..>992)
+                     /locus_tag="EHI_139570"
+                     /db_xref="Pathema:EHI_139570"
+     mRNA            complement(<412..>992)
+                     /locus_tag="EHI_139570"
+                     /product="peroxiredoxin, putative"
+                     /note="transcript EHI_139570A"
+                     /db_xref="Pathema:EHI_139570"
+     CDS             complement(412..>992)
+                     /locus_tag="EHI_139570"
+                     /note="encoded by transcript EHI_139570A; Similar to
+                     SP:P19476: Putative peroxiredoxin (EC 1.11.1.15)
+                     (Thioredoxin peroxidae) (29 kDacysteine-rich surface
+                     antigen). taxon:5759 {Entamoeba histolytica;} / %id: 99.5 /
+                     coverage: *** This functional annotation is a direct result
+                     of community participation in an Entamoeba Annotation
+                     Jamboree; GO_function: GO:0051920 - peroxiredoxin activity;
+                     GO_process: GO:0008150 - biological_process"
+                     /codon_start=3
+                     /product="peroxiredoxin, putative"
+                     /protein_id="EDS88585.1"
+                     /db_xref="Pathema:EHI_139570"
+                     /translation="QIGKEAPEFKAPAYCPCGSIKEIDINEYRGKYVVLLFYPLDWTFV
+                     CPTEMIGYSELAGQLKEINCEVIGVSVDSVYCHQAWCEADKSKGGVGKLTFPLVSDIKR
+                     CISIKYGMLNVEAGIARRGYVIIDDKGKVRYIQMNDDGIGRSTEETIRIVKAIQFSDEH
+                     GAVCPLNWKPGKDTIEPTPDGIKKYLTAH"
+ORIGIN
+        1 aagtggaatt agaaatataa ttaatttcaa tatatcataa tattacaaat atattgaatt
+       61 ttcattattt attcattcat caatgttttg ttgaattatt ttattcaata ttgaaaatat
+      121 ttatttaaaa gaagagtgaa caaacatatt gaaagaaaat gaattaagaa ttgaataaat
+      181 tatcaatttc ttttctaatt gttatttctt cttattcatt tctatttatt tataactcaa
+      241 tgtgtttaaa ttatgtttta tacaaatata tcattttatt taaattcatc tgttgtgtag
+      301 tatttcttat tcttcttttc tttattaaaa tcattatatt tattctttta tttattatca
+      361 ttttcttctt ataaaccata aaataatttg tattaaatta tcttgtttgt tttaatgtgc
+      421 tgttaaatat ttcttaattc catctggtgt tggttcaatg gtgtcttttc ctggtttcca
+      481 attgagtgga caaactgctc catgttcatc actgaattga attgctttaa ctattctgat
+      541 tgtttcttcc gttgatcttc caattccatc atcattcatt tgaatgtatc ttacttttcc
+      601 tttatcatca atgatgacat atcctcttct tgcaattcct gcttcgacat ttaacattcc
+      661 atatttgata gaaatgcatc tcttaatatc tgatactaat gggaatgtca actttcctac
+      721 tcctccttta cttttatctg cttcacacca tgcttgatga caataaactg aatctacact
+      781 cactccaata acttcacagt tgatttcttt caattgtcct gcaagttcac tatatccaat
+      841 catttctgtt ggacaaacaa atgtccaatc caatggataa aacaacaata caacatattt
+      901 tcctctatat tcattaatat caatctcttt gattgaacca catggacaat atgctggtgc
+      961 tttaaattct ggtgcttctt ttccaatttg tgctttttca aaatgtgttt ataaatttct
+     1021 taaatgcttt ta
+//
