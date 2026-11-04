@@ -7,6 +7,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Wait for this commit's container image
+        # The image is built by build_container.yaml, a separate workflow
+        # started by the same push. The Setonix job pulls it, so do not
+        # schedule until the tag exists (builds can take >15 min, which used
+        # to lose the race against --begin=now+15minutes).
+        run: |
+          for i in $(seq 1 90); do
+            if curl -sf "https://quay.io/api/v1/repository/${{ secrets.QUAY_USERNAME }}/baktfold/tag/?specificTag=${{ github.sha }}" \
+                 | grep -q '"name": *"${{ github.sha }}"'; then
+              echo "image tag found"; exit 0
+            fi
+            sleep 60
+          done
+          echo "container image for ${{ github.sha }} not found after 90 min (did the build fail?)"; exit 1
+
       - name: Download, Setup, and Run hpci
         env:
           KEY: ${{ secrets.PRIVATE_KEY }}

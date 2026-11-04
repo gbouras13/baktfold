@@ -20,11 +20,6 @@ ENV PATH="/opt/foldseek/bin:${PATH}"
 # install baktfold
 
 RUN pip install --ignore-installed PyYAML
-# Same Debian-owned-package problem as PyYAML: the base image ships numpy via
-# apt (no RECORD file), so pip cannot uninstall it when a dependency pulls a
-# newer numpy and the build dies. Install pip's own copy alongside instead.
-# (No version pin: drift is what the golden tests are for.)
-RUN pip install --ignore-installed numpy
 RUN python3 -c "import torch; print(torch.__version__)" || echo "PyTorch is not installed before installing the project. "
 ARG BAKTFOLD_REF
 # Install baktfold together with its ``test`` extra so the test dependencies

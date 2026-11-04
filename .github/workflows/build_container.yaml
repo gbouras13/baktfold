@@ -9,6 +9,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Free runner disk space
+        # The ROCm PyTorch base image is large enough to exhaust the default
+        # runner disk ("no space left on device"); drop preinstalled SDKs we
+        # never use.
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          docker system prune -af
+          df -h /
+
       - name: Log in to Quay
         run: echo "${{ secrets.QUAY_PASSWORD }}" | docker login quay.io -u "${{ secrets.QUAY_USERNAME }}" --password-stdin
 
