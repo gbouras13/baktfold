@@ -167,3 +167,32 @@ def test_summary_percentages_with_no_cds(tmp_path):
     assert lines["CDS beginning hypotheticals"] == (0, "0.0% of CDS")
     assert lines["CDS annotated with Baktfold database hit"] == (
         0, "0.0% of CDS; 0.0% of beginning hypotheticals")
+
+
+def test_all_proteins_curated_cds_not_counted(tmp_path, monkeypatch):
+    """Audit A8: with --all-proteins a curated CDS whose only hit is
+    uninformative keeps its input label. It has a Baktfold hit, but it was
+    neither a beginning hypothetical nor annotated with a Baktfold function."""
+    import baktfold.bakta.config as cfg
+    from baktfold.io.io import write_summary_txt_file
+
+    feats = [
+        # curated in the input; hit was "hypothetical protein" -> label kept, no tier
+        {"type": "cds", "product": "Chromate transporter", "baktfold": True},
+        # hypothetical in the input; Baktfold supplied the label
+        {"type": "cds", "product": "Transposase", "baktfold": True, "annotation_confidence": "medium"},
+        # hypothetical in the input; still hypothetical
+        {"type": "cds", "product": "hypothetical protein", "hypothetical": True},
+    ]
+    monkeypatch.setattr(cfg, "input_hypotheticals", 2)
+    write_summary_txt_file(tmp_path, "s", feats)
+    text = (tmp_path / "s.summary.txt").read_text()
+    assert "CDS beginning hypotheticals: 2 " in text
+    assert "CDS annotated with Baktfold database hit: 2 " in text
+    assert "CDS annotated with Baktfold function: 1 " in text
+    assert "CDS remaining hypotheticals: 1 " in text
+
+    # same outputs reconstructed without the recorded count still give 2
+    monkeypatch.setattr(cfg, "input_hypotheticals", None)
+    write_summary_txt_file(tmp_path, "s", feats)
+    assert "CDS beginning hypotheticals: 2 " in (tmp_path / "s.summary.txt").read_text()

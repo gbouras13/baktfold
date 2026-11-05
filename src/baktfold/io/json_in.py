@@ -292,6 +292,7 @@ def parse_baktfold_json_for_reconstruction(
     # ---- restore faithful cfg state (headers, version strings, timing) ---
     cfg.version = version.get('baktfold', cfg.version)
     cfg.db_version = version.get('baktfold_db', cfg.db_version)
+    cfg.input_hypotheticals = provenance.get('input_hypotheticals')
     _restore_run_timing(data)
 
     # ---- detect genome vs proteins mode ----------------------------------

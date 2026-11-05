@@ -311,7 +311,10 @@ def download(tarball_path: Path, cache_dir: Path) -> None:
     hf_tarball_path = hf_hub_download(
         repo_id="gbouras13/baktfold-db",
         repo_type="dataset",
-        filename="baktfold_db.tar.gz",
+        # versioned per database release (VERSION_DICTIONARY "tarball"), so
+        # a new release never replaces the file older Baktfold versions
+        # download and md5-check
+        filename=tarball_path.name,
         cache_dir=f"{cache_dir}",
     )
 
@@ -528,6 +531,23 @@ def untar(tarball_path: Path, output_path: Path, DICT: dict) -> None:
         raise
 
 
+def missing_required_tables(db_file: Path) -> list:
+    """Tables the current database release requires that ``db_file`` lacks."""
+    required = VERSION_DICTIONARY[CURRENT_DB_VERSION].get("required_tables", [])
+    if not required:
+        return []
+    import sqlite3
+    try:
+        conn = sqlite3.connect(f"file:{db_file}?mode=ro", uri=True)
+        try:
+            present = {r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+        finally:
+            conn.close()
+    except sqlite3.Error:
+        return list(required)
+    return [t for t in required if t not in present]
+
+
 def check_db_installation(db_dir: Path, foldseek_gpu: bool) -> bool:
     """
     Check if the baktfold database is installed.
@@ -547,6 +567,18 @@ def check_db_installation(db_dir: Path, foldseek_gpu: bool) -> bool:
             downloaded_flag = False
             break
     
+    # Files alone do not identify the release: a 0.1.0 install has every
+    # file but lacks tables later releases add (e.g. pdb_chain in 0.2.0), and
+    # would otherwise never be updated.
+    if downloaded_flag:
+        missing = missing_required_tables(Path(db_dir) / "baktfold.db")
+        if missing:
+            logger.warning(
+                f"baktfold database in {db_dir} predates v{CURRENT_DB_VERSION} "
+                f"(missing table(s): {', '.join(missing)}); it will be updated"
+            )
+            downloaded_flag = False
+
     gpu_flag = True
     if foldseek_gpu:
         for file_name in baktfold_DB_FOLDSEEK_GPU_NAMES:

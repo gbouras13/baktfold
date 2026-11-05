@@ -12,9 +12,10 @@ import baktfold.io.fasta as fasta
 import baktfold.io.insdc as insdc
 import baktfold.bakta.annotation as ba
 import baktfold.bakta.so as so
+from baktfold.io.euk_transcripts import gff_ids
 
 
-def write_gene_feature(fh, seq_id, feat):
+def write_gene_feature(fh, seq_id, feat, ids=None):
     """Write a 'gene' feature including fuzzy boundaries."""
     start = int(feat['start'])
     stop  = int(feat['stop'])
@@ -24,7 +25,8 @@ def write_gene_feature(fh, seq_id, feat):
     locus = feat.get('locus') or f"{seq_id}_{start}_{stop}_{strand}"
 
     attrs = {
-        "ID": f"{locus}"
+        # unique in the file (euk_transcripts.gff_ids)
+        "ID": ids[3].get(id(feat), locus) if ids else f"{locus}"
     }
 
     if feat.get('gene') is not None:
@@ -35,7 +37,7 @@ def write_gene_feature(fh, seq_id, feat):
     fh.write(f"{seq_id}\tbaktfold\tgene\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
 
 
-def write_mrna_feature(fh, seq_id, feat):
+def write_mrna_feature(fh, seq_id, feat, ids=None):
     """Write mRNA + implied exons based on join() structure."""
 
     start = int(feat['start'])
@@ -45,12 +47,18 @@ def write_mrna_feature(fh, seq_id, feat):
     # fall back if there is no locus tag
     locus = feat.get('locus') or f"{seq_id}_{start}_{stop}_{strand}"
 
-    mrna_id = f"{locus}-T1"
+    # transcript ID: the input's own where it has one, else <locus>-T<n>,
+    # unique in the file (see euk_transcripts.gff_ids); every transcript used
+    # to be '<locus>-T1', so alternative transcripts shared one ID
+    mrna_id = ids[0][id(feat)] if ids else f"{locus}-T1"
 
     # Top-level mRNA line
+    # Parent: the transcript's gene (linked by locus tag or /gene); omitted
+    # when the input has no gene feature for it
+    parent = ids[2].get(id(feat)) if ids else locus
     attrs = {
         "ID": mrna_id,
-        "Parent": f"{locus}",
+        "Parent": parent,
     }
 
     product = feat.get("product", [])
@@ -116,7 +124,7 @@ def write_mrna_feature(fh, seq_id, feat):
 
 
 
-def write_euk_cds_feature(fh, seq_id, feat):
+def write_euk_cds_feature(fh, seq_id, feat, ids=None):
     """
     Write a eukaryotic CDS feature to GFF3 with multiple CDS parts.
 
@@ -131,8 +139,15 @@ def write_euk_cds_feature(fh, seq_id, feat):
     strand = feat.get("strand", "+")
     locus = feat.get("locus", "unknown")
 
-    transcript_id = f"{locus}-T1"
-    cds_id = f"{transcript_id}.cds"
+    # One ID shared by every segment of the CDS (GFF3: a spliced CDS is one
+    # feature over several lines), with its own transcript as Parent.
+    # Previously each segment had its own ID ('.cds-1', '.cds-2') and every
+    # CDS pointed at '<locus>-T1'.
+    if ids:
+        cds_id, transcript_id = ids[1][id(feat)]
+    else:
+        transcript_id = f"{locus}-T1"
+        cds_id = f"{transcript_id}.cds"
 
     starts = feat.get("starts")
     stops = feat.get("stops")
@@ -174,7 +189,9 @@ def write_euk_cds_feature(fh, seq_id, feat):
             phase = (3 - consumed % 3) % 3
             consumed += length
 
-        attrs = {"ID": f"{cds_id}-{i}", "Parent": transcript_id}
+        attrs = {"ID": cds_id}
+        if transcript_id:
+            attrs["Parent"] = transcript_id
         # Baktfold's label lives on the CDS: without these attributes every
         # Baktfold annotation was lost from eukaryotic GFF3.
         if feat.get("product"):
@@ -267,7 +284,7 @@ def write_euk_utr_feature(fh, seq_id, feat, locus_counter, three=False):
     stop  = int(feat['stop'])
     strand = feat['strand']
 
-    locus = feat['locus']
+    locus = _locus(feat)
 
     # Count occurrences for this locus
     count = locus_counter.get(locus, 0) + 1
@@ -308,63 +325,33 @@ def write_euk_utr_feature(fh, seq_id, feat, locus_counter, three=False):
     fh.write(f"{seq_id}\tbaktfold\t{gene_tag}\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
 
 
-def write_euk_trna_feature(fh, seq_id, feat):
+def write_euk_trna_feature(fh, seq_id, feat, ids=None):
     """
-    Write a tRNA feature to GFF3 with a top-level line and single exon.
-    
-    Parameters
-    ----------
-    fh : file-like
-        Open file handle to write GFF lines.
-    seq_id : str
-        Sequence/contig ID.
-    feat : SeqFeature
-        Biopython SeqFeature object of type 'tRNA'.
+    Write a eukaryotic tRNA feature to GFF3: a tRNA line (child of its gene)
+    and one exon line (child of the tRNA).
 
-    Notes
-    -----
-    - Generates one tRNA line and one exon line.
-    - Includes optional 'product' qualifier.
+    ``ids`` comes from ``euk_transcripts.gff_ids`` and gives the tRNA a
+    file-unique ID; without it the ID is ``<locus>-T1``.
     """
     start = int(feat['start'])
     stop  = int(feat['stop'])
-    
     strand = feat['strand']
-    
-    locus = feat['locus']
+    locus = feat.get('locus') or f"{seq_id}_{start}_{stop}_{strand}"
 
-    trna_id = f"{locus}-T1"
+    trna_id = ids[0].get(id(feat), f"{locus}-T1") if ids else f"{locus}-T1"
 
-    # Top-level tRNA attributes
-    attrs = {
-        "ID": trna_id,
-        "Parent": locus
-    }
-
-    attrs = {}
-
-    product = feat.get("product", [])
-
+    # Previously the ID/Parent were built and then discarded (attrs reset to
+    # {}), leaving the tRNA without an ID, its exon pointing at a parent that
+    # did not exist, and the tRNA unlinked from its gene.
+    attrs = {"ID": trna_id, "Parent": ids[2].get(id(feat)) if ids else locus}
+    product = feat.get("product")
     if product:
+        attrs["product"] = [str(v) for v in product] if isinstance(product, list) else str(product)
 
-        key = "product"         
-        if isinstance(product, list):
-            if len(product) == 1:
-                attrs[key] = str(product[0])
-            else:
-                attrs[key] = ",".join(str(v) for v in product)
-        else:
-            attrs[key] = str(product)
+    fh.write(f"{seq_id}\tbaktfold\ttRNA\t{start}\t{stop}\t.\t{strand}\t.\t{encode_annotations(attrs)}\n")
 
-
-    attr_str = ";".join(f"{k}={v}" for k, v in attrs.items())
-
-    # Write top-level tRNA line
-    fh.write(f"{seq_id}\tbaktfold\ttRNA\t{start}\t{stop}\t.\t{strand}\t.\t{attr_str}\n")
-
-    # Write exon line (tRNA single-exon)
-    exon_id = f"{trna_id}.exßon1"
-    exon_attrs = f"ID={exon_id};Parent={trna_id}"
+    # single exon
+    exon_attrs = encode_annotations({"ID": f"{trna_id}.exon1", "Parent": trna_id})
     fh.write(f"{seq_id}\tbaktfold\texon\t{start}\t{stop}\t.\t{strand}\t.\t{exon_attrs}\n")
 
 
@@ -385,6 +372,14 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
         #fh.write(f"# Database: v{cfg.db_info['major']}.{cfg.db_info['minor']}, {cfg.db_info['type']}\n")
         fh.write(f'# DOI: {bc.BAKTFOLD_DOI}\n')
         fh.write(f'# URL: {bc.BAKTFOLD_URL}\n')
+
+        if euk:
+            # transcript / CDS identifiers for the whole file (unique IDs,
+            # one shared ID per spliced CDS, CDS -> its own mRNA)
+            all_feats = [f for feats in features_by_sequence.values() for f in feats]
+            euk_ids = gff_ids(all_feats)
+        else:
+            euk_ids = None
 
         for seq in data['sequences']:  # write features
             if euk:
@@ -423,7 +418,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                 if(feat['type'] == bc.FEATURE_T_RNA):
 
                     if euk:
-                        write_euk_trna_feature(fh, seq_id, feat)
+                        write_euk_trna_feature(fh, seq_id, feat, euk_ids)
                     else:
                         trna_tool = "tRNAscan-SE"
                         if prokka:
@@ -432,10 +427,10 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                             trna_tool = trna_program
 
                         annotations = {
-                            'ID': feat['locus'],
-                            'Name': feat['product'],
-                            'locus_tag': feat['locus'],
-                            'product': feat['product'],
+                            'ID': _locus(feat),
+                            'Name': feat.get('product'),
+                            'locus_tag': feat.get('locus'),
+                            'product': feat.get('product'),
                             'Dbxref': feat.get('db_xrefs', [])
                         }
                         if(feat.get('gene', None)):  # add gene annotation if available
@@ -449,13 +444,13 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         if(feat.get('amino_acid', False)):
                             annotations['amino_acid'] = feat['amino_acid']
                         if(cfg.compliant):
-                            gene_id = f"{feat['locus']}_gene"
+                            gene_id = f"{_locus(feat)}_gene"
                             annotations['Parent'] = gene_id
                             annotations['inference'] = 'profile:tRNAscan:2.0'
                             annotations['Dbxref'], annotations['Note'] = insdc.revise_dbxref_insdc(feat['db_xrefs'])  # remove INSDC invalid DbXrefs
                             gene_annotations = {
                                 'ID': gene_id,
-                                'locus_tag': feat['locus']
+                                'locus_tag': feat.get('locus')
                             }
                             if(feat.get('gene', None)):
                                 gene_annotations['gene'] = feat['gene']
@@ -473,11 +468,11 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         tmrna_tool = tmrna_program
 
                     annotations = {
-                        'ID': feat['locus'],
-                        'Name': feat['product'],
-                        'locus_tag': feat['locus'],
+                        'ID': _locus(feat),
+                        'Name': feat.get('product'),
+                        'locus_tag': feat.get('locus'),
                         'gene': feat.get('gene', []),
-                        'product': feat['product'],
+                        'product': feat.get('product'),
                         'Dbxref': feat.get('db_xrefs', [])
                     }
                     if('tag' in feat):
@@ -485,7 +480,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                     if('truncated' in feat):
                         annotations[bc.INSDC_FEATURE_PSEUDO] = True
                     if(cfg.compliant):
-                        gene_id = f"{feat['locus']}_gene"
+                        gene_id = f"{_locus(feat)}_gene"
                         annotations['Parent'] = gene_id
                         annotations['inference'] = 'profile:aragorn:1.2'
                         annotations['Dbxref'], annotations['Note'] = insdc.revise_dbxref_insdc(feat['db_xrefs'])  # remove INSDC invalid DbXrefs
@@ -493,7 +488,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                             annotations['tag_peptide'] = f"{feat['tag']['start']}..{feat['tag']['stop']}" if feat['strand'] == bc.STRAND_FORWARD else f"complement({feat['tag']['start']}..{feat['tag']['stop']})"
                         gene_annotations = {
                             'ID': gene_id,
-                            'locus_tag': feat['locus'],
+                            'locus_tag': feat.get('locus'),
                             'gene': feat['gene']
                         }
                         if('truncated' in feat):
@@ -510,35 +505,40 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         rrna_tool = rrna_program
 
                     annotations = {
-                        'ID': feat['locus'],
-                        'Name': feat['product'],
-                        'locus_tag': feat['locus'],
+                        'ID': _locus(feat),
+                        'Name': feat.get('product'),
+                        'locus_tag': feat.get('locus'),
                         'gene': feat.get('gene', []),
-                        'product': feat['product'],
+                        'product': feat.get('product'),
                         'Dbxref': feat.get('db_xrefs', [])
                     }
                     if('truncated' in feat):
                         annotations[bc.INSDC_FEATURE_PSEUDO] = True
                     if(cfg.compliant):
-                        gene_id = f"{feat['locus']}_gene"
+                        gene_id = f"{_locus(feat)}_gene"
                         annotations['Parent'] = gene_id
                         annotations['Dbxref'], annotations['Note'] = insdc.revise_dbxref_insdc(feat['db_xrefs'])  # remove INSDC invalid DbXrefs
                         for rfam_id in [dbxref.split(':')[1] for dbxref in feat['db_xrefs'] if dbxref.split(':')[0] == bc.DB_XREF_RFAM]:
                             annotations['inference'] = f'profile:Rfam:{rfam_id}'
                         gene_annotations = {
                             'ID': gene_id,
-                            'locus_tag': feat['locus'],
+                            'locus_tag': feat.get('locus'),
                             'gene': feat['gene']
                         }
                         if('truncated' in feat):
                             gene_annotations[bc.INSDC_FEATURE_PSEUDO] = True
                         gene_annotations = encode_annotations(gene_annotations)
                         fh.write(f"{seq_id}\t{rrna_tool}\tgene\t{start}\t{stop}\t.\t{feat['strand']}\t.\t{gene_annotations}\n")
+                    if euk_ids and id(feat) in euk_ids[0]:
+                        # eukaryotic input has its own gene line with ID=<locus>:
+                        # give the RNA a unique transcript ID, child of that gene
+                        annotations['ID'] = euk_ids[0][id(feat)]
+                        annotations['Parent'] = euk_ids[2].get(id(feat))
                     annotations = encode_annotations(annotations)
                     if other_genbank or prokka:
-                        fh.write(f"{seq_id}\t{rrna_tool}\t{so.SO_RRNA.name}\t{start}\t{stop}\t{feat['strand']}\t.\t{annotations}\n")
+                        fh.write(f"{seq_id}\t{rrna_tool}\t{so.SO_RRNA.name}\t{start}\t{stop}\t.\t{feat['strand']}\t.\t{annotations}\n")
                     else:
-                        fh.write(f"{seq_id}\t{rrna_tool}\t{so.SO_RRNA.name}\t{start}\t{stop}\t{feat['evalue']}\t{feat['strand']}\t.\t{annotations}\n")
+                        fh.write(f"{seq_id}\t{rrna_tool}\t{so.SO_RRNA.name}\t{start}\t{stop}\t{feat.get('evalue', '.')}\t{feat['strand']}\t.\t{annotations}\n")
                 elif(feat['type'] == bc.FEATURE_NC_RNA):
                     # both prokka and bakta use infernal for ncrna
                     ncrna_tool = "Infernal"
@@ -546,17 +546,17 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         ncrna_tool = ncrna_program
 
                     annotations = {
-                        'ID': feat['locus'],
-                        'Name': feat['product'],
-                        'locus_tag': feat['locus'],
+                        'ID': _locus(feat),
+                        'Name': feat.get('product'),
+                        'locus_tag': feat.get('locus'),
                         'gene': feat.get('gene', []),
-                        'product': feat['product'],
+                        'product': feat.get('product'),
                         'Dbxref': feat.get('db_xrefs', [])
                     }
                     if('truncated' in feat):
                         annotations[bc.INSDC_FEATURE_PSEUDO] = True
                     if(cfg.compliant):
-                        gene_id = f"{feat['locus']}_gene"
+                        gene_id = f"{_locus(feat)}_gene"
                         annotations['Parent'] = gene_id
                         annotations['Dbxref'], annotations['Note'] = insdc.revise_dbxref_insdc(feat['db_xrefs'])  # remove INSDC invalid DbXrefs
                         annotations[bc.INSDC_FEATURE_NC_RNA_CLASS] = insdc.select_ncrna_class(feat)
@@ -564,7 +564,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                             annotations['inference'] = f'profile:Rfam:{rfam_id}'
                         gene_annotations = {
                             'ID': gene_id,
-                            'locus_tag': feat['locus'],
+                            'locus_tag': feat.get('locus'),
                             'gene': feat['gene']
                         }
                         if(ba.RE_GENE_SYMBOL.fullmatch(feat['gene'])):  # discard non-standard ncRNA gene symbols
@@ -575,16 +575,21 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                             gene_annotations[bc.INSDC_FEATURE_PSEUDO] = True
                         gene_annotations = encode_annotations(gene_annotations)
                         fh.write(f"{seq_id}\t{ncrna_tool}\tgene\t{start}\t{stop}\t.\t{feat['strand']}\t.\t{gene_annotations}\n")
+                    if euk_ids and id(feat) in euk_ids[0]:
+                        # eukaryotic input has its own gene line with ID=<locus>:
+                        # give the RNA a unique transcript ID, child of that gene
+                        annotations['ID'] = euk_ids[0][id(feat)]
+                        annotations['Parent'] = euk_ids[2].get(id(feat))
                     annotations = encode_annotations(annotations)
                     if other_genbank or prokka:
-                        fh.write(f"{seq_id}\t{ncrna_tool}\t{so.SO_NCRNA_GENE.name}\t{start}\t{stop}\t{feat['strand']}\t.\t{annotations}\n")
+                        fh.write(f"{seq_id}\t{ncrna_tool}\t{so.SO_NCRNA_GENE.name}\t{start}\t{stop}\t.\t{feat['strand']}\t.\t{annotations}\n")
                     else:
-                        fh.write(f"{seq_id}\t{ncrna_tool}\t{so.SO_NCRNA_GENE.name}\t{start}\t{stop}\t{feat['evalue']}\t{feat['strand']}\t.\t{annotations}\n")
+                        fh.write(f"{seq_id}\t{ncrna_tool}\t{so.SO_NCRNA_GENE.name}\t{start}\t{stop}\t{feat.get('evalue', '.')}\t{feat['strand']}\t.\t{annotations}\n")
                 elif(feat['type'] == bc.FEATURE_NC_RNA_REGION):
                     annotations = {
                         'ID': feat['id'],
-                        'Name': feat['product'],
-                        'product': feat['product'],
+                        'Name': feat.get('product'),
+                        'product': feat.get('product'),
                         'Dbxref': feat.get('db_xrefs', [])
                     }
                     if('truncated' in feat):
@@ -602,8 +607,8 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         crispr_tool = "MinCED"
                     annotations = {
                         'ID': feat['id'],
-                        'Name': feat['product'],
-                        'product': feat['product']
+                        'Name': feat.get('product'),
+                        'product': feat.get('product')
                     }
                     feat_type = so.SO_CRISPR.name
                     if(cfg.compliant):
@@ -646,7 +651,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                                 fh.write(f"{seq_id}\tPILER-CR\t{bc.FEATURE_CRISPR_REPEAT}\t{repeat['start']}\t{repeat['stop']}\t.\t{repeat['strand']}\t.\t{annotations}\n")
                 elif feat['type'] == bc.FEATURE_CDS:
                     if euk:
-                        write_euk_cds_feature(fh, seq_id, feat)
+                        write_euk_cds_feature(fh, seq_id, feat, euk_ids)
                     else:
                         annotations = {
                             'ID': feat.get('locus'),
@@ -669,7 +674,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                             source = cds_tool
 
                         if(cfg.compliant):
-                            gene_id = f"{feat['locus']}_gene"
+                            gene_id = f"{_locus(feat)}_gene"
                             annotations['Parent'] = gene_id
                             annotations['inference'] = 'EXISTENCE:non-experimental evidence, no additional details recorded' if feat.get('source', None) == bc.CDS_SOURCE_USER else 'ab initio prediction:Pyrodigal:3.5'
                             annotations['Dbxref'], annotations['Note'] = insdc.revise_dbxref_insdc(feat['db_xrefs'])  # remove INSDC invalid DbXrefs
@@ -678,7 +683,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                                 annotations['ec_number'] = ec_number
                             gene_annotations = {
                                 'ID': gene_id,
-                                'locus_tag': feat['locus']
+                                'locus_tag': feat.get('locus')
                             }
                             if(feat.get('gene', None)):
                                 gene_annotations['gene'] = feat['gene']
@@ -702,16 +707,16 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                             write_signal_peptide(fh, feat)
                 elif(feat['type'] == bc.FEATURE_SORF):
                     annotations = {
-                        'ID': feat['locus'],
-                        'Name': feat['product'],
-                        'locus_tag': feat['locus'],
-                        'product': feat['product'],
+                        'ID': _locus(feat),
+                        'Name': feat.get('product'),
+                        'locus_tag': feat.get('locus'),
+                        'product': feat.get('product'),
                         'Dbxref': feat.get('db_xrefs', [])
                     }
                     if(feat.get('gene', None)):  # add gene annotation if available
                         annotations['gene'] = feat['gene']
                     if(cfg.compliant):
-                        gene_id = f"{feat['locus']}_gene"
+                        gene_id = f"{_locus(feat)}_gene"
                         annotations['Parent'] = gene_id
                         annotations['Dbxref'], annotations['Note'] = insdc.revise_dbxref_insdc(feat['db_xrefs'])  # remove INSDC invalid DbXrefs
                         annotations['Note'], ec_number = insdc.extract_ec_from_notes_insdc(annotations, 'Note')
@@ -719,7 +724,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                             annotations['ec_number'] = ec_number
                         gene_annotations = {
                             'ID': gene_id,
-                            'locus_tag': feat['locus'],
+                            'locus_tag': feat.get('locus'),
                             'inference': 'ab initio prediction:Bakta'
                         }
                         if(feat.get('gene', None)):
@@ -744,12 +749,12 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                 elif(feat['type'] == bc.FEATURE_ORIC):
                     annotations = {
                         'ID': feat['id'],
-                        'Name': feat['product']
+                        'Name': feat.get('product')
                     }
                     if(cfg.compliant):
-                        annotations['Note'] = feat['product']
+                        annotations['Note'] = feat.get('product')
                     else:
-                        annotations['product'] = feat['product']
+                        annotations['product'] = feat.get('product')
                         annotations['inference'] = 'similar to DNA sequence'
                     annotations = encode_annotations(annotations)
                     feat_type = bc.INSDC_FEATURE_ORIGIN_REPLICATION if cfg.compliant else so.SO_ORIC.name
@@ -757,12 +762,12 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                 elif(feat['type'] == bc.FEATURE_ORIV):
                     annotations = {
                         'ID': feat['id'],
-                        'Name': feat['product']
+                        'Name': feat.get('product')
                     }
                     if(cfg.compliant):
-                        annotations['Note'] = feat['product']
+                        annotations['Note'] = feat.get('product')
                     else:
-                        annotations['product'] = feat['product']
+                        annotations['product'] = feat.get('product')
                         annotations['inference'] = 'similar to DNA sequence'
                     annotations = encode_annotations(annotations)
                     feat_type = bc.INSDC_FEATURE_ORIGIN_REPLICATION if cfg.compliant else so.SO_ORIC.name
@@ -770,20 +775,20 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                 elif(feat['type'] == bc.FEATURE_ORIT):
                     annotations = {
                         'ID': feat['id'],
-                        'Name': feat['product']
+                        'Name': feat.get('product')
                     }
                     if(cfg.compliant):
-                        annotations['Note'] = feat['product']
+                        annotations['Note'] = feat.get('product')
                     else:
-                        annotations['product'] = feat['product']
+                        annotations['product'] = feat.get('product')
                         annotations['inference'] = 'similar to DNA sequence'
                     annotations = encode_annotations(annotations)
                     feat_type = bc.INSDC_FEATURE_ORIGIN_TRANSFER if cfg.compliant else so.SO_ORIT.name
                     fh.write(f"{seq_id}\tBLAST+\t{feat_type}\t{start}\t{stop}\t.\t{feat['strand']}\t.\t{annotations}\n")
                 elif(feat['type'] == bc.FEATURE_GENE):
-                    write_gene_feature(fh, seq_id, feat)
+                    write_gene_feature(fh, seq_id, feat, euk_ids)
                 elif(feat['type'] == bc.FEATURE_MRNA):
-                    write_mrna_feature(fh, seq_id, feat)
+                    write_mrna_feature(fh, seq_id, feat, euk_ids)
 
         if(not cfg.compliant):
             fh.write('##FASTA\n')
@@ -792,6 +797,13 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                 seq_nt = seq['nt'] if 'nt' in seq else seq['sequence']  # <1.10.0 compatibility
                 fh.write(fasta.wrap_sequence(seq_nt))
     return
+
+
+def _locus(feat: dict) -> str:
+    """Feature identifier for GFF3 IDs: the locus tag, or, for eukaryotic
+    input features that have none (e.g. some rRNA/ncRNA), Baktfold's internal
+    feature id. Never written as a /locus_tag."""
+    return feat.get('locus') or feat.get('id')
 
 
 def encode_attribute(product: str) -> str:
@@ -827,6 +839,8 @@ def encode_annotations(annotations: Dict[str, Union[str, Sequence[str]]]) -> str
     """
     annotation_strings = []
     for key, val in annotations.items():
+        if val is None:  # absent value (e.g. no locus tag): omit the attribute
+            continue
         if(type(val) is list):
             if(len(val) >= 1):
                 val = [encode_attribute(k) for k in val]
@@ -862,11 +876,11 @@ def write_signal_peptide(fh, feat: dict):  # <1.10.0 compatibility
     """
     sig_peptide = feat[bc.FEATURE_SIGNAL_PEPTIDE]
     annotations = {
-        'ID': f"{feat['locus']}_sigpep",
+        'ID': f"{_locus(feat)}_sigpep",
         'Name': 'signal peptide',
         'product': 'signal peptide',
         'score': sig_peptide['score'],
-        'Parent': feat['locus']
+        'Parent': _locus(feat)
     }
     annotations = encode_annotations(annotations)
     seq_id = feat['sequence'] if 'sequence' in feat else feat['contig']  # <1.10.0 compatibility

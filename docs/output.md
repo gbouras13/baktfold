@@ -17,7 +17,7 @@ query	target	bitscore	fident	evalue	qStart	qEnd	qLen	qCov	tStart	tEnd	tLen	tCov
 MEGJMN_070	AF-A0A1I3V7E0-F1-model_v6	292	0.41	2.619e-06	1	91	93	0.97	1	95	99	0.95
 ```
 
-* There will also be a `custom_database_tophit.tsv` if you have used `--custom-db`
+* There will also be a `baktfold_custom_db_tophit.tsv` if you have used `--custom-db`
 
 * If you ran with `--report-prob`, each `*_tophit.tsv` gains a trailing `prob` column — Foldseek's estimated probability that the query and target are homologous. This is not emitted by default because it requires Foldseek to compute full alignments (`-a 1`).
 
@@ -27,7 +27,7 @@ MEGJMN_070	AF-A0A1I3V7E0-F1-model_v6	292	0.41	2.619e-06	1	91	93	0.97	1	95	99	0.9
 
 ```bash
 ID	Length	Product	Annotation_Confidence	Swissprot	AFDBClusters	PDB	CATH
-MEGJMNBEGN_27	162	HTH-type quorum-sensing regulator RhlR	high	swissprot_P54292	afdbclusters_A0A9E1VSB0	pdb_5l09	cath_3sztB01
+MEGJMNBEGN_27	162	HTH-type quorum-sensing regulator RhlR	medium	swissprot_P54292	afdbclusters_A0A9E1VSB0	pdb_5l09_B	cath_3sztB01
 MEGJMNBEGN_30	68	hypothetical protein					
 MEGJMNBEGN_70	94	hypothetical protein	low		afdbclusters_A0A1I3V7E0		
 ```
@@ -63,7 +63,7 @@ CDS annotated with Baktfold function: 7 (0.3% of CDS; 12.7% of beginning hypothe
 CDS remaining hypotheticals: 48 (1.8% of CDS; 87.3% of beginning hypotheticals)
 
 Baktfold:
-Software: v0.2.0
+Software: v0.4.0
 Database: v0.1.0
 DOI: https://doi.org/10.64898/2026.03.31.715528
 URL: github.com/gbouras13/baktfold

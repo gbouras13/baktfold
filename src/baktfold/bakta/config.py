@@ -56,6 +56,9 @@ debug = None
 # input / output configuration
 version = get_version()
 db_version = DB_VERSION  # baktfold/databases/version.py
+# number of CDS that were hypothetical in the input, counted before annotation
+# (None = not recorded; see io.write_summary_txt_file)
+input_hypotheticals = None
 db_path = None
 db_info = None
 tmp_path = None

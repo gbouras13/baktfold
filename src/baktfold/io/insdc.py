@@ -163,7 +163,7 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                 else:
                     qualifiers['db_xref'] = feature['db_xrefs']
             if('product' in feature):
-                qualifiers['product'] = feature['product']
+                qualifiers['product'] = feature.get('product')
             if('locus' in feature):
                 qualifiers['locus_tag'] = feature['locus']
             if('standard_name' in feature): # euk mrnas
@@ -180,15 +180,15 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                 # TODO: Add fuzzy positions for oriC/oriV
                 insdc_feature_type = bc.INSDC_FEATURE_ORIGIN_REPLICATION
                 qualifiers['inference'] = 'similar to DNA sequence'
-                qualifiers['note'].append(feature['product'])
+                _append_product_note(qualifiers, feature)
                 if('product' in qualifiers):
-                    qualifiers['note'] = feature['product']
+                    qualifiers['note'] = feature.get('product')
                     del qualifiers['product']
             elif(feature['type'] == bc.FEATURE_ORIT):
                 # TODO: Add fuzzy positions for oriT
                 insdc_feature_type = bc.INSDC_FEATURE_ORIGIN_TRANSFER
                 qualifiers['inference'] = 'similar to DNA sequence'
-                qualifiers['note'].append(feature['product'])
+                _append_product_note(qualifiers, feature)
                 if('product' in qualifiers):
                     del qualifiers['product']
 
@@ -330,7 +330,7 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                     qualifiers['inference'] = f'profile:Rfam:{rfam_id}'
                 qualifiers[bc.INSDC_FEATURE_REGULATORY_CLASS] = select_regulatory_class(feature)
                 insdc_feature_type = bc.INSDC_FEATURE_REGULATORY
-                qualifiers['note'].append(feature['product'])
+                _append_product_note(qualifiers, feature)
                 qualifiers.pop('product', None)
             elif(feature['type'] == bc.FEATURE_CRISPR):
                 qualifiers[bc.INSDC_FEATURE_REPEAT_FAMILY] = 'CRISPR'
@@ -341,12 +341,12 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                     qualifiers['inference'] = 'COORDINATES:alignment:pilercr:1.02'
                 # prokka uses minced - maybe for later here
                 insdc_feature_type = bc.INSDC_FEATURE_REPEAT_REGION
-                qualifiers['note'].append(feature['product'])
+                _append_product_note(qualifiers, feature)
                 qualifiers.pop('product', None)
             elif(feature['type'] == bc.FEATURE_REPEAT) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_REPEAT_REGION
                 qualifiers['rpt_family'] = feature['family']
-                qualifiers['note'].append(feature['product'])
+                _append_product_note(qualifiers, feature)
                 qualifiers.pop('product', None)
             elif(feature['type'] == bc.FEATURE_5UTR) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_5UTR
@@ -380,7 +380,7 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                 move_product_to_note_if_exists(qualifiers)
             elif(feature['type'] == bc.INSDC_FEATURE_REGULATORY) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_REGULATORY
-                qualifiers['note'].append(feature['product']) 
+                _append_product_note(qualifiers, feature) 
                 qualifiers.pop('product', None)  
             elif(feature['type'] == bc.FEATURE_SIGNAL_PEPTIDE) and (euk): # for euks
                 insdc_feature_type = bc.INSDC_FEATURE_SIGNAL_PEPTIDE
@@ -521,6 +521,13 @@ def _apply_partial_ends(location, feature: dict):
             end = AfterPosition(int(end))
         new_parts.append(FeatureLocation(start, end, strand=p.strand))
     return CompoundLocation(new_parts) if len(new_parts) > 1 else new_parts[0]
+
+
+def _append_product_note(qualifiers: dict, feature: dict) -> None:
+    """Move a product into /note where INSDC wants it there; eukaryotic input
+    features (e.g. regulatory) may have no product at all."""
+    if feature.get('product'):
+        qualifiers['note'].append(feature['product'])
 
 
 def write_features(data: dict, features: Sequence[dict], genbank_output_path: Path, embl_output_path: Path, prokka: bool = False, euk: bool = False, 

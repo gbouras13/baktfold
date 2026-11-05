@@ -138,6 +138,8 @@ def write_ffn(features: Sequence[dict], ffn_path: Path):
         for feat in features:
             if(feat['type'] in [bc.FEATURE_T_RNA, bc.FEATURE_TM_RNA, bc.FEATURE_R_RNA, bc.FEATURE_NC_RNA, bc.FEATURE_NC_RNA_REGION, bc.FEATURE_CRISPR, bc.FEATURE_CDS, bc.FEATURE_SORF, bc.FEATURE_ORIC, bc.FEATURE_ORIV, bc.FEATURE_ORIT]):
                 identifier = feat['locus'] if 'locus' in feat else feat['id']
+                if not feat.get('nt'):
+                    continue  # eukaryotic input features converted without a sequence
                 if(feat.get('product', '') != ''):
                     fh.write(f">{identifier} {feat['product']}\n{feat['nt']}\n")
                 else:

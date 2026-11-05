@@ -112,6 +112,10 @@ def subcommand_predict(
     # Drop predictions with no usable residues (OOM skips, zero-length #47, and
     # unsized single-residue arrays that len() cannot measure). Their CDS fall
     # through to the "X" * len masking below.
+    # how many proteins ProstT5 returned anything for, before dropping the
+    # unusable (zero-length / single-residue) ones: if it returned something,
+    # inference ran and an empty result is not a failure
+    n_returned = sum(1 for k in cds_dict if k in prediction_dict)
     prediction_dict = drop_unusable_predictions(prediction_dict, "writing AA FASTA")
 
     # A run where ProstT5 fails for every protein (GPU out of memory on a
@@ -120,7 +124,7 @@ def subcommand_predict(
     # and report partial failures with a count rather than only per batch.
     n_requested = len(cds_dict)
     n_predicted = sum(1 for k in cds_dict if k in prediction_dict)
-    if n_requested and n_predicted == 0:
+    if n_requested and n_returned == 0:
         logger.error(
             f"ProstT5 produced no usable 3Di prediction for any of the {n_requested} "
             "proteins (see fails.tsv). This usually means the GPU ran out of memory or "

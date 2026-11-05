@@ -6,6 +6,7 @@ from loguru import logger
 
 import baktfold.bakta.config as cfg
 import baktfold.io.gff as gff
+from baktfold.io.euk_transcripts import pair_transcripts
 import baktfold.io.tsv as tsv
 import baktfold.io.insdc as insdc
 import baktfold.io.fasta as fasta
@@ -71,11 +72,24 @@ def write_summary_txt_file(output, prefix, features):
     cds_count = len(cds)
     baktfold_hit = len([feat for feat in cds if feat.get('baktfold')])
     end_hyps = len([feat for feat in cds if feat.get('hypothetical')])
-    # got a hit that resolved to a real (non-hypothetical) function
-    baktfold_function = len(
-        [feat for feat in cds if feat.get('baktfold') and not feat.get('hypothetical')]
-    )
-    begin_hyps = end_hyps + baktfold_function
+    # "Baktfold function" = Baktfold supplied the label. Since uninformative
+    # hits are skipped, that is exactly the CDS carrying an
+    # annotation_confidence. Without that test, --all-proteins counted
+    # curated CDS that merely had a hit (and kept their input label).
+    # Outputs from versions without confidence tiers keep the old rule.
+    has_tiers = any('annotation_confidence' in feat for feat in cds)
+    baktfold_function = len([
+        feat for feat in cds
+        if feat.get('baktfold') and not feat.get('hypothetical')
+        and (not has_tiers or 'annotation_confidence' in feat)
+    ])
+    # Beginning hypotheticals: counted from the input when recorded (needed
+    # for --all-proteins, where curated CDS are annotated too); otherwise
+    # every annotated or remaining hypothetical CDS was one.
+    if cfg.input_hypotheticals is not None:
+        begin_hyps = cfg.input_hypotheticals
+    else:
+        begin_hyps = end_hyps + baktfold_function
 
     # Percentages are reported against both denominators: every count as a
     # share of all CDS, and — for the counts that describe what baktfold did —
@@ -116,37 +130,33 @@ def write_summary_txt_file(output, prefix, features):
 def propagate_cds_products_to_mrna(features: Sequence[dict]) -> int:
     """Copy each eukaryotic CDS's product onto its parent mRNA, in place.
 
-    Baktfold annotates CDS features. Eukaryotic inputs also carry mRNA
-    features whose ``product`` came from the input annotation (usually
-    "hypothetical protein"), and the GFF3/GBFF/TSV writers print that mRNA
-    product, so the Baktfold label was invisible there.
+    Baktfold annotates CDS features; eukaryotic inputs also carry mRNA
+    features whose product came from the input annotation (usually
+    "hypothetical protein"), and the GFF3/GBFF/TSV writers print it.
 
-    An mRNA is paired with the first not-yet-paired CDS that has the same
-    locus tag, sequence and strand and lies within the mRNA's span, in feature
-    order. That copes with genes carrying several transcripts under one locus
-    tag (``has_duplicate_locus``). Returns the number of mRNAs updated.
+    Pairing is done by ``euk_transcripts.pair_transcripts``: identical
+    transcript identifier first, then a unique structural match. An mRNA that
+    could only be paired on a guess is given a product only if every CDS that
+    fits it carries the same product; otherwise it keeps its own, rather than
+    risk the wrong transcript's label (the earlier "first CDS inside the mRNA"
+    rule swapped labels between alternative transcripts).
+    Returns the number of mRNAs whose product changed.
     """
-    cds_by_key: Dict[tuple, list] = {}
-    for feat in features:
-        if feat.get('type') == bc.FEATURE_CDS:
-            key = (feat.get('locus'), feat.get('sequence'), feat.get('strand'))
-            cds_by_key.setdefault(key, []).append(feat)
-
-    used = set()
+    cds_of_mrna, _, confident, candidates = pair_transcripts(features)
     updated = 0
     for mrna in features:
         if mrna.get('type') != bc.FEATURE_MRNA:
             continue
-        key = (mrna.get('locus'), mrna.get('sequence'), mrna.get('strand'))
-        for cds in cds_by_key.get(key, []):
-            if id(cds) in used:
-                continue
-            if mrna['start'] <= cds['start'] and cds['stop'] <= mrna['stop']:
-                used.add(id(cds))
-                if cds.get('product') and mrna.get('product') != cds['product']:
-                    mrna['product'] = cds['product']
-                    updated += 1
-                break
+        if id(mrna) in confident:
+            product = cds_of_mrna[id(mrna)].get('product')
+        else:
+            products = {c.get('product') for c in candidates.get(id(mrna), [])}
+            if len(products) != 1:
+                continue  # no match, or ambiguous: keep the mRNA's own product
+            product = products.pop()
+        if product and mrna.get('product') != product:
+            mrna['product'] = product
+            updated += 1
     return updated
 
 
@@ -264,6 +274,7 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
         'rrna_program': rrna_program,
         'tmrna_program': tmrna_program,
         'ncrna_program': ncrna_program,
+        'input_hypotheticals': cfg.input_hypotheticals,
     }
     json.write_json(data, features, json_path, bakta_version, baktfold_run)
 

@@ -53,6 +53,28 @@ AMINO_ACID_DICT = {
 # global variable for the genome-level random string - backup if no locus_tags in input genbank
 GENOME_RANDOM_BACKUP_LOCUSTAG_STR = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
 
+_warned_missing_locus = False
+
+
+def resolve_locus(qualifiers: dict, id: str, start: int, stop: int) -> str:
+    """Locus key for a feature: /locus_tag, else /gene, else a generated one.
+
+    Ensembl's main and Plants GenBank dumps link gene, mRNA and CDS through
+    /gene and give mRNA/CDS no /locus_tag. A random tag per feature (the old
+    fallback) broke that link, so mRNAs and CDS could not be paired or
+    attached to their gene.
+    """
+    global _warned_missing_locus
+    if qualifiers.get('locus_tag'):
+        return qualifiers['locus_tag'][0]
+    if qualifiers.get('gene'):
+        return qualifiers['gene'][0]
+    if not _warned_missing_locus:
+        logger.warning("Some features have neither /locus_tag nor /gene; generating locus tags for them")
+        _warned_missing_locus = True
+    return f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
+
+
 def add_partial_flags(entry: dict, location) -> dict:
     """Record partial ('<'/'>') ends of a feature location on ``entry``.
 
@@ -145,12 +167,7 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
 
 
     # fall back to start_stop_strand if there is no locus tag
-    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
-        locus_tag = qualifiers['locus_tag'][0]
-    else:
-        logger.warning(f"No locus_tag found for feature {id}")
-        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
-        logger.warning(f"Generating a locus_tag: {locus_tag}")
+    locus_tag = resolve_locus(qualifiers, id, start, stop)
 
     note = qualifiers.get("note", [None])[0]
     locus = locus_tag
@@ -178,6 +195,10 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
 
     # ----------- Hypothetical? -----------
     hypothetical = product is None or "hypothetical protein" in product.lower()
+    if product is None:
+        # Bakta convention: an unannotated CDS carries "hypothetical protein"
+        # (Ensembl CDS have no /product; None crashed the protein TSV writer)
+        product = "hypothetical protein"
 
     # ----------- Compute protein stats -----------
     seq_stats = None
@@ -261,7 +282,7 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
 #                       /trans_splicing
 
     multi_valued = {"EC_number", "exception", "experiment", "function",  "gene_synonym",  "inference", }
-    single_valued = {"allele", "artificial_location",  "map", "number",  "old_locus_tag", "operon", "phenotype", "pseudogene", "standard_name", "transl_except", "transl_table"}
+    single_valued = {"allele", "artificial_location",  "map", "number",  "old_locus_tag", "operon", "phenotype", "pseudogene", "standard_name", "transcript_id", "transl_except", "transl_table"}
 
     add_optional_qualifiers(bakta_cds, qualifiers, single_valued, multi_valued)
 
@@ -316,12 +337,7 @@ def convert_trna_feature(feature, seq_record, id):
     qualifiers = feature.qualifiers
 
     # fall back to start_stop_strand if there is no locus tag
-    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
-        locus_tag = qualifiers['locus_tag'][0]
-    else:
-        logger.warning(f"No locus_tag found for feature {id}")
-        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
-        logger.warning(f"Generating a locus_tag: {locus_tag}")
+    locus_tag = resolve_locus(qualifiers, id, start, stop)
 
     # ------------ amino acid ------------
     # Prokka product examples:
@@ -458,12 +474,7 @@ def convert_gene_feature(feature, rec, id):
     qualifiers = feature.qualifiers
 
     # fall back to start_stop_strand if there is no locus tag
-    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
-        locus_tag = qualifiers['locus_tag'][0]
-    else:
-        logger.warning(f"No locus_tag found for feature {id}")
-        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
-        logger.warning(f"Generating a locus_tag: {locus_tag}")
+    locus_tag = resolve_locus(qualifiers, id, start, stop)
         
    
 
@@ -477,6 +488,10 @@ def convert_gene_feature(feature, rec, id):
         "id": id,
         "locus": locus_tag
     }
+    # /gene is how Ensembl links mRNA/CDS to their gene (they carry no
+    # /locus_tag); keep it so the GFF3 Parent link can be made
+    if qualifiers.get("gene"):
+        gene_entry["gene"] = qualifiers["gene"][0]
 
 
 # Feature Key           gene 
@@ -568,12 +583,7 @@ def convert_mrna_feature(feature, rec, id):
 
 
     # fall back to start_stop_strand if there is no locus tag
-    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
-        locus_tag = qualifiers['locus_tag'][0]
-    else:
-        logger.warning(f"No locus_tag found for feature {id}")
-        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
-        logger.warning(f"Generating a locus_tag: {locus_tag}")
+    locus_tag = resolve_locus(qualifiers, id, start, stop)
 
 
     mrna_entry = {
@@ -620,7 +630,7 @@ def convert_mrna_feature(feature, rec, id):
 
 
     multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note" }
-    single_valued = {"allele", "artificial_location", "gene",  "locus_tag", "map",  "old_locus_tag", "operon", "phenotype", "product", "standard_name"}
+    single_valued = {"allele", "artificial_location", "gene",  "locus_tag", "map",  "old_locus_tag", "operon", "phenotype", "product", "standard_name", "transcript_id"}
 
     qualifiers = feature.qualifiers
 
@@ -804,12 +814,7 @@ def convert_utr_region_feature(feature, rec, id, three):
 
 
     # fall back to start_stop_strand if there is no locus tag
-    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
-        locus_tag = qualifiers['locus_tag'][0]
-    else:
-        logger.warning(f"No locus_tag found for feature {id}")
-        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
-        logger.warning(f"Generating a locus_tag: {locus_tag}")
+    locus_tag = resolve_locus(qualifiers, id, start, stop)
 
     # always just take the positive strand to get the NT seq (UTR region)
     seq =  str(rec.seq)
@@ -1392,6 +1397,9 @@ def convert_ncrna_feature(feature, rec, id):
     #                  /db_xref="GeneID:102632350"
     #                  /db_xref="MGI:MGI:5589605"
 
+    # sequence, needed by the .ffn writer (was missing: run --euk/json crashed)
+    ncrna_entry["nt"] = str(feature.extract(rec.seq))
+
     return ncrna_entry
 
 
@@ -1841,6 +1849,8 @@ def convert_rrna_feature(feature, rec, id):
     single_valued = {"allele", "gene", "locus_tag", "map",  "operon",  "old_locus_tag", "product", "pseudogene", "standard_name"}
 
     add_optional_qualifiers(rrna_entry, qualifiers, single_valued, multi_valued)
+    # sequence, needed by the .ffn writer (was missing: run --euk/json crashed)
+    rrna_entry["nt"] = str(feature.extract(rec.seq))
 
     # Flags (boolean-like qualifiers)
     for flag in ["pseudo"]:

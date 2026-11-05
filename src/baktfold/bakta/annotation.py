@@ -95,7 +95,14 @@ def select_informative_entry(entries):
     protein ...") are skipped so they cannot mask a functional hit from a
     lower-precedence database. Returns None if no entry is informative."""
     for entry in entries:
-        if entry is not None and is_informative_product(entry.get('description')):
+        if entry is None:
+            continue
+        desc = entry.get('description')
+        if entry.get('source') == 'cath' and desc:
+            # judge the label that would actually be written: a CATH name that
+            # reduces to nothing (e.g. "Domain 2") must not be selected
+            desc = cath_domain_label(desc) if is_informative_product(desc) else None
+        if is_informative_product(desc):
             return entry
     return None
 
@@ -314,11 +321,13 @@ def combine_annotation(feature: dict, fast: bool, structures: bool = False):
         # uninformative-hit rule applies to Foldseek hits, not to the labels
         # the input annotation tool assigned.
         product = revise_cds_product(product)
-        if(product):
+        if product and product.lower() != bc.HYPOTHETICAL_PROTEIN.lower():
             if(cfg.compliant):
                 product = insdc.revise_product_insdc(product)
             feature['product'] = product
         else:
+            # cleanup emptied it, or renamed "Uncharacterized protein ..." to
+            # "hypothetical protein": flag it so outputs and counts agree
             mark_as_hypothetical(feature)
     elif selected_entry is not None:
         product = revise_cds_product(product)

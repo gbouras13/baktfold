@@ -68,6 +68,16 @@ def test_all_predictions_failed_exits(tmp_path):
     assert exc.value.code == 1
 
 
+def test_only_unusable_prediction_does_not_abort(tmp_path):
+    """Audit N5: inference ran, but its only output is a single-residue
+    (0-d) prediction. That protein is skipped as before (#47); the run must
+    not be treated as a total failure."""
+    import numpy as np
+    pred = {"c1": (np.asarray(3, dtype=np.byte), 90.0, np.ones((1, 1)))}
+    _predict(tmp_path, pred)
+    assert (tmp_path / "p_aa.fasta").read_text() == ">c1\nXXXX\n>c2\nXXXX\n"
+
+
 def test_partial_failure_continues(tmp_path):
     import numpy as np
     pred = {"c1": (np.asarray([0, 1, 2, 3], dtype=np.byte), 90.0, np.ones((1, 4)))}

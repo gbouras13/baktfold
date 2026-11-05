@@ -194,3 +194,12 @@ def test_input_product_kept_even_if_it_mentions_uncharacterized():
     anno.combine_annotation(feat, fast=False)
     assert feat["product"] == "Uncharacterized oxidoreductase YdgJ"
     assert "hypothetical" not in feat
+
+
+def test_input_uncharacterized_protein_renamed_is_flagged():
+    """Audit N7: with --all-proteins an input "Uncharacterized protein X" with
+    no usable hit is renamed by Bakta's cleanup; it must then be flagged."""
+    feat = _cds([], product="Uncharacterized protein YdgJ", hypothetical=False)
+    anno.combine_annotation(feat, fast=False)
+    assert feat["product"] == "hypothetical protein"
+    assert feat["hypothetical"] is True

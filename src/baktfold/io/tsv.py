@@ -270,7 +270,7 @@ def map_aa_columns(feat: dict, custom_db: bool, has_duplicate_locus: bool, fast:
     custom_refs = join_filtered('custom:', 'custom:custom_')
 
     # Build the output row
-    row = [feat['locus']]
+    row = [feat.get('locus') or feat.get('id')]
 
     # add id if multiple CDS per Locus in that record (euks)
     if has_duplicate_locus:
@@ -278,7 +278,7 @@ def map_aa_columns(feat: dict, custom_db: bool, has_duplicate_locus: bool, fast:
 
     row.extend([
         str(feat['length']),
-        feat['product'],
+        feat.get('product') or '',
         feat.get('annotation_confidence', ''),
         swissprot,
     ])

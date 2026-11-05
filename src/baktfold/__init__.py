@@ -545,6 +545,9 @@ def run(
         Path(output) / f"{prefix}_prostT5_3di_mean_probabilities.csv",
         has_duplicate_locus=has_duplicate_locus,
     )
+    # beginning hypotheticals, counted before annotation removes the flag
+    # (with --all-proteins `hypotheticals` holds every CDS)
+    cfg.input_hypotheticals = sum(1 for cds in hypotheticals if 'hypothetical' in cds)
     for cds in hypotheticals:
         anno.combine_annotation(cds, fast, structures=False)  # add on PSTC annotations and mark hypotheticals
 
@@ -790,8 +793,12 @@ def proteins(
 
     # predictions_dir is output as this will be where it lives for 'run'
 
-    aas = subcommand_compare(
-        aas, # this is dummy, no operations happen here
+    # only the proteins Baktfold annotates (all for FASTA input, Bakta's
+    # hypotheticals for a Bakta proteins JSON); the rest pass through untouched
+    targets = [aa for aa in aas if aa.get('hypothetical')]
+
+    subcommand_compare(
+        targets,
         output,
         threads,
         evalue,
@@ -823,7 +830,7 @@ def proteins(
         aas,
         Path(output) / f"{prefix}_prostT5_3di_mean_probabilities.csv",
     )
-    for aa in aas:
+    for aa in targets:
         anno.combine_annotation(aa, fast, structures=False)  # add on PSTC annotations and mark hypotheticals
 
 
@@ -1247,6 +1254,8 @@ def compare(
             Path(predictions_dir) / f"{prefix}_prostT5_3di_mean_probabilities.csv",
             has_duplicate_locus=has_duplicate_locus,
         )
+    # beginning hypotheticals, counted before annotation removes the flag
+    cfg.input_hypotheticals = sum(1 for cds in hypotheticals if 'hypothetical' in cds)
     for cds in hypotheticals:
         anno.combine_annotation(cds, fast, structures=structures)  # add on PSTC annotations and mark hypotheticals
 
@@ -1588,8 +1597,19 @@ def proteins_compare(
             aa["3di"] = threedi_seq
 
 
-    aas = subcommand_compare(
-        aas,
+    # Annotate only Bakta's hypotheticals (all proteins for FASTA input).
+    # Previously every protein of a Bakta proteins JSON was searched (with
+    # --structure-dir, or predictions made from the full FASTA) and curated
+    # Bakta products were overwritten by structural hits.
+    targets = [aa for aa in aas if aa.get('hypothetical')]
+    if len(targets) < len(aas):
+        logger.info(
+            f"Annotating the {len(targets)} hypothetical proteins; "
+            f"{len(aas) - len(targets)} proteins with an existing product are kept as they are"
+        )
+
+    subcommand_compare(
+        targets,
         output,
         threads,
         evalue,
@@ -1622,7 +1642,7 @@ def proteins_compare(
             aas,
             Path(predictions_dir) / f"{prefix}_prostT5_3di_mean_probabilities.csv",
         )
-    for aa in aas:
+    for aa in targets:
         anno.combine_annotation(aa, fast, structures=structures)  # add on PSTC annotations and mark hypotheticals
 
 

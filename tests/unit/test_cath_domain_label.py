@@ -64,3 +64,14 @@ def test_uninformative_cath_name_still_skipped():
     anno.combine_annotation(feat, fast=False)
     assert feat["product"] == "hypothetical protein"
     assert feat["hypothetical"] is True
+
+
+def test_cath_name_reducing_to_nothing_is_skipped():
+    """Audit N6: a name that cleans to an empty label must fall through,
+    not crash Bakta's product cleanup."""
+    feat = {"type": "cds", "locus": "c1", "product": "hypothetical protein",
+            "hypothetical": True, "db_xrefs": [],
+            "pstc": [_hit("cath", "Domain 2")]}
+    anno.combine_annotation(feat, fast=False)
+    assert feat["product"] == "hypothetical protein"
+    assert feat["hypothetical"] is True
