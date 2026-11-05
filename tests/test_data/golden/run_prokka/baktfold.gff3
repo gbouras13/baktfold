@@ -2,7 +2,7 @@
 ##feature-ontology https://github.com/The-Sequence-Ontology/SO-Ontologies/blob/v3.1/so.obo
 # Annotated with Baktfold
 # Software: v0.4.0
-# Database: v0.1.0
+# Database: v0.2.0
 # DOI: https://github.com/gbouras13/baktfold
 # URL: https://github.com/gbouras13/baktfold
 ##sequence-region fake_chromosome 1 70606

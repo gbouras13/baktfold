@@ -95,7 +95,7 @@
                     "score": 460.0,
                     "evalue": 1.051e-09,
                     "chain": "A",
-                    "description": "Crystal structure of SeMet derivatives of domain2 and domain 3 of RctB"
+                    "description": "Translation elongation factor"
                 }
             ],
             "prostt5_confidence": 56.59,
@@ -189,7 +189,8 @@
                     "score": 439.0,
                     "evalue": 1.534e-10,
                     "chain": "A",
-                    "description": "Structure of ParF-ADP form 2"
+                    "uniprot": "B0ZE06",
+                    "description": "Chromosome partitioning protein ParA"
                 },
                 {
                     "source": "cath",
@@ -324,7 +325,8 @@
                     "score": 400.0,
                     "evalue": 3.516e-08,
                     "chain": "B",
-                    "description": "Crystal structure of XerA recombinase"
+                    "uniprot": "Q9HIM5",
+                    "description": "Tyrosine recombinase XerA"
                 },
                 {
                     "source": "cath",
@@ -443,16 +445,16 @@
             "genes": [],
             "id": "MEGJMNBEGN_6",
             "locus": "MEGJMN_006",
-            "3di": "DPPDXDDDDDDDADPQFKKKWWFDXDDPDXXIKIKIKXKDKWWXADDPPDXXXXXKIKIKIDXDDPDDDDIXIWIWIXGXPAXAEXEIDXDDPDDDDPPXCVVLVVVLVVLVVLLVDDPQKXKYDDDXDPDDPVDVVVLVVVLVVVVVQQWDDDPPDDXDXIDGSVPGDGDPDDMXXMDMDXVVVVVVVVVVVVVVLVVVLVVLVVVLVVLVVVLVVLVPDPLVVVVPVPPDDDDDDDPPDDPDDPDPDDDDDPPDDPVVSVVVVVVVVVSSVVSVVVVVVSVVVVVVSVVVVVVVVVVVVVVVVVVCVVVVVVVVVVVVD",
+            "3di": "DPPDXDDDDDDDADPQFKKKWWFDXDDPDXXIKIKIKXKDKWWXADDPPDXXXXXKIKIKIDXDDPDDDDIXIWIWIXGXPAXAEXEIDXDDPDDDDPPXCVVLVVVLVVLVVLLVDDPQKXKYDDDXDPDDPVDVVVLVVVLVVVVVQQWDDDPPDDXDXIDGSVPGDGDPDDMDXMDMDXVVVVVVVVVVVVVVLVVVLVVLVVVLVVLVVVLVVLVPDPLVVVVPVPPDDDDDDDPPDDPDDPDPDDDDDPPDDPVVSVVVVVVVVVSSVVSVVVVVVSVVVVVVSVVVVVVVVVVVVVVVVVVCVVVVVVVVVVVVD",
             "pstc": [
                 {
                     "source": "afdb",
                     "id": "A0A0F6NT92",
                     "query_cov": 0.99,
                     "subject_cov": 0.96,
-                    "identity": 0.585,
-                    "score": 1090.0,
-                    "evalue": 1.196e-27,
+                    "identity": 0.588,
+                    "score": 1091.0,
+                    "evalue": 1.159e-27,
                     "description": "N-acetyltransferase domain-containing protein"
                 }
             ],
@@ -625,16 +627,16 @@
             "genes": [],
             "id": "MEGJMNBEGN_9",
             "locus": "MEGJMN_009",
-            "3di": "DVVVVVVVVVVVLLVVLVVVLVVXPVNVVLVCVVVLVVLLVCLVVVVVVLVVVLVVLLVVLVVCVVCVVVCVVVCVVVDVDLVVLLVVLVVLLVVLVVLLVPLLVVLVVVLVVLXVDPLLXVLLSLLLCVLLVLSSLSVLLSVLSVLSVVLSVVVVVDDSSSSVSSSVSSVVSSVSSVVSVVSNVVSSVVSVDPVSSLLSSLVSLLVXLLVQLLLLLLLLLXLXAPPDXXXXDXXXXXDXDXWDXDDDQXXKFFXDXDAFFDFXXXXXXXXVVVXXVVXDDDPPDXKXKDKXXXXXDGGPXMTMIGTDPXDXDDDVSSVVSSVCXXPXDXDDXDXXXVSLXVLLVQLLVCLVVVVVVSNLSSLVSLLVSLLSSXVSXVXDDDPVXVVVCVVXXXXXXXXVVSLVVVLVSLVVQXVDXXXDXVXXXVXXXDXVVSXVVXXXVXXVSLLSSLLSSLSSLVSSVVVXVVXDDDDDPSSVVSSLSSLVSSLVSLLVXXXXXXXDDXPDXXSLLVSLVSLLVSLLVXLLVXXVVDPVSLVSSLVSLLSSLVSXXXXVXXVVVXVXXXXXXDXVXXVXVVDDVVSVVXXVXXXXDVDSSSSLSSLVSLLSSLSSLLLSCLVXXDXVXDDDSLVSLVSSXXXXXXDDPVXXXXXXSSNVSLLVSLVLLLVXVVSVXDDPDXXXVXLVVSSVSLVVXVXDDDDXXXXXXXDDXXXXXSSVSLLVSLVSSXDDSVVSXVVSSVVSSVVSXVXDDPVVVVVSLVVXVVDPPDDXPXXXDDPVXSVVXXVSXVVSSVVSVVSVVVXVXLVVVVVVDVVVVVVVDPVVXXVXDDXXDDPVSXVVXXVXDXPDPDDSVXXXXXDDPDDDSVVXXVVXVXXXXDDDDXPVVSLVVSSVVSSVVVVVVVXVDXDDDVXLVVSVVVSLVVCVVVVXXXXXXXXXVXDVVSSVXXXDXDDDXXXKXXKDXDDDDDDDDXXDXXXXIKXWXXDPVRXIXIXXDXXXXXXXXWXXDPVRDTDXXXDDDPDDXVVVVVVVVVVVVDDDDPDXXXDXDDD",
+            "3di": "DVVVVVVVVVVVLLVVLVVVLVVXPVNVVLVCVVVLVVLLVCLVVVVVVLVVVLVVLLVVLVVCVVCVVVCVVVCVVVDVDLVVLLVVLVVLLVVLVVLLVPLLVVLVVVLVVLXVDPLLXVLLSLLLCVLLVLSSLSVLLSVLSVLSVVLSVVVVVDDSSSSVSSSVSSVVSSVSSVVSVVSNVVSSVVSVDPVSSLLSSLVSLLVXLLVQLLLLLLLLLXLXAPPDXXXXDXXXXXDXDXWDXDDDQXXKFFXDXDAFFDFXXXXXXXXVVVXXVVXDDDPPDXKXKDKXXXXXDGGPXMTMIGTDPXDXDDDVSSVVSSVCXXPXDXDDXDXXXVSLXVLLVQLLVCLVVVVVVSNLSSLVSLLVSLLSSXVSXVXDDDPVXVVVCVVXXXXXXXXVVSLVVVLVSLVVQXVDXXXDXVXXXVXXXDXVVSXVVXXXVXXVSLLSSLLSSLSSLVSSVVVXVVXDDDDDPSSVVSSLSSLVSSLVSLLVXXXXXXXDDXPDXXSLLVSLVSLLVSLLVXLLVXXVVDPVSLVSSLVSLLSSLVSXXXXVXXVVVXVXXXXXXDXVXXVXVVDDVVSVVXXVXXXXDVDSSSSLSSLVSLLSSLSSLLLSCLVXXDXVXDDDSLVSLVSSXXXXXXDDPVXXXXXXSSNVSLLVSLVLLLVXVVSVXDDPDXXXVXLVVSSVSLVVXXXDDDDXXXXXXXDDXXXXXSSVSLLVSLVSSXDDSVVSXVVSSVVSSVVSXVXDDPVVVVVSLVVXVVDPPDDXPXXXDDPVXSVVXXVSXVVSSVVSVVSVVVXVXLVVVVVVDVVVVVVVDPVVXXVXDDXXDDPVSXVVXXVXDXPDPDDSVXXXXXDDPDDDSVVXXVVXVXXXXDDDDXPVVSLVVSSVVSSVVVVVVVXVDXDDDVXLVVSVVVSLVVCVVVVXXXXXXXXXVXDVVSSVXXXDXDDDXXXXXXKDXDDDDDDDDXXDXXXXIKXWXXDPVRXIXIXXDXXXXXXXXWXXDPVRDTDXXXDDDPDDXVVVVVVVVVVVVDDDDPDXXXDXDDD",
             "pstc": [
                 {
                     "source": "afdb",
                     "id": "A0A2S0NSF5",
                     "query_cov": 0.73,
                     "subject_cov": 0.97,
-                    "identity": 0.649,
+                    "identity": 0.651,
                     "score": 2049.0,
-                    "evalue": 5.37e-43,
+                    "evalue": 5.356e-43,
                     "description": "hypothetical protein"
                 }
             ],
@@ -791,7 +793,8 @@
                     "score": 232.0,
                     "evalue": 0.0003305,
                     "chain": "A",
-                    "description": "Crystal structure of MepR, a transcription regulator of the Staphylococcus aureus multidrug efflux pump MepA"
+                    "uniprot": "A0A0H3JPT9",
+                    "description": "HTH marR-type domain-containing protein"
                 }
             ],
             "prostt5_confidence": 61.87,
@@ -854,7 +857,7 @@
                     "description": "DNA-binding protein"
                 }
             ],
-            "prostt5_confidence": 60.16,
+            "prostt5_confidence": 60.11,
             "baktfold": true,
             "annotation_confidence": "medium",
             "length": 206
@@ -977,7 +980,8 @@
                     "score": 374.0,
                     "evalue": 1.832e-06,
                     "chain": "B",
-                    "description": "ISCth4 transposase, pre-reaction complex, PRC"
+                    "uniprot": "A3DBR0",
+                    "description": "Mutator family transposase"
                 },
                 {
                     "source": "cath",
@@ -1070,7 +1074,8 @@
                     "score": 457.0,
                     "evalue": 2.688e-11,
                     "chain": "A",
-                    "description": "Crystal Structure of E.coli GS mutant dmGS(C7S;C408S)"
+                    "uniprot": "P0A6U8",
+                    "description": "Glycogen synthase"
                 },
                 {
                     "source": "cath",
@@ -1167,7 +1172,8 @@
                     "score": 1184.0,
                     "evalue": 1.527e-27,
                     "chain": "H",
-                    "description": "Escherichia coli AGPase mutant R130A apo form"
+                    "uniprot": "P0A6V1",
+                    "description": "Glucose-1-phosphate adenylyltransferase"
                 },
                 {
                     "source": "cath",
@@ -1303,7 +1309,8 @@
                     "score": 374.0,
                     "evalue": 1.832e-06,
                     "chain": "B",
-                    "description": "ISCth4 transposase, pre-reaction complex, PRC"
+                    "uniprot": "A3DBR0",
+                    "description": "Mutator family transposase"
                 },
                 {
                     "source": "cath",
@@ -1447,7 +1454,7 @@
             "id": "MEGJMNBEGN_18",
             "locus": "MEGJMN_018",
             "3di": "DDDDLVLLVVXXVVVXXXXKKXKDXDPVXVVVXXDDDPQKDWDDPDDDDIDIDDPVSVVVVVVVVVVVVXXDXDXXDDXDPXXMIXIDGDPPD",
-            "prostt5_confidence": 40.77
+            "prostt5_confidence": 40.8
         },
         {
             "type": "cds",
@@ -1641,7 +1648,8 @@
                     "score": 314.0,
                     "evalue": 2.159e-05,
                     "chain": "A",
-                    "description": "Alternative conformations of Nop56/58-fibrillarin complex and implication for induced-fit assenly of box C/D RNPs"
+                    "uniprot": "Q8U4M1",
+                    "description": "NOP5/NOP56 related protein"
                 },
                 {
                     "source": "cath",
@@ -1748,7 +1756,8 @@
                     "score": 230.0,
                     "evalue": 9.537e-05,
                     "chain": "B",
-                    "description": "Strand-transfer complex of TnsB from ShCAST"
+                    "uniprot": "A0A979HMQ2",
+                    "description": "TnsB"
                 },
                 {
                     "source": "cath",
@@ -2207,7 +2216,8 @@
                     "score": 490.0,
                     "evalue": 2.701e-10,
                     "chain": "B",
-                    "description": "Crystal structure of the putative tol-pal system-associated acyl-CoA thioesterase from Pseudomonas aeruginosa PAO1"
+                    "uniprot": "Q9I4Z5",
+                    "description": "Thioesterase domain-containing protein"
                 },
                 {
                     "source": "cath",
@@ -2315,7 +2325,8 @@
                     "score": 323.0,
                     "evalue": 5.071e-07,
                     "chain": "B",
-                    "description": "Crystal Structure of Quorum-Sensing Transcriptional Activator from Yersinia enterocolitica in complex with 3-oxo-N-[(3S)-2-oxotetrahydrofuran-3-yl]hexanamide"
+                    "uniprot": "P54295",
+                    "description": "Transcriptional activator protein YenR"
                 },
                 {
                     "source": "cath",
@@ -2421,7 +2432,8 @@
                     "score": 266.0,
                     "evalue": 3.245e-05,
                     "chain": "D",
-                    "description": "Crystal structure of a lambda-186 hybrid repressor"
+                    "uniprot": "P08707",
+                    "description": "Repressor protein CI"
                 },
                 {
                     "source": "cath",
@@ -2498,7 +2510,7 @@
             ],
             "id": "MEGJMNBEGN_29",
             "locus": "MEGJMN_029",
-            "3di": "DKWKWKWFFDPVCQVVLVVVCVVVVWDKDWQWDWDWDWDPDPVGIDIDIDGPDGRMIMIGDDPVVDDLVVNCVRPGTDGTDDDPNDGDTDDPLLVVLSVLVVVXXXDDPDXXXDXVPDDPVLSVLSSVLVVDPDPVVSVVSSVVSVVVDVXSVVCVVVVDDXDXXDDPPDPPPDPPD",
+            "3di": "DKWKWKWFFDPVCQVVLVVVCVVVVWDKDWQWDWDWDWDPDPVGIDIDIDGPDGRMIMIGDDPVVDDLVVXCVRPGTDGTDDDPNDGDTDDPLLVVLSVLVVVXXXDDPDXXXDXVPDDPVLSVLSSVLVVDPDPVVSVVSSVVSVVVDVXSVVCVVVVDDXDXXDDPPDPPPDPPD",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -2506,8 +2518,8 @@
                     "query_cov": 0.92,
                     "subject_cov": 1.0,
                     "identity": 0.26,
-                    "score": 473.0,
-                    "evalue": 1.647e-10,
+                    "score": 471.0,
+                    "evalue": 1.67e-10,
                     "description": "Transcription antitermination protein RfaH"
                 },
                 {
@@ -2516,8 +2528,8 @@
                     "query_cov": 0.85,
                     "subject_cov": 0.84,
                     "identity": 0.393,
-                    "score": 598.0,
-                    "evalue": 1.427e-13,
+                    "score": 596.0,
+                    "evalue": 1.407e-13,
                     "description": "NusG-like N-terminal domain-containing protein"
                 },
                 {
@@ -2526,10 +2538,11 @@
                     "query_cov": 0.91,
                     "subject_cov": 1.0,
                     "identity": 0.248,
-                    "score": 454.0,
-                    "evalue": 3.538e-10,
+                    "score": 452.0,
+                    "evalue": 3.604e-10,
                     "chain": "A",
-                    "description": "RfaH from Escherichia coli in complex with ops DNA"
+                    "uniprot": "P0AFW0",
+                    "description": "Transcription antitermination protein RfaH"
                 },
                 {
                     "source": "cath",
@@ -2537,8 +2550,8 @@
                     "query_cov": 0.92,
                     "subject_cov": 1.0,
                     "identity": 0.25,
-                    "score": 484.0,
-                    "evalue": 4.573e-11,
+                    "score": 482.0,
+                    "evalue": 4.626e-11,
                     "description": "NusG, N-terminal domain"
                 }
             ],
@@ -2839,7 +2852,8 @@
                     "score": 310.0,
                     "evalue": 1.258e-05,
                     "chain": "A",
-                    "description": "Structure of EtgA D60N mutant"
+                    "uniprot": "C7BUG6",
+                    "description": "EtgA protein"
                 },
                 {
                     "source": "cath",
@@ -2945,7 +2959,8 @@
                     "score": 310.0,
                     "evalue": 5.32e-07,
                     "chain": "Bd",
-                    "description": "Legionella pneumophila Dot T4SS OMC"
+                    "uniprot": "O52183",
+                    "description": "DotD"
                 },
                 {
                     "source": "cath",
@@ -3041,7 +3056,8 @@
                     "score": 552.0,
                     "evalue": 6.112e-12,
                     "chain": "IC",
-                    "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 1"
+                    "uniprot": "O52184",
+                    "description": "DotC"
                 }
             ],
             "prostt5_confidence": 54.2,
@@ -3116,7 +3132,7 @@
             ],
             "id": "MEGJMNBEGN_36",
             "locus": "MEGJMN_036",
-            "3di": "DDFFDPDDPPDDDDDXXDDPDDDDDVDLLSVVLSCLVVVFFKWKDFAQAFIWTDDQNDTDGRDPDGDDLVRVVSNVVVQDDPVVSVCQVVQDKDKDKDWDADVSCVVRVHDXRDIWMWIKIWGWDDDPVRGITIMIMIGTADQDQDALVVQPDDPVVLVLLDDQFFEEEEEADPPLCRLSVLLNSVLVCLQVVLPFAEEEEEPDDRHDSDDDPPRGHYDYDYDPPRAPDLLVSLVVVVVVVGREYEYEADDALSNLVSQLVSRVVRHYYYYYDYDQDPLVVLVVSLVSDDPVCSLVSLLSSLVRYFKYKYWHWFQFPVRDTDIDIFIDGDDPVLSVVSSPDDSVCSSVVVVVVVVVVVRXSLNVLLVCVVVVRDDPVSSVVRDDPVSVVVSVVVV",
+            "3di": "DDFFDPDDPPDDDDDXDDDPDDDDDVDLLSVVLSCLVVVFFKWKDFAQAFIWTDDQNDTDGRDPDGDDLVRVVSNVVVQDDPVVSVCVVVQDKDKDKDWDADVSCVVRVHDXRDIWMWIKIWGWDDDPVRGITIMIMIGTADQDQDALVVQPDDPVVLVLLDDQFFEEEEEADPPLCRLSVLLNSVLVCLQVVLPFAEEEEEPDDRHDSDDDPPRGHYDYDYDPPRAPDLLVSLVVVVVVVGREYEYEADDALSNLVSQLVSRVVRHYYYYYDYDQDPLVVLVVSLVSDDPVCSLVSLLSSLVRYFKYKYWHWFQFPVRDTDIDIFIDGDDPVLSVVSSPDDSVCSSVVVVVVVVVVVRXSLNVLLVCVVVVRDDPVSSVVRDDPVSVVVSVVVV",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -3124,18 +3140,18 @@
                     "query_cov": 0.88,
                     "subject_cov": 1.0,
                     "identity": 0.294,
-                    "score": 1295.0,
-                    "evalue": 9.055e-31,
+                    "score": 1297.0,
+                    "evalue": 9.101e-31,
                     "description": "Uncharacterized protein YggR"
                 },
                 {
                     "source": "afdb",
                     "id": "A0A7X4CW99",
-                    "query_cov": 0.94,
-                    "subject_cov": 0.85,
-                    "identity": 0.293,
-                    "score": 1435.0,
-                    "evalue": 4.356e-34,
+                    "query_cov": 0.96,
+                    "subject_cov": 0.88,
+                    "identity": 0.296,
+                    "score": 1433.0,
+                    "evalue": 5.593e-34,
                     "description": "AAA+ ATPase domain-containing protein"
                 },
                 {
@@ -3144,10 +3160,11 @@
                     "query_cov": 0.92,
                     "subject_cov": 0.96,
                     "identity": 0.332,
-                    "score": 1412.0,
-                    "evalue": 6.94e-34,
+                    "score": 1408.0,
+                    "evalue": 9.986e-34,
                     "chain": "B",
-                    "description": "X-ray structure of the Legionella pneumophila ATPase DotB"
+                    "uniprot": "O52185",
+                    "description": "DotB"
                 },
                 {
                     "source": "cath",
@@ -3156,7 +3173,7 @@
                     "subject_cov": 0.99,
                     "identity": 0.311,
                     "score": 797.0,
-                    "evalue": 1.758e-18,
+                    "evalue": 1.894e-18,
                     "description": "P-loop containing nucleotide triphosphate hydrolases"
                 },
                 {
@@ -3165,8 +3182,8 @@
                     "query_cov": 0.29,
                     "subject_cov": 0.97,
                     "identity": 0.228,
-                    "score": 335.0,
-                    "evalue": 7.829e-07,
+                    "score": 341.0,
+                    "evalue": 5.705e-07,
                     "description": "hypothetical protein"
                 }
             ],
@@ -3310,7 +3327,7 @@
             ],
             "id": "MEGJMNBEGN_38",
             "locus": "MEGJMN_038",
-            "3di": "DPXXPVQQQDKFFFQDDPVCQVVLQVLXQADPVRHGQWDQDPVVRTIIGTPPXDCVSSCVRDDPXXDDDDDPDDLQVVVQVVVVVVQFDDPDDDDAPQDKDFGDGDADPVPDDDDDGQKIWHAXSLXKIKMWIAGPVDDPPXDIDIDGDDDDDDDPSSSSVSVVSSVVSVVVSVVVLVVLLVVQQVVLVVVLVPFAFDDCQQLLCVVLVFHDDRQWTADPVRWIKDFWAFLVRGTAWIWIAHSVGDIDTTXSHDLALIKTKGADDDDPQAAAEEEEASSLQRLVCVLFVHIYIYRXDLVCLLSNLVSVCVVRVPHAYEYEFFLDDDDDPDXVVLXVXLVXVXDDDPDPXDDDDPVSSSVDTSLSSSLVSLVVHPXYKYKYDDDDPVSVVVVDGGSSVVCVVPNSVSVLVSXVVDPPSSQWMADPVVRDIDDDPDPDDDDDDDDPDDDDDDXXXXDDDPPXVVVVVVVVVVVVVVVPDDDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDPDDDDDDPDDDDDDDDDDPVXXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDPDDDDPXXXKKKKADDDPPDDXXDXXXXXXXXXDPXVVLVVQWDWDDDXQWIFTDDVNHTQWTDSRGMIDGDDPDLVSSLSSLVSVVSVCCVRRNQEMEYDYDPVSLLSNLLSCLLSVXRHHYPDPVSSVSSVVSNVVVCVPDPPSVXVXPDDDDDDPDDDPDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDDPVACVQKDKAAWADKDWAQPVVDDPGDIWIWTWGQDPVGIDIDIDNQVVVQCVVQVDDHGFIKGKHWDAWDWDWDWDFDDDPNDTPGTDIDIDTDTDMDMDGDDPPPDDDDDDPDPXXXXVVVXVVVLVVLLVVLLVXXXVVVXDXDPPDXQXKWXXXXXXXDXDDXDDXXKDWDDDDPPDDXXIXIWXXDPVXIWIWGXXXDXDXWIWTWTDDPNXTWIKIWGXDXDXXXXXIWIWTQDPVGIDIDXXXVXXCVXPXDGDDXXXXXXDGXPDDDPXXXXXXGDXDSVVDDVVSCVVSVHDDDDDDDDPDDDDDDDDDXXDDDDPDDDDDD",
+            "3di": "DPXXPVQQQDKFFFQDDPVCQVVLQVLXQADPVRHGQWDQDPVVRTIIGTPPXDCVSSCVRDDPXXDDDDDPDDLQVVVQVVVVVVQFDDPDDDDAPQDKDFGDGDADPVPDDDDDGQKIWHAXSLXKIKMWIAGPVDDPPXDIDIDGDDDDDDDPSSSSVSVVSSVVSVVVSVVVLVVLLVVQQVVLVVVLVPFAFDDCQQLLCVVLVFHDDRQWTADPVRWIKDFWAFLVRGTAWIWIAHSVRDIDTGXSHDLALIKTKGADDDDPQAAAEEEEASSLQRLVCVLFVHIYIYRXDLVCLLSNLVSVCVVRVPHAYEYEFFLDDDDDPDXVVLXVXLVXVXDDDPDPXDDDDPVSSSVDTSLSSSLVSLVVHPXYKYKYDDDDPVSVVVVDGGSSVVCVVPNSVSVLVSXVVDPPSSQWMADPVVRDIDDDPDPDDDDDDDDPDDDDDDXXXXDDDPPXVVVVVVVVVVVVVVVPDDDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDPDDDDDDPDDDDDDDDDDPVXXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDPDDDDPXXXKKKKADDDPPDDXXDXXXXXXXXXDPXVVLVVQWDWDDDXQWIFTDDVNHTQWTDSRGMIDGDDPDLVSSLSSLVSVVSVCCVRRNQEMEYDYDPVSLLSNLLSCLLSVXRHHYPDPVSSVSSVVSNVVVCVPDPPSVXVXPDDDDDDPDDDPDDDDDDDDDDDDDPDDDDDDDDDDDDDDDDDDDDDDPDDDDDDDDPVACVQKDKAAWADKDWAQPVVDDPGDIWIWTWGQDPVGIDIDIDNQVVVQCVVQVDDHGFIKGKHWDAWDWDWDWDFDDDPNDTPGTDIDIDTDTDMDMDGDDPPPDDDDDDPDPXXXXVVVXVVVLVVLLVVLLVXXXVVVXDXDPPDXQXKWXXXXXXXDXDDXDDXXKDWDDDDPPDDXXIXIWXXDPVXIWIWGXXXDXDXWIWTWTDDPNXTWIKIWGXDXDXXXXXIWIWTQDPVGIDIDXXXVXXCVXPXDGDDXXXXXXDGXPDDDPXXXXXXGDXDSVVDDVVSCVVSVHDDDDDDDDPDDDDDDDDDXXDDDDPDDDDDD",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -3318,8 +3335,8 @@
                     "query_cov": 0.35,
                     "subject_cov": 0.47,
                     "identity": 0.279,
-                    "score": 1139.0,
-                    "evalue": 1.277e-23,
+                    "score": 1145.0,
+                    "evalue": 8.209e-24,
                     "description": "DNA primase TraC"
                 },
                 {
@@ -3328,8 +3345,8 @@
                     "query_cov": 0.99,
                     "subject_cov": 1.0,
                     "identity": 0.299,
-                    "score": 3006.0,
-                    "evalue": 3.249e-65,
+                    "score": 3012.0,
+                    "evalue": 1.683e-65,
                     "description": "DNA primase TraC"
                 },
                 {
@@ -3338,10 +3355,11 @@
                     "query_cov": 0.2,
                     "subject_cov": 0.38,
                     "identity": 0.143,
-                    "score": 299.0,
-                    "evalue": 5.627e-05,
+                    "score": 298.0,
+                    "evalue": 5.724e-05,
                     "chain": "C",
-                    "description": "Structure of bacteriophage T7 lagging-strand DNA polymerase (D5A/E7A) and gp4 (helicase/primase) bound to DNA including RNA/DNA hybrid, and an incoming dTTP (LagS3)"
+                    "uniprot": "P03692",
+                    "description": "DNA helicase/primase"
                 }
             ],
             "prostt5_confidence": 53.96,
@@ -3497,7 +3515,8 @@
                     "score": 594.0,
                     "evalue": 2.301e-13,
                     "chain": "A",
-                    "description": "Structure of a periplasmic fragment of TraM"
+                    "uniprot": "Q9R2H2",
+                    "description": "TraM protein"
                 },
                 {
                     "source": "cath",
@@ -3606,7 +3625,7 @@
                     "score": 1048.0,
                     "evalue": 1.174e-23,
                     "chain": "AH",
-                    "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 2"
+                    "description": "Type IV secretion protein IcmK"
                 }
             ],
             "prostt5_confidence": 62.55,
@@ -3754,7 +3773,8 @@
                     "score": 396.0,
                     "evalue": 2.767e-08,
                     "chain": "HG",
-                    "description": "Reconstruction of the Legionella pneumophila Dot/Icm T4SS 3DVA Map 2"
+                    "uniprot": "O53087",
+                    "description": "IcmE protein"
                 }
             ],
             "prostt5_confidence": 59.28,
@@ -4106,7 +4126,7 @@
             "genes": [],
             "id": "MEGJMNBEGN_48",
             "locus": "MEGJMN_048",
-            "3di": "DVVVVVVVVVVVVVVXDDPFDDLLVQFQFQFWAFFDDPXCDXDPXDTATQWTAGLQQKIKWKKWFFAAAFADDQPDDPVVVXDLVLLLVLLLVLCFPXQADFQKKKKKKKFKALXXLLVLLLVLLVLLLVLLLXFLXXLSVLLSVVSVLCSVLXIDITMMMMIMGGDDDDDPVVSVVVVVVVVVVLVPDDPDXXXDDDDPVVVVVVVVVVVVSVVSSCVSSDVSDPXIXMDTDGXQVVLQVLLCLQXXPXDPDDDDDDDPVXXDDDPDDDDDPPDDPXDXDXSSSSSDDWDWDDFQFWIDGNQKIKWKKFFLDADLDDDALCLLQFLQXXSFIKMKMKIKHXXDLVVVDVVLVVLVVVCVDPVSVVVVVVSVVSVVVVNVFTKIWIWMMMMGMDSDPVRRVVSVVSSQVSCVVVVRTDMDXXXXCSVQSVVSSDXSSDDDDDPRIDIDGSSSSSSSDSNYDXDDPXDSQALQWFAFSSRDIHGAHLXDXPDXAAEEEEEAAPQQCRLVVVLSSVSSQLSXDDXDGAAEEEEEAPLLCQLSLVSSLVSDDPVCNVQEEEAEQDLXDLAAFALLQADLLDQADDPVSLVLVLLLLLLLLADLVLGDDPPDPLLSVLSSVLSVVLSVVLDPPDPQXXDQADDPVLVVLLVVLVDDDDDDPPVSRRDGSVVSLVSCVVVVNDVSSVSSXXSSGDFLLSSLVSLVDPVSCVVSVVXDDPPVPDGSSVSSSVSSVVCCVRPVNRHDGXXRDDDLSRRYYYYYCVVQDDDPDSSSLSSLSSSLSVSVVSSVVLLCLLVCLVVSLVRDDPVCNVVSVVVNVVSLXHAYEYEYEACLSNVPRPCSVVVVLVCLVPVVVSRYHYYYYYNAPVSDDLSSLVSHQKYKYAAHDPVCVVSCCVSVVDDPVXSVVSVPQDXDDDPVRQXXWIWIWIDDPVGIDIGIDIDDDALLSLCSSDPDPLLVLLLSLLSVVDXDXVSVVLSSVVXVXSXSVVSSVVSCVVVVXVXXXXDXSVSSVVSCVVVVDDD",
+            "3di": "DVVVVVVVVVVVVVVXDDPFDDLLVQFQFQFWAFFDDPXCDXDPXDTATQWTAGLQQKIKWKKWFFAAAFADDQPDDPVVVXDLVLLLVLLLVLCFPXQADFQKKKKKKKFKALXXLLVLLLVLLVLLLVLLLXFLXXLSVLLSVVSVLCSVLXIDITMMMMIMGGDDDDDPVVSVVVVVVVVVVLVPDDPDXXXDDDDPVVVVVVVVVVVVSVVSSCVSSDVSDPXIXMDTDGXQVVLQVLLCLQXXPXDPDDDDDDDPVXXDDDPDDDDDPPDDPXDXDXSSSSSDDWDWDDFQFWIDGNQKIKWKKFFXDADLDDDALCLLQFLQXXSFIKMKMKIKHXXDLVVVDVVLVVLVVVCVDPVSVVVVVVSVVSVVVVNVFTKIWIWMMMMGMDSDPVRRVVSVVSSQVSCVVVVRTDMDXXXXCSVQSVVSSDXSSDDDDDPRIDIDGSSSSSSSDSNYDXDDPXDSQALQWFAFSSRDIHGAHLXDXPDXAAEEEEEAAPQQCRLVVVLSSVSSQLSXDDXDGAAEEEEEAPLLCQLSLVSSLVSDDPVCNVQEEEAEQDLXDLAAFALLQADLLDQADDPVSLVLVLLLLLLLLADLVLGDDPPDPLLSVLSSVLSVVLSVVLDPPDPQXXDQADDPVLVVLLVVLVDDDDDDPPVSRRDGSVVSLVSCVVVVNDVSSVSSXXSSGDFLLSSLVSLVDPVSCVVSVVXDDPPVPDGSSVSSSVSSVVCCVRPVNRHDGXXRDDDLSRRYYYYYCVVQDDDPDSSSLSSLSSSLSVSVVSSVVLLCLLVCLVVSLVRDDPVCNVVSVVVNVVSLXHAYEYEYEACLSNVPRPCSVVVVLVCLVPVVVSRYHYYYYYNAPVSDDLSSLVSHQKYKYAAHDPVCVVSCCVSVVDDPVXSVVSVPQDXDDDPVRQXXWIWIWIDDPVGIDIGIDIDDDALLSLCSSDPDPLLVLLLSLLSVVDXDXVSVVLSSVVXVXSXSVVSSVVSCVVVVXVXXXXDXSVSSVVSCVVVVDDD",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -4114,8 +4134,8 @@
                     "query_cov": 0.97,
                     "subject_cov": 0.98,
                     "identity": 0.118,
-                    "score": 1540.0,
-                    "evalue": 3.409e-30,
+                    "score": 1539.0,
+                    "evalue": 3.352e-30,
                     "description": "Protein TraC"
                 },
                 {
@@ -4124,8 +4144,8 @@
                     "query_cov": 0.92,
                     "subject_cov": 0.99,
                     "identity": 0.233,
-                    "score": 2750.0,
-                    "evalue": 3.468e-55,
+                    "score": 2746.0,
+                    "evalue": 3.741e-55,
                     "description": "Protein IcmB (DotO)"
                 },
                 {
@@ -4134,10 +4154,11 @@
                     "query_cov": 0.93,
                     "subject_cov": 0.97,
                     "identity": 0.102,
-                    "score": 1125.0,
-                    "evalue": 1.027e-21,
+                    "score": 1128.0,
+                    "evalue": 8.483e-22,
                     "chain": "B",
-                    "description": "TrwK/VirB4unbound dimer complex from R388 type IV secretion system determined by cryo-EM."
+                    "uniprot": "O50330",
+                    "description": "Type IV secretion system ATPase TrwK"
                 }
             ],
             "prostt5_confidence": 55.42,
@@ -4319,7 +4340,7 @@
             ],
             "id": "MEGJMNBEGN_51",
             "locus": "MEGJMN_051",
-            "3di": "DVVPVVVVVVVVVVVVPDXVPXDPDDLVLLLVLLVDLLQVLLVVVCVVVNCCLXDLDDXXDXDPVLVVLLVVLVVLLVVLVVLLVVLVVVQVVQCVVVVDRXXFPFDPVLSVLLVLLSQQQDADSSRAGPLLVVLLSLLRNXLQNLLLNLLLVLLVCLQVXXFFFFDFDDLLLLVLLLLLLQLLLLQLLVXVVVVVXXVPXDDDDXWDWDDDDPPQWIDTDXXXXTSKMFTXGXDDDDDPXDVVDDDDFDSVVLSVLLVVLSVVLSVLSSVLSNVLSVVLVVCVDVPVDDDVXSSVSSVVSSVVSSVSSVVSSVVDDXDVVLSVQLSVQCSRRNSSSXNSSSVSXXVVXXDXDDXXDDDDDDDDXXXXXXXDDDVSSVVLVVSSVVXSVDXXXXXXXXDXDDSVCSVVVXDDDPSVVVVVLXVPSLVVVLVVLVVVXXXDDDDPXXSXXXLSSLSSVLLVVLVVVLVVLLVVLVVVVVVVVPDPDPVVVVVVVDDPVSVVSSVVSVVVXPVVSVVSLLLSLLSLLLSPCLSVLLSVLLSVLSVVLSSVSSSLSSCSSLLSSLSXHHDPDSCVSNVVSVLSSVLSSCLSVLLSVLSSLLSVLSSVLSVVLVVVLVVVSVVDDDXDSVSSSVSSVVSSVSSVVSSVSSLVSSLVSNVVSVVVSCVVVXDXXDVVVVVVSVVVVVVSVVVPDDPDDDDDPPDVPDXVPVVDVVPDVD",
+            "3di": "DVVPVVVVVVVVVVVVPDXVPXDPDDLVLLLVLLVDLLQVLLVVVCVVVNCCLXDLDDXXDXDPVLVVLLVVLVVLLVVLVVLLVVLVVVQVVQCVVVVDRXXFPFDPVLSVLLVLLSQQQDADSSRAGPLLVVLLSLLRNXLQNLLLNLLLVLLVCLQVXXFFFFDFDDLLLLVLLLLLLQLLLLQLLVXVVVVVXXVPXDDDDXWDWDDDDPPQWIDTDXXXXTSKMFTXGXDDDDDPXDVVDDDDFDSVVLSVLLVVLSVVLSVLSSVLSNVLSVVLVVCVDVPVDDDVXSSVSSVVSSVVSSVSSVVSSVXDDXDVVLSVQLSVQCSRRNSSSXNSSSVSXXVVXXDXDDXXDDDDDDDDXXXXXXXDDDVSSVVLVVSSVVXSVDXXXXXXXXDXDDSVCSVVVXDDDPSVVVVVLXVPSLVVVLVVLVVVXXXDDDDPXXSXXXLSSLSSVLLVVLVVVLVVLLVVLVVVVVVVVPDPDPVVVVVVVDDPVSVVSSVVSVVVXPVVSVVSLLLSLLSLLLSPCLSVLLSVLLSVLSVVLSSVSSSLSSCSSLLSSLSXHHDPDSCVSNVVSVLSSVLSSCLSVLLSVLSSLLSVLSSVLSVVLVVVLVVVSVVDDDXDSVSSSVSSVVSSVSSVVSSVSSLVSSLVSNVVSVVVSCVVVXDXXDVVVVVVSVVVVVVSVVVPDDPDDDDDPPDVPDXVPVVDVVPDVD",
             "pstc": [
                 {
                     "source": "afdb",
@@ -4328,7 +4349,7 @@
                     "subject_cov": 0.97,
                     "identity": 0.372,
                     "score": 1144.0,
-                    "evalue": 2.143e-21,
+                    "evalue": 2.193e-21,
                     "description": "Conjugal transfer integral membrane domain protein"
                 }
             ],
@@ -4427,7 +4448,8 @@
                     "score": 200.0,
                     "evalue": 0.0007477,
                     "chain": "C",
-                    "description": "The FERM domain of human moesin mutant L281R"
+                    "uniprot": "P26038",
+                    "description": "Moesin"
                 }
             ],
             "prostt5_confidence": 57.91,
@@ -4587,7 +4609,8 @@
                     "score": 316.0,
                     "evalue": 3.186e-06,
                     "chain": "A",
-                    "description": "Proteus mirabilis ScsC linker (residues 39-49) deletion and N6K mutant"
+                    "uniprot": "B4EV21",
+                    "description": "Metal resistance protein"
                 },
                 {
                     "source": "cath",
@@ -4671,16 +4694,16 @@
             ],
             "id": "MEGJMNBEGN_55",
             "locus": "MEGJMN_055",
-            "3di": "DPPPPDDPDLVVXDDDDDDDPVLVVLLDPVNVVVLVVQLVVCCVVPVVSVVVSVVVCVVSVVSSVVXXDDADADDDXXQQDDDPVXXDDDXDDVPVVDXXDTXDXXXGGXXALFWFFWFXPPXXTDTDTDGLLLLLLFEEEEAAPQLCVLVSVLRNVLSCLVVVFAEEEEEQPPDPVSVLSNLLSCVVSVNNVQEAEAALDDXPDDLVVCVVVDPVXLXXHFAAFLLQPDDLVLLLLLLCLLQDDDDPDVVLSVLLSVLSSLLSVLQNVVCVVVVHFAFLVVSLVCLDLLSLLVSLVVCVVVVHDPVSNVSSLVSCVVQQPPDDSVCDDDSVPGDPVSSVSSCSSNVSSVVLSVLCXPRXVSRRNDSPGXDDLLCCRLVSHYYYYYQNCVVDDLSSSLSVLSSVLSVVLVSLVVLLVCLVVDDPVSLVSXVVXXPDAAHEYEYEACLSNDDPSVLVSLVRCSSSRYHYYHYHXAXVSNCVRNNPCSVSSVVSRQKYKYAAHDDCPPVLVVVQVVQAKDWDWWDWDWDDDDDDPDIDIDXDIDIDIDIDGPDDSVCSNPDDRQWMWMDGPNDTDITGGXXXDDDXXXDDVXXXXXXXDDDDXDDSVVCVVSDDPDXDXPDDDDPDLVXXXWXXXXVVXDDDXXQWDDDPNXIWGDDDXXDDDDDDDDDDPVSVVSSVVSLVVSVVVXVVXXXXXDDDDDDDDXDDDDPVVVVVXVVXXVXXXDDDDVXXXD",
+            "3di": "DPPPPDDPDLVVXDDDDDDDPVLVVLLDPVNVVVLVVQLVVCCVVPVVSVVVSVVVCVVSVVSSVVXXDDADADDDXXQQDDDPVXXDDDXDDVPVVDXXDTXDXXXGGXXALFWFFWFXPPXXTDTDTDGLLLLLLFEEEEAAPQLCVLVSVLRNVLSCLVVVFAEEEEEQPPDPVSVLSNLLSCVVSVNNVQEAEAALDDXPDDLVVCVVVDPVXLXXHFAAFLLQPDDLVLLLLLLCLLQDDDDPDVVLSVLLSVLSSLLSVLQNVVCVVVVHFAFLVVSLVCLDLLSLLVSLVVCVVVVHDPVSNVSSLVSCVVQQPPDDSVCDDDSVPGDPVSSVSSCSSNVSSVVLSVLCXPRXVSRRNDSPGXDDLLCCRLVSHYYYYYQNCVVDDLSSSLSVLSSVLSVVLVSLVVLLVCLVVDDPVSLVSXVVXXPDAAHEYEYEACLSNDDPSVLVSLVRCSSSRYHYYHYHXALVSNCVRNNPCSVSSVVSRQKYKYAAHDDCPPVLVVVQVVQAKDWDWWDWDWDDDDDDPDIDIDXDIDIDIDIDGPDDSVCSNPDDRQWMWMDGPNDTDITGGXXXDDDXXXDDVXXXXXXXDDDDXDDSVVCVVSDDPDXDXPDDDDPDLVXXXWXXXXVVXDDDXXQWDDDPNXIWGDDDXXDDDDDDDDDDPVSVVSSVVSLVVSVVVXVVXXXXXDDDDDDDDXDDDDPVVVVVXVVXXVXXXDDDDVXXXD",
             "pstc": [
                 {
                     "source": "swissprot",
                     "id": "Q5ZYC6",
                     "query_cov": 0.99,
                     "subject_cov": 0.81,
-                    "identity": 0.22,
-                    "score": 1778.0,
-                    "evalue": 4.046e-36,
+                    "identity": 0.221,
+                    "score": 1788.0,
+                    "evalue": 2.889e-36,
                     "description": "Type 4 coupling protein DotL"
                 },
                 {
@@ -4689,8 +4712,8 @@
                     "query_cov": 0.72,
                     "subject_cov": 0.99,
                     "identity": 0.364,
-                    "score": 1864.0,
-                    "evalue": 9.571e-38,
+                    "score": 1872.0,
+                    "evalue": 7.594e-38,
                     "description": "TrbC-like protein"
                 },
                 {
@@ -4698,11 +4721,12 @@
                     "id": "6sz9",
                     "query_cov": 0.68,
                     "subject_cov": 0.88,
-                    "identity": 0.236,
-                    "score": 1006.0,
-                    "evalue": 8.762e-20,
+                    "identity": 0.238,
+                    "score": 1016.0,
+                    "evalue": 5.849e-20,
                     "chain": "A",
-                    "description": "Type IV Coupling Complex (T4CC) from L. pneumophila."
+                    "uniprot": "Q5ZYC6",
+                    "description": "Type 4 coupling protein DotL"
                 },
                 {
                     "source": "cath",
@@ -4710,8 +4734,8 @@
                     "query_cov": 0.62,
                     "subject_cov": 0.83,
                     "identity": 0.115,
-                    "score": 422.0,
-                    "evalue": 2.101e-07,
+                    "score": 428.0,
+                    "evalue": 1.623e-07,
                     "description": "P-loop containing nucleotide triphosphate hydrolases"
                 }
             ],
@@ -4808,7 +4832,8 @@
                     "score": 248.0,
                     "evalue": 2.858e-05,
                     "chain": "A",
-                    "description": "CRYSTAL STRUCTURE OF A PHOSPHOLIPASE D FAMILY MEMBER, NUC FROM SALMONELLA TYPHIMURIUM"
+                    "uniprot": "Q46707",
+                    "description": "phospholipase D"
                 },
                 {
                     "source": "cath",
@@ -4821,7 +4846,7 @@
                     "description": "Endonuclease Chain A"
                 }
             ],
-            "prostt5_confidence": 74.56,
+            "prostt5_confidence": 74.51,
             "baktfold": true,
             "annotation_confidence": "low",
             "length": 102
@@ -4921,7 +4946,8 @@
                     "score": 341.0,
                     "evalue": 3.404e-05,
                     "chain": "A",
-                    "description": "ISCth4 transposase, pre-reaction complex, PRC"
+                    "uniprot": "A3DBR0",
+                    "description": "Mutator family transposase"
                 },
                 {
                     "source": "cath",
@@ -5310,7 +5336,7 @@
             ],
             "id": "MEGJMNBEGN_62",
             "locus": "MEGJMN_062",
-            "3di": "DDPDDPVVDDPVVPDDDDCVVLLVLLCVVCVQQVPDALVLSLLVSQVVCVVVVHDRDDSVSSVVSCVVVVSHDDDDDPDDPDPDDDPDDQADQAFLQEKEKDKDWDAAPVGFIKIKIWIATRNLRATQDMDIDRDDDALVRVLVSLVSSLCVVPNLDADPDAHEYEYAPDPSLPDPVSQVSCVVRRYHYDYDDPPDPSSSVSRVVVVVCLVRRQVVPDDRNHDVVVVVSVVVSSVSQQQQRQRVSLVRHGSVVSVVVVVVVVVPVVVVVPD",
+            "3di": "DDPDDPVVDDPVVPDDDDCVVLLVLLCVVCVQQVPDALVLSLLVSQVVCVVVVHDRDDSVSSVVSCVVVVSHDDDDDPDDPDPDDDPDDQADQAFLQEKEKDKDWDAAPVGFIKIKIWIATRNLRATQDMDIDRDDDALVRVLVSLVSSLCVVPNLDADPDAHEYEYAPDPSCPDPVSQVSCVVRRYHYDYDDPPDPSSSVSRVVVVVCLVRRQVVPDDRNHDVVVVVSVVVSSVSQQQQRQRVSLVRHGSVVSVVVVVVVVVPVVVVVPD",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -5318,8 +5344,8 @@
                     "query_cov": 0.99,
                     "subject_cov": 0.89,
                     "identity": 0.828,
-                    "score": 1804.0,
-                    "evalue": 4.863e-44,
+                    "score": 1797.0,
+                    "evalue": 6.384e-44,
                     "description": "Transposase InsD for insertion element IS2I"
                 },
                 {
@@ -5328,8 +5354,8 @@
                     "query_cov": 0.97,
                     "subject_cov": 0.86,
                     "identity": 0.996,
-                    "score": 1895.0,
-                    "evalue": 3.825e-46,
+                    "score": 1898.0,
+                    "evalue": 2.772e-46,
                     "description": "Insertion element IS2 transposase InsD"
                 },
                 {
@@ -5338,10 +5364,11 @@
                     "query_cov": 0.91,
                     "subject_cov": 0.58,
                     "identity": 0.17,
-                    "score": 476.0,
-                    "evalue": 2.115e-10,
+                    "score": 471.0,
+                    "evalue": 2.734e-10,
                     "chain": "X",
-                    "description": "V-K CAST Transpososome from Scytonema hofmanni, minor configuration"
+                    "uniprot": "A0A979HMQ2",
+                    "description": "TnsB"
                 },
                 {
                     "source": "cath",
@@ -5349,8 +5376,8 @@
                     "query_cov": 0.63,
                     "subject_cov": 0.99,
                     "identity": 0.86,
-                    "score": 1239.0,
-                    "evalue": 6.317e-30,
+                    "score": 1234.0,
+                    "evalue": 7.702e-30,
                     "description": "Ribonuclease H-like superfamily/Ribonuclease H"
                 }
             ],
@@ -5560,7 +5587,7 @@
             ],
             "id": "MEGJMNBEGN_65",
             "locus": "MEGJMN_065",
-            "3di": "DVCVVVVVDPDPPDLVVLLVVLVVLVVVLVVCVVVVVDDPDPVVVVSVVVSVVSSVVSVVVVV",
+            "3di": "DVCVVVVVDDDPPDLVVLLVVLVVLVVVLVVCVVVVVDDPDPVVVVSVVVSVVSSVVSVVVVV",
             "prostt5_confidence": 70.8
         },
         {
@@ -5747,7 +5774,7 @@
             "genes": [],
             "id": "MEGJMNBEGN_68",
             "locus": "MEGJMN_068",
-            "3di": "DDDPPDDXFKKEKEXXDDDDPVXXVXDDVVCVVVCVVVXWWWWDDDPXXIIXXXXDDDVCVLVVCVVVPHDPVXSVVXVVDVVVPXDMXMDDDDDVVVVVVVVDPX",
+            "3di": "DDDPPDDXFKKEKEXXDDDDPVXXVXDDVVCVVVCVVVXWWWWDDDPXXIIXXXXDDDVCVLVVCVVVPHDPVXSVVXVVDVVVPXDMXMDDDPDVVVVVVVVDPX",
             "prostt5_confidence": 41.16
         },
         {
@@ -6039,7 +6066,7 @@
             "id": "MEGJMNBEGN_73",
             "locus": "MEGJMN_073",
             "3di": "DDPDDDDPVVVVVVVVVVLVVVLVVLVVVLVVDDPDDDDDPDPXSVVVSVVSVVVDDPPD",
-            "prostt5_confidence": 69.34
+            "prostt5_confidence": 69.29
         },
         {
             "type": "cds",
@@ -6188,7 +6215,8 @@
                     "score": 357.0,
                     "evalue": 9.37e-09,
                     "chain": "E",
-                    "description": "The crystal structure of DNA repair protein RadC from Chlorobium tepidum TLS"
+                    "uniprot": "Q8KES1",
+                    "description": "UPF0758 protein CT0611"
                 },
                 {
                     "source": "cath",
@@ -6586,7 +6614,8 @@
                     "score": 1630.0,
                     "evalue": 2.29e-40,
                     "chain": "A",
-                    "description": "ParM from plasmid R1 in complex with AMPPNP"
+                    "uniprot": "P11904",
+                    "description": "Plasmid segregation protein ParM"
                 },
                 {
                     "source": "cath",
@@ -6693,7 +6722,8 @@
                     "score": 394.0,
                     "evalue": 2.347e-09,
                     "chain": "D",
-                    "description": "The crystal structure of the Burkholderia pseudomallei HicAB complex"
+                    "uniprot": "Q63NA5",
+                    "description": "HicB-like antitoxin of toxin-antitoxin system domain-containing protein"
                 },
                 {
                     "source": "cath",
@@ -7085,7 +7115,8 @@
                     "score": 554.0,
                     "evalue": 4.517e-12,
                     "chain": "A",
-                    "description": "CCDB, A TOPOISOMERASE POISON FROM ESCHERICHIA COLI"
+                    "uniprot": "P62554",
+                    "description": "Toxin CcdB"
                 },
                 {
                     "source": "cath",
@@ -7260,7 +7291,8 @@
                     "score": 508.0,
                     "evalue": 2.725e-11,
                     "chain": "A",
-                    "description": "WILD-TYPE UMUD' FROM E. COLI"
+                    "uniprot": "P0AG11",
+                    "description": "Protein UmuD"
                 },
                 {
                     "source": "cath",
@@ -7377,7 +7409,8 @@
                     "score": 1127.0,
                     "evalue": 2.433e-26,
                     "chain": "F",
-                    "description": "MsDpo4-DNA complex 2"
+                    "uniprot": "A0QR77",
+                    "description": "DNA polymerase IV"
                 },
                 {
                     "source": "cath",
@@ -7522,7 +7555,8 @@
                     "score": 1622.0,
                     "evalue": 2.394e-40,
                     "chain": "A",
-                    "description": "THE STRUCTURE OF THE RRNA METHYLTRANSFERASE ERMC': IMPLICATIONS FOR THE REACTION MECHANISM"
+                    "uniprot": "P13956",
+                    "description": "rRNA adenine N-6-methyltransferase"
                 },
                 {
                     "source": "cath",
@@ -7736,7 +7770,7 @@
             "type": "full"
         },
         "baktfold": "0.4.0",
-        "baktfold_db": "0.1.0"
+        "baktfold_db": "0.2.0"
     },
     "baktfold_run": {
         "mode": "genome",
@@ -7751,6 +7785,7 @@
         "trna_program": "tRNAscan-SE:2.0.12",
         "rrna_program": "INFERNAL:1.1.5",
         "tmrna_program": "INFERNAL:1.1.5",
-        "ncrna_program": "INFERNAL:1.1.5"
+        "ncrna_program": "INFERNAL:1.1.5",
+        "input_hypotheticals": 17
     }
 }

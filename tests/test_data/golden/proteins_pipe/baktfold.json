@@ -38,7 +38,8 @@
                     "score": 1226.0,
                     "evalue": 1.156e-24,
                     "chain": "A",
-                    "description": "CRYSTAL STRUCTURE OF DNA REPLICATION INITIATION FACTOR"
+                    "uniprot": "O66659",
+                    "description": "Chromosomal replication initiator protein DnaA"
                 },
                 {
                     "source": "cath",
@@ -90,7 +91,7 @@
             "length": 367,
             "type": "cds",
             "locus": "lcl|NC_002516.2_prot_NP_064722.1_2|NC_002516.2_prot_NP_064722.1_2",
-            "3di": "DKFKDFLVQVLLLLVLQLLQADPDDPDPLQQKWKWWDDDQKIWTWGDSVFKIKIFIDGTPDDPDTDMWIFRSVVVNVVSVVDDRRWMWMWDDDPQWIWIDGDPDIDITGIDDRVVDDDDDDDDFWDKFKDFLVVVLLQLLQAVVQADPPDPPVLQQAWKWKDAPQKIKIWGDNPFKIKIDIDGTDGPDDDIDIFTAGSSLSVSVSVSXDPDDFMWMWGDHDFKIWIDGPRMIIMGGTDDDDDDPCVVQDDPDAFKKKKDFLVVVLVQLVVQLVQADPVQQKWKWKDDPQKTKIWGADPVDDIDIDIGGIDGDDDIAIFMFRSVVVNSVSVSDPDRMWMWGHHHRQAWIWIAHPPDRRMIMIGGTDDD",
+            "3di": "DKFKDFLVQVLLLLVLQLLQADPDDPDPLQQKWKWWDDDQKIWTWGDSVFKIKIFIDGTPDDPDTDMWIFRSVVVNVVSVVDDRRWMWMWDDDPQWIWIDGDPDIDITGIDDRVVDDDDDDDDFWDKFKDFLVVVLLQLLQAVVQADPPDPPVLQQAWKWKDAPQKIKIWGDNPFKIKIDIDGTDGPDDDIDMFTAGSSLSVSVSVSXDPDDFMWMWGDHDFKIWIDGPRMIIMGGTDDDDDDPCVVQDDPDAFKKKKDFLVVVLVQLVVQLVQADPVQQKWKWKDDPQKTKIWGADPVDDIDIDIGGIDGDDDIAIFMFRSVVVNSVSVSDPDRMWMWGHHHRQAWIWIAHPPDRRMIMIGGTDDD",
             "pstc": [
                 {
                     "source": "swissprot",
@@ -98,8 +99,8 @@
                     "query_cov": 1.0,
                     "subject_cov": 1.0,
                     "identity": 0.997,
-                    "score": 2794.0,
-                    "evalue": 1.7e-62,
+                    "score": 2792.0,
+                    "evalue": 9.579e-63,
                     "description": "Beta sliding clamp"
                 },
                 {
@@ -108,8 +109,8 @@
                     "query_cov": 1.0,
                     "subject_cov": 0.69,
                     "identity": 0.312,
-                    "score": 1633.0,
-                    "evalue": 1.566e-35,
+                    "score": 1635.0,
+                    "evalue": 9.458e-36,
                     "description": "Beta sliding clamp"
                 },
                 {
@@ -118,10 +119,11 @@
                     "query_cov": 1.0,
                     "subject_cov": 1.0,
                     "identity": 0.994,
-                    "score": 2748.0,
-                    "evalue": 1.333e-61,
+                    "score": 2752.0,
+                    "evalue": 5.518e-62,
                     "chain": "D",
-                    "description": "Crystal structure of the DNA polymerase III subunit beta from Pseudomonas aeruginosa"
+                    "uniprot": "Q9I7C4",
+                    "description": "Beta sliding clamp"
                 },
                 {
                     "source": "cath",
@@ -130,7 +132,7 @@
                     "subject_cov": 1.0,
                     "identity": 0.26,
                     "score": 992.0,
-                    "evalue": 3.051e-21,
+                    "evalue": 2.397e-21,
                     "description": "DNA Polymerase III, subunit A, domain 2"
                 },
                 {
@@ -140,7 +142,7 @@
                     "subject_cov": 1.0,
                     "identity": 0.546,
                     "score": 532.0,
-                    "evalue": 1.213e-10,
+                    "evalue": 1.066e-10,
                     "description": "DNA Polymerase III, subunit A, domain 2"
                 }
             ],
@@ -193,7 +195,8 @@
                     "score": 1288.0,
                     "evalue": 5.037e-28,
                     "chain": "B",
-                    "description": "Structure of the recombination mediator protein RecF-ATPrS in RecFOR pathway"
+                    "uniprot": "Q8RDL3",
+                    "description": "DNA replication and repair protein RecF"
                 },
                 {
                     "source": "cath",
@@ -219,7 +222,7 @@
     ],
     "version": {
         "baktfold": "0.4.0",
-        "baktfold_db": "0.1.0"
+        "baktfold_db": "0.2.0"
     },
     "baktfold_run": {
         "mode": "proteins",

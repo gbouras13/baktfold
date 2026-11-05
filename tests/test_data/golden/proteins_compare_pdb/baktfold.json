@@ -95,7 +95,8 @@
                     "tmscore": 0.6532,
                     "lddt": 0.4944,
                     "chain": "A",
-                    "description": "Crystal Structure of Quorum-Sensing Transcriptional Activator from Yersinia enterocolitica in complex with 3-oxo-N-[(3S)-2-oxotetrahydrofuran-3-yl]hexanamide"
+                    "uniprot": "P54295",
+                    "description": "Transcriptional activator protein YenR"
                 }
             ],
             "baktfold": true,
@@ -264,7 +265,8 @@
                     "tmscore": 0.8887,
                     "lddt": 0.7857,
                     "chain": "A",
-                    "description": "The structure of the KlcA and ArdB proteins show a novel fold and antirestriction activity against Type I DNA restriction systems in vivo but not in vitro"
+                    "uniprot": "Q08L07",
+                    "description": "KlcA"
                 },
                 {
                     "source": "cath",
@@ -376,7 +378,7 @@
     ],
     "version": {
         "baktfold": "0.4.0",
-        "baktfold_db": "0.1.0"
+        "baktfold_db": "0.2.0"
     },
     "baktfold_run": {
         "mode": "proteins",

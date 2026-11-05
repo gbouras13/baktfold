@@ -95,7 +95,8 @@
                     "tmscore": 0.7366,
                     "lddt": 0.5426,
                     "chain": "A",
-                    "description": "Crystal Structure of Quorum-Sensing Transcriptional Activator from Yersinia enterocolitica in complex with 3-oxo-N-[(3S)-2-oxotetrahydrofuran-3-yl]hexanamide"
+                    "uniprot": "P54295",
+                    "description": "Transcriptional activator protein YenR"
                 },
                 {
                     "source": "cath",
@@ -345,7 +346,7 @@
     ],
     "version": {
         "baktfold": "0.4.0",
-        "baktfold_db": "0.1.0"
+        "baktfold_db": "0.2.0"
     },
     "baktfold_run": {
         "mode": "proteins",

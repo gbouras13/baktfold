@@ -7,6 +7,6 @@ CDS remaining hypotheticals: 16 (17.2% of CDS; 94.1% of beginning hypotheticals)
 
 Baktfold:
 Software: v0.4.0
-Database: v0.1.0
+Database: v0.2.0
 DOI: https://doi.org/10.64898/2026.03.31.715528
 URL: github.com/gbouras13/baktfold
