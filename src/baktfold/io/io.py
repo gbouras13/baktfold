@@ -92,6 +92,19 @@ def write_summary_txt_file(output, prefix, features):
     else:
         begin_hyps = end_hyps + baktfold_function
 
+    # The "% of beginning hypotheticals" figures count only CDS that began as
+    # hypotheticals. Curated CDS are never downgraded, so every remaining
+    # hypothetical began as one, and those that gained a function are
+    # begin_hyps - end_hyps. Equal to the plain counts unless --all-proteins
+    # also annotated curated CDS (which gave e.g. "370.6% of beginning
+    # hypotheticals").
+    hyp_function = max(begin_hyps - end_hyps, 0)
+    hyp_hit = hyp_function + len([feat for feat in cds if feat.get('baktfold') and feat.get('hypothetical')])
+
+    def _of_hyps(n_hyp: int, n_all: int) -> str:
+        pct = f"{_pct(n_hyp, begin_hyps)}% of beginning hypotheticals"
+        return pct if n_hyp == n_all else f"{pct}: {n_hyp} of {begin_hyps}"
+
     # Percentages are reported against both denominators: every count as a
     # share of all CDS, and — for the counts that describe what baktfold did —
     # as a share of the beginning hypotheticals, which is the set baktfold is
@@ -107,12 +120,12 @@ def write_summary_txt_file(output, prefix, features):
         fh_out.write(
             f"CDS annotated with Baktfold database hit: {baktfold_hit}"
             f" ({_pct(baktfold_hit, cds_count)}% of CDS;"
-            f" {_pct(baktfold_hit, begin_hyps)}% of beginning hypotheticals)\n"
+            f" {_of_hyps(hyp_hit, baktfold_hit)})\n"
         )
         fh_out.write(
             f"CDS annotated with Baktfold function: {baktfold_function}"
             f" ({_pct(baktfold_function, cds_count)}% of CDS;"
-            f" {_pct(baktfold_function, begin_hyps)}% of beginning hypotheticals)\n"
+            f" {_of_hyps(hyp_function, baktfold_function)})\n"
         )
         fh_out.write(
             f"CDS remaining hypotheticals: {end_hyps}"

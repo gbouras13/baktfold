@@ -196,3 +196,26 @@ def test_all_proteins_curated_cds_not_counted(tmp_path, monkeypatch):
     monkeypatch.setattr(cfg, "input_hypotheticals", None)
     write_summary_txt_file(tmp_path, "s", feats)
     assert "CDS beginning hypotheticals: 2 " in (tmp_path / "s.summary.txt").read_text()
+
+
+def test_all_proteins_hypothetical_share_never_exceeds_100(tmp_path, monkeypatch):
+    """--all-proteins relabels curated CDS too. Dividing those by the beginning
+    hypotheticals gave "370.6% of beginning hypotheticals" (Setonix run_all);
+    the share now counts only CDS that began as hypotheticals."""
+    import baktfold.bakta.config as cfg
+
+    feats = [
+        # curated in the input, relabelled by Baktfold (--all-proteins)
+        {"type": "cds", "product": "AAA+ ATPase", "baktfold": True, "annotation_confidence": "high"},
+        {"type": "cds", "product": "Transposase", "baktfold": True, "annotation_confidence": "high"},
+        # hypothetical in the input; Baktfold supplied the label
+        {"type": "cds", "product": "Integrase", "baktfold": True, "annotation_confidence": "medium"},
+        # hypothetical in the input; hit only to an uninformative entry
+        {"type": "cds", "product": "hypothetical protein", "baktfold": True, "hypothetical": True},
+    ]
+    monkeypatch.setattr(cfg, "input_hypotheticals", 2)
+    write_summary_txt_file(tmp_path, "s", feats)
+    text = (tmp_path / "s.summary.txt").read_text()
+    assert "CDS annotated with Baktfold database hit: 4 (100.0% of CDS; 100.0% of beginning hypotheticals: 2 of 2)" in text
+    assert "CDS annotated with Baktfold function: 3 (75.0% of CDS; 50.0% of beginning hypotheticals: 1 of 2)" in text
+    assert "CDS remaining hypotheticals: 1 (25.0% of CDS; 50.0% of beginning hypotheticals)" in text
