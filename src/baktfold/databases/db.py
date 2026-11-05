@@ -77,6 +77,23 @@ VERSION_DICTIONARY = {
         "prostt5_backup_tarball": "models--Rostlab--ProstT5_fp16.tar.gz",
         "prostt5_backup_md5": "118c1997e6d2cb5025abda95d36681e0",
     },
+    # chain-level PDB names (pdb_chain table: UniProt name via SIFTS, else the
+    # PDB entity name) used for PDB-derived labels; Zenodo record 23966802
+    "0.2.0": {
+        "md5": [
+            "350c4d2158ecbb8f411c2ec9519491fa",
+        ],
+        "major": 0,
+        "minor": 2,
+        "minorest": 0,
+        "db_url": "https://zenodo.org/records/23966802/files/baktfold_db_v0.2.0.tar.gz?download=1",
+        "dir_name": "baktfold_db",
+        "tarball": "baktfold_db_v0.2.0.tar.gz",
+        "required_tables": ["pdb_chain"],
+        "prostt5_backup_url": "https://zenodo.org/records/11234657/files/models--Rostlab--ProstT5_fp16.tar.gz",
+        "prostt5_backup_tarball": "models--Rostlab--ProstT5_fp16.tar.gz",
+        "prostt5_backup_md5": "118c1997e6d2cb5025abda95d36681e0",
+    },
 }
 
 

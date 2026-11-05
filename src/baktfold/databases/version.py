@@ -5,4 +5,4 @@ Bump this when the database contents change (e.g. 0.2.0 adds the chain-level
 PDB name table), and add a matching entry to db.VERSION_DICTIONARY.
 """
 
-DB_VERSION: str = "0.1.0"
+DB_VERSION: str = "0.2.0"
