@@ -12,6 +12,7 @@ import baktfold.io.insdc as insdc
 import baktfold.io.fasta as fasta
 import baktfold.io.json as json
 import baktfold.bakta.constants as bc
+from baktfold.io.json_in import resolve_programs
 # import baktfold.bakta.constants as bc
 
 
@@ -190,6 +191,12 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
     """
 
     #logger.info(f'selected features={len(features)}')
+
+    programs = resolve_programs(euk, cds_program=cds_program, trna_program=trna_program, tmrna_program=tmrna_program,
+                                rrna_program=rrna_program, ncrna_program=ncrna_program)
+    cds_program, trna_program, tmrna_program, rrna_program, ncrna_program = (
+        programs['cds_program'], programs['trna_program'], programs['tmrna_program'],
+        programs['rrna_program'], programs['ncrna_program'])
 
     if euk:
         # Baktfold labels the CDS; make every output show that label on its

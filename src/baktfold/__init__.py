@@ -231,32 +231,32 @@ def compare_options(func):
         click.option(
             "--cds-program",
             type=str,
-            default="Prodigal:2.6",
-            help="CDS prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+            default=None,
+            help="CDS prediction tool string for compliant outputs if using non-Bakta or Prokka input. Default: Prodigal:2.6 for prokaryotic input; omitted for eukaryotic input (--euk)"
         ),
         click.option(
             "--trna-program",
             type=str,
-            default="tRNAscan-SE:2.0.12",
-            help="tRNA prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+            default=None,
+            help="tRNA prediction tool string for compliant outputs if using non-Bakta or Prokka input. Default: tRNAscan-SE:2.0.12 for prokaryotic input; omitted for eukaryotic input (--euk)"
         ),
         click.option(
             "--tmrna-program",
             type=str,
-            default="INFERNAL:1.1.5",
-            help="tmRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+            default=None,
+            help="tmRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input. Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input (--euk)"
         ),
         click.option(
             "--rrna-program",
             type=str,
-            default="INFERNAL:1.1.5",
-            help="rRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+            default=None,
+            help="rRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input. Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input (--euk)"
         ),
         click.option(
             "--ncrna-program",
             type=str,
-            default="INFERNAL:1.1.5",
-            help="ncRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+            default=None,
+            help="ncRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input. Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input (--euk)"
         ),
     ]
     for option in reversed(options):
@@ -1988,31 +1988,31 @@ Foldseek run is required - this is pure output reconstruction.
     "--cds-program",
     type=str,
     default=None,
-    help="CDS prediction tool string for compliant outputs (non-Bakta/Prokka input only). Default: Prodigal:2.6"
+    help="CDS prediction tool string for compliant outputs (non-Bakta/Prokka input only). Default: Prodigal:2.6 for prokaryotic input; omitted for eukaryotic input"
 )
 @click.option(
     "--trna-program",
     type=str,
     default=None,
-    help="tRNA prediction tool string (non-Bakta/Prokka input only). Default: tRNAscan-SE:2.0.12"
+    help="tRNA prediction tool string (non-Bakta/Prokka input only). Default: tRNAscan-SE:2.0.12 for prokaryotic input; omitted for eukaryotic input"
 )
 @click.option(
     "--tmrna-program",
     type=str,
     default=None,
-    help="tmRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5"
+    help="tmRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input"
 )
 @click.option(
     "--rrna-program",
     type=str,
     default=None,
-    help="rRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5"
+    help="rRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input"
 )
 @click.option(
     "--ncrna-program",
     type=str,
     default=None,
-    help="ncRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5"
+    help="ncRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input"
 )
 def json_reconstruct(
     ctx,

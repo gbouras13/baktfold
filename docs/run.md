@@ -190,6 +190,8 @@ baktfold compare -i bakta.json -o baktfold_compare_output --predictions-dir bakt
 * If you want to skip searching against the AFDB (the most expensive step), use `--fast`
 
 * If your input genome was not annotated with Bakta or Prokka and you want to specify various specific inference tools in your output, please use `--cds-program`, `--trna-program`, `--tmrna-program`, `--ncrna-program`, `--rrna-program`
+    * For prokaryotic input, any of these you do not give defaults to Prodigal:2.6 (CDS), tRNAscan-SE:2.0.12 (tRNA) and INFERNAL:1.1.5 (tmRNA, rRNA, ncRNA).
+    * For eukaryotic input (`--euk`), Baktfold cannot know which tools produced your annotation (RefSeq, Ensembl, funannotate, ...), so any of these you do not give is left out: no `/inference` qualifier in the GenBank/EMBL output and `.` as the GFF3 source. Eukaryotic tRNAs keep `/inference="profile:other:unknown"`.
 
 * If you would like to specify custom Foldseek parameters, use `--extra-foldseek-params` along with double quotes enclosing your extra parameters e.g. `--extra-foldseek-params "-c 0.8"`
 

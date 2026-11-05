@@ -157,12 +157,20 @@ def parse_json_input(input_path, faa_path, all_proteins, protein_json_flag):
     return data, features, has_duplicate_locus, translation_table, prokka, other_genbank, version
 
 
+def resolve_programs(euk: bool, **programs) -> dict:
+    """Fill tool strings the user did not give: the prokaryotic defaults, or
+    None (no /inference, GFF3 source '.') for eukaryotic input."""
+    return {name: value if value is not None else (None if euk else _DEFAULT_PROGRAMS[name])
+            for name, value in programs.items()}
+
+
 def log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_program, ncrna_program):
 
     logger.warning("Neither bakta nor prokka input detected")
     logger.info("If you would like to specify consituent inference tools for CDS, tRNA, rRNA, tmRNA and ncRNA")
     logger.info("Reminder: please use --cds-tool --trna-program --rrna-program  --tmrna-program --ncrna-program to modify them if you haven't already")
-    logger.info(f"For this genome, they are --cds_program {cds_program} --trna-program {trna_program} --rrna_program {rrna_program} --tmrna-program {tmrna_program} --ncrna-program  {ncrna_program}")
+    shown = lambda v: v if v is not None else "default (prokaryotic input) / omitted (eukaryotic input)"
+    logger.info(f"For this genome, they are --cds-program {shown(cds_program)} --trna-program {shown(trna_program)} --rrna-program {shown(rrna_program)} --tmrna-program {shown(tmrna_program)} --ncrna-program {shown(ncrna_program)}")
 
 
 ############################################################################
@@ -170,9 +178,11 @@ def log_for_other_genbank_tools(cds_program,trna_program, rrna_program, tmrna_pr
 # - used by the ``baktfold json`` subcommand
 ############################################################################
 
-# Default constituent-tool inference strings. Mirror the ``compare`` CLI
-# defaults so reconstruction is identical for non-Bakta/non-Prokka input when
-# the JSON carries no provenance block and the user passes no overrides.
+# Default constituent-tool inference strings for non-Bakta/non-Prokka input,
+# used when the user names no tool. Prokaryotic input only: the CDS/RNA of a
+# eukaryotic GenBank (RefSeq, Ensembl, funannotate, ...) were not predicted by
+# these tools, so there the inference is omitted unless the user names one
+# (see resolve_programs).
 _DEFAULT_PROGRAMS = {
     'cds_program': 'Prodigal:2.6',
     'trna_program': 'tRNAscan-SE:2.0.12',
@@ -348,7 +358,7 @@ def parse_baktfold_json_for_reconstruction(
 
     programs = {}
     for name, default in _DEFAULT_PROGRAMS.items():
-        programs[name] = _first_set(program_overrides.get(name), provenance.get(name), default)
+        programs[name] = _first_set(program_overrides.get(name), provenance.get(name))
 
     # ---- rebuild features_by_sequence (preserving the JSON feature order,
     #      which is already start-sorted per sequence) and a flattened list

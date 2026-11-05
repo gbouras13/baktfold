@@ -108,3 +108,49 @@ def test_phase_minus_strand_complete_cds():
     phases = [(int(l.split("\t")[3]), int(l.split("\t")[7])) for l in fh.getvalue().strip().split("\n")]
     # lengths 100, 110, 52: phase 0; 100 % 3 = 1 -> 2; 210 % 3 = 0 -> 0
     assert phases == [(700, 0), (400, 2), (100, 0)]
+
+
+def test_gbff_transl_table_is_integer(regenerated):
+    """convert-euk used to set the genome table to "Unknown", which was written
+    as /transl_table=Unknown on every eukaryotic CDS (invalid INSDC)."""
+    _, out = regenerated
+    for rec in SeqIO.parse(out / "baktfold.gbff", "genbank"):
+        for f in rec.features:
+            if f.type == "CDS":
+                assert f.qualifiers["transl_table"] == ["1"]
+
+
+def test_cds_transl_table_precedence():
+    from Bio.Seq import Seq
+    from Bio.SeqFeature import FeatureLocation, SeqFeature
+    from Bio.SeqRecord import SeqRecord
+
+    from baktfold.io.eukaryotic_to_json import cds_transl_table
+
+    def rec(source_table=None):
+        r = SeqRecord(Seq("ATG" * 10), id="x")
+        q = {"transl_table": [source_table]} if source_table else {}
+        r.features.append(SeqFeature(FeatureLocation(0, 30), type="source", qualifiers=q))
+        return r
+
+    cds = SeqFeature(FeatureLocation(0, 9), type="CDS")
+    own = SeqFeature(FeatureLocation(0, 9), type="CDS", qualifiers={"transl_table": ["4"]})
+    assert cds_transl_table(cds, rec()) == 1            # nuclear default
+    assert cds_transl_table(cds, rec("3")) == 3         # e.g. yeast mitochondrion
+    assert cds_transl_table(own, rec("3")) == 4         # the CDS's own wins
+
+
+def test_euk_cds_inference_not_assumed(regenerated):
+    """Eukaryotic CDS used to get /inference="ab initio prediction:Prodigal:2.6"
+    (the --cds-program default for non-Bakta/Prokka input), which is false for
+    RefSeq/Ensembl/funannotate annotations. Without --cds-program it is omitted."""
+    _, out = regenerated
+    text = (out / "baktfold.gbff").read_text()
+    assert "Prodigal" not in text and "INFERNAL" not in text
+
+
+def test_resolve_programs():
+    from baktfold.io.json_in import resolve_programs
+
+    assert resolve_programs(False, cds_program=None, rrna_program="x") == {"cds_program": "Prodigal:2.6", "rrna_program": "x"}
+    assert resolve_programs(True, cds_program=None, rrna_program="x") == {"cds_program": None, "rrna_program": "x"}

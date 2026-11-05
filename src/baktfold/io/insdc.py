@@ -170,7 +170,7 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                 qualifiers['standard_name'] = feature['standard_name'] 
             if euk:
                 if('pseudo' in feature): # euk genes, mrna, CDS pseudo
-                    qualifiers['pseudo'] = ['']        
+                    qualifiers['pseudo'] = None  # valueless flag: /pseudo, not /pseudo=""
 
             accompanying_features=[]
             if(feature['type'] == bc.FEATURE_GAP):
@@ -202,6 +202,8 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                 if(bc.PSEUDOGENE in feature):
                     qualifiers[bc.INSDC_FEATURE_PSEUDOGENE] = bc.INSDC_FEATURE_PSEUDOGENE_TYPE_UNPROCESSED if feature[bc.PSEUDOGENE]['paralog'] else bc.INSDC_FEATURE_PSEUDOGENE_TYPE_UNITARY
                     qualifiers['note'].append(feature[bc.PSEUDOGENE]['description'])
+                elif euk and feature.get('pseudo'):
+                    pass  # INSDC: a /pseudo CDS has no /translation or /protein_id
                 else:
                     # add protein id for euk
                     if euk:
@@ -218,7 +220,18 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                 qualifiers['codon_start'] = feature.get('codon_start', 1)
 
                 # add translation table (INSDC qualifier is /transl_table, matching Bakta)
-                qualifiers['transl_table'] = translation_table
+                # (eukaryotic CDS carry their own: nuclear and organellar
+                # codes can differ within one genome)
+                qualifiers['transl_table'] = feature.get('transl_table') or translation_table
+                if euk:
+                    # input qualifiers that the location/translation pair depends on
+                    if feature.get('transl_except'):
+                        qualifiers['transl_except'] = feature['transl_except']
+                    if isinstance(feature.get('exception'), (str, list)):
+                        qualifiers['exception'] = feature['exception']
+                    for flag in ('ribosomal_slippage', 'trans_splicing'):
+                        if feature.get(flag):
+                            qualifiers[flag] = None
                 insdc_feature_type = bc.INSDC_FEATURE_CDS
                 inference = []
                 if(feature['type'] == bc.FEATURE_CDS):
@@ -228,7 +241,8 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                     elif(feature.get('source', None) == bc.CDS_SOURCE_USER):
                         inference.append('EXISTENCE:non-experimental evidence, no additional details recorded')
                     elif other_genbank:
-                        inference.append(f'ab initio prediction:{cds_program}')
+                        if cds_program:  # None for eukaryotic input unless --cds-program given
+                            inference.append(f'ab initio prediction:{cds_program}')
                     else:
                         if not euk: # if euk just dont have anything
                             inference.append('ab initio prediction:Prodigal:2.6') # bakta
@@ -261,7 +275,7 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                     qualifiers['note'], ec_number = extract_ec_from_notes_insdc(qualifiers, 'note')
                     if(ec_number is not None):
                             qualifiers['EC_number'] = ec_number
-                if('exception' in feature):
+                if isinstance(feature.get('exception'), dict):  # Bakta selenocysteine/pyrrolysine
                     ex = feature['exception']
                     pos = f"{ex['start']}..{ex['stop']}"
                     if(feature['strand'] == bc.STRAND_REVERSE):
@@ -286,10 +300,10 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                         qualifiers['note'].append(f"tRNA-{feature['amino_acid']} ({feature['anti_codon']})")
                 if prokka:  # Prokka predicts tRNAs with Aragorn
                     qualifiers['inference'] = 'profile:aragorn:1.2'
+                elif other_genbank and trna_program:
+                    qualifiers['inference'] = f'profile:{trna_program}'
                 elif euk:
                     qualifiers['inference'] = 'profile:other:unknown'
-                elif other_genbank:
-                    qualifiers['inference'] = f'profile:{trna_program}'
                 else:  # Bakta predicts tRNAs with tRNAscan-SE (matches GFF source column)
                     qualifiers['inference'] = 'profile:tRNAscan:2.0'
                 insdc_feature_type = bc.INSDC_FEATURE_T_RNA
@@ -297,7 +311,8 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
                     qualifiers[bc.INSDC_FEATURE_PSEUDOGENE] = bc.INSDC_FEATURE_PSEUDOGENE_TYPE_UNKNOWN
             elif(feature['type'] == bc.FEATURE_TM_RNA):
                 if other_genbank:
-                    qualifiers['inference'] = f'profile:{tmrna_program}'
+                    if tmrna_program:
+                        qualifiers['inference'] = f'profile:{tmrna_program}'
                 else:
                     qualifiers['inference'] = 'profile:aragorn:1.2'
                 if('tag' in feature):
@@ -308,7 +323,7 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
             elif(feature['type'] == bc.FEATURE_R_RNA):
                 if prokka:
                     qualifiers['inference'] = 'profile:barrnap:0.9'
-                elif other_genbank:
+                elif other_genbank and rrna_program:
                     qualifiers['inference'] = f'profile:{rrna_program}'
                 # else: # bakta has only profile:Rfam - no tool
 
@@ -318,7 +333,7 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
             elif(feature['type'] == bc.FEATURE_NC_RNA):
                 if prokka:
                     qualifiers['inference'] = 'profile:aragorn:1.2'
-                elif other_genbank:
+                elif other_genbank and ncrna_program:
                     qualifiers['inference'] = f'profile:{ncrna_program}'
                 # else: # bakta has only profile:Rfam - no tool
                 for rfam_id in [dbxref.split(':')[1] for dbxref in feature['db_xrefs'] if dbxref.split(':')[0] == bc.DB_XREF_RFAM]:

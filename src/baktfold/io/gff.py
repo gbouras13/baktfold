@@ -424,7 +424,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                         if prokka:
                             trna_tool = "Aragorn"
                         if other_genbank:
-                            trna_tool = trna_program
+                            trna_tool = trna_program or '.'
 
                         annotations = {
                             'ID': _locus(feat),
@@ -465,7 +465,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
 
                     tmrna_tool = "Aragorn"
                     if other_genbank:
-                        tmrna_tool = tmrna_program
+                        tmrna_tool = tmrna_program or '.'
 
                     annotations = {
                         'ID': _locus(feat),
@@ -502,7 +502,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                     if prokka:
                         rrna_tool = "barrnap"
                     if other_genbank:
-                        rrna_tool = rrna_program
+                        rrna_tool = rrna_program or '.'
 
                     annotations = {
                         'ID': _locus(feat),
@@ -543,7 +543,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                     # both prokka and bakta use infernal for ncrna
                     ncrna_tool = "Infernal"
                     if other_genbank:
-                        ncrna_tool = ncrna_program
+                        ncrna_tool = ncrna_program or '.'
 
                     annotations = {
                         'ID': _locus(feat),
@@ -671,7 +671,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
                             source = 'Prodigal'
 
                         if other_genbank:
-                            source = cds_tool
+                            source = cds_tool or '.'
 
                         if(cfg.compliant):
                             gene_id = f"{_locus(feat)}_gene"

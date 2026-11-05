@@ -132,6 +132,29 @@ def add_optional_qualifiers(entry, qualifiers, single_valued=None, multi_valued=
             else:
                 entry[key] = vals[0]
 
+def _int_transl_table(feat):
+    try:
+        return int(feat.qualifiers.get("transl_table", [None])[0])
+    except (TypeError, ValueError):
+        return None
+
+
+_source_tables: dict = {}
+
+
+def cds_transl_table(feature, seq_record) -> int:
+    """Genetic code of a CDS: its own /transl_table, else the record's source
+    /transl_table (e.g. 3 for yeast mitochondria), else 1 (standard)."""
+    table = _int_transl_table(feature)
+    if table is not None:
+        return table
+    key = id(seq_record)
+    if key not in _source_tables:
+        sources = (_int_transl_table(f) for f in seq_record.features if f.type == "source")
+        _source_tables[key] = (seq_record, next((t for t in sources if t is not None), 1))
+    return _source_tables[key][1]
+
+
 def convert_cds_feature(feature, seq_record, translation_table, id):
     """
     Convert a Prokka CDS Biopython SeqFeature to a Bakta CDS JSON entry.
@@ -182,6 +205,7 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
 
     # ----------- Extract amino acids -----------
     aa = feature.qualifiers.get("translation", [""])[0]
+    translation_table = cds_transl_table(feature, seq_record)
 
     # Compute translation if Prokka didn't provide it
     if not aa:
@@ -293,6 +317,7 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
 
     if hypothetical:
         bakta_cds["hypothetical"] = True
+    bakta_cds["transl_table"] = translation_table
 
     # Keep /codon_start (1 = complete 5' end; 2/3 = partial 5' codon) and the
     # partial-end markers: both are needed to write a location that still
@@ -2511,9 +2536,14 @@ def eukaryotic_gbk_to_json(records, output_json, verbose):
         logger.info("All feature types in your input GenBank are convertible.")
 
 
-    # translation_table = get_transl_table(records)
-    # not in funannotate - generally just assume blank
-    translation_table = "Unknown"
+    # genome-level table: the most common per-CDS table (each CDS keeps its
+    # own, so e.g. mitochondrial CDS on a nuclear assembly stay correct)
+    table_counts = defaultdict(int)
+    for rec in records:
+        for feat in rec.features:
+            if feat.type == "CDS":
+                table_counts[cds_transl_table(feat, rec)] += 1
+    translation_table = max(table_counts, key=table_counts.get) if table_counts else 1
 
     bakta_id_prefix = get_bakta_style_id_from_locus_tag(records)
     
