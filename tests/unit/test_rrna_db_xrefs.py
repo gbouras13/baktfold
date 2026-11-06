@@ -87,3 +87,31 @@ def test_write_features_survives_a_none_db_xref(tmp_path):
     body = [l for l in out.read_text().splitlines() if not l.startswith("#")]
     assert "SO:0000252" in body[0]
     assert "None" not in body[0]
+
+
+def test_json_with_none_db_xref_writes_all_outputs(tmp_path):
+    """Issue #40, JSONs already written by the old convert-prokka: a 5.8S rRNA
+    with db_xrefs ["SO:0000252", None]. The TSV writer coped, but the GenBank
+    writer still crashed (None.split). Invalid xrefs are now dropped on read."""
+    import json
+    import shutil
+    import subprocess
+    import sys
+
+    golden = Path(__file__).parents[1] / "test_data" / "golden" / "run_no_fs_hits" / "baktfold.json"
+    data = json.loads(golden.read_text())
+    rrna = next(f for f in data["features"] if f["type"] == bc.FEATURE_R_RNA)
+    rrna["product"] = "5.8S ribosomal RNA"
+    rrna["db_xrefs"] = ["SO:0000252", None]
+    src = tmp_path / "in.json"
+    src.write_text(json.dumps(data))
+
+    exe = Path(sys.executable).with_name("baktfold")
+    exe = str(exe) if exe.exists() else shutil.which("baktfold")
+    if exe is None:
+        pytest.skip("baktfold console script not installed")
+    out = tmp_path / "out"
+    res = subprocess.run([exe, "json", "-i", str(src), "-o", str(out)], capture_output=True, text=True)
+    assert res.returncode == 0, res.stderr[-2000:]
+    for name in ("baktfold.gbff", "baktfold.embl", "baktfold.gff3", "baktfold.tsv"):
+        assert "5.8S ribosomal RNA" in (out / name).read_text()

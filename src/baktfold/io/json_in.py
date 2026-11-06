@@ -62,6 +62,7 @@ def parse_json_input(input_path, faa_path, all_proteins, protein_json_flag):
 
 
     features = data['features']
+    drop_invalid_db_xrefs(features)
     warn_duplicate_sequence_ids(data.get('sequences', []))
 
     # features_by_sequence = {seq['id']: [] for seq in data['sequences']}
@@ -157,6 +158,30 @@ def parse_json_input(input_path, faa_path, all_proteins, protein_json_flag):
     logger.info('Parsing complete')
 
     return data, features, has_duplicate_locus, translation_table, prokka, other_genbank, version
+
+
+def drop_invalid_db_xrefs(features) -> int:
+    """Remove db_xrefs that are not strings (e.g. None) from every feature.
+
+    convert-prokka before 0.4.0 wrote ``["SO:0000252", None]`` for rRNA
+    products it had no specific SO term for (5.8S; issue #40). Every writer
+    splits xrefs as strings, so one such feature crashed the run after the
+    search. Cleaned once here, where a JSON is read. Returns the number of
+    xrefs removed.
+    """
+    removed = 0
+    for feat in features:
+        xrefs = feat.get('db_xrefs')
+        if isinstance(xrefs, list):
+            kept = [x for x in xrefs if isinstance(x, str) and x]
+            removed += len(xrefs) - len(kept)
+            if len(kept) != len(xrefs):
+                feat['db_xrefs'] = kept
+    if removed:
+        logger.warning(f"Removed {removed} invalid (empty or non-text) db_xrefs from the input JSON. "
+                       "If it came from convert-prokka before Baktfold 0.4.0, re-running convert-prokka "
+                       "avoids this.")
+    return removed
 
 
 def resolve_programs(euk: bool, **programs) -> dict:
@@ -298,6 +323,7 @@ def parse_baktfold_json_for_reconstruction(
         sys.exit(1)
 
     features = data['features']
+    drop_invalid_db_xrefs(features)
     version = data.get('version', {})
     provenance = data.get('baktfold_run', {})
 
