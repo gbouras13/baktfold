@@ -86,5 +86,5 @@ The `.json` is the authoritative record of a `baktfold` run. You can regenerate 
 * **Reconstitutable** from the `.json`: `.gff3`, `.gbff`, `.embl`, `.tsv`, `.inference.tsv`, `.faa`, `.ffn`, `.fna`, `.summary.txt` (and a fresh `.json`).
 * **Not** reconstitutable (only produced by an actual `compare`/`run`): the Foldseek `*_tophit.tsv`, `foldseek_results_*.tsv`, `_3di.fasta`, the ProstT5 probability files and the embedding `.h5` files.
 
-`baktfold json --relabel` also reruns label selection on the hits stored in the `.json`, so outputs from an earlier version can be brought up to the current label rules without searching again. See [Relabelling outputs from an earlier version](run.md#relabelling-outputs-from-an-earlier-version).
+`baktfold json --relabel` also reruns label selection on the hits stored in the `.json`, so outputs from an earlier version of Baktfold (prior to v0.4.0) can be brought up to the current label rules without searching again. See [Relabelling outputs from an earlier version](run.md#relabelling-outputs-from-an-earlier-version).
 
