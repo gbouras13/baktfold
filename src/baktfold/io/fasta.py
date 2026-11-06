@@ -18,6 +18,8 @@ FASTA_LINE_WRAPPING = 60
 def import_sequences(sequences_path: Path, is_genomic: bool=True, is_dna: bool=True) -> Sequence[dict]:
     """Import raw sequences from Fasta file."""
     sequences = []
+    seen_ids = set()
+    duplicate_ids = []
     with xopen(str(sequences_path), threads=0) as fh:
         for record in SeqIO.parse(fh, 'fasta'):
 
@@ -31,6 +33,10 @@ def import_sequences(sequences_path: Path, is_genomic: bool=True, is_dna: bool=T
             else:
                 rid = rid.replace("|", "~PIPE~")
 
+            if rid in seen_ids:
+                duplicate_ids.append(rid)
+            seen_ids.add(rid)
+
             sequence = {
                 'id': rid,
                 'description': record.description.split(' ', maxsplit=1)[1] if ' ' in record.description else ''
@@ -40,18 +46,18 @@ def import_sequences(sequences_path: Path, is_genomic: bool=True, is_dna: bool=T
             if('-' in raw_sequence):
                 dash_count = raw_sequence.count('-')
                 raw_sequence = raw_sequence.replace('-', '')
-                logger.info('import: Discarded alignment gaps (dashes): id=%s, occurences=%i', record.id, dash_count)
+                logger.info(f'import: Discarded alignment gaps (dashes): id={record.id}, occurences={dash_count}')
             if(is_dna):
                 if(FASTA_DNA_SEQUENCE_PATTERN.fullmatch(raw_sequence) is None):
-                    logger.error('import: Fasta sequence contains invalid DNA characters! id=%s', record.id)
+                    logger.error(f'import: Fasta sequence contains invalid DNA characters! id={record.id}')
                     raise ValueError(f'Fasta sequence contains invalid DNA characters! id={record.id}')
                 sequence['nt'] = raw_sequence
             else:
                 if(raw_sequence[-1] == '*'):  # remove trailing stop asterik
                     raw_sequence = raw_sequence[:-1]
-                    logger.warning('import: Removed trailing asterik! id=%s, seq=%s', record.id, raw_sequence)
+                    logger.warning(f'import: Removed trailing asterik! id={record.id}')
                 if(FASTA_AA_SEQUENCE_PATTERN.fullmatch(raw_sequence) is None):
-                    logger.error('import: Fasta sequence contains invalid AA characters! id=%s, seq=%s', record.id, raw_sequence)
+                    logger.error(f'import: Fasta sequence contains invalid AA characters! id={record.id}')
                     raise ValueError(f'Fasta sequence contains invalid AA characters! id={record.id}')
                 sequence['aa'] = raw_sequence
             sequence['length'] = len(raw_sequence)
@@ -63,6 +69,16 @@ def import_sequences(sequences_path: Path, is_genomic: bool=True, is_dna: bool=T
                 f"imported: id={record.id}, length={sequence['length']}, description={sequence['description']}, genomic={is_genomic}, dna={is_dna}"
             )   
             sequences.append(sequence)
+    if duplicate_ids:
+        # IDs are the keys for prediction, search and annotation: two records
+        # with the same ID were silently merged and both got the second
+        # sequence's label.
+        shown = ", ".join(sorted(set(duplicate_ids))[:10])
+        more = f" and {len(set(duplicate_ids)) - 10} more" if len(set(duplicate_ids)) > 10 else ""
+        raise ValueError(
+            f"Duplicate sequence IDs in {sequences_path}: {shown}{more}. "
+            "Every FASTA record needs a unique ID (the first word of the header)."
+        )
     return sequences
 
 
@@ -122,6 +138,8 @@ def write_ffn(features: Sequence[dict], ffn_path: Path):
         for feat in features:
             if(feat['type'] in [bc.FEATURE_T_RNA, bc.FEATURE_TM_RNA, bc.FEATURE_R_RNA, bc.FEATURE_NC_RNA, bc.FEATURE_NC_RNA_REGION, bc.FEATURE_CRISPR, bc.FEATURE_CDS, bc.FEATURE_SORF, bc.FEATURE_ORIC, bc.FEATURE_ORIV, bc.FEATURE_ORIT]):
                 identifier = feat['locus'] if 'locus' in feat else feat['id']
+                if not feat.get('nt'):
+                    continue  # eukaryotic input features converted without a sequence
                 if(feat.get('product', '') != ''):
                     fh.write(f">{identifier} {feat['product']}\n{feat['nt']}\n")
                 else:

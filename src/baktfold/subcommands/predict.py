@@ -1,26 +1,13 @@
 #!/usr/bin/env python3
+import sys
 
 from pathlib import Path
+from typing import Optional
 
 from loguru import logger
 
-from baktfold.features.predict_3Di import get_embeddings
-
-
-def mask_low_confidence_aa(sequence, scores, threshold=0.5):
-    """
-    Masks all low confidence AA to X if their corresponding ProstT5 confidence score is below the given threshold.
-
-    Parameters:
-    sequence (str): The amino acid sequence.
-    scores (List[float]): A list of confidence scores for each amino acid.
-    threshold (float, optional): The confidence threshold below which amino acids are converted to lowercase. Default is 0.5.
-
-    Returns:
-    str: The modified amino acid sequence with low-confidence residues in lowercase.
-    """
-    return "".join('X' if float(score) < threshold else aa 
-                   for aa, score in zip(sequence, *scores))
+from baktfold.features.predict_3Di import drop_unusable_predictions, get_embeddings
+from pholdlib.prostt5.output import mask_low_confidence_aa
 
 def subcommand_predict(
     hypotheticals: dict,
@@ -37,7 +24,8 @@ def subcommand_predict(
     save_per_protein_embeddings: bool,
     threads: int,
     mask_threshold: float,
-    has_duplicate_locus: bool
+    has_duplicate_locus: bool,
+    gpus: Optional[str] = None,
 ) -> bool:
     """
     Wrapper command for baktfold predict. Predicts embeddings using ProstT5 encoder + CNN prediction head.
@@ -48,7 +36,7 @@ def subcommand_predict(
         output (str): Output directory path.
         prefix (str): Prefix for output file names.
         cpu (bool): Flag indicating whether to use CPU for prediction.
-        omit_probs (bool): Flag indicating whether to omit prediction probabilities from ProstT5.
+        omit_probs (bool): Flag indicating whether to omit the per-residue ProstT5 probability JSON. Masking and the mean probability CSV are unaffected.
         model_dir (str): Directory containing the ProstT5 model.
         model_name (str): Name of the ProstT5 model.
         checkpoint_path (Path): Path to ProstT5 CNN checkpoint.
@@ -105,7 +93,8 @@ def subcommand_predict(
         save_per_protein_embeddings=save_per_protein_embeddings,
         threads=threads,
         mask_threshold=mask_threshold,
-        has_duplicate_locus=has_duplicate_locus
+        has_duplicate_locus=has_duplicate_locus,
+        gpus=gpus,
     )
 
     mask_prop_threshold = mask_threshold/100
@@ -120,27 +109,45 @@ def subcommand_predict(
     ######
 
 
-    # check all the lengths of the predictions are >0 in case of OOMs and filter out those that arent
-    prediction_dict = {
-                k: v for k, v in prediction_dict.items() if len(v[0]) > 0
-            }
+    # Drop predictions with no usable residues (OOM skips, zero-length #47, and
+    # unsized single-residue arrays that len() cannot measure). Their CDS fall
+    # through to the "X" * len masking below.
+    # how many proteins ProstT5 returned anything for, before dropping the
+    # unusable (zero-length / single-residue) ones: if it returned something,
+    # inference ran and an empty result is not a failure
+    n_returned = sum(1 for k in cds_dict if k in prediction_dict)
+    prediction_dict = drop_unusable_predictions(prediction_dict, "writing AA FASTA")
+
+    # A run where ProstT5 fails for every protein (GPU out of memory on a
+    # shared node, a broken CUDA context, ...) used to finish with exit code 0
+    # and simply annotate nothing; only fails.tsv showed it. Make that loud,
+    # and report partial failures with a count rather than only per batch.
+    n_requested = len(cds_dict)
+    n_predicted = sum(1 for k in cds_dict if k in prediction_dict)
+    if n_requested and n_returned == 0:
+        logger.error(
+            f"ProstT5 produced no usable 3Di prediction for any of the {n_requested} "
+            "proteins (see fails.tsv). This usually means the GPU ran out of memory or "
+            "is unavailable: retry with a smaller --batch-size, on a free GPU, or with --cpu."
+        )
+        sys.exit(1)
+    if n_predicted < n_requested:
+        n_failed = n_requested - n_predicted
+        logger.warning(
+            f"{n_failed} of {n_requested} proteins ({n_failed / n_requested:.1%}) have no "
+            "3Di prediction and will not be annotated by Baktfold (listed in fails.tsv)."
+        )
 
 
-    with open(fasta_aa, "w+") as out_f:
+    with open(fasta_aa, "w") as out_f:
         for cds_id, prot_seq in cds_dict.items():
-
-            out_f.write(f">{cds_id}\n")
-
-                # prediction_contig_dict[seq_id][2] these are teh ProstT5 confidence scores from 0-1 - need to convert to list
-
             try:
-                # this will fail if ProstT5 OOM fails (or fails for some other reason)
-                prot_seq = mask_low_confidence_aa(prot_seq, prediction_dict[cds_id][2].tolist(), threshold=mask_prop_threshold)
+                # prediction_dict[cds_id][2]: ProstT5 confidence scores 0-1
+                prot_seq = mask_low_confidence_aa(prot_seq, prediction_dict[cds_id][2], threshold=mask_prop_threshold)
             except (KeyError, IndexError):
-                # in that case, just return 'X' aka masked proteins
                 prot_seq = "X" * len(prot_seq)
 
-            out_f.write(f"{prot_seq}\n")
+            out_f.write(f">{cds_id}\n{prot_seq}\n")
    
 
     return hypotheticals

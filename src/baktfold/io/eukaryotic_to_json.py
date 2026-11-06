@@ -19,6 +19,7 @@ from loguru import logger
 
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 from Bio.SeqUtils import gc_fraction
+from Bio.SeqFeature import AfterPosition, BeforePosition
 
 import baktfold.bakta.so as so
 
@@ -51,6 +52,51 @@ AMINO_ACID_DICT = {
 
 # global variable for the genome-level random string - backup if no locus_tags in input genbank
 GENOME_RANDOM_BACKUP_LOCUSTAG_STR = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+
+_warned_missing_locus = False
+
+
+def resolve_locus(qualifiers: dict, id: str, start: int, stop: int) -> str:
+    """Locus key for a feature: /locus_tag, else /gene, else a generated one.
+
+    Ensembl's main and Plants GenBank dumps link gene, mRNA and CDS through
+    /gene and give mRNA/CDS no /locus_tag. A random tag per feature (the old
+    fallback) broke that link, so mRNAs and CDS could not be paired or
+    attached to their gene.
+    """
+    global _warned_missing_locus
+    if qualifiers.get('locus_tag'):
+        return qualifiers['locus_tag'][0]
+    if qualifiers.get('gene'):
+        return qualifiers['gene'][0]
+    if not _warned_missing_locus:
+        logger.warning("Some features have neither /locus_tag nor /gene; generating locus tags for them")
+        _warned_missing_locus = True
+    return f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
+
+
+def add_partial_flags(entry: dict, location) -> dict:
+    """Record partial ('<'/'>') ends of a feature location on ``entry``.
+
+    Bakta-style JSON stores plain integer coordinates, which silently dropped
+    GenBank's partial markers: ``complement(join(<1..47,...,402..>1012))``
+    came back out as ``complement(join(1..47,...,402..1012))``. The flags are
+    in genomic (ascending) coordinates, like ``start``/``stop``:
+
+      * ``partial_start``: the lowest coordinate is open (``<``)
+      * ``partial_stop``:  the highest coordinate is open (``>``)
+
+    Only set when True, so complete features are unchanged.
+    """
+    parts = getattr(location, "parts", [location])
+    lowest = min(parts, key=lambda p: int(p.start))
+    highest = max(parts, key=lambda p: int(p.end))
+    if isinstance(lowest.start, BeforePosition):
+        entry["partial_start"] = True
+    if isinstance(highest.end, AfterPosition):
+        entry["partial_stop"] = True
+    return entry
+
 
 def add_optional_qualifiers(entry, qualifiers, single_valued=None, multi_valued=None):
     """
@@ -85,6 +131,29 @@ def add_optional_qualifiers(entry, qualifiers, single_valued=None, multi_valued=
                 entry["locus"] = vals[0] # this is what bakta needs
             else:
                 entry[key] = vals[0]
+
+def _int_transl_table(feat):
+    try:
+        return int(feat.qualifiers.get("transl_table", [None])[0])
+    except (TypeError, ValueError):
+        return None
+
+
+_source_tables: dict = {}
+
+
+def cds_transl_table(feature, seq_record) -> int:
+    """Genetic code of a CDS: its own /transl_table, else the record's source
+    /transl_table (e.g. 3 for yeast mitochondria), else 1 (standard)."""
+    table = _int_transl_table(feature)
+    if table is not None:
+        return table
+    key = id(seq_record)
+    if key not in _source_tables:
+        sources = (_int_transl_table(f) for f in seq_record.features if f.type == "source")
+        _source_tables[key] = (seq_record, next((t for t in sources if t is not None), 1))
+    return _source_tables[key][1]
+
 
 def convert_cds_feature(feature, seq_record, translation_table, id):
     """
@@ -121,12 +190,7 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
 
 
     # fall back to start_stop_strand if there is no locus tag
-    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
-        locus_tag = qualifiers['locus_tag'][0]
-    else:
-        logger.warning(f"No locus_tag found for feature {id}")
-        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
-        logger.warning(f"Generating a locus_tag: {locus_tag}")
+    locus_tag = resolve_locus(qualifiers, id, start, stop)
 
     note = qualifiers.get("note", [None])[0]
     locus = locus_tag
@@ -141,6 +205,7 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
 
     # ----------- Extract amino acids -----------
     aa = feature.qualifiers.get("translation", [""])[0]
+    translation_table = cds_transl_table(feature, seq_record)
 
     # Compute translation if Prokka didn't provide it
     if not aa:
@@ -154,6 +219,10 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
 
     # ----------- Hypothetical? -----------
     hypothetical = product is None or "hypothetical protein" in product.lower()
+    if product is None:
+        # Bakta convention: an unannotated CDS carries "hypothetical protein"
+        # (Ensembl CDS have no /product; None crashed the protein TSV writer)
+        product = "hypothetical protein"
 
     # ----------- Compute protein stats -----------
     seq_stats = None
@@ -237,7 +306,7 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
 #                       /trans_splicing
 
     multi_valued = {"EC_number", "exception", "experiment", "function",  "gene_synonym",  "inference", }
-    single_valued = {"allele", "artificial_location",  "map", "number",  "old_locus_tag", "operon", "phenotype", "pseudogene", "standard_name", "transl_except", "transl_table"}
+    single_valued = {"allele", "artificial_location",  "map", "number",  "old_locus_tag", "operon", "phenotype", "pseudogene", "standard_name", "transcript_id", "transl_except", "transl_table"}
 
     add_optional_qualifiers(bakta_cds, qualifiers, single_valued, multi_valued)
 
@@ -248,6 +317,14 @@ def convert_cds_feature(feature, seq_record, translation_table, id):
 
     if hypothetical:
         bakta_cds["hypothetical"] = True
+    bakta_cds["transl_table"] = translation_table
+
+    # Keep /codon_start (1 = complete 5' end; 2/3 = partial 5' codon) and the
+    # partial-end markers: both are needed to write a location that still
+    # matches /translation.
+    if codon_start != 1:
+        bakta_cds["codon_start"] = codon_start
+    add_partial_flags(bakta_cds, feature.location)
 
     return bakta_cds
 
@@ -285,12 +362,7 @@ def convert_trna_feature(feature, seq_record, id):
     qualifiers = feature.qualifiers
 
     # fall back to start_stop_strand if there is no locus tag
-    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
-        locus_tag = qualifiers['locus_tag'][0]
-    else:
-        logger.warning(f"No locus_tag found for feature {id}")
-        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
-        logger.warning(f"Generating a locus_tag: {locus_tag}")
+    locus_tag = resolve_locus(qualifiers, id, start, stop)
 
     # ------------ amino acid ------------
     # Prokka product examples:
@@ -427,12 +499,7 @@ def convert_gene_feature(feature, rec, id):
     qualifiers = feature.qualifiers
 
     # fall back to start_stop_strand if there is no locus tag
-    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
-        locus_tag = qualifiers['locus_tag'][0]
-    else:
-        logger.warning(f"No locus_tag found for feature {id}")
-        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
-        logger.warning(f"Generating a locus_tag: {locus_tag}")
+    locus_tag = resolve_locus(qualifiers, id, start, stop)
         
    
 
@@ -446,6 +513,10 @@ def convert_gene_feature(feature, rec, id):
         "id": id,
         "locus": locus_tag
     }
+    # /gene is how Ensembl links mRNA/CDS to their gene (they carry no
+    # /locus_tag); keep it so the GFF3 Parent link can be made
+    if qualifiers.get("gene"):
+        gene_entry["gene"] = qualifiers["gene"][0]
 
 
 # Feature Key           gene 
@@ -493,6 +564,7 @@ def convert_gene_feature(feature, rec, id):
         if flag in qualifiers:
             gene_entry[flag] = flag in qualifiers
 
+    add_partial_flags(gene_entry, feature.location)
     return gene_entry
 
 def convert_mrna_feature(feature, rec, id):
@@ -536,12 +608,7 @@ def convert_mrna_feature(feature, rec, id):
 
 
     # fall back to start_stop_strand if there is no locus tag
-    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
-        locus_tag = qualifiers['locus_tag'][0]
-    else:
-        logger.warning(f"No locus_tag found for feature {id}")
-        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
-        logger.warning(f"Generating a locus_tag: {locus_tag}")
+    locus_tag = resolve_locus(qualifiers, id, start, stop)
 
 
     mrna_entry = {
@@ -588,7 +655,7 @@ def convert_mrna_feature(feature, rec, id):
 
 
     multi_valued = {"experiment", "function",  "gene_synonym",  "inference", "note" }
-    single_valued = {"allele", "artificial_location", "gene",  "locus_tag", "map",  "old_locus_tag", "operon", "phenotype", "product", "standard_name"}
+    single_valued = {"allele", "artificial_location", "gene",  "locus_tag", "map",  "old_locus_tag", "operon", "phenotype", "product", "standard_name", "transcript_id"}
 
     qualifiers = feature.qualifiers
 
@@ -599,6 +666,7 @@ def convert_mrna_feature(feature, rec, id):
         if flag in qualifiers:
             mrna_entry[flag] = flag in qualifiers
 
+    add_partial_flags(mrna_entry, feature.location)
     return mrna_entry
 
 
@@ -771,12 +839,7 @@ def convert_utr_region_feature(feature, rec, id, three):
 
 
     # fall back to start_stop_strand if there is no locus tag
-    if 'locus_tag' in qualifiers and qualifiers['locus_tag']:
-        locus_tag = qualifiers['locus_tag'][0]
-    else:
-        logger.warning(f"No locus_tag found for feature {id}")
-        locus_tag = f"{GENOME_RANDOM_BACKUP_LOCUSTAG_STR}_{start}_{stop}"
-        logger.warning(f"Generating a locus_tag: {locus_tag}")
+    locus_tag = resolve_locus(qualifiers, id, start, stop)
 
     # always just take the positive strand to get the NT seq (UTR region)
     seq =  str(rec.seq)
@@ -1359,6 +1422,9 @@ def convert_ncrna_feature(feature, rec, id):
     #                  /db_xref="GeneID:102632350"
     #                  /db_xref="MGI:MGI:5589605"
 
+    # sequence, needed by the .ffn writer (was missing: run --euk/json crashed)
+    ncrna_entry["nt"] = str(feature.extract(rec.seq))
+
     return ncrna_entry
 
 
@@ -1808,6 +1874,8 @@ def convert_rrna_feature(feature, rec, id):
     single_valued = {"allele", "gene", "locus_tag", "map",  "operon",  "old_locus_tag", "product", "pseudogene", "standard_name"}
 
     add_optional_qualifiers(rrna_entry, qualifiers, single_valued, multi_valued)
+    # sequence, needed by the .ffn writer (was missing: run --euk/json crashed)
+    rrna_entry["nt"] = str(feature.extract(rec.seq))
 
     # Flags (boolean-like qualifiers)
     for flag in ["pseudo"]:
@@ -2424,10 +2492,55 @@ def calc_genome_stats(records):
         "coding_ratio": None  
     }
 
+def make_record_ids_unique(records) -> int:
+    """Give every record a unique ``id``, in place; returns how many were renamed.
+
+    Biopython takes ``record.id`` from the ACCESSION/VERSION lines, and some
+    files repeat it across records. In Ensembl's Emiliania huxleyi flatfile
+    the ACCESSION is truncated, so EMIHUscaffold_10000, _10004, ... all read
+    '...:EMIHUscaffold_1000'. Features are tied to sequences by this ID, so
+    a shared ID puts features on the wrong sequence and repeats them in the
+    outputs. Every record in a group that shares an ID is renamed (not just
+    the later ones, since the first may not be the record the ID names): to
+    its LOCUS name when that is unique, else to '<id>_<n>'.
+    """
+    id_counts = defaultdict(int)
+    name_counts = defaultdict(int)
+    for rec in records:
+        id_counts[rec.id] += 1
+        name_counts[rec.name] += 1
+
+    taken = {rec.id for rec in records if id_counts[rec.id] == 1}
+    renamed = 0
+    group_index = defaultdict(int)
+    for rec in records:
+        if id_counts[rec.id] == 1:
+            continue
+        old = rec.id
+        group_index[old] += 1
+        new = rec.name if rec.name and name_counts[rec.name] == 1 and rec.name not in taken else None
+        n = group_index[old]
+        while new is None or new in taken:
+            new = f"{old}_{n}"
+            n += 1
+        taken.add(new)
+        rec.id = new
+        renamed += 1
+
+    if renamed:
+        logger.warning(
+            f"{renamed} GenBank records share their record ID with another record; each was renamed "
+            "to its LOCUS name (or <id>_<n>) so that features stay on their own sequence."
+        )
+    return renamed
+
+
 def eukaryotic_gbk_to_json(records, output_json, verbose):
-    
+
     if len(records) == 0:
         raise ValueError("No GenBank records found.")
+
+    make_record_ids_unique(records)
     
     # elif len(records) >= 1:
     #     funannotate_version = parse_funannotate_version(records[0])
@@ -2468,9 +2581,14 @@ def eukaryotic_gbk_to_json(records, output_json, verbose):
         logger.info("All feature types in your input GenBank are convertible.")
 
 
-    # translation_table = get_transl_table(records)
-    # not in funannotate - generally just assume blank
-    translation_table = "Unknown"
+    # genome-level table: the most common per-CDS table (each CDS keeps its
+    # own, so e.g. mitochondrial CDS on a nuclear assembly stay correct)
+    table_counts = defaultdict(int)
+    for rec in records:
+        for feat in rec.features:
+            if feat.type == "CDS":
+                table_counts[cds_transl_table(feat, rec)] += 1
+    translation_table = max(table_counts, key=table_counts.get) if table_counts else 1
 
     bakta_id_prefix = get_bakta_style_id_from_locus_tag(records)
     

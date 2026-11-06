@@ -33,10 +33,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install "mkdocs==1.6.0" \
-                      "mkdocs-material" \
-                      "mkdocstrings==0.22.0" \
-                      "mkdocstrings-python==1.3.*"
+          # Unpinned on purpose: the old mkdocstrings==0.22.0 pin broke once
+          # pymdown-extensions (unpinned) moved on (Highlight.__init__ needs md).
+          pip install mkdocs mkdocs-material "mkdocstrings[python]"
 
       # 5. Build and deploy to GitHub Pages
       - name: Deploy MkDocs

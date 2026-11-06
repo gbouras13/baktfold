@@ -1,0 +1,95 @@
+#Annotated with Baktfold (v0.4.0): https://github.com/gbouras13/baktfold
+ID	Length	Product	Annotation_Confidence	Swissprot	AFDBClusters	PDB	CATH
+MEGJMN_001	297	Initiator Rep protein WH1 domain-containing protein					
+MEGJMN_002	138	CobQ/CobB/MinD/ParA nucleotide binding domain-containing protein					
+MEGJMN_003	38	hypothetical protein					
+MEGJMN_004	264	ResA resolvase					
+MEGJMN_005	47	hypothetical protein					
+MEGJMN_006	321	N-acetyltransferase domain-containing protein					
+MEGJMN_007	103	Cytoplasmic protein					
+MEGJMN_008	109	PhoD-like phosphatase metallophosphatase domain-containing protein					
+MEGJMN_009	1039	Chromate transporter					
+MEGJMN_010	78	hypothetical protein					
+MEGJMN_011	191	YdeA protein					
+MEGJMN_012	205	DNA-binding protein					
+MEGJMN_013	234	IS6 family IS15DIV transposase					
+MEGJMN_014	90	starch synthase					
+MEGJMN_015	215	Glucose-1-phosphate adenylyltransferase					
+MEGJMN_016	234	IS6 family IS15DIV transposase					
+MEGJMN_017	203	DUF2913 domain-containing protein					
+MEGJMN_018	93	Cytoplasmic protein					
+MEGJMN_019	80	IS3 family transposase					
+MEGJMN_020	358	IS110 family ISEc21 transposase					
+MEGJMN_021	135	IS3 family transposase					
+MEGJMN_022	100	IS3 family ISEc52 transposase ORF A					
+MEGJMN_023	111	C2H2-type domain-containing protein					
+MEGJMN_024	50	hypothetical protein					
+MEGJMN_025	210	Replication initiation protein					
+MEGJMN_026	128	Thioesterase					
+MEGJMN_027	161	HTH-type quorum-sensing regulator RhlR	medium	swissprot_P54292	afdbclusters_A0A9E1VSB0	pdb_5l09_B	cath_3sztB01
+MEGJMN_028	192	XRE family transcriptional regulator					
+MEGJMN_029	177	Transcription antitermination protein RfaH					
+MEGJMN_030	67	hypothetical protein					
+MEGJMN_031	103	DUF1496 domain-containing protein					
+MEGJMN_032	201	Lipoprotein					
+MEGJMN_033	159	Transglycosylase SLT domain-containing protein					
+MEGJMN_034	155	DotD/TraH family lipoprotein					
+MEGJMN_035	272	Conjugal transfer protein					
+MEGJMN_036	395	plasmid transfer ATPase TraJ					
+MEGJMN_037	88	IcmT/TraK family protein					
+MEGJMN_038	1107	DNA primase TraC					
+MEGJMN_039	117	Conjugal transfer protein					
+MEGJMN_040	234	Conjugal transfer protein TraM					
+MEGJMN_041	367	Conjugal transfer protein TraN					
+MEGJMN_042	135	hypothetical protein					
+MEGJMN_043	304	conjugal transfer protein TraO					
+MEGJMN_044	239	conjugal transfer protein TraP					
+MEGJMN_045	177	conjugal transfer protein TraQ					
+MEGJMN_046	133	Conjugal transfer protein					
+MEGJMN_047	187	Conjugal transfer protein TraT					
+MEGJMN_048	1015	Conjugal transfer protein					
+MEGJMN_049	398	conjugal transfer protein TraW					
+MEGJMN_050	193	conjugal transfer protein TraX					
+MEGJMN_051	714	Conjugal transfer protein TraY					
+MEGJMN_052	207	plasmid IncI1-type surface exclusion protein ExcA					
+MEGJMN_053	472	Conjugal transfer protein TrbA					
+MEGJMN_054	375	TrbB					
+MEGJMN_055	730	F-type conjugative transfer protein TrbC					
+MEGJMN_056	101	phospholipase D					
+MEGJMN_057	529	IS66 family transposase					
+MEGJMN_058	116	IS66 family insertion sequence element accessory protein TnpB					
+MEGJMN_059	135	IS66-like element accessory protein TnpA					
+MEGJMN_060	46	hypothetical protein					
+MEGJMN_061	121	Transposase					
+MEGJMN_062	271	IS3 family ISEc36 transposase					
+MEGJMN_063	83	AlpA family phage regulatory protein					
+MEGJMN_064	642	TraI/MobA(P) family conjugative relaxase					
+MEGJMN_065	63	plasmid mobilization protein MobA					
+MEGJMN_066	110	MobC					
+MEGJMN_067	43	hypothetical protein					
+MEGJMN_068	106	Transposase					
+MEGJMN_069	77	hypothetical protein					
+MEGJMN_070	93	hypothetical protein			afdbclusters_A0A1I3V7E0		
+MEGJMN_071	79	hypothetical protein					
+MEGJMN_072	286	DUF4942 domain-containing protein					
+MEGJMN_073	60	Cobalamin biosynthesis protein CbiX					
+MEGJMN_074	119	hypothetical protein					
+MEGJMN_075	98	MPN domain-containing protein					
+MEGJMN_076	64	hypothetical protein					
+MEGJMN_077	162	Transcriptional regulator					
+MEGJMN_078	152	hypothetical protein			afdbclusters_A0A9Q6N187		
+MEGJMN_079	142	Partitioning protein					
+MEGJMN_080	326	Partitioning protein					
+MEGJMN_081	147	CopG family transcriptional regulator					
+MEGJMN_082	79	hypothetical protein					
+MEGJMN_083	139	hypothetical protein					
+MEGJMN_084	85	HTH cro/C1-type domain-containing protein					
+MEGJMN_085	188	InsA N-terminal domain-containing protein					
+MEGJMN_086	114	Lipoprotein					
+MEGJMN_087	101	type II toxin-antitoxin system toxin CcdB					
+MEGJMN_088	72	type II toxin-antitoxin system antitoxin CcdA					
+MEGJMN_089	216	Translesion error-prone DNA polymerase V autoproteolytic subunit					
+MEGJMN_090	423	DNA polymerase V subunit UmuC					
+MEGJMN_091	241	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(C)					
+MEGJMN_092	19	23S rRNA methylase leader peptide ErmCL					
+MEGJMN_093	158	Replication and maintenance protein					

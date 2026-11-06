@@ -1,0 +1,12 @@
+>101m_A mol:protein length:154  MYOGLOBIN
+MVLSEGEWQLV
+>1abc_A mol:protein length:120  DNA POLYMERASE III SUBUNIT BETA
+MKKK
+>1abc_B mol:protein length:30  Fab heavy chain
+MKKK
+>1abc_C mol:na length:12  DNA (5'-D(*CP*GP)-3')
+CG
+>2xyz_A mol:protein length:80  Uncharacterized protein YqeH
+MKKK
+>3hhh_A mol:protein length:80  hypothetical protein
+MKKK

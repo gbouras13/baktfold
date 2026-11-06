@@ -9,22 +9,30 @@ from loguru import logger
 import baktfold.bakta.constants as bc
 import baktfold.bakta.annotation as anno
 from baktfold.io.json_in import parse_json_input, log_for_other_genbank_tools
-from baktfold.io.fasta_in import parse_protein_input
-from baktfold.databases.db import install_database, validate_db
+from baktfold.io.fasta_in import parse_protein_input, proteins_to_predict
+from baktfold.databases.db import install_database, validate_db, check_prostT5_download, download_zenodo_prostT5
 from baktfold.features.create_foldseek_db import generate_foldseek_db_from_aa_3di
-from baktfold.features.predict_3Di import get_T5_model
-from baktfold.subcommands.compare import subcommand_compare
-from baktfold.subcommands.predict import subcommand_predict
 from baktfold.utils.constants import DB_DIR, CNN_DIR
-from baktfold.utils.util import (begin_baktfold, clean_up_temporary_files, end_baktfold, get_version, print_citation, sort_euk_feature_key)
-from baktfold.utils.validation import (check_dependencies, instantiate_dirs,validate_outfile, check_genbank_and_prokka)
+from baktfold.utils.util import (begin_baktfold, clean_up_temporary_files, end_baktfold, get_version, iter_sequences_once, print_citation, sort_euk_feature_key)
+from baktfold.utils.validation import (check_dependencies, instantiate_dirs, validate_outfile, check_genbank_and_prokka)
 
 from baktfold.io.prokka_gbk_to_json import prokka_gbk_to_json
 from baktfold.io.eukaryotic_to_json import eukaryotic_gbk_to_json
 import baktfold.bakta.config as cfg
-import baktfold.io.io as io
-from baktfold.features.autotune import run_autotune
+# NB: aliased to ``bakta_io`` rather than ``io``.  ``__init__.py``'s globals
+# ARE the ``baktfold`` package namespace, so binding the name ``io`` here
+# overwrites the ``baktfold.io`` subpackage attribute — afterwards every
+# ``import baktfold.io.io as io`` elsewhere (e.g. subcommands/compare.py)
+# resolves ``getattr(baktfold, "io")`` to this module instead of the package
+# and dies with "cannot import name 'io' from 'baktfold.io.io'".
+from baktfold.io import io as bakta_io
 from importlib.resources import files
+
+# get_T5_model (from predict_3Di), subcommand_predict, subcommand_compare, and
+# run_autotune are lazy-imported inside their handler bodies.  All four
+# transitively import torch (~4 s cold start), so a module-level import made
+# every subcommand — including install, citation, createdb, and convert —
+# pay that cost even though they never call those functions.
 
 log_fmt = (
     "[<green>{time:YYYY-MM-DD HH:mm:ss}</green>] <level>{level: <8}</level> | "
@@ -107,6 +115,14 @@ def predict_options(func):
             "--cpu",
             is_flag=True,
             help="Use CPU only."
+        ),
+        click.option(
+            "--gpus",
+            type=str,
+            default=None,
+            help=('Comma-separated CUDA device indices to use (e.g. "0,2"). '
+                  "Default: all visible CUDA GPUs. Overridden by --cpu. "
+                  "Has no effect on MPS / XPU systems.")
         ),
         click.option(
             "--omit-probs",
@@ -208,34 +224,39 @@ def compare_options(func):
             help="Skips Foldseek search against AFDB Clusters."
         ),
         click.option(
+            "--report-prob",
+            is_flag=True,
+            help="Report Foldseek's homology probability ('prob') in the per-database tophit TSVs. Requires Foldseek to compute full alignments (-a 1), so searches are slower and use more disk."
+        ),
+        click.option(
             "--cds-program",
             type=str,
-            default="Prodigal:2.6",
-            help="CDS prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+            default=None,
+            help="CDS prediction tool string for compliant outputs if using non-Bakta or Prokka input. Default: Prodigal:2.6 for prokaryotic input; omitted for eukaryotic input (--euk)"
         ),
         click.option(
             "--trna-program",
             type=str,
-            default="tRNAscan-SE:2.0.12",
-            help="tRNA prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+            default=None,
+            help="tRNA prediction tool string for compliant outputs if using non-Bakta or Prokka input. Default: tRNAscan-SE:2.0.12 for prokaryotic input; omitted for eukaryotic input (--euk)"
         ),
         click.option(
             "--tmrna-program",
             type=str,
-            default="INFERNAL:1.1.5",
-            help="tmRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+            default=None,
+            help="tmRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input. Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input (--euk)"
         ),
         click.option(
             "--rrna-program",
             type=str,
-            default="INFERNAL:1.1.5",
-            help="rRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+            default=None,
+            help="rRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input. Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input (--euk)"
         ),
         click.option(
             "--ncrna-program",
             type=str,
-            default="INFERNAL:1.1.5",
-            help="ncRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input"
+            default=None,
+            help="ncRNA profile prediction tool string for compliant outputs if using non-Bakta or Prokka input. Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input (--euk)"
         ),
     ]
     for option in reversed(options):
@@ -315,6 +336,7 @@ def run(
     batch_size,
     sensitivity,
     cpu,
+    gpus,
     omit_probs,
     keep_tmp_files,
     max_seqs,
@@ -329,6 +351,7 @@ def run(
     all_proteins,
     euk,
     fast,
+    report_prob,
     cds_program,
     trna_program,
     tmrna_program,
@@ -339,7 +362,7 @@ def run(
     """baktfold predict then comapare all in one - GPU recommended"""
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -357,6 +380,7 @@ def run(
         "--sensitivity": sensitivity,
         "--keep-tmp-files": keep_tmp_files,
         "--cpu": cpu,
+        "--gpus": gpus,
         "--omit_probs": omit_probs,
         "--max-seqs": max_seqs,
         "--save-per-residue-embeddings": save_per_residue_embeddings,
@@ -370,12 +394,17 @@ def run(
         "--all-proteins": all_proteins,
         "--euk": euk,
         "--fast": fast,
+        "--report-prob": report_prob,
         "--cds-program": cds_program,
         "--trna-program": trna_program,
         "--tmrna-program": tmrna_program,
         "--rrna-program": rrna_program,
         "--ncrna-program": ncrna_program
     }
+
+    from baktfold.subcommands.predict import subcommand_predict
+    from baktfold.subcommands.compare import subcommand_compare
+    from baktfold.features.autotune import run_autotune
 
     # initial logging etc
     start_time = begin_baktfold(params, "run")
@@ -449,10 +478,12 @@ def run(
             model_name,
             cpu,
             threads,
-            step, 
+            step,
             min_batch,
-            max_batch, 
-            sample_seqs)
+            max_batch,
+            sample_seqs,
+            gpus=gpus,
+        )
 
 
     # hypotheticals is input to the function as it updates the 3Di feature
@@ -472,7 +503,8 @@ def run(
         save_per_protein_embeddings=save_per_protein_embeddings,
         threads=threads,
         mask_threshold=mask_threshold,
-        has_duplicate_locus=has_duplicate_locus
+        has_duplicate_locus=has_duplicate_locus,
+        gpus=gpus,
     )
 
     # baktfold compare
@@ -499,15 +531,25 @@ def run(
         foldseek_gpu=foldseek_gpu,
         custom_annotations=custom_annotations,
         has_duplicate_locus=has_duplicate_locus,
-        fast=fast
+        fast=fast,
+        gpus=gpus,
+        report_prob=report_prob,
     )
 
     #####
     # update the hypotheticals 
     #####
 
+    anno.attach_prostt5_confidence(
+        hypotheticals,
+        Path(output) / f"{prefix}_prostT5_3di_mean_probabilities.csv",
+        has_duplicate_locus=has_duplicate_locus,
+    )
+    # beginning hypotheticals, counted before annotation removes the flag
+    # (with --all-proteins `hypotheticals` holds every CDS)
+    cfg.input_hypotheticals = sum(1 for cds in hypotheticals if 'hypothetical' in cds)
     for cds in hypotheticals:
-        anno.combine_annotation(cds, fast)  # add on PSTC annotations and mark hypotheticals
+        anno.combine_annotation(cds, fast, structures=False)  # add on PSTC annotations and mark hypotheticals
 
     # recombine updated and existing features
     combined_features = non_hypothetical_features + hypotheticals  # recombine
@@ -550,7 +592,9 @@ def run(
 
     # flatten sorted features
     features = []
-    for seq in data['sequences']:
+    for seq, first in iter_sequences_once(data['sequences']):
+        if not first:  # repeated sequence ID: its features are already in
+            continue
         seq_features = features_by_sequence[seq['id']]
         if euk: # ensure gene -> mRNA -> CDS ordering for each locus tag
             seq_features.sort(key=sort_euk_feature_key)
@@ -576,7 +620,7 @@ def run(
 
 
     logger.info('writing baktfold outputs')
-    io.write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank,
+    bakta_io.write_bakta_outputs(data, features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank,
     cds_program,trna_program, rrna_program, tmrna_program, ncrna_program, bakta_version)
 
     # cleanup the temp files
@@ -622,6 +666,7 @@ def proteins(
     batch_size,
     sensitivity,
     cpu,
+    gpus,
     omit_probs,
     keep_tmp_files,
     max_seqs,
@@ -634,12 +679,13 @@ def proteins(
     foldseek_gpu,
     custom_annotations,
     fast,
+    report_prob,
     **kwargs,
 ):
     """baktfold proteins-predict then comapare all in one - GPU recommended"""
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -657,6 +703,7 @@ def proteins(
         "--sensitivity": sensitivity,
         "--keep-tmp-files": keep_tmp_files,
         "--cpu": cpu,
+        "--gpus": gpus,
         "--omit-probs": omit_probs,
         "--max-seqs": max_seqs,
         "--save-per-residue-embeddings": save_per_residue_embeddings,
@@ -667,8 +714,13 @@ def proteins(
         "--custom-db": custom_db,
         "--foldseek-gpu": foldseek_gpu,
         "--custom-annotations": custom_annotations,
-        "--fast": fast
+        "--fast": fast,
+        "--report-prob": report_prob
     }
+
+    from baktfold.subcommands.predict import subcommand_predict
+    from baktfold.subcommands.compare import subcommand_compare
+    from baktfold.features.autotune import run_autotune
 
     # initial logging etc
     start_time = begin_baktfold(params, "proteins")
@@ -688,10 +740,8 @@ def proteins(
     # puts the CDS AA in a simple dictionary for ProstT5 code
     aas, bakta_version = parse_protein_input(input, fasta_aa)
 
-    # put the CDS AA in a simple dictionary for ProstT5 code
-    cds_dict = {}
-    for feat in aas:
-        cds_dict[feat['locus']] = feat['aa']
+    # put the hypothetical CDS AA in a simple dictionary for ProstT5 code
+    cds_dict = proteins_to_predict(aas)
 
     # baktfold predict
     model_dir = database
@@ -714,10 +764,12 @@ def proteins(
             model_name,
             cpu,
             threads,
-            step, 
+            step,
             min_batch,
-            max_batch, 
-            sample_seqs)
+            max_batch,
+            sample_seqs,
+            gpus=gpus,
+        )
 
     aas = subcommand_predict(
         aas,
@@ -734,7 +786,8 @@ def proteins(
         save_per_protein_embeddings=save_per_protein_embeddings,
         threads=threads,
         mask_threshold=mask_threshold,
-        has_duplicate_locus=False
+        has_duplicate_locus=False,
+        gpus=gpus,
     )
 
     # baktfold compare
@@ -742,8 +795,12 @@ def proteins(
 
     # predictions_dir is output as this will be where it lives for 'run'
 
-    aas = subcommand_compare(
-        aas, # this is dummy, no operations happen here
+    # only the proteins Baktfold annotates (all for FASTA input, Bakta's
+    # hypotheticals for a Bakta proteins JSON); the rest pass through untouched
+    targets = [aa for aa in aas if aa.get('hypothetical')]
+
+    subcommand_compare(
+        targets,
         output,
         threads,
         evalue,
@@ -762,15 +819,21 @@ def proteins(
         foldseek_gpu=foldseek_gpu,
         custom_annotations=custom_annotations,
         has_duplicate_locus=False,
-        fast=fast
+        fast=fast,
+        gpus=gpus,
+        report_prob=report_prob,
     )
 
     #####
     # update the hypotheticals 
     #####
 
-    for aa in aas:
-        anno.combine_annotation(aa, fast)  # add on PSTC annotations and mark hypotheticals
+    anno.attach_prostt5_confidence(
+        aas,
+        Path(output) / f"{prefix}_prostT5_3di_mean_probabilities.csv",
+    )
+    for aa in targets:
+        anno.combine_annotation(aa, fast, structures=False)  # add on PSTC annotations and mark hypotheticals
 
 
     ####
@@ -792,7 +855,7 @@ def proteins(
     # - remove temp directory
     ############################################################################
     
-    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast, bakta_version)
+    bakta_io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast, bakta_version)
 
     # cleanup the temp files
     if not keep_tmp_files:
@@ -839,6 +902,7 @@ def predict(
     autotune,
     batch_size,
     cpu,
+    gpus,
     omit_probs,
     save_per_residue_embeddings,
     save_per_protein_embeddings,
@@ -851,7 +915,7 @@ def predict(
 
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -866,6 +930,7 @@ def predict(
         "--autotune": autotune,
         "--batch-size": batch_size,
         "--cpu": cpu,
+        "--gpus": gpus,
         "--omit-probs": omit_probs,
         "--save-per-residue-embeddings": save_per_residue_embeddings,
         "--save-per-protein-embeddings": save_per_protein_embeddings,
@@ -873,6 +938,9 @@ def predict(
         "--all-proteins": all_proteins,
 
     }
+
+    from baktfold.subcommands.predict import subcommand_predict
+    from baktfold.features.autotune import run_autotune
 
     # initial logging etc
     start_time = begin_baktfold(params, "predict")
@@ -947,10 +1015,12 @@ def predict(
             model_name,
             cpu,
             threads,
-            step, 
+            step,
             min_batch,
-            max_batch, 
-            sample_seqs)
+            max_batch,
+            sample_seqs,
+            gpus=gpus,
+        )
 
     hypotheticals = subcommand_predict(
         hypotheticals,
@@ -967,7 +1037,8 @@ def predict(
         save_per_protein_embeddings=save_per_protein_embeddings,
         threads=threads,
         mask_threshold=mask_threshold,
-        has_duplicate_locus=has_duplicate_locus
+        has_duplicate_locus=has_duplicate_locus,
+        gpus=gpus,
     )
 
     # end baktfold
@@ -1005,6 +1076,13 @@ runs Foldseek using either 1) output of baktfold predict or 2) user defined prot
     default=None,
     help="Path to directory with .pdb or .cif file structures (IDs need to be in file names, i.e id.pdb or id.cif)"
 )
+@click.option(
+    "--gpus",
+    type=str,
+    default=None,
+    help=('Comma-separated CUDA device indices for Foldseek-GPU (e.g. "0,2"). '
+          "Default: all visible CUDA GPUs. Only meaningful with --foldseek-gpu."),
+)
 @common_options
 @compare_options
 @bakta_options
@@ -1021,6 +1099,7 @@ def compare(
     keep_tmp_files,
     predictions_dir,
     structure_dir,
+    gpus,
     max_seqs,
     ultra_sensitive,
     extra_foldseek_params,
@@ -1030,6 +1109,7 @@ def compare(
     all_proteins,
     euk,
     fast,
+    report_prob,
     cds_program,
     trna_program,
     tmrna_program,
@@ -1041,7 +1121,7 @@ def compare(
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
 
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input, predictions_dir, structure_dir])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -1064,15 +1144,19 @@ def compare(
         "--custom-db": custom_db,
         "--custom-annotations": custom_annotations,
         "--foldseek-gpu": foldseek_gpu,
+        "--gpus": gpus,
         "--all-proteins": all_proteins,
         "--euk": euk,
         "--fast": fast,
+        "--report-prob": report_prob,
         "--cds-program": cds_program,
         "--trna-program": trna_program,
         "--tmrna-program": tmrna_program,
         "--rrna-program": rrna_program,
         "--ncrna-program": ncrna_program
     }
+
+    from baktfold.subcommands.compare import subcommand_compare
 
     # initial logging etc
     start_time = begin_baktfold(params, "compare")
@@ -1160,12 +1244,22 @@ def compare(
         foldseek_gpu=foldseek_gpu,
         custom_annotations=custom_annotations,
         has_duplicate_locus=has_duplicate_locus,
-        fast=fast
+        fast=fast,
+        gpus=gpus,
+        report_prob=report_prob,
     )
 
 
+    if not structures:
+        anno.attach_prostt5_confidence(
+            hypotheticals,
+            Path(predictions_dir) / f"{prefix}_prostT5_3di_mean_probabilities.csv",
+            has_duplicate_locus=has_duplicate_locus,
+        )
+    # beginning hypotheticals, counted before annotation removes the flag
+    cfg.input_hypotheticals = sum(1 for cds in hypotheticals if 'hypothetical' in cds)
     for cds in hypotheticals:
-        anno.combine_annotation(cds, fast)  # add on PSTC annotations and mark hypotheticals
+        anno.combine_annotation(cds, fast, structures=structures)  # add on PSTC annotations and mark hypotheticals
 
     # recombine updated and existing features
     combined_features = non_hypothetical_features + hypotheticals  # recombine
@@ -1189,7 +1283,9 @@ def compare(
     # flatten sorted features
     features = []
 
-    for seq in data['sequences']:
+    for seq, first in iter_sequences_once(data['sequences']):
+        if not first:  # repeated sequence ID: its features are already in
+            continue
         seq_features = features_by_sequence[seq['id']]
         if euk: # ensure gene -> mRNA -> CDS ordering for each locus tag but overall keep the start as the prinary sort
 
@@ -1215,7 +1311,7 @@ def compare(
     # bakta output module
     ####
     logger.info('writing baktfold outputs')
-    io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank,
+    bakta_io.write_bakta_outputs(data,features, features_by_sequence, output, prefix, custom_db, euk, has_duplicate_locus, fast, translation_table, prokka, other_genbank,
     cds_program,trna_program, rrna_program, tmrna_program, ncrna_program, bakta_version)
 
     # cleanup the temp files
@@ -1258,6 +1354,7 @@ def proteins_predict(
     autotune,
     batch_size,
     cpu,
+    gpus,
     omit_probs,
     save_per_residue_embeddings,
     save_per_protein_embeddings,
@@ -1268,7 +1365,7 @@ def proteins_predict(
     """Runs ProstT5 on a multi FASTA input - GPU recommended"""
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -1283,12 +1380,16 @@ def proteins_predict(
         "--autotune": autotune,
         "--batch-size": batch_size,
         "--cpu": cpu,
+        "--gpus": gpus,
         "--omit-probs": omit_probs,
         "--save-per-residue-embeddings": save_per_residue_embeddings,
         "--save-per-protein-embeddings": save_per_protein_embeddings,
         "--mask-threshold": mask_threshold,
 
     }
+
+    from baktfold.subcommands.predict import subcommand_predict
+    from baktfold.features.autotune import run_autotune
 
     # initial logging etc
     start_time = begin_baktfold(params, "proteins-predict")
@@ -1308,10 +1409,8 @@ def proteins_predict(
     # puts the CDS AA in a simple dictionary for ProstT5 code
     aas, bakta_version = parse_protein_input(input, fasta_aa)
 
-    # put the CDS AA in a simple dictionary for ProstT5 code
-    cds_dict = {}
-    for feat in aas:
-        cds_dict[feat['locus']] = feat['aa']
+    # put the hypothetical CDS AA in a simple dictionary for ProstT5 code
+    cds_dict = proteins_to_predict(aas)
 
     # baktfold predict
     model_dir = database
@@ -1333,10 +1432,12 @@ def proteins_predict(
             model_name,
             cpu,
             threads,
-            step, 
+            step,
             min_batch,
-            max_batch, 
-            sample_seqs)
+            max_batch,
+            sample_seqs,
+            gpus=gpus,
+        )
 
     aas = subcommand_predict(
         aas,
@@ -1353,7 +1454,8 @@ def proteins_predict(
         save_per_protein_embeddings=save_per_protein_embeddings,
         threads=threads,
         mask_threshold=mask_threshold,
-        has_duplicate_locus=False
+        has_duplicate_locus=False,
+        gpus=gpus,
     )
 
     # end baktfold
@@ -1387,6 +1489,13 @@ Runs Foldseek vs baktfold DBs for multiFASTA 3Di sequences (predicted with prote
     help="Path to directory with .pdb or .cif file structures. The CDS IDs need to be in the name of the file",
     type=click.Path(),
 )
+@click.option(
+    "--gpus",
+    type=str,
+    default=None,
+    help=('Comma-separated CUDA device indices for Foldseek-GPU (e.g. "0,2"). '
+          "Default: all visible CUDA GPUs. Only meaningful with --foldseek-gpu."),
+)
 @common_options
 @compare_options
 def proteins_compare(
@@ -1402,6 +1511,7 @@ def proteins_compare(
     keep_tmp_files,
     predictions_dir,
     structure_dir,
+    gpus,
     max_seqs,
     ultra_sensitive,
     extra_foldseek_params,
@@ -1409,13 +1519,14 @@ def proteins_compare(
     custom_annotations,
     foldseek_gpu,
     fast,
+    report_prob,
     **kwargs,
 ):
     """Runs Foldseek vs baktfold db on proteins input"""
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
 
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[input, predictions_dir, structure_dir])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -1438,15 +1549,24 @@ def proteins_compare(
         "--custom-db": custom_db,
         "--custom-annotations": custom_annotations,
         "--foldseek-gpu": foldseek_gpu,
-        "--fast": fast
+        "--gpus": gpus,
+        "--fast": fast,
+        "--report-prob": report_prob
     }
 
+
+    from baktfold.subcommands.compare import subcommand_compare
 
     # initial logging etc
     start_time = begin_baktfold(params, "proteins-compare")
 
     # check foldseek is installed
     check_dependencies()
+
+    # check the database is installed and return it (was missing here, so the
+    # documented command without -d crashed with Path(None) after building the
+    # query database)
+    database = validate_db(database, DB_DIR, foldseek_gpu)
 
     # bool for the subcommand
     if (structure_dir):
@@ -1481,8 +1601,19 @@ def proteins_compare(
             aa["3di"] = threedi_seq
 
 
-    aas = subcommand_compare(
-        aas, 
+    # Annotate only Bakta's hypotheticals (all proteins for FASTA input).
+    # Previously every protein of a Bakta proteins JSON was searched (with
+    # --structure-dir, or predictions made from the full FASTA) and curated
+    # Bakta products were overwritten by structural hits.
+    targets = [aa for aa in aas if aa.get('hypothetical')]
+    if len(targets) < len(aas):
+        logger.info(
+            f"Annotating the {len(targets)} hypothetical proteins; "
+            f"{len(aas) - len(targets)} proteins with an existing product are kept as they are"
+        )
+
+    subcommand_compare(
+        targets,
         output,
         threads,
         evalue,
@@ -1501,15 +1632,22 @@ def proteins_compare(
         foldseek_gpu=foldseek_gpu,
         custom_annotations=custom_annotations,
         has_duplicate_locus=False,
-        fast=fast
+        fast=fast,
+        gpus=gpus,
+        report_prob=report_prob,
     )
 
     #####
     # update the hypotheticals 
     #####
 
-    for aa in aas:
-        anno.combine_annotation(aa, fast)  # add on PSTC annotations and mark hypotheticals
+    if not structures:
+        anno.attach_prostt5_confidence(
+            aas,
+            Path(predictions_dir) / f"{prefix}_prostT5_3di_mean_probabilities.csv",
+        )
+    for aa in targets:
+        anno.combine_annotation(aa, fast, structures=structures)  # add on PSTC annotations and mark hypotheticals
 
 
 
@@ -1532,7 +1670,7 @@ def proteins_compare(
     # - remove temp directory
     ############################################################################
     
-    io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast, bakta_version)
+    bakta_io.write_bakta_proteins_outputs(aas, output, prefix, custom_db, fast, bakta_version)
 
     # cleanup the temp files
     if not keep_tmp_files:
@@ -1605,7 +1743,7 @@ def createdb(
     """Creates foldseek DB from AA FASTA and 3Di FASTA input files"""
 
     # validates the directory  (need to before I start phold or else no log file is written)
-    instantiate_dirs(output, force)
+    instantiate_dirs(output, force, protected=[fasta_aa, fasta_3di])
 
     output: Path = Path(output)
     logdir: Path = Path(output) / "logs"
@@ -1785,9 +1923,249 @@ def convert_euk(
 
     logger.info(f"Conversion successful.")
     logger.info(f"Bakta format JSON → {outfile}")
- 
+
     # end
     end_baktfold(start_time, "convert-euk")
+
+
+"""
+json command
+
+Reconstitutes all (non-Foldseek) baktfold output formats from a baktfold JSON
+output file. Modelled on bakta's ``bakta_io`` command. No database, ProstT5 or
+Foldseek run is required - this is pure output reconstruction.
+"""
+
+
+@main_cli.command(name="json")
+@click.help_option("--help", "-h")
+@click.version_option(get_version(), "--version", "-V")
+@click.pass_context
+@click.option(
+    "-i",
+    "--input",
+    type=click.Path(),
+    required=True,
+    help="Path to a baktfold (or bakta) JSON output file"
+)
+@click.option(
+    "-o",
+    "--output",
+    type=click.Path(),
+    default="output_baktfold_json",
+    show_default=True,
+    help="Output directory"
+)
+@click.option(
+    "-p",
+    "--prefix",
+    type=str,
+    default="baktfold",
+    show_default=True,
+    help="Output files' prefix"
+)
+@click.option(
+    "-f",
+    "--force",
+    is_flag=True,
+    help="Force overwrites output directory"
+)
+@click.option(
+    "--euk/--no-euk",
+    "euk",
+    default=None,
+    help="Override eukaryotic mode (default: read from JSON provenance, else auto-detect from features)"
+)
+@click.option(
+    "--custom-db/--no-custom-db",
+    "custom_db",
+    default=None,
+    help="Override custom-DB column (default: read from JSON provenance, else auto-detect)"
+)
+@click.option(
+    "--fast/--no-fast",
+    "fast",
+    default=None,
+    help="Override fast mode i.e. whether the AFDBClusters column is omitted (default: read from JSON provenance, else off)"
+)
+@click.option(
+    "--cds-program",
+    type=str,
+    default=None,
+    help="CDS prediction tool string for compliant outputs (non-Bakta/Prokka input only). Default: Prodigal:2.6 for prokaryotic input; omitted for eukaryotic input"
+)
+@click.option(
+    "--trna-program",
+    type=str,
+    default=None,
+    help="tRNA prediction tool string (non-Bakta/Prokka input only). Default: tRNAscan-SE:2.0.12 for prokaryotic input; omitted for eukaryotic input"
+)
+@click.option(
+    "--tmrna-program",
+    type=str,
+    default=None,
+    help="tmRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input"
+)
+@click.option(
+    "--rrna-program",
+    type=str,
+    default=None,
+    help="rRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input"
+)
+@click.option(
+    "--ncrna-program",
+    type=str,
+    default=None,
+    help="ncRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input"
+)
+@click.option(
+    "--relabel",
+    is_flag=True,
+    help="Rerun label selection on the stored Foldseek hits with this version's rules (no search). Brings outputs from earlier versions up to date"
+)
+@click.option(
+    "-d",
+    "--database",
+    type=click.Path(),
+    default=None,
+    help="With --relabel: Baktfold database directory to look the hit descriptions up again (needed for chain-level PDB names)"
+)
+@click.option(
+    "--pdb-tophit",
+    type=click.Path(),
+    default=None,
+    help="With --relabel -d: the original run's <prefix>_pdb_tophit.tsv, for PDB chains that older JSONs don't record"
+)
+@click.option(
+    "--prostt5-probs",
+    type=click.Path(),
+    default=None,
+    help="With --relabel: the original run's <prefix>_prostT5_3di_mean_probabilities.csv, for JSONs without ProstT5 confidence (needed for Annotation_Confidence)"
+)
+def json_reconstruct(
+    ctx,
+    input,
+    output,
+    prefix,
+    force,
+    euk,
+    custom_db,
+    fast,
+    cds_program,
+    trna_program,
+    tmrna_program,
+    rrna_program,
+    ncrna_program,
+    relabel,
+    database,
+    pdb_tophit,
+    prostt5_probs,
+    **kwargs,
+):
+    """Reconstitute all outputs (GFF3/GenBank/EMBL/TSV/FASTA) from a baktfold JSON (no Foldseek TSVs)"""
+
+    if not relabel and (database or pdb_tophit or prostt5_probs):
+        raise click.UsageError("-d/--database, --pdb-tophit and --prostt5-probs only apply with --relabel")
+    for opt, path in (("--pdb-tophit", pdb_tophit), ("--prostt5-probs", prostt5_probs)):
+        if path is not None and not Path(path).is_file():
+            raise click.UsageError(f"{opt}: file not found: {path}")
+    if database is not None and not (Path(database) / "baktfold.db").is_file():
+        raise click.UsageError(f"-d/--database: no baktfold.db in {database}")
+
+    # validates the directory (need to before baktfold starts or else no log file is written)
+    instantiate_dirs(output, force, protected=[input])
+
+    output: Path = Path(output)
+
+    params = {
+        "--input": input,
+        "--output": output,
+        "--prefix": prefix,
+        "--force": force,
+        "--euk": euk,
+        "--custom-db": custom_db,
+        "--fast": fast,
+        "--cds-program": cds_program,
+        "--trna-program": trna_program,
+        "--tmrna-program": tmrna_program,
+        "--rrna-program": rrna_program,
+        "--ncrna-program": ncrna_program,
+        "--relabel": relabel,
+        "--database": database,
+        "--pdb-tophit": pdb_tophit,
+        "--prostt5-probs": prostt5_probs,
+    }
+
+    from baktfold.io.json_in import parse_baktfold_json_for_reconstruction
+
+    # initial logging etc - no foldseek/database dependencies for reconstruction
+    start_time = begin_baktfold(params, "json")
+
+    recon = parse_baktfold_json_for_reconstruction(
+        input,
+        euk_override=euk,
+        custom_db_override=custom_db,
+        fast_override=fast,
+        program_overrides={
+            "cds_program": cds_program,
+            "trna_program": trna_program,
+            "rrna_program": rrna_program,
+            "tmrna_program": tmrna_program,
+            "ncrna_program": ncrna_program,
+        },
+    )
+
+    # an earlier relabel stays recorded when the JSON is reconstituted again
+    relabel_info = (recon['data'].get('baktfold_run') or {}).get('relabel')
+    if relabel:
+        from baktfold.subcommands.relabel import relabel_features
+        relabel_info = relabel_features(
+            recon['aas'] if recon['mode'] == 'proteins' else recon['data']['features'],
+            fast=recon['fast'],
+            has_duplicate_locus=recon.get('has_duplicate_locus', False),
+            database=Path(database) if database else None,
+            pdb_tophit=Path(pdb_tophit) if pdb_tophit else None,
+            prostt5_probs=Path(prostt5_probs) if prostt5_probs else None,
+        )
+
+    logger.info('Reconstituting baktfold outputs from JSON')
+    logger.warning('Note: Foldseek result/tophit TSVs, 3Di FASTA and embeddings cannot be reconstituted from JSON.')
+
+    if recon['mode'] == 'proteins':
+        bakta_io.write_bakta_proteins_outputs(
+            recon['aas'],
+            output,
+            prefix,
+            recon['custom_db'],
+            recon['fast'],
+            recon['bakta_version'],
+            relabel=relabel_info,
+        )
+    else:
+        bakta_io.write_bakta_outputs(
+            recon['data'],
+            recon['features'],
+            recon['features_by_sequence'],
+            output,
+            prefix,
+            recon['custom_db'],
+            recon['euk'],
+            recon['has_duplicate_locus'],
+            recon['fast'],
+            recon['translation_table'],
+            recon['prokka'],
+            recon['other_genbank'],
+            recon['cds_program'],
+            recon['trna_program'],
+            recon['rrna_program'],
+            recon['tmrna_program'],
+            recon['ncrna_program'],
+            recon['bakta_version'],
+            relabel=relabel_info,
+        )
+
+    # end baktfold
+    end_baktfold(start_time, "json")
 
 
 
@@ -1848,11 +2226,17 @@ def install(
         f"Checking that the {model_name} ProstT5 model is available in {database}"
     )
 
+    from baktfold.features.predict_3Di import get_T5_model
+
     # always install with cpu mode as guaranteed to be present
     cpu = True
 
     # load model (will be downloaded if not present)
-    model, vocab = get_T5_model(database, model_name, cpu, threads=1)
+    model, vocab, _ = get_T5_model(
+        database, model_name, cpu, threads=1,
+        check_fn=check_prostT5_download,
+        zenodo_fn=download_zenodo_prostT5,
+    )
     del model
     del vocab
     logger.info(f"ProstT5 model downloaded")
@@ -1874,6 +2258,13 @@ def install(
     "--cpu",
     is_flag=True,
     help="Use CPU only",
+)
+@click.option(
+    "--gpus",
+    type=str,
+    default=None,
+    help=('Comma-separated CUDA device indices (e.g. "0,2"). '
+          "Default: lowest visible CUDA GPU. Overridden by --cpu."),
 )
 @click.option(
     "-t",
@@ -1922,6 +2313,7 @@ def autotune(
     ctx,
     input,
     cpu,
+    gpus,
     threads,
     database,
     step,
@@ -1936,12 +2328,15 @@ def autotune(
         "--input": input,
         "--threads": threads,
         "--cpu": cpu,
+        "--gpus": gpus,
         "--database": database,
         "--step": step,
         "--min-batch": min_batch,
         "--max-batch": max_batch,
         "--sample-seqs": sample_seqs,
     }
+
+    from baktfold.features.autotune import run_autotune
 
     # initial logging etc
     start_time = begin_baktfold(params, "autotune", no_log=True)
@@ -1963,10 +2358,12 @@ def autotune(
         model_name,
         cpu,
         threads,
-        step, 
+        step,
         min_batch,
-        max_batch, 
-        sample_seqs)
+        max_batch,
+        sample_seqs,
+        gpus=gpus,
+    )
 
 
 @click.command()

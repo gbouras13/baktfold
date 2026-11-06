@@ -32,15 +32,230 @@ RE_UNCHARACTERIZED_PROTEIN_FAMILY = re.compile(r'(UPF\d{3,4})', flags=re.IGNOREC
 RE_GENE_CAPITALIZED = re.compile(r'^[A-Z].+', flags=re.DOTALL)
 RE_GENE_SUSPECT_CHARS = re.compile(r'[\?]', flags=re.DOTALL)
 RE_GENE_SYMBOL = re.compile(r'[a-z]{3}[A-Z][0-9]?')
+# Hit descriptions treated as carrying no usable function: any mention of
+# "hypothetical" or "uncharacterised/uncharacterized", anywhere, any case.
+# Deliberately broad (decided 2026-11-03): it also skips family-bearing names
+# such as "Uncharacterized oxidoreductase YdgJ", in favour of the next
+# database in the hierarchy, because a label that says it is uncharacterised
+# should not be presented as a functional annotation.
+RE_UNINFORMATIVE_PRODUCT = re.compile(r'\b(hypothetical|uncharacteri[sz]ed)\b', flags=re.IGNORECASE)
 
 
-def combine_annotation(feature: dict, fast: bool):
+RE_CATH_CHAIN_SUFFIX = re.compile(r'\s*;\s*chain\s+\w+\s*$', flags=re.IGNORECASE)
+RE_CATH_DOMAIN_NUMBER = re.compile(r'\s*[;,]?\s*domains?\s+\d+\s*$', flags=re.IGNORECASE)
+RE_CATH_FROM_SPECIES = re.compile(r'\s+from\s+[A-Z][a-z]+\s+[a-z]+.*$')
+
+
+def cath_domain_label(name: str) -> str:
+    """Turn a CATH superfamily name into a domain-level product name.
+
+    A CATH hit is evidence that the protein contains a domain of that
+    superfamily, not that the whole protein has the named function, so the
+    label says so explicitly (the NCBI/Bakta convention for domain-only
+    evidence): "SH2 domain" -> "SH2 domain-containing protein",
+    "Enoyl acyl carrier protein reductase" -> "Enoyl acyl carrier protein
+    reductase domain-containing protein". Representative-specific suffixes
+    ("; Chain A", ", domain 2", "from Thermus thermophilus HB27") are removed.
+    """
+    label = name.strip().rstrip('.').strip()
+    label = RE_CATH_CHAIN_SUFFIX.sub('', label)
+    label = RE_CATH_DOMAIN_NUMBER.sub('', label)
+    label = RE_CATH_FROM_SPECIES.sub('', label)
+    label = label.strip().rstrip(',;').strip()
+    if not label:
+        return label
+    if re.search(r'\bdomains?$', label, flags=re.IGNORECASE):
+        label = re.sub(r'\bdomains$', 'domain', label, flags=re.IGNORECASE)
+        return f"{label}-containing protein"
+    return f"{label} domain-containing protein"
+
+
+def is_informative_product(product) -> bool:
+    """True if ``product`` names a function, i.e. is not empty and not a
+    hypothetical/uncharacterised placeholder (before or after Bakta's product
+    revision)."""
+    if not product:
+        return False
+    if RE_UNINFORMATIVE_PRODUCT.search(product):
+        return False
+    # revise_cds_product can also blank out suspect products (contig names,
+    # no letters, pure tmRNA), which must fall through too. Run it quietly:
+    # the selected product is revised (and logged) once more by the caller.
+    logger.disable(__name__)
+    try:
+        revised = revise_cds_product(product)
+    finally:
+        logger.enable(__name__)
+    return bool(revised) and not RE_UNINFORMATIVE_PRODUCT.search(revised)
+
+
+def select_informative_entry(entries):
+    """Return the first entry, in hierarchy order, whose description names a
+    function. Uninformative hits ("hypothetical protein", "Uncharacterized
+    protein ...") are skipped so they cannot mask a functional hit from a
+    lower-precedence database. Returns None if no entry is informative."""
+    for entry in entries:
+        if entry is None:
+            continue
+        desc = entry.get('description')
+        if entry.get('source') == 'cath' and desc:
+            # judge the label that would actually be written: a CATH name that
+            # reduces to nothing (e.g. "Domain 2") must not be selected
+            desc = cath_domain_label(desc) if is_informative_product(desc) else None
+        if is_informative_product(desc):
+            return entry
+    return None
+
+
+def assign_annotation_confidence(entry: dict, prostt5_confidence, structures: bool) -> str:
+    """Classify a Foldseek hit into a confidence tier: 'high', 'medium' or 'low'.
+
+    Mirrors phold's heuristic (phold.subcommands.compare.assign_annotation_confidence).
+    ``entry`` is the hierarchy-selected pstc hit carrying ``query_cov`` (qCov),
+    ``subject_cov`` (tCov), ``identity`` (fident) and ``evalue``.
+    ``prostt5_confidence`` is the protein's mean ProstT5 confidence (0-100), or
+    None for structure input. With ``structures`` (or no ProstT5 confidence
+    available) the ProstT5 criteria are dropped.
+    """
+    qcov = entry.get('query_cov', 0.0)
+    tcov = entry.get('subject_cov', 0.0)
+    fident = entry.get('identity', 0.0)
+    try:
+        evalue = float(entry.get('evalue', 1.0))
+    except (TypeError, ValueError):
+        evalue = 1.0
+
+    # Thresholds as documented in docs/output.md ("Annotation confidence"):
+    # coverage >= 0.8, identity > 0.3, ProstT5 >= 60 (high) / >= 45 (medium),
+    # E-value < 1e-10 (high) / < 1e-5 (medium, always required).
+    cov_both = qcov >= 0.8 and tcov >= 0.8
+    cov_any = qcov >= 0.8 or tcov >= 0.8
+    light_zone = fident > 0.3
+
+    if structures or prostt5_confidence is None:
+        if cov_both and (light_zone or evalue < 1e-10):
+            return 'high'
+        # Medium needs E < 1e-5 on both paths (previously OR'd here, so a
+        # structure hit at E = 1e-4 could be 'medium' contrary to the docs).
+        if cov_any and light_zone and evalue < 1e-5:
+            return 'medium'
+        return 'low'
+
+    # ProstT5 path: mean 3Di confidence factors in.
+    if cov_both and (light_zone or prostt5_confidence >= 60 or evalue < 1e-10):
+        return 'high'
+    # '>= 45', not '45 <= x <= 60': confidence above 60 must not drop a hit
+    # from medium to low (the old band made the tier non-monotonic).
+    if cov_any and (light_zone or prostt5_confidence >= 45) and evalue < 1e-5:
+        return 'medium'
+    return 'low'
+
+
+def attach_prostt5_confidence(features: Sequence[dict], mean_probs_csv, has_duplicate_locus: bool = False) -> None:
+    """Attach each CDS's mean ProstT5 confidence (0-100) from the
+    ``{prefix}_prostT5_3di_mean_probabilities.csv`` file (``cds_id,mean_prob``,
+    no header) as ``feature['prostt5_confidence']``. No-op if the file is absent
+    (e.g. structure input)."""
+    confidence = {}
+    try:
+        with open(mean_probs_csv) as fh:
+            for line in fh:
+                parts = line.rstrip('\n').split(',')
+                if len(parts) >= 2:
+                    try:
+                        confidence[parts[0]] = float(parts[1])
+                    except ValueError:
+                        continue
+    except FileNotFoundError:
+        return
+
+    for feat in features:
+        key = feat.get('id') if has_duplicate_locus else feat.get('locus')
+        if key in confidence:
+            feat['prostt5_confidence'] = confidence[key]
+
+
+def pstc_db_xrefs(entry, fast: bool, selected_entry=None) -> list:
+    """The db_xrefs that combine_annotation adds for one PSTC hit.
+
+    Kept in one place so reset_baktfold_annotation can remove exactly what
+    combine_annotation added.
+    """
+    if isinstance(entry, str):
+        # Preserve any existing string cross-references
+        return [entry]
+    if not isinstance(entry, dict):
+        return []
+    src = entry.get('source', '').lower()
+    eid = entry.get('id')
+    if not eid:
+        return []
+    if src == 'afdb':
+        return [] if fast else [f"afdb_v6:afdbclusters_{eid}"]
+    if src == 'swissprot':
+        return [f"afdb_v6:swissprot_{eid}"]
+    if src == 'pdb':
+        # chain-level: the chain that was hit, not just the entry
+        chain = entry.get('chain')
+        xrefs = [f"pdb:pdb_{eid}_{chain}" if chain else f"pdb:pdb_{eid}"]
+        # when this PDB hit supplied the label and its name came
+        # from UniProt (via SIFTS), cite that UniProt entry too
+        if entry is selected_entry and entry.get('uniprot'):
+            xrefs.append(f"UniProtKB:{entry['uniprot']}")
+        return xrefs
+    if src == 'cath':
+        return [f"cath:cath_{eid}"]
+    if src == 'custom_db':
+        return [f"custom:custom_{eid}"]
+    return [eid]
+
+
+def reset_baktfold_annotation(feature: dict, keep_product: bool = False) -> bool:
+    """Undo combine_annotation on a CDS so that label selection can be rerun
+    on its stored hits (``baktfold json --relabel``).
+
+    Only features Baktfold labelled (``baktfold`` key, set whenever a CDS had
+    hits) are reset: the product goes back to "hypothetical protein", the
+    db_xrefs that came from its hits are removed, and the confidence tier and
+    structure scores are dropped. The hits themselves (``pstc``) are kept.
+    Must run before the hits are changed (chains or descriptions refreshed),
+    because the xrefs to remove are rebuilt from them.
+
+    A product the input tool had assigned before Baktfold overwrote it (only
+    possible with ``--all-proteins``) cannot be recovered. With
+    ``keep_product`` (a curated input label that label selection kept: hits,
+    but no confidence tier), the product is kept as the starting state, as
+    ``run`` starts from it.
+
+    Returns True if the feature was reset.
+    """
+    if not feature.get('baktfold'):
+        return False
+    pstc = feature.get('pstc') or []
+    pstc = pstc if isinstance(pstc, list) else [pstc]
+    added = set()
+    for entry in pstc:
+        # fast=False and selected=entry: every xref any hit could have added
+        added.update(pstc_db_xrefs(entry, False, entry))
+    feature['db_xrefs'] = [x for x in feature.get('db_xrefs', []) if x not in added]
+    # back to the state combine_annotation started from. Not mark_as_hypothetical:
+    # that also clears gene/genes, which combine_annotation leaves alone
+    if not keep_product:
+        feature['product'] = bc.HYPOTHETICAL_PROTEIN
+        feature['hypothetical'] = True
+    for key in ('annotation_confidence', 'tmscore', 'lddt', 'baktfold'):
+        feature.pop(key, None)
+    return True
+
+
+def combine_annotation(feature: dict, fast: bool, structures: bool = False):
     """
     Combines annotation information from different sources into a single feature.
 
     Args:
       feature (dict): The feature to combine annotation for.
       fast (bool): If True, skips AFDB
+      structures (bool): True for structure input (no ProstT5 confidence available)
     Returns:
       None
 
@@ -62,6 +277,7 @@ def combine_annotation(feature: dict, fast: bool):
 
     product = feature.get('product', None)
     db_xrefs = feature.get('db_xrefs', [])
+    selected_entry = None  # the hit that supplies the label, if any
 
     if(pstc):
 
@@ -96,47 +312,41 @@ def combine_annotation(feature: dict, fast: bool):
         # 4. CATH
         ####
 
-        if custom_entry:
-            pstc_product = custom_entry['description'] 
-        elif swissprot_entry:
-            pstc_product = swissprot_entry['description']
-        elif afdb_entry:
-            pstc_product = afdb_entry['description'] 
-        elif pdb_entry:
-            pstc_product = pdb_entry['description'] 
-        elif cath_entry:
-            pstc_product = cath_entry['description'] 
-        else:
-            pstc_product = None
-
-        if(pstc_product):
-            product = pstc_product
+        # winning hit by hierarchy: custom > swissprot > afdb > pdb > cath,
+        # taking the first hit whose description actually names a function.
+        # Previously the top hit was taken unconditionally and only renamed to
+        # "hypothetical protein" afterwards, which (i) discarded informative
+        # lower-precedence hits, (ii) left the CDS unmarked as hypothetical and
+        # (iii) still gave it an annotation confidence.
+        selected_entry = select_informative_entry(
+            [custom_entry, swissprot_entry, afdb_entry, pdb_entry, cath_entry]
+        )
+        if selected_entry is not None:
+            product = selected_entry['description']
+            if selected_entry.get('source') == 'cath':
+                # fold/domain-level evidence: never present it as the whole
+                # protein's function (reviewer concern R2 #6)
+                product = cath_domain_label(product)
 
         # Collect all db_xref IDs
         for entry in pstc:
-            if isinstance(entry, dict):
-                src = entry.get('source', '').lower()
-                eid = entry.get('id')
-                if eid:
-                    if src == 'afdb':
-                        if not fast:
-                            db_xrefs.append(f"afdb_v6:afdbclusters_{eid}")
-                    elif src == 'swissprot':
-                        db_xrefs.append(f"afdb_v6:swissprot_{eid}")
-                    elif src == 'pdb':
-                        db_xrefs.append(f"pdb:pdb_{eid}")
-                    elif src == 'cath':
-                        db_xrefs.append(f"cath:cath_{eid}")
-                    elif src == 'custom_db':
-                        db_xrefs.append(f"custom:custom_{eid}")
-                    else:
-                        db_xrefs.append(eid)
-            elif isinstance(entry, str):
-                # Preserve any existing string cross-references
-                db_xrefs.append(entry)
+            db_xrefs.extend(pstc_db_xrefs(entry, fast, selected_entry))
 
         # mark as baktfold
         mark_as_baktfold(feature)
+
+        # annotation confidence (high/medium/low) from the hierarchy-selected
+        # hit. Surfaced in JSON + TSV only (not gff3/gbff/embl). For structure
+        # input also carry through the Foldseek TM-score and LDDT.
+        if selected_entry is not None:
+            feature['annotation_confidence'] = assign_annotation_confidence(
+                selected_entry, feature.get('prostt5_confidence'), structures
+            )
+            if structures:
+                if 'tmscore' in selected_entry:
+                    feature['tmscore'] = selected_entry['tmscore']
+                if 'lddt' in selected_entry:
+                    feature['lddt'] = selected_entry['lddt']
 
 
 
@@ -152,7 +362,22 @@ def combine_annotation(feature: dict, fast: bool):
     #     for hit in expert_hits:
     #         db_xrefs.update(hit.get('db_xrefs', []))
 
-    if product and "hypothetical protein" not in product.lower():
+    if selected_entry is None and not feature.get('hypothetical') and product \
+            and "hypothetical protein" not in product.lower():
+        # No usable hit, and the input already had a real product (only
+        # possible with --all-proteins): keep the input annotation. The strict
+        # uninformative-hit rule applies to Foldseek hits, not to the labels
+        # the input annotation tool assigned.
+        product = revise_cds_product(product)
+        if product and product.lower() != bc.HYPOTHETICAL_PROTEIN.lower():
+            if(cfg.compliant):
+                product = insdc.revise_product_insdc(product)
+            feature['product'] = product
+        else:
+            # cleanup emptied it, or renamed "Uncharacterized protein ..." to
+            # "hypothetical protein": flag it so outputs and counts agree
+            mark_as_hypothetical(feature)
+    elif selected_entry is not None:
         product = revise_cds_product(product)
         if(product):
             if(cfg.compliant):

@@ -57,6 +57,7 @@ Baktfold's documentation, including a quick tutorial, is available [here](https:
   - [Usage](#usage)
   - [Output](#output)
     - [Conceptual terms](#conceptual-terms)
+  - [Reproducing the manuscript](#reproducing-the-manuscript)
   - [Citations](#citations)
 
 ## Install
@@ -295,7 +296,7 @@ For example:
 
 ```bash
 ID	Length	Product	Swissprot	AFDBClusters	PDB	CATH
-MEGJMNBEGN_27	162	HTH-type quorum-sensing regulator RhlR	swissprot_P54292	afdbclusters_A0A9E1VSB0	pdb_5l09	cath_3sztB01
+MEGJMNBEGN_27	162	HTH-type quorum-sensing regulator RhlR	swissprot_P54292	afdbclusters_A0A9E1VSB0	pdb_5l09_B	cath_3sztB01
 MEGJMNBEGN_30	68	hypothetical protein				
 MEGJMNBEGN_70	94	hypothetical protein		afdbclusters_A0A1I3V7E0		
 ```
@@ -320,6 +321,15 @@ As Baktfold inherits annotations and related conceptual terms from Bakta. Hence,
 In addition, Baktfold introduces one conceptual term:
 
 - `PSTC`: protein structure clusters. These comprise of structure-based annotations to any of Baktfold's databases
+
+## Reproducing the manuscript
+
+All code, data and instructions needed to reproduce the analyses in the Baktfold manuscript
+live in the companion **[baktfold-analysis](https://github.com/gbouras13/baktfold-analysis)**
+repository:
+
+- This will be updated shortly for the next version
+- Large files (>50 MB) are archived on Zenodo: [doi:10.5281/zenodo.19333697](https://doi.org/10.5281/zenodo.19333697)
 
 ## Citations
 

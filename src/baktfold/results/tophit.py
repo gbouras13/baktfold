@@ -1,115 +1,139 @@
 #!/usr/bin/env python3
-import copy
 from pathlib import Path
-from typing import Dict, Tuple, Union
 
-import pandas as pd
+import polars as pl
 from loguru import logger
 
 
 def get_tophit(
     result_tsv: Path,
     structures: bool,
-    cath: bool = False
-) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    cath: bool = False,
+    report_prob: bool = False
+) -> pl.DataFrame:
     """
-    Process Foldseek output to extract top hit and weighted bitscores.
+    Process Foldseek output to extract the top hit per query.
 
     Args:
         result_tsv (Path): Path to the Foldseek result TSV file.
         structures (bool): Flag indicating whether structures have been added.
         cath (bool): Flag indicating whether this is for CATH database (all greedy besthits kept not just top)
+        report_prob (bool): Whether the Foldseek TSV carries a trailing `prob`
+            (homology probability) column — must match create_result_tsv.
 
     Returns:
-        Tuple[pd.DataFrame, pd.DataFrame]: A tuple containing two DataFrames:
-            1. DataFrame containing the top functions extracted from the Foldseek output.
-            2. DataFrame containing weighted bitscores for different functions.
+        pl.DataFrame: DataFrame containing the top hit(s) extracted from the Foldseek output.
     """
 
     logger.info("Processing Foldseek output")
 
+    col_list = [
+        "query",
+        "target",
+        "bitscore",
+        "fident",
+        "evalue",
+        "qStart",
+        "qEnd",
+        "qLen",
+        "tStart",
+        "tEnd",
+        "tLen",
+    ]
+
+    # Order must mirror create_result_tsv's --format-output exactly.
     if structures:
+        col_list += ["alntmscore", "lddt"]
+    if report_prob:
+        col_list += ["prob"]
 
-        col_list = [
-            "query",
-            "target",
-            "bitscore",
-            "fident",
-            "evalue",
-            "qStart",
-            "qEnd",
-            "qLen",
-            "tStart",
-            "tEnd",
-            "tLen",
-            "alntmscore",
-            "lddt"
-        ]
-    else:
-
-        col_list = [
-            "query",
-            "target",
-            "bitscore",
-            "fident",
-            "evalue",
-            "qStart",
-            "qEnd",
-            "qLen",
-            "tStart",
-            "tEnd",
-            "tLen",
-        ]
-
-    foldseek_df = pd.read_csv(
-        result_tsv, delimiter="\t", index_col=False, names=col_list
-    )
+    # infer_schema_length=None scans the whole file so dtype inference matches
+    # pandas' (which read the whole column) — keeps the output byte-identical.
+    try:
+        foldseek_df = pl.read_csv(
+            result_tsv,
+            separator="\t",
+            has_header=False,
+            new_columns=col_list,
+            infer_schema_length=None,
+            # IDs are names, never numbers: FASTA headers like '>1', '>2' (or
+            # numeric custom-DB targets) were inferred as i64, and the string
+            # ops below then crashed with InvalidOperationError.
+            schema_overrides={"query": pl.Utf8, "target": pl.Utf8},
+        )
+    except pl.exceptions.NoDataError:
+        # empty Foldseek result (0-byte file) — mirror pandas' empty frame
+        foldseek_df = pl.DataFrame(schema={c: pl.Utf8 for c in col_list})
 
     # replace ~PIPE~ with |
-    foldseek_df["query"] = foldseek_df["query"].str.replace("~PIPE~", "|", regex=False)
-    
+    foldseek_df = foldseek_df.with_columns(
+        pl.col("query").str.replace_all("~PIPE~", "|", literal=True)
+    )
 
     # in case the foldseek output is empty
-    if foldseek_df.empty:
+    if foldseek_df.is_empty():
         logger.warning(
             "Foldseek found no hits whatsoever - please check your input if you expect hits"
         )
-        
-    else:
+        return foldseek_df
 
-        # add qcov and tcov 
-        foldseek_df["qCov"] = ((foldseek_df["qEnd"] - foldseek_df["qStart"] ) / foldseek_df["qLen"]).round(2)
-        foldseek_df["tCov"] = ((foldseek_df["tEnd"] - foldseek_df["tStart"] ) / foldseek_df["tLen"]).round(2)
+    # add qcov and tcov (rounded to 2dp). evalue is rendered with Python's
+    # float repr so the written TSV is byte-identical to the previous pandas
+    # output (pandas/Python pad scientific exponents to 2 digits, polars does
+    # not — e.g. '1.5e-08' vs '1.5e-8'). repr() round-trips losslessly so the
+    # numeric value consumed downstream by pstc.parse is unchanged.
+    foldseek_df = foldseek_df.with_columns(
+        # alignment coordinates are 1-based inclusive, hence the +1: a
+        # full-length alignment (1..L of L) has coverage 1.0, not (L-1)/L.
+        ((pl.col("qEnd") - pl.col("qStart") + 1) / pl.col("qLen")).round(2).alias("qCov"),
+        ((pl.col("tEnd") - pl.col("tStart") + 1) / pl.col("tLen")).round(2).alias("tCov"),
+        pl.col("evalue").map_elements(lambda v: repr(float(v)), return_dtype=pl.Utf8),
+    )
 
-        # reorder
-        qLen_index = foldseek_df.columns.get_loc("qLen")
-        tLen_index = foldseek_df.columns.get_loc("tLen")
+    # reorder: qCov directly after qLen, the tStart/tEnd/tLen/tCov block
+    # together; any trailing structure columns (alntmscore, lddt) stay at the end.
+    front = col_list[: col_list.index("qLen") + 1]
+    tail = col_list[col_list.index("tLen") + 1 :]
+    new_column_order = front + ["qCov", "tStart", "tEnd", "tLen", "tCov"] + tail
+    foldseek_df = foldseek_df.select(new_column_order)
 
-        new_column_order = (
-            list(
-                [
-                    col
-                    for col in foldseek_df.columns[: qLen_index + 1]
-                    if col not in ["qCov", "tStart","tEnd",	"tLen", "tCov"]
-                ]
-            )
-            + ["qCov", "tStart","tEnd",	"tLen", "tCov"]
-            + list(
-                [
-                    col
-                    for col in foldseek_df.columns[tLen_index + 1 :]
-                    if col not in ["qCov", "tStart","tEnd",	"tLen", "tCov"]
-                ]
-            )
+    # Break score ties deterministically before anything picks a "first" row.
+    # Foldseek emits hits per query in descending-bitscore order, but the order
+    # *within* a run of equal bitscores is not stable across runs (it falls out
+    # of prefilter/thread scheduling). When the top two hits tie, `keep="first"`
+    # therefore picked a different target run to run — e.g. the golden outputs
+    # flipped between the equally-scoring PDB entries "MsDpo4-DNA complex 1"
+    # and "MsDpo4-DNA complex 2", failing the golden tests with no code change.
+    #
+    # Sort within each query by (bitscore desc, target, original position),
+    # keeping queries themselves in their original order — so for distinct
+    # bitscores the row order Foldseek produced is preserved exactly and only
+    # genuine ties are reordered.
+    if not foldseek_df.is_empty():
+        foldseek_df = foldseek_df.with_row_index("_orig")
+        query_order = foldseek_df.group_by("query", maintain_order=True).agg(
+            pl.col("_orig").min().alias("_query_order")
         )
-        foldseek_df = foldseek_df.reindex(columns=new_column_order)
+        foldseek_df = (
+            foldseek_df.join(query_order, on="query", how="left")
+            .sort(
+                by=[
+                    pl.col("_query_order"),
+                    pl.col("bitscore").cast(pl.Float64, strict=False),
+                    pl.col("target"),
+                    pl.col("_orig"),
+                ],
+                descending=[False, True, False, False],
+            )
+            .drop(["_orig", "_query_order"])
+        )
 
-
-        if not cath:
-            # get only the tophit - will always be the first hit for each query (top bitscore)
-            foldseek_df = foldseek_df.drop_duplicates(subset="query", keep="first")
-        # otherwise, the df will contain all greedy tophits from CATH
-
+    if not cath:
+        # get only the tophit - always the first (top-bitscore) hit per query.
+        # maintain_order=True preserves the order established above so "first"
+        # picks the same survivor pandas' drop_duplicates(keep="first") did.
+        foldseek_df = foldseek_df.unique(subset="query", keep="first", maintain_order=True)
+    # otherwise, the df will contain all greedy tophits from CATH
 
     return foldseek_df
 

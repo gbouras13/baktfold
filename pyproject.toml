@@ -5,16 +5,22 @@ requires = ["setuptools>=61.0", "wheel>=0.37.1"]
 [project]
 # https://packaging.python.org/en/latest/specifications/declaring-project-metadata/
 name = "baktfold"
-version = "0.3.0" # change VERSION too
+# Single source of truth for the version: src/baktfold/utils/VERSION, which
+# `baktfold --version` and every output header also read (see utils.get_version).
+dynamic = ["version"]
 description = "Rapid and standardized annotation of bacterial genomes, MAGs and plasmids using protein structural information"
 readme = "README.md"
-requires-python = ">=3.8, <4"
+requires-python = ">=3.10,<3.14"
 license = {file = "MIT"}
 authors = [
     {name = "George Bouras", email = "george.bouras@adelaide.edu.au"},
     {name = "Oliver Schwengers", email = "oliver.schwengers@cb.jlug.de"}
 ]
-keywords = ["keyword", "are", "cool"]
+keywords = [
+    "genome annotation", "bacteria", "archaea", "plasmids",
+    "protein structure", "Foldseek", "ProstT5", "protein language model",
+    "hypothetical proteins", "bioinformatics"
+]
 
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -25,34 +31,38 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14"
+    "Programming Language :: Python :: 3.13"
 ]
 
 dependencies = [
         "click >=8.0.0",
         "loguru >=0.5.3",
-        "pyyaml >=6.0",
-        "pandas >=1.4.2",
+        "polars >=1.0.0",
         "biopython >=1.80",
-        "datasets >=2.15",
         "requests >=2.25",
         "sentencepiece >=0.1.99",
         "transformers >=4.34",
         "torch >=2.1.2",
         "pyarrow >=14.0.0",
         "alive-progress >=3.0.1",
-        "numpy >=1.20,<2",
+        # Loosened from `>=2.0` to `>=1.24` so Docker base images that ship
+        # numpy 1.26.x via Debian (e.g. pawsey/pytorch ROCm images) don't
+        # trigger pip's "Cannot uninstall numpy: RECORD file not found" error —
+        # those installs have no pip metadata so pip can't replace them with a
+        # 2.x build. baktfold uses no numpy directly; all numpy goes through
+        # pholdlib, which is already pinned >=1.24 and neutralises the only
+        # 1.x/2.x divergence (np.float32 round) with a float() cast. Matches
+        # phold's pin.
+        "numpy >=1.24",
         "h5py >=3.5",
         "tqdm >=4.35.0",
         "xopen >=1.5.0",
         "protobuf >=3.20",
-        "tiktoken >=0.5.0"
+        "tiktoken >=0.5.0",
+        "pholdlib >=0.1.2"
     ]
 
 [project.scripts]
@@ -69,7 +79,8 @@ lint = [
     "black"
 ]
 test = ["pytest>=6.2.5",
-"pytest-cov >=3.0.0"]
+"pytest-cov >=3.0.0",
+"pytest-snapshot >=0.9.0"]
 exe = [
     "setuptools",
     "wheel",
@@ -80,5 +91,8 @@ exe = [
 include-package-data = true
 zip-safe = true  # This just means it's safe to zip up the bdist
 
+[tool.setuptools.dynamic]
+version = {file = "src/baktfold/utils/VERSION"}
+
 [tool.setuptools.package-data]
-baktfold = ["features/autotune_data/*.fasta.gz"]
+baktfold = ["features/autotune_data/*.fasta.gz", "utils/VERSION", "utils/CITATION"]

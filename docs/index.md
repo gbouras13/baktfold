@@ -290,7 +290,7 @@ For example:
 
 ```bash
 ID	Length	Product	Swissprot	AFDBClusters	PDB	CATH
-MEGJMNBEGN_27	162	HTH-type quorum-sensing regulator RhlR	swissprot_P54292	afdbclusters_A0A9E1VSB0	pdb_5l09	cath_3sztB01
+MEGJMNBEGN_27	162	HTH-type quorum-sensing regulator RhlR	swissprot_P54292	afdbclusters_A0A9E1VSB0	pdb_5l09_B	cath_3sztB01
 MEGJMNBEGN_30	68	hypothetical protein				
 MEGJMNBEGN_70	94	hypothetical protein		afdbclusters_A0A1I3V7E0		
 ```

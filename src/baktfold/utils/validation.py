@@ -14,7 +14,7 @@ from baktfold.io.handle_genbank import  get_genbank
 
 
 
-def instantiate_dirs(output_dir: Union[str, Path], force: bool) -> Path:
+def instantiate_dirs(output_dir: Union[str, Path], force: bool, protected=()) -> Path:
     """
     Checks and instantiates the output directory.
 
@@ -28,10 +28,23 @@ def instantiate_dirs(output_dir: Union[str, Path], force: bool) -> Path:
 
     # Checks the output directory
     # remove outdir on force
-    logger.add(lambda _: sys.exit(1), level="ERROR")
     logger.info(f"Checking the output directory {output_dir}")
     if force is True:
         if Path(output_dir).exists():
+            # -f deletes the output directory: refuse if an input lives in it
+            # (e.g. `json -i out/baktfold.json -o out -f` deleted its own
+            # input; `compare --predictions-dir X -o X -f` the predictions).
+            out = Path(output_dir).resolve()
+            for p in protected:
+                if not p:
+                    continue
+                rp = Path(p).resolve()
+                if rp == out or out in rp.parents:
+                    logger.error(
+                        f"Refusing to use --force: input {p} is inside the output directory "
+                        f"{output_dir} and would be deleted. Choose a different -o."
+                    )
+                    sys.exit(1)
             logger.info(f"Removing {output_dir} because --force was specified")
             shutil.rmtree(output_dir)
         else:
@@ -43,6 +56,10 @@ def instantiate_dirs(output_dir: Union[str, Path], force: bool) -> Path:
             logger.error(
                 "Output directory already exists and force was not specified. Please specify -f or --force to overwrite the output directory"
             )
+            # These checks run before begin_baktfold installs the exit-on-ERROR
+            # log sink, so logging alone does not stop the run: exit here, or
+            # new results get written alongside stale ones from an earlier run.
+            sys.exit(1)
 
     # instantiate outdir
     if Path(output_dir).exists() is False:
@@ -62,7 +79,6 @@ def validate_outfile(outfile: Union[str, Path], force: bool) -> Path:
 
     # Checks the output directory
     # remove outdir on force
-    logger.add(lambda _: sys.exit(1), level="ERROR")
     logger.info(f"Checking the output file {outfile}")
     if force is True:
         if Path(outfile).exists():
@@ -77,6 +93,7 @@ def validate_outfile(outfile: Union[str, Path], force: bool) -> Path:
             logger.error(
                 f"Output file {outfile} already exists and force was not specified. Please specify -f or --force to overwrite the output file"
             )
+            sys.exit(1)  # see instantiate_dirs: no exit-on-ERROR sink yet
 
 
 def check_dependencies() -> None:
@@ -94,10 +111,18 @@ def check_dependencies() -> None:
     #############
     # foldseek
     #############
+    # Previously a bare ``except`` logged the error but fell through to
+    # ``process.communicate()`` on an unbound ``process`` → UnboundLocalError.
+    # Bare ``except`` also swallowed Ctrl-C. Narrowed to the errors Popen
+    # actually raises for a missing binary; exit cleanly on failure.
     try:
         process = sp.Popen(["foldseek", "version"], stdout=sp.PIPE, stderr=sp.STDOUT)
-    except:
-        logger.error("Foldseek not found. Please reinstall baktfold.")
+    except (FileNotFoundError, PermissionError, OSError) as e:
+        logger.error(
+            f"Foldseek not found on PATH ({type(e).__name__}: {e}). "
+            "Install foldseek and ensure it is on your PATH, then re-run baktfold."
+        )
+        sys.exit(1)
 
     foldseek_out, _ = process.communicate()
     foldseek_out = foldseek_out.decode()
@@ -105,18 +130,16 @@ def check_dependencies() -> None:
     foldseek_version = foldseek_out.strip()
 
     if "941cd33" in foldseek_version:
-        foldseek_major_version=10
-        foldseek_minor_version="941cd33"
+        foldseek_major_version = 10
+        foldseek_minor_version = "941cd33"
         logger.info(
-        f"Foldseek version found is v{foldseek_major_version}.{foldseek_minor_version}"
-    )
+            f"Foldseek version found is v{foldseek_major_version}.{foldseek_minor_version}"
+        )
+        logger.info("Foldseek version is ok")
     else:
         logger.warning(f"Foldseek version found is v{foldseek_version}")
         logger.warning(f"baktfold is recommended to be run with Foldseek v10.941cd33")
         logger.warning(f"Using a different Foldseek version is likely to work without issue, but this cannot be guaranteed.")
-
-
-    logger.info("Foldseek version is ok")
 
 def check_genbank_and_prokka(filepath, euk):
     """
@@ -140,12 +163,10 @@ def check_genbank_and_prokka(filepath, euk):
 
     Returns
     -------
-    list[SeqRecord] or None
-        A list of Biopython SeqRecord objects if parsing succeeds.
-        Returns None if the file is not valid GenBank or cannot be parsed.
+    list[SeqRecord]
+        A list of Biopython SeqRecord objects. Exits with status 1 if the file
+        is not valid GenBank or cannot be parsed.
     """
-
-    logger.add(lambda _: sys.exit(1), level="ERROR")
 
     is_valid_genbank = False
     is_prokka = False
@@ -162,7 +183,7 @@ def check_genbank_and_prokka(filepath, euk):
 
         if not records:
             logger.error(f"Input file {filepath} is not GenBank format. Please check your input")
-            return None
+            sys.exit(1)
         else:
             is_valid_genbank = True
 
@@ -182,7 +203,7 @@ def check_genbank_and_prokka(filepath, euk):
 
     except Exception:
         logger.error(f"There was an error parsing {filepath}. Please check your input")
-        return None
+        sys.exit(1)
 
     return records
 

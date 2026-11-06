@@ -11,7 +11,6 @@ from pathlib import Path
 from typing import IO, Dict, Union
 from datetime import datetime
 
-import pandas as pd
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqFeature import FeatureLocation, SeqFeature
@@ -120,11 +119,15 @@ def get_genbank(genbank: Path) -> dict:
                     method = "Pharokka"
                 else:
                     logger.error(
-                                f"Feature {cds_feature} could not be parsed. Therefore, the input style format for {genbank} could not be detected. Please check your input."
-                            )
+                        f"Feature {cds_feature} could not be parsed. Therefore, the input style format for {genbank} could not be detected. Please check your input."
+                    )
+                    # Bind ``method`` so the return below never raises
+                    # ``UnboundLocalError`` (which the broad except would
+                    # mislabel as "not a genbank file").
+                    method = None
             return identify_long_ids(gb_dict), method
         except Exception as e:
-            logger.warning(f"{genbank} is not a genbank file")
+            logger.warning(f"{genbank} is not a genbank file: {e}")
             return {}, None
 
     try:
@@ -135,7 +138,7 @@ def get_genbank(genbank: Path) -> dict:
             with open(genbank.strip(), "rt") as handle:
                 return parse_records(handle)
     except Exception as e:
-        logger.warning(f"{genbank} is not a genbank file")
+        logger.warning(f"{genbank} is not a genbank file: {e}")
         return {}, None
 
 
@@ -171,7 +174,7 @@ def identify_long_ids(gb_dict: dict) -> dict:
                     cds_feature.qualifiers["ID"][0] = cds_feature.qualifiers["ID"][
                         0
                     ].replace(" ", "")
-            except:
+            except Exception:
                 # will be GenBank/NCBI formatted
                 # ID isn't a field and should be properly formatted - famous last words probably
                 continue
@@ -212,7 +215,6 @@ def get_proteins(fasta: Path) -> dict:
                         sequence += line
                 if sequence_id:
                     fasta_dict[sequence_id] = sequence
-            handle.close()
         except ValueError:
             logger.error(f"{fasta.strip()} is not a FASTA file!")
             raise
@@ -234,7 +236,6 @@ def get_proteins(fasta: Path) -> dict:
                         sequence += line
                 if sequence_id:
                     fasta_dict[sequence_id] = sequence
-            handle.close()
         except ValueError:
             logger.error(f"{fasta.strip()} is not a FASTA file!")
             raise
