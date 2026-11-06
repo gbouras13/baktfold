@@ -74,6 +74,40 @@ def baktfold_base(rel_path):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), rel_path)
 
 
+def iter_sequences_once(sequences):
+    """Yield ``(seq, first)`` for each sequence entry; ``first`` is False when an
+    earlier entry had the same ID.
+
+    Sequence IDs should be unique, but a JSON converted from a GenBank file whose
+    record IDs collide repeats them (Ensembl's truncated ACCESSION lines, e.g.
+    Emiliania huxleyi; fixed in convert-euk, see make_record_ids_unique).
+    Features are attached to sequences by ID, so writers that emit each
+    sequence's features once per sequence entry repeated every feature on those
+    sequences once per entry. Callers emit features on the first entry only.
+    """
+    seen = set()
+    for seq in sequences:
+        first = seq['id'] not in seen
+        seen.add(seq['id'])
+        yield seq, first
+
+
+def warn_duplicate_sequence_ids(sequences) -> int:
+    """Log a warning if sequence IDs repeat; return how many IDs do."""
+    counts = {}
+    for seq in sequences:
+        counts[seq['id']] = counts.get(seq['id'], 0) + 1
+    dups = sum(1 for n in counts.values() if n > 1)
+    if dups:
+        logger.warning(
+            f"{dups} sequence IDs occur more than once in the input JSON. Features are matched "
+            "to sequences by ID, so features on those sequences cannot be placed on the right "
+            "record; each is written once, on the first sequence with its ID. Re-convert the "
+            "GenBank input with this version's convert-euk, which makes record IDs unique."
+        )
+    return dups
+
+
 def get_version():
     """
     Returns the version number from the VERSION file.

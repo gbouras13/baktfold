@@ -7,6 +7,7 @@ from loguru import logger
 
 import baktfold.bakta.config as cfg
 import baktfold.bakta.constants as bc
+from baktfold.utils.util import iter_sequences_once
 # import baktfold.bakta
 # import bakta.ips as bips
 # import bakta.ups as bups
@@ -30,8 +31,9 @@ def write_features(sequences: Sequence[dict], features_by_sequence: Dict[str, di
         fh.write(f'# URL: {bc.BAKTFOLD_URL}\n')
         fh.write('#Sequence Id\tType\tStart\tStop\tStrand\tLocus Tag\tGene\tProduct\tDbXrefs\n')
 
-        for seq in sequences:
-            for feat in features_by_sequence[seq['id']]:
+        for seq, first in iter_sequences_once(sequences):
+            # a repeated sequence ID: its features were written on the first entry
+            for feat in (features_by_sequence[seq['id']] if first else []):
                 seq_id = feat['sequence'] if 'sequence' in feat else feat['contig']  # <1.10.0 compatibility
                 feat_type = feat['type']
                 if(feat_type == bc.FEATURE_GAP):

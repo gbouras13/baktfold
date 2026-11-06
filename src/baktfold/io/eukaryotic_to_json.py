@@ -2492,10 +2492,55 @@ def calc_genome_stats(records):
         "coding_ratio": None  
     }
 
+def make_record_ids_unique(records) -> int:
+    """Give every record a unique ``id``, in place; returns how many were renamed.
+
+    Biopython takes ``record.id`` from the ACCESSION/VERSION lines, and some
+    files repeat it across records. In Ensembl's Emiliania huxleyi flatfile
+    the ACCESSION is truncated, so EMIHUscaffold_10000, _10004, ... all read
+    '...:EMIHUscaffold_1000'. Features are tied to sequences by this ID, so
+    a shared ID puts features on the wrong sequence and repeats them in the
+    outputs. Every record in a group that shares an ID is renamed (not just
+    the later ones, since the first may not be the record the ID names): to
+    its LOCUS name when that is unique, else to '<id>_<n>'.
+    """
+    id_counts = defaultdict(int)
+    name_counts = defaultdict(int)
+    for rec in records:
+        id_counts[rec.id] += 1
+        name_counts[rec.name] += 1
+
+    taken = {rec.id for rec in records if id_counts[rec.id] == 1}
+    renamed = 0
+    group_index = defaultdict(int)
+    for rec in records:
+        if id_counts[rec.id] == 1:
+            continue
+        old = rec.id
+        group_index[old] += 1
+        new = rec.name if rec.name and name_counts[rec.name] == 1 and rec.name not in taken else None
+        n = group_index[old]
+        while new is None or new in taken:
+            new = f"{old}_{n}"
+            n += 1
+        taken.add(new)
+        rec.id = new
+        renamed += 1
+
+    if renamed:
+        logger.warning(
+            f"{renamed} GenBank records share their record ID with another record; each was renamed "
+            "to its LOCUS name (or <id>_<n>) so that features stay on their own sequence."
+        )
+    return renamed
+
+
 def eukaryotic_gbk_to_json(records, output_json, verbose):
-    
+
     if len(records) == 0:
         raise ValueError("No GenBank records found.")
+
+    make_record_ids_unique(records)
     
     # elif len(records) >= 1:
     #     funannotate_version = parse_funannotate_version(records[0])

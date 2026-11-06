@@ -8,6 +8,7 @@ from loguru import logger
 import baktfold.bakta
 import baktfold.bakta.config as cfg
 import baktfold.bakta.constants as bc
+from baktfold.utils.util import iter_sequences_once
 import baktfold.io.fasta as fasta
 import baktfold.io.insdc as insdc
 import baktfold.bakta.annotation as ba
@@ -381,7 +382,7 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
         else:
             euk_ids = None
 
-        for seq in data['sequences']:  # write features
+        for seq, first in iter_sequences_once(data['sequences']):  # write features
             if euk:
                 locus_counter = {} # for UTRs
                 
@@ -397,7 +398,8 @@ def write_features(data: dict, features_by_sequence: Dict[str, dict], gff3_path:
             annotations = encode_annotations(annotations)
             fh.write(f"{seq['id']}\tBaktfold\tregion\t1\t{str(seq['length'])}\t.\t+\t.\t{annotations}\n")
 
-            for feat in features_by_sequence[seq['id']]:
+            # a repeated sequence ID: its features were written on the first entry
+            for feat in (features_by_sequence[seq['id']] if first else []):
                 seq_id = feat['sequence'] if 'sequence' in feat else feat['contig']  # <1.10.0 compatibility
                 start = feat['start']
                 stop = feat['stop']

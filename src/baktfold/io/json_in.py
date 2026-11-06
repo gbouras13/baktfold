@@ -7,6 +7,7 @@ from loguru import logger
 from xopen import xopen
 
 import baktfold.bakta.constants as bc
+from baktfold.utils.util import iter_sequences_once, warn_duplicate_sequence_ids
 import baktfold.bakta.config as cfg
 # import baktfold.utils as bu
 # import baktfold.io.fasta as fasta
@@ -61,6 +62,7 @@ def parse_json_input(input_path, faa_path, all_proteins, protein_json_flag):
 
 
     features = data['features']
+    warn_duplicate_sequence_ids(data.get('sequences', []))
 
     # features_by_sequence = {seq['id']: [] for seq in data['sequences']}
     # for feature in data['features']:
@@ -360,6 +362,8 @@ def parse_baktfold_json_for_reconstruction(
     for name, default in _DEFAULT_PROGRAMS.items():
         programs[name] = _first_set(program_overrides.get(name), provenance.get(name))
 
+    warn_duplicate_sequence_ids(data['sequences'])
+
     # ---- rebuild features_by_sequence (preserving the JSON feature order,
     #      which is already start-sorted per sequence) and a flattened list
     #      consistent with it. Mirrors run/compare (skip discarded, <1.10.0
@@ -379,8 +383,9 @@ def parse_baktfold_json_for_reconstruction(
         bucket.append(feature)
 
     flattened = []
-    for seq in data['sequences']:
-        flattened.extend(features_by_sequence[seq['id']])
+    for seq, first in iter_sequences_once(data['sequences']):
+        if first:  # a repeated sequence ID must not repeat its features
+            flattened.extend(features_by_sequence[seq['id']])
 
     if other_genbank:
         log_for_other_genbank_tools(

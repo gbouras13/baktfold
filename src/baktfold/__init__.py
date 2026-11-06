@@ -13,7 +13,7 @@ from baktfold.io.fasta_in import parse_protein_input, proteins_to_predict
 from baktfold.databases.db import install_database, validate_db, check_prostT5_download, download_zenodo_prostT5
 from baktfold.features.create_foldseek_db import generate_foldseek_db_from_aa_3di
 from baktfold.utils.constants import DB_DIR, CNN_DIR
-from baktfold.utils.util import (begin_baktfold, clean_up_temporary_files, end_baktfold, get_version, print_citation, sort_euk_feature_key)
+from baktfold.utils.util import (begin_baktfold, clean_up_temporary_files, end_baktfold, get_version, iter_sequences_once, print_citation, sort_euk_feature_key)
 from baktfold.utils.validation import (check_dependencies, instantiate_dirs, validate_outfile, check_genbank_and_prokka)
 
 from baktfold.io.prokka_gbk_to_json import prokka_gbk_to_json
@@ -592,7 +592,9 @@ def run(
 
     # flatten sorted features
     features = []
-    for seq in data['sequences']:
+    for seq, first in iter_sequences_once(data['sequences']):
+        if not first:  # repeated sequence ID: its features are already in
+            continue
         seq_features = features_by_sequence[seq['id']]
         if euk: # ensure gene -> mRNA -> CDS ordering for each locus tag
             seq_features.sort(key=sort_euk_feature_key)
@@ -1281,7 +1283,9 @@ def compare(
     # flatten sorted features
     features = []
 
-    for seq in data['sequences']:
+    for seq, first in iter_sequences_once(data['sequences']):
+        if not first:  # repeated sequence ID: its features are already in
+            continue
         seq_features = features_by_sequence[seq['id']]
         if euk: # ensure gene -> mRNA -> CDS ordering for each locus tag but overall keep the start as the prinary sort
 

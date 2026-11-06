@@ -10,6 +10,7 @@ from Bio.SeqFeature import SeqFeature, FeatureLocation, CompoundLocation, AfterP
 
 import baktfold.bakta.config as cfg
 import baktfold.bakta.constants as bc
+from baktfold.utils.util import iter_sequences_once
 import baktfold.bakta.annotation as ba
 import baktfold.bakta.so as so
 
@@ -54,9 +55,10 @@ def build_biopython_sequence_list(data: dict, features: Sequence[dict], prokka, 
     # need to give euk to not give trnas as trnascan - do
 
     sequence_list = []
-    for seq in data['sequences']:
+    for seq, first in iter_sequences_once(data['sequences']):
         sequence_features = []
-        if len(features) > 0:
+        # a repeated sequence ID: its features go on the first record only
+        if len(features) > 0 and first:
             sequence_features = [feat for feat in features if feat['sequence'] == seq['id']] if 'sequence' in features[0] else [feat for feat in features if feat['contig'] == seq['id']]  # <1.10.0 compatibility
         comment = (
             'Annotated with Baktfold',
