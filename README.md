@@ -328,9 +328,7 @@ All code, data and instructions needed to reproduce the analyses in the Baktfold
 live in the companion **[baktfold-analysis](https://github.com/gbouras13/baktfold-analysis)**
 repository:
 
-- **[REPRODUCIBILITY.md](https://github.com/gbouras13/baktfold-analysis/blob/main/REPRODUCIBILITY.md)**
-  — the single entry point: exact software and database versions, input datasets, commands,
-  hardware, and a figure-by-figure map of which analysis produces what.
+- This will be updated shortly for the next version
 - Large files (>50 MB) are archived on Zenodo: [doi:10.5281/zenodo.19333697](https://doi.org/10.5281/zenodo.19333697)
 
 ## Citations
