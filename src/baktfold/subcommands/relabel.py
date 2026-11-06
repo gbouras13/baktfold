@@ -49,8 +49,15 @@ def relabel_features(
         for p in (f['pstc'] if isinstance(f['pstc'], list) else [f['pstc']])
     )
 
-    # 1. undo the earlier labelling (needs the hits as they were written)
-    n_reset = sum(anno.reset_baktfold_annotation(f) for f in with_hits)
+    # 1. undo the earlier labelling (needs the hits as they were written).
+    # In outputs with confidence tiers, a CDS with hits that is neither
+    # hypothetical nor tiered kept its curated input label (--all-proteins
+    # never downgrades one), so it starts from that label again, as in run.
+    # Outputs without tiers (pre-0.4.0) can't tell these apart.
+    has_tiers = any('annotation_confidence' in f for f in with_hits)
+    kept = {id(f) for f in with_hits
+            if has_tiers and f.get('baktfold') and 'hypothetical' not in f and 'annotation_confidence' not in f}
+    n_reset = sum(anno.reset_baktfold_annotation(f, keep_product=id(f) in kept) for f in with_hits)
 
     # 2. optionally refresh descriptions / chains from the database
     refresh = {'pdb_chains_added': 0, 'pdb_no_chain_kept': 0}

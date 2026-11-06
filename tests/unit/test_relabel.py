@@ -288,3 +288,26 @@ def test_cli_relabel_rejects_database_without_baktfold_db(tmp_path, old_genome_j
     r = CliRunner().invoke(main_cli, ["json", "-i", str(src), "-o", str(tmp_path / "o"),
                                       "--relabel", "-d", str(tmp_path)])
     assert r.exit_code == 2 and "baktfold.db" in r.output
+
+
+def test_relabel_keeps_curated_label_that_run_kept():
+    """--all-proteins: a curated CDS whose only hit is uninformative keeps its
+    input label in run (no tier). Relabel used to reset it to "hypothetical
+    protein" (golden run_all MEGJMN_009, "Chromate transporter")."""
+    from baktfold.subcommands.relabel import relabel_features
+
+    curated = {
+        "type": "cds", "locus": "A_1", "id": "A_1", "product": "Chromate transporter",
+        "baktfold": True, "db_xrefs": [],
+        "pstc": [{"source": "afdb", "id": "AF-X", "description": "hypothetical protein",
+                  "evalue": 5e-43, "bitscore": 300.0, "qcov": 0.9, "tcov": 0.9, "fident": 0.4}],
+    }
+    tiered = {
+        "type": "cds", "locus": "A_2", "id": "A_2", "product": "Transposase",
+        "baktfold": True, "annotation_confidence": "high", "db_xrefs": [],
+        "pstc": [{"source": "swissprot", "id": "P1", "description": "Transposase",
+                  "evalue": 1e-50, "bitscore": 400.0, "qcov": 0.95, "tcov": 0.95, "fident": 0.5}],
+    }
+    relabel_features([curated, tiered], fast=False, has_duplicate_locus=False)
+    assert curated["product"] == "Chromate transporter"
+    assert "hypothetical" not in curated

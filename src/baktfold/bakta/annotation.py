@@ -210,7 +210,7 @@ def pstc_db_xrefs(entry, fast: bool, selected_entry=None) -> list:
     return [eid]
 
 
-def reset_baktfold_annotation(feature: dict) -> bool:
+def reset_baktfold_annotation(feature: dict, keep_product: bool = False) -> bool:
     """Undo combine_annotation on a CDS so that label selection can be rerun
     on its stored hits (``baktfold json --relabel``).
 
@@ -222,7 +222,10 @@ def reset_baktfold_annotation(feature: dict) -> bool:
     because the xrefs to remove are rebuilt from them.
 
     A product the input tool had assigned before Baktfold overwrote it (only
-    possible with ``--all-proteins``) cannot be recovered.
+    possible with ``--all-proteins``) cannot be recovered. With
+    ``keep_product`` (a curated input label that label selection kept: hits,
+    but no confidence tier), the product is kept as the starting state, as
+    ``run`` starts from it.
 
     Returns True if the feature was reset.
     """
@@ -237,8 +240,9 @@ def reset_baktfold_annotation(feature: dict) -> bool:
     feature['db_xrefs'] = [x for x in feature.get('db_xrefs', []) if x not in added]
     # back to the state combine_annotation started from. Not mark_as_hypothetical:
     # that also clears gene/genes, which combine_annotation leaves alone
-    feature['product'] = bc.HYPOTHETICAL_PROTEIN
-    feature['hypothetical'] = True
+    if not keep_product:
+        feature['product'] = bc.HYPOTHETICAL_PROTEIN
+        feature['hypothetical'] = True
     for key in ('annotation_confidence', 'tmscore', 'lddt', 'baktfold'):
         feature.pop(key, None)
     return True
