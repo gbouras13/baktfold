@@ -535,6 +535,26 @@ Example usage
 baktfold json -i baktfold.json -o baktfold_reconstructed_output
 ```
 
+#### Relabelling outputs from an earlier version
+
+`--relabel` reruns label selection on the Foldseek hits stored in the `.json`, using this version's rules, then writes every output as above. It does not search again, so it needs no ProstT5, GPU or Foldseek. Use it to bring outputs written by an earlier `baktfold` version up to date with label-rule changes, for example the 0.4.0 changes: uninformative hits ("hypothetical", "uncharacterised") no longer mask a functional hit from a lower-precedence database; CATH labels read "<superfamily> domain-containing protein"; and PDB hits are named by chain.
+
+```bash
+# label rules only (descriptions as stored in the JSON)
+baktfold json -i old_run/baktfold.json -o relabelled --relabel
+
+# also look the descriptions up again, e.g. for chain-level PDB names
+baktfold json -i old_run/baktfold.json -o relabelled --relabel -d baktfold_db \
+    --pdb-tophit old_run/baktfold_pdb_tophit.tsv \
+    --prostt5-probs old_run/baktfold_prostT5_3di_mean_probabilities.csv
+```
+
+* With `-d`, descriptions are looked up in that database. Custom-database descriptions are kept as stored.
+* JSONs written before 0.4.0 don't record which PDB chain was hit. `--pdb-tophit` takes it from the original run's `*_pdb_tophit.tsv`. Without it, those PDB hits keep their entry title, and a warning says how many there are.
+* `Annotation_Confidence` needs each protein's ProstT5 confidence. JSONs written before 0.4.0 don't carry it, so pass the original run's `*_prostT5_3di_mean_probabilities.csv` with `--prostt5-probs`. Otherwise those proteins get no confidence tier, and a warning says how many.
+* What was done is recorded as `baktfold_run.relabel` in the new `.json`: the version, the database and the counts of changed labels.
+* A product that the input annotation tool assigned and that Baktfold then overwrote (only possible with `--all-proteins`) cannot be recovered.
+
 ```bash
 Usage: baktfold json [OPTIONS]
 
@@ -569,6 +589,20 @@ Options:
                                 input only). Default: INFERNAL:1.1.5
   --ncrna-program TEXT          ncRNA prediction tool string (non-Bakta/Prokka
                                 input only). Default: INFERNAL:1.1.5
+  --relabel                     Rerun label selection on the stored Foldseek
+                                hits with this version's rules (no search).
+                                Brings outputs from earlier versions up to
+                                date
+  -d, --database PATH           With --relabel: Baktfold database directory to
+                                look the hit descriptions up again (needed for
+                                chain-level PDB names)
+  --pdb-tophit PATH             With --relabel -d: the original run's
+                                <prefix>_pdb_tophit.tsv, for PDB chains that
+                                older JSONs don't record
+  --prostt5-probs PATH          With --relabel: the original run's
+                                <prefix>_prostT5_3di_mean_probabilities.csv,
+                                for JSONs without ProstT5 confidence (needed
+                                for Annotation_Confidence)
 ```
 
 ### `baktfold createdb`

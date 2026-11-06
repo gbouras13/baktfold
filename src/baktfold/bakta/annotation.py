@@ -175,6 +175,75 @@ def attach_prostt5_confidence(features: Sequence[dict], mean_probs_csv, has_dupl
             feat['prostt5_confidence'] = confidence[key]
 
 
+def pstc_db_xrefs(entry, fast: bool, selected_entry=None) -> list:
+    """The db_xrefs that combine_annotation adds for one PSTC hit.
+
+    Kept in one place so reset_baktfold_annotation can remove exactly what
+    combine_annotation added.
+    """
+    if isinstance(entry, str):
+        # Preserve any existing string cross-references
+        return [entry]
+    if not isinstance(entry, dict):
+        return []
+    src = entry.get('source', '').lower()
+    eid = entry.get('id')
+    if not eid:
+        return []
+    if src == 'afdb':
+        return [] if fast else [f"afdb_v6:afdbclusters_{eid}"]
+    if src == 'swissprot':
+        return [f"afdb_v6:swissprot_{eid}"]
+    if src == 'pdb':
+        # chain-level: the chain that was hit, not just the entry
+        chain = entry.get('chain')
+        xrefs = [f"pdb:pdb_{eid}_{chain}" if chain else f"pdb:pdb_{eid}"]
+        # when this PDB hit supplied the label and its name came
+        # from UniProt (via SIFTS), cite that UniProt entry too
+        if entry is selected_entry and entry.get('uniprot'):
+            xrefs.append(f"UniProtKB:{entry['uniprot']}")
+        return xrefs
+    if src == 'cath':
+        return [f"cath:cath_{eid}"]
+    if src == 'custom_db':
+        return [f"custom:custom_{eid}"]
+    return [eid]
+
+
+def reset_baktfold_annotation(feature: dict) -> bool:
+    """Undo combine_annotation on a CDS so that label selection can be rerun
+    on its stored hits (``baktfold json --relabel``).
+
+    Only features Baktfold labelled (``baktfold`` key, set whenever a CDS had
+    hits) are reset: the product goes back to "hypothetical protein", the
+    db_xrefs that came from its hits are removed, and the confidence tier and
+    structure scores are dropped. The hits themselves (``pstc``) are kept.
+    Must run before the hits are changed (chains or descriptions refreshed),
+    because the xrefs to remove are rebuilt from them.
+
+    A product the input tool had assigned before Baktfold overwrote it (only
+    possible with ``--all-proteins``) cannot be recovered.
+
+    Returns True if the feature was reset.
+    """
+    if not feature.get('baktfold'):
+        return False
+    pstc = feature.get('pstc') or []
+    pstc = pstc if isinstance(pstc, list) else [pstc]
+    added = set()
+    for entry in pstc:
+        # fast=False and selected=entry: every xref any hit could have added
+        added.update(pstc_db_xrefs(entry, False, entry))
+    feature['db_xrefs'] = [x for x in feature.get('db_xrefs', []) if x not in added]
+    # back to the state combine_annotation started from. Not mark_as_hypothetical:
+    # that also clears gene/genes, which combine_annotation leaves alone
+    feature['product'] = bc.HYPOTHETICAL_PROTEIN
+    feature['hypothetical'] = True
+    for key in ('annotation_confidence', 'tmscore', 'lddt', 'baktfold'):
+        feature.pop(key, None)
+    return True
+
+
 def combine_annotation(feature: dict, fast: bool, structures: bool = False):
     """
     Combines annotation information from different sources into a single feature.
@@ -257,32 +326,7 @@ def combine_annotation(feature: dict, fast: bool, structures: bool = False):
 
         # Collect all db_xref IDs
         for entry in pstc:
-            if isinstance(entry, dict):
-                src = entry.get('source', '').lower()
-                eid = entry.get('id')
-                if eid:
-                    if src == 'afdb':
-                        if not fast:
-                            db_xrefs.append(f"afdb_v6:afdbclusters_{eid}")
-                    elif src == 'swissprot':
-                        db_xrefs.append(f"afdb_v6:swissprot_{eid}")
-                    elif src == 'pdb':
-                        # chain-level: the chain that was hit, not just the entry
-                        chain = entry.get('chain')
-                        db_xrefs.append(f"pdb:pdb_{eid}_{chain}" if chain else f"pdb:pdb_{eid}")
-                        # when this PDB hit supplied the label and its name came
-                        # from UniProt (via SIFTS), cite that UniProt entry too
-                        if entry is selected_entry and entry.get('uniprot'):
-                            db_xrefs.append(f"UniProtKB:{entry['uniprot']}")
-                    elif src == 'cath':
-                        db_xrefs.append(f"cath:cath_{eid}")
-                    elif src == 'custom_db':
-                        db_xrefs.append(f"custom:custom_{eid}")
-                    else:
-                        db_xrefs.append(eid)
-            elif isinstance(entry, str):
-                # Preserve any existing string cross-references
-                db_xrefs.append(entry)
+            db_xrefs.extend(pstc_db_xrefs(entry, fast, selected_entry))
 
         # mark as baktfold
         mark_as_baktfold(feature)

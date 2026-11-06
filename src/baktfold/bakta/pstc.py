@@ -369,6 +369,76 @@ def lookup_sql(features: Sequence[dict], baktfold_db: Path, threads: int):
 
     return features
 
+def read_pdb_tophit_chains(tophit_tsv: Path) -> dict:
+    """Query -> PDB chain from a ``<prefix>_pdb_tophit.tsv``.
+
+    JSONs written before chain-level PDB labels don't record which chain was
+    hit, but the tophit TSV does (target '<entry>-assembly1.cif.gz_<chain>').
+    """
+    chains = {}
+    with open(tophit_tsv, newline='') as fh:
+        for row in csv.DictReader(fh, delimiter='\t'):
+            chain = pdb_chain_from_target(row.get('target') or '')
+            if chain:
+                chains.setdefault(row['query'], chain)
+    return chains
+
+
+def refresh_descriptions(features: Sequence[dict], baktfold_db: Path, pdb_chains: dict = None,
+                         has_duplicate_locus: bool = False) -> dict:
+    """Re-resolve the stored hits' descriptions from ``baktfold_db``, as
+    ``baktfold json --relabel -d`` does before label selection is rerun.
+
+    PDB hits without a chain take one from ``pdb_chains`` (query -> chain,
+    see read_pdb_tophit_chains), which is also written back to the hit.
+
+    Two kinds of description are kept as stored rather than looked up:
+      - custom_db hits: their descriptions came from the user's annotations
+        file, not from baktfold.db;
+      - PDB hits with no recoverable chain, when the database has chain-level
+        names: these keep the entry title they were labelled with. A lookup
+        would find no chain and drop the hit, which is right for an unlisted
+        chain but not for a chain that simply wasn't recorded.
+
+    Returns counts: pdb_chains_added, pdb_no_chain_kept.
+    """
+    pdb_chains = pdb_chains or {}
+    counts = {'pdb_chains_added': 0, 'pdb_no_chain_kept': 0}
+
+    conn = sqlite3.connect(f"file:{Path(baktfold_db).joinpath('baktfold.db')}?mode=ro", uri=True)
+    try:
+        chain_level_pdb = has_table(conn, "pdb_chain")
+    finally:
+        conn.close()
+
+    kept = []  # (entry, description) restored after lookup_sql
+    for feat in features:
+        pstc = feat.get("pstc")
+        if not pstc:
+            continue
+        key = feat.get('id') if has_duplicate_locus else feat.get('locus')
+        for entry in (pstc if isinstance(pstc, list) else [pstc]):
+            if not isinstance(entry, dict):
+                continue
+            source = entry.get("source")
+            if source == "custom_db":
+                kept.append((entry, entry.get("description")))
+            elif source == "pdb" and not entry.get("chain"):
+                chain = pdb_chains.get(key)
+                if chain:
+                    entry["chain"] = chain
+                    counts['pdb_chains_added'] += 1
+                elif chain_level_pdb:
+                    kept.append((entry, entry.get("description")))
+                    counts['pdb_no_chain_kept'] += 1
+
+    lookup_sql(features, Path(baktfold_db), threads=1)
+    for entry, description in kept:
+        if description:
+            entry["description"] = description
+    return counts
+
+
 def fetch_db_pscc_result(conn: sqlite3.Connection, uniref50_id: str):
     """
     Fetches the PSCC result for a given uniref50_id from a sqlite3 database.

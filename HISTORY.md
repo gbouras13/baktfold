@@ -4,6 +4,7 @@
 ------------------
 
 * Adds `baktfold json`, which reconstitutes all non-Foldseek outputs (`.gff3`/`.gbff`/`.embl`/`.tsv`/`.inference.tsv`/`.faa`/`.ffn`/`.fna`/`.summary.txt`/`.json`) from a Baktfold or Bakta JSON — no database, ProstT5 or Foldseek required. Every JSON now carries a self-describing `baktfold_run` provenance block
+* Adds `baktfold json --relabel`, which reruns label selection on the Foldseek hits stored in a JSON with the current rules, so outputs from earlier versions can be brought up to date without searching again. `-d` looks the hit descriptions up again (for chain-level PDB names); `--pdb-tophit` and `--prostt5-probs` supply the PDB chain and ProstT5 confidence that pre-0.4.0 JSONs don't record. What was done is recorded as `baktfold_run.relabel` in the JSON
 * Adds an `Annotation_Confidence` column (high/medium/low) to the JSON and TSV outputs, derived from reciprocal coverage, sequence identity, ProstT5 confidence and E-value
 * Adds `--report-prob`, which reports Foldseek's homology probability (`prob`) in each `*_tophit.tsv`. Off by default: it requires Foldseek to compute full alignments (`-a 1`), so searches are slower and use more disk
 * Adds multi-GPU support (#33)

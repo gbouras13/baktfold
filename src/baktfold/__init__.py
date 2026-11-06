@@ -2018,6 +2018,30 @@ Foldseek run is required - this is pure output reconstruction.
     default=None,
     help="ncRNA prediction tool string (non-Bakta/Prokka input only). Default: INFERNAL:1.1.5 for prokaryotic input; omitted for eukaryotic input"
 )
+@click.option(
+    "--relabel",
+    is_flag=True,
+    help="Rerun label selection on the stored Foldseek hits with this version's rules (no search). Brings outputs from earlier versions up to date"
+)
+@click.option(
+    "-d",
+    "--database",
+    type=click.Path(),
+    default=None,
+    help="With --relabel: Baktfold database directory to look the hit descriptions up again (needed for chain-level PDB names)"
+)
+@click.option(
+    "--pdb-tophit",
+    type=click.Path(),
+    default=None,
+    help="With --relabel -d: the original run's <prefix>_pdb_tophit.tsv, for PDB chains that older JSONs don't record"
+)
+@click.option(
+    "--prostt5-probs",
+    type=click.Path(),
+    default=None,
+    help="With --relabel: the original run's <prefix>_prostT5_3di_mean_probabilities.csv, for JSONs without ProstT5 confidence (needed for Annotation_Confidence)"
+)
 def json_reconstruct(
     ctx,
     input,
@@ -2032,9 +2056,21 @@ def json_reconstruct(
     tmrna_program,
     rrna_program,
     ncrna_program,
+    relabel,
+    database,
+    pdb_tophit,
+    prostt5_probs,
     **kwargs,
 ):
     """Reconstitute all outputs (GFF3/GenBank/EMBL/TSV/FASTA) from a baktfold JSON (no Foldseek TSVs)"""
+
+    if not relabel and (database or pdb_tophit or prostt5_probs):
+        raise click.UsageError("-d/--database, --pdb-tophit and --prostt5-probs only apply with --relabel")
+    for opt, path in (("--pdb-tophit", pdb_tophit), ("--prostt5-probs", prostt5_probs)):
+        if path is not None and not Path(path).is_file():
+            raise click.UsageError(f"{opt}: file not found: {path}")
+    if database is not None and not (Path(database) / "baktfold.db").is_file():
+        raise click.UsageError(f"-d/--database: no baktfold.db in {database}")
 
     # validates the directory (need to before baktfold starts or else no log file is written)
     instantiate_dirs(output, force, protected=[input])
@@ -2054,6 +2090,10 @@ def json_reconstruct(
         "--tmrna-program": tmrna_program,
         "--rrna-program": rrna_program,
         "--ncrna-program": ncrna_program,
+        "--relabel": relabel,
+        "--database": database,
+        "--pdb-tophit": pdb_tophit,
+        "--prostt5-probs": prostt5_probs,
     }
 
     from baktfold.io.json_in import parse_baktfold_json_for_reconstruction
@@ -2075,6 +2115,19 @@ def json_reconstruct(
         },
     )
 
+    # an earlier relabel stays recorded when the JSON is reconstituted again
+    relabel_info = (recon['data'].get('baktfold_run') or {}).get('relabel')
+    if relabel:
+        from baktfold.subcommands.relabel import relabel_features
+        relabel_info = relabel_features(
+            recon['aas'] if recon['mode'] == 'proteins' else recon['data']['features'],
+            fast=recon['fast'],
+            has_duplicate_locus=recon.get('has_duplicate_locus', False),
+            database=Path(database) if database else None,
+            pdb_tophit=Path(pdb_tophit) if pdb_tophit else None,
+            prostt5_probs=Path(prostt5_probs) if prostt5_probs else None,
+        )
+
     logger.info('Reconstituting baktfold outputs from JSON')
     logger.warning('Note: Foldseek result/tophit TSVs, 3Di FASTA and embeddings cannot be reconstituted from JSON.')
 
@@ -2086,6 +2139,7 @@ def json_reconstruct(
             recon['custom_db'],
             recon['fast'],
             recon['bakta_version'],
+            relabel=relabel_info,
         )
     else:
         bakta_io.write_bakta_outputs(
@@ -2107,6 +2161,7 @@ def json_reconstruct(
             recon['tmrna_program'],
             recon['ncrna_program'],
             recon['bakta_version'],
+            relabel=relabel_info,
         )
 
     # end baktfold

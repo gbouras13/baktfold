@@ -177,7 +177,8 @@ def propagate_cds_products_to_mrna(features: Sequence[dict]) -> int:
 def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequence: Sequence[dict] , 
                         output: Path, prefix: str, custom_db: bool, euk: bool, has_duplicate_locus: bool,
                         fast: bool, translation_table: int, prokka: bool, other_genbank: bool,
-                        cds_program: str ,trna_program: str, rrna_program: str, tmrna_program: str, ncrna_program: str, bakta_version: dict):
+                        cds_program: str ,trna_program: str, rrna_program: str, tmrna_program: str, ncrna_program: str, bakta_version: dict,
+                        relabel: dict = None):
     """
     Writes the bakta outputs to a given path.
 
@@ -195,6 +196,7 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
       prokka (bool): boolean indicating if prokka was used to do initial annotation
       other_genbank (bool): boolean indicating if other genbank (prokaryotic, genbank_to) was used to do initial annotation
       bakta_version (dict): Dictionary of Bakta (or whatever other program) was used for the initial annotation
+      relabel (dict): ``baktfold json --relabel`` record, stored as baktfold_run['relabel'] in the JSON
 
     Returns:
       None.
@@ -296,11 +298,15 @@ def write_bakta_outputs(data: dict, features: Sequence[dict], features_by_sequen
         'ncrna_program': ncrna_program,
         'input_hypotheticals': cfg.input_hypotheticals,
     }
+    if relabel:
+        # ``baktfold json --relabel``: labels were reselected from stored hits
+        baktfold_run['relabel'] = relabel
     json.write_json(data, features, json_path, bakta_version, baktfold_run)
 
     
 
-def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str, custom_db: bool, fast: bool, bakta_version: dict):
+def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str, custom_db: bool, fast: bool, bakta_version: dict,
+                                 relabel: dict = None):
     """
     Writes the bakta protein outputs to a given path.
 
@@ -311,6 +317,7 @@ def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str,
       custom_db (bool): A boolean indicating whether a custom database is used.
       fast (bool): If True, skips AFDB step
       bakta_version (dict): Original Bakta version
+      relabel (dict): ``baktfold json --relabel`` record, stored as baktfold_run['relabel'] in the JSON
 
     Returns:
       None.
@@ -350,6 +357,8 @@ def write_bakta_proteins_outputs(aas: Sequence[dict], output: Path, prefix: str,
         'custom_db': custom_db,
         'fast': fast,
     }
+    if relabel:
+        baktfold_run['relabel'] = relabel
     json.write_json({'features': aas}, aas, full_annotations_path, bakta_version, baktfold_run)
 
 
