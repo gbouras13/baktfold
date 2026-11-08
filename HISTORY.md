@@ -1,6 +1,6 @@
 # History
 
-0.4.0 (unreleased)
+0.4.0 2026-08-11
 ------------------
 
 * Adds `baktfold json`, which reconstitutes all non-Foldseek outputs (`.gff3`/`.gbff`/`.embl`/`.tsv`/`.inference.tsv`/`.faa`/`.ffn`/`.fna`/`.summary.txt`/`.json`) from a Baktfold or Bakta JSON — no database, ProstT5 or Foldseek required. Every JSON now carries a self-describing `baktfold_run` provenance block
