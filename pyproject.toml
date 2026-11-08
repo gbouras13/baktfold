@@ -10,7 +10,7 @@ name = "baktfold"
 dynamic = ["version"]
 description = "Rapid and standardized annotation of bacterial genomes, MAGs and plasmids using protein structural information"
 readme = "README.md"
-requires-python = ">=3.10,<3.14"
+requires-python = ">=3.10"
 license = {file = "MIT"}
 authors = [
     {name = "George Bouras", email = "george.bouras@adelaide.edu.au"},
@@ -34,7 +34,8 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13"
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14"
 ]
 
 dependencies = [

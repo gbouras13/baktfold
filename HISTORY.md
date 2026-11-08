@@ -1,5 +1,10 @@
 # History
 
+0.4.1 (unreleased)
+------------------
+
+* Removes the upper bound on Python (`requires-python = ">=3.10"`; 0.4.0 declared `<3.14`, which failed the Bioconda build once the solver picked Python 3.15). The unit suite passes on Python 3.14 and 3.15, and 3.14 is added to the GitHub unit-test matrix. Python 3.15 is not yet installable through conda (conda-forge has no PyTorch build for it), so conda resolves to 3.14
+
 0.4.0 2026-08-11
 ------------------
 

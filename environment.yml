@@ -5,7 +5,7 @@ channels:
   - defaults
 dependencies:
   - foldseek ==10.941cd33
-  - python >=3.10,<3.14
+  - python >=3.10
   - biopython >=1.80
   - alive-progress >=3.0.1
   - requests >=2.25
