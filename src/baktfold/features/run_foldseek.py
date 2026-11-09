@@ -114,7 +114,8 @@ def run_foldseek_search(
         cmd += f" {extra_foldseek_params}"
 
     # need -a 1 to compute the alignment so tmscore and lddt can be output (if using --structures).
-    # `prob` also needs the backtrace, so --report-prob requires it on the ProstT5 path too.
+    # `prob` also needs the backtrace (and query C-alpha coordinates, so structures only:
+    # see validation.check_report_prob).
     if structures or report_prob:
         cmd += f" -a 1"
 

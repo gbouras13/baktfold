@@ -5,6 +5,7 @@
 
 * Fixes a `SyntaxWarning: invalid escape sequence` from the ASCII banner on Python 3.12+ (the printed banner is unchanged)
 * Removes the upper bound on Python (`requires-python = ">=3.10"`; 0.4.0 declared `<3.14`, which failed the Bioconda build once the solver picked Python 3.15). The unit suite passes on Python 3.14 and 3.15, and 3.14 is added to the GitHub unit-test matrix. Python 3.15 is not yet installable through conda (conda-forge has no PyTorch build for it), so conda resolves to 3.14
+* Fixes `--report-prob` on the ProstT5 path: Foldseek's `prob` needs the query's C-alpha coordinates, which a query database built from ProstT5 3Di does not have, so 0.4.0 accepted the flag and then failed in Foldseek after prediction and search. `--report-prob` now works only with `compare`/`proteins-compare --structure-dir`; everywhere else it is rejected before any work is done. Adds unit tests that run the real Foldseek binary (skipped when `foldseek` is not on `PATH`; GitHub CI installs the latest Foldseek release)
 
 0.4.0 2026-08-11
 ------------------

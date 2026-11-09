@@ -43,6 +43,13 @@ jobs:
       - name: Install baktfold
         run: pip install -e ".[test]"
 
+      - name: Install Foldseek (latest release)
+        # For the real-Foldseek tests in tests/unit (skipped without it). Deliberately
+        # unpinned: a new Foldseek release that breaks them is the signal we want.
+        run: |
+          curl -fsSL https://github.com/steineggerlab/foldseek/releases/latest/download/foldseek-linux-avx2.tar.gz | tar xz -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/foldseek/bin" >> "$GITHUB_PATH"
+
       - name: Show resolved environment
         run: pip list
 

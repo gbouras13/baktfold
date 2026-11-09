@@ -17,6 +17,9 @@ Run::
 """
 from __future__ import annotations
 
+import shutil
+import subprocess
+from pathlib import Path
 from unittest.mock import patch
 
 import polars as pl
@@ -183,3 +186,95 @@ class TestPstcCarriesProb:
         assert hits, "expected a pstc hit"
         hit = hits[0] if isinstance(hits, list) else hits
         assert "prob" not in hit
+
+
+# ─── ProstT5 path rejected up front ─────────────────────────────────────────
+
+
+class TestReportProbNeedsStructures:
+    """prob needs query C-alpha coordinates, which ProstT5 query DBs lack (0.4.0 bug)."""
+
+    def test_validator(self):
+        import click
+
+        from baktfold.utils.validation import check_report_prob
+
+        check_report_prob(False, structures=False)
+        check_report_prob(True, structures=True)
+        with pytest.raises(click.UsageError, match="--structure-dir"):
+            check_report_prob(True, structures=False)
+
+    @pytest.mark.parametrize("argv", [
+        ["run", "-i", "in.json"],
+        ["proteins", "-i", "in.faa"],
+        ["compare", "-i", "in.json", "--predictions-dir", "preds"],
+        ["proteins-compare", "-i", "in.faa", "--predictions-dir", "preds"],
+    ])
+    def test_cli_rejects_before_any_work(self, tmp_path, argv):
+        from click.testing import CliRunner
+
+        from baktfold import main_cli
+
+        out = tmp_path / "out"
+        r = CliRunner().invoke(main_cli, argv + ["-o", str(out), "--report-prob"])
+        assert r.exit_code == 2, r.output
+        assert "--structure-dir" in r.output
+        assert not out.exists()
+
+
+# ─── real Foldseek ──────────────────────────────────────────────────────────
+
+PDBS = Path(__file__).parents[1] / "test_data" / "pdbs"
+
+
+@pytest.fixture
+def structure_db(tmp_path):
+    if shutil.which("foldseek") is None:
+        pytest.skip("foldseek not on PATH")
+    pdbs = sorted(PDBS.glob("*.pdb"))[:4]
+    d = tmp_path / "pdbs"
+    d.mkdir()
+    for p in pdbs:
+        shutil.copy(p, d / p.name)
+    db = tmp_path / "qdb"
+    subprocess.run(["foldseek", "createdb", str(d), str(db)], check=True, capture_output=True)
+    return db, [p.stem for p in pdbs]
+
+
+def _search_and_convert(tmp_path, db, *, structures, report_prob):
+    logdir = tmp_path / "logs"
+    logdir.mkdir(exist_ok=True)
+    res, tsv = tmp_path / "res", tmp_path / "res.tsv"
+    run_foldseek.run_foldseek_search(
+        query_db=db, target_db=db, result_db=res, temp_db=tmp_path / "tmp", threads=1,
+        logdir=logdir, evalue=1e-3, sensitivity=9.5, max_seqs=1000, ultra_sensitive=False,
+        extra_foldseek_params="", foldseek_gpu=False, structures=structures, report_prob=report_prob)
+    run_foldseek.create_result_tsv(db, db, res, tsv, logdir, False, structures, 1, report_prob=report_prob)
+    return tsv
+
+
+class TestRealFoldseek:
+    def test_structures_report_prob(self, tmp_path, structure_db):
+        """The supported path: structure queries, -a 1, prob column parsed by get_tophit."""
+        db, ids = structure_db
+        tsv = _search_and_convert(tmp_path, db, structures=True, report_prob=True)
+        df = get_tophit(tsv, structures=True, cath=False, report_prob=True)
+        assert df.columns[-3:] == ["alntmscore", "lddt", "prob"]
+        assert set(df["query"]) <= set(ids) and len(df) > 0
+        probs = df["prob"].cast(pl.Float64)
+        assert probs.is_between(0, 1).all()
+        # each query's best hit is itself
+        assert (probs > 0.9).all()
+
+    def test_query_without_ca_cannot_report_prob(self, tmp_path, structure_db):
+        """Why the validator exists: a query DB without <db>_ca (as built from ProstT5
+        3Di) fails in Foldseek when prob is requested."""
+        db, _ = structure_db
+        for f in tmp_path.glob("qdb_ca*"):
+            f.unlink()
+        # control: the same DB searches fine without prob, so the failure below is prob's
+        assert _search_and_convert(tmp_path, db, structures=False, report_prob=False).stat().st_size > 0
+        for f in tmp_path.glob("res*"):
+            f.unlink() if f.is_file() else shutil.rmtree(f)
+        with pytest.raises(SystemExit):
+            _search_and_convert(tmp_path, db, structures=False, report_prob=True)

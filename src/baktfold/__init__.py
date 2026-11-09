@@ -14,7 +14,7 @@ from baktfold.databases.db import install_database, validate_db, check_prostT5_d
 from baktfold.features.create_foldseek_db import generate_foldseek_db_from_aa_3di
 from baktfold.utils.constants import DB_DIR, CNN_DIR
 from baktfold.utils.util import (begin_baktfold, clean_up_temporary_files, end_baktfold, get_version, iter_sequences_once, print_citation, sort_euk_feature_key)
-from baktfold.utils.validation import (check_dependencies, instantiate_dirs, validate_outfile, check_genbank_and_prokka)
+from baktfold.utils.validation import (check_dependencies, check_report_prob, instantiate_dirs, validate_outfile, check_genbank_and_prokka)
 
 from baktfold.io.prokka_gbk_to_json import prokka_gbk_to_json
 from baktfold.io.eukaryotic_to_json import eukaryotic_gbk_to_json
@@ -226,7 +226,7 @@ def compare_options(func):
         click.option(
             "--report-prob",
             is_flag=True,
-            help="Report Foldseek's homology probability ('prob') in the per-database tophit TSVs. Requires Foldseek to compute full alignments (-a 1), so searches are slower and use more disk."
+            help="Report Foldseek's homology probability ('prob') in the per-database tophit TSVs. Needs query structures: compare/proteins-compare with --structure-dir only. Slower and uses more disk (-a 1)."
         ),
         click.option(
             "--cds-program",
@@ -362,6 +362,8 @@ def run(
     """baktfold predict then comapare all in one - GPU recommended"""
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
+    check_report_prob(report_prob, structures=False)
+
     instantiate_dirs(output, force, protected=[input])
 
     output: Path = Path(output)
@@ -685,6 +687,8 @@ def proteins(
     """baktfold proteins-predict then comapare all in one - GPU recommended"""
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
+    check_report_prob(report_prob, structures=False)
+
     instantiate_dirs(output, force, protected=[input])
 
     output: Path = Path(output)
@@ -1121,6 +1125,9 @@ def compare(
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
 
+    # --predictions-dir wins when both are given (see below)
+    check_report_prob(report_prob, structures=bool(structure_dir) and not predictions_dir)
+
     instantiate_dirs(output, force, protected=[input, predictions_dir, structure_dir])
 
     output: Path = Path(output)
@@ -1525,6 +1532,9 @@ def proteins_compare(
     """Runs Foldseek vs baktfold db on proteins input"""
 
     # validates the directory  (need to before I start baktfold or else no log file is written)
+
+    # --predictions-dir wins when both are given (see below)
+    check_report_prob(report_prob, structures=bool(structure_dir) and not predictions_dir)
 
     instantiate_dirs(output, force, protected=[input, predictions_dir, structure_dir])
 

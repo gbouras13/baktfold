@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 from typing import Dict, Union
 
+import click
 from Bio import SeqIO
 from Bio.SeqUtils import IUPACData
 from loguru import logger
@@ -94,6 +95,30 @@ def validate_outfile(outfile: Union[str, Path], force: bool) -> Path:
                 f"Output file {outfile} already exists and force was not specified. Please specify -f or --force to overwrite the output file"
             )
             sys.exit(1)  # see instantiate_dirs: no exit-on-ERROR sink yet
+
+
+def check_report_prob(report_prob: bool, structures: bool) -> None:
+    """
+    Rejects --report-prob unless the queries are real structures.
+
+    Foldseek's ``prob`` is computed from the query's C-alpha coordinates
+    (``<query_db>_ca``). Query databases built from ProstT5 3Di predictions have
+    none, so the search cannot report it. Fail before any work is done rather than
+    after prediction and search.
+
+    Parameters:
+        report_prob (bool): --report-prob was given.
+        structures (bool): The query database is built from --structure-dir.
+
+    Returns:
+        None
+    """
+    if report_prob and not structures:
+        raise click.UsageError(
+            "--report-prob needs query C-alpha coordinates, so it only works with "
+            "--structure-dir (baktfold compare / proteins-compare). It is not available "
+            "on the ProstT5 path (run, proteins, or compare with --predictions-dir)."
+        )
 
 
 def check_dependencies() -> None:

@@ -19,7 +19,7 @@ MEGJMN_070	AF-A0A1I3V7E0-F1-model_v6	292	0.41	2.619e-06	1	91	93	0.97	1	95	99	0.9
 
 * There will also be a `baktfold_custom_db_tophit.tsv` if you have used `--custom-db`
 
-* If you ran with `--report-prob`, each `*_tophit.tsv` gains a trailing `prob` column — Foldseek's estimated probability that the query and target are homologous. This is not emitted by default because it requires Foldseek to compute full alignments (`-a 1`).
+* If you ran with `--report-prob` (structures only: `--structure-dir`), each `*_tophit.tsv` gains a trailing `prob` column — Foldseek's estimated probability that the query and target are homologous. This is not emitted by default because it requires Foldseek to compute full alignments (`-a 1`).
 
 * `baktfold.inference.tsv` which contains the new annotated funciton (`Product` column), an `Annotation_Confidence` column and all annotated tophits (if they exist) for all proteins that were attempted to be annotated by Baktfold
 * Note: This will contain an extra column `Custom_DB` if you have used `--custom-db` with a custom database, and extra `TMscore` and `LDDT` columns if you ran with user-provided structures (`--structure-dir`)

@@ -177,10 +177,10 @@ MEGJMN_042	dummy annotation
 
 For an example, see [this custom database](https://github.com/gbouras13/baktfold/tree/main/tests/test_data/custom_db), with `dummy_custom_db_annotations.tsv` representing the custom annotations file.
 
-* Foldseek can also report a homology probability (`prob`) for each hit, in addition to the E-value. This is off by default because it requires Foldseek to compute full alignments (`-a 1`), which makes searches slower and the intermediate results larger. Enable it with `--report-prob`, and the `prob` column is added to each `*_tophit.tsv`.
+* If you have structures, Foldseek can also report a homology probability (`prob`) for each hit, in addition to the E-value. `prob` is computed from the query's C-alpha coordinates, so it is only available with `--structure-dir` (`baktfold compare` / `proteins-compare`), not on the ProstT5 path (`run`, `proteins`, `--predictions-dir`), where `--report-prob` is rejected. It is off by default because it requires Foldseek to compute full alignments (`-a 1`), which makes searches slower and the intermediate results larger. Enable it with `--report-prob`, and the `prob` column is added to each `*_tophit.tsv`.
 
 ```bash
-baktfold compare -i bakta.json -o baktfold_compare_output --predictions-dir baktfold_predict_output --report-prob
+baktfold compare -i bakta.json -o baktfold_compare_output --structure-dir structures --report-prob
 ```
 
 * If your input genome is eukaryotic, please use `--euk` to ensure all common eukaryotic genomic features are parsed correctly.
